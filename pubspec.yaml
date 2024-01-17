@@ -56,11 +56,9 @@ flutter:
   # https://flutter.dev/custom-fonts/#from-packages
 
 ffigen:
-  output: 'lib/src/bindings/wallet_core_bindings.dart'
-  name: WalletCoreBindings
+  output: 'lib/src/bindings/bindings.dart'
+  name: TrustWalletCoreBindings
   description: Auto-generated, internal bindings to TrustWalletCore
-  llvm-path:
-    - 'D:\LLVM'
   headers:
     entry-points:
-      - 'submodule/wallet-core/include/TrustWalletCore/**.h'
+      - 'include/TrustWalletCore/**.h'
