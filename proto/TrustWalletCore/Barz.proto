@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: Apache-2.0
+//
+// Copyright © 2017 Trust Wallet.
+
+syntax = "proto3";
+
+package TW.Barz.Proto;
+option java_package = "wallet.core.jni.proto";
+
+// Input parameters for calculating a counterfactual address for ERC-4337 based smart contract wallet
+message ContractAddressInput {
+  // ERC-4337 entry point
+  string entry_point = 1;
+  // Address of the contract factory
+  string factory = 2;
+
+  // Diamond proxy facets required for the contract setup
+  string account_facet = 3;
+  string verification_facet = 4;
+  string facet_registry = 5;
+  string default_fallback = 6;
+
+  // Bytecode of the smart contract to deploy
+  string bytecode = 7;
+  // PublicKey of the wallet
+  string public_key = 8;
+
+  // Salt is used to derive multiple account from the same public key
+  uint32 salt = 9;
+}

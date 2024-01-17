@@ -1,0 +1,97 @@
+// SPDX-License-Identifier: Apache-2.0
+//
+// Copyright © 2017 Trust Wallet.
+
+syntax = "proto3";
+
+package TW.TheOpenNetwork.Proto;
+option java_package = "wallet.core.jni.proto";
+
+import "Common.proto";
+
+enum WalletVersion {
+    WALLET_V3_R1 = 0;
+    WALLET_V3_R2 = 1;
+    WALLET_V4_R2 = 2;
+};
+
+enum SendMode {
+    DEFAULT = 0;
+    PAY_FEES_SEPARATELY = 1;
+    IGNORE_ACTION_PHASE_ERRORS = 2;
+    DESTROY_ON_ZERO_BALANCE = 32;
+    ATTACH_ALL_INBOUND_MESSAGE_VALUE = 64;
+    ATTACH_ALL_CONTRACT_BALANCE = 128;
+};
+
+message Transfer {
+    // Wallet version
+    WalletVersion wallet_version = 1;
+
+    // Recipient address
+    string dest = 2;
+
+    // Amount to send in nanotons
+    uint64 amount = 3;
+
+    // Message counter (optional, 0 by default used for the first deploy)
+    // This field is required, because we need to protect the smart contract against "replay attacks"
+    // Learn more: https://ton.org/docs/develop/smart-contracts/guidelines/external-messages
+    uint32 sequence_number = 4;
+
+    // Send mode (optional, 0 by default)
+    // Learn more: https://ton.org/docs/develop/func/stdlib#send_raw_message
+    uint32 mode = 5;
+
+    // Expiration UNIX timestamp (optional, now() + 60 by default)
+    uint32 expire_at = 6;
+
+    // Transfer comment message (optional, empty by default)
+    string comment = 7;
+
+    // If the address is bounceable
+    bool bounceable = 8;
+}
+
+message JettonTransfer {
+    // Dest in Transfer means contract address of sender's jetton wallet. 
+    Transfer transfer = 1;
+
+    // Arbitrary request number. Deafult is 0. Optional field.
+    uint64 query_id = 2;
+
+    // Amount of transferred jettons in elementary integer units. The real value transferred is jetton_amount multiplied by ten to the power of token decimal precision
+    uint64 jetton_amount = 3;
+
+    // Address of the new owner of the jettons.
+    string to_owner = 4;
+
+    // Address where to send a response with confirmation of a successful transfer and the rest of the incoming message Toncoins. Usually the sender should get back their toncoins.
+    string response_address = 5;
+
+    // Amount in nanotons to forward to recipient. Basically minimum amount - 1 nanoton should be used
+    uint64 forward_amount = 6;
+}
+
+message SigningInput {
+    // The secret private key used for signing (32 bytes).
+    bytes private_key = 1;
+
+    // The payload transfer
+    oneof action_oneof {
+        Transfer transfer = 2;
+        JettonTransfer jetton_transfer = 3;
+    }
+}
+
+// Transaction signing output.
+message SigningOutput {
+    // Signed and base64 encoded BOC message
+    string encoded = 1;
+
+    // error code, 0 is ok, other codes will be treated as errors
+    Common.Proto.SigningError error = 2;
+
+    // error code description
+    string error_message = 3;
+}
