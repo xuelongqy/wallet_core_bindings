@@ -10,7 +10,7 @@ class TWString {
 
   Pointer<Void> get pointer => _pointer;
 
-  const TWString.formPointer(this._pointer);
+  const TWString.fromPointer(this._pointer);
 
   TWString(String value)
       : _pointer = iTWBindings.TWStringCreateWithUTF8Bytes(

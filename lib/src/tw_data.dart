@@ -9,7 +9,7 @@ class TWData {
 
   Pointer<Void> get pointer => _pointer;
 
-  const TWData.formPointer(this._pointer);
+  const TWData.fromPointer(this._pointer);
 
   /// Creates a block of data from a hexadecimal string.  Odd length is invalid (intended grouping to bytes is not obvious).
   ///
