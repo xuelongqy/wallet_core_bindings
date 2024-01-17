@@ -3,9 +3,14 @@ library wallet_core_bindings;
 import 'dart:ffi';
 import 'dart:io';
 
-import 'src/bindings/bindings.dart';
+import 'package:ffi/ffi.dart';
+
+import 'src/bindings/bindings.dart' as TWBindings;
 
 part 'src/bindings/lib.dart';
+part 'src/tw_account.dart';
+part 'src/tw_string.dart';
+part 'src/tw_data.dart';
 
 /// A Calculator.
 class Calculator {

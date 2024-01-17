@@ -3,16 +3,16 @@ part of '../../wallet_core_bindings.dart';
 /// TrustWalletCore library and bindings.
 class TrustWalletCoreLib {
   /// TrustWalletCore bindings.
-  static TrustWalletCoreBindings? _bindings;
+  static TWBindings.TrustWalletCoreBindings? _bindings;
 
   /// Get TrustWalletCore bindings.
-  static TrustWalletCoreBindings get bindings {
-    _bindings ??= TrustWalletCoreBindings(_walletCoreLibrary);
+  static TWBindings.TrustWalletCoreBindings get bindings {
+    _bindings ??= TWBindings.TrustWalletCoreBindings(_walletCoreLibrary);
     return _bindings!;
   }
 
   /// Set TrustWalletCore bindings.
-  static set bindings(TrustWalletCoreBindings value) {
+  static set bindings(TWBindings.TrustWalletCoreBindings value) {
     _bindings = value;
   }
 
@@ -26,3 +26,5 @@ class TrustWalletCoreLib {
     return DynamicLibrary.open('libTrustWalletCore.so');
   }
 }
+
+TWBindings.TrustWalletCoreBindings get iTWBindings => TrustWalletCoreLib.bindings;
