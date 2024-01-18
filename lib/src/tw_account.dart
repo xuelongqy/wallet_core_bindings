@@ -11,12 +11,12 @@ class TWAccount {
   /// Creates a new Account with an address, a coin type, derivation enum, derivationPath, publicKey,
   /// and extendedPublicKey. Must be deleted with TWAccountDelete after use.
   ///
-  /// [address] The address of the Account.
-  /// [coin] The coin type of the Account.
-  /// [derivation] The derivation of the Account.
-  /// [derivationPath] The derivation path of the Account.
-  /// [publicKey] hex encoded public key.
-  /// [extendedPublicKey] Base58 encoded extended public key.
+  /// \param [address] The address of the Account.
+  /// \param [coin] The coin type of the Account.
+  /// \param [derivation] The derivation of the Account.
+  /// \param [derivationPath] The derivation path of the Account.
+  /// \param [publicKey] hex encoded public key.
+  /// \param [extendedPublicKey] Base58 encoded extended public key.
   TWAccount({
     required String address,
     required int coin,

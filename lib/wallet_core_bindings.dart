@@ -9,6 +9,7 @@ import 'src/bindings/bindings.dart' as bindings;
 
 part 'src/bindings/lib.dart';
 part 'src/tw_account.dart';
+part 'src/tw_aes.dart';
 part 'src/tw_string.dart';
 part 'src/tw_data.dart';
 part 'src/tw_coin_type.dart';

@@ -18,20 +18,20 @@ class TWString {
 
   /// Creates a TWString from a null-terminated UTF8 byte array. It must be deleted at the end.
   ///
-  /// [bytes] a null-terminated UTF8 byte array.
+  /// \param [bytes] a null-terminated UTF8 byte array.
   TWString.createWithUTF8Bytes(Pointer<Char> bytes)
       : _pointer = iTWBindings.TWStringCreateWithUTF8Bytes(bytes);
 
   /// Creates a string from a raw byte array and size. It must be deleted at the end.
   ///
-  /// [bytes] a raw byte array.
-  /// [size] the size of the byte array.
+  /// \param [bytes] a raw byte array.
+  /// \param [size] the size of the byte array.
   TWString.createWithRawBytes(Pointer<Uint8> bytes, int size)
       : _pointer = iTWBindings.TWStringCreateWithRawBytes(bytes, size);
 
   /// Creates a hexadecimal string from a block of data. It must be deleted at the end.
   ///
-  /// [data] a block of data.
+  /// \param [data] a block of data.
   TWString.createWithHexData(TWData data)
       : _pointer = iTWBindings.TWStringCreateWithHexData(data.pointer);
 
@@ -40,7 +40,7 @@ class TWString {
 
   /// Returns the byte at the provided index.
   ///
-  /// [index] the index of the byte.
+  /// \param [index] the index of the byte.
   String get(int index) => String.fromCharCode(iTWBindings.TWStringGet(_pointer, index));
 
   /// Returns the raw pointer to the string's UTF8 bytes (null-terminated).
@@ -54,6 +54,6 @@ class TWString {
 
   /// Determines whether two string blocks are equal.
   ///
-  /// [another] Another TWString pointer.
+  /// \param [another] Another TWString pointer.
   bool equal(TWString another) => iTWBindings.TWStringEqual(_pointer, another.pointer);
 }
