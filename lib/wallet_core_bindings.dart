@@ -12,6 +12,7 @@ part 'src/tw_account.dart';
 part 'src/tw_aes.dart';
 part 'src/tw_aes_padding_mode.dart';
 part 'src/tw_any_address.dart';
+part 'src/tw_any_signer.dart';
 part 'src/tw_data.dart';
 part 'src/tw_derivation.dart';
 part 'src/tw_filecoin_address_type.dart';
