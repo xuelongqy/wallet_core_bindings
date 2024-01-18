@@ -14,6 +14,7 @@ part 'src/tw_aes_padding_mode.dart';
 part 'src/tw_any_address.dart';
 part 'src/tw_any_signer.dart';
 part 'src/tw_asn_parser.dart';
+part 'src/tw_barz.dart';
 part 'src/tw_data.dart';
 part 'src/tw_derivation.dart';
 part 'src/tw_filecoin_address_type.dart';
