@@ -12,9 +12,14 @@ class TWString {
 
   const TWString.fromPointer(this._pointer);
 
-  TWString(String value)
-      : _pointer = iTWBindings.TWStringCreateWithUTF8Bytes(
-            value.toNativeUtf8().cast());
+  TWString(String value) : _pointer = _create(value);
+
+  static Pointer<Void> _create(String value) {
+    Pointer<Char> valuePointer = value.toNativeUtf8().cast();
+    Pointer<Void> res = iTWBindings.TWStringCreateWithUTF8Bytes(valuePointer);
+    malloc.free(valuePointer);
+    return res;
+  }
 
   /// Creates a TWString from a null-terminated UTF8 byte array. It must be deleted at the end.
   ///
@@ -25,9 +30,16 @@ class TWString {
   /// Creates a string from a raw byte array and size. It must be deleted at the end.
   ///
   /// \param [bytes] a raw byte array.
-  /// \param [size] the size of the byte array.
-  TWString.createWithRawBytes(Pointer<Uint8> bytes, int size)
-      : _pointer = iTWBindings.TWStringCreateWithRawBytes(bytes, size);
+  TWString.createWithRawBytes(Uint8List bytes)
+      : _pointer = _twStringCreateWithRawBytes(bytes);
+
+  static Pointer<Void> _twStringCreateWithRawBytes(Uint8List bytes) {
+    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
+    Pointer<Void> res =
+        iTWBindings.TWStringCreateWithRawBytes(bytesPointer, bytes.length);
+    malloc.free(bytesPointer);
+    return res;
+  }
 
   /// Creates a hexadecimal string from a block of data. It must be deleted at the end.
   ///
@@ -41,13 +53,19 @@ class TWString {
   /// Returns the byte at the provided index.
   ///
   /// \param [index] the index of the byte.
-  String get(int index) => String.fromCharCode(iTWBindings.TWStringGet(_pointer, index));
+  String get(int index) =>
+      String.fromCharCode(iTWBindings.TWStringGet(_pointer, index));
 
   /// Returns the raw pointer to the string's UTF8 bytes (null-terminated).
   Pointer<Char> utf8Bytes() => iTWBindings.TWStringUTF8Bytes(_pointer);
 
   @override
-  String toString() => utf8Bytes().cast<Utf8>().toDartString();
+  String toString() {
+    Pointer<Char> resPointer = utf8Bytes();
+    String res = resPointer.cast<Utf8>().toDartString();
+    malloc.free(resPointer);
+    return res;
+  }
 
   /// Deletes a string created with a `TWStringCreate*` method and frees the memory.
   void delete() => iTWBindings.TWStringDelete(_pointer);
@@ -55,5 +73,6 @@ class TWString {
   /// Determines whether two string blocks are equal.
   ///
   /// \param [another] Another TWString pointer.
-  bool equal(TWString another) => iTWBindings.TWStringEqual(_pointer, another.pointer);
+  bool equal(TWString another) =>
+      iTWBindings.TWStringEqual(_pointer, another.pointer);
 }

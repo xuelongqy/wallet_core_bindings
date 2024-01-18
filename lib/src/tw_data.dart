@@ -11,21 +11,18 @@ class TWData {
 
   const TWData.fromPointer(this._pointer);
 
-  /// Creates a block of data from a hexadecimal string.  Odd length is invalid (intended grouping to bytes is not obvious).
-  ///
-  /// [hex] input hex string
-  TWData(
-    String hex,
-  ) : _pointer = iTWBindings.TWDataCreateWithHexString(TWString(hex).pointer);
-
   /// Creates a block of data from a byte array.
   ///
   /// \param [bytes] Non-null raw bytes buffer
-  /// \param [size] size of the buffer
-  TWData.createWithBytes(
-    Pointer<Uint8> bytes,
-    int size,
-  ) : _pointer = iTWBindings.TWDataCreateWithBytes(bytes, size);
+  TWData(Uint8List bytes) : _pointer = _twDataCreateWithBytes(bytes);
+
+  static Pointer<Void> _twDataCreateWithBytes(Uint8List bytes) {
+    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
+    Pointer<Void> res =
+        iTWBindings.TWDataCreateWithBytes(bytes.toNativeUint8(), bytes.length);
+    malloc.free(bytesPointer);
+    return res;
+  }
 
   /// Creates an uninitialized block of data with the provided size.
   ///
@@ -45,8 +42,15 @@ class TWData {
   ///
   /// \param [hex] input hex string
   TWData.createWithHexString(
-    TWString hex,
-  ) : _pointer = iTWBindings.TWDataCreateWithHexString(hex.pointer);
+    String hex,
+  ) : _pointer = _twDataCreateWithHexString(hex);
+
+  static Pointer<Void> _twDataCreateWithHexString(String hex) {
+    TWString twHex = TWString(hex);
+    Pointer<Void> res = iTWBindings.TWDataCreateWithHexString(twHex.pointer);
+    twHex.delete();
+    return res;
+  }
 
   /// Returns the size in bytes.
   ///
@@ -56,7 +60,7 @@ class TWData {
   /// Returns the raw pointer to the contents of data.
   ///
   /// \return the raw pointer to the contents of data
-  Pointer<Uint8> bytes() => iTWBindings.TWDataBytes(_pointer);
+  Uint8List bytes() => iTWBindings.TWDataBytes(_pointer).asTypedList(size());
 
   /// Returns the byte at the provided index.
   ///
@@ -75,29 +79,37 @@ class TWData {
   /// \param [start] starting index of the range - index need to be < TWDataSize(data)
   /// \param [size] size of the range we want to copy - size need to be < TWDataSize(data) - start
   /// \param [output] The output buffer where we want to copy the data.
-  void copyBytes(int start, int size, Pointer<Uint8> output) =>
-      iTWBindings.TWDataCopyBytes(_pointer, start, size, output);
+  void copyBytes(int start, int size, Uint8List output) {
+    Pointer<Uint8> outputPointer = output.toNativeUint8();
+    iTWBindings.TWDataCopyBytes(_pointer, start, size, outputPointer);
+    malloc.free(outputPointer);
+  }
 
   /// Replaces a range of bytes with the contents of the provided buffer.
   ///
   /// \param [start] starting index of the range - index need to be < TWDataSize(data)
   /// \param [size] size of the range we want to replace - size need to be < TWDataSize(data) - start
   /// \param [bytes] The buffer that will replace the range of data
-  void replaceBytes(int start, int size, Pointer<Uint8> bytes) =>
-      iTWBindings.TWDataReplaceBytes(_pointer, start, size, bytes);
+  void replaceBytes(int start, int size, Uint8List bytes) {
+    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
+    iTWBindings.TWDataReplaceBytes(_pointer, start, size, bytesPointer);
+    malloc.free(bytesPointer);
+  }
 
   /// Appends data from a byte array.
   ///
   /// \param [bytes] Non-null byte array
   /// \param [size] The size of the byte array
-  void appendBytes(Pointer<Uint8> bytes, int size) =>
-      iTWBindings.TWDataAppendBytes(_pointer, bytes, size);
+  void appendBytes(Uint8List bytes, int size) {
+    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
+    iTWBindings.TWDataAppendBytes(_pointer, bytesPointer, size);
+    malloc.free(bytesPointer);
+  }
 
   /// Appends a single byte.
   ///
   /// \param [byte] A single byte
-  void appendByte(int byte) =>
-      iTWBindings.TWDataAppendByte(_pointer, byte);
+  void appendByte(int byte) => iTWBindings.TWDataAppendByte(_pointer, byte);
 
   /// Appends a block of data.
   ///
@@ -115,5 +127,6 @@ class TWData {
   ///
   /// \param [another] right non null block of data to be compared
   /// \return true if both block of data are equal, false otherwise
-  bool equal(TWData another) => iTWBindings.TWDataEqual(_pointer, another.pointer);
+  bool equal(TWData another) =>
+      iTWBindings.TWDataEqual(_pointer, another.pointer);
 }

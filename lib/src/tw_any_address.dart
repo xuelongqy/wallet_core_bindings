@@ -15,8 +15,16 @@ class TWAnyAddress {
   TWAnyAddress({
     required String string,
     required int coin,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateWithString(
-            TWString(string).pointer, coin);
+  }) : _pointer = _twAnyAddressCreateWithString(string, coin);
+
+  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateWithString(
+      String string, int coin) {
+    TWString twString = TWString(string);
+    Pointer<bindings.TWAnyAddress> res =
+        iTWBindings.TWAnyAddressCreateWithString(twString.pointer, coin);
+    twString.delete();
+    return res;
+  }
 
   /// Creates an bech32 address from a string representation, a coin type and the given hrp. Must be deleted with TWAnyAddressDelete after use.
   ///
@@ -27,8 +35,18 @@ class TWAnyAddress {
     required String string,
     required int coin,
     required String hrp,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateBech32(
-            TWString(string).pointer, coin, TWString(hrp).pointer);
+  }) : _pointer = _twAnyAddressCreateBech32(string, coin, hrp);
+
+  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateBech32(
+      String string, int coin, String hrp) {
+    TWString twString = TWString(string);
+    TWString twHrp = TWString(hrp);
+    Pointer<bindings.TWAnyAddress> res = iTWBindings.TWAnyAddressCreateBech32(
+        twString.pointer, coin, twHrp.pointer);
+    twString.delete();
+    twHrp.delete();
+    return res;
+  }
 
   /// Creates an SS58 address from a string representation, a coin type and the given ss58Prefix. Must be deleted with TWAnyAddressDelete after use.
   ///
@@ -39,8 +57,16 @@ class TWAnyAddress {
     required String string,
     required int coin,
     required int ss58Prefix,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateSS58(
-            TWString(string).pointer, coin, ss58Prefix);
+  }) : _pointer = _twAnyAddressCreateSS58(string, coin, ss58Prefix);
+
+  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateSS58(
+      String string, int coin, int ss58Prefix) {
+    TWString twString = TWString(string);
+    Pointer<bindings.TWAnyAddress> res =
+        iTWBindings.TWAnyAddressCreateSS58(twString.pointer, coin, ss58Prefix);
+    twString.delete();
+    return res;
+  }
 
   /// Creates an address from a public key.
   ///
@@ -73,8 +99,17 @@ class TWAnyAddress {
     required TWPublicKey publicKey,
     required int coin,
     required String hrp,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateBech32WithPublicKey(
-            publicKey.pointer, coin, TWString(hrp).pointer);
+  }) : _pointer = _twAnyAddressCreateBech32WithPublicKey(publicKey, coin, hrp);
+
+  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateBech32WithPublicKey(
+      TWPublicKey publicKey, int coin, String hrp) {
+    TWString twHrp = TWString(hrp);
+    Pointer<bindings.TWAnyAddress> res =
+        iTWBindings.TWAnyAddressCreateBech32WithPublicKey(
+            publicKey.pointer, coin, twHrp.pointer);
+    twHrp.delete();
+    return res;
+  }
 
   /// Creates an SS58 address from a public key and a given ss58Prefix.
   ///
@@ -110,9 +145,13 @@ class TWAnyAddress {
   void delete() => iTWBindings.TWAnyAddressDelete(_pointer);
 
   /// Returns the address string representation.
-  String description() =>
-      TWString.fromPointer(iTWBindings.TWAnyAddressDescription(_pointer))
-          .toString();
+  String description() {
+    TWString twRes =
+        TWString.fromPointer(iTWBindings.TWAnyAddressDescription(_pointer));
+    String res = twRes.toString();
+    twRes.delete();
+    return res;
+  }
 
   /// Returns coin type of address.
   int coin() => iTWBindings.TWAnyAddressCoin(_pointer);

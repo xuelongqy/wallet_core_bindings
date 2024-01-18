@@ -47,14 +47,16 @@ class TWBase32 {
   /// \return The encoded data
   /// \note ALPHABET_RFC4648 doesn't support padding in the default alphabet
   static String encodeWithAlphabet({
-    required TWData twData,
+    required Uint8List data,
     required String alphabet,
   }) {
+    TWData twData = TWData(data);
     TWString twAlphabet = TWString(alphabet);
     TWString twRes = TWString.fromPointer(
         iTWBindings.TWBase32EncodeWithAlphabet(
             twData.pointer, twAlphabet.pointer));
     String res = twRes.toString();
+    twData.delete();
     twAlphabet.delete();
     twRes.delete();
     return res;
@@ -65,10 +67,12 @@ class TWBase32 {
   /// \param [data] Data to be encoded (raw bytes)
   /// \return The encoded data
   /// \note Call TWBase32EncodeWithAlphabet with nullptr.
-  static String encode(TWData data) {
+  static String encode(Uint8List data) {
+    TWData twData = TWData(data);
     TWString twRes =
-        TWString.fromPointer(iTWBindings.TWBase32Encode(data.pointer));
+        TWString.fromPointer(iTWBindings.TWBase32Encode(twData.pointer));
     String res = twRes.toString();
+    twData.delete();
     twRes.delete();
     return res;
   }
