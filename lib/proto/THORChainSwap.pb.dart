@@ -14,10 +14,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Binance.pb.dart' as $6;
-import 'Bitcoin.pb.dart' as $2;
-import 'Cosmos.pb.dart' as $4;
-import 'Ethereum.pb.dart' as $3;
+import 'Binance.pb.dart' as $7;
+import 'Bitcoin.pb.dart' as $3;
+import 'Cosmos.pb.dart' as $5;
+import 'Ethereum.pb.dart' as $4;
 import 'THORChainSwap.pbenum.dart';
 
 export 'THORChainSwap.pbenum.dart';
@@ -493,10 +493,10 @@ class SwapOutput extends $pb.GeneratedMessage {
     Chain? fromChain,
     Chain? toChain,
     Error? error,
-    $2.SigningInput? bitcoin,
-    $3.SigningInput? ethereum,
-    $6.SigningInput? binance,
-    $4.SigningInput? cosmos,
+    $3.SigningInput? bitcoin,
+    $4.SigningInput? ethereum,
+    $7.SigningInput? binance,
+    $5.SigningInput? cosmos,
   }) {
     final $result = create();
     if (fromChain != null) {
@@ -538,10 +538,10 @@ class SwapOutput extends $pb.GeneratedMessage {
     ..e<Chain>(1, _omitFieldNames ? '' : 'fromChain', $pb.PbFieldType.OE, defaultOrMaker: Chain.THOR, valueOf: Chain.valueOf, enumValues: Chain.values)
     ..e<Chain>(2, _omitFieldNames ? '' : 'toChain', $pb.PbFieldType.OE, defaultOrMaker: Chain.THOR, valueOf: Chain.valueOf, enumValues: Chain.values)
     ..aOM<Error>(3, _omitFieldNames ? '' : 'error', subBuilder: Error.create)
-    ..aOM<$2.SigningInput>(4, _omitFieldNames ? '' : 'bitcoin', subBuilder: $2.SigningInput.create)
-    ..aOM<$3.SigningInput>(5, _omitFieldNames ? '' : 'ethereum', subBuilder: $3.SigningInput.create)
-    ..aOM<$6.SigningInput>(6, _omitFieldNames ? '' : 'binance', subBuilder: $6.SigningInput.create)
-    ..aOM<$4.SigningInput>(7, _omitFieldNames ? '' : 'cosmos', subBuilder: $4.SigningInput.create)
+    ..aOM<$3.SigningInput>(4, _omitFieldNames ? '' : 'bitcoin', subBuilder: $3.SigningInput.create)
+    ..aOM<$4.SigningInput>(5, _omitFieldNames ? '' : 'ethereum', subBuilder: $4.SigningInput.create)
+    ..aOM<$7.SigningInput>(6, _omitFieldNames ? '' : 'binance', subBuilder: $7.SigningInput.create)
+    ..aOM<$5.SigningInput>(7, _omitFieldNames ? '' : 'cosmos', subBuilder: $5.SigningInput.create)
     ..hasRequiredFields = false
   ;
 
@@ -602,48 +602,48 @@ class SwapOutput extends $pb.GeneratedMessage {
   Error ensureError() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $2.SigningInput get bitcoin => $_getN(3);
+  $3.SigningInput get bitcoin => $_getN(3);
   @$pb.TagNumber(4)
-  set bitcoin($2.SigningInput v) { setField(4, v); }
+  set bitcoin($3.SigningInput v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasBitcoin() => $_has(3);
   @$pb.TagNumber(4)
   void clearBitcoin() => clearField(4);
   @$pb.TagNumber(4)
-  $2.SigningInput ensureBitcoin() => $_ensure(3);
+  $3.SigningInput ensureBitcoin() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $3.SigningInput get ethereum => $_getN(4);
+  $4.SigningInput get ethereum => $_getN(4);
   @$pb.TagNumber(5)
-  set ethereum($3.SigningInput v) { setField(5, v); }
+  set ethereum($4.SigningInput v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasEthereum() => $_has(4);
   @$pb.TagNumber(5)
   void clearEthereum() => clearField(5);
   @$pb.TagNumber(5)
-  $3.SigningInput ensureEthereum() => $_ensure(4);
+  $4.SigningInput ensureEthereum() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $6.SigningInput get binance => $_getN(5);
+  $7.SigningInput get binance => $_getN(5);
   @$pb.TagNumber(6)
-  set binance($6.SigningInput v) { setField(6, v); }
+  set binance($7.SigningInput v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasBinance() => $_has(5);
   @$pb.TagNumber(6)
   void clearBinance() => clearField(6);
   @$pb.TagNumber(6)
-  $6.SigningInput ensureBinance() => $_ensure(5);
+  $7.SigningInput ensureBinance() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $4.SigningInput get cosmos => $_getN(6);
+  $5.SigningInput get cosmos => $_getN(6);
   @$pb.TagNumber(7)
-  set cosmos($4.SigningInput v) { setField(7, v); }
+  set cosmos($5.SigningInput v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasCosmos() => $_has(6);
   @$pb.TagNumber(7)
   void clearCosmos() => clearField(7);
   @$pb.TagNumber(7)
-  $4.SigningInput ensureCosmos() => $_ensure(6);
+  $5.SigningInput ensureCosmos() => $_ensure(6);
 }
 
 

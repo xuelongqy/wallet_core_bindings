@@ -14,7 +14,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Bitcoin.pb.dart' as $2;
+import 'Bitcoin.pb.dart' as $3;
 import 'Common.pbenum.dart' as $0;
 
 /// A transfer transaction
@@ -135,7 +135,7 @@ class Transaction extends $pb.GeneratedMessage {
 /// Decred transaction input.
 class TransactionInput extends $pb.GeneratedMessage {
   factory TransactionInput({
-    $2.OutPoint? previousOutput,
+    $3.OutPoint? previousOutput,
     $core.int? sequence,
     $fixnum.Int64? valueIn,
     $core.int? blockHeight,
@@ -168,7 +168,7 @@ class TransactionInput extends $pb.GeneratedMessage {
   factory TransactionInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransactionInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Decred.Proto'), createEmptyInstance: create)
-    ..aOM<$2.OutPoint>(1, _omitFieldNames ? '' : 'previousOutput', protoName: 'previousOutput', subBuilder: $2.OutPoint.create)
+    ..aOM<$3.OutPoint>(1, _omitFieldNames ? '' : 'previousOutput', protoName: 'previousOutput', subBuilder: $3.OutPoint.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.OU3)
     ..aInt64(3, _omitFieldNames ? '' : 'valueIn', protoName: 'valueIn')
     ..a<$core.int>(4, _omitFieldNames ? '' : 'blockHeight', $pb.PbFieldType.OU3, protoName: 'blockHeight')
@@ -200,15 +200,15 @@ class TransactionInput extends $pb.GeneratedMessage {
 
   /// Reference to the previous transaction's output.
   @$pb.TagNumber(1)
-  $2.OutPoint get previousOutput => $_getN(0);
+  $3.OutPoint get previousOutput => $_getN(0);
   @$pb.TagNumber(1)
-  set previousOutput($2.OutPoint v) { setField(1, v); }
+  set previousOutput($3.OutPoint v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPreviousOutput() => $_has(0);
   @$pb.TagNumber(1)
   void clearPreviousOutput() => clearField(1);
   @$pb.TagNumber(1)
-  $2.OutPoint ensurePreviousOutput() => $_ensure(0);
+  $3.OutPoint ensurePreviousOutput() => $_ensure(0);
 
   /// Transaction version as defined by the sender.
   @$pb.TagNumber(2)

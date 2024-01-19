@@ -1,7 +1,7 @@
 name: wallet_core_bindings
 description: "Dart bindings for trust wallet core."
-version: 0.0.1
-homepage:
+version: 4.0.18
+homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
   sdk: '>=3.2.4 <4.0.0'

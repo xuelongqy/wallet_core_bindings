@@ -13,9 +13,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Aptos.pb.dart' as $5;
-import 'Cosmos.pb.dart' as $4;
-import 'Ethereum.pb.dart' as $3;
+import 'Aptos.pb.dart' as $6;
+import 'Cosmos.pb.dart' as $5;
+import 'Ethereum.pb.dart' as $4;
 import 'LiquidStaking.pbenum.dart';
 
 export 'LiquidStaking.pbenum.dart';
@@ -588,9 +588,9 @@ enum Output_SigningInputOneof {
 class Output extends $pb.GeneratedMessage {
   factory Output({
     Status? status,
-    $3.SigningInput? ethereum,
-    $4.SigningInput? cosmos,
-    $5.SigningInput? aptos,
+    $4.SigningInput? ethereum,
+    $5.SigningInput? cosmos,
+    $6.SigningInput? aptos,
   }) {
     final $result = create();
     if (status != null) {
@@ -620,9 +620,9 @@ class Output extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Output', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.LiquidStaking.Proto'), createEmptyInstance: create)
     ..oo(0, [2, 3, 4])
     ..aOM<Status>(1, _omitFieldNames ? '' : 'status', subBuilder: Status.create)
-    ..aOM<$3.SigningInput>(2, _omitFieldNames ? '' : 'ethereum', subBuilder: $3.SigningInput.create)
-    ..aOM<$4.SigningInput>(3, _omitFieldNames ? '' : 'cosmos', subBuilder: $4.SigningInput.create)
-    ..aOM<$5.SigningInput>(4, _omitFieldNames ? '' : 'aptos', subBuilder: $5.SigningInput.create)
+    ..aOM<$4.SigningInput>(2, _omitFieldNames ? '' : 'ethereum', subBuilder: $4.SigningInput.create)
+    ..aOM<$5.SigningInput>(3, _omitFieldNames ? '' : 'cosmos', subBuilder: $5.SigningInput.create)
+    ..aOM<$6.SigningInput>(4, _omitFieldNames ? '' : 'aptos', subBuilder: $6.SigningInput.create)
     ..hasRequiredFields = false
   ;
 
@@ -663,37 +663,37 @@ class Output extends $pb.GeneratedMessage {
   Status ensureStatus() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.SigningInput get ethereum => $_getN(1);
+  $4.SigningInput get ethereum => $_getN(1);
   @$pb.TagNumber(2)
-  set ethereum($3.SigningInput v) { setField(2, v); }
+  set ethereum($4.SigningInput v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasEthereum() => $_has(1);
   @$pb.TagNumber(2)
   void clearEthereum() => clearField(2);
   @$pb.TagNumber(2)
-  $3.SigningInput ensureEthereum() => $_ensure(1);
+  $4.SigningInput ensureEthereum() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $4.SigningInput get cosmos => $_getN(2);
+  $5.SigningInput get cosmos => $_getN(2);
   @$pb.TagNumber(3)
-  set cosmos($4.SigningInput v) { setField(3, v); }
+  set cosmos($5.SigningInput v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCosmos() => $_has(2);
   @$pb.TagNumber(3)
   void clearCosmos() => clearField(3);
   @$pb.TagNumber(3)
-  $4.SigningInput ensureCosmos() => $_ensure(2);
+  $5.SigningInput ensureCosmos() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $5.SigningInput get aptos => $_getN(3);
+  $6.SigningInput get aptos => $_getN(3);
   @$pb.TagNumber(4)
-  set aptos($5.SigningInput v) { setField(4, v); }
+  set aptos($6.SigningInput v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasAptos() => $_has(3);
   @$pb.TagNumber(4)
   void clearAptos() => clearField(4);
   @$pb.TagNumber(4)
-  $5.SigningInput ensureAptos() => $_ensure(3);
+  $6.SigningInput ensureAptos() => $_ensure(3);
 }
 
 

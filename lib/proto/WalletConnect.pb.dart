@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Binance.pb.dart' as $6;
+import 'Binance.pb.dart' as $7;
 import 'Common.pbenum.dart' as $0;
 import 'WalletConnect.pbenum.dart';
 
@@ -110,7 +110,7 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
   factory ParseRequestOutput({
     $0.SigningError? error,
     $core.String? errorMessage,
-    $6.SigningInput? binance,
+    $7.SigningInput? binance,
   }) {
     final $result = create();
     if (error != null) {
@@ -136,7 +136,7 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
     ..oo(0, [3])
     ..e<$0.SigningError>(1, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
     ..aOS(2, _omitFieldNames ? '' : 'errorMessage')
-    ..aOM<$6.SigningInput>(3, _omitFieldNames ? '' : 'binance', subBuilder: $6.SigningInput.create)
+    ..aOM<$7.SigningInput>(3, _omitFieldNames ? '' : 'binance', subBuilder: $7.SigningInput.create)
     ..hasRequiredFields = false
   ;
 
@@ -185,15 +185,15 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
   void clearErrorMessage() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.SigningInput get binance => $_getN(2);
+  $7.SigningInput get binance => $_getN(2);
   @$pb.TagNumber(3)
-  set binance($6.SigningInput v) { setField(3, v); }
+  set binance($7.SigningInput v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasBinance() => $_has(2);
   @$pb.TagNumber(3)
   void clearBinance() => clearField(3);
   @$pb.TagNumber(3)
-  $6.SigningInput ensureBinance() => $_ensure(2);
+  $7.SigningInput ensureBinance() => $_ensure(2);
 }
 
 

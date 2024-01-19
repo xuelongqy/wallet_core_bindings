@@ -151,6 +151,8 @@ const SigningInput$json = {
     {'1': 'disable_dust_filter', '3': 16, '4': 1, '5': 8, '10': 'disableDustFilter'},
     {'1': 'time', '3': 17, '4': 1, '5': 13, '10': 'time'},
     {'1': 'is_it_brc_operation', '3': 18, '4': 1, '5': 8, '10': 'isItBrcOperation'},
+    {'1': 'planning_v2', '3': 20, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.ComposePlan', '10': 'planningV2'},
+    {'1': 'signing_v2', '3': 21, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.SigningInput', '10': 'signingV2'},
   ],
   '3': [SigningInput_ScriptsEntry$json],
 };
@@ -180,8 +182,10 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'LlByb3RvLk91dHB1dEFkZHJlc3NSDGV4dHJhT3V0cHV0cxIgCgx1c2VfbWF4X3V0eG8YDyABKA'
     'hSCnVzZU1heFV0eG8SLgoTZGlzYWJsZV9kdXN0X2ZpbHRlchgQIAEoCFIRZGlzYWJsZUR1c3RG'
     'aWx0ZXISEgoEdGltZRgRIAEoDVIEdGltZRItChNpc19pdF9icmNfb3BlcmF0aW9uGBIgASgIUh'
-    'Bpc0l0QnJjT3BlcmF0aW9uGjoKDFNjcmlwdHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2'
-    'YWx1ZRgCIAEoDFIFdmFsdWU6AjgB');
+    'Bpc0l0QnJjT3BlcmF0aW9uEkAKC3BsYW5uaW5nX3YyGBQgASgLMh8uVFcuQml0Y29pblYyLlBy'
+    'b3RvLkNvbXBvc2VQbGFuUgpwbGFubmluZ1YyEj8KCnNpZ25pbmdfdjIYFSABKAsyIC5UVy5CaX'
+    'Rjb2luVjIuUHJvdG8uU2lnbmluZ0lucHV0UglzaWduaW5nVjIaOgoMU2NyaXB0c0VudHJ5EhAK'
+    'A2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgMUgV2YWx1ZToCOAE=');
 
 @$core.Deprecated('Use transactionPlanDescriptor instead')
 const TransactionPlan$json = {
@@ -197,6 +201,7 @@ const TransactionPlan$json = {
     {'1': 'output_op_return', '3': 8, '4': 1, '5': 12, '10': 'outputOpReturn'},
     {'1': 'preblockhash', '3': 9, '4': 1, '5': 12, '10': 'preblockhash'},
     {'1': 'preblockheight', '3': 10, '4': 1, '5': 3, '10': 'preblockheight'},
+    {'1': 'planning_result_v2', '3': 12, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.TransactionPlan', '10': 'planningResultV2'},
   ],
 };
 
@@ -208,7 +213,9 @@ final $typed_data.Uint8List transactionPlanDescriptor = $convert.base64Decode(
     '50VHJhbnNhY3Rpb25SBXV0eG9zEhsKCWJyYW5jaF9pZBgGIAEoDFIIYnJhbmNoSWQSMwoFZXJy'
     'b3IYByABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIoChBvdXRwdX'
     'Rfb3BfcmV0dXJuGAggASgMUg5vdXRwdXRPcFJldHVybhIiCgxwcmVibG9ja2hhc2gYCSABKAxS'
-    'DHByZWJsb2NraGFzaBImCg5wcmVibG9ja2hlaWdodBgKIAEoA1IOcHJlYmxvY2toZWlnaHQ=');
+    'DHByZWJsb2NraGFzaBImCg5wcmVibG9ja2hlaWdodBgKIAEoA1IOcHJlYmxvY2toZWlnaHQSUQ'
+    'oScGxhbm5pbmdfcmVzdWx0X3YyGAwgASgLMiMuVFcuQml0Y29pblYyLlByb3RvLlRyYW5zYWN0'
+    'aW9uUGxhblIQcGxhbm5pbmdSZXN1bHRWMg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {
@@ -219,6 +226,7 @@ const SigningOutput$json = {
     {'1': 'transaction_id', '3': 3, '4': 1, '5': 9, '10': 'transactionId'},
     {'1': 'error', '3': 4, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
     {'1': 'error_message', '3': 5, '4': 1, '5': 9, '10': 'errorMessage'},
+    {'1': 'signing_result_v2', '3': 7, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.SigningOutput', '10': 'signingResultV2'},
   ],
 };
 
@@ -228,7 +236,8 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     '5UcmFuc2FjdGlvblILdHJhbnNhY3Rpb24SGAoHZW5jb2RlZBgCIAEoDFIHZW5jb2RlZBIlCg50'
     'cmFuc2FjdGlvbl9pZBgDIAEoCVINdHJhbnNhY3Rpb25JZBIzCgVlcnJvchgEIAEoDjIdLlRXLk'
     'NvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9yEiMKDWVycm9yX21lc3NhZ2UYBSABKAlS'
-    'DGVycm9yTWVzc2FnZQ==');
+    'DGVycm9yTWVzc2FnZRJNChFzaWduaW5nX3Jlc3VsdF92MhgHIAEoCzIhLlRXLkJpdGNvaW5WMi'
+    '5Qcm90by5TaWduaW5nT3V0cHV0Ug9zaWduaW5nUmVzdWx0VjI=');
 
 @$core.Deprecated('Use hashPublicKeyDescriptor instead')
 const HashPublicKey$json = {
