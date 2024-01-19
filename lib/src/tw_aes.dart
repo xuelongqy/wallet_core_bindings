@@ -2,12 +2,6 @@ part of '../wallet_core_bindings.dart';
 
 /// AES encryption/decryption methods.
 class TWAES {
-  final Pointer<bindings.TWAES> _pointer;
-
-  Pointer<bindings.TWAES> get pointer => _pointer;
-
-  const TWAES.fromPointer(this._pointer);
-
   /// Encrypts a block of Data using AES in Cipher Block Chaining (CBC) mode.
   ///
   /// \param [key] encryption key Data, must be 16, 24, or 32 bytes long.

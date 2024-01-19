@@ -1,12 +1,17 @@
 part of '../wallet_core_bindings.dart';
 
+/// TWPublicKey finalizer.
+final _twPublicKeyFinalizer = Finalizer<Pointer<bindings.TWPublicKey>>(
+    (Pointer<bindings.TWPublicKey> token) {
+  iTWBindings.TWPublicKeyDelete(token);
+});
+
 /// Represents a public key.
-class TWPublicKey {
-  final Pointer<bindings.TWPublicKey> _pointer;
-
-  Pointer<bindings.TWPublicKey> get pointer => _pointer;
-
-  const TWPublicKey.fromPointer(this._pointer);
+class TWPublicKey extends TWObjectFinalizable<bindings.TWPublicKey> {
+  TWPublicKey.fromPointer(
+    Pointer<bindings.TWPublicKey> pointer, {
+    bool attach = true,
+  }) : super(pointer, attach: attach, finalizer: _twPublicKeyFinalizer);
 
   /// Create a public key from a block of data
   ///
@@ -16,7 +21,12 @@ class TWPublicKey {
   TWPublicKey.createWithData({
     required TWData data,
     required int type,
-  }) : _pointer = iTWBindings.TWPublicKeyCreateWithData(data.pointer, type);
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWPublicKeyCreateWithData(data.pointer, type),
+          attach: attach,
+          finalizer: _twPublicKeyFinalizer,
+        );
 
   /// Try to get a public key from a given signature and a message
   ///
@@ -25,11 +35,19 @@ class TWPublicKey {
   TWPublicKey.recover({
     required TWData signature,
     required TWData message,
-  }) : _pointer =
-            iTWBindings.TWPublicKeyRecover(signature.pointer, message.pointer);
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWPublicKeyRecover(signature.pointer, message.pointer),
+          attach: attach,
+          finalizer: _twPublicKeyFinalizer,
+        );
 
   /// Delete the given public key
-  void delete() => iTWBindings.TWPublicKeyDelete(_pointer);
+  @override
+  void delete() {
+    super.delete();
+    iTWBindings.TWPublicKeyDelete(_pointer);
+  }
 
   /// Gives the raw data of a given public-key
   TWData data() => TWData.fromPointer(iTWBindings.TWPublicKeyData(_pointer));

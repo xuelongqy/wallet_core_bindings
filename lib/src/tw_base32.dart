@@ -2,12 +2,6 @@ part of '../wallet_core_bindings.dart';
 
 /// Base32 encode / decode functions
 class TWBase32 {
-  final Pointer<bindings.TWBase32> _pointer;
-
-  Pointer<bindings.TWBase32> get pointer => _pointer;
-
-  const TWBase32.fromPointer(this._pointer);
-
   /// Decode a Base32 input with the given alphabet
   ///
   /// \param [string] Encoded base32 input to be decoded

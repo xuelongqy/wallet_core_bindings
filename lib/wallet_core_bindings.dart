@@ -24,12 +24,7 @@ part 'src/tw_data.dart';
 part 'src/tw_derivation.dart';
 part 'src/tw_filecoin_address_type.dart';
 part 'src/tw_coin_type.dart';
+part 'src/tw_object.dart';
 part 'src/tw_public_key.dart';
 part 'src/tw_public_key_type.dart';
 part 'src/tw_string.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}

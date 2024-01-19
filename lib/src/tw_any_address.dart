@@ -1,12 +1,17 @@
 part of '../wallet_core_bindings.dart';
 
+/// TWAnyAddress finalizer.
+final _twAnyAddressFinalizer = Finalizer<Pointer<bindings.TWAnyAddress>>(
+    (Pointer<bindings.TWAnyAddress> token) {
+  iTWBindings.TWAnyAddressDelete(token);
+});
+
 /// Represents an address in C++ for almost any blockchain.
-class TWAnyAddress {
-  final Pointer<bindings.TWAnyAddress> _pointer;
-
-  Pointer<bindings.TWAnyAddress> get pointer => _pointer;
-
-  const TWAnyAddress.fromPointer(this._pointer);
+class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
+  TWAnyAddress.fromPointer(
+    Pointer<bindings.TWAnyAddress> pointer, {
+    bool attach = true,
+  }) : super(pointer, attach: attach, finalizer: _twAnyAddressFinalizer);
 
   /// Creates an address from a string representation and a coin type. Must be deleted with TWAnyAddressDelete after use.
   ///
@@ -15,7 +20,12 @@ class TWAnyAddress {
   TWAnyAddress({
     required String string,
     required int coin,
-  }) : _pointer = _twAnyAddressCreateWithString(string, coin);
+    bool attach = true,
+  }) : super(
+          _twAnyAddressCreateWithString(string, coin),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateWithString(
       String string, int coin) {
@@ -35,7 +45,12 @@ class TWAnyAddress {
     required String string,
     required int coin,
     required String hrp,
-  }) : _pointer = _twAnyAddressCreateBech32(string, coin, hrp);
+    bool attach = true,
+  }) : super(
+          _twAnyAddressCreateBech32(string, coin, hrp),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateBech32(
       String string, int coin, String hrp) {
@@ -57,7 +72,12 @@ class TWAnyAddress {
     required String string,
     required int coin,
     required int ss58Prefix,
-  }) : _pointer = _twAnyAddressCreateSS58(string, coin, ss58Prefix);
+    bool attach = true,
+  }) : super(
+          _twAnyAddressCreateSS58(string, coin, ss58Prefix),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateSS58(
       String string, int coin, int ss58Prefix) {
@@ -75,8 +95,12 @@ class TWAnyAddress {
   TWAnyAddress.createWithPublicKey({
     required TWPublicKey publicKey,
     required int coin,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateWithPublicKey(
-            publicKey.pointer, coin);
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWAnyAddressCreateWithPublicKey(publicKey.pointer, coin),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   /// Creates an address from a public key and derivation option.
   ///
@@ -87,8 +111,13 @@ class TWAnyAddress {
     required TWPublicKey publicKey,
     required int coin,
     required int derivation,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateWithPublicKeyDerivation(
-            publicKey.pointer, coin, derivation);
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWAnyAddressCreateWithPublicKeyDerivation(
+              publicKey.pointer, coin, derivation),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   /// Creates an bech32 address from a public key and a given hrp.
   ///
@@ -99,7 +128,12 @@ class TWAnyAddress {
     required TWPublicKey publicKey,
     required int coin,
     required String hrp,
-  }) : _pointer = _twAnyAddressCreateBech32WithPublicKey(publicKey, coin, hrp);
+    bool attach = true,
+  }) : super(
+          _twAnyAddressCreateBech32WithPublicKey(publicKey, coin, hrp),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateBech32WithPublicKey(
       TWPublicKey publicKey, int coin, String hrp) {
@@ -120,8 +154,13 @@ class TWAnyAddress {
     required TWPublicKey publicKey,
     required int coin,
     required int ss58Prefix,
-  }) : _pointer = iTWBindings.TWAnyAddressCreateSS58WithPublicKey(
-            publicKey.pointer, coin, ss58Prefix);
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWAnyAddressCreateSS58WithPublicKey(
+              publicKey.pointer, coin, ss58Prefix),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   /// Creates a Filecoin address from a public key and a given address type.
   ///
@@ -130,9 +169,13 @@ class TWAnyAddress {
   TWAnyAddress.createWithPublicKeyFilecoinAddressType({
     required TWPublicKey publicKey,
     required int filecoinAddressType,
-  }) : _pointer =
-            iTWBindings.TWAnyAddressCreateWithPublicKeyFilecoinAddressType(
-                publicKey.pointer, filecoinAddressType);
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWAnyAddressCreateWithPublicKeyFilecoinAddressType(
+              publicKey.pointer, filecoinAddressType),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
 
   /// Compares two addresses for equality.
   ///
@@ -142,7 +185,11 @@ class TWAnyAddress {
       iTWBindings.TWAnyAddressEqual(_pointer, another._pointer);
 
   /// Deletes an address.
-  void delete() => iTWBindings.TWAnyAddressDelete(_pointer);
+  @override
+  void delete() {
+    super.delete();
+    iTWBindings.TWAnyAddressDelete(_pointer);
+  }
 
   /// Returns the address string representation.
   String description() {

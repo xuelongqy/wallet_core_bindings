@@ -1,12 +1,17 @@
 part of '../wallet_core_bindings.dart';
 
+/// TWAccount finalizer.
+final _twAccountFinalizer =
+    Finalizer<Pointer<bindings.TWAccount>>((Pointer<bindings.TWAccount> token) {
+  iTWBindings.TWAccountDelete(token);
+});
+
 /// Represents an Account in C++ with address, coin type and public key info, an item within a keystore.
-class TWAccount {
-  final Pointer<bindings.TWAccount> _pointer;
-
-  Pointer<bindings.TWAccount> get pointer => _pointer;
-
-  const TWAccount.fromPointer(this._pointer);
+class TWAccount extends TWObjectFinalizable<bindings.TWAccount> {
+  TWAccount.fromPointer(
+    Pointer<bindings.TWAccount> pointer, {
+    bool attach = true,
+  }) : super(pointer, attach: attach, finalizer: _twAccountFinalizer);
 
   /// Creates a new Account with an address, a coin type, derivation enum, derivationPath, publicKey,
   /// and extendedPublicKey. Must be deleted with TWAccountDelete after use.
@@ -24,17 +29,26 @@ class TWAccount {
     required String derivationPath,
     required String publicKey,
     required String extendedPublicKey,
-  }) : _pointer = iTWBindings.TWAccountCreate(
-          TWString(address).pointer,
-          coin,
-          derivation,
-          TWString(derivationPath).pointer,
-          TWString(publicKey).pointer,
-          TWString(extendedPublicKey).pointer,
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWAccountCreate(
+            TWString(address).pointer,
+            coin,
+            derivation,
+            TWString(derivationPath).pointer,
+            TWString(publicKey).pointer,
+            TWString(extendedPublicKey).pointer,
+          ),
+          attach: attach,
+          finalizer: _twAccountFinalizer,
         );
 
   /// Deletes an account.
-  void delete() => iTWBindings.TWAccountDelete(_pointer);
+  @override
+  void delete() {
+    super.delete();
+    iTWBindings.TWAccountDelete(_pointer);
+  }
 
   /// Returns the address of an account.
   String address() =>

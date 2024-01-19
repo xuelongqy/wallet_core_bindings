@@ -1,12 +1,6 @@
 part of '../wallet_core_bindings.dart';
 
 class TWBase64 {
-  final Pointer<bindings.TWBase64> _pointer;
-
-  Pointer<bindings.TWBase64> get pointer => _pointer;
-
-  const TWBase64.fromPointer(this._pointer);
-
   /// Encode an input to Base64 with the default alphabet (RFC4648 with '+', '/')
   ///
   /// \param [data] Data to be encoded (raw bytes)

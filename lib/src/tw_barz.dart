@@ -2,12 +2,6 @@ part of '../wallet_core_bindings.dart';
 
 /// Barz functions
 class TWBarz {
-  final Pointer<bindings.TWBarz> _pointer;
-
-  Pointer<bindings.TWBarz> get pointer => _pointer;
-
-  const TWBarz.fromPointer(this._pointer);
-
   /// Calculate a counterfactual address for the smart contract wallet
   ///
   /// \param [input] The serialized data of ContractAddressInput.

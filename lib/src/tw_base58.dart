@@ -1,12 +1,6 @@
 part of '../wallet_core_bindings.dart';
 
 class TWBase58 {
-  final Pointer<bindings.TWBase58> _pointer;
-
-  Pointer<bindings.TWBase58> get pointer => _pointer;
-
-  const TWBase58.fromPointer(this._pointer);
-
   /// Encodes data as a Base58 string, including the checksum.
   ///
   /// \param [data] The data to encode.

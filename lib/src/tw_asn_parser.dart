@@ -2,12 +2,6 @@ part of '../wallet_core_bindings.dart';
 
 /// Represents an ASN.1 DER parser.
 class TWAsnParser {
-  final Pointer<bindings.TWAsnParser> _pointer;
-
-  Pointer<bindings.TWAsnParser> get pointer => _pointer;
-
-  const TWAsnParser.fromPointer(this._pointer);
-
   /// Parses the given ECDSA signature from ASN.1 DER encoded bytes.
   ///
   /// \param [encoded] The ASN.1 DER encoded signature.

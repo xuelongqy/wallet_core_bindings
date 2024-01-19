@@ -1,20 +1,31 @@
 part of '../wallet_core_bindings.dart';
 
+/// TWData finalizer.
+final _twDataFinalizer = Finalizer<Pointer<Void>>((Pointer<Void> token) {
+  iTWBindings.TWDataDelete(token);
+});
+
 /// Defines a resizable block of data.
 ///
 /// The implementantion of these methods should be language-specific to minimize translation overhead. For instance it
 /// should be a `jbyteArray` for Java and an `NSData` for Swift.
-class TWData {
-  final Pointer<Void> _pointer;
-
-  Pointer<Void> get pointer => _pointer;
-
-  const TWData.fromPointer(this._pointer);
+class TWData extends TWObjectFinalizable<Void> {
+  TWData.fromPointer(
+    Pointer<Void> pointer, {
+    bool attach = true,
+  }) : super(pointer, attach: attach, finalizer: _twDataFinalizer);
 
   /// Creates a block of data from a byte array.
   ///
   /// \param [bytes] Non-null raw bytes buffer
-  TWData(Uint8List bytes) : _pointer = _twDataCreateWithBytes(bytes);
+  TWData(
+    Uint8List bytes, {
+    bool attach = true,
+  }) : super(
+          _twDataCreateWithBytes(bytes),
+          attach: attach,
+          finalizer: _twDataFinalizer,
+        );
 
   static Pointer<Void> _twDataCreateWithBytes(Uint8List bytes) {
     Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
@@ -28,22 +39,37 @@ class TWData {
   ///
   /// \param [size] size for the block of data
   TWData.createWithSize(
-    int size,
-  ) : _pointer = iTWBindings.TWDataCreateWithSize(size);
+    int size, {
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWDataCreateWithSize(size),
+          attach: attach,
+          finalizer: _twDataFinalizer,
+        );
 
   /// Creates a block of data by copying another block of data.
   ///
   /// \param [data] buffer that need to be copied
   TWData.createWithData(
-    TWData data,
-  ) : _pointer = iTWBindings.TWDataCreateWithData(data.pointer);
+    TWData data, {
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWDataCreateWithData(data.pointer),
+          attach: attach,
+          finalizer: _twDataFinalizer,
+        );
 
   /// Creates a block of data from a hexadecimal string.  Odd length is invalid (intended grouping to bytes is not obvious).
   ///
   /// \param [hex] input hex string
   TWData.createWithHexString(
-    String hex,
-  ) : _pointer = _twDataCreateWithHexString(hex);
+    String hex, {
+    bool attach = true,
+  }) : super(
+          _twDataCreateWithHexString(hex),
+          attach: attach,
+          finalizer: _twDataFinalizer,
+        );
 
   static Pointer<Void> _twDataCreateWithHexString(String hex) {
     TWString twHex = TWString(hex);
