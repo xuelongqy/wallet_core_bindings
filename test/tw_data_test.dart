@@ -11,10 +11,10 @@ void main() {
         TWData data = TWData.createWithHexString('deadbeef');
 
         expect(data.size(), 4);
-        expect(data.bytes()[0], 0xde);
-        expect(data.bytes()[1], 0xad);
-        expect(data.bytes()[2], 0xbe);
-        expect(data.bytes()[3], 0xef);
+        expect(data.bytes()![0], 0xde);
+        expect(data.bytes()![1], 0xad);
+        expect(data.bytes()![2], 0xbe);
+        expect(data.bytes()![3], 0xef);
 
         TWString string = TWString.createWithHexData(data);
         expect(string.toString(), 'deadbeef');
@@ -24,7 +24,7 @@ void main() {
         TWData data = TWData.createWithHexString('00');
 
         expect(data.size(), 1);
-        expect(data.bytes()[0], 0);
+        expect(data.bytes()![0], 0);
 
         TWString string = TWString.createWithHexData(data);
         expect(string.toString(), '00');

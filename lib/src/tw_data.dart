@@ -70,9 +70,9 @@ class TWData extends TWObjectFinalizable<Void> {
   int size() => iTWBindings.TWDataSize(_pointer);
 
   /// Returns the raw pointer to the contents of data.
-  ///
-  /// \return the raw pointer to the contents of data
-  Uint8List bytes() => iTWBindings.TWDataBytes(_pointer).asTypedList(size());
+  Uint8List? bytes() => _pointer == nullptr
+      ? null
+      : iTWBindings.TWDataBytes(_pointer).asTypedList(size());
 
   /// Returns the byte at the provided index.
   ///

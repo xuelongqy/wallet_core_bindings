@@ -21,7 +21,7 @@ class TWBase58 {
   ///
   /// \param [string] The Base58 string to decode.
   /// \return the decoded data, empty if the string is not a valid Base58 string with checksum.
-  static Uint8List decode(String string) =>
+  static Uint8List? decode(String string) =>
       TWData.fromPointer(iTWBindings.TWBase58Decode(TWString(string).pointer))
           .bytes();
 
@@ -29,7 +29,7 @@ class TWBase58 {
   ///
   /// \param [string] The Base58 string to decode.
   /// \return the decoded data, empty if the string is not a valid Base58 string without checksum.
-  static Uint8List decodeNoCheck(String string) => TWData.fromPointer(
+  static Uint8List? decodeNoCheck(String string) => TWData.fromPointer(
           iTWBindings.TWBase58DecodeNoCheck(TWString(string).pointer))
       .bytes();
 }

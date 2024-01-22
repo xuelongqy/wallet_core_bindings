@@ -128,7 +128,7 @@ void main() {
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeZilliqa);
 
         final expectedKeyHash = "F9dad33332CF77E783B3452aE982c85effCa6DDf";
-        final keyHash = addr.data().bytes();
+        final keyHash = addr.data().bytes()!;
         final checksumed = TWString.createWithRawBytes(keyHash).toString();
         expect(checksumed, expectedKeyHash);
       }

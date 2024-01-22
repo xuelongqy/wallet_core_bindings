@@ -8,7 +8,7 @@ class TWBase32 {
   /// \param [alphabet] Decode with the given alphabet, if nullptr ALPHABET_RFC4648 is used by default
   /// \return The decoded data, can be null.
   /// \note ALPHABET_RFC4648 doesn't support padding in the default alphabet
-  static Uint8List decodeWithAlphabet({
+  static Uint8List? decodeWithAlphabet({
     required String string,
     required String alphabet,
   }) =>
@@ -21,7 +21,7 @@ class TWBase32 {
   /// \param [string] Encoded input to be decoded
   /// \return The decoded data
   /// \note Call TWBase32DecodeWithAlphabet with nullptr.
-  static Uint8List decode(String string) =>
+  static Uint8List? decode(String string) =>
       TWData.fromPointer(iTWBindings.TWBase32Decode(TWString(string).pointer))
           .bytes();
 

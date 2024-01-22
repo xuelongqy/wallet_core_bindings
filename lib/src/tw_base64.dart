@@ -21,7 +21,7 @@ class TWBase64 {
   ///
   /// \param [string] Encoded input to be decoded
   /// \return The decoded data, empty if decoding failed.
-  static Uint8List decode(String string) =>
+  static Uint8List? decode(String string) =>
       TWData.fromPointer(iTWBindings.TWBase64Decode(TWString(string).pointer))
           .bytes();
 
@@ -29,7 +29,7 @@ class TWBase64 {
   ///
   /// \param [string] Encoded base64 input to be decoded
   /// \return The decoded data, empty if decoding failed.
-  static Uint8List decodeUrl(String string) => TWData.fromPointer(
+  static Uint8List? decodeUrl(String string) => TWData.fromPointer(
           iTWBindings.TWBase64DecodeUrl(TWString(string).pointer))
       .bytes();
 }
