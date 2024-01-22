@@ -74,6 +74,9 @@ class TWString extends TWObjectFinalizable<Void> {
   /// Returns the raw pointer to the string's UTF8 bytes (null-terminated).
   Pointer<Char> utf8Bytes() => iTWBindings.TWStringUTF8Bytes(_pointer);
 
+  /// Returns raw data.
+  Uint8List bytes() => utf8Bytes().cast<Uint8>().asTypedList(size());
+
   @override
   String toString() {
     Pointer<Char> resPointer = utf8Bytes();
