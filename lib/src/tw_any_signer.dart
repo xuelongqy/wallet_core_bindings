@@ -22,14 +22,10 @@ class TWAnySigner {
     required String json,
     required TWData key,
     required int coin,
-  }) {
-    TWString twJson = TWString(json);
-    String res = TWString.fromPointer(
-            iTWBindings.TWAnySignerSignJSON(twJson.pointer, key.pointer, coin))
-        .toString();
-    twJson.delete();
-    return res;
-  }
+  }) =>
+      TWString.fromPointer(iTWBindings.TWAnySignerSignJSON(
+              TWString(json).pointer, key.pointer, coin))
+          .toString();
 
   /// Check if AnySigner supports signing JSON representation of signing input.
   ///

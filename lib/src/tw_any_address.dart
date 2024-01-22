@@ -22,19 +22,11 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
     required int coin,
     bool attach = true,
   }) : super(
-          _twAnyAddressCreateWithString(string, coin),
+          iTWBindings.TWAnyAddressCreateWithString(
+              TWString(string).pointer, coin),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
-
-  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateWithString(
-      String string, int coin) {
-    TWString twString = TWString(string);
-    Pointer<bindings.TWAnyAddress> res =
-        iTWBindings.TWAnyAddressCreateWithString(twString.pointer, coin);
-    twString.delete();
-    return res;
-  }
 
   /// Creates an bech32 address from a string representation, a coin type and the given hrp. Must be deleted with TWAnyAddressDelete after use.
   ///
@@ -47,21 +39,11 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
     required String hrp,
     bool attach = true,
   }) : super(
-          _twAnyAddressCreateBech32(string, coin, hrp),
+          iTWBindings.TWAnyAddressCreateBech32(
+              TWString(string).pointer, coin, TWString(hrp).pointer),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
-
-  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateBech32(
-      String string, int coin, String hrp) {
-    TWString twString = TWString(string);
-    TWString twHrp = TWString(hrp);
-    Pointer<bindings.TWAnyAddress> res = iTWBindings.TWAnyAddressCreateBech32(
-        twString.pointer, coin, twHrp.pointer);
-    twString.delete();
-    twHrp.delete();
-    return res;
-  }
 
   /// Creates an SS58 address from a string representation, a coin type and the given ss58Prefix. Must be deleted with TWAnyAddressDelete after use.
   ///
@@ -74,19 +56,11 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
     required int ss58Prefix,
     bool attach = true,
   }) : super(
-          _twAnyAddressCreateSS58(string, coin, ss58Prefix),
+          iTWBindings.TWAnyAddressCreateSS58(
+              TWString(string).pointer, coin, ss58Prefix),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
-
-  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateSS58(
-      String string, int coin, int ss58Prefix) {
-    TWString twString = TWString(string);
-    Pointer<bindings.TWAnyAddress> res =
-        iTWBindings.TWAnyAddressCreateSS58(twString.pointer, coin, ss58Prefix);
-    twString.delete();
-    return res;
-  }
 
   /// Creates an address from a public key.
   ///
@@ -130,20 +104,11 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
     required String hrp,
     bool attach = true,
   }) : super(
-          _twAnyAddressCreateBech32WithPublicKey(publicKey, coin, hrp),
+          iTWBindings.TWAnyAddressCreateBech32WithPublicKey(
+              publicKey.pointer, coin, TWString(hrp).pointer),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
-
-  static Pointer<bindings.TWAnyAddress> _twAnyAddressCreateBech32WithPublicKey(
-      TWPublicKey publicKey, int coin, String hrp) {
-    TWString twHrp = TWString(hrp);
-    Pointer<bindings.TWAnyAddress> res =
-        iTWBindings.TWAnyAddressCreateBech32WithPublicKey(
-            publicKey.pointer, coin, twHrp.pointer);
-    twHrp.delete();
-    return res;
-  }
 
   /// Creates an SS58 address from a public key and a given ss58Prefix.
   ///
@@ -192,13 +157,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   }
 
   /// Returns the address string representation.
-  String description() {
-    TWString twRes =
-        TWString.fromPointer(iTWBindings.TWAnyAddressDescription(_pointer));
-    String res = twRes.toString();
-    twRes.delete();
-    return res;
-  }
+  String description() =>
+      TWString.fromPointer(iTWBindings.TWAnyAddressDescription(_pointer))
+          .toString();
 
   /// Returns coin type of address.
   int coin() => iTWBindings.TWAnyAddressCoin(_pointer);
@@ -211,12 +172,8 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// \param [string] address to validate.
   /// \param [coin] coin type of the address.
   /// \return bool indicating if the address is valid.
-  static bool isValid(String string, int coin) {
-    TWString twString = TWString(string);
-    bool res = iTWBindings.TWAnyAddressIsValid(twString.pointer, coin);
-    twString.delete();
-    return res;
-  }
+  static bool isValid(String string, int coin) =>
+      iTWBindings.TWAnyAddressIsValid(TWString(string).pointer, coin);
 
   /// Determines if the string is a valid Any address with the given hrp.
   ///
@@ -224,15 +181,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// \param [coin] coin type of the address.
   /// \param [hrp] explicit given hrp of the given address.
   /// \return bool indicating if the address is valid.
-  static bool isValidBech32(String string, int coin, String hrp) {
-    TWString twString = TWString(string);
-    TWString twHrp = TWString(hrp);
-    bool res = iTWBindings.TWAnyAddressIsValidBech32(
-        twString.pointer, coin, twHrp.pointer);
-    twString.delete();
-    twHrp.delete();
-    return res;
-  }
+  static bool isValidBech32(String string, int coin, String hrp) =>
+      iTWBindings.TWAnyAddressIsValidBech32(
+          TWString(string).pointer, coin, TWString(hrp).pointer);
 
   /// Determines if the string is a valid Any address with the given SS58 network prefix.
   ///
@@ -240,11 +191,7 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// \param [coin] coin type of the address.
   /// \param [ss58Prefix] ss58Prefix of the given address.
   /// \return bool indicating if the address is valid.
-  static bool isValidSS58(String string, int coin, int ss58Prefix) {
-    TWString twString = TWString(string);
-    bool res =
-        iTWBindings.TWAnyAddressIsValidSS58(twString.pointer, coin, ss58Prefix);
-    twString.delete();
-    return res;
-  }
+  static bool isValidSS58(String string, int coin, int ss58Prefix) =>
+      iTWBindings.TWAnyAddressIsValidSS58(
+          TWString(string).pointer, coin, ss58Prefix);
 }

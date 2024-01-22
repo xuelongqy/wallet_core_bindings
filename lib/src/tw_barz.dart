@@ -21,18 +21,12 @@ class TWBarz {
     required TWPublicKey publicKey,
     required String verificationFacet,
     required int salt,
-  }) {
-    TWString twFactory = TWString(factory);
-    TWString twVerificationFacet = TWString(verificationFacet);
-    TWData res = TWData.fromPointer(iTWBindings.TWBarzGetInitCode(
-        twFactory.pointer,
-        publicKey.pointer,
-        twVerificationFacet.pointer,
-        salt));
-    twFactory.delete();
-    twVerificationFacet.delete();
-    return res;
-  }
+  }) =>
+      TWData.fromPointer(iTWBindings.TWBarzGetInitCode(
+          TWString(factory).pointer,
+          publicKey.pointer,
+          TWString(verificationFacet).pointer,
+          salt));
 
   /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
   ///
@@ -46,14 +40,10 @@ class TWBarz {
     required TWData challenge,
     required TWData authenticatorData,
     required String clientDataJSON,
-  }) {
-    TWString twClientDataJSON = TWString(clientDataJSON);
-    TWData res = TWData.fromPointer(iTWBindings.TWBarzGetFormattedSignature(
-        signature.pointer,
-        challenge.pointer,
-        authenticatorData.pointer,
-        twClientDataJSON.pointer));
-    twClientDataJSON.delete();
-    return res;
-  }
+  }) =>
+      TWData.fromPointer(iTWBindings.TWBarzGetFormattedSignature(
+          signature.pointer,
+          challenge.pointer,
+          authenticatorData.pointer,
+          TWString(clientDataJSON).pointer));
 }

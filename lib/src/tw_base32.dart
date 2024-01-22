@@ -8,31 +8,22 @@ class TWBase32 {
   /// \param [alphabet] Decode with the given alphabet, if nullptr ALPHABET_RFC4648 is used by default
   /// \return The decoded data, can be null.
   /// \note ALPHABET_RFC4648 doesn't support padding in the default alphabet
-  static TWData decodeWithAlphabet({
+  static Uint8List decodeWithAlphabet({
     required String string,
     required String alphabet,
-  }) {
-    TWString twString = TWString(string);
-    TWString twAlphabet = TWString(alphabet);
-    TWData res = TWData.fromPointer(iTWBindings.TWBase32DecodeWithAlphabet(
-        twString.pointer, twAlphabet.pointer));
-    twString.delete();
-    twAlphabet.delete();
-    return res;
-  }
+  }) =>
+      TWData.fromPointer(iTWBindings.TWBase32DecodeWithAlphabet(
+              TWString(string).pointer, TWString(alphabet).pointer))
+          .bytes();
 
   /// Decode a Base32 input with the default alphabet (ALPHABET_RFC4648)
   ///
   /// \param [string] Encoded input to be decoded
   /// \return The decoded data
   /// \note Call TWBase32DecodeWithAlphabet with nullptr.
-  static TWData decode(String string) {
-    TWString twString = TWString(string);
-    TWData res =
-        TWData.fromPointer(iTWBindings.TWBase32Decode(twString.pointer));
-    twString.delete();
-    return res;
-  }
+  static Uint8List decode(String string) =>
+      TWData.fromPointer(iTWBindings.TWBase32Decode(TWString(string).pointer))
+          .bytes();
 
   /// Encode an input to Base32 with the given alphabet
   ///
@@ -43,31 +34,17 @@ class TWBase32 {
   static String encodeWithAlphabet({
     required Uint8List data,
     required String alphabet,
-  }) {
-    TWData twData = TWData(data);
-    TWString twAlphabet = TWString(alphabet);
-    TWString twRes = TWString.fromPointer(
-        iTWBindings.TWBase32EncodeWithAlphabet(
-            twData.pointer, twAlphabet.pointer));
-    String res = twRes.toString();
-    twData.delete();
-    twAlphabet.delete();
-    twRes.delete();
-    return res;
-  }
+  }) =>
+      TWString.fromPointer(iTWBindings.TWBase32EncodeWithAlphabet(
+              TWData(data).pointer, TWString(alphabet).pointer))
+          .toString();
 
   /// Encode an input to Base32 with the default alphabet (ALPHABET_RFC4648)
   ///
   /// \param [data] Data to be encoded (raw bytes)
   /// \return The encoded data
   /// \note Call TWBase32EncodeWithAlphabet with nullptr.
-  static String encode(Uint8List data) {
-    TWData twData = TWData(data);
-    TWString twRes =
-        TWString.fromPointer(iTWBindings.TWBase32Encode(twData.pointer));
-    String res = twRes.toString();
-    twData.delete();
-    twRes.delete();
-    return res;
-  }
+  static String encode(Uint8List data) =>
+      TWString.fromPointer(iTWBindings.TWBase32Encode(TWData(data).pointer))
+          .toString();
 }

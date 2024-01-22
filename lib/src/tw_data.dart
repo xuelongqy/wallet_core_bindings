@@ -66,17 +66,10 @@ class TWData extends TWObjectFinalizable<Void> {
     String hex, {
     bool attach = true,
   }) : super(
-          _twDataCreateWithHexString(hex),
+          iTWBindings.TWDataCreateWithHexString(TWString(hex).pointer),
           attach: attach,
           finalizer: _twDataFinalizer,
         );
-
-  static Pointer<Void> _twDataCreateWithHexString(String hex) {
-    TWString twHex = TWString(hex);
-    Pointer<Void> res = iTWBindings.TWDataCreateWithHexString(twHex.pointer);
-    twHex.delete();
-    return res;
-  }
 
   /// Returns the size in bytes.
   ///
@@ -147,7 +140,11 @@ class TWData extends TWObjectFinalizable<Void> {
   void reverse() => iTWBindings.TWDataReverse(_pointer);
 
   /// Deletes a block of data created with a `TWDataCreate*` method.
-  void delete() => iTWBindings.TWDataDelete(_pointer);
+  @override
+  void delete() {
+    super.delete();
+    iTWBindings.TWDataDelete(_pointer);
+  }
 
   /// Determines whether two data blocks are equal.
   ///
