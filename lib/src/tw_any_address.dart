@@ -149,6 +149,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   bool equal(TWAnyAddress another) =>
       iTWBindings.TWAnyAddressEqual(_pointer, another._pointer);
 
+  /// Overloaded operator ==, equivalent to [TWAnyAddress.equal].
+  bool operator ==(Object other) => other is TWAnyAddress && equal(other);
+
   /// Deletes an address.
   @override
   void delete() {

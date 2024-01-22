@@ -80,11 +80,17 @@ class TWData extends TWObjectFinalizable<Void> {
   /// \return the byte at the provided index
   int get(int index) => iTWBindings.TWDataGet(_pointer, index);
 
+  /// Overloaded operator [], equivalent to [TWData.get].
+  int operator [](int index) => get(index);
+
   /// Sets the byte at the provided index.
   ///
   /// \param [index] index of the byte that we want to set - index need to be < TWDataSize(data)
   /// \param [byte] Given byte to be written in data
   void set(int index, int byte) => iTWBindings.TWDataSet(_pointer, index, byte);
+
+  /// Overloaded operator []=, equivalent to [TWData.set].
+  void operator []=(int index, int byte) => set(index, byte);
 
   /// Copies a range of bytes into the provided buffer.
   ///
@@ -145,4 +151,7 @@ class TWData extends TWObjectFinalizable<Void> {
   /// \return true if both block of data are equal, false otherwise
   bool equal(TWData another) =>
       iTWBindings.TWDataEqual(_pointer, another.pointer);
+
+  /// Overloaded operator ==, equivalent to [TWData.equal].
+  bool operator ==(Object other) => other is TWData && equal(other);
 }

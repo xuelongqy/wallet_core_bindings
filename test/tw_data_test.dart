@@ -67,7 +67,7 @@ void main() {
       final n = 12;
       TWData data = TWData.createWithSize(n);
       for (int i = 0; i < n; i++) {
-        expect(data.get(i), 0);
+        expect(data[i], 0);
       }
     });
 
@@ -86,16 +86,16 @@ void main() {
     test('Get', () {
       TWData data = TWData.createWithHexString('deadbeef');
       expect(TWString.createWithHexData(data).toString(), 'deadbeef');
-      expect(data.get(0), 0xde);
-      expect(data.get(1), 0xad);
-      expect(data.get(2), 0xbe);
-      expect(data.get(3), 0xef);
+      expect(data[0], 0xde);
+      expect(data[1], 0xad);
+      expect(data[2], 0xbe);
+      expect(data[3], 0xef);
     });
 
     test('Set', () {
       TWData data = TWData.createWithHexString('deadbeef');
       expect(TWString.createWithHexData(data).toString(), 'deadbeef');
-      data.set(1, 0xff);
+      data[1] = 0xff;
       expect(TWString.createWithHexData(data).toString(), 'deffbeef');
     });
 
@@ -157,7 +157,7 @@ void main() {
     test('Equal', () {
       TWData data1 = TWData.createWithHexString('deadbeef');
       TWData data2 = TWData.createWithHexString('deadbeef');
-      expect(data1.equal(data2), true);
+      expect(data1 == data2, true);
     });
   });
 }

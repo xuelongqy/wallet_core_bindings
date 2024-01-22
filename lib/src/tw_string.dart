@@ -68,6 +68,9 @@ class TWString extends TWObjectFinalizable<Void> {
   String get(int index) =>
       String.fromCharCode(iTWBindings.TWStringGet(_pointer, index));
 
+  /// Overloaded operator ==, equivalent to [TWString.get].
+  String operator [](int index) => get(index);
+
   /// Returns the raw pointer to the string's UTF8 bytes (null-terminated).
   Pointer<Char> utf8Bytes() => iTWBindings.TWStringUTF8Bytes(_pointer);
 
@@ -91,4 +94,7 @@ class TWString extends TWObjectFinalizable<Void> {
   /// \param [another] Another TWString pointer.
   bool equal(TWString another) =>
       iTWBindings.TWStringEqual(_pointer, another.pointer);
+
+  /// Overloaded operator ==, equivalent to [TWString.equal].
+  bool operator ==(Object other) => other is TWString && equal(other);
 }
