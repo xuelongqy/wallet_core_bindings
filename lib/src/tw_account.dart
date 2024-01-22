@@ -65,6 +65,10 @@ class TWAccount extends TWObjectFinalizable<bindings.TWAccount> {
       TWString.fromPointer(iTWBindings.TWAccountDerivationPath(_pointer))
           .toString();
 
+  /// Returns hex encoded publicKey of an account.
+  String publicKey() =>
+      TWString.fromPointer(iTWBindings.TWAccountPublicKey(_pointer)).toString();
+
   /// Returns Base58 encoded extendedPublicKey of an account.
   String extendedPublicKey() =>
       TWString.fromPointer(iTWBindings.TWAccountExtendedPublicKey(_pointer))
