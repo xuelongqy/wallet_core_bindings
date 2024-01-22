@@ -60,7 +60,14 @@ final $typed_data.Uint8List amountLimitDescriptor = $convert.base64Decode(
 const Signature$json = {
   '1': 'Signature',
   '2': [
-    {'1': 'algorithm', '3': 1, '4': 1, '5': 14, '6': '.TW.IOST.Proto.Algorithm', '10': 'algorithm'},
+    {
+      '1': 'algorithm',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.IOST.Proto.Algorithm',
+      '10': 'algorithm'
+    },
     {'1': 'signature', '3': 2, '4': 1, '5': 12, '10': 'signature'},
     {'1': 'public_key', '3': 3, '4': 1, '5': 12, '10': 'publicKey'},
   ],
@@ -82,12 +89,40 @@ const Transaction$json = {
     {'1': 'gas_limit', '3': 4, '4': 1, '5': 1, '10': 'gasLimit'},
     {'1': 'delay', '3': 5, '4': 1, '5': 3, '10': 'delay'},
     {'1': 'chain_id', '3': 6, '4': 1, '5': 13, '10': 'chainId'},
-    {'1': 'actions', '3': 7, '4': 3, '5': 11, '6': '.TW.IOST.Proto.Action', '10': 'actions'},
-    {'1': 'amount_limit', '3': 8, '4': 3, '5': 11, '6': '.TW.IOST.Proto.AmountLimit', '10': 'amountLimit'},
+    {
+      '1': 'actions',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.IOST.Proto.Action',
+      '10': 'actions'
+    },
+    {
+      '1': 'amount_limit',
+      '3': 8,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.IOST.Proto.AmountLimit',
+      '10': 'amountLimit'
+    },
     {'1': 'signers', '3': 9, '4': 3, '5': 9, '10': 'signers'},
-    {'1': 'signatures', '3': 10, '4': 3, '5': 11, '6': '.TW.IOST.Proto.Signature', '10': 'signatures'},
+    {
+      '1': 'signatures',
+      '3': 10,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.IOST.Proto.Signature',
+      '10': 'signatures'
+    },
     {'1': 'publisher', '3': 11, '4': 1, '5': 9, '10': 'publisher'},
-    {'1': 'publisher_sigs', '3': 12, '4': 3, '5': 11, '6': '.TW.IOST.Proto.Signature', '10': 'publisherSigs'},
+    {
+      '1': 'publisher_sigs',
+      '3': 12,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.IOST.Proto.Signature',
+      '10': 'publisherSigs'
+    },
   ],
 };
 
@@ -122,9 +157,29 @@ final $typed_data.Uint8List accountInfoDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'account', '3': 1, '4': 1, '5': 11, '6': '.TW.IOST.Proto.AccountInfo', '10': 'account'},
-    {'1': 'transaction_template', '3': 2, '4': 1, '5': 11, '6': '.TW.IOST.Proto.Transaction', '10': 'transactionTemplate'},
-    {'1': 'transfer_destination', '3': 3, '4': 1, '5': 9, '10': 'transferDestination'},
+    {
+      '1': 'account',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IOST.Proto.AccountInfo',
+      '10': 'account'
+    },
+    {
+      '1': 'transaction_template',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IOST.Proto.Transaction',
+      '10': 'transactionTemplate'
+    },
+    {
+      '1': 'transfer_destination',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'transferDestination'
+    },
     {'1': 'transfer_amount', '3': 4, '4': 1, '5': 9, '10': 'transferAmount'},
     {'1': 'transfer_memo', '3': 5, '4': 1, '5': 9, '10': 'transferMemo'},
   ],
@@ -142,9 +197,23 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
 const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
-    {'1': 'transaction', '3': 1, '4': 1, '5': 11, '6': '.TW.IOST.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'transaction',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IOST.Proto.Transaction',
+      '10': 'transaction'
+    },
     {'1': 'encoded', '3': 2, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -155,4 +224,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Fuc2FjdGlvblILdHJhbnNhY3Rpb24SGAoHZW5jb2RlZBgCIAEoDFIHZW5jb2RlZBIzCgVlcnJv'
     'chgDIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9yEiMKDWVycm9yX2'
     '1lc3NhZ2UYBCABKAlSDGVycm9yTWVzc2FnZQ==');
-

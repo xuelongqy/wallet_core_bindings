@@ -60,7 +60,15 @@ final $typed_data.Uint8List customCallIndicesDescriptor = $convert.base64Decode(
 const CallIndices$json = {
   '1': 'CallIndices',
   '2': [
-    {'1': 'custom', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CustomCallIndices', '9': 0, '10': 'custom'},
+    {
+      '1': 'custom',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CustomCallIndices',
+      '9': 0,
+      '10': 'custom'
+    },
   ],
   '8': [
     {'1': 'variant'},
@@ -76,12 +84,49 @@ final $typed_data.Uint8List callIndicesDescriptor = $convert.base64Decode(
 const Balance$json = {
   '1': 'Balance',
   '2': [
-    {'1': 'transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Balance.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'batchTransfer', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Balance.BatchTransfer', '9': 0, '10': 'batchTransfer'},
-    {'1': 'asset_transfer', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Balance.AssetTransfer', '9': 0, '10': 'assetTransfer'},
-    {'1': 'batch_asset_transfer', '3': 4, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Balance.BatchAssetTransfer', '9': 0, '10': 'batchAssetTransfer'},
+    {
+      '1': 'transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'batchTransfer',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance.BatchTransfer',
+      '9': 0,
+      '10': 'batchTransfer'
+    },
+    {
+      '1': 'asset_transfer',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance.AssetTransfer',
+      '9': 0,
+      '10': 'assetTransfer'
+    },
+    {
+      '1': 'batch_asset_transfer',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance.BatchAssetTransfer',
+      '9': 0,
+      '10': 'batchAssetTransfer'
+    },
   ],
-  '3': [Balance_Transfer$json, Balance_BatchTransfer$json, Balance_AssetTransfer$json, Balance_BatchAssetTransfer$json],
+  '3': [
+    Balance_Transfer$json,
+    Balance_BatchTransfer$json,
+    Balance_AssetTransfer$json,
+    Balance_BatchAssetTransfer$json
+  ],
   '8': [
     {'1': 'message_oneof'},
   ],
@@ -94,7 +139,14 @@ const Balance_Transfer$json = {
     {'1': 'to_address', '3': 1, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'value', '3': 2, '4': 1, '5': 12, '10': 'value'},
     {'1': 'memo', '3': 3, '4': 1, '5': 9, '10': 'memo'},
-    {'1': 'call_indices', '3': 4, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -102,8 +154,22 @@ const Balance_Transfer$json = {
 const Balance_BatchTransfer$json = {
   '1': 'BatchTransfer',
   '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
-    {'1': 'transfers', '3': 2, '4': 3, '5': 11, '6': '.TW.Polkadot.Proto.Balance.Transfer', '10': 'transfers'},
+    {
+      '1': 'call_indices',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
+    {
+      '1': 'transfers',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance.Transfer',
+      '10': 'transfers'
+    },
   ],
 };
 
@@ -111,7 +177,14 @@ const Balance_BatchTransfer$json = {
 const Balance_AssetTransfer$json = {
   '1': 'AssetTransfer',
   '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
     {'1': 'to_address', '3': 2, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'value', '3': 3, '4': 1, '5': 12, '10': 'value'},
     {'1': 'asset_id', '3': 4, '4': 1, '5': 13, '10': 'assetId'},
@@ -123,9 +196,23 @@ const Balance_AssetTransfer$json = {
 const Balance_BatchAssetTransfer$json = {
   '1': 'BatchAssetTransfer',
   '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
     {'1': 'fee_asset_id', '3': 2, '4': 1, '5': 13, '10': 'feeAssetId'},
-    {'1': 'transfers', '3': 3, '4': 3, '5': 11, '6': '.TW.Polkadot.Proto.Balance.AssetTransfer', '10': 'transfers'},
+    {
+      '1': 'transfers',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance.AssetTransfer',
+      '10': 'transfers'
+    },
   ],
 };
 
@@ -156,17 +243,99 @@ final $typed_data.Uint8List balanceDescriptor = $convert.base64Decode(
 const Staking$json = {
   '1': 'Staking',
   '2': [
-    {'1': 'bond', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Bond', '9': 0, '10': 'bond'},
-    {'1': 'bond_and_nominate', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.BondAndNominate', '9': 0, '10': 'bondAndNominate'},
-    {'1': 'bond_extra', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.BondExtra', '9': 0, '10': 'bondExtra'},
-    {'1': 'unbond', '3': 4, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Unbond', '9': 0, '10': 'unbond'},
-    {'1': 'withdraw_unbonded', '3': 5, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.WithdrawUnbonded', '9': 0, '10': 'withdrawUnbonded'},
-    {'1': 'nominate', '3': 6, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Nominate', '9': 0, '10': 'nominate'},
-    {'1': 'chill', '3': 7, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Chill', '9': 0, '10': 'chill'},
-    {'1': 'chill_and_unbond', '3': 8, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.ChillAndUnbond', '9': 0, '10': 'chillAndUnbond'},
-    {'1': 'rebond', '3': 9, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking.Rebond', '9': 0, '10': 'rebond'},
+    {
+      '1': 'bond',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.Bond',
+      '9': 0,
+      '10': 'bond'
+    },
+    {
+      '1': 'bond_and_nominate',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.BondAndNominate',
+      '9': 0,
+      '10': 'bondAndNominate'
+    },
+    {
+      '1': 'bond_extra',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.BondExtra',
+      '9': 0,
+      '10': 'bondExtra'
+    },
+    {
+      '1': 'unbond',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.Unbond',
+      '9': 0,
+      '10': 'unbond'
+    },
+    {
+      '1': 'withdraw_unbonded',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.WithdrawUnbonded',
+      '9': 0,
+      '10': 'withdrawUnbonded'
+    },
+    {
+      '1': 'nominate',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.Nominate',
+      '9': 0,
+      '10': 'nominate'
+    },
+    {
+      '1': 'chill',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.Chill',
+      '9': 0,
+      '10': 'chill'
+    },
+    {
+      '1': 'chill_and_unbond',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.ChillAndUnbond',
+      '9': 0,
+      '10': 'chillAndUnbond'
+    },
+    {
+      '1': 'rebond',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking.Rebond',
+      '9': 0,
+      '10': 'rebond'
+    },
   ],
-  '3': [Staking_Bond$json, Staking_BondAndNominate$json, Staking_BondExtra$json, Staking_Unbond$json, Staking_Rebond$json, Staking_WithdrawUnbonded$json, Staking_Nominate$json, Staking_ChillAndUnbond$json, Staking_Chill$json],
+  '3': [
+    Staking_Bond$json,
+    Staking_BondAndNominate$json,
+    Staking_BondExtra$json,
+    Staking_Unbond$json,
+    Staking_Rebond$json,
+    Staking_WithdrawUnbonded$json,
+    Staking_Nominate$json,
+    Staking_ChillAndUnbond$json,
+    Staking_Chill$json
+  ],
   '8': [
     {'1': 'message_oneof'},
   ],
@@ -178,8 +347,22 @@ const Staking_Bond$json = {
   '2': [
     {'1': 'controller', '3': 1, '4': 1, '5': 9, '10': 'controller'},
     {'1': 'value', '3': 2, '4': 1, '5': 12, '10': 'value'},
-    {'1': 'reward_destination', '3': 3, '4': 1, '5': 14, '6': '.TW.Polkadot.Proto.RewardDestination', '10': 'rewardDestination'},
-    {'1': 'call_indices', '3': 4, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'reward_destination',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Polkadot.Proto.RewardDestination',
+      '10': 'rewardDestination'
+    },
+    {
+      '1': 'call_indices',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -189,9 +372,23 @@ const Staking_BondAndNominate$json = {
   '2': [
     {'1': 'controller', '3': 1, '4': 1, '5': 9, '10': 'controller'},
     {'1': 'value', '3': 2, '4': 1, '5': 12, '10': 'value'},
-    {'1': 'reward_destination', '3': 3, '4': 1, '5': 14, '6': '.TW.Polkadot.Proto.RewardDestination', '10': 'rewardDestination'},
+    {
+      '1': 'reward_destination',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Polkadot.Proto.RewardDestination',
+      '10': 'rewardDestination'
+    },
     {'1': 'nominators', '3': 4, '4': 3, '5': 9, '10': 'nominators'},
-    {'1': 'call_indices', '3': 5, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -200,7 +397,14 @@ const Staking_BondExtra$json = {
   '1': 'BondExtra',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
-    {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -209,7 +413,14 @@ const Staking_Unbond$json = {
   '1': 'Unbond',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
-    {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -218,7 +429,14 @@ const Staking_Rebond$json = {
   '1': 'Rebond',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
-    {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -227,7 +445,14 @@ const Staking_WithdrawUnbonded$json = {
   '1': 'WithdrawUnbonded',
   '2': [
     {'1': 'slashing_spans', '3': 1, '4': 1, '5': 5, '10': 'slashingSpans'},
-    {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -236,7 +461,14 @@ const Staking_Nominate$json = {
   '1': 'Nominate',
   '2': [
     {'1': 'nominators', '3': 1, '4': 3, '5': 9, '10': 'nominators'},
-    {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -245,7 +477,14 @@ const Staking_ChillAndUnbond$json = {
   '1': 'ChillAndUnbond',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 12, '10': 'value'},
-    {'1': 'call_indices', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -253,7 +492,14 @@ const Staking_ChillAndUnbond$json = {
 const Staking_Chill$json = {
   '1': 'Chill',
   '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
   ],
 };
 
@@ -298,8 +544,24 @@ final $typed_data.Uint8List stakingDescriptor = $convert.base64Decode(
 const Identity$json = {
   '1': 'Identity',
   '2': [
-    {'1': 'join_identity_as_key', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.JoinIdentityAsKey', '9': 0, '10': 'joinIdentityAsKey'},
-    {'1': 'add_authorization', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization', '9': 0, '10': 'addAuthorization'},
+    {
+      '1': 'join_identity_as_key',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity.JoinIdentityAsKey',
+      '9': 0,
+      '10': 'joinIdentityAsKey'
+    },
+    {
+      '1': 'add_authorization',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity.AddAuthorization',
+      '9': 0,
+      '10': 'addAuthorization'
+    },
   ],
   '3': [Identity_JoinIdentityAsKey$json, Identity_AddAuthorization$json],
   '8': [
@@ -311,7 +573,14 @@ const Identity$json = {
 const Identity_JoinIdentityAsKey$json = {
   '1': 'JoinIdentityAsKey',
   '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
     {'1': 'auth_id', '3': 2, '4': 1, '5': 4, '10': 'authId'},
   ],
 };
@@ -320,12 +589,29 @@ const Identity_JoinIdentityAsKey$json = {
 const Identity_AddAuthorization$json = {
   '1': 'AddAuthorization',
   '2': [
-    {'1': 'call_indices', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.CallIndices', '10': 'callIndices'},
+    {
+      '1': 'call_indices',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.CallIndices',
+      '10': 'callIndices'
+    },
     {'1': 'target', '3': 2, '4': 1, '5': 9, '10': 'target'},
-    {'1': 'data', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.AuthData', '10': 'data'},
+    {
+      '1': 'data',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.AuthData',
+      '10': 'data'
+    },
     {'1': 'expiry', '3': 4, '4': 1, '5': 4, '10': 'expiry'},
   ],
-  '3': [Identity_AddAuthorization_Data$json, Identity_AddAuthorization_AuthData$json],
+  '3': [
+    Identity_AddAuthorization_Data$json,
+    Identity_AddAuthorization_AuthData$json
+  ],
 };
 
 @$core.Deprecated('Use identityDescriptor instead')
@@ -340,9 +626,30 @@ const Identity_AddAuthorization_Data$json = {
 const Identity_AddAuthorization_AuthData$json = {
   '1': 'AuthData',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data', '10': 'asset'},
-    {'1': 'extrinsic', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data', '10': 'extrinsic'},
-    {'1': 'portfolio', '3': 3, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data', '10': 'portfolio'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data',
+      '10': 'asset'
+    },
+    {
+      '1': 'extrinsic',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data',
+      '10': 'extrinsic'
+    },
+    {
+      '1': 'portfolio',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity.AddAuthorization.Data',
+      '10': 'portfolio'
+    },
   ],
 };
 
@@ -368,7 +675,15 @@ final $typed_data.Uint8List identityDescriptor = $convert.base64Decode(
 const PolymeshCall$json = {
   '1': 'PolymeshCall',
   '2': [
-    {'1': 'identity_call', '3': 2, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Identity', '9': 0, '10': 'identityCall'},
+    {
+      '1': 'identity_call',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Identity',
+      '9': 0,
+      '10': 'identityCall'
+    },
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -388,15 +703,52 @@ const SigningInput$json = {
     {'1': 'genesis_hash', '3': 2, '4': 1, '5': 12, '10': 'genesisHash'},
     {'1': 'nonce', '3': 3, '4': 1, '5': 4, '10': 'nonce'},
     {'1': 'spec_version', '3': 4, '4': 1, '5': 13, '10': 'specVersion'},
-    {'1': 'transaction_version', '3': 5, '4': 1, '5': 13, '10': 'transactionVersion'},
+    {
+      '1': 'transaction_version',
+      '3': 5,
+      '4': 1,
+      '5': 13,
+      '10': 'transactionVersion'
+    },
     {'1': 'tip', '3': 6, '4': 1, '5': 12, '10': 'tip'},
-    {'1': 'era', '3': 7, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Era', '10': 'era'},
+    {
+      '1': 'era',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Era',
+      '10': 'era'
+    },
     {'1': 'private_key', '3': 8, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'network', '3': 9, '4': 1, '5': 13, '10': 'network'},
     {'1': 'multi_address', '3': 10, '4': 1, '5': 8, '10': 'multiAddress'},
-    {'1': 'balance_call', '3': 11, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Balance', '9': 0, '10': 'balanceCall'},
-    {'1': 'staking_call', '3': 12, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.Staking', '9': 0, '10': 'stakingCall'},
-    {'1': 'polymesh_call', '3': 13, '4': 1, '5': 11, '6': '.TW.Polkadot.Proto.PolymeshCall', '9': 0, '10': 'polymeshCall'},
+    {
+      '1': 'balance_call',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Balance',
+      '9': 0,
+      '10': 'balanceCall'
+    },
+    {
+      '1': 'staking_call',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.Staking',
+      '9': 0,
+      '10': 'stakingCall'
+    },
+    {
+      '1': 'polymesh_call',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Polkadot.Proto.PolymeshCall',
+      '9': 0,
+      '10': 'polymeshCall'
+    },
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -422,7 +774,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -432,4 +791,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSMwoFZXJyb3IYAiABKA'
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
     'GAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

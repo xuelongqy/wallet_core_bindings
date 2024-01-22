@@ -20,7 +20,13 @@ const ContractAddressInput$json = {
     {'1': 'entry_point', '3': 1, '4': 1, '5': 9, '10': 'entryPoint'},
     {'1': 'factory', '3': 2, '4': 1, '5': 9, '10': 'factory'},
     {'1': 'account_facet', '3': 3, '4': 1, '5': 9, '10': 'accountFacet'},
-    {'1': 'verification_facet', '3': 4, '4': 1, '5': 9, '10': 'verificationFacet'},
+    {
+      '1': 'verification_facet',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'verificationFacet'
+    },
     {'1': 'facet_registry', '3': 5, '4': 1, '5': 9, '10': 'facetRegistry'},
     {'1': 'default_fallback', '3': 6, '4': 1, '5': 9, '10': 'defaultFallback'},
     {'1': 'bytecode', '3': 7, '4': 1, '5': 9, '10': 'bytecode'},
@@ -37,4 +43,3 @@ final $typed_data.Uint8List contractAddressInputDescriptor = $convert.base64Deco
     'UKDmZhY2V0X3JlZ2lzdHJ5GAUgASgJUg1mYWNldFJlZ2lzdHJ5EikKEGRlZmF1bHRfZmFsbGJh'
     'Y2sYBiABKAlSD2RlZmF1bHRGYWxsYmFjaxIaCghieXRlY29kZRgHIAEoCVIIYnl0ZWNvZGUSHQ'
     'oKcHVibGljX2tleRgIIAEoCVIJcHVibGljS2V5EhIKBHNhbHQYCSABKA1SBHNhbHQ=');
-

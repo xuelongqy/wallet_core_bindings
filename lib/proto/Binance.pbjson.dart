@@ -89,8 +89,22 @@ final $typed_data.Uint8List cancelTradeOrderDescriptor = $convert.base64Decode(
 const SendOrder$json = {
   '1': 'SendOrder',
   '2': [
-    {'1': 'inputs', '3': 1, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Input', '10': 'inputs'},
-    {'1': 'outputs', '3': 2, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Output', '10': 'outputs'},
+    {
+      '1': 'inputs',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Input',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Output',
+      '10': 'outputs'
+    },
   ],
   '3': [SendOrder_Token$json, SendOrder_Input$json, SendOrder_Output$json],
 };
@@ -109,7 +123,14 @@ const SendOrder_Input$json = {
   '1': 'Input',
   '2': [
     {'1': 'address', '3': 1, '4': 1, '5': 12, '10': 'address'},
-    {'1': 'coins', '3': 2, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'coins'},
+    {
+      '1': 'coins',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'coins'
+    },
   ],
 };
 
@@ -118,7 +139,14 @@ const SendOrder_Output$json = {
   '1': 'Output',
   '2': [
     {'1': 'address', '3': 1, '4': 1, '5': 12, '10': 'address'},
-    {'1': 'coins', '3': 2, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'coins'},
+    {
+      '1': 'coins',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'coins'
+    },
   ],
 };
 
@@ -216,11 +244,36 @@ const HTLTOrder$json = {
   '2': [
     {'1': 'from', '3': 1, '4': 1, '5': 12, '10': 'from'},
     {'1': 'to', '3': 2, '4': 1, '5': 12, '10': 'to'},
-    {'1': 'recipient_other_chain', '3': 3, '4': 1, '5': 9, '10': 'recipientOtherChain'},
-    {'1': 'sender_other_chain', '3': 4, '4': 1, '5': 9, '10': 'senderOtherChain'},
-    {'1': 'random_number_hash', '3': 5, '4': 1, '5': 12, '10': 'randomNumberHash'},
+    {
+      '1': 'recipient_other_chain',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientOtherChain'
+    },
+    {
+      '1': 'sender_other_chain',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'senderOtherChain'
+    },
+    {
+      '1': 'random_number_hash',
+      '3': 5,
+      '4': 1,
+      '5': 12,
+      '10': 'randomNumberHash'
+    },
     {'1': 'timestamp', '3': 6, '4': 1, '5': 3, '10': 'timestamp'},
-    {'1': 'amount', '3': 7, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'expected_income', '3': 8, '4': 1, '5': 9, '10': 'expectedIncome'},
     {'1': 'height_span', '3': 9, '4': 1, '5': 3, '10': 'heightSpan'},
     {'1': 'cross_chain', '3': 10, '4': 1, '5': 8, '10': 'crossChain'},
@@ -242,7 +295,14 @@ const DepositHTLTOrder$json = {
   '1': 'DepositHTLTOrder',
   '2': [
     {'1': 'from', '3': 1, '4': 1, '5': 12, '10': 'from'},
-    {'1': 'amount', '3': 2, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'swap_id', '3': 3, '4': 1, '5': 12, '10': 'swapId'},
   ],
 };
@@ -288,7 +348,14 @@ const TransferOut$json = {
   '2': [
     {'1': 'from', '3': 1, '4': 1, '5': 12, '10': 'from'},
     {'1': 'to', '3': 2, '4': 1, '5': 12, '10': 'to'},
-    {'1': 'amount', '3': 3, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'expire_time', '3': 4, '4': 1, '5': 3, '10': 'expireTime'},
   ],
 };
@@ -305,7 +372,14 @@ const SideChainDelegate$json = {
   '2': [
     {'1': 'delegator_addr', '3': 1, '4': 1, '5': 12, '10': 'delegatorAddr'},
     {'1': 'validator_addr', '3': 2, '4': 1, '5': 12, '10': 'validatorAddr'},
-    {'1': 'delegation', '3': 3, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'delegation'},
+    {
+      '1': 'delegation',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'delegation'
+    },
     {'1': 'chain_id', '3': 4, '4': 1, '5': 9, '10': 'chainId'},
   ],
 };
@@ -322,9 +396,28 @@ const SideChainRedelegate$json = {
   '1': 'SideChainRedelegate',
   '2': [
     {'1': 'delegator_addr', '3': 1, '4': 1, '5': 12, '10': 'delegatorAddr'},
-    {'1': 'validator_src_addr', '3': 2, '4': 1, '5': 12, '10': 'validatorSrcAddr'},
-    {'1': 'validator_dst_addr', '3': 3, '4': 1, '5': 12, '10': 'validatorDstAddr'},
-    {'1': 'amount', '3': 4, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'validator_src_addr',
+      '3': 2,
+      '4': 1,
+      '5': 12,
+      '10': 'validatorSrcAddr'
+    },
+    {
+      '1': 'validator_dst_addr',
+      '3': 3,
+      '4': 1,
+      '5': 12,
+      '10': 'validatorDstAddr'
+    },
+    {
+      '1': 'amount',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'chain_id', '3': 5, '4': 1, '5': 9, '10': 'chainId'},
   ],
 };
@@ -343,7 +436,14 @@ const SideChainUndelegate$json = {
   '2': [
     {'1': 'delegator_addr', '3': 1, '4': 1, '5': 12, '10': 'delegatorAddr'},
     {'1': 'validator_addr', '3': 2, '4': 1, '5': 12, '10': 'validatorAddr'},
-    {'1': 'amount', '3': 3, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'chain_id', '3': 4, '4': 1, '5': 9, '10': 'chainId'},
   ],
 };
@@ -361,7 +461,14 @@ const TimeLockOrder$json = {
   '2': [
     {'1': 'from_address', '3': 1, '4': 1, '5': 12, '10': 'fromAddress'},
     {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
-    {'1': 'amount', '3': 3, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'lock_time', '3': 4, '4': 1, '5': 3, '10': 'lockTime'},
   ],
 };
@@ -380,7 +487,14 @@ const TimeRelockOrder$json = {
     {'1': 'from_address', '3': 1, '4': 1, '5': 12, '10': 'fromAddress'},
     {'1': 'id', '3': 2, '4': 1, '5': 3, '10': 'id'},
     {'1': 'description', '3': 3, '4': 1, '5': 9, '10': 'description'},
-    {'1': 'amount', '3': 4, '4': 3, '5': 11, '6': '.TW.Binance.Proto.SendOrder.Token', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
     {'1': 'lock_time', '3': 5, '4': 1, '5': 3, '10': 'lockTime'},
   ],
 };
@@ -416,25 +530,177 @@ const SigningInput$json = {
     {'1': 'source', '3': 4, '4': 1, '5': 3, '10': 'source'},
     {'1': 'memo', '3': 5, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'private_key', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'trade_order', '3': 8, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TradeOrder', '9': 0, '10': 'tradeOrder'},
-    {'1': 'cancel_trade_order', '3': 9, '4': 1, '5': 11, '6': '.TW.Binance.Proto.CancelTradeOrder', '9': 0, '10': 'cancelTradeOrder'},
-    {'1': 'send_order', '3': 10, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SendOrder', '9': 0, '10': 'sendOrder'},
-    {'1': 'freeze_order', '3': 11, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TokenFreezeOrder', '9': 0, '10': 'freezeOrder'},
-    {'1': 'unfreeze_order', '3': 12, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TokenUnfreezeOrder', '9': 0, '10': 'unfreezeOrder'},
-    {'1': 'htlt_order', '3': 13, '4': 1, '5': 11, '6': '.TW.Binance.Proto.HTLTOrder', '9': 0, '10': 'htltOrder'},
-    {'1': 'depositHTLT_order', '3': 14, '4': 1, '5': 11, '6': '.TW.Binance.Proto.DepositHTLTOrder', '9': 0, '10': 'depositHTLTOrder'},
-    {'1': 'claimHTLT_order', '3': 15, '4': 1, '5': 11, '6': '.TW.Binance.Proto.ClaimHTLOrder', '9': 0, '10': 'claimHTLTOrder'},
-    {'1': 'refundHTLT_order', '3': 16, '4': 1, '5': 11, '6': '.TW.Binance.Proto.RefundHTLTOrder', '9': 0, '10': 'refundHTLTOrder'},
-    {'1': 'issue_order', '3': 17, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TokenIssueOrder', '9': 0, '10': 'issueOrder'},
-    {'1': 'mint_order', '3': 18, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TokenMintOrder', '9': 0, '10': 'mintOrder'},
-    {'1': 'burn_order', '3': 19, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TokenBurnOrder', '9': 0, '10': 'burnOrder'},
-    {'1': 'transfer_out_order', '3': 20, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TransferOut', '9': 0, '10': 'transferOutOrder'},
-    {'1': 'side_delegate_order', '3': 21, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SideChainDelegate', '9': 0, '10': 'sideDelegateOrder'},
-    {'1': 'side_redelegate_order', '3': 22, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SideChainRedelegate', '9': 0, '10': 'sideRedelegateOrder'},
-    {'1': 'side_undelegate_order', '3': 23, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SideChainUndelegate', '9': 0, '10': 'sideUndelegateOrder'},
-    {'1': 'time_lock_order', '3': 24, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TimeLockOrder', '9': 0, '10': 'timeLockOrder'},
-    {'1': 'time_relock_order', '3': 25, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TimeRelockOrder', '9': 0, '10': 'timeRelockOrder'},
-    {'1': 'time_unlock_order', '3': 26, '4': 1, '5': 11, '6': '.TW.Binance.Proto.TimeUnlockOrder', '9': 0, '10': 'timeUnlockOrder'},
+    {
+      '1': 'trade_order',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TradeOrder',
+      '9': 0,
+      '10': 'tradeOrder'
+    },
+    {
+      '1': 'cancel_trade_order',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.CancelTradeOrder',
+      '9': 0,
+      '10': 'cancelTradeOrder'
+    },
+    {
+      '1': 'send_order',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder',
+      '9': 0,
+      '10': 'sendOrder'
+    },
+    {
+      '1': 'freeze_order',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TokenFreezeOrder',
+      '9': 0,
+      '10': 'freezeOrder'
+    },
+    {
+      '1': 'unfreeze_order',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TokenUnfreezeOrder',
+      '9': 0,
+      '10': 'unfreezeOrder'
+    },
+    {
+      '1': 'htlt_order',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.HTLTOrder',
+      '9': 0,
+      '10': 'htltOrder'
+    },
+    {
+      '1': 'depositHTLT_order',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.DepositHTLTOrder',
+      '9': 0,
+      '10': 'depositHTLTOrder'
+    },
+    {
+      '1': 'claimHTLT_order',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.ClaimHTLOrder',
+      '9': 0,
+      '10': 'claimHTLTOrder'
+    },
+    {
+      '1': 'refundHTLT_order',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.RefundHTLTOrder',
+      '9': 0,
+      '10': 'refundHTLTOrder'
+    },
+    {
+      '1': 'issue_order',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TokenIssueOrder',
+      '9': 0,
+      '10': 'issueOrder'
+    },
+    {
+      '1': 'mint_order',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TokenMintOrder',
+      '9': 0,
+      '10': 'mintOrder'
+    },
+    {
+      '1': 'burn_order',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TokenBurnOrder',
+      '9': 0,
+      '10': 'burnOrder'
+    },
+    {
+      '1': 'transfer_out_order',
+      '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TransferOut',
+      '9': 0,
+      '10': 'transferOutOrder'
+    },
+    {
+      '1': 'side_delegate_order',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SideChainDelegate',
+      '9': 0,
+      '10': 'sideDelegateOrder'
+    },
+    {
+      '1': 'side_redelegate_order',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SideChainRedelegate',
+      '9': 0,
+      '10': 'sideRedelegateOrder'
+    },
+    {
+      '1': 'side_undelegate_order',
+      '3': 23,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SideChainUndelegate',
+      '9': 0,
+      '10': 'sideUndelegateOrder'
+    },
+    {
+      '1': 'time_lock_order',
+      '3': 24,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TimeLockOrder',
+      '9': 0,
+      '10': 'timeLockOrder'
+    },
+    {
+      '1': 'time_relock_order',
+      '3': 25,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TimeRelockOrder',
+      '9': 0,
+      '10': 'timeRelockOrder'
+    },
+    {
+      '1': 'time_unlock_order',
+      '3': 26,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.TimeUnlockOrder',
+      '9': 0,
+      '10': 'timeUnlockOrder'
+    },
   ],
   '8': [
     {'1': 'order_oneof'},
@@ -479,7 +745,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
     {'1': 'signature', '3': 4, '4': 1, '5': 12, '10': 'signature'},
     {'1': 'signature_json', '3': 5, '4': 1, '5': 9, '10': 'signatureJson'},
@@ -492,4 +765,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
     'GAMgASgJUgxlcnJvck1lc3NhZ2USHAoJc2lnbmF0dXJlGAQgASgMUglzaWduYXR1cmUSJQoOc2'
     'lnbmF0dXJlX2pzb24YBSABKAlSDXNpZ25hdHVyZUpzb24=');
-

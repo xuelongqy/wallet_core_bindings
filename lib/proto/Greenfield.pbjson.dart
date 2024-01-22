@@ -23,8 +23,8 @@ const BroadcastMode$json = {
 };
 
 /// Descriptor for `BroadcastMode`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List broadcastModeDescriptor = $convert.base64Decode(
-    'Cg1Ccm9hZGNhc3RNb2RlEggKBFNZTkMQABIJCgVBU1lOQxAB');
+final $typed_data.Uint8List broadcastModeDescriptor =
+    $convert.base64Decode('Cg1Ccm9hZGNhc3RNb2RlEggKBFNZTkMQABIJCgVBU1lOQxAB');
 
 @$core.Deprecated('Use encodingModeDescriptor instead')
 const EncodingMode$json = {
@@ -35,8 +35,8 @@ const EncodingMode$json = {
 };
 
 /// Descriptor for `EncodingMode`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List encodingModeDescriptor = $convert.base64Decode(
-    'CgxFbmNvZGluZ01vZGUSDAoIUHJvdG9idWYQAA==');
+final $typed_data.Uint8List encodingModeDescriptor =
+    $convert.base64Decode('CgxFbmNvZGluZ01vZGUSDAoIUHJvdG9idWYQAA==');
 
 @$core.Deprecated('Use signingModeDescriptor instead')
 const SigningMode$json = {
@@ -47,8 +47,8 @@ const SigningMode$json = {
 };
 
 /// Descriptor for `SigningMode`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List signingModeDescriptor = $convert.base64Decode(
-    'CgtTaWduaW5nTW9kZRIKCgZFaXA3MTIQAA==');
+final $typed_data.Uint8List signingModeDescriptor =
+    $convert.base64Decode('CgtTaWduaW5nTW9kZRIKCgZFaXA3MTIQAA==');
 
 @$core.Deprecated('Use amountDescriptor instead')
 const Amount$json = {
@@ -67,7 +67,14 @@ final $typed_data.Uint8List amountDescriptor = $convert.base64Decode(
 const Fee$json = {
   '1': 'Fee',
   '2': [
-    {'1': 'amounts', '3': 1, '4': 3, '5': 11, '6': '.TW.Greenfield.Proto.Amount', '10': 'amounts'},
+    {
+      '1': 'amounts',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Amount',
+      '10': 'amounts'
+    },
     {'1': 'gas', '3': 2, '4': 1, '5': 4, '10': 'gas'},
   ],
 };
@@ -81,8 +88,24 @@ final $typed_data.Uint8List feeDescriptor = $convert.base64Decode(
 const Message$json = {
   '1': 'Message',
   '2': [
-    {'1': 'send_coins_message', '3': 1, '4': 1, '5': 11, '6': '.TW.Greenfield.Proto.Message.Send', '9': 0, '10': 'sendCoinsMessage'},
-    {'1': 'bridge_transfer_out', '3': 2, '4': 1, '5': 11, '6': '.TW.Greenfield.Proto.Message.BridgeTransferOut', '9': 0, '10': 'bridgeTransferOut'},
+    {
+      '1': 'send_coins_message',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Message.Send',
+      '9': 0,
+      '10': 'sendCoinsMessage'
+    },
+    {
+      '1': 'bridge_transfer_out',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Message.BridgeTransferOut',
+      '9': 0,
+      '10': 'bridgeTransferOut'
+    },
   ],
   '3': [Message_Send$json, Message_BridgeTransferOut$json],
   '8': [
@@ -96,7 +119,14 @@ const Message_Send$json = {
   '2': [
     {'1': 'from_address', '3': 1, '4': 1, '5': 9, '10': 'fromAddress'},
     {'1': 'to_address', '3': 2, '4': 1, '5': 9, '10': 'toAddress'},
-    {'1': 'amounts', '3': 3, '4': 3, '5': 11, '6': '.TW.Greenfield.Proto.Amount', '10': 'amounts'},
+    {
+      '1': 'amounts',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Amount',
+      '10': 'amounts'
+    },
     {'1': 'type_prefix', '3': 4, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -107,7 +137,14 @@ const Message_BridgeTransferOut$json = {
   '2': [
     {'1': 'from_address', '3': 1, '4': 1, '5': 9, '10': 'fromAddress'},
     {'1': 'to_address', '3': 2, '4': 1, '5': 9, '10': 'toAddress'},
-    {'1': 'amount', '3': 3, '4': 1, '5': 11, '6': '.TW.Greenfield.Proto.Amount', '10': 'amount'},
+    {
+      '1': 'amount',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Amount',
+      '10': 'amount'
+    },
     {'1': 'type_prefix', '3': 4, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -129,17 +166,52 @@ final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'encoding_mode', '3': 1, '4': 1, '5': 14, '6': '.TW.Greenfield.Proto.EncodingMode', '10': 'encodingMode'},
-    {'1': 'signing_mode', '3': 2, '4': 1, '5': 14, '6': '.TW.Greenfield.Proto.SigningMode', '10': 'signingMode'},
+    {
+      '1': 'encoding_mode',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Greenfield.Proto.EncodingMode',
+      '10': 'encodingMode'
+    },
+    {
+      '1': 'signing_mode',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Greenfield.Proto.SigningMode',
+      '10': 'signingMode'
+    },
     {'1': 'account_number', '3': 3, '4': 1, '5': 4, '10': 'accountNumber'},
     {'1': 'eth_chain_id', '3': 4, '4': 1, '5': 9, '10': 'ethChainId'},
     {'1': 'cosmos_chain_id', '3': 5, '4': 1, '5': 9, '10': 'cosmosChainId'},
-    {'1': 'fee', '3': 6, '4': 1, '5': 11, '6': '.TW.Greenfield.Proto.Fee', '10': 'fee'},
+    {
+      '1': 'fee',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Fee',
+      '10': 'fee'
+    },
     {'1': 'memo', '3': 7, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'sequence', '3': 8, '4': 1, '5': 4, '10': 'sequence'},
     {'1': 'private_key', '3': 9, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'messages', '3': 10, '4': 3, '5': 11, '6': '.TW.Greenfield.Proto.Message', '10': 'messages'},
-    {'1': 'mode', '3': 11, '4': 1, '5': 14, '6': '.TW.Greenfield.Proto.BroadcastMode', '10': 'mode'},
+    {
+      '1': 'messages',
+      '3': 10,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Greenfield.Proto.Message',
+      '10': 'messages'
+    },
+    {
+      '1': 'mode',
+      '3': 11,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Greenfield.Proto.BroadcastMode',
+      '10': 'mode'
+    },
     {'1': 'public_key', '3': 12, '4': 1, '5': 12, '10': 'publicKey'},
   ],
 };
@@ -165,7 +237,14 @@ const SigningOutput$json = {
     {'1': 'serialized', '3': 2, '4': 1, '5': 9, '10': 'serialized'},
     {'1': 'signature_json', '3': 3, '4': 1, '5': 9, '10': 'signatureJson'},
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
-    {'1': 'error', '3': 5, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
   ],
 };
 
@@ -175,4 +254,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'l6ZWQYAiABKAlSCnNlcmlhbGl6ZWQSJQoOc2lnbmF0dXJlX2pzb24YAyABKAlSDXNpZ25hdHVy'
     'ZUpzb24SIwoNZXJyb3JfbWVzc2FnZRgEIAEoCVIMZXJyb3JNZXNzYWdlEjMKBWVycm9yGAUgAS'
     'gOMh0uVFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3I=');
-

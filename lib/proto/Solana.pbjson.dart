@@ -103,7 +103,14 @@ final $typed_data.Uint8List stakeAccountValueDescriptor = $convert.base64Decode(
 const WithdrawAllStake$json = {
   '1': 'WithdrawAllStake',
   '2': [
-    {'1': 'stake_accounts', '3': 1, '4': 3, '5': 11, '6': '.TW.Solana.Proto.StakeAccountValue', '10': 'stakeAccounts'},
+    {
+      '1': 'stake_accounts',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Solana.Proto.StakeAccountValue',
+      '10': 'stakeAccounts'
+    },
   ],
 };
 
@@ -117,7 +124,13 @@ const CreateTokenAccount$json = {
   '1': 'CreateTokenAccount',
   '2': [
     {'1': 'main_address', '3': 1, '4': 1, '5': 9, '10': 'mainAddress'},
-    {'1': 'token_mint_address', '3': 2, '4': 1, '5': 9, '10': 'tokenMintAddress'},
+    {
+      '1': 'token_mint_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'tokenMintAddress'
+    },
     {'1': 'token_address', '3': 3, '4': 1, '5': 9, '10': 'tokenAddress'},
   ],
 };
@@ -132,9 +145,27 @@ final $typed_data.Uint8List createTokenAccountDescriptor = $convert.base64Decode
 const TokenTransfer$json = {
   '1': 'TokenTransfer',
   '2': [
-    {'1': 'token_mint_address', '3': 1, '4': 1, '5': 9, '10': 'tokenMintAddress'},
-    {'1': 'sender_token_address', '3': 2, '4': 1, '5': 9, '10': 'senderTokenAddress'},
-    {'1': 'recipient_token_address', '3': 3, '4': 1, '5': 9, '10': 'recipientTokenAddress'},
+    {
+      '1': 'token_mint_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'tokenMintAddress'
+    },
+    {
+      '1': 'sender_token_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'senderTokenAddress'
+    },
+    {
+      '1': 'recipient_token_address',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientTokenAddress'
+    },
     {'1': 'amount', '3': 4, '4': 1, '5': 4, '10': 'amount'},
     {'1': 'decimals', '3': 5, '4': 1, '5': 13, '10': 'decimals'},
     {'1': 'memo', '3': 6, '4': 1, '5': 9, '10': 'memo'},
@@ -154,10 +185,34 @@ final $typed_data.Uint8List tokenTransferDescriptor = $convert.base64Decode(
 const CreateAndTransferToken$json = {
   '1': 'CreateAndTransferToken',
   '2': [
-    {'1': 'recipient_main_address', '3': 1, '4': 1, '5': 9, '10': 'recipientMainAddress'},
-    {'1': 'token_mint_address', '3': 2, '4': 1, '5': 9, '10': 'tokenMintAddress'},
-    {'1': 'recipient_token_address', '3': 3, '4': 1, '5': 9, '10': 'recipientTokenAddress'},
-    {'1': 'sender_token_address', '3': 4, '4': 1, '5': 9, '10': 'senderTokenAddress'},
+    {
+      '1': 'recipient_main_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientMainAddress'
+    },
+    {
+      '1': 'token_mint_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'tokenMintAddress'
+    },
+    {
+      '1': 'recipient_token_address',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientTokenAddress'
+    },
+    {
+      '1': 'sender_token_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'senderTokenAddress'
+    },
     {'1': 'amount', '3': 5, '4': 1, '5': 4, '10': 'amount'},
     {'1': 'decimals', '3': 6, '4': 1, '5': 13, '10': 'decimals'},
     {'1': 'memo', '3': 7, '4': 1, '5': 9, '10': 'memo'},
@@ -181,7 +236,13 @@ const CreateNonceAccount$json = {
   '2': [
     {'1': 'nonce_account', '3': 1, '4': 1, '5': 9, '10': 'nonceAccount'},
     {'1': 'rent', '3': 2, '4': 1, '5': 4, '10': 'rent'},
-    {'1': 'nonce_account_private_key', '3': 3, '4': 1, '5': 12, '10': 'nonceAccountPrivateKey'},
+    {
+      '1': 'nonce_account_private_key',
+      '3': 3,
+      '4': 1,
+      '5': 12,
+      '10': 'nonceAccountPrivateKey'
+    },
   ],
 };
 
@@ -226,21 +287,123 @@ const SigningInput$json = {
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'recent_blockhash', '3': 2, '4': 1, '5': 9, '10': 'recentBlockhash'},
     {'1': 'v0_msg', '3': 3, '4': 1, '5': 8, '10': 'v0Msg'},
-    {'1': 'transfer_transaction', '3': 4, '4': 1, '5': 11, '6': '.TW.Solana.Proto.Transfer', '9': 0, '10': 'transferTransaction'},
-    {'1': 'delegate_stake_transaction', '3': 5, '4': 1, '5': 11, '6': '.TW.Solana.Proto.DelegateStake', '9': 0, '10': 'delegateStakeTransaction'},
-    {'1': 'deactivate_stake_transaction', '3': 6, '4': 1, '5': 11, '6': '.TW.Solana.Proto.DeactivateStake', '9': 0, '10': 'deactivateStakeTransaction'},
-    {'1': 'deactivate_all_stake_transaction', '3': 7, '4': 1, '5': 11, '6': '.TW.Solana.Proto.DeactivateAllStake', '9': 0, '10': 'deactivateAllStakeTransaction'},
-    {'1': 'withdraw_transaction', '3': 8, '4': 1, '5': 11, '6': '.TW.Solana.Proto.WithdrawStake', '9': 0, '10': 'withdrawTransaction'},
-    {'1': 'withdraw_all_transaction', '3': 9, '4': 1, '5': 11, '6': '.TW.Solana.Proto.WithdrawAllStake', '9': 0, '10': 'withdrawAllTransaction'},
-    {'1': 'create_token_account_transaction', '3': 10, '4': 1, '5': 11, '6': '.TW.Solana.Proto.CreateTokenAccount', '9': 0, '10': 'createTokenAccountTransaction'},
-    {'1': 'token_transfer_transaction', '3': 11, '4': 1, '5': 11, '6': '.TW.Solana.Proto.TokenTransfer', '9': 0, '10': 'tokenTransferTransaction'},
-    {'1': 'create_and_transfer_token_transaction', '3': 12, '4': 1, '5': 11, '6': '.TW.Solana.Proto.CreateAndTransferToken', '9': 0, '10': 'createAndTransferTokenTransaction'},
-    {'1': 'create_nonce_account', '3': 13, '4': 1, '5': 11, '6': '.TW.Solana.Proto.CreateNonceAccount', '9': 0, '10': 'createNonceAccount'},
-    {'1': 'withdraw_nonce_account', '3': 16, '4': 1, '5': 11, '6': '.TW.Solana.Proto.WithdrawNonceAccount', '9': 0, '10': 'withdrawNonceAccount'},
-    {'1': 'advance_nonce_account', '3': 19, '4': 1, '5': 11, '6': '.TW.Solana.Proto.AdvanceNonceAccount', '9': 0, '10': 'advanceNonceAccount'},
+    {
+      '1': 'transfer_transaction',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.Transfer',
+      '9': 0,
+      '10': 'transferTransaction'
+    },
+    {
+      '1': 'delegate_stake_transaction',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.DelegateStake',
+      '9': 0,
+      '10': 'delegateStakeTransaction'
+    },
+    {
+      '1': 'deactivate_stake_transaction',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.DeactivateStake',
+      '9': 0,
+      '10': 'deactivateStakeTransaction'
+    },
+    {
+      '1': 'deactivate_all_stake_transaction',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.DeactivateAllStake',
+      '9': 0,
+      '10': 'deactivateAllStakeTransaction'
+    },
+    {
+      '1': 'withdraw_transaction',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.WithdrawStake',
+      '9': 0,
+      '10': 'withdrawTransaction'
+    },
+    {
+      '1': 'withdraw_all_transaction',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.WithdrawAllStake',
+      '9': 0,
+      '10': 'withdrawAllTransaction'
+    },
+    {
+      '1': 'create_token_account_transaction',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.CreateTokenAccount',
+      '9': 0,
+      '10': 'createTokenAccountTransaction'
+    },
+    {
+      '1': 'token_transfer_transaction',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.TokenTransfer',
+      '9': 0,
+      '10': 'tokenTransferTransaction'
+    },
+    {
+      '1': 'create_and_transfer_token_transaction',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.CreateAndTransferToken',
+      '9': 0,
+      '10': 'createAndTransferTokenTransaction'
+    },
+    {
+      '1': 'create_nonce_account',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.CreateNonceAccount',
+      '9': 0,
+      '10': 'createNonceAccount'
+    },
+    {
+      '1': 'withdraw_nonce_account',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.WithdrawNonceAccount',
+      '9': 0,
+      '10': 'withdrawNonceAccount'
+    },
+    {
+      '1': 'advance_nonce_account',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.AdvanceNonceAccount',
+      '9': 0,
+      '10': 'advanceNonceAccount'
+    },
     {'1': 'sender', '3': 14, '4': 1, '5': 9, '10': 'sender'},
     {'1': 'nonce_account', '3': 15, '4': 1, '5': 9, '10': 'nonceAccount'},
-    {'1': 'fee_payer_private_key', '3': 17, '4': 1, '5': 12, '10': 'feePayerPrivateKey'},
+    {
+      '1': 'fee_payer_private_key',
+      '3': 17,
+      '4': 1,
+      '5': 12,
+      '10': 'feePayerPrivateKey'
+    },
     {'1': 'fee_payer', '3': 18, '4': 1, '5': 9, '10': 'feePayer'},
   ],
   '8': [
@@ -283,7 +446,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 9, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
     {'1': 'unsigned_tx', '3': 4, '4': 1, '5': 9, '10': 'unsignedTx'},
   ],
@@ -301,7 +471,14 @@ const PreSigningOutput$json = {
   '2': [
     {'1': 'signers', '3': 1, '4': 3, '5': 12, '10': 'signers'},
     {'1': 'data', '3': 2, '4': 1, '5': 12, '10': 'data'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -311,4 +488,3 @@ final $typed_data.Uint8List preSigningOutputDescriptor = $convert.base64Decode(
     'ChBQcmVTaWduaW5nT3V0cHV0EhgKB3NpZ25lcnMYASADKAxSB3NpZ25lcnMSEgoEZGF0YRgCIA'
     'EoDFIEZGF0YRIzCgVlcnJvchgDIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JS'
     'BWVycm9yEiMKDWVycm9yX21lc3NhZ2UYBCABKAlSDGVycm9yTWVzc2FnZQ==');
-

@@ -17,8 +17,24 @@ import 'dart:typed_data' as $typed_data;
 const Transaction$json = {
   '1': 'Transaction',
   '2': [
-    {'1': 'transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.Zilliqa.Proto.Transaction.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'raw_transaction', '3': 2, '4': 1, '5': 11, '6': '.TW.Zilliqa.Proto.Transaction.Raw', '9': 0, '10': 'rawTransaction'},
+    {
+      '1': 'transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Zilliqa.Proto.Transaction.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'raw_transaction',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Zilliqa.Proto.Transaction.Raw',
+      '9': 0,
+      '10': 'rawTransaction'
+    },
   ],
   '3': [Transaction_Transfer$json, Transaction_Raw$json],
   '8': [
@@ -63,7 +79,14 @@ const SigningInput$json = {
     {'1': 'gas_price', '3': 4, '4': 1, '5': 12, '10': 'gasPrice'},
     {'1': 'gas_limit', '3': 5, '4': 1, '5': 4, '10': 'gasLimit'},
     {'1': 'private_key', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transaction', '3': 7, '4': 1, '5': 11, '6': '.TW.Zilliqa.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'transaction',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Zilliqa.Proto.Transaction',
+      '10': 'transaction'
+    },
   ],
 };
 
@@ -88,4 +111,3 @@ const SigningOutput$json = {
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhwKCXNpZ25hdHVyZRgBIAEoDFIJc2lnbmF0dXJlEhIKBGpzb24YAi'
     'ABKAlSBGpzb24=');
-

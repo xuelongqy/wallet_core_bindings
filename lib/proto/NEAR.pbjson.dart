@@ -49,16 +49,32 @@ const FullAccessPermission$json = {
 };
 
 /// Descriptor for `FullAccessPermission`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List fullAccessPermissionDescriptor = $convert.base64Decode(
-    'ChRGdWxsQWNjZXNzUGVybWlzc2lvbg==');
+final $typed_data.Uint8List fullAccessPermissionDescriptor =
+    $convert.base64Decode('ChRGdWxsQWNjZXNzUGVybWlzc2lvbg==');
 
 @$core.Deprecated('Use accessKeyDescriptor instead')
 const AccessKey$json = {
   '1': 'AccessKey',
   '2': [
     {'1': 'nonce', '3': 1, '4': 1, '5': 4, '10': 'nonce'},
-    {'1': 'function_call', '3': 2, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.FunctionCallPermission', '9': 0, '10': 'functionCall'},
-    {'1': 'full_access', '3': 3, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.FullAccessPermission', '9': 0, '10': 'fullAccess'},
+    {
+      '1': 'function_call',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.FunctionCallPermission',
+      '9': 0,
+      '10': 'functionCall'
+    },
+    {
+      '1': 'full_access',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.FullAccessPermission',
+      '9': 0,
+      '10': 'fullAccess'
+    },
   ],
   '8': [
     {'1': 'permission'},
@@ -78,8 +94,8 @@ const CreateAccount$json = {
 };
 
 /// Descriptor for `CreateAccount`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createAccountDescriptor = $convert.base64Decode(
-    'Cg1DcmVhdGVBY2NvdW50');
+final $typed_data.Uint8List createAccountDescriptor =
+    $convert.base64Decode('Cg1DcmVhdGVBY2NvdW50');
 
 @$core.Deprecated('Use deployContractDescriptor instead')
 const DeployContract$json = {
@@ -90,8 +106,8 @@ const DeployContract$json = {
 };
 
 /// Descriptor for `DeployContract`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List deployContractDescriptor = $convert.base64Decode(
-    'Cg5EZXBsb3lDb250cmFjdBISCgRjb2RlGAEgASgMUgRjb2Rl');
+final $typed_data.Uint8List deployContractDescriptor =
+    $convert.base64Decode('Cg5EZXBsb3lDb250cmFjdBISCgRjb2RlGAEgASgMUgRjb2Rl');
 
 @$core.Deprecated('Use functionCallDescriptor instead')
 const FunctionCall$json = {
@@ -118,15 +134,22 @@ const Transfer$json = {
 };
 
 /// Descriptor for `Transfer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transferDescriptor = $convert.base64Decode(
-    'CghUcmFuc2ZlchIYCgdkZXBvc2l0GAEgASgMUgdkZXBvc2l0');
+final $typed_data.Uint8List transferDescriptor =
+    $convert.base64Decode('CghUcmFuc2ZlchIYCgdkZXBvc2l0GAEgASgMUgdkZXBvc2l0');
 
 @$core.Deprecated('Use stakeDescriptor instead')
 const Stake$json = {
   '1': 'Stake',
   '2': [
     {'1': 'stake', '3': 1, '4': 1, '5': 12, '10': 'stake'},
-    {'1': 'public_key', '3': 2, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.PublicKey', '10': 'publicKey'},
+    {
+      '1': 'public_key',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.PublicKey',
+      '10': 'publicKey'
+    },
   ],
 };
 
@@ -139,8 +162,22 @@ final $typed_data.Uint8List stakeDescriptor = $convert.base64Decode(
 const AddKey$json = {
   '1': 'AddKey',
   '2': [
-    {'1': 'public_key', '3': 1, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.PublicKey', '10': 'publicKey'},
-    {'1': 'access_key', '3': 2, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.AccessKey', '10': 'accessKey'},
+    {
+      '1': 'public_key',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.PublicKey',
+      '10': 'publicKey'
+    },
+    {
+      '1': 'access_key',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.AccessKey',
+      '10': 'accessKey'
+    },
   ],
 };
 
@@ -154,7 +191,14 @@ final $typed_data.Uint8List addKeyDescriptor = $convert.base64Decode(
 const DeleteKey$json = {
   '1': 'DeleteKey',
   '2': [
-    {'1': 'public_key', '3': 1, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.PublicKey', '10': 'publicKey'},
+    {
+      '1': 'public_key',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.PublicKey',
+      '10': 'publicKey'
+    },
   ],
 };
 
@@ -196,15 +240,87 @@ final $typed_data.Uint8List tokenTransferDescriptor = $convert.base64Decode(
 const Action$json = {
   '1': 'Action',
   '2': [
-    {'1': 'create_account', '3': 1, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.CreateAccount', '9': 0, '10': 'createAccount'},
-    {'1': 'deploy_contract', '3': 2, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.DeployContract', '9': 0, '10': 'deployContract'},
-    {'1': 'function_call', '3': 3, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.FunctionCall', '9': 0, '10': 'functionCall'},
-    {'1': 'transfer', '3': 4, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'stake', '3': 5, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.Stake', '9': 0, '10': 'stake'},
-    {'1': 'add_key', '3': 6, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.AddKey', '9': 0, '10': 'addKey'},
-    {'1': 'delete_key', '3': 7, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.DeleteKey', '9': 0, '10': 'deleteKey'},
-    {'1': 'delete_account', '3': 8, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.DeleteAccount', '9': 0, '10': 'deleteAccount'},
-    {'1': 'token_transfer', '3': 13, '4': 1, '5': 11, '6': '.TW.NEAR.Proto.TokenTransfer', '9': 0, '10': 'tokenTransfer'},
+    {
+      '1': 'create_account',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.CreateAccount',
+      '9': 0,
+      '10': 'createAccount'
+    },
+    {
+      '1': 'deploy_contract',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.DeployContract',
+      '9': 0,
+      '10': 'deployContract'
+    },
+    {
+      '1': 'function_call',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.FunctionCall',
+      '9': 0,
+      '10': 'functionCall'
+    },
+    {
+      '1': 'transfer',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'stake',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.Stake',
+      '9': 0,
+      '10': 'stake'
+    },
+    {
+      '1': 'add_key',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.AddKey',
+      '9': 0,
+      '10': 'addKey'
+    },
+    {
+      '1': 'delete_key',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.DeleteKey',
+      '9': 0,
+      '10': 'deleteKey'
+    },
+    {
+      '1': 'delete_account',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.DeleteAccount',
+      '9': 0,
+      '10': 'deleteAccount'
+    },
+    {
+      '1': 'token_transfer',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.TokenTransfer',
+      '9': 0,
+      '10': 'tokenTransfer'
+    },
   ],
   '8': [
     {'1': 'payload'},
@@ -233,7 +349,14 @@ const SigningInput$json = {
     {'1': 'nonce', '3': 2, '4': 1, '5': 4, '10': 'nonce'},
     {'1': 'receiver_id', '3': 3, '4': 1, '5': 9, '10': 'receiverId'},
     {'1': 'block_hash', '3': 4, '4': 1, '5': 12, '10': 'blockHash'},
-    {'1': 'actions', '3': 5, '4': 3, '5': 11, '6': '.TW.NEAR.Proto.Action', '10': 'actions'},
+    {
+      '1': 'actions',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEAR.Proto.Action',
+      '10': 'actions'
+    },
     {'1': 'private_key', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'public_key', '3': 7, '4': 1, '5': 12, '10': 'publicKey'},
   ],
@@ -251,8 +374,21 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
 const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
-    {'1': 'signed_transaction', '3': 1, '4': 1, '5': 12, '10': 'signedTransaction'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'signed_transaction',
+      '3': 1,
+      '4': 1,
+      '5': 12,
+      '10': 'signedTransaction'
+    },
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
     {'1': 'hash', '3': 4, '4': 1, '5': 12, '10': 'hash'},
   ],
@@ -264,4 +400,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'NhY3Rpb24SMwoFZXJyb3IYAiABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVl'
     'cnJvchIjCg1lcnJvcl9tZXNzYWdlGAMgASgJUgxlcnJvck1lc3NhZ2USEgoEaGFzaBgEIAEoDF'
     'IEaGFzaA==');
-

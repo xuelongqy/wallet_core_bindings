@@ -48,10 +48,24 @@ final $typed_data.Uint8List tokenAmountDescriptor = $convert.base64Decode(
 const TxInput$json = {
   '1': 'TxInput',
   '2': [
-    {'1': 'out_point', '3': 1, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.OutPoint', '10': 'outPoint'},
+    {
+      '1': 'out_point',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.OutPoint',
+      '10': 'outPoint'
+    },
     {'1': 'address', '3': 2, '4': 1, '5': 9, '10': 'address'},
     {'1': 'amount', '3': 3, '4': 1, '5': 4, '10': 'amount'},
-    {'1': 'token_amount', '3': 4, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TokenAmount', '10': 'tokenAmount'},
+    {
+      '1': 'token_amount',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenAmount',
+      '10': 'tokenAmount'
+    },
   ],
 };
 
@@ -68,7 +82,14 @@ const TxOutput$json = {
   '2': [
     {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
     {'1': 'amount', '3': 2, '4': 1, '5': 4, '10': 'amount'},
-    {'1': 'token_amount', '3': 3, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TokenAmount', '10': 'tokenAmount'},
+    {
+      '1': 'token_amount',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenAmount',
+      '10': 'tokenAmount'
+    },
   ],
 };
 
@@ -82,7 +103,14 @@ final $typed_data.Uint8List txOutputDescriptor = $convert.base64Decode(
 const TokenBundle$json = {
   '1': 'TokenBundle',
   '2': [
-    {'1': 'token', '3': 1, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TokenAmount', '10': 'token'},
+    {
+      '1': 'token',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenAmount',
+      '10': 'token'
+    },
   ],
 };
 
@@ -98,7 +126,14 @@ const Transfer$json = {
     {'1': 'to_address', '3': 1, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'change_address', '3': 2, '4': 1, '5': 9, '10': 'changeAddress'},
     {'1': 'amount', '3': 3, '4': 1, '5': 4, '10': 'amount'},
-    {'1': 'token_amount', '3': 4, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.TokenBundle', '10': 'tokenAmount'},
+    {
+      '1': 'token_amount',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenBundle',
+      '10': 'tokenAmount'
+    },
     {'1': 'use_max_amount', '3': 5, '4': 1, '5': 8, '10': 'useMaxAmount'},
     {'1': 'force_fee', '3': 6, '4': 1, '5': 4, '10': 'forceFee'},
   ],
@@ -180,12 +215,54 @@ const TransactionPlan$json = {
     {'1': 'change', '3': 4, '4': 1, '5': 4, '10': 'change'},
     {'1': 'deposit', '3': 10, '4': 1, '5': 4, '10': 'deposit'},
     {'1': 'undeposit', '3': 11, '4': 1, '5': 4, '10': 'undeposit'},
-    {'1': 'available_tokens', '3': 5, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TokenAmount', '10': 'availableTokens'},
-    {'1': 'output_tokens', '3': 6, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TokenAmount', '10': 'outputTokens'},
-    {'1': 'change_tokens', '3': 7, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TokenAmount', '10': 'changeTokens'},
-    {'1': 'utxos', '3': 8, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TxInput', '10': 'utxos'},
-    {'1': 'error', '3': 9, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
-    {'1': 'extra_outputs', '3': 12, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TxOutput', '10': 'extraOutputs'},
+    {
+      '1': 'available_tokens',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenAmount',
+      '10': 'availableTokens'
+    },
+    {
+      '1': 'output_tokens',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenAmount',
+      '10': 'outputTokens'
+    },
+    {
+      '1': 'change_tokens',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TokenAmount',
+      '10': 'changeTokens'
+    },
+    {
+      '1': 'utxos',
+      '3': 8,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TxInput',
+      '10': 'utxos'
+    },
+    {
+      '1': 'error',
+      '3': 9,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
+    {
+      '1': 'extra_outputs',
+      '3': 12,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TxOutput',
+      '10': 'extraOutputs'
+    },
   ],
 };
 
@@ -207,16 +284,72 @@ final $typed_data.Uint8List transactionPlanDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'utxos', '3': 1, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TxInput', '10': 'utxos'},
+    {
+      '1': 'utxos',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TxInput',
+      '10': 'utxos'
+    },
     {'1': 'private_key', '3': 2, '4': 3, '5': 12, '10': 'privateKey'},
-    {'1': 'transfer_message', '3': 3, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.Transfer', '10': 'transferMessage'},
-    {'1': 'register_staking_key', '3': 6, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.RegisterStakingKey', '10': 'registerStakingKey'},
-    {'1': 'delegate', '3': 7, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.Delegate', '10': 'delegate'},
-    {'1': 'withdraw', '3': 8, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.Withdraw', '10': 'withdraw'},
-    {'1': 'deregister_staking_key', '3': 9, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.DeregisterStakingKey', '10': 'deregisterStakingKey'},
+    {
+      '1': 'transfer_message',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.Transfer',
+      '10': 'transferMessage'
+    },
+    {
+      '1': 'register_staking_key',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.RegisterStakingKey',
+      '10': 'registerStakingKey'
+    },
+    {
+      '1': 'delegate',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.Delegate',
+      '10': 'delegate'
+    },
+    {
+      '1': 'withdraw',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.Withdraw',
+      '10': 'withdraw'
+    },
+    {
+      '1': 'deregister_staking_key',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.DeregisterStakingKey',
+      '10': 'deregisterStakingKey'
+    },
     {'1': 'ttl', '3': 4, '4': 1, '5': 4, '10': 'ttl'},
-    {'1': 'plan', '3': 5, '4': 1, '5': 11, '6': '.TW.Cardano.Proto.TransactionPlan', '10': 'plan'},
-    {'1': 'extra_outputs', '3': 10, '4': 3, '5': 11, '6': '.TW.Cardano.Proto.TxOutput', '10': 'extraOutputs'},
+    {
+      '1': 'plan',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TransactionPlan',
+      '10': 'plan'
+    },
+    {
+      '1': 'extra_outputs',
+      '3': 10,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.TxOutput',
+      '10': 'extraOutputs'
+    },
   ],
 };
 
@@ -240,7 +373,14 @@ const SigningOutput$json = {
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'tx_id', '3': 2, '4': 1, '5': 12, '10': 'txId'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -250,4 +390,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSEwoFdHhfaWQYAiABKA'
     'xSBHR4SWQSMwoFZXJyb3IYAyABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVl'
     'cnJvchIjCg1lcnJvcl9tZXNzYWdlGAQgASgJUgxlcnJvck1lc3NhZ2U=');
-

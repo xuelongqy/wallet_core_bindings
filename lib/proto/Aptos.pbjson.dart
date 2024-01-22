@@ -48,7 +48,14 @@ const TokenTransferMessage$json = {
   '2': [
     {'1': 'to', '3': 1, '4': 1, '5': 9, '10': 'to'},
     {'1': 'amount', '3': 2, '4': 1, '5': 4, '10': 'amount'},
-    {'1': 'function', '3': 3, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.StructTag', '10': 'function'},
+    {
+      '1': 'function',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.StructTag',
+      '10': 'function'
+    },
   ],
 };
 
@@ -64,7 +71,14 @@ const TokenTransferCoinsMessage$json = {
   '2': [
     {'1': 'to', '3': 1, '4': 1, '5': 9, '10': 'to'},
     {'1': 'amount', '3': 2, '4': 1, '5': 4, '10': 'amount'},
-    {'1': 'function', '3': 3, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.StructTag', '10': 'function'},
+    {
+      '1': 'function',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.StructTag',
+      '10': 'function'
+    },
   ],
 };
 
@@ -78,14 +92,22 @@ final $typed_data.Uint8List tokenTransferCoinsMessageDescriptor = $convert.base6
 const ManagedTokensRegisterMessage$json = {
   '1': 'ManagedTokensRegisterMessage',
   '2': [
-    {'1': 'function', '3': 1, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.StructTag', '10': 'function'},
+    {
+      '1': 'function',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.StructTag',
+      '10': 'function'
+    },
   ],
 };
 
 /// Descriptor for `ManagedTokensRegisterMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List managedTokensRegisterMessageDescriptor = $convert.base64Decode(
-    'ChxNYW5hZ2VkVG9rZW5zUmVnaXN0ZXJNZXNzYWdlEjUKCGZ1bmN0aW9uGAEgASgLMhkuVFcuQX'
-    'B0b3MuUHJvdG8uU3RydWN0VGFnUghmdW5jdGlvbg==');
+final $typed_data.Uint8List managedTokensRegisterMessageDescriptor =
+    $convert.base64Decode(
+        'ChxNYW5hZ2VkVG9rZW5zUmVnaXN0ZXJNZXNzYWdlEjUKCGZ1bmN0aW9uGAEgASgLMhkuVFcuQX'
+        'B0b3MuUHJvdG8uU3RydWN0VGFnUghmdW5jdGlvbg==');
 
 @$core.Deprecated('Use createAccountMessageDescriptor instead')
 const CreateAccountMessage$json = {
@@ -96,8 +118,9 @@ const CreateAccountMessage$json = {
 };
 
 /// Descriptor for `CreateAccountMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createAccountMessageDescriptor = $convert.base64Decode(
-    'ChRDcmVhdGVBY2NvdW50TWVzc2FnZRIZCghhdXRoX2tleRgBIAEoCVIHYXV0aEtleQ==');
+final $typed_data.Uint8List createAccountMessageDescriptor =
+    $convert.base64Decode(
+        'ChRDcmVhdGVBY2NvdW50TWVzc2FnZRIZCghhdXRoX2tleRgBIAEoCVIHYXV0aEtleQ==');
 
 @$core.Deprecated('Use offerNftMessageDescriptor instead')
 const OfferNftMessage$json = {
@@ -166,8 +189,8 @@ const TortugaClaim$json = {
 };
 
 /// Descriptor for `TortugaClaim`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List tortugaClaimDescriptor = $convert.base64Decode(
-    'CgxUb3J0dWdhQ2xhaW0SEAoDaWR4GAEgASgEUgNpZHg=');
+final $typed_data.Uint8List tortugaClaimDescriptor =
+    $convert.base64Decode('CgxUb3J0dWdhQ2xhaW0SEAoDaWR4GAEgASgEUgNpZHg=');
 
 @$core.Deprecated('Use tortugaStakeDescriptor instead')
 const TortugaStake$json = {
@@ -178,8 +201,8 @@ const TortugaStake$json = {
 };
 
 /// Descriptor for `TortugaStake`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List tortugaStakeDescriptor = $convert.base64Decode(
-    'CgxUb3J0dWdhU3Rha2USFgoGYW1vdW50GAEgASgEUgZhbW91bnQ=');
+final $typed_data.Uint8List tortugaStakeDescriptor = $convert
+    .base64Decode('CgxUb3J0dWdhU3Rha2USFgoGYW1vdW50GAEgASgEUgZhbW91bnQ=');
 
 @$core.Deprecated('Use tortugaUnstakeDescriptor instead')
 const TortugaUnstake$json = {
@@ -190,17 +213,47 @@ const TortugaUnstake$json = {
 };
 
 /// Descriptor for `TortugaUnstake`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List tortugaUnstakeDescriptor = $convert.base64Decode(
-    'Cg5Ub3J0dWdhVW5zdGFrZRIWCgZhbW91bnQYASABKARSBmFtb3VudA==');
+final $typed_data.Uint8List tortugaUnstakeDescriptor = $convert
+    .base64Decode('Cg5Ub3J0dWdhVW5zdGFrZRIWCgZhbW91bnQYASABKARSBmFtb3VudA==');
 
 @$core.Deprecated('Use liquidStakingDescriptor instead')
 const LiquidStaking$json = {
   '1': 'LiquidStaking',
   '2': [
-    {'1': 'smart_contract_address', '3': 1, '4': 1, '5': 9, '10': 'smartContractAddress'},
-    {'1': 'stake', '3': 2, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TortugaStake', '9': 0, '10': 'stake'},
-    {'1': 'unstake', '3': 3, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TortugaUnstake', '9': 0, '10': 'unstake'},
-    {'1': 'claim', '3': 4, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TortugaClaim', '9': 0, '10': 'claim'},
+    {
+      '1': 'smart_contract_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'smartContractAddress'
+    },
+    {
+      '1': 'stake',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TortugaStake',
+      '9': 0,
+      '10': 'stake'
+    },
+    {
+      '1': 'unstake',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TortugaUnstake',
+      '9': 0,
+      '10': 'unstake'
+    },
+    {
+      '1': 'claim',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TortugaClaim',
+      '9': 0,
+      '10': 'claim'
+    },
   ],
   '8': [
     {'1': 'liquid_stake_transaction_payload'},
@@ -219,9 +272,33 @@ final $typed_data.Uint8List liquidStakingDescriptor = $convert.base64Decode(
 const NftMessage$json = {
   '1': 'NftMessage',
   '2': [
-    {'1': 'offer_nft', '3': 1, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.OfferNftMessage', '9': 0, '10': 'offerNft'},
-    {'1': 'cancel_offer_nft', '3': 2, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.CancelOfferNftMessage', '9': 0, '10': 'cancelOfferNft'},
-    {'1': 'claim_nft', '3': 3, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.ClaimNftMessage', '9': 0, '10': 'claimNft'},
+    {
+      '1': 'offer_nft',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.OfferNftMessage',
+      '9': 0,
+      '10': 'offerNft'
+    },
+    {
+      '1': 'cancel_offer_nft',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.CancelOfferNftMessage',
+      '9': 0,
+      '10': 'cancelOfferNft'
+    },
+    {
+      '1': 'claim_nft',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.ClaimNftMessage',
+      '9': 0,
+      '10': 'claimNft'
+    },
   ],
   '8': [
     {'1': 'nft_transaction_payload'},
@@ -244,17 +321,79 @@ const SigningInput$json = {
     {'1': 'sequence_number', '3': 2, '4': 1, '5': 3, '10': 'sequenceNumber'},
     {'1': 'max_gas_amount', '3': 3, '4': 1, '5': 4, '10': 'maxGasAmount'},
     {'1': 'gas_unit_price', '3': 4, '4': 1, '5': 4, '10': 'gasUnitPrice'},
-    {'1': 'expiration_timestamp_secs', '3': 5, '4': 1, '5': 4, '10': 'expirationTimestampSecs'},
+    {
+      '1': 'expiration_timestamp_secs',
+      '3': 5,
+      '4': 1,
+      '5': 4,
+      '10': 'expirationTimestampSecs'
+    },
     {'1': 'chain_id', '3': 6, '4': 1, '5': 13, '10': 'chainId'},
     {'1': 'private_key', '3': 7, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'any_encoded', '3': 8, '4': 1, '5': 9, '10': 'anyEncoded'},
-    {'1': 'transfer', '3': 9, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TransferMessage', '9': 0, '10': 'transfer'},
-    {'1': 'token_transfer', '3': 10, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TokenTransferMessage', '9': 0, '10': 'tokenTransfer'},
-    {'1': 'create_account', '3': 11, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.CreateAccountMessage', '9': 0, '10': 'createAccount'},
-    {'1': 'nft_message', '3': 12, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.NftMessage', '9': 0, '10': 'nftMessage'},
-    {'1': 'register_token', '3': 13, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.ManagedTokensRegisterMessage', '9': 0, '10': 'registerToken'},
-    {'1': 'liquid_staking_message', '3': 14, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.LiquidStaking', '9': 0, '10': 'liquidStakingMessage'},
-    {'1': 'token_transfer_coins', '3': 15, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TokenTransferCoinsMessage', '9': 0, '10': 'tokenTransferCoins'},
+    {
+      '1': 'transfer',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TransferMessage',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'token_transfer',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TokenTransferMessage',
+      '9': 0,
+      '10': 'tokenTransfer'
+    },
+    {
+      '1': 'create_account',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.CreateAccountMessage',
+      '9': 0,
+      '10': 'createAccount'
+    },
+    {
+      '1': 'nft_message',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.NftMessage',
+      '9': 0,
+      '10': 'nftMessage'
+    },
+    {
+      '1': 'register_token',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.ManagedTokensRegisterMessage',
+      '9': 0,
+      '10': 'registerToken'
+    },
+    {
+      '1': 'liquid_staking_message',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.LiquidStaking',
+      '9': 0,
+      '10': 'liquidStakingMessage'
+    },
+    {
+      '1': 'token_transfer_coins',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TokenTransferCoinsMessage',
+      '9': 0,
+      '10': 'tokenTransferCoins'
+    },
   ],
   '8': [
     {'1': 'transaction_payload'},
@@ -290,19 +429,34 @@ const TransactionAuthenticator$json = {
 };
 
 /// Descriptor for `TransactionAuthenticator`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transactionAuthenticatorDescriptor = $convert.base64Decode(
-    'ChhUcmFuc2FjdGlvbkF1dGhlbnRpY2F0b3ISHAoJc2lnbmF0dXJlGAEgASgMUglzaWduYXR1cm'
-    'USHQoKcHVibGljX2tleRgCIAEoDFIJcHVibGljS2V5');
+final $typed_data.Uint8List transactionAuthenticatorDescriptor =
+    $convert.base64Decode(
+        'ChhUcmFuc2FjdGlvbkF1dGhlbnRpY2F0b3ISHAoJc2lnbmF0dXJlGAEgASgMUglzaWduYXR1cm'
+        'USHQoKcHVibGljX2tleRgCIAEoDFIJcHVibGljS2V5');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'raw_txn', '3': 1, '4': 1, '5': 12, '10': 'rawTxn'},
-    {'1': 'authenticator', '3': 2, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.TransactionAuthenticator', '10': 'authenticator'},
+    {
+      '1': 'authenticator',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.TransactionAuthenticator',
+      '10': 'authenticator'
+    },
     {'1': 'encoded', '3': 3, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'json', '3': 4, '4': 1, '5': 9, '10': 'json'},
-    {'1': 'error', '3': 5, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 6, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -314,4 +468,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'ZW50aWNhdG9yEhgKB2VuY29kZWQYAyABKAxSB2VuY29kZWQSEgoEanNvbhgEIAEoCVIEanNvbh'
     'IzCgVlcnJvchgFIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9yEiMK'
     'DWVycm9yX21lc3NhZ2UYBiABKAlSDGVycm9yTWVzc2FnZQ==');
-

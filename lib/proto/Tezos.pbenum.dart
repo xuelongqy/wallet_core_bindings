@@ -15,23 +15,28 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 /// Operation types
 class Operation_OperationKind extends $pb.ProtobufEnum {
-  static const Operation_OperationKind ENDORSEMENT = Operation_OperationKind._(0, _omitEnumNames ? '' : 'ENDORSEMENT');
-  static const Operation_OperationKind REVEAL = Operation_OperationKind._(107, _omitEnumNames ? '' : 'REVEAL');
-  static const Operation_OperationKind TRANSACTION = Operation_OperationKind._(108, _omitEnumNames ? '' : 'TRANSACTION');
-  static const Operation_OperationKind DELEGATION = Operation_OperationKind._(110, _omitEnumNames ? '' : 'DELEGATION');
+  static const Operation_OperationKind ENDORSEMENT =
+      Operation_OperationKind._(0, _omitEnumNames ? '' : 'ENDORSEMENT');
+  static const Operation_OperationKind REVEAL =
+      Operation_OperationKind._(107, _omitEnumNames ? '' : 'REVEAL');
+  static const Operation_OperationKind TRANSACTION =
+      Operation_OperationKind._(108, _omitEnumNames ? '' : 'TRANSACTION');
+  static const Operation_OperationKind DELEGATION =
+      Operation_OperationKind._(110, _omitEnumNames ? '' : 'DELEGATION');
 
-  static const $core.List<Operation_OperationKind> values = <Operation_OperationKind> [
+  static const $core.List<Operation_OperationKind> values =
+      <Operation_OperationKind>[
     ENDORSEMENT,
     REVEAL,
     TRANSACTION,
     DELEGATION,
   ];
 
-  static final $core.Map<$core.int, Operation_OperationKind> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, Operation_OperationKind> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static Operation_OperationKind? valueOf($core.int value) => _byValue[value];
 
   const Operation_OperationKind._($core.int v, $core.String n) : super(v, n);
 }
-
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

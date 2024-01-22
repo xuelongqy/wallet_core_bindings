@@ -30,7 +30,15 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'sign_direct_message', '3': 2, '4': 1, '5': 11, '6': '.TW.Sui.Proto.SignDirect', '9': 0, '10': 'signDirectMessage'},
+    {
+      '1': 'sign_direct_message',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Sui.Proto.SignDirect',
+      '9': 0,
+      '10': 'signDirectMessage'
+    },
   ],
   '8': [
     {'1': 'transaction_payload'},
@@ -49,7 +57,14 @@ const SigningOutput$json = {
   '2': [
     {'1': 'unsigned_tx', '3': 1, '4': 1, '5': 9, '10': 'unsignedTx'},
     {'1': 'signature', '3': 2, '4': 1, '5': 9, '10': 'signature'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -60,4 +75,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     '5hdHVyZRgCIAEoCVIJc2lnbmF0dXJlEjMKBWVycm9yGAMgASgOMh0uVFcuQ29tbW9uLlByb3Rv'
     'LlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZRgEIAEoCVIMZXJyb3JNZXNzYW'
     'dl');
-

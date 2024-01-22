@@ -15,19 +15,21 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 /// Defines the type of `from` address derivation.
 class DerivationType extends $pb.ProtobufEnum {
-  static const DerivationType SECP256K1 = DerivationType._(0, _omitEnumNames ? '' : 'SECP256K1');
-  static const DerivationType DELEGATED = DerivationType._(1, _omitEnumNames ? '' : 'DELEGATED');
+  static const DerivationType SECP256K1 =
+      DerivationType._(0, _omitEnumNames ? '' : 'SECP256K1');
+  static const DerivationType DELEGATED =
+      DerivationType._(1, _omitEnumNames ? '' : 'DELEGATED');
 
-  static const $core.List<DerivationType> values = <DerivationType> [
+  static const $core.List<DerivationType> values = <DerivationType>[
     SECP256K1,
     DELEGATED,
   ];
 
-  static final $core.Map<$core.int, DerivationType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, DerivationType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static DerivationType? valueOf($core.int value) => _byValue[value];
 
   const DerivationType._($core.int v, $core.String n) : super(v, n);
 }
-
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

@@ -37,8 +37,8 @@ const SigningMode$json = {
 };
 
 /// Descriptor for `SigningMode`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List signingModeDescriptor = $convert.base64Decode(
-    'CgtTaWduaW5nTW9kZRIICgRKU09OEAASDAoIUHJvdG9idWYQAQ==');
+final $typed_data.Uint8List signingModeDescriptor = $convert
+    .base64Decode('CgtTaWduaW5nTW9kZRIICgRKU09OEAASDAoIUHJvdG9idWYQAQ==');
 
 @$core.Deprecated('Use amountDescriptor instead')
 const Amount$json = {
@@ -57,7 +57,14 @@ final $typed_data.Uint8List amountDescriptor = $convert.base64Decode(
 const Fee$json = {
   '1': 'Fee',
   '2': [
-    {'1': 'amounts', '3': 1, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'amounts'},
+    {
+      '1': 'amounts',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'amounts'
+    },
     {'1': 'gas', '3': 2, '4': 1, '5': 4, '10': 'gas'},
   ],
 };
@@ -101,7 +108,14 @@ final $typed_data.Uint8List tHORChainAssetDescriptor = $convert.base64Decode(
 const THORChainCoin$json = {
   '1': 'THORChainCoin',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.THORChainAsset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.THORChainAsset',
+      '10': 'asset'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 9, '10': 'amount'},
     {'1': 'decimals', '3': 3, '4': 1, '5': 3, '10': 'decimals'},
   ],
@@ -117,30 +131,230 @@ final $typed_data.Uint8List tHORChainCoinDescriptor = $convert.base64Decode(
 const Message$json = {
   '1': 'Message',
   '2': [
-    {'1': 'send_coins_message', '3': 1, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.Send', '9': 0, '10': 'sendCoinsMessage'},
-    {'1': 'transfer_tokens_message', '3': 2, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.Transfer', '9': 0, '10': 'transferTokensMessage'},
-    {'1': 'stake_message', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.Delegate', '9': 0, '10': 'stakeMessage'},
-    {'1': 'unstake_message', '3': 4, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.Undelegate', '9': 0, '10': 'unstakeMessage'},
-    {'1': 'restake_message', '3': 5, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.BeginRedelegate', '9': 0, '10': 'restakeMessage'},
-    {'1': 'withdraw_stake_reward_message', '3': 6, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WithdrawDelegationReward', '9': 0, '10': 'withdrawStakeRewardMessage'},
-    {'1': 'raw_json_message', '3': 7, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.RawJSON', '9': 0, '10': 'rawJsonMessage'},
-    {'1': 'wasm_terra_execute_contract_transfer_message', '3': 8, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WasmTerraExecuteContractTransfer', '9': 0, '10': 'wasmTerraExecuteContractTransferMessage'},
-    {'1': 'wasm_terra_execute_contract_send_message', '3': 9, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WasmTerraExecuteContractSend', '9': 0, '10': 'wasmTerraExecuteContractSendMessage'},
-    {'1': 'thorchain_send_message', '3': 10, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.THORChainSend', '9': 0, '10': 'thorchainSendMessage'},
-    {'1': 'wasm_terra_execute_contract_generic', '3': 12, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WasmTerraExecuteContractGeneric', '9': 0, '10': 'wasmTerraExecuteContractGeneric'},
-    {'1': 'wasm_execute_contract_transfer_message', '3': 13, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WasmExecuteContractTransfer', '9': 0, '10': 'wasmExecuteContractTransferMessage'},
-    {'1': 'wasm_execute_contract_send_message', '3': 14, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WasmExecuteContractSend', '9': 0, '10': 'wasmExecuteContractSendMessage'},
-    {'1': 'wasm_execute_contract_generic', '3': 15, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.WasmExecuteContractGeneric', '9': 0, '10': 'wasmExecuteContractGeneric'},
-    {'1': 'sign_direct_message', '3': 16, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.SignDirect', '9': 0, '10': 'signDirectMessage'},
-    {'1': 'auth_grant', '3': 17, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.AuthGrant', '9': 0, '10': 'authGrant'},
-    {'1': 'auth_revoke', '3': 18, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.AuthRevoke', '9': 0, '10': 'authRevoke'},
-    {'1': 'set_withdraw_address_message', '3': 19, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.SetWithdrawAddress', '9': 0, '10': 'setWithdrawAddressMessage'},
-    {'1': 'msg_vote', '3': 20, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.MsgVote', '9': 0, '10': 'msgVote'},
-    {'1': 'msg_stride_liquid_staking_stake', '3': 21, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.MsgStrideLiquidStakingStake', '9': 0, '10': 'msgStrideLiquidStakingStake'},
-    {'1': 'msg_stride_liquid_staking_redeem', '3': 22, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.MsgStrideLiquidStakingRedeem', '9': 0, '10': 'msgStrideLiquidStakingRedeem'},
-    {'1': 'thorchain_deposit_message', '3': 23, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.THORChainDeposit', '9': 0, '10': 'thorchainDepositMessage'},
+    {
+      '1': 'send_coins_message',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.Send',
+      '9': 0,
+      '10': 'sendCoinsMessage'
+    },
+    {
+      '1': 'transfer_tokens_message',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.Transfer',
+      '9': 0,
+      '10': 'transferTokensMessage'
+    },
+    {
+      '1': 'stake_message',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.Delegate',
+      '9': 0,
+      '10': 'stakeMessage'
+    },
+    {
+      '1': 'unstake_message',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.Undelegate',
+      '9': 0,
+      '10': 'unstakeMessage'
+    },
+    {
+      '1': 'restake_message',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.BeginRedelegate',
+      '9': 0,
+      '10': 'restakeMessage'
+    },
+    {
+      '1': 'withdraw_stake_reward_message',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WithdrawDelegationReward',
+      '9': 0,
+      '10': 'withdrawStakeRewardMessage'
+    },
+    {
+      '1': 'raw_json_message',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.RawJSON',
+      '9': 0,
+      '10': 'rawJsonMessage'
+    },
+    {
+      '1': 'wasm_terra_execute_contract_transfer_message',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WasmTerraExecuteContractTransfer',
+      '9': 0,
+      '10': 'wasmTerraExecuteContractTransferMessage'
+    },
+    {
+      '1': 'wasm_terra_execute_contract_send_message',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WasmTerraExecuteContractSend',
+      '9': 0,
+      '10': 'wasmTerraExecuteContractSendMessage'
+    },
+    {
+      '1': 'thorchain_send_message',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.THORChainSend',
+      '9': 0,
+      '10': 'thorchainSendMessage'
+    },
+    {
+      '1': 'wasm_terra_execute_contract_generic',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WasmTerraExecuteContractGeneric',
+      '9': 0,
+      '10': 'wasmTerraExecuteContractGeneric'
+    },
+    {
+      '1': 'wasm_execute_contract_transfer_message',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WasmExecuteContractTransfer',
+      '9': 0,
+      '10': 'wasmExecuteContractTransferMessage'
+    },
+    {
+      '1': 'wasm_execute_contract_send_message',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WasmExecuteContractSend',
+      '9': 0,
+      '10': 'wasmExecuteContractSendMessage'
+    },
+    {
+      '1': 'wasm_execute_contract_generic',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.WasmExecuteContractGeneric',
+      '9': 0,
+      '10': 'wasmExecuteContractGeneric'
+    },
+    {
+      '1': 'sign_direct_message',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.SignDirect',
+      '9': 0,
+      '10': 'signDirectMessage'
+    },
+    {
+      '1': 'auth_grant',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.AuthGrant',
+      '9': 0,
+      '10': 'authGrant'
+    },
+    {
+      '1': 'auth_revoke',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.AuthRevoke',
+      '9': 0,
+      '10': 'authRevoke'
+    },
+    {
+      '1': 'set_withdraw_address_message',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.SetWithdrawAddress',
+      '9': 0,
+      '10': 'setWithdrawAddressMessage'
+    },
+    {
+      '1': 'msg_vote',
+      '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.MsgVote',
+      '9': 0,
+      '10': 'msgVote'
+    },
+    {
+      '1': 'msg_stride_liquid_staking_stake',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.MsgStrideLiquidStakingStake',
+      '9': 0,
+      '10': 'msgStrideLiquidStakingStake'
+    },
+    {
+      '1': 'msg_stride_liquid_staking_redeem',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.MsgStrideLiquidStakingRedeem',
+      '9': 0,
+      '10': 'msgStrideLiquidStakingRedeem'
+    },
+    {
+      '1': 'thorchain_deposit_message',
+      '3': 23,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.THORChainDeposit',
+      '9': 0,
+      '10': 'thorchainDepositMessage'
+    },
   ],
-  '3': [Message_Send$json, Message_Transfer$json, Message_Delegate$json, Message_Undelegate$json, Message_BeginRedelegate$json, Message_SetWithdrawAddress$json, Message_WithdrawDelegationReward$json, Message_WasmTerraExecuteContractTransfer$json, Message_WasmTerraExecuteContractSend$json, Message_THORChainSend$json, Message_THORChainDeposit$json, Message_WasmTerraExecuteContractGeneric$json, Message_WasmExecuteContractTransfer$json, Message_WasmExecuteContractSend$json, Message_WasmExecuteContractGeneric$json, Message_RawJSON$json, Message_SignDirect$json, Message_StakeAuthorization$json, Message_AuthGrant$json, Message_AuthRevoke$json, Message_MsgVote$json, Message_MsgStrideLiquidStakingStake$json, Message_MsgStrideLiquidStakingRedeem$json],
+  '3': [
+    Message_Send$json,
+    Message_Transfer$json,
+    Message_Delegate$json,
+    Message_Undelegate$json,
+    Message_BeginRedelegate$json,
+    Message_SetWithdrawAddress$json,
+    Message_WithdrawDelegationReward$json,
+    Message_WasmTerraExecuteContractTransfer$json,
+    Message_WasmTerraExecuteContractSend$json,
+    Message_THORChainSend$json,
+    Message_THORChainDeposit$json,
+    Message_WasmTerraExecuteContractGeneric$json,
+    Message_WasmExecuteContractTransfer$json,
+    Message_WasmExecuteContractSend$json,
+    Message_WasmExecuteContractGeneric$json,
+    Message_RawJSON$json,
+    Message_SignDirect$json,
+    Message_StakeAuthorization$json,
+    Message_AuthGrant$json,
+    Message_AuthRevoke$json,
+    Message_MsgVote$json,
+    Message_MsgStrideLiquidStakingStake$json,
+    Message_MsgStrideLiquidStakingRedeem$json
+  ],
   '4': [Message_AuthorizationType$json, Message_VoteOption$json],
   '8': [
     {'1': 'message_oneof'},
@@ -153,7 +367,14 @@ const Message_Send$json = {
   '2': [
     {'1': 'from_address', '3': 1, '4': 1, '5': 9, '10': 'fromAddress'},
     {'1': 'to_address', '3': 2, '4': 1, '5': 9, '10': 'toAddress'},
-    {'1': 'amounts', '3': 3, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'amounts'},
+    {
+      '1': 'amounts',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'amounts'
+    },
     {'1': 'type_prefix', '3': 4, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -164,11 +385,31 @@ const Message_Transfer$json = {
   '2': [
     {'1': 'source_port', '3': 1, '4': 1, '5': 9, '10': 'sourcePort'},
     {'1': 'source_channel', '3': 2, '4': 1, '5': 9, '10': 'sourceChannel'},
-    {'1': 'token', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'token'},
+    {
+      '1': 'token',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'token'
+    },
     {'1': 'sender', '3': 4, '4': 1, '5': 9, '10': 'sender'},
     {'1': 'receiver', '3': 5, '4': 1, '5': 9, '10': 'receiver'},
-    {'1': 'timeout_height', '3': 6, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Height', '10': 'timeoutHeight'},
-    {'1': 'timeout_timestamp', '3': 7, '4': 1, '5': 4, '10': 'timeoutTimestamp'},
+    {
+      '1': 'timeout_height',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Height',
+      '10': 'timeoutHeight'
+    },
+    {
+      '1': 'timeout_timestamp',
+      '3': 7,
+      '4': 1,
+      '5': 4,
+      '10': 'timeoutTimestamp'
+    },
   ],
 };
 
@@ -176,9 +417,28 @@ const Message_Transfer$json = {
 const Message_Delegate$json = {
   '1': 'Delegate',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
-    {'1': 'validator_address', '3': 2, '4': 1, '5': 9, '10': 'validatorAddress'},
-    {'1': 'amount', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'amount'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
+    {
+      '1': 'validator_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
+    {
+      '1': 'amount',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'amount'
+    },
     {'1': 'type_prefix', '3': 4, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -187,9 +447,28 @@ const Message_Delegate$json = {
 const Message_Undelegate$json = {
   '1': 'Undelegate',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
-    {'1': 'validator_address', '3': 2, '4': 1, '5': 9, '10': 'validatorAddress'},
-    {'1': 'amount', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'amount'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
+    {
+      '1': 'validator_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
+    {
+      '1': 'amount',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'amount'
+    },
     {'1': 'type_prefix', '3': 4, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -198,10 +477,35 @@ const Message_Undelegate$json = {
 const Message_BeginRedelegate$json = {
   '1': 'BeginRedelegate',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
-    {'1': 'validator_src_address', '3': 2, '4': 1, '5': 9, '10': 'validatorSrcAddress'},
-    {'1': 'validator_dst_address', '3': 3, '4': 1, '5': 9, '10': 'validatorDstAddress'},
-    {'1': 'amount', '3': 4, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'amount'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
+    {
+      '1': 'validator_src_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorSrcAddress'
+    },
+    {
+      '1': 'validator_dst_address',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorDstAddress'
+    },
+    {
+      '1': 'amount',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'amount'
+    },
     {'1': 'type_prefix', '3': 5, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -210,7 +514,13 @@ const Message_BeginRedelegate$json = {
 const Message_SetWithdrawAddress$json = {
   '1': 'SetWithdrawAddress',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
     {'1': 'withdraw_address', '3': 2, '4': 1, '5': 9, '10': 'withdrawAddress'},
     {'1': 'type_prefix', '3': 3, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
@@ -220,8 +530,20 @@ const Message_SetWithdrawAddress$json = {
 const Message_WithdrawDelegationReward$json = {
   '1': 'WithdrawDelegationReward',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
-    {'1': 'validator_address', '3': 2, '4': 1, '5': 9, '10': 'validatorAddress'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
+    {
+      '1': 'validator_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
     {'1': 'type_prefix', '3': 3, '4': 1, '5': 9, '10': 'typePrefix'},
   ],
 };
@@ -233,7 +555,13 @@ const Message_WasmTerraExecuteContractTransfer$json = {
     {'1': 'sender_address', '3': 1, '4': 1, '5': 9, '10': 'senderAddress'},
     {'1': 'contract_address', '3': 2, '4': 1, '5': 9, '10': 'contractAddress'},
     {'1': 'amount', '3': 3, '4': 1, '5': 12, '10': 'amount'},
-    {'1': 'recipient_address', '3': 4, '4': 1, '5': 9, '10': 'recipientAddress'},
+    {
+      '1': 'recipient_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientAddress'
+    },
   ],
 };
 
@@ -244,7 +572,13 @@ const Message_WasmTerraExecuteContractSend$json = {
     {'1': 'sender_address', '3': 1, '4': 1, '5': 9, '10': 'senderAddress'},
     {'1': 'contract_address', '3': 2, '4': 1, '5': 9, '10': 'contractAddress'},
     {'1': 'amount', '3': 3, '4': 1, '5': 12, '10': 'amount'},
-    {'1': 'recipient_contract_address', '3': 4, '4': 1, '5': 9, '10': 'recipientContractAddress'},
+    {
+      '1': 'recipient_contract_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientContractAddress'
+    },
     {'1': 'msg', '3': 5, '4': 1, '5': 9, '10': 'msg'},
     {'1': 'coin', '3': 6, '4': 3, '5': 9, '10': 'coin'},
   ],
@@ -256,7 +590,14 @@ const Message_THORChainSend$json = {
   '2': [
     {'1': 'from_address', '3': 1, '4': 1, '5': 12, '10': 'fromAddress'},
     {'1': 'to_address', '3': 2, '4': 1, '5': 12, '10': 'toAddress'},
-    {'1': 'amounts', '3': 3, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'amounts'},
+    {
+      '1': 'amounts',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'amounts'
+    },
   ],
 };
 
@@ -264,7 +605,14 @@ const Message_THORChainSend$json = {
 const Message_THORChainDeposit$json = {
   '1': 'THORChainDeposit',
   '2': [
-    {'1': 'coins', '3': 1, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.THORChainCoin', '10': 'coins'},
+    {
+      '1': 'coins',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.THORChainCoin',
+      '10': 'coins'
+    },
     {'1': 'memo', '3': 2, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'signer', '3': 3, '4': 1, '5': 12, '10': 'signer'},
   ],
@@ -277,7 +625,14 @@ const Message_WasmTerraExecuteContractGeneric$json = {
     {'1': 'sender_address', '3': 1, '4': 1, '5': 9, '10': 'senderAddress'},
     {'1': 'contract_address', '3': 2, '4': 1, '5': 9, '10': 'contractAddress'},
     {'1': 'execute_msg', '3': 3, '4': 1, '5': 9, '10': 'executeMsg'},
-    {'1': 'coins', '3': 5, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'coins'},
+    {
+      '1': 'coins',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'coins'
+    },
   ],
 };
 
@@ -288,7 +643,13 @@ const Message_WasmExecuteContractTransfer$json = {
     {'1': 'sender_address', '3': 1, '4': 1, '5': 9, '10': 'senderAddress'},
     {'1': 'contract_address', '3': 2, '4': 1, '5': 9, '10': 'contractAddress'},
     {'1': 'amount', '3': 3, '4': 1, '5': 12, '10': 'amount'},
-    {'1': 'recipient_address', '3': 4, '4': 1, '5': 9, '10': 'recipientAddress'},
+    {
+      '1': 'recipient_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientAddress'
+    },
   ],
 };
 
@@ -299,7 +660,13 @@ const Message_WasmExecuteContractSend$json = {
     {'1': 'sender_address', '3': 1, '4': 1, '5': 9, '10': 'senderAddress'},
     {'1': 'contract_address', '3': 2, '4': 1, '5': 9, '10': 'contractAddress'},
     {'1': 'amount', '3': 3, '4': 1, '5': 12, '10': 'amount'},
-    {'1': 'recipient_contract_address', '3': 4, '4': 1, '5': 9, '10': 'recipientContractAddress'},
+    {
+      '1': 'recipient_contract_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientContractAddress'
+    },
     {'1': 'msg', '3': 5, '4': 1, '5': 9, '10': 'msg'},
     {'1': 'coin', '3': 6, '4': 3, '5': 9, '10': 'coin'},
   ],
@@ -312,7 +679,14 @@ const Message_WasmExecuteContractGeneric$json = {
     {'1': 'sender_address', '3': 1, '4': 1, '5': 9, '10': 'senderAddress'},
     {'1': 'contract_address', '3': 2, '4': 1, '5': 9, '10': 'contractAddress'},
     {'1': 'execute_msg', '3': 3, '4': 1, '5': 9, '10': 'executeMsg'},
-    {'1': 'coins', '3': 5, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'coins'},
+    {
+      '1': 'coins',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'coins'
+    },
   ],
 };
 
@@ -338,10 +712,40 @@ const Message_SignDirect$json = {
 const Message_StakeAuthorization$json = {
   '1': 'StakeAuthorization',
   '2': [
-    {'1': 'max_tokens', '3': 1, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Amount', '10': 'maxTokens'},
-    {'1': 'allow_list', '3': 2, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.StakeAuthorization.Validators', '9': 0, '10': 'allowList'},
-    {'1': 'deny_list', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.StakeAuthorization.Validators', '9': 0, '10': 'denyList'},
-    {'1': 'authorization_type', '3': 4, '4': 1, '5': 14, '6': '.TW.Cosmos.Proto.Message.AuthorizationType', '10': 'authorizationType'},
+    {
+      '1': 'max_tokens',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Amount',
+      '10': 'maxTokens'
+    },
+    {
+      '1': 'allow_list',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.StakeAuthorization.Validators',
+      '9': 0,
+      '10': 'allowList'
+    },
+    {
+      '1': 'deny_list',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.StakeAuthorization.Validators',
+      '9': 0,
+      '10': 'denyList'
+    },
+    {
+      '1': 'authorization_type',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cosmos.Proto.Message.AuthorizationType',
+      '10': 'authorizationType'
+    },
   ],
   '3': [Message_StakeAuthorization_Validators$json],
   '8': [
@@ -363,7 +767,15 @@ const Message_AuthGrant$json = {
   '2': [
     {'1': 'granter', '3': 1, '4': 1, '5': 9, '10': 'granter'},
     {'1': 'grantee', '3': 2, '4': 1, '5': 9, '10': 'grantee'},
-    {'1': 'grant_stake', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Message.StakeAuthorization', '9': 0, '10': 'grantStake'},
+    {
+      '1': 'grant_stake',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message.StakeAuthorization',
+      '9': 0,
+      '10': 'grantStake'
+    },
     {'1': 'expiration', '3': 4, '4': 1, '5': 3, '10': 'expiration'},
   ],
   '8': [
@@ -387,7 +799,14 @@ const Message_MsgVote$json = {
   '2': [
     {'1': 'proposal_id', '3': 1, '4': 1, '5': 4, '10': 'proposalId'},
     {'1': 'voter', '3': 2, '4': 1, '5': 9, '10': 'voter'},
-    {'1': 'option', '3': 3, '4': 1, '5': 14, '6': '.TW.Cosmos.Proto.Message.VoteOption', '10': 'option'},
+    {
+      '1': 'option',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cosmos.Proto.Message.VoteOption',
+      '10': 'option'
+    },
   ],
 };
 
@@ -561,15 +980,43 @@ final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'signing_mode', '3': 1, '4': 1, '5': 14, '6': '.TW.Cosmos.Proto.SigningMode', '10': 'signingMode'},
+    {
+      '1': 'signing_mode',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cosmos.Proto.SigningMode',
+      '10': 'signingMode'
+    },
     {'1': 'account_number', '3': 2, '4': 1, '5': 4, '10': 'accountNumber'},
     {'1': 'chain_id', '3': 3, '4': 1, '5': 9, '10': 'chainId'},
-    {'1': 'fee', '3': 4, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.Fee', '10': 'fee'},
+    {
+      '1': 'fee',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Fee',
+      '10': 'fee'
+    },
     {'1': 'memo', '3': 5, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'sequence', '3': 6, '4': 1, '5': 4, '10': 'sequence'},
     {'1': 'private_key', '3': 7, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'messages', '3': 8, '4': 3, '5': 11, '6': '.TW.Cosmos.Proto.Message', '10': 'messages'},
-    {'1': 'mode', '3': 9, '4': 1, '5': 14, '6': '.TW.Cosmos.Proto.BroadcastMode', '10': 'mode'},
+    {
+      '1': 'messages',
+      '3': 8,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.Message',
+      '10': 'messages'
+    },
+    {
+      '1': 'mode',
+      '3': 9,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cosmos.Proto.BroadcastMode',
+      '10': 'mode'
+    },
     {'1': 'public_key', '3': 10, '4': 1, '5': 12, '10': 'publicKey'},
   ],
 };
@@ -594,7 +1041,14 @@ const SigningOutput$json = {
     {'1': 'serialized', '3': 3, '4': 1, '5': 9, '10': 'serialized'},
     {'1': 'signature_json', '3': 4, '4': 1, '5': 9, '10': 'signatureJson'},
     {'1': 'error_message', '3': 5, '4': 1, '5': 9, '10': 'errorMessage'},
-    {'1': 'error', '3': 6, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
   ],
 };
 
@@ -605,4 +1059,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'anNvbhgEIAEoCVINc2lnbmF0dXJlSnNvbhIjCg1lcnJvcl9tZXNzYWdlGAUgASgJUgxlcnJvck'
     '1lc3NhZ2USMwoFZXJyb3IYBiABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVl'
     'cnJvcg==');
-

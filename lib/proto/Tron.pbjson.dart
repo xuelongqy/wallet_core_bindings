@@ -122,9 +122,10 @@ const WithdrawExpireUnfreezeContract$json = {
 };
 
 /// Descriptor for `WithdrawExpireUnfreezeContract`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List withdrawExpireUnfreezeContractDescriptor = $convert.base64Decode(
-    'Ch5XaXRoZHJhd0V4cGlyZVVuZnJlZXplQ29udHJhY3QSIwoNb3duZXJfYWRkcmVzcxgBIAEoCV'
-    'IMb3duZXJBZGRyZXNz');
+final $typed_data.Uint8List withdrawExpireUnfreezeContractDescriptor =
+    $convert.base64Decode(
+        'Ch5XaXRoZHJhd0V4cGlyZVVuZnJlZXplQ29udHJhY3QSIwoNb3duZXJfYWRkcmVzcxgBIAEoCV'
+        'IMb3duZXJBZGRyZXNz');
 
 @$core.Deprecated('Use delegateResourceContractDescriptor instead')
 const DelegateResourceContract$json = {
@@ -157,10 +158,11 @@ const UnDelegateResourceContract$json = {
 };
 
 /// Descriptor for `UnDelegateResourceContract`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List unDelegateResourceContractDescriptor = $convert.base64Decode(
-    'ChpVbkRlbGVnYXRlUmVzb3VyY2VDb250cmFjdBIjCg1vd25lcl9hZGRyZXNzGAEgASgJUgxvd2'
-    '5lckFkZHJlc3MSGgoIcmVzb3VyY2UYAiABKAlSCHJlc291cmNlEhgKB2JhbGFuY2UYAyABKANS'
-    'B2JhbGFuY2USKQoQcmVjZWl2ZXJfYWRkcmVzcxgEIAEoCVIPcmVjZWl2ZXJBZGRyZXNz');
+final $typed_data.Uint8List unDelegateResourceContractDescriptor =
+    $convert.base64Decode(
+        'ChpVbkRlbGVnYXRlUmVzb3VyY2VDb250cmFjdBIjCg1vd25lcl9hZGRyZXNzGAEgASgJUgxvd2'
+        '5lckFkZHJlc3MSGgoIcmVzb3VyY2UYAiABKAlSCHJlc291cmNlEhgKB2JhbGFuY2UYAyABKANS'
+        'B2JhbGFuY2USKQoQcmVjZWl2ZXJfYWRkcmVzcxgEIAEoCVIPcmVjZWl2ZXJBZGRyZXNz');
 
 @$core.Deprecated('Use unfreezeBalanceContractDescriptor instead')
 const UnfreezeBalanceContract$json = {
@@ -213,7 +215,14 @@ const VoteWitnessContract$json = {
   '1': 'VoteWitnessContract',
   '2': [
     {'1': 'owner_address', '3': 1, '4': 1, '5': 9, '10': 'ownerAddress'},
-    {'1': 'votes', '3': 2, '4': 3, '5': 11, '6': '.TW.Tron.Proto.VoteWitnessContract.Vote', '10': 'votes'},
+    {
+      '1': 'votes',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Tron.Proto.VoteWitnessContract.Vote',
+      '10': 'votes'
+    },
     {'1': 'support', '3': 3, '4': 1, '5': 8, '10': 'support'},
   ],
   '3': [VoteWitnessContract_Vote$json],
@@ -244,9 +253,10 @@ const WithdrawBalanceContract$json = {
 };
 
 /// Descriptor for `WithdrawBalanceContract`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List withdrawBalanceContractDescriptor = $convert.base64Decode(
-    'ChdXaXRoZHJhd0JhbGFuY2VDb250cmFjdBIjCg1vd25lcl9hZGRyZXNzGAEgASgJUgxvd25lck'
-    'FkZHJlc3M=');
+final $typed_data.Uint8List withdrawBalanceContractDescriptor =
+    $convert.base64Decode(
+        'ChdXaXRoZHJhd0JhbGFuY2VDb250cmFjdBIjCg1vd25lcl9hZGRyZXNzGAEgASgJUgxvd25lck'
+        'FkZHJlc3M=');
 
 @$core.Deprecated('Use triggerSmartContractDescriptor instead')
 const TriggerSmartContract$json = {
@@ -294,23 +304,150 @@ const Transaction$json = {
   '2': [
     {'1': 'timestamp', '3': 1, '4': 1, '5': 3, '10': 'timestamp'},
     {'1': 'expiration', '3': 2, '4': 1, '5': 3, '10': 'expiration'},
-    {'1': 'block_header', '3': 3, '4': 1, '5': 11, '6': '.TW.Tron.Proto.BlockHeader', '10': 'blockHeader'},
+    {
+      '1': 'block_header',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.BlockHeader',
+      '10': 'blockHeader'
+    },
     {'1': 'fee_limit', '3': 4, '4': 1, '5': 3, '10': 'feeLimit'},
-    {'1': 'transfer', '3': 10, '4': 1, '5': 11, '6': '.TW.Tron.Proto.TransferContract', '9': 0, '10': 'transfer'},
-    {'1': 'transfer_asset', '3': 11, '4': 1, '5': 11, '6': '.TW.Tron.Proto.TransferAssetContract', '9': 0, '10': 'transferAsset'},
-    {'1': 'freeze_balance', '3': 12, '4': 1, '5': 11, '6': '.TW.Tron.Proto.FreezeBalanceContract', '9': 0, '10': 'freezeBalance'},
-    {'1': 'unfreeze_balance', '3': 13, '4': 1, '5': 11, '6': '.TW.Tron.Proto.UnfreezeBalanceContract', '9': 0, '10': 'unfreezeBalance'},
-    {'1': 'unfreeze_asset', '3': 14, '4': 1, '5': 11, '6': '.TW.Tron.Proto.UnfreezeAssetContract', '9': 0, '10': 'unfreezeAsset'},
-    {'1': 'withdraw_balance', '3': 15, '4': 1, '5': 11, '6': '.TW.Tron.Proto.WithdrawBalanceContract', '9': 0, '10': 'withdrawBalance'},
-    {'1': 'vote_asset', '3': 16, '4': 1, '5': 11, '6': '.TW.Tron.Proto.VoteAssetContract', '9': 0, '10': 'voteAsset'},
-    {'1': 'vote_witness', '3': 17, '4': 1, '5': 11, '6': '.TW.Tron.Proto.VoteWitnessContract', '9': 0, '10': 'voteWitness'},
-    {'1': 'trigger_smart_contract', '3': 18, '4': 1, '5': 11, '6': '.TW.Tron.Proto.TriggerSmartContract', '9': 0, '10': 'triggerSmartContract'},
-    {'1': 'transfer_trc20_contract', '3': 19, '4': 1, '5': 11, '6': '.TW.Tron.Proto.TransferTRC20Contract', '9': 0, '10': 'transferTrc20Contract'},
-    {'1': 'freeze_balance_v2', '3': 20, '4': 1, '5': 11, '6': '.TW.Tron.Proto.FreezeBalanceV2Contract', '9': 0, '10': 'freezeBalanceV2'},
-    {'1': 'unfreeze_balance_v2', '3': 21, '4': 1, '5': 11, '6': '.TW.Tron.Proto.UnfreezeBalanceV2Contract', '9': 0, '10': 'unfreezeBalanceV2'},
-    {'1': 'withdraw_expire_unfreeze', '3': 23, '4': 1, '5': 11, '6': '.TW.Tron.Proto.WithdrawExpireUnfreezeContract', '9': 0, '10': 'withdrawExpireUnfreeze'},
-    {'1': 'delegate_resource', '3': 24, '4': 1, '5': 11, '6': '.TW.Tron.Proto.DelegateResourceContract', '9': 0, '10': 'delegateResource'},
-    {'1': 'undelegate_resource', '3': 25, '4': 1, '5': 11, '6': '.TW.Tron.Proto.UnDelegateResourceContract', '9': 0, '10': 'undelegateResource'},
+    {
+      '1': 'transfer',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.TransferContract',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'transfer_asset',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.TransferAssetContract',
+      '9': 0,
+      '10': 'transferAsset'
+    },
+    {
+      '1': 'freeze_balance',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.FreezeBalanceContract',
+      '9': 0,
+      '10': 'freezeBalance'
+    },
+    {
+      '1': 'unfreeze_balance',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.UnfreezeBalanceContract',
+      '9': 0,
+      '10': 'unfreezeBalance'
+    },
+    {
+      '1': 'unfreeze_asset',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.UnfreezeAssetContract',
+      '9': 0,
+      '10': 'unfreezeAsset'
+    },
+    {
+      '1': 'withdraw_balance',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.WithdrawBalanceContract',
+      '9': 0,
+      '10': 'withdrawBalance'
+    },
+    {
+      '1': 'vote_asset',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.VoteAssetContract',
+      '9': 0,
+      '10': 'voteAsset'
+    },
+    {
+      '1': 'vote_witness',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.VoteWitnessContract',
+      '9': 0,
+      '10': 'voteWitness'
+    },
+    {
+      '1': 'trigger_smart_contract',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.TriggerSmartContract',
+      '9': 0,
+      '10': 'triggerSmartContract'
+    },
+    {
+      '1': 'transfer_trc20_contract',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.TransferTRC20Contract',
+      '9': 0,
+      '10': 'transferTrc20Contract'
+    },
+    {
+      '1': 'freeze_balance_v2',
+      '3': 20,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.FreezeBalanceV2Contract',
+      '9': 0,
+      '10': 'freezeBalanceV2'
+    },
+    {
+      '1': 'unfreeze_balance_v2',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.UnfreezeBalanceV2Contract',
+      '9': 0,
+      '10': 'unfreezeBalanceV2'
+    },
+    {
+      '1': 'withdraw_expire_unfreeze',
+      '3': 23,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.WithdrawExpireUnfreezeContract',
+      '9': 0,
+      '10': 'withdrawExpireUnfreeze'
+    },
+    {
+      '1': 'delegate_resource',
+      '3': 24,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.DelegateResourceContract',
+      '9': 0,
+      '10': 'delegateResource'
+    },
+    {
+      '1': 'undelegate_resource',
+      '3': 25,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.UnDelegateResourceContract',
+      '9': 0,
+      '10': 'undelegateResource'
+    },
   ],
   '8': [
     {'1': 'contract_oneof'},
@@ -351,7 +488,14 @@ final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'transaction', '3': 1, '4': 1, '5': 11, '6': '.TW.Tron.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'transaction',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tron.Proto.Transaction',
+      '10': 'transaction'
+    },
     {'1': 'private_key', '3': 2, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'txId', '3': 3, '4': 1, '5': 9, '10': 'txId'},
   ],
@@ -372,7 +516,14 @@ const SigningOutput$json = {
     {'1': 'ref_block_bytes', '3': 3, '4': 1, '5': 12, '10': 'refBlockBytes'},
     {'1': 'ref_block_hash', '3': 4, '4': 1, '5': 12, '10': 'refBlockHash'},
     {'1': 'json', '3': 5, '4': 1, '5': 9, '10': 'json'},
-    {'1': 'error', '3': 6, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 7, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -384,4 +535,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'b2NrX2hhc2gYBCABKAxSDHJlZkJsb2NrSGFzaBISCgRqc29uGAUgASgJUgRqc29uEjMKBWVycm'
     '9yGAYgASgOMh0uVFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3Jf'
     'bWVzc2FnZRgHIAEoCVIMZXJyb3JNZXNzYWdl');
-

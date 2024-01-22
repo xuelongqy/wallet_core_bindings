@@ -67,9 +67,33 @@ const SigningInput$json = {
   '2': [
     {'1': 'timestamp', '3': 1, '4': 1, '5': 3, '10': 'timestamp'},
     {'1': 'private_key', '3': 2, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transfer_message', '3': 3, '4': 1, '5': 11, '6': '.TW.Waves.Proto.TransferMessage', '9': 0, '10': 'transferMessage'},
-    {'1': 'lease_message', '3': 4, '4': 1, '5': 11, '6': '.TW.Waves.Proto.LeaseMessage', '9': 0, '10': 'leaseMessage'},
-    {'1': 'cancel_lease_message', '3': 5, '4': 1, '5': 11, '6': '.TW.Waves.Proto.CancelLeaseMessage', '9': 0, '10': 'cancelLeaseMessage'},
+    {
+      '1': 'transfer_message',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Waves.Proto.TransferMessage',
+      '9': 0,
+      '10': 'transferMessage'
+    },
+    {
+      '1': 'lease_message',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Waves.Proto.LeaseMessage',
+      '9': 0,
+      '10': 'leaseMessage'
+    },
+    {
+      '1': 'cancel_lease_message',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Waves.Proto.CancelLeaseMessage',
+      '9': 0,
+      '10': 'cancelLeaseMessage'
+    },
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -98,4 +122,3 @@ const SigningOutput$json = {
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhwKCXNpZ25hdHVyZRgBIAEoDFIJc2lnbmF0dXJlEhIKBGpzb24YAi'
     'ABKAlSBGpzb24=');
-

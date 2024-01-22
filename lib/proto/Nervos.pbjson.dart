@@ -17,12 +17,40 @@ import 'dart:typed_data' as $typed_data;
 const TransactionPlan$json = {
   '1': 'TransactionPlan',
   '2': [
-    {'1': 'cell_deps', '3': 1, '4': 3, '5': 11, '6': '.TW.Nervos.Proto.CellDep', '10': 'cellDeps'},
+    {
+      '1': 'cell_deps',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.CellDep',
+      '10': 'cellDeps'
+    },
     {'1': 'header_deps', '3': 2, '4': 3, '5': 12, '10': 'headerDeps'},
-    {'1': 'selected_cells', '3': 3, '4': 3, '5': 11, '6': '.TW.Nervos.Proto.Cell', '10': 'selectedCells'},
-    {'1': 'outputs', '3': 4, '4': 3, '5': 11, '6': '.TW.Nervos.Proto.CellOutput', '10': 'outputs'},
+    {
+      '1': 'selected_cells',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Cell',
+      '10': 'selectedCells'
+    },
+    {
+      '1': 'outputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.CellOutput',
+      '10': 'outputs'
+    },
     {'1': 'outputs_data', '3': 5, '4': 3, '5': 12, '10': 'outputsData'},
-    {'1': 'error', '3': 6, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
   ],
 };
 
@@ -40,7 +68,14 @@ const CellDep$json = {
   '1': 'CellDep',
   '2': [
     {'1': 'dep_type', '3': 1, '4': 1, '5': 9, '10': 'depType'},
-    {'1': 'out_point', '3': 2, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.OutPoint', '10': 'outPoint'},
+    {
+      '1': 'out_point',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.OutPoint',
+      '10': 'outPoint'
+    },
   ],
 };
 
@@ -68,8 +103,22 @@ const CellOutput$json = {
   '1': 'CellOutput',
   '2': [
     {'1': 'capacity', '3': 1, '4': 1, '5': 4, '10': 'capacity'},
-    {'1': 'lock', '3': 2, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Script', '10': 'lock'},
-    {'1': 'type', '3': 3, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Script', '10': 'type'},
+    {
+      '1': 'lock',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Script',
+      '10': 'lock'
+    },
+    {
+      '1': 'type',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Script',
+      '10': 'type'
+    },
   ],
 };
 
@@ -149,7 +198,14 @@ final $typed_data.Uint8List daoDepositDescriptor = $convert.base64Decode(
 const DaoWithdrawPhase1$json = {
   '1': 'DaoWithdrawPhase1',
   '2': [
-    {'1': 'deposit_cell', '3': 1, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Cell', '10': 'depositCell'},
+    {
+      '1': 'deposit_cell',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Cell',
+      '10': 'depositCell'
+    },
     {'1': 'change_address', '3': 2, '4': 1, '5': 9, '10': 'changeAddress'},
   ],
 };
@@ -164,8 +220,22 @@ final $typed_data.Uint8List daoWithdrawPhase1Descriptor = $convert.base64Decode(
 const DaoWithdrawPhase2$json = {
   '1': 'DaoWithdrawPhase2',
   '2': [
-    {'1': 'deposit_cell', '3': 1, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Cell', '10': 'depositCell'},
-    {'1': 'withdrawing_cell', '3': 2, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Cell', '10': 'withdrawingCell'},
+    {
+      '1': 'deposit_cell',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Cell',
+      '10': 'depositCell'
+    },
+    {
+      '1': 'withdrawing_cell',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Cell',
+      '10': 'withdrawingCell'
+    },
     {'1': 'amount', '3': 3, '4': 1, '5': 4, '10': 'amount'},
   ],
 };
@@ -183,13 +253,67 @@ const SigningInput$json = {
   '2': [
     {'1': 'byte_fee', '3': 1, '4': 1, '5': 4, '10': 'byteFee'},
     {'1': 'private_key', '3': 2, '4': 3, '5': 12, '10': 'privateKey'},
-    {'1': 'cell', '3': 3, '4': 3, '5': 11, '6': '.TW.Nervos.Proto.Cell', '10': 'cell'},
-    {'1': 'plan', '3': 4, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.TransactionPlan', '10': 'plan'},
-    {'1': 'native_transfer', '3': 5, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.NativeTransfer', '9': 0, '10': 'nativeTransfer'},
-    {'1': 'sudt_transfer', '3': 6, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.SudtTransfer', '9': 0, '10': 'sudtTransfer'},
-    {'1': 'dao_deposit', '3': 7, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.DaoDeposit', '9': 0, '10': 'daoDeposit'},
-    {'1': 'dao_withdraw_phase1', '3': 8, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.DaoWithdrawPhase1', '9': 0, '10': 'daoWithdrawPhase1'},
-    {'1': 'dao_withdraw_phase2', '3': 9, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.DaoWithdrawPhase2', '9': 0, '10': 'daoWithdrawPhase2'},
+    {
+      '1': 'cell',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Cell',
+      '10': 'cell'
+    },
+    {
+      '1': 'plan',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.TransactionPlan',
+      '10': 'plan'
+    },
+    {
+      '1': 'native_transfer',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.NativeTransfer',
+      '9': 0,
+      '10': 'nativeTransfer'
+    },
+    {
+      '1': 'sudt_transfer',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.SudtTransfer',
+      '9': 0,
+      '10': 'sudtTransfer'
+    },
+    {
+      '1': 'dao_deposit',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.DaoDeposit',
+      '9': 0,
+      '10': 'daoDeposit'
+    },
+    {
+      '1': 'dao_withdraw_phase1',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.DaoWithdrawPhase1',
+      '9': 0,
+      '10': 'daoWithdrawPhase1'
+    },
+    {
+      '1': 'dao_withdraw_phase2',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.DaoWithdrawPhase2',
+      '9': 0,
+      '10': 'daoWithdrawPhase2'
+    },
   ],
   '8': [
     {'1': 'operation_oneof'},
@@ -214,10 +338,31 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
 const Cell$json = {
   '1': 'Cell',
   '2': [
-    {'1': 'out_point', '3': 1, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.OutPoint', '10': 'outPoint'},
+    {
+      '1': 'out_point',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.OutPoint',
+      '10': 'outPoint'
+    },
     {'1': 'capacity', '3': 2, '4': 1, '5': 4, '10': 'capacity'},
-    {'1': 'lock', '3': 3, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Script', '10': 'lock'},
-    {'1': 'type', '3': 4, '4': 1, '5': 11, '6': '.TW.Nervos.Proto.Script', '10': 'type'},
+    {
+      '1': 'lock',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Script',
+      '10': 'lock'
+    },
+    {
+      '1': 'type',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nervos.Proto.Script',
+      '10': 'type'
+    },
     {'1': 'data', '3': 5, '4': 1, '5': 12, '10': 'data'},
     {'1': 'block_number', '3': 6, '4': 1, '5': 4, '10': 'blockNumber'},
     {'1': 'block_hash', '3': 7, '4': 1, '5': 12, '10': 'blockHash'},
@@ -243,7 +388,14 @@ const SigningOutput$json = {
   '2': [
     {'1': 'transaction_json', '3': 1, '4': 1, '5': 9, '10': 'transactionJson'},
     {'1': 'transaction_id', '3': 2, '4': 1, '5': 9, '10': 'transactionId'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
   ],
 };
 
@@ -252,4 +404,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EikKEHRyYW5zYWN0aW9uX2pzb24YASABKAlSD3RyYW5zYWN0aW9uSn'
     'NvbhIlCg50cmFuc2FjdGlvbl9pZBgCIAEoCVINdHJhbnNhY3Rpb25JZBIzCgVlcnJvchgDIAEo'
     'DjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9y');
-

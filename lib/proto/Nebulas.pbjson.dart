@@ -77,7 +77,14 @@ const RawTransaction$json = {
     {'1': 'value', '3': 4, '4': 1, '5': 12, '10': 'value'},
     {'1': 'nonce', '3': 5, '4': 1, '5': 4, '10': 'nonce'},
     {'1': 'timestamp', '3': 6, '4': 1, '5': 3, '10': 'timestamp'},
-    {'1': 'data', '3': 7, '4': 1, '5': 11, '6': '.TW.Nebulas.Proto.Data', '10': 'data'},
+    {
+      '1': 'data',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Nebulas.Proto.Data',
+      '10': 'data'
+    },
     {'1': 'chain_id', '3': 8, '4': 1, '5': 13, '10': 'chainId'},
     {'1': 'gas_price', '3': 9, '4': 1, '5': 12, '10': 'gasPrice'},
     {'1': 'gas_limit', '3': 10, '4': 1, '5': 12, '10': 'gasLimit'},
@@ -94,4 +101,3 @@ final $typed_data.Uint8List rawTransactionDescriptor = $convert.base64Decode(
     '5lYnVsYXMuUHJvdG8uRGF0YVIEZGF0YRIZCghjaGFpbl9pZBgIIAEoDVIHY2hhaW5JZBIbCgln'
     'YXNfcHJpY2UYCSABKAxSCGdhc1ByaWNlEhsKCWdhc19saW1pdBgKIAEoDFIIZ2FzTGltaXQSEA'
     'oDYWxnGAsgASgNUgNhbGcSEgoEc2lnbhgMIAEoDFIEc2lnbg==');
-

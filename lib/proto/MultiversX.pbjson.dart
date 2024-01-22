@@ -17,7 +17,14 @@ import 'dart:typed_data' as $typed_data;
 const GenericAction$json = {
   '1': 'GenericAction',
   '2': [
-    {'1': 'accounts', '3': 1, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.Accounts', '10': 'accounts'},
+    {
+      '1': 'accounts',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.Accounts',
+      '10': 'accounts'
+    },
     {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
     {'1': 'data', '3': 3, '4': 1, '5': 9, '10': 'data'},
     {'1': 'version', '3': 4, '4': 1, '5': 13, '10': 'version'},
@@ -36,7 +43,14 @@ final $typed_data.Uint8List genericActionDescriptor = $convert.base64Decode(
 const EGLDTransfer$json = {
   '1': 'EGLDTransfer',
   '2': [
-    {'1': 'accounts', '3': 1, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.Accounts', '10': 'accounts'},
+    {
+      '1': 'accounts',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.Accounts',
+      '10': 'accounts'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 9, '10': 'amount'},
     {'1': 'data', '3': 3, '4': 1, '5': 9, '10': 'data'},
     {'1': 'version', '3': 4, '4': 1, '5': 13, '10': 'version'},
@@ -53,7 +67,14 @@ final $typed_data.Uint8List eGLDTransferDescriptor = $convert.base64Decode(
 const ESDTTransfer$json = {
   '1': 'ESDTTransfer',
   '2': [
-    {'1': 'accounts', '3': 1, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.Accounts', '10': 'accounts'},
+    {
+      '1': 'accounts',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.Accounts',
+      '10': 'accounts'
+    },
     {'1': 'token_identifier', '3': 2, '4': 1, '5': 9, '10': 'tokenIdentifier'},
     {'1': 'amount', '3': 3, '4': 1, '5': 9, '10': 'amount'},
     {'1': 'version', '3': 4, '4': 1, '5': 13, '10': 'version'},
@@ -71,7 +92,14 @@ final $typed_data.Uint8List eSDTTransferDescriptor = $convert.base64Decode(
 const ESDTNFTTransfer$json = {
   '1': 'ESDTNFTTransfer',
   '2': [
-    {'1': 'accounts', '3': 1, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.Accounts', '10': 'accounts'},
+    {
+      '1': 'accounts',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.Accounts',
+      '10': 'accounts'
+    },
     {'1': 'token_collection', '3': 2, '4': 1, '5': 9, '10': 'tokenCollection'},
     {'1': 'token_nonce', '3': 3, '4': 1, '5': 4, '10': 'tokenNonce'},
     {'1': 'amount', '3': 4, '4': 1, '5': 9, '10': 'amount'},
@@ -94,7 +122,13 @@ const Accounts$json = {
     {'1': 'sender', '3': 2, '4': 1, '5': 9, '10': 'sender'},
     {'1': 'sender_username', '3': 3, '4': 1, '5': 9, '10': 'senderUsername'},
     {'1': 'receiver', '3': 4, '4': 1, '5': 9, '10': 'receiver'},
-    {'1': 'receiver_username', '3': 5, '4': 1, '5': 9, '10': 'receiverUsername'},
+    {
+      '1': 'receiver_username',
+      '3': 5,
+      '4': 1,
+      '5': 9,
+      '10': 'receiverUsername'
+    },
     {'1': 'guardian', '3': 6, '4': 1, '5': 9, '10': 'guardian'},
   ],
 };
@@ -114,10 +148,42 @@ const SigningInput$json = {
     {'1': 'chain_id', '3': 2, '4': 1, '5': 9, '10': 'chainId'},
     {'1': 'gas_price', '3': 3, '4': 1, '5': 4, '10': 'gasPrice'},
     {'1': 'gas_limit', '3': 4, '4': 1, '5': 4, '10': 'gasLimit'},
-    {'1': 'generic_action', '3': 5, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.GenericAction', '9': 0, '10': 'genericAction'},
-    {'1': 'egld_transfer', '3': 6, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.EGLDTransfer', '9': 0, '10': 'egldTransfer'},
-    {'1': 'esdt_transfer', '3': 7, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.ESDTTransfer', '9': 0, '10': 'esdtTransfer'},
-    {'1': 'esdtnft_transfer', '3': 8, '4': 1, '5': 11, '6': '.TW.MultiversX.Proto.ESDTNFTTransfer', '9': 0, '10': 'esdtnftTransfer'},
+    {
+      '1': 'generic_action',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.GenericAction',
+      '9': 0,
+      '10': 'genericAction'
+    },
+    {
+      '1': 'egld_transfer',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.EGLDTransfer',
+      '9': 0,
+      '10': 'egldTransfer'
+    },
+    {
+      '1': 'esdt_transfer',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.ESDTTransfer',
+      '9': 0,
+      '10': 'esdtTransfer'
+    },
+    {
+      '1': 'esdtnft_transfer',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.MultiversX.Proto.ESDTNFTTransfer',
+      '9': 0,
+      '10': 'esdtnftTransfer'
+    },
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -142,7 +208,14 @@ const SigningOutput$json = {
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 9, '10': 'encoded'},
     {'1': 'signature', '3': 2, '4': 1, '5': 9, '10': 'signature'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -152,4 +225,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAlSB2VuY29kZWQSHAoJc2lnbmF0dXJlGA'
     'IgASgJUglzaWduYXR1cmUSMwoFZXJyb3IYAyABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmlu'
     'Z0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAQgASgJUgxlcnJvck1lc3NhZ2U=');
-

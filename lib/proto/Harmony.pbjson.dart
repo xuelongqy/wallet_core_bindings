@@ -19,8 +19,24 @@ const SigningInput$json = {
   '2': [
     {'1': 'chain_id', '3': 1, '4': 1, '5': 12, '10': 'chainId'},
     {'1': 'private_key', '3': 2, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transaction_message', '3': 3, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.TransactionMessage', '9': 0, '10': 'transactionMessage'},
-    {'1': 'staking_message', '3': 4, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.StakingMessage', '9': 0, '10': 'stakingMessage'},
+    {
+      '1': 'transaction_message',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.TransactionMessage',
+      '9': 0,
+      '10': 'transactionMessage'
+    },
+    {
+      '1': 'staking_message',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.StakingMessage',
+      '9': 0,
+      '10': 'stakingMessage'
+    },
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -43,7 +59,14 @@ const SigningOutput$json = {
     {'1': 'v', '3': 2, '4': 1, '5': 12, '10': 'v'},
     {'1': 'r', '3': 3, '4': 1, '5': 12, '10': 'r'},
     {'1': 's', '3': 4, '4': 1, '5': 12, '10': 's'},
-    {'1': 'error', '3': 5, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 6, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -82,11 +105,51 @@ final $typed_data.Uint8List transactionMessageDescriptor = $convert.base64Decode
 const StakingMessage$json = {
   '1': 'StakingMessage',
   '2': [
-    {'1': 'create_validator_message', '3': 1, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.DirectiveCreateValidator', '9': 0, '10': 'createValidatorMessage'},
-    {'1': 'edit_validator_message', '3': 2, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.DirectiveEditValidator', '9': 0, '10': 'editValidatorMessage'},
-    {'1': 'delegate_message', '3': 3, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.DirectiveDelegate', '9': 0, '10': 'delegateMessage'},
-    {'1': 'undelegate_message', '3': 4, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.DirectiveUndelegate', '9': 0, '10': 'undelegateMessage'},
-    {'1': 'collect_rewards', '3': 5, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.DirectiveCollectRewards', '9': 0, '10': 'collectRewards'},
+    {
+      '1': 'create_validator_message',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.DirectiveCreateValidator',
+      '9': 0,
+      '10': 'createValidatorMessage'
+    },
+    {
+      '1': 'edit_validator_message',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.DirectiveEditValidator',
+      '9': 0,
+      '10': 'editValidatorMessage'
+    },
+    {
+      '1': 'delegate_message',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.DirectiveDelegate',
+      '9': 0,
+      '10': 'delegateMessage'
+    },
+    {
+      '1': 'undelegate_message',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.DirectiveUndelegate',
+      '9': 0,
+      '10': 'undelegateMessage'
+    },
+    {
+      '1': 'collect_rewards',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.DirectiveCollectRewards',
+      '9': 0,
+      '10': 'collectRewards'
+    },
     {'1': 'nonce', '3': 6, '4': 1, '5': 12, '10': 'nonce'},
     {'1': 'gas_price', '3': 7, '4': 1, '5': 12, '10': 'gasPrice'},
     {'1': 'gas_limit', '3': 8, '4': 1, '5': 12, '10': 'gasLimit'},
@@ -146,9 +209,30 @@ final $typed_data.Uint8List decimalDescriptor = $convert.base64Decode(
 const CommissionRate$json = {
   '1': 'CommissionRate',
   '2': [
-    {'1': 'rate', '3': 1, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.Decimal', '10': 'rate'},
-    {'1': 'max_rate', '3': 2, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.Decimal', '10': 'maxRate'},
-    {'1': 'max_change_rate', '3': 3, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.Decimal', '10': 'maxChangeRate'},
+    {
+      '1': 'rate',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.Decimal',
+      '10': 'rate'
+    },
+    {
+      '1': 'max_rate',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.Decimal',
+      '10': 'maxRate'
+    },
+    {
+      '1': 'max_change_rate',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.Decimal',
+      '10': 'maxChangeRate'
+    },
   ],
 };
 
@@ -163,11 +247,43 @@ final $typed_data.Uint8List commissionRateDescriptor = $convert.base64Decode(
 const DirectiveCreateValidator$json = {
   '1': 'DirectiveCreateValidator',
   '2': [
-    {'1': 'validator_address', '3': 1, '4': 1, '5': 9, '10': 'validatorAddress'},
-    {'1': 'description', '3': 2, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.Description', '10': 'description'},
-    {'1': 'commission_rates', '3': 3, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.CommissionRate', '10': 'commissionRates'},
-    {'1': 'min_self_delegation', '3': 4, '4': 1, '5': 12, '10': 'minSelfDelegation'},
-    {'1': 'max_total_delegation', '3': 5, '4': 1, '5': 12, '10': 'maxTotalDelegation'},
+    {
+      '1': 'validator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
+    {
+      '1': 'description',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.Description',
+      '10': 'description'
+    },
+    {
+      '1': 'commission_rates',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.CommissionRate',
+      '10': 'commissionRates'
+    },
+    {
+      '1': 'min_self_delegation',
+      '3': 4,
+      '4': 1,
+      '5': 12,
+      '10': 'minSelfDelegation'
+    },
+    {
+      '1': 'max_total_delegation',
+      '3': 5,
+      '4': 1,
+      '5': 12,
+      '10': 'maxTotalDelegation'
+    },
     {'1': 'slot_pub_keys', '3': 6, '4': 3, '5': 12, '10': 'slotPubKeys'},
     {'1': 'slot_key_sigs', '3': 7, '4': 3, '5': 12, '10': 'slotKeySigs'},
     {'1': 'amount', '3': 8, '4': 1, '5': 12, '10': 'amount'},
@@ -189,14 +305,58 @@ final $typed_data.Uint8List directiveCreateValidatorDescriptor = $convert.base64
 const DirectiveEditValidator$json = {
   '1': 'DirectiveEditValidator',
   '2': [
-    {'1': 'validator_address', '3': 1, '4': 1, '5': 9, '10': 'validatorAddress'},
-    {'1': 'description', '3': 2, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.Description', '10': 'description'},
-    {'1': 'commission_rate', '3': 3, '4': 1, '5': 11, '6': '.TW.Harmony.Proto.Decimal', '10': 'commissionRate'},
-    {'1': 'min_self_delegation', '3': 4, '4': 1, '5': 12, '10': 'minSelfDelegation'},
-    {'1': 'max_total_delegation', '3': 5, '4': 1, '5': 12, '10': 'maxTotalDelegation'},
-    {'1': 'slot_key_to_remove', '3': 6, '4': 1, '5': 12, '10': 'slotKeyToRemove'},
+    {
+      '1': 'validator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
+    {
+      '1': 'description',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.Description',
+      '10': 'description'
+    },
+    {
+      '1': 'commission_rate',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Harmony.Proto.Decimal',
+      '10': 'commissionRate'
+    },
+    {
+      '1': 'min_self_delegation',
+      '3': 4,
+      '4': 1,
+      '5': 12,
+      '10': 'minSelfDelegation'
+    },
+    {
+      '1': 'max_total_delegation',
+      '3': 5,
+      '4': 1,
+      '5': 12,
+      '10': 'maxTotalDelegation'
+    },
+    {
+      '1': 'slot_key_to_remove',
+      '3': 6,
+      '4': 1,
+      '5': 12,
+      '10': 'slotKeyToRemove'
+    },
     {'1': 'slot_key_to_add', '3': 7, '4': 1, '5': 12, '10': 'slotKeyToAdd'},
-    {'1': 'slot_key_to_add_sig', '3': 8, '4': 1, '5': 12, '10': 'slotKeyToAddSig'},
+    {
+      '1': 'slot_key_to_add_sig',
+      '3': 8,
+      '4': 1,
+      '5': 12,
+      '10': 'slotKeyToAddSig'
+    },
     {'1': 'active', '3': 9, '4': 1, '5': 12, '10': 'active'},
   ],
 };
@@ -217,8 +377,20 @@ final $typed_data.Uint8List directiveEditValidatorDescriptor = $convert.base64De
 const DirectiveDelegate$json = {
   '1': 'DirectiveDelegate',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
-    {'1': 'validator_address', '3': 2, '4': 1, '5': 9, '10': 'validatorAddress'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
+    {
+      '1': 'validator_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
     {'1': 'amount', '3': 3, '4': 1, '5': 12, '10': 'amount'},
   ],
 };
@@ -233,8 +405,20 @@ final $typed_data.Uint8List directiveDelegateDescriptor = $convert.base64Decode(
 const DirectiveUndelegate$json = {
   '1': 'DirectiveUndelegate',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
-    {'1': 'validator_address', '3': 2, '4': 1, '5': 9, '10': 'validatorAddress'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
+    {
+      '1': 'validator_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'validatorAddress'
+    },
     {'1': 'amount', '3': 3, '4': 1, '5': 12, '10': 'amount'},
   ],
 };
@@ -249,12 +433,18 @@ final $typed_data.Uint8List directiveUndelegateDescriptor = $convert.base64Decod
 const DirectiveCollectRewards$json = {
   '1': 'DirectiveCollectRewards',
   '2': [
-    {'1': 'delegator_address', '3': 1, '4': 1, '5': 9, '10': 'delegatorAddress'},
+    {
+      '1': 'delegator_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'delegatorAddress'
+    },
   ],
 };
 
 /// Descriptor for `DirectiveCollectRewards`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List directiveCollectRewardsDescriptor = $convert.base64Decode(
-    'ChdEaXJlY3RpdmVDb2xsZWN0UmV3YXJkcxIrChFkZWxlZ2F0b3JfYWRkcmVzcxgBIAEoCVIQZG'
-    'VsZWdhdG9yQWRkcmVzcw==');
-
+final $typed_data.Uint8List directiveCollectRewardsDescriptor =
+    $convert.base64Decode(
+        'ChdEaXJlY3RpdmVDb2xsZWN0UmV3YXJkcxIrChFkZWxlZ2F0b3JfYWRkcmVzcxgBIAEoCVIQZG'
+        'VsZWdhdG9yQWRkcmVzcw==');

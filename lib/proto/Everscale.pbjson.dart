@@ -32,11 +32,25 @@ const Transfer$json = {
   '1': 'Transfer',
   '2': [
     {'1': 'bounce', '3': 1, '4': 1, '5': 8, '10': 'bounce'},
-    {'1': 'behavior', '3': 2, '4': 1, '5': 14, '6': '.TW.Everscale.Proto.MessageBehavior', '10': 'behavior'},
+    {
+      '1': 'behavior',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Everscale.Proto.MessageBehavior',
+      '10': 'behavior'
+    },
     {'1': 'amount', '3': 3, '4': 1, '5': 4, '10': 'amount'},
     {'1': 'expired_at', '3': 4, '4': 1, '5': 13, '10': 'expiredAt'},
     {'1': 'to', '3': 5, '4': 1, '5': 9, '10': 'to'},
-    {'1': 'encoded_contract_data', '3': 6, '4': 1, '5': 9, '9': 0, '10': 'encodedContractData'},
+    {
+      '1': 'encoded_contract_data',
+      '3': 6,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'encodedContractData'
+    },
   ],
   '8': [
     {'1': 'account_state_oneof'},
@@ -55,7 +69,15 @@ final $typed_data.Uint8List transferDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.Everscale.Proto.Transfer', '9': 0, '10': 'transfer'},
+    {
+      '1': 'transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Everscale.Proto.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
     {'1': 'private_key', '3': 2, '4': 1, '5': 12, '10': 'privateKey'},
   ],
   '8': [
@@ -78,6 +100,5 @@ const SigningOutput$json = {
 };
 
 /// Descriptor for `SigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
-    'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAlSB2VuY29kZWQ=');
-
+final $typed_data.Uint8List signingOutputDescriptor = $convert
+    .base64Decode('Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAlSB2VuY29kZWQ=');

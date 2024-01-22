@@ -48,38 +48,55 @@ class TransactionPlan extends $pb.GeneratedMessage {
     return $result;
   }
   TransactionPlan._() : super();
-  factory TransactionPlan.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransactionPlan.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory TransactionPlan.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory TransactionPlan.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransactionPlan', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..pc<CellDep>(1, _omitFieldNames ? '' : 'cellDeps', $pb.PbFieldType.PM, subBuilder: CellDep.create)
-    ..p<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'headerDeps', $pb.PbFieldType.PY)
-    ..pc<Cell>(3, _omitFieldNames ? '' : 'selectedCells', $pb.PbFieldType.PM, subBuilder: Cell.create)
-    ..pc<CellOutput>(4, _omitFieldNames ? '' : 'outputs', $pb.PbFieldType.PM, subBuilder: CellOutput.create)
-    ..p<$core.List<$core.int>>(5, _omitFieldNames ? '' : 'outputsData', $pb.PbFieldType.PY)
-    ..e<$0.SigningError>(6, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TransactionPlan',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..pc<CellDep>(1, _omitFieldNames ? '' : 'cellDeps', $pb.PbFieldType.PM,
+        subBuilder: CellDep.create)
+    ..p<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'headerDeps', $pb.PbFieldType.PY)
+    ..pc<Cell>(3, _omitFieldNames ? '' : 'selectedCells', $pb.PbFieldType.PM,
+        subBuilder: Cell.create)
+    ..pc<CellOutput>(4, _omitFieldNames ? '' : 'outputs', $pb.PbFieldType.PM,
+        subBuilder: CellOutput.create)
+    ..p<$core.List<$core.int>>(
+        5, _omitFieldNames ? '' : 'outputsData', $pb.PbFieldType.PY)
+    ..e<$0.SigningError>(6, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   TransactionPlan clone() => TransactionPlan()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  TransactionPlan copyWith(void Function(TransactionPlan) updates) => super.copyWith((message) => updates(message as TransactionPlan)) as TransactionPlan;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  TransactionPlan copyWith(void Function(TransactionPlan) updates) =>
+      super.copyWith((message) => updates(message as TransactionPlan))
+          as TransactionPlan;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static TransactionPlan create() => TransactionPlan._();
   TransactionPlan createEmptyInstance() => create();
-  static $pb.PbList<TransactionPlan> createRepeated() => $pb.PbList<TransactionPlan>();
+  static $pb.PbList<TransactionPlan> createRepeated() =>
+      $pb.PbList<TransactionPlan>();
   @$core.pragma('dart2js:noInline')
-  static TransactionPlan getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransactionPlan>(create);
+  static TransactionPlan getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TransactionPlan>(create);
   static TransactionPlan? _defaultInstance;
 
   /// A list of cell deps.
@@ -106,7 +123,10 @@ class TransactionPlan extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $0.SigningError get error => $_getN(5);
   @$pb.TagNumber(6)
-  set error($0.SigningError v) { setField(6, v); }
+  set error($0.SigningError v) {
+    setField(6, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasError() => $_has(5);
   @$pb.TagNumber(6)
@@ -129,25 +149,32 @@ class CellDep extends $pb.GeneratedMessage {
     return $result;
   }
   CellDep._() : super();
-  factory CellDep.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CellDep.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory CellDep.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CellDep.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CellDep', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CellDep',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'depType')
-    ..aOM<OutPoint>(2, _omitFieldNames ? '' : 'outPoint', subBuilder: OutPoint.create)
-    ..hasRequiredFields = false
-  ;
+    ..aOM<OutPoint>(2, _omitFieldNames ? '' : 'outPoint',
+        subBuilder: OutPoint.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   CellDep clone() => CellDep()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  CellDep copyWith(void Function(CellDep) updates) => super.copyWith((message) => updates(message as CellDep)) as CellDep;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CellDep copyWith(void Function(CellDep) updates) =>
+      super.copyWith((message) => updates(message as CellDep)) as CellDep;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -156,14 +183,18 @@ class CellDep extends $pb.GeneratedMessage {
   CellDep createEmptyInstance() => create();
   static $pb.PbList<CellDep> createRepeated() => $pb.PbList<CellDep>();
   @$core.pragma('dart2js:noInline')
-  static CellDep getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CellDep>(create);
+  static CellDep getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CellDep>(create);
   static CellDep? _defaultInstance;
 
   /// Prevents the transaction to be mined before an absolute or relative time
   @$pb.TagNumber(1)
   $core.String get depType => $_getSZ(0);
   @$pb.TagNumber(1)
-  set depType($core.String v) { $_setString(0, v); }
+  set depType($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDepType() => $_has(0);
   @$pb.TagNumber(1)
@@ -173,7 +204,10 @@ class CellDep extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   OutPoint get outPoint => $_getN(1);
   @$pb.TagNumber(2)
-  set outPoint(OutPoint v) { setField(2, v); }
+  set outPoint(OutPoint v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasOutPoint() => $_has(1);
   @$pb.TagNumber(2)
@@ -198,25 +232,32 @@ class OutPoint extends $pb.GeneratedMessage {
     return $result;
   }
   OutPoint._() : super();
-  factory OutPoint.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OutPoint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory OutPoint.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory OutPoint.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OutPoint', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'txHash', $pb.PbFieldType.OY)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'OutPoint',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'txHash', $pb.PbFieldType.OY)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'index', $pb.PbFieldType.OU3)
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   OutPoint clone() => OutPoint()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  OutPoint copyWith(void Function(OutPoint) updates) => super.copyWith((message) => updates(message as OutPoint)) as OutPoint;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  OutPoint copyWith(void Function(OutPoint) updates) =>
+      super.copyWith((message) => updates(message as OutPoint)) as OutPoint;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -225,14 +266,18 @@ class OutPoint extends $pb.GeneratedMessage {
   OutPoint createEmptyInstance() => create();
   static $pb.PbList<OutPoint> createRepeated() => $pb.PbList<OutPoint>();
   @$core.pragma('dart2js:noInline')
-  static OutPoint getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OutPoint>(create);
+  static OutPoint getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OutPoint>(create);
   static OutPoint? _defaultInstance;
 
   /// The hash of the referenced transaction.
   @$pb.TagNumber(1)
   $core.List<$core.int> get txHash => $_getN(0);
   @$pb.TagNumber(1)
-  set txHash($core.List<$core.int> v) { $_setBytes(0, v); }
+  set txHash($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasTxHash() => $_has(0);
   @$pb.TagNumber(1)
@@ -242,7 +287,10 @@ class OutPoint extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.int get index => $_getIZ(1);
   @$pb.TagNumber(2)
-  set index($core.int v) { $_setUnsignedInt32(1, v); }
+  set index($core.int v) {
+    $_setUnsignedInt32(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasIndex() => $_has(1);
   @$pb.TagNumber(2)
@@ -269,26 +317,34 @@ class CellOutput extends $pb.GeneratedMessage {
     return $result;
   }
   CellOutput._() : super();
-  factory CellOutput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CellOutput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory CellOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CellOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CellOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'capacity', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CellOutput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..a<$fixnum.Int64>(
+        1, _omitFieldNames ? '' : 'capacity', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOM<Script>(2, _omitFieldNames ? '' : 'lock', subBuilder: Script.create)
     ..aOM<Script>(3, _omitFieldNames ? '' : 'type', subBuilder: Script.create)
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   CellOutput clone() => CellOutput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  CellOutput copyWith(void Function(CellOutput) updates) => super.copyWith((message) => updates(message as CellOutput)) as CellOutput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CellOutput copyWith(void Function(CellOutput) updates) =>
+      super.copyWith((message) => updates(message as CellOutput)) as CellOutput;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -297,14 +353,18 @@ class CellOutput extends $pb.GeneratedMessage {
   CellOutput createEmptyInstance() => create();
   static $pb.PbList<CellOutput> createRepeated() => $pb.PbList<CellOutput>();
   @$core.pragma('dart2js:noInline')
-  static CellOutput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CellOutput>(create);
+  static CellOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CellOutput>(create);
   static CellOutput? _defaultInstance;
 
   /// Transaction amount.
   @$pb.TagNumber(1)
   $fixnum.Int64 get capacity => $_getI64(0);
   @$pb.TagNumber(1)
-  set capacity($fixnum.Int64 v) { $_setInt64(0, v); }
+  set capacity($fixnum.Int64 v) {
+    $_setInt64(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasCapacity() => $_has(0);
   @$pb.TagNumber(1)
@@ -314,7 +374,10 @@ class CellOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   Script get lock => $_getN(1);
   @$pb.TagNumber(2)
-  set lock(Script v) { setField(2, v); }
+  set lock(Script v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasLock() => $_has(1);
   @$pb.TagNumber(2)
@@ -326,7 +389,10 @@ class CellOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   Script get type => $_getN(2);
   @$pb.TagNumber(3)
-  set type(Script v) { setField(3, v); }
+  set type(Script v) {
+    setField(3, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasType() => $_has(2);
   @$pb.TagNumber(3)
@@ -355,26 +421,34 @@ class Script extends $pb.GeneratedMessage {
     return $result;
   }
   Script._() : super();
-  factory Script.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Script.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Script.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Script.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Script', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'codeHash', $pb.PbFieldType.OY)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Script',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'codeHash', $pb.PbFieldType.OY)
     ..aOS(2, _omitFieldNames ? '' : 'hashType')
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'args', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'args', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Script clone() => Script()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Script copyWith(void Function(Script) updates) => super.copyWith((message) => updates(message as Script)) as Script;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Script copyWith(void Function(Script) updates) =>
+      super.copyWith((message) => updates(message as Script)) as Script;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -383,14 +457,18 @@ class Script extends $pb.GeneratedMessage {
   Script createEmptyInstance() => create();
   static $pb.PbList<Script> createRepeated() => $pb.PbList<Script>();
   @$core.pragma('dart2js:noInline')
-  static Script getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Script>(create);
+  static Script getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Script>(create);
   static Script? _defaultInstance;
 
   /// Code hash
   @$pb.TagNumber(1)
   $core.List<$core.int> get codeHash => $_getN(0);
   @$pb.TagNumber(1)
-  set codeHash($core.List<$core.int> v) { $_setBytes(0, v); }
+  set codeHash($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasCodeHash() => $_has(0);
   @$pb.TagNumber(1)
@@ -400,7 +478,10 @@ class Script extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get hashType => $_getSZ(1);
   @$pb.TagNumber(2)
-  set hashType($core.String v) { $_setString(1, v); }
+  set hashType($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasHashType() => $_has(1);
   @$pb.TagNumber(2)
@@ -410,7 +491,10 @@ class Script extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.List<$core.int> get args => $_getN(2);
   @$pb.TagNumber(3)
-  set args($core.List<$core.int> v) { $_setBytes(2, v); }
+  set args($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasArgs() => $_has(2);
   @$pb.TagNumber(3)
@@ -441,43 +525,56 @@ class NativeTransfer extends $pb.GeneratedMessage {
     return $result;
   }
   NativeTransfer._() : super();
-  factory NativeTransfer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory NativeTransfer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory NativeTransfer.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory NativeTransfer.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NativeTransfer', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'NativeTransfer',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'toAddress')
     ..aOS(2, _omitFieldNames ? '' : 'changeAddress')
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOB(4, _omitFieldNames ? '' : 'useMaxAmount')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   NativeTransfer clone() => NativeTransfer()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  NativeTransfer copyWith(void Function(NativeTransfer) updates) => super.copyWith((message) => updates(message as NativeTransfer)) as NativeTransfer;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  NativeTransfer copyWith(void Function(NativeTransfer) updates) =>
+      super.copyWith((message) => updates(message as NativeTransfer))
+          as NativeTransfer;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static NativeTransfer create() => NativeTransfer._();
   NativeTransfer createEmptyInstance() => create();
-  static $pb.PbList<NativeTransfer> createRepeated() => $pb.PbList<NativeTransfer>();
+  static $pb.PbList<NativeTransfer> createRepeated() =>
+      $pb.PbList<NativeTransfer>();
   @$core.pragma('dart2js:noInline')
-  static NativeTransfer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<NativeTransfer>(create);
+  static NativeTransfer getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<NativeTransfer>(create);
   static NativeTransfer? _defaultInstance;
 
   /// Recipient's address.
   @$pb.TagNumber(1)
   $core.String get toAddress => $_getSZ(0);
   @$pb.TagNumber(1)
-  set toAddress($core.String v) { $_setString(0, v); }
+  set toAddress($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasToAddress() => $_has(0);
   @$pb.TagNumber(1)
@@ -487,7 +584,10 @@ class NativeTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get changeAddress => $_getSZ(1);
   @$pb.TagNumber(2)
-  set changeAddress($core.String v) { $_setString(1, v); }
+  set changeAddress($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasChangeAddress() => $_has(1);
   @$pb.TagNumber(2)
@@ -497,7 +597,10 @@ class NativeTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get amount => $_getI64(2);
   @$pb.TagNumber(3)
-  set amount($fixnum.Int64 v) { $_setInt64(2, v); }
+  set amount($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
@@ -507,7 +610,10 @@ class NativeTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool get useMaxAmount => $_getBF(3);
   @$pb.TagNumber(4)
-  set useMaxAmount($core.bool v) { $_setBool(3, v); }
+  set useMaxAmount($core.bool v) {
+    $_setBool(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasUseMaxAmount() => $_has(3);
   @$pb.TagNumber(4)
@@ -542,44 +648,57 @@ class SudtTransfer extends $pb.GeneratedMessage {
     return $result;
   }
   SudtTransfer._() : super();
-  factory SudtTransfer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SudtTransfer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SudtTransfer.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SudtTransfer.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SudtTransfer', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SudtTransfer',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'toAddress')
     ..aOS(2, _omitFieldNames ? '' : 'changeAddress')
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'sudtAddress', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'sudtAddress', $pb.PbFieldType.OY)
     ..aOS(4, _omitFieldNames ? '' : 'amount')
     ..aOB(5, _omitFieldNames ? '' : 'useMaxAmount')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SudtTransfer clone() => SudtTransfer()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SudtTransfer copyWith(void Function(SudtTransfer) updates) => super.copyWith((message) => updates(message as SudtTransfer)) as SudtTransfer;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SudtTransfer copyWith(void Function(SudtTransfer) updates) =>
+      super.copyWith((message) => updates(message as SudtTransfer))
+          as SudtTransfer;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SudtTransfer create() => SudtTransfer._();
   SudtTransfer createEmptyInstance() => create();
-  static $pb.PbList<SudtTransfer> createRepeated() => $pb.PbList<SudtTransfer>();
+  static $pb.PbList<SudtTransfer> createRepeated() =>
+      $pb.PbList<SudtTransfer>();
   @$core.pragma('dart2js:noInline')
-  static SudtTransfer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SudtTransfer>(create);
+  static SudtTransfer getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SudtTransfer>(create);
   static SudtTransfer? _defaultInstance;
 
   /// Recipient's address.
   @$pb.TagNumber(1)
   $core.String get toAddress => $_getSZ(0);
   @$pb.TagNumber(1)
-  set toAddress($core.String v) { $_setString(0, v); }
+  set toAddress($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasToAddress() => $_has(0);
   @$pb.TagNumber(1)
@@ -589,7 +708,10 @@ class SudtTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get changeAddress => $_getSZ(1);
   @$pb.TagNumber(2)
-  set changeAddress($core.String v) { $_setString(1, v); }
+  set changeAddress($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasChangeAddress() => $_has(1);
   @$pb.TagNumber(2)
@@ -599,7 +721,10 @@ class SudtTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.List<$core.int> get sudtAddress => $_getN(2);
   @$pb.TagNumber(3)
-  set sudtAddress($core.List<$core.int> v) { $_setBytes(2, v); }
+  set sudtAddress($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasSudtAddress() => $_has(2);
   @$pb.TagNumber(3)
@@ -609,7 +734,10 @@ class SudtTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.String get amount => $_getSZ(3);
   @$pb.TagNumber(4)
-  set amount($core.String v) { $_setString(3, v); }
+  set amount($core.String v) {
+    $_setString(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasAmount() => $_has(3);
   @$pb.TagNumber(4)
@@ -619,7 +747,10 @@ class SudtTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool get useMaxAmount => $_getBF(4);
   @$pb.TagNumber(5)
-  set useMaxAmount($core.bool v) { $_setBool(4, v); }
+  set useMaxAmount($core.bool v) {
+    $_setBool(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasUseMaxAmount() => $_has(4);
   @$pb.TagNumber(5)
@@ -646,26 +777,33 @@ class DaoDeposit extends $pb.GeneratedMessage {
     return $result;
   }
   DaoDeposit._() : super();
-  factory DaoDeposit.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DaoDeposit.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DaoDeposit.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DaoDeposit.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DaoDeposit', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DaoDeposit',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'toAddress')
     ..aOS(2, _omitFieldNames ? '' : 'changeAddress')
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false
-  ;
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   DaoDeposit clone() => DaoDeposit()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DaoDeposit copyWith(void Function(DaoDeposit) updates) => super.copyWith((message) => updates(message as DaoDeposit)) as DaoDeposit;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DaoDeposit copyWith(void Function(DaoDeposit) updates) =>
+      super.copyWith((message) => updates(message as DaoDeposit)) as DaoDeposit;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -674,14 +812,18 @@ class DaoDeposit extends $pb.GeneratedMessage {
   DaoDeposit createEmptyInstance() => create();
   static $pb.PbList<DaoDeposit> createRepeated() => $pb.PbList<DaoDeposit>();
   @$core.pragma('dart2js:noInline')
-  static DaoDeposit getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DaoDeposit>(create);
+  static DaoDeposit getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DaoDeposit>(create);
   static DaoDeposit? _defaultInstance;
 
   /// Recipient's address.
   @$pb.TagNumber(1)
   $core.String get toAddress => $_getSZ(0);
   @$pb.TagNumber(1)
-  set toAddress($core.String v) { $_setString(0, v); }
+  set toAddress($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasToAddress() => $_has(0);
   @$pb.TagNumber(1)
@@ -691,7 +833,10 @@ class DaoDeposit extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get changeAddress => $_getSZ(1);
   @$pb.TagNumber(2)
-  set changeAddress($core.String v) { $_setString(1, v); }
+  set changeAddress($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasChangeAddress() => $_has(1);
   @$pb.TagNumber(2)
@@ -701,7 +846,10 @@ class DaoDeposit extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get amount => $_getI64(2);
   @$pb.TagNumber(3)
-  set amount($fixnum.Int64 v) { $_setInt64(2, v); }
+  set amount($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
@@ -723,41 +871,54 @@ class DaoWithdrawPhase1 extends $pb.GeneratedMessage {
     return $result;
   }
   DaoWithdrawPhase1._() : super();
-  factory DaoWithdrawPhase1.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DaoWithdrawPhase1.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DaoWithdrawPhase1.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DaoWithdrawPhase1.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DaoWithdrawPhase1', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..aOM<Cell>(1, _omitFieldNames ? '' : 'depositCell', subBuilder: Cell.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DaoWithdrawPhase1',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..aOM<Cell>(1, _omitFieldNames ? '' : 'depositCell',
+        subBuilder: Cell.create)
     ..aOS(2, _omitFieldNames ? '' : 'changeAddress')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   DaoWithdrawPhase1 clone() => DaoWithdrawPhase1()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DaoWithdrawPhase1 copyWith(void Function(DaoWithdrawPhase1) updates) => super.copyWith((message) => updates(message as DaoWithdrawPhase1)) as DaoWithdrawPhase1;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DaoWithdrawPhase1 copyWith(void Function(DaoWithdrawPhase1) updates) =>
+      super.copyWith((message) => updates(message as DaoWithdrawPhase1))
+          as DaoWithdrawPhase1;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static DaoWithdrawPhase1 create() => DaoWithdrawPhase1._();
   DaoWithdrawPhase1 createEmptyInstance() => create();
-  static $pb.PbList<DaoWithdrawPhase1> createRepeated() => $pb.PbList<DaoWithdrawPhase1>();
+  static $pb.PbList<DaoWithdrawPhase1> createRepeated() =>
+      $pb.PbList<DaoWithdrawPhase1>();
   @$core.pragma('dart2js:noInline')
-  static DaoWithdrawPhase1 getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DaoWithdrawPhase1>(create);
+  static DaoWithdrawPhase1 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DaoWithdrawPhase1>(create);
   static DaoWithdrawPhase1? _defaultInstance;
 
   /// Deposit cell
   @$pb.TagNumber(1)
   Cell get depositCell => $_getN(0);
   @$pb.TagNumber(1)
-  set depositCell(Cell v) { setField(1, v); }
+  set depositCell(Cell v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDepositCell() => $_has(0);
   @$pb.TagNumber(1)
@@ -769,7 +930,10 @@ class DaoWithdrawPhase1 extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get changeAddress => $_getSZ(1);
   @$pb.TagNumber(2)
-  set changeAddress($core.String v) { $_setString(1, v); }
+  set changeAddress($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasChangeAddress() => $_has(1);
   @$pb.TagNumber(2)
@@ -795,42 +959,57 @@ class DaoWithdrawPhase2 extends $pb.GeneratedMessage {
     return $result;
   }
   DaoWithdrawPhase2._() : super();
-  factory DaoWithdrawPhase2.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DaoWithdrawPhase2.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DaoWithdrawPhase2.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DaoWithdrawPhase2.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DaoWithdrawPhase2', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..aOM<Cell>(1, _omitFieldNames ? '' : 'depositCell', subBuilder: Cell.create)
-    ..aOM<Cell>(2, _omitFieldNames ? '' : 'withdrawingCell', subBuilder: Cell.create)
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DaoWithdrawPhase2',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..aOM<Cell>(1, _omitFieldNames ? '' : 'depositCell',
+        subBuilder: Cell.create)
+    ..aOM<Cell>(2, _omitFieldNames ? '' : 'withdrawingCell',
+        subBuilder: Cell.create)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   DaoWithdrawPhase2 clone() => DaoWithdrawPhase2()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DaoWithdrawPhase2 copyWith(void Function(DaoWithdrawPhase2) updates) => super.copyWith((message) => updates(message as DaoWithdrawPhase2)) as DaoWithdrawPhase2;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DaoWithdrawPhase2 copyWith(void Function(DaoWithdrawPhase2) updates) =>
+      super.copyWith((message) => updates(message as DaoWithdrawPhase2))
+          as DaoWithdrawPhase2;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static DaoWithdrawPhase2 create() => DaoWithdrawPhase2._();
   DaoWithdrawPhase2 createEmptyInstance() => create();
-  static $pb.PbList<DaoWithdrawPhase2> createRepeated() => $pb.PbList<DaoWithdrawPhase2>();
+  static $pb.PbList<DaoWithdrawPhase2> createRepeated() =>
+      $pb.PbList<DaoWithdrawPhase2>();
   @$core.pragma('dart2js:noInline')
-  static DaoWithdrawPhase2 getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DaoWithdrawPhase2>(create);
+  static DaoWithdrawPhase2 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DaoWithdrawPhase2>(create);
   static DaoWithdrawPhase2? _defaultInstance;
 
   /// Deposit cell
   @$pb.TagNumber(1)
   Cell get depositCell => $_getN(0);
   @$pb.TagNumber(1)
-  set depositCell(Cell v) { setField(1, v); }
+  set depositCell(Cell v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDepositCell() => $_has(0);
   @$pb.TagNumber(1)
@@ -842,7 +1021,10 @@ class DaoWithdrawPhase2 extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   Cell get withdrawingCell => $_getN(1);
   @$pb.TagNumber(2)
-  set withdrawingCell(Cell v) { setField(2, v); }
+  set withdrawingCell(Cell v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasWithdrawingCell() => $_has(1);
   @$pb.TagNumber(2)
@@ -854,7 +1036,10 @@ class DaoWithdrawPhase2 extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get amount => $_getI64(2);
   @$pb.TagNumber(3)
-  set amount($fixnum.Int64 v) { $_setInt64(2, v); }
+  set amount($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
@@ -862,11 +1047,11 @@ class DaoWithdrawPhase2 extends $pb.GeneratedMessage {
 }
 
 enum SigningInput_OperationOneof {
-  nativeTransfer, 
-  sudtTransfer, 
-  daoDeposit, 
-  daoWithdrawPhase1, 
-  daoWithdrawPhase2, 
+  nativeTransfer,
+  sudtTransfer,
+  daoDeposit,
+  daoWithdrawPhase1,
+  daoWithdrawPhase2,
   notSet
 }
 
@@ -914,60 +1099,83 @@ class SigningInput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningInput._() : super();
-  factory SigningInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, SigningInput_OperationOneof> _SigningInput_OperationOneofByTag = {
-    5 : SigningInput_OperationOneof.nativeTransfer,
-    6 : SigningInput_OperationOneof.sudtTransfer,
-    7 : SigningInput_OperationOneof.daoDeposit,
-    8 : SigningInput_OperationOneof.daoWithdrawPhase1,
-    9 : SigningInput_OperationOneof.daoWithdrawPhase2,
-    0 : SigningInput_OperationOneof.notSet
+  static const $core.Map<$core.int, SigningInput_OperationOneof>
+      _SigningInput_OperationOneofByTag = {
+    5: SigningInput_OperationOneof.nativeTransfer,
+    6: SigningInput_OperationOneof.sudtTransfer,
+    7: SigningInput_OperationOneof.daoDeposit,
+    8: SigningInput_OperationOneof.daoWithdrawPhase1,
+    9: SigningInput_OperationOneof.daoWithdrawPhase2,
+    0: SigningInput_OperationOneof.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningInput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
     ..oo(0, [5, 6, 7, 8, 9])
-    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'byteFee', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..p<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.PY)
-    ..pc<Cell>(3, _omitFieldNames ? '' : 'cell', $pb.PbFieldType.PM, subBuilder: Cell.create)
-    ..aOM<TransactionPlan>(4, _omitFieldNames ? '' : 'plan', subBuilder: TransactionPlan.create)
-    ..aOM<NativeTransfer>(5, _omitFieldNames ? '' : 'nativeTransfer', subBuilder: NativeTransfer.create)
-    ..aOM<SudtTransfer>(6, _omitFieldNames ? '' : 'sudtTransfer', subBuilder: SudtTransfer.create)
-    ..aOM<DaoDeposit>(7, _omitFieldNames ? '' : 'daoDeposit', subBuilder: DaoDeposit.create)
-    ..aOM<DaoWithdrawPhase1>(8, _omitFieldNames ? '' : 'daoWithdrawPhase1', subBuilder: DaoWithdrawPhase1.create)
-    ..aOM<DaoWithdrawPhase2>(9, _omitFieldNames ? '' : 'daoWithdrawPhase2', subBuilder: DaoWithdrawPhase2.create)
-    ..hasRequiredFields = false
-  ;
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'byteFee', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..p<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.PY)
+    ..pc<Cell>(3, _omitFieldNames ? '' : 'cell', $pb.PbFieldType.PM,
+        subBuilder: Cell.create)
+    ..aOM<TransactionPlan>(4, _omitFieldNames ? '' : 'plan',
+        subBuilder: TransactionPlan.create)
+    ..aOM<NativeTransfer>(5, _omitFieldNames ? '' : 'nativeTransfer',
+        subBuilder: NativeTransfer.create)
+    ..aOM<SudtTransfer>(6, _omitFieldNames ? '' : 'sudtTransfer',
+        subBuilder: SudtTransfer.create)
+    ..aOM<DaoDeposit>(7, _omitFieldNames ? '' : 'daoDeposit',
+        subBuilder: DaoDeposit.create)
+    ..aOM<DaoWithdrawPhase1>(8, _omitFieldNames ? '' : 'daoWithdrawPhase1',
+        subBuilder: DaoWithdrawPhase1.create)
+    ..aOM<DaoWithdrawPhase2>(9, _omitFieldNames ? '' : 'daoWithdrawPhase2',
+        subBuilder: DaoWithdrawPhase2.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningInput clone() => SigningInput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningInput copyWith(void Function(SigningInput) updates) => super.copyWith((message) => updates(message as SigningInput)) as SigningInput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningInput copyWith(void Function(SigningInput) updates) =>
+      super.copyWith((message) => updates(message as SigningInput))
+          as SigningInput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningInput create() => SigningInput._();
   SigningInput createEmptyInstance() => create();
-  static $pb.PbList<SigningInput> createRepeated() => $pb.PbList<SigningInput>();
+  static $pb.PbList<SigningInput> createRepeated() =>
+      $pb.PbList<SigningInput>();
   @$core.pragma('dart2js:noInline')
-  static SigningInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
+  static SigningInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
-  SigningInput_OperationOneof whichOperationOneof() => _SigningInput_OperationOneofByTag[$_whichOneof(0)]!;
+  SigningInput_OperationOneof whichOperationOneof() =>
+      _SigningInput_OperationOneofByTag[$_whichOneof(0)]!;
   void clearOperationOneof() => clearField($_whichOneof(0));
 
   /// Transaction fee per byte.
   @$pb.TagNumber(1)
   $fixnum.Int64 get byteFee => $_getI64(0);
   @$pb.TagNumber(1)
-  set byteFee($fixnum.Int64 v) { $_setInt64(0, v); }
+  set byteFee($fixnum.Int64 v) {
+    $_setInt64(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasByteFee() => $_has(0);
   @$pb.TagNumber(1)
@@ -985,7 +1193,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   TransactionPlan get plan => $_getN(3);
   @$pb.TagNumber(4)
-  set plan(TransactionPlan v) { setField(4, v); }
+  set plan(TransactionPlan v) {
+    setField(4, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasPlan() => $_has(3);
   @$pb.TagNumber(4)
@@ -996,7 +1207,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   NativeTransfer get nativeTransfer => $_getN(4);
   @$pb.TagNumber(5)
-  set nativeTransfer(NativeTransfer v) { setField(5, v); }
+  set nativeTransfer(NativeTransfer v) {
+    setField(5, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasNativeTransfer() => $_has(4);
   @$pb.TagNumber(5)
@@ -1007,7 +1221,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   SudtTransfer get sudtTransfer => $_getN(5);
   @$pb.TagNumber(6)
-  set sudtTransfer(SudtTransfer v) { setField(6, v); }
+  set sudtTransfer(SudtTransfer v) {
+    setField(6, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasSudtTransfer() => $_has(5);
   @$pb.TagNumber(6)
@@ -1018,7 +1235,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   DaoDeposit get daoDeposit => $_getN(6);
   @$pb.TagNumber(7)
-  set daoDeposit(DaoDeposit v) { setField(7, v); }
+  set daoDeposit(DaoDeposit v) {
+    setField(7, v);
+  }
+
   @$pb.TagNumber(7)
   $core.bool hasDaoDeposit() => $_has(6);
   @$pb.TagNumber(7)
@@ -1029,7 +1249,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   DaoWithdrawPhase1 get daoWithdrawPhase1 => $_getN(7);
   @$pb.TagNumber(8)
-  set daoWithdrawPhase1(DaoWithdrawPhase1 v) { setField(8, v); }
+  set daoWithdrawPhase1(DaoWithdrawPhase1 v) {
+    setField(8, v);
+  }
+
   @$pb.TagNumber(8)
   $core.bool hasDaoWithdrawPhase1() => $_has(7);
   @$pb.TagNumber(8)
@@ -1040,7 +1263,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   DaoWithdrawPhase2 get daoWithdrawPhase2 => $_getN(8);
   @$pb.TagNumber(9)
-  set daoWithdrawPhase2(DaoWithdrawPhase2 v) { setField(9, v); }
+  set daoWithdrawPhase2(DaoWithdrawPhase2 v) {
+    setField(9, v);
+  }
+
   @$pb.TagNumber(9)
   $core.bool hasDaoWithdrawPhase2() => $_has(8);
   @$pb.TagNumber(9)
@@ -1097,33 +1323,49 @@ class Cell extends $pb.GeneratedMessage {
     return $result;
   }
   Cell._() : super();
-  factory Cell.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Cell.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Cell.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Cell.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Cell', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
-    ..aOM<OutPoint>(1, _omitFieldNames ? '' : 'outPoint', subBuilder: OutPoint.create)
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'capacity', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Cell',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
+    ..aOM<OutPoint>(1, _omitFieldNames ? '' : 'outPoint',
+        subBuilder: OutPoint.create)
+    ..a<$fixnum.Int64>(
+        2, _omitFieldNames ? '' : 'capacity', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOM<Script>(3, _omitFieldNames ? '' : 'lock', subBuilder: Script.create)
     ..aOM<Script>(4, _omitFieldNames ? '' : 'type', subBuilder: Script.create)
-    ..a<$core.List<$core.int>>(5, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
-    ..a<$fixnum.Int64>(6, _omitFieldNames ? '' : 'blockNumber', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.List<$core.int>>(7, _omitFieldNames ? '' : 'blockHash', $pb.PbFieldType.OY)
-    ..a<$fixnum.Int64>(8, _omitFieldNames ? '' : 'since', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.List<$core.int>>(9, _omitFieldNames ? '' : 'inputType', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(10, _omitFieldNames ? '' : 'outputType', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
+    ..a<$core.List<$core.int>>(
+        5, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
+    ..a<$fixnum.Int64>(
+        6, _omitFieldNames ? '' : 'blockNumber', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(
+        7, _omitFieldNames ? '' : 'blockHash', $pb.PbFieldType.OY)
+    ..a<$fixnum.Int64>(8, _omitFieldNames ? '' : 'since', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(
+        9, _omitFieldNames ? '' : 'inputType', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        10, _omitFieldNames ? '' : 'outputType', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Cell clone() => Cell()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Cell copyWith(void Function(Cell) updates) => super.copyWith((message) => updates(message as Cell)) as Cell;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Cell copyWith(void Function(Cell) updates) =>
+      super.copyWith((message) => updates(message as Cell)) as Cell;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -1132,14 +1374,18 @@ class Cell extends $pb.GeneratedMessage {
   Cell createEmptyInstance() => create();
   static $pb.PbList<Cell> createRepeated() => $pb.PbList<Cell>();
   @$core.pragma('dart2js:noInline')
-  static Cell getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Cell>(create);
+  static Cell getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Cell>(create);
   static Cell? _defaultInstance;
 
   /// The unspent output
   @$pb.TagNumber(1)
   OutPoint get outPoint => $_getN(0);
   @$pb.TagNumber(1)
-  set outPoint(OutPoint v) { setField(1, v); }
+  set outPoint(OutPoint v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasOutPoint() => $_has(0);
   @$pb.TagNumber(1)
@@ -1151,7 +1397,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $fixnum.Int64 get capacity => $_getI64(1);
   @$pb.TagNumber(2)
-  set capacity($fixnum.Int64 v) { $_setInt64(1, v); }
+  set capacity($fixnum.Int64 v) {
+    $_setInt64(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasCapacity() => $_has(1);
   @$pb.TagNumber(2)
@@ -1161,7 +1410,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   Script get lock => $_getN(2);
   @$pb.TagNumber(3)
-  set lock(Script v) { setField(3, v); }
+  set lock(Script v) {
+    setField(3, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasLock() => $_has(2);
   @$pb.TagNumber(3)
@@ -1173,7 +1425,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   Script get type => $_getN(3);
   @$pb.TagNumber(4)
-  set type(Script v) { setField(4, v); }
+  set type(Script v) {
+    setField(4, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasType() => $_has(3);
   @$pb.TagNumber(4)
@@ -1185,7 +1440,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.List<$core.int> get data => $_getN(4);
   @$pb.TagNumber(5)
-  set data($core.List<$core.int> v) { $_setBytes(4, v); }
+  set data($core.List<$core.int> v) {
+    $_setBytes(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasData() => $_has(4);
   @$pb.TagNumber(5)
@@ -1195,7 +1453,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $fixnum.Int64 get blockNumber => $_getI64(5);
   @$pb.TagNumber(6)
-  set blockNumber($fixnum.Int64 v) { $_setInt64(5, v); }
+  set blockNumber($fixnum.Int64 v) {
+    $_setInt64(5, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasBlockNumber() => $_has(5);
   @$pb.TagNumber(6)
@@ -1205,7 +1466,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.List<$core.int> get blockHash => $_getN(6);
   @$pb.TagNumber(7)
-  set blockHash($core.List<$core.int> v) { $_setBytes(6, v); }
+  set blockHash($core.List<$core.int> v) {
+    $_setBytes(6, v);
+  }
+
   @$pb.TagNumber(7)
   $core.bool hasBlockHash() => $_has(6);
   @$pb.TagNumber(7)
@@ -1215,7 +1479,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   $fixnum.Int64 get since => $_getI64(7);
   @$pb.TagNumber(8)
-  set since($fixnum.Int64 v) { $_setInt64(7, v); }
+  set since($fixnum.Int64 v) {
+    $_setInt64(7, v);
+  }
+
   @$pb.TagNumber(8)
   $core.bool hasSince() => $_has(7);
   @$pb.TagNumber(8)
@@ -1225,7 +1492,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   $core.List<$core.int> get inputType => $_getN(8);
   @$pb.TagNumber(9)
-  set inputType($core.List<$core.int> v) { $_setBytes(8, v); }
+  set inputType($core.List<$core.int> v) {
+    $_setBytes(8, v);
+  }
+
   @$pb.TagNumber(9)
   $core.bool hasInputType() => $_has(8);
   @$pb.TagNumber(9)
@@ -1235,7 +1505,10 @@ class Cell extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   $core.List<$core.int> get outputType => $_getN(9);
   @$pb.TagNumber(10)
-  set outputType($core.List<$core.int> v) { $_setBytes(9, v); }
+  set outputType($core.List<$core.int> v) {
+    $_setBytes(9, v);
+  }
+
   @$pb.TagNumber(10)
   $core.bool hasOutputType() => $_has(9);
   @$pb.TagNumber(10)
@@ -1262,42 +1535,57 @@ class SigningOutput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningOutput._() : super();
-  factory SigningOutput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningOutput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningOutput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Nervos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'transactionJson')
     ..aOS(2, _omitFieldNames ? '' : 'transactionId')
-    ..e<$0.SigningError>(3, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
-    ..hasRequiredFields = false
-  ;
+    ..e<$0.SigningError>(3, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningOutput clone() => SigningOutput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningOutput copyWith(void Function(SigningOutput) updates) => super.copyWith((message) => updates(message as SigningOutput)) as SigningOutput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningOutput copyWith(void Function(SigningOutput) updates) =>
+      super.copyWith((message) => updates(message as SigningOutput))
+          as SigningOutput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningOutput create() => SigningOutput._();
   SigningOutput createEmptyInstance() => create();
-  static $pb.PbList<SigningOutput> createRepeated() => $pb.PbList<SigningOutput>();
+  static $pb.PbList<SigningOutput> createRepeated() =>
+      $pb.PbList<SigningOutput>();
   @$core.pragma('dart2js:noInline')
-  static SigningOutput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
+  static SigningOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
   static SigningOutput? _defaultInstance;
 
   /// Resulting transaction. Note that the amount may be different than the requested amount to account for fees and available funds.
   @$pb.TagNumber(1)
   $core.String get transactionJson => $_getSZ(0);
   @$pb.TagNumber(1)
-  set transactionJson($core.String v) { $_setString(0, v); }
+  set transactionJson($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasTransactionJson() => $_has(0);
   @$pb.TagNumber(1)
@@ -1307,7 +1595,10 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get transactionId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set transactionId($core.String v) { $_setString(1, v); }
+  set transactionId($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasTransactionId() => $_has(1);
   @$pb.TagNumber(2)
@@ -1317,13 +1608,16 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $0.SigningError get error => $_getN(2);
   @$pb.TagNumber(3)
-  set error($0.SigningError v) { setField(3, v); }
+  set error($0.SigningError v) {
+    setField(3, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasError() => $_has(2);
   @$pb.TagNumber(3)
   void clearError() => clearField(3);
 }
 
-
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

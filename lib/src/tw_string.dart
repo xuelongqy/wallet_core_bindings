@@ -43,16 +43,12 @@ class TWString extends TWObjectFinalizable<Void> {
   TWString.createWithRawBytes(
     Uint8List bytes, {
     bool attach = true,
-  }) : super(_twStringCreateWithRawBytes(bytes),
-            attach: attach, finalizer: _twStringFinalizer);
-
-  static Pointer<Void> _twStringCreateWithRawBytes(Uint8List bytes) {
-    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
-    Pointer<Void> res =
-        iTWBindings.TWStringCreateWithRawBytes(bytesPointer, bytes.length);
-    malloc.free(bytesPointer);
-    return res;
-  }
+  }) : super(
+          iTWBindings.TWStringCreateWithRawBytes(
+              bytes.toNativeUint8(), bytes.length),
+          attach: attach,
+          finalizer: _twStringFinalizer,
+        );
 
   /// Creates a hexadecimal string from a block of data. It must be deleted at the end.
   ///

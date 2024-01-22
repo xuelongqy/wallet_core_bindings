@@ -15,20 +15,22 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class KeyType extends $pb.ProtobufEnum {
   static const KeyType LEGACY = KeyType._(0, _omitEnumNames ? '' : 'LEGACY');
-  static const KeyType MODERNK1 = KeyType._(1, _omitEnumNames ? '' : 'MODERNK1');
-  static const KeyType MODERNR1 = KeyType._(2, _omitEnumNames ? '' : 'MODERNR1');
+  static const KeyType MODERNK1 =
+      KeyType._(1, _omitEnumNames ? '' : 'MODERNK1');
+  static const KeyType MODERNR1 =
+      KeyType._(2, _omitEnumNames ? '' : 'MODERNR1');
 
-  static const $core.List<KeyType> values = <KeyType> [
+  static const $core.List<KeyType> values = <KeyType>[
     LEGACY,
     MODERNK1,
     MODERNR1,
   ];
 
-  static final $core.Map<$core.int, KeyType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, KeyType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static KeyType? valueOf($core.int value) => _byValue[value];
 
   const KeyType._($core.int v, $core.String n) : super(v, n);
 }
-
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

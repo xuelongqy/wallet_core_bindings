@@ -77,9 +77,30 @@ const Transaction$json = {
     {'1': 'timestamp', '3': 2, '4': 1, '5': 13, '10': 'timestamp'},
     {'1': 'remark', '3': 3, '4': 1, '5': 9, '10': 'remark'},
     {'1': 'tx_data', '3': 4, '4': 1, '5': 12, '10': 'txData'},
-    {'1': 'input', '3': 5, '4': 3, '5': 11, '6': '.TW.NULS.Proto.TransactionCoinFrom', '10': 'input'},
-    {'1': 'output', '3': 6, '4': 3, '5': 11, '6': '.TW.NULS.Proto.TransactionCoinTo', '10': 'output'},
-    {'1': 'tx_sigs', '3': 7, '4': 1, '5': 11, '6': '.TW.NULS.Proto.Signature', '10': 'txSigs'},
+    {
+      '1': 'input',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NULS.Proto.TransactionCoinFrom',
+      '10': 'input'
+    },
+    {
+      '1': 'output',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NULS.Proto.TransactionCoinTo',
+      '10': 'output'
+    },
+    {
+      '1': 'tx_sigs',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NULS.Proto.Signature',
+      '10': 'txSigs'
+    },
     {'1': 'hash', '3': 8, '4': 1, '5': 13, '10': 'hash'},
   ],
 };
@@ -109,8 +130,20 @@ const SigningInput$json = {
     {'1': 'timestamp', '3': 10, '4': 1, '5': 13, '10': 'timestamp'},
     {'1': 'fee_payer', '3': 11, '4': 1, '5': 9, '10': 'feePayer'},
     {'1': 'fee_payer_nonce', '3': 12, '4': 1, '5': 12, '10': 'feePayerNonce'},
-    {'1': 'fee_payer_private_key', '3': 13, '4': 1, '5': 12, '10': 'feePayerPrivateKey'},
-    {'1': 'fee_payer_balance', '3': 14, '4': 1, '5': 12, '10': 'feePayerBalance'},
+    {
+      '1': 'fee_payer_private_key',
+      '3': 13,
+      '4': 1,
+      '5': 12,
+      '10': 'feePayerPrivateKey'
+    },
+    {
+      '1': 'fee_payer_balance',
+      '3': 14,
+      '4': 1,
+      '5': 12,
+      '10': 'feePayerBalance'
+    },
   ],
 };
 
@@ -130,7 +163,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -140,4 +180,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSMwoFZXJyb3IYAiABKA'
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
     'GAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

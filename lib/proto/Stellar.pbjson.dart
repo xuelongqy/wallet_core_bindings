@@ -49,16 +49,24 @@ const OperationCreateAccount$json = {
 };
 
 /// Descriptor for `OperationCreateAccount`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List operationCreateAccountDescriptor = $convert.base64Decode(
-    'ChZPcGVyYXRpb25DcmVhdGVBY2NvdW50EiAKC2Rlc3RpbmF0aW9uGAEgASgJUgtkZXN0aW5hdG'
-    'lvbhIWCgZhbW91bnQYAiABKANSBmFtb3VudA==');
+final $typed_data.Uint8List operationCreateAccountDescriptor =
+    $convert.base64Decode(
+        'ChZPcGVyYXRpb25DcmVhdGVBY2NvdW50EiAKC2Rlc3RpbmF0aW9uGAEgASgJUgtkZXN0aW5hdG'
+        'lvbhIWCgZhbW91bnQYAiABKANSBmFtb3VudA==');
 
 @$core.Deprecated('Use operationPaymentDescriptor instead')
 const OperationPayment$json = {
   '1': 'OperationPayment',
   '2': [
     {'1': 'destination', '3': 1, '4': 1, '5': 9, '10': 'destination'},
-    {'1': 'asset', '3': 2, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'amount', '3': 3, '4': 1, '5': 3, '10': 'amount'},
   ],
 };
@@ -73,7 +81,14 @@ final $typed_data.Uint8List operationPaymentDescriptor = $convert.base64Decode(
 const OperationChangeTrust$json = {
   '1': 'OperationChangeTrust',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'valid_before', '3': 2, '4': 1, '5': 3, '10': 'validBefore'},
   ],
 };
@@ -88,7 +103,14 @@ const Claimant$json = {
   '1': 'Claimant',
   '2': [
     {'1': 'account', '3': 1, '4': 1, '5': 9, '10': 'account'},
-    {'1': 'predicate', '3': 2, '4': 1, '5': 14, '6': '.TW.Stellar.Proto.ClaimPredicate', '10': 'predicate'},
+    {
+      '1': 'predicate',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Stellar.Proto.ClaimPredicate',
+      '10': 'predicate'
+    },
   ],
 };
 
@@ -101,17 +123,32 @@ final $typed_data.Uint8List claimantDescriptor = $convert.base64Decode(
 const OperationCreateClaimableBalance$json = {
   '1': 'OperationCreateClaimableBalance',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 3, '10': 'amount'},
-    {'1': 'claimants', '3': 3, '4': 3, '5': 11, '6': '.TW.Stellar.Proto.Claimant', '10': 'claimants'},
+    {
+      '1': 'claimants',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.Claimant',
+      '10': 'claimants'
+    },
   ],
 };
 
 /// Descriptor for `OperationCreateClaimableBalance`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List operationCreateClaimableBalanceDescriptor = $convert.base64Decode(
-    'Ch9PcGVyYXRpb25DcmVhdGVDbGFpbWFibGVCYWxhbmNlEi0KBWFzc2V0GAEgASgLMhcuVFcuU3'
-    'RlbGxhci5Qcm90by5Bc3NldFIFYXNzZXQSFgoGYW1vdW50GAIgASgDUgZhbW91bnQSOAoJY2xh'
-    'aW1hbnRzGAMgAygLMhouVFcuU3RlbGxhci5Qcm90by5DbGFpbWFudFIJY2xhaW1hbnRz');
+final $typed_data.Uint8List operationCreateClaimableBalanceDescriptor =
+    $convert.base64Decode(
+        'Ch9PcGVyYXRpb25DcmVhdGVDbGFpbWFibGVCYWxhbmNlEi0KBWFzc2V0GAEgASgLMhcuVFcuU3'
+        'RlbGxhci5Qcm90by5Bc3NldFIFYXNzZXQSFgoGYW1vdW50GAIgASgDUgZhbW91bnQSOAoJY2xh'
+        'aW1hbnRzGAMgAygLMhouVFcuU3RlbGxhci5Qcm90by5DbGFpbWFudFIJY2xhaW1hbnRz');
 
 @$core.Deprecated('Use operationClaimClaimableBalanceDescriptor instead')
 const OperationClaimClaimableBalance$json = {
@@ -122,9 +159,10 @@ const OperationClaimClaimableBalance$json = {
 };
 
 /// Descriptor for `OperationClaimClaimableBalance`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List operationClaimClaimableBalanceDescriptor = $convert.base64Decode(
-    'Ch5PcGVyYXRpb25DbGFpbUNsYWltYWJsZUJhbGFuY2USHQoKYmFsYW5jZV9pZBgBIAEoDFIJYm'
-    'FsYW5jZUlk');
+final $typed_data.Uint8List operationClaimClaimableBalanceDescriptor =
+    $convert.base64Decode(
+        'Ch5PcGVyYXRpb25DbGFpbUNsYWltYWJsZUJhbGFuY2USHQoKYmFsYW5jZV9pZBgBIAEoDFIJYm'
+        'FsYW5jZUlk');
 
 @$core.Deprecated('Use memoVoidDescriptor instead')
 const MemoVoid$json = {
@@ -132,8 +170,8 @@ const MemoVoid$json = {
 };
 
 /// Descriptor for `MemoVoid`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List memoVoidDescriptor = $convert.base64Decode(
-    'CghNZW1vVm9pZA==');
+final $typed_data.Uint8List memoVoidDescriptor =
+    $convert.base64Decode('CghNZW1vVm9pZA==');
 
 @$core.Deprecated('Use memoTextDescriptor instead')
 const MemoText$json = {
@@ -144,8 +182,8 @@ const MemoText$json = {
 };
 
 /// Descriptor for `MemoText`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List memoTextDescriptor = $convert.base64Decode(
-    'CghNZW1vVGV4dBISCgR0ZXh0GAEgASgJUgR0ZXh0');
+final $typed_data.Uint8List memoTextDescriptor =
+    $convert.base64Decode('CghNZW1vVGV4dBISCgR0ZXh0GAEgASgJUgR0ZXh0');
 
 @$core.Deprecated('Use memoIdDescriptor instead')
 const MemoId$json = {
@@ -156,8 +194,8 @@ const MemoId$json = {
 };
 
 /// Descriptor for `MemoId`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List memoIdDescriptor = $convert.base64Decode(
-    'CgZNZW1vSWQSDgoCaWQYASABKANSAmlk');
+final $typed_data.Uint8List memoIdDescriptor =
+    $convert.base64Decode('CgZNZW1vSWQSDgoCaWQYASABKANSAmlk');
 
 @$core.Deprecated('Use memoHashDescriptor instead')
 const MemoHash$json = {
@@ -168,8 +206,8 @@ const MemoHash$json = {
 };
 
 /// Descriptor for `MemoHash`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List memoHashDescriptor = $convert.base64Decode(
-    'CghNZW1vSGFzaBISCgRoYXNoGAEgASgMUgRoYXNo');
+final $typed_data.Uint8List memoHashDescriptor =
+    $convert.base64Decode('CghNZW1vSGFzaBISCgRoYXNoGAEgASgMUgRoYXNo');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
@@ -180,16 +218,96 @@ const SigningInput$json = {
     {'1': 'account', '3': 3, '4': 1, '5': 9, '10': 'account'},
     {'1': 'private_key', '3': 4, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'passphrase', '3': 5, '4': 1, '5': 9, '10': 'passphrase'},
-    {'1': 'op_create_account', '3': 6, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.OperationCreateAccount', '9': 0, '10': 'opCreateAccount'},
-    {'1': 'op_payment', '3': 7, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.OperationPayment', '9': 0, '10': 'opPayment'},
-    {'1': 'op_change_trust', '3': 8, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.OperationChangeTrust', '9': 0, '10': 'opChangeTrust'},
-    {'1': 'op_create_claimable_balance', '3': 14, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.OperationCreateClaimableBalance', '9': 0, '10': 'opCreateClaimableBalance'},
-    {'1': 'op_claim_claimable_balance', '3': 15, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.OperationClaimClaimableBalance', '9': 0, '10': 'opClaimClaimableBalance'},
-    {'1': 'memo_void', '3': 9, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.MemoVoid', '9': 1, '10': 'memoVoid'},
-    {'1': 'memo_text', '3': 10, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.MemoText', '9': 1, '10': 'memoText'},
-    {'1': 'memo_id', '3': 11, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.MemoId', '9': 1, '10': 'memoId'},
-    {'1': 'memo_hash', '3': 12, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.MemoHash', '9': 1, '10': 'memoHash'},
-    {'1': 'memo_return_hash', '3': 13, '4': 1, '5': 11, '6': '.TW.Stellar.Proto.MemoHash', '9': 1, '10': 'memoReturnHash'},
+    {
+      '1': 'op_create_account',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.OperationCreateAccount',
+      '9': 0,
+      '10': 'opCreateAccount'
+    },
+    {
+      '1': 'op_payment',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.OperationPayment',
+      '9': 0,
+      '10': 'opPayment'
+    },
+    {
+      '1': 'op_change_trust',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.OperationChangeTrust',
+      '9': 0,
+      '10': 'opChangeTrust'
+    },
+    {
+      '1': 'op_create_claimable_balance',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.OperationCreateClaimableBalance',
+      '9': 0,
+      '10': 'opCreateClaimableBalance'
+    },
+    {
+      '1': 'op_claim_claimable_balance',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.OperationClaimClaimableBalance',
+      '9': 0,
+      '10': 'opClaimClaimableBalance'
+    },
+    {
+      '1': 'memo_void',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.MemoVoid',
+      '9': 1,
+      '10': 'memoVoid'
+    },
+    {
+      '1': 'memo_text',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.MemoText',
+      '9': 1,
+      '10': 'memoText'
+    },
+    {
+      '1': 'memo_id',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.MemoId',
+      '9': 1,
+      '10': 'memoId'
+    },
+    {
+      '1': 'memo_hash',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.MemoHash',
+      '9': 1,
+      '10': 'memoHash'
+    },
+    {
+      '1': 'memo_return_hash',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Stellar.Proto.MemoHash',
+      '9': 1,
+      '10': 'memoReturnHash'
+    },
     {'1': 'time_bounds', '3': 16, '4': 1, '5': 3, '10': 'timeBounds'},
   ],
   '8': [
@@ -224,7 +342,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'signature', '3': 1, '4': 1, '5': 9, '10': 'signature'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -234,4 +359,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhwKCXNpZ25hdHVyZRgBIAEoCVIJc2lnbmF0dXJlEjMKBWVycm9yGA'
     'IgASgOMh0uVFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVz'
     'c2FnZRgDIAEoCVIMZXJyb3JNZXNzYWdl');
-

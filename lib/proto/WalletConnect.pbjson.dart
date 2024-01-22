@@ -22,8 +22,8 @@ const Protocol$json = {
 };
 
 /// Descriptor for `Protocol`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List protocolDescriptor = $convert.base64Decode(
-    'CghQcm90b2NvbBIGCgJWMhAA');
+final $typed_data.Uint8List protocolDescriptor =
+    $convert.base64Decode('CghQcm90b2NvbBIGCgJWMhAA');
 
 @$core.Deprecated('Use methodDescriptor instead')
 const Method$json = {
@@ -35,15 +35,29 @@ const Method$json = {
 };
 
 /// Descriptor for `Method`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List methodDescriptor = $convert.base64Decode(
-    'CgZNZXRob2QSCwoHVW5rbm93bhAAEhMKD0Nvc21vc1NpZ25BbWlubxAB');
+final $typed_data.Uint8List methodDescriptor = $convert
+    .base64Decode('CgZNZXRob2QSCwoHVW5rbm93bhAAEhMKD0Nvc21vc1NpZ25BbWlubxAB');
 
 @$core.Deprecated('Use parseRequestInputDescriptor instead')
 const ParseRequestInput$json = {
   '1': 'ParseRequestInput',
   '2': [
-    {'1': 'protocol', '3': 1, '4': 1, '5': 14, '6': '.TW.WalletConnect.Proto.Protocol', '10': 'protocol'},
-    {'1': 'method', '3': 2, '4': 1, '5': 14, '6': '.TW.WalletConnect.Proto.Method', '10': 'method'},
+    {
+      '1': 'protocol',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.WalletConnect.Proto.Protocol',
+      '10': 'protocol'
+    },
+    {
+      '1': 'method',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.WalletConnect.Proto.Method',
+      '10': 'method'
+    },
     {'1': 'payload', '3': 3, '4': 1, '5': 9, '10': 'payload'},
   ],
 };
@@ -58,9 +72,24 @@ final $typed_data.Uint8List parseRequestInputDescriptor = $convert.base64Decode(
 const ParseRequestOutput$json = {
   '1': 'ParseRequestOutput',
   '2': [
-    {'1': 'error', '3': 1, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
-    {'1': 'binance', '3': 3, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SigningInput', '9': 0, '10': 'binance'},
+    {
+      '1': 'binance',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SigningInput',
+      '9': 0,
+      '10': 'binance'
+    },
   ],
   '8': [
     {'1': 'signing_input_oneof'},
@@ -73,4 +102,3 @@ final $typed_data.Uint8List parseRequestOutputDescriptor = $convert.base64Decode
     'lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAIgASgJUgxlcnJvck1lc3NhZ2US'
     'OgoHYmluYW5jZRgDIAEoCzIeLlRXLkJpbmFuY2UuUHJvdG8uU2lnbmluZ0lucHV0SABSB2Jpbm'
     'FuY2VCFQoTc2lnbmluZ19pbnB1dF9vbmVvZg==');
-

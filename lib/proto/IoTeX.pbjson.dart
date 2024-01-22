@@ -32,17 +32,98 @@ final $typed_data.Uint8List transferDescriptor = $convert.base64Decode(
 const Staking$json = {
   '1': 'Staking',
   '2': [
-    {'1': 'stakeCreate', '3': 1, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Create', '9': 0, '10': 'stakeCreate'},
-    {'1': 'stakeUnstake', '3': 2, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Reclaim', '9': 0, '10': 'stakeUnstake'},
-    {'1': 'stakeWithdraw', '3': 3, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Reclaim', '9': 0, '10': 'stakeWithdraw'},
-    {'1': 'stakeAddDeposit', '3': 4, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.AddDeposit', '9': 0, '10': 'stakeAddDeposit'},
-    {'1': 'stakeRestake', '3': 5, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Restake', '9': 0, '10': 'stakeRestake'},
-    {'1': 'stakeChangeCandidate', '3': 6, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.ChangeCandidate', '9': 0, '10': 'stakeChangeCandidate'},
-    {'1': 'stakeTransferOwnership', '3': 7, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.TransferOwnership', '9': 0, '10': 'stakeTransferOwnership'},
-    {'1': 'candidateRegister', '3': 8, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateRegister', '9': 0, '10': 'candidateRegister'},
-    {'1': 'candidateUpdate', '3': 9, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo', '9': 0, '10': 'candidateUpdate'},
+    {
+      '1': 'stakeCreate',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Create',
+      '9': 0,
+      '10': 'stakeCreate'
+    },
+    {
+      '1': 'stakeUnstake',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Reclaim',
+      '9': 0,
+      '10': 'stakeUnstake'
+    },
+    {
+      '1': 'stakeWithdraw',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Reclaim',
+      '9': 0,
+      '10': 'stakeWithdraw'
+    },
+    {
+      '1': 'stakeAddDeposit',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.AddDeposit',
+      '9': 0,
+      '10': 'stakeAddDeposit'
+    },
+    {
+      '1': 'stakeRestake',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Restake',
+      '9': 0,
+      '10': 'stakeRestake'
+    },
+    {
+      '1': 'stakeChangeCandidate',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.ChangeCandidate',
+      '9': 0,
+      '10': 'stakeChangeCandidate'
+    },
+    {
+      '1': 'stakeTransferOwnership',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.TransferOwnership',
+      '9': 0,
+      '10': 'stakeTransferOwnership'
+    },
+    {
+      '1': 'candidateRegister',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateRegister',
+      '9': 0,
+      '10': 'candidateRegister'
+    },
+    {
+      '1': 'candidateUpdate',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo',
+      '9': 0,
+      '10': 'candidateUpdate'
+    },
   ],
-  '3': [Staking_Create$json, Staking_Reclaim$json, Staking_AddDeposit$json, Staking_Restake$json, Staking_ChangeCandidate$json, Staking_TransferOwnership$json, Staking_CandidateBasicInfo$json, Staking_CandidateRegister$json],
+  '3': [
+    Staking_Create$json,
+    Staking_Reclaim$json,
+    Staking_AddDeposit$json,
+    Staking_Restake$json,
+    Staking_ChangeCandidate$json,
+    Staking_TransferOwnership$json,
+    Staking_CandidateBasicInfo$json,
+    Staking_CandidateRegister$json
+  ],
   '8': [
     {'1': 'message'},
   ],
@@ -124,7 +205,14 @@ const Staking_CandidateBasicInfo$json = {
 const Staking_CandidateRegister$json = {
   '1': 'CandidateRegister',
   '2': [
-    {'1': 'candidate', '3': 1, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo', '10': 'candidate'},
+    {
+      '1': 'candidate',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo',
+      '10': 'candidate'
+    },
     {'1': 'stakedAmount', '3': 2, '4': 1, '5': 9, '10': 'stakedAmount'},
     {'1': 'stakedDuration', '3': 3, '4': 1, '5': 13, '10': 'stakedDuration'},
     {'1': 'autoStake', '3': 4, '4': 1, '5': 8, '10': 'autoStake'},
@@ -195,17 +283,105 @@ const SigningInput$json = {
     {'1': 'gasPrice', '3': 4, '4': 1, '5': 9, '10': 'gasPrice'},
     {'1': 'chainID', '3': 5, '4': 1, '5': 13, '10': 'chainID'},
     {'1': 'privateKey', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transfer', '3': 10, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'call', '3': 12, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.ContractCall', '9': 0, '10': 'call'},
-    {'1': 'stakeCreate', '3': 40, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Create', '9': 0, '10': 'stakeCreate'},
-    {'1': 'stakeUnstake', '3': 41, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Reclaim', '9': 0, '10': 'stakeUnstake'},
-    {'1': 'stakeWithdraw', '3': 42, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Reclaim', '9': 0, '10': 'stakeWithdraw'},
-    {'1': 'stakeAddDeposit', '3': 43, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.AddDeposit', '9': 0, '10': 'stakeAddDeposit'},
-    {'1': 'stakeRestake', '3': 44, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Restake', '9': 0, '10': 'stakeRestake'},
-    {'1': 'stakeChangeCandidate', '3': 45, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.ChangeCandidate', '9': 0, '10': 'stakeChangeCandidate'},
-    {'1': 'stakeTransferOwnership', '3': 46, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.TransferOwnership', '9': 0, '10': 'stakeTransferOwnership'},
-    {'1': 'candidateRegister', '3': 47, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateRegister', '9': 0, '10': 'candidateRegister'},
-    {'1': 'candidateUpdate', '3': 48, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo', '9': 0, '10': 'candidateUpdate'},
+    {
+      '1': 'transfer',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'call',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.ContractCall',
+      '9': 0,
+      '10': 'call'
+    },
+    {
+      '1': 'stakeCreate',
+      '3': 40,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Create',
+      '9': 0,
+      '10': 'stakeCreate'
+    },
+    {
+      '1': 'stakeUnstake',
+      '3': 41,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Reclaim',
+      '9': 0,
+      '10': 'stakeUnstake'
+    },
+    {
+      '1': 'stakeWithdraw',
+      '3': 42,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Reclaim',
+      '9': 0,
+      '10': 'stakeWithdraw'
+    },
+    {
+      '1': 'stakeAddDeposit',
+      '3': 43,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.AddDeposit',
+      '9': 0,
+      '10': 'stakeAddDeposit'
+    },
+    {
+      '1': 'stakeRestake',
+      '3': 44,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Restake',
+      '9': 0,
+      '10': 'stakeRestake'
+    },
+    {
+      '1': 'stakeChangeCandidate',
+      '3': 45,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.ChangeCandidate',
+      '9': 0,
+      '10': 'stakeChangeCandidate'
+    },
+    {
+      '1': 'stakeTransferOwnership',
+      '3': 46,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.TransferOwnership',
+      '9': 0,
+      '10': 'stakeTransferOwnership'
+    },
+    {
+      '1': 'candidateRegister',
+      '3': 47,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateRegister',
+      '9': 0,
+      '10': 'candidateRegister'
+    },
+    {
+      '1': 'candidateUpdate',
+      '3': 48,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo',
+      '9': 0,
+      '10': 'candidateUpdate'
+    },
   ],
   '8': [
     {'1': 'action'},
@@ -240,7 +416,14 @@ const SigningOutput$json = {
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'hash', '3': 2, '4': 1, '5': 12, '10': 'hash'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -260,17 +443,105 @@ const ActionCore$json = {
     {'1': 'gasLimit', '3': 3, '4': 1, '5': 4, '10': 'gasLimit'},
     {'1': 'gasPrice', '3': 4, '4': 1, '5': 9, '10': 'gasPrice'},
     {'1': 'chainID', '3': 5, '4': 1, '5': 13, '10': 'chainID'},
-    {'1': 'transfer', '3': 10, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'execution', '3': 12, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.ContractCall', '9': 0, '10': 'execution'},
-    {'1': 'stakeCreate', '3': 40, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Create', '9': 0, '10': 'stakeCreate'},
-    {'1': 'stakeUnstake', '3': 41, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Reclaim', '9': 0, '10': 'stakeUnstake'},
-    {'1': 'stakeWithdraw', '3': 42, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Reclaim', '9': 0, '10': 'stakeWithdraw'},
-    {'1': 'stakeAddDeposit', '3': 43, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.AddDeposit', '9': 0, '10': 'stakeAddDeposit'},
-    {'1': 'stakeRestake', '3': 44, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.Restake', '9': 0, '10': 'stakeRestake'},
-    {'1': 'stakeChangeCandidate', '3': 45, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.ChangeCandidate', '9': 0, '10': 'stakeChangeCandidate'},
-    {'1': 'stakeTransferOwnership', '3': 46, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.TransferOwnership', '9': 0, '10': 'stakeTransferOwnership'},
-    {'1': 'candidateRegister', '3': 47, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateRegister', '9': 0, '10': 'candidateRegister'},
-    {'1': 'candidateUpdate', '3': 48, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo', '9': 0, '10': 'candidateUpdate'},
+    {
+      '1': 'transfer',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'execution',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.ContractCall',
+      '9': 0,
+      '10': 'execution'
+    },
+    {
+      '1': 'stakeCreate',
+      '3': 40,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Create',
+      '9': 0,
+      '10': 'stakeCreate'
+    },
+    {
+      '1': 'stakeUnstake',
+      '3': 41,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Reclaim',
+      '9': 0,
+      '10': 'stakeUnstake'
+    },
+    {
+      '1': 'stakeWithdraw',
+      '3': 42,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Reclaim',
+      '9': 0,
+      '10': 'stakeWithdraw'
+    },
+    {
+      '1': 'stakeAddDeposit',
+      '3': 43,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.AddDeposit',
+      '9': 0,
+      '10': 'stakeAddDeposit'
+    },
+    {
+      '1': 'stakeRestake',
+      '3': 44,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.Restake',
+      '9': 0,
+      '10': 'stakeRestake'
+    },
+    {
+      '1': 'stakeChangeCandidate',
+      '3': 45,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.ChangeCandidate',
+      '9': 0,
+      '10': 'stakeChangeCandidate'
+    },
+    {
+      '1': 'stakeTransferOwnership',
+      '3': 46,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.TransferOwnership',
+      '9': 0,
+      '10': 'stakeTransferOwnership'
+    },
+    {
+      '1': 'candidateRegister',
+      '3': 47,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateRegister',
+      '9': 0,
+      '10': 'candidateRegister'
+    },
+    {
+      '1': 'candidateUpdate',
+      '3': 48,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.Staking.CandidateBasicInfo',
+      '9': 0,
+      '10': 'candidateUpdate'
+    },
   ],
   '8': [
     {'1': 'action'},
@@ -303,7 +574,14 @@ final $typed_data.Uint8List actionCoreDescriptor = $convert.base64Decode(
 const Action$json = {
   '1': 'Action',
   '2': [
-    {'1': 'core', '3': 1, '4': 1, '5': 11, '6': '.TW.IoTeX.Proto.ActionCore', '10': 'core'},
+    {
+      '1': 'core',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.IoTeX.Proto.ActionCore',
+      '10': 'core'
+    },
     {'1': 'senderPubKey', '3': 2, '4': 1, '5': 12, '10': 'senderPubKey'},
     {'1': 'signature', '3': 3, '4': 1, '5': 12, '10': 'signature'},
   ],
@@ -314,4 +592,3 @@ final $typed_data.Uint8List actionDescriptor = $convert.base64Decode(
     'CgZBY3Rpb24SLgoEY29yZRgBIAEoCzIaLlRXLklvVGVYLlByb3RvLkFjdGlvbkNvcmVSBGNvcm'
     'USIgoMc2VuZGVyUHViS2V5GAIgASgMUgxzZW5kZXJQdWJLZXkSHAoJc2lnbmF0dXJlGAMgASgM'
     'UglzaWduYXR1cmU=');
-

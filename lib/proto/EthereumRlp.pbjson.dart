@@ -17,7 +17,14 @@ import 'dart:typed_data' as $typed_data;
 const RlpList$json = {
   '1': 'RlpList',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.TW.EthereumRlp.Proto.RlpItem', '10': 'items'},
+    {
+      '1': 'items',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumRlp.Proto.RlpItem',
+      '10': 'items'
+    },
   ],
 };
 
@@ -35,7 +42,15 @@ const RlpItem$json = {
     {'1': 'number_u256', '3': 3, '4': 1, '5': 12, '9': 0, '10': 'numberU256'},
     {'1': 'address', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'address'},
     {'1': 'data', '3': 5, '4': 1, '5': 12, '9': 0, '10': 'data'},
-    {'1': 'list', '3': 6, '4': 1, '5': 11, '6': '.TW.EthereumRlp.Proto.RlpList', '9': 0, '10': 'list'},
+    {
+      '1': 'list',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumRlp.Proto.RlpList',
+      '9': 0,
+      '10': 'list'
+    },
     {'1': 'raw_encoded', '3': 7, '4': 1, '5': 12, '9': 0, '10': 'rawEncoded'},
   ],
   '8': [
@@ -55,7 +70,14 @@ final $typed_data.Uint8List rlpItemDescriptor = $convert.base64Decode(
 const EncodingInput$json = {
   '1': 'EncodingInput',
   '2': [
-    {'1': 'item', '3': 1, '4': 1, '5': 11, '6': '.TW.EthereumRlp.Proto.RlpItem', '10': 'item'},
+    {
+      '1': 'item',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumRlp.Proto.RlpItem',
+      '10': 'item'
+    },
   ],
 };
 
@@ -69,7 +91,14 @@ const EncodingOutput$json = {
   '1': 'EncodingOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -79,4 +108,3 @@ final $typed_data.Uint8List encodingOutputDescriptor = $convert.base64Decode(
     'Cg5FbmNvZGluZ091dHB1dBIYCgdlbmNvZGVkGAEgASgMUgdlbmNvZGVkEjMKBWVycm9yGAIgAS'
     'gOMh0uVFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2Fn'
     'ZRgDIAEoCVIMZXJyb3JNZXNzYWdl');
-

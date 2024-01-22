@@ -63,7 +63,14 @@ final $typed_data.Uint8List errorCodeDescriptor = $convert.base64Decode(
 const Error$json = {
   '1': 'Error',
   '2': [
-    {'1': 'code', '3': 1, '4': 1, '5': 14, '6': '.TW.THORChainSwap.Proto.ErrorCode', '10': 'code'},
+    {
+      '1': 'code',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.THORChainSwap.Proto.ErrorCode',
+      '10': 'code'
+    },
     {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
   ],
 };
@@ -77,7 +84,14 @@ final $typed_data.Uint8List errorDescriptor = $convert.base64Decode(
 const Asset$json = {
   '1': 'Asset',
   '2': [
-    {'1': 'chain', '3': 1, '4': 1, '5': 14, '6': '.TW.THORChainSwap.Proto.Chain', '10': 'chain'},
+    {
+      '1': 'chain',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.THORChainSwap.Proto.Chain',
+      '10': 'chain'
+    },
     {'1': 'symbol', '3': 2, '4': 1, '5': 9, '10': 'symbol'},
     {'1': 'token_id', '3': 3, '4': 1, '5': 9, '10': 'tokenId'},
   ],
@@ -106,19 +120,52 @@ final $typed_data.Uint8List streamParamsDescriptor = $convert.base64Decode(
 const SwapInput$json = {
   '1': 'SwapInput',
   '2': [
-    {'1': 'from_asset', '3': 1, '4': 1, '5': 11, '6': '.TW.THORChainSwap.Proto.Asset', '10': 'fromAsset'},
+    {
+      '1': 'from_asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.THORChainSwap.Proto.Asset',
+      '10': 'fromAsset'
+    },
     {'1': 'from_address', '3': 2, '4': 1, '5': 9, '10': 'fromAddress'},
-    {'1': 'to_asset', '3': 3, '4': 1, '5': 11, '6': '.TW.THORChainSwap.Proto.Asset', '10': 'toAsset'},
+    {
+      '1': 'to_asset',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.THORChainSwap.Proto.Asset',
+      '10': 'toAsset'
+    },
     {'1': 'to_address', '3': 4, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'vault_address', '3': 5, '4': 1, '5': 9, '10': 'vaultAddress'},
     {'1': 'router_address', '3': 6, '4': 1, '5': 9, '10': 'routerAddress'},
     {'1': 'from_amount', '3': 7, '4': 1, '5': 9, '10': 'fromAmount'},
     {'1': 'to_amount_limit', '3': 8, '4': 1, '5': 9, '10': 'toAmountLimit'},
-    {'1': 'affiliate_fee_address', '3': 9, '4': 1, '5': 9, '10': 'affiliateFeeAddress'},
-    {'1': 'affiliate_fee_rate_bp', '3': 10, '4': 1, '5': 9, '10': 'affiliateFeeRateBp'},
+    {
+      '1': 'affiliate_fee_address',
+      '3': 9,
+      '4': 1,
+      '5': 9,
+      '10': 'affiliateFeeAddress'
+    },
+    {
+      '1': 'affiliate_fee_rate_bp',
+      '3': 10,
+      '4': 1,
+      '5': 9,
+      '10': 'affiliateFeeRateBp'
+    },
     {'1': 'extra_memo', '3': 11, '4': 1, '5': 9, '10': 'extraMemo'},
     {'1': 'expiration_time', '3': 12, '4': 1, '5': 4, '10': 'expirationTime'},
-    {'1': 'stream_params', '3': 13, '4': 1, '5': 11, '6': '.TW.THORChainSwap.Proto.StreamParams', '10': 'streamParams'},
+    {
+      '1': 'stream_params',
+      '3': 13,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.THORChainSwap.Proto.StreamParams',
+      '10': 'streamParams'
+    },
   ],
 };
 
@@ -140,13 +187,66 @@ final $typed_data.Uint8List swapInputDescriptor = $convert.base64Decode(
 const SwapOutput$json = {
   '1': 'SwapOutput',
   '2': [
-    {'1': 'from_chain', '3': 1, '4': 1, '5': 14, '6': '.TW.THORChainSwap.Proto.Chain', '10': 'fromChain'},
-    {'1': 'to_chain', '3': 2, '4': 1, '5': 14, '6': '.TW.THORChainSwap.Proto.Chain', '10': 'toChain'},
-    {'1': 'error', '3': 3, '4': 1, '5': 11, '6': '.TW.THORChainSwap.Proto.Error', '10': 'error'},
-    {'1': 'bitcoin', '3': 4, '4': 1, '5': 11, '6': '.TW.Bitcoin.Proto.SigningInput', '9': 0, '10': 'bitcoin'},
-    {'1': 'ethereum', '3': 5, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.SigningInput', '9': 0, '10': 'ethereum'},
-    {'1': 'binance', '3': 6, '4': 1, '5': 11, '6': '.TW.Binance.Proto.SigningInput', '9': 0, '10': 'binance'},
-    {'1': 'cosmos', '3': 7, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.SigningInput', '9': 0, '10': 'cosmos'},
+    {
+      '1': 'from_chain',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.THORChainSwap.Proto.Chain',
+      '10': 'fromChain'
+    },
+    {
+      '1': 'to_chain',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.THORChainSwap.Proto.Chain',
+      '10': 'toChain'
+    },
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.THORChainSwap.Proto.Error',
+      '10': 'error'
+    },
+    {
+      '1': 'bitcoin',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Bitcoin.Proto.SigningInput',
+      '9': 0,
+      '10': 'bitcoin'
+    },
+    {
+      '1': 'ethereum',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.SigningInput',
+      '9': 0,
+      '10': 'ethereum'
+    },
+    {
+      '1': 'binance',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SigningInput',
+      '9': 0,
+      '10': 'binance'
+    },
+    {
+      '1': 'cosmos',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.SigningInput',
+      '9': 0,
+      '10': 'cosmos'
+    },
   ],
   '8': [
     {'1': 'signing_input_oneof'},
@@ -164,4 +264,3 @@ final $typed_data.Uint8List swapOutputDescriptor = $convert.base64Decode(
     'bmFuY2UuUHJvdG8uU2lnbmluZ0lucHV0SABSB2JpbmFuY2USNwoGY29zbW9zGAcgASgLMh0uVF'
     'cuQ29zbW9zLlByb3RvLlNpZ25pbmdJbnB1dEgAUgZjb3Ntb3NCFQoTc2lnbmluZ19pbnB1dF9v'
     'bmVvZg==');
-

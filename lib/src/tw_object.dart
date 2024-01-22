@@ -13,7 +13,6 @@ abstract class TWObject<T extends NativeType> {
 /// and release pointer during garbage collection.
 abstract class TWObjectFinalizable<T extends NativeType> extends TWObject<T>
     implements Finalizable {
-
   /// Finalizer for pointer.
   /// When garbage collection occurs, release the memory of the pointer.
   final Finalizer<Pointer<T>> _finalizer;

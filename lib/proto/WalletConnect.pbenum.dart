@@ -17,11 +17,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class Protocol extends $pb.ProtobufEnum {
   static const Protocol V2 = Protocol._(0, _omitEnumNames ? '' : 'V2');
 
-  static const $core.List<Protocol> values = <Protocol> [
+  static const $core.List<Protocol> values = <Protocol>[
     V2,
   ];
 
-  static final $core.Map<$core.int, Protocol> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, Protocol> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static Protocol? valueOf($core.int value) => _byValue[value];
 
   const Protocol._($core.int v, $core.String n) : super(v, n);
@@ -30,18 +31,19 @@ class Protocol extends $pb.ProtobufEnum {
 /// WalletConnect request method.
 class Method extends $pb.ProtobufEnum {
   static const Method Unknown = Method._(0, _omitEnumNames ? '' : 'Unknown');
-  static const Method CosmosSignAmino = Method._(1, _omitEnumNames ? '' : 'CosmosSignAmino');
+  static const Method CosmosSignAmino =
+      Method._(1, _omitEnumNames ? '' : 'CosmosSignAmino');
 
-  static const $core.List<Method> values = <Method> [
+  static const $core.List<Method> values = <Method>[
     Unknown,
     CosmosSignAmino,
   ];
 
-  static final $core.Map<$core.int, Method> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, Method> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static Method? valueOf($core.int value) => _byValue[value];
 
   const Method._($core.int v, $core.String n) : super(v, n);
 }
-
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

@@ -26,7 +26,7 @@ class Chain extends $pb.ProtobufEnum {
   static const Chain AVAX = Chain._(8, _omitEnumNames ? '' : 'AVAX');
   static const Chain BSC = Chain._(9, _omitEnumNames ? '' : 'BSC');
 
-  static const $core.List<Chain> values = <Chain> [
+  static const $core.List<Chain> values = <Chain>[
     THOR,
     BTC,
     ETH,
@@ -39,7 +39,8 @@ class Chain extends $pb.ProtobufEnum {
     BSC,
   ];
 
-  static final $core.Map<$core.int, Chain> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, Chain> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static Chain? valueOf($core.int value) => _byValue[value];
 
   const Chain._($core.int v, $core.String n) : super(v, n);
@@ -48,16 +49,24 @@ class Chain extends $pb.ProtobufEnum {
 /// Predefined error codes
 class ErrorCode extends $pb.ProtobufEnum {
   static const ErrorCode OK = ErrorCode._(0, _omitEnumNames ? '' : 'OK');
-  static const ErrorCode Error_general = ErrorCode._(1, _omitEnumNames ? '' : 'Error_general');
-  static const ErrorCode Error_Input_proto_deserialization = ErrorCode._(2, _omitEnumNames ? '' : 'Error_Input_proto_deserialization');
-  static const ErrorCode Error_Unsupported_from_chain = ErrorCode._(13, _omitEnumNames ? '' : 'Error_Unsupported_from_chain');
-  static const ErrorCode Error_Unsupported_to_chain = ErrorCode._(14, _omitEnumNames ? '' : 'Error_Unsupported_to_chain');
-  static const ErrorCode Error_Invalid_from_address = ErrorCode._(15, _omitEnumNames ? '' : 'Error_Invalid_from_address');
-  static const ErrorCode Error_Invalid_to_address = ErrorCode._(16, _omitEnumNames ? '' : 'Error_Invalid_to_address');
-  static const ErrorCode Error_Invalid_vault_address = ErrorCode._(21, _omitEnumNames ? '' : 'Error_Invalid_vault_address');
-  static const ErrorCode Error_Invalid_router_address = ErrorCode._(22, _omitEnumNames ? '' : 'Error_Invalid_router_address');
+  static const ErrorCode Error_general =
+      ErrorCode._(1, _omitEnumNames ? '' : 'Error_general');
+  static const ErrorCode Error_Input_proto_deserialization =
+      ErrorCode._(2, _omitEnumNames ? '' : 'Error_Input_proto_deserialization');
+  static const ErrorCode Error_Unsupported_from_chain =
+      ErrorCode._(13, _omitEnumNames ? '' : 'Error_Unsupported_from_chain');
+  static const ErrorCode Error_Unsupported_to_chain =
+      ErrorCode._(14, _omitEnumNames ? '' : 'Error_Unsupported_to_chain');
+  static const ErrorCode Error_Invalid_from_address =
+      ErrorCode._(15, _omitEnumNames ? '' : 'Error_Invalid_from_address');
+  static const ErrorCode Error_Invalid_to_address =
+      ErrorCode._(16, _omitEnumNames ? '' : 'Error_Invalid_to_address');
+  static const ErrorCode Error_Invalid_vault_address =
+      ErrorCode._(21, _omitEnumNames ? '' : 'Error_Invalid_vault_address');
+  static const ErrorCode Error_Invalid_router_address =
+      ErrorCode._(22, _omitEnumNames ? '' : 'Error_Invalid_router_address');
 
-  static const $core.List<ErrorCode> values = <ErrorCode> [
+  static const $core.List<ErrorCode> values = <ErrorCode>[
     OK,
     Error_general,
     Error_Input_proto_deserialization,
@@ -69,11 +78,11 @@ class ErrorCode extends $pb.ProtobufEnum {
     Error_Invalid_router_address,
   ];
 
-  static final $core.Map<$core.int, ErrorCode> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, ErrorCode> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static ErrorCode? valueOf($core.int value) => _byValue[value];
 
   const ErrorCode._($core.int v, $core.String n) : super(v, n);
 }
-
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

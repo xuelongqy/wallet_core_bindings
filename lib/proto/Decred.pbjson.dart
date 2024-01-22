@@ -19,8 +19,22 @@ const Transaction$json = {
   '2': [
     {'1': 'serializeType', '3': 1, '4': 1, '5': 13, '10': 'serializeType'},
     {'1': 'version', '3': 2, '4': 1, '5': 13, '10': 'version'},
-    {'1': 'inputs', '3': 3, '4': 3, '5': 11, '6': '.TW.Decred.Proto.TransactionInput', '10': 'inputs'},
-    {'1': 'outputs', '3': 4, '4': 3, '5': 11, '6': '.TW.Decred.Proto.TransactionOutput', '10': 'outputs'},
+    {
+      '1': 'inputs',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Decred.Proto.TransactionInput',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Decred.Proto.TransactionOutput',
+      '10': 'outputs'
+    },
     {'1': 'lockTime', '3': 5, '4': 1, '5': 13, '10': 'lockTime'},
     {'1': 'expiry', '3': 6, '4': 1, '5': 13, '10': 'expiry'},
   ],
@@ -38,7 +52,14 @@ final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
 const TransactionInput$json = {
   '1': 'TransactionInput',
   '2': [
-    {'1': 'previousOutput', '3': 1, '4': 1, '5': 11, '6': '.TW.Bitcoin.Proto.OutPoint', '10': 'previousOutput'},
+    {
+      '1': 'previousOutput',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Bitcoin.Proto.OutPoint',
+      '10': 'previousOutput'
+    },
     {'1': 'sequence', '3': 2, '4': 1, '5': 13, '10': 'sequence'},
     {'1': 'valueIn', '3': 3, '4': 1, '5': 3, '10': 'valueIn'},
     {'1': 'blockHeight', '3': 4, '4': 1, '5': 13, '10': 'blockHeight'},
@@ -74,10 +95,24 @@ final $typed_data.Uint8List transactionOutputDescriptor = $convert.base64Decode(
 const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
-    {'1': 'transaction', '3': 1, '4': 1, '5': 11, '6': '.TW.Decred.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'transaction',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Decred.Proto.Transaction',
+      '10': 'transaction'
+    },
     {'1': 'encoded', '3': 2, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'transaction_id', '3': 3, '4': 1, '5': 9, '10': 'transactionId'},
-    {'1': 'error', '3': 4, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 5, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -89,4 +124,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'YW5zYWN0aW9uX2lkGAMgASgJUg10cmFuc2FjdGlvbklkEjMKBWVycm9yGAQgASgOMh0uVFcuQ2'
     '9tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZRgFIAEoCVIM'
     'ZXJyb3JNZXNzYWdl');
-

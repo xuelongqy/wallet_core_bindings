@@ -52,7 +52,14 @@ final $typed_data.Uint8List sendModeDescriptor = $convert.base64Decode(
 const Transfer$json = {
   '1': 'Transfer',
   '2': [
-    {'1': 'wallet_version', '3': 1, '4': 1, '5': 14, '6': '.TW.TheOpenNetwork.Proto.WalletVersion', '10': 'walletVersion'},
+    {
+      '1': 'wallet_version',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.TheOpenNetwork.Proto.WalletVersion',
+      '10': 'walletVersion'
+    },
     {'1': 'dest', '3': 2, '4': 1, '5': 9, '10': 'dest'},
     {'1': 'amount', '3': 3, '4': 1, '5': 4, '10': 'amount'},
     {'1': 'sequence_number', '3': 4, '4': 1, '5': 13, '10': 'sequenceNumber'},
@@ -76,7 +83,14 @@ final $typed_data.Uint8List transferDescriptor = $convert.base64Decode(
 const JettonTransfer$json = {
   '1': 'JettonTransfer',
   '2': [
-    {'1': 'transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.TheOpenNetwork.Proto.Transfer', '10': 'transfer'},
+    {
+      '1': 'transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.TheOpenNetwork.Proto.Transfer',
+      '10': 'transfer'
+    },
     {'1': 'query_id', '3': 2, '4': 1, '5': 4, '10': 'queryId'},
     {'1': 'jetton_amount', '3': 3, '4': 1, '5': 4, '10': 'jettonAmount'},
     {'1': 'to_owner', '3': 4, '4': 1, '5': 9, '10': 'toOwner'},
@@ -98,8 +112,24 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transfer', '3': 2, '4': 1, '5': 11, '6': '.TW.TheOpenNetwork.Proto.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'jetton_transfer', '3': 3, '4': 1, '5': 11, '6': '.TW.TheOpenNetwork.Proto.JettonTransfer', '9': 0, '10': 'jettonTransfer'},
+    {
+      '1': 'transfer',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.TheOpenNetwork.Proto.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'jetton_transfer',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.TheOpenNetwork.Proto.JettonTransfer',
+      '9': 0,
+      '10': 'jettonTransfer'
+    },
   ],
   '8': [
     {'1': 'action_oneof'},
@@ -118,7 +148,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 9, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -128,4 +165,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAlSB2VuY29kZWQSMwoFZXJyb3IYAiABKA'
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
     'GAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

@@ -50,15 +50,79 @@ final $typed_data.Uint8List messageTypeDescriptor = $convert.base64Decode(
 const Transaction$json = {
   '1': 'Transaction',
   '2': [
-    {'1': 'transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'erc20_transfer', '3': 2, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.ERC20Transfer', '9': 0, '10': 'erc20Transfer'},
-    {'1': 'erc20_approve', '3': 3, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.ERC20Approve', '9': 0, '10': 'erc20Approve'},
-    {'1': 'erc721_transfer', '3': 4, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.ERC721Transfer', '9': 0, '10': 'erc721Transfer'},
-    {'1': 'erc1155_transfer', '3': 5, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.ERC1155Transfer', '9': 0, '10': 'erc1155Transfer'},
-    {'1': 'contract_generic', '3': 6, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.ContractGeneric', '9': 0, '10': 'contractGeneric'},
-    {'1': 'batch', '3': 7, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.Batch', '9': 0, '10': 'batch'},
+    {
+      '1': 'transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'erc20_transfer',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.ERC20Transfer',
+      '9': 0,
+      '10': 'erc20Transfer'
+    },
+    {
+      '1': 'erc20_approve',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.ERC20Approve',
+      '9': 0,
+      '10': 'erc20Approve'
+    },
+    {
+      '1': 'erc721_transfer',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.ERC721Transfer',
+      '9': 0,
+      '10': 'erc721Transfer'
+    },
+    {
+      '1': 'erc1155_transfer',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.ERC1155Transfer',
+      '9': 0,
+      '10': 'erc1155Transfer'
+    },
+    {
+      '1': 'contract_generic',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.ContractGeneric',
+      '9': 0,
+      '10': 'contractGeneric'
+    },
+    {
+      '1': 'batch',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.Batch',
+      '9': 0,
+      '10': 'batch'
+    },
   ],
-  '3': [Transaction_Transfer$json, Transaction_ERC20Transfer$json, Transaction_ERC20Approve$json, Transaction_ERC721Transfer$json, Transaction_ERC1155Transfer$json, Transaction_ContractGeneric$json, Transaction_Batch$json],
+  '3': [
+    Transaction_Transfer$json,
+    Transaction_ERC20Transfer$json,
+    Transaction_ERC20Approve$json,
+    Transaction_ERC721Transfer$json,
+    Transaction_ERC1155Transfer$json,
+    Transaction_ContractGeneric$json,
+    Transaction_Batch$json
+  ],
   '8': [
     {'1': 'transaction_oneof'},
   ],
@@ -126,7 +190,14 @@ const Transaction_ContractGeneric$json = {
 const Transaction_Batch$json = {
   '1': 'Batch',
   '2': [
-    {'1': 'calls', '3': 1, '4': 3, '5': 11, '6': '.TW.Ethereum.Proto.Transaction.Batch.BatchedCall', '10': 'calls'},
+    {
+      '1': 'calls',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.Batch.BatchedCall',
+      '10': 'calls'
+    },
   ],
   '3': [Transaction_Batch_BatchedCall$json],
 };
@@ -174,9 +245,27 @@ const UserOperation$json = {
     {'1': 'entry_point', '3': 1, '4': 1, '5': 9, '10': 'entryPoint'},
     {'1': 'init_code', '3': 2, '4': 1, '5': 12, '10': 'initCode'},
     {'1': 'sender', '3': 3, '4': 1, '5': 9, '10': 'sender'},
-    {'1': 'pre_verification_gas', '3': 4, '4': 1, '5': 12, '10': 'preVerificationGas'},
-    {'1': 'verification_gas_limit', '3': 5, '4': 1, '5': 12, '10': 'verificationGasLimit'},
-    {'1': 'paymaster_and_data', '3': 6, '4': 1, '5': 12, '10': 'paymasterAndData'},
+    {
+      '1': 'pre_verification_gas',
+      '3': 4,
+      '4': 1,
+      '5': 12,
+      '10': 'preVerificationGas'
+    },
+    {
+      '1': 'verification_gas_limit',
+      '3': 5,
+      '4': 1,
+      '5': 12,
+      '10': 'verificationGasLimit'
+    },
+    {
+      '1': 'paymaster_and_data',
+      '3': 6,
+      '4': 1,
+      '5': 12,
+      '10': 'paymasterAndData'
+    },
   ],
 };
 
@@ -194,15 +283,42 @@ const SigningInput$json = {
   '2': [
     {'1': 'chain_id', '3': 1, '4': 1, '5': 12, '10': 'chainId'},
     {'1': 'nonce', '3': 2, '4': 1, '5': 12, '10': 'nonce'},
-    {'1': 'tx_mode', '3': 3, '4': 1, '5': 14, '6': '.TW.Ethereum.Proto.TransactionMode', '10': 'txMode'},
+    {
+      '1': 'tx_mode',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Ethereum.Proto.TransactionMode',
+      '10': 'txMode'
+    },
     {'1': 'gas_price', '3': 4, '4': 1, '5': 12, '10': 'gasPrice'},
     {'1': 'gas_limit', '3': 5, '4': 1, '5': 12, '10': 'gasLimit'},
-    {'1': 'max_inclusion_fee_per_gas', '3': 6, '4': 1, '5': 12, '10': 'maxInclusionFeePerGas'},
+    {
+      '1': 'max_inclusion_fee_per_gas',
+      '3': 6,
+      '4': 1,
+      '5': 12,
+      '10': 'maxInclusionFeePerGas'
+    },
     {'1': 'max_fee_per_gas', '3': 7, '4': 1, '5': 12, '10': 'maxFeePerGas'},
     {'1': 'to_address', '3': 8, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'private_key', '3': 9, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transaction', '3': 10, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.Transaction', '10': 'transaction'},
-    {'1': 'user_operation', '3': 11, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.UserOperation', '10': 'userOperation'},
+    {
+      '1': 'transaction',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction',
+      '10': 'transaction'
+    },
+    {
+      '1': 'user_operation',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.UserOperation',
+      '10': 'userOperation'
+    },
   ],
 };
 
@@ -227,7 +343,14 @@ const SigningOutput$json = {
     {'1': 'r', '3': 3, '4': 1, '5': 12, '10': 'r'},
     {'1': 's', '3': 4, '4': 1, '5': 12, '10': 's'},
     {'1': 'data', '3': 5, '4': 1, '5': 12, '10': 'data'},
-    {'1': 'error', '3': 6, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 7, '4': 1, '5': 9, '10': 'errorMessage'},
     {'1': 'pre_hash', '3': 8, '4': 1, '5': 12, '10': 'preHash'},
   ],
@@ -249,8 +372,8 @@ const MaybeChainId$json = {
 };
 
 /// Descriptor for `MaybeChainId`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List maybeChainIdDescriptor = $convert.base64Decode(
-    'CgxNYXliZUNoYWluSWQSGQoIY2hhaW5faWQYAyABKARSB2NoYWluSWQ=');
+final $typed_data.Uint8List maybeChainIdDescriptor = $convert
+    .base64Decode('CgxNYXliZUNoYWluSWQSGQoIY2hhaW5faWQYAyABKARSB2NoYWluSWQ=');
 
 @$core.Deprecated('Use messageSigningInputDescriptor instead')
 const MessageSigningInput$json = {
@@ -258,8 +381,22 @@ const MessageSigningInput$json = {
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
-    {'1': 'chain_id', '3': 3, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.MaybeChainId', '10': 'chainId'},
-    {'1': 'message_type', '3': 4, '4': 1, '5': 14, '6': '.TW.Ethereum.Proto.MessageType', '10': 'messageType'},
+    {
+      '1': 'chain_id',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.MaybeChainId',
+      '10': 'chainId'
+    },
+    {
+      '1': 'message_type',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Ethereum.Proto.MessageType',
+      '10': 'messageType'
+    },
   ],
 };
 
@@ -275,7 +412,14 @@ const MessageSigningOutput$json = {
   '1': 'MessageSigningOutput',
   '2': [
     {'1': 'signature', '3': 1, '4': 1, '5': 9, '10': 'signature'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -300,4 +444,3 @@ const MessageVerifyingInput$json = {
 final $typed_data.Uint8List messageVerifyingInputDescriptor = $convert.base64Decode(
     'ChVNZXNzYWdlVmVyaWZ5aW5nSW5wdXQSGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZRIdCgpwdW'
     'JsaWNfa2V5GAIgASgMUglwdWJsaWNLZXkSHAoJc2lnbmF0dXJlGAMgASgJUglzaWduYXR1cmU=');
-

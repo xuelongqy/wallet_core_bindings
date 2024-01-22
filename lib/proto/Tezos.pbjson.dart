@@ -17,8 +17,21 @@ import 'dart:typed_data' as $typed_data;
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'operation_list', '3': 1, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.OperationList', '10': 'operationList'},
-    {'1': 'encoded_operations', '3': 2, '4': 1, '5': 12, '10': 'encodedOperations'},
+    {
+      '1': 'operation_list',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.OperationList',
+      '10': 'operationList'
+    },
+    {
+      '1': 'encoded_operations',
+      '3': 2,
+      '4': 1,
+      '5': 12,
+      '10': 'encodedOperations'
+    },
     {'1': 'private_key', '3': 3, '4': 1, '5': 12, '10': 'privateKey'},
   ],
 };
@@ -34,7 +47,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -50,7 +70,14 @@ const OperationList$json = {
   '1': 'OperationList',
   '2': [
     {'1': 'branch', '3': 1, '4': 1, '5': 9, '10': 'branch'},
-    {'1': 'operations', '3': 2, '4': 3, '5': 11, '6': '.TW.Tezos.Proto.Operation', '10': 'operations'},
+    {
+      '1': 'operations',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.Operation',
+      '10': 'operations'
+    },
   ],
 };
 
@@ -68,10 +95,41 @@ const Operation$json = {
     {'1': 'fee', '3': 3, '4': 1, '5': 3, '10': 'fee'},
     {'1': 'gas_limit', '3': 4, '4': 1, '5': 3, '10': 'gasLimit'},
     {'1': 'storage_limit', '3': 5, '4': 1, '5': 3, '10': 'storageLimit'},
-    {'1': 'kind', '3': 7, '4': 1, '5': 14, '6': '.TW.Tezos.Proto.Operation.OperationKind', '10': 'kind'},
-    {'1': 'reveal_operation_data', '3': 8, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.RevealOperationData', '9': 0, '10': 'revealOperationData'},
-    {'1': 'transaction_operation_data', '3': 9, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.TransactionOperationData', '9': 0, '10': 'transactionOperationData'},
-    {'1': 'delegation_operation_data', '3': 11, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.DelegationOperationData', '9': 0, '10': 'delegationOperationData'},
+    {
+      '1': 'kind',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Tezos.Proto.Operation.OperationKind',
+      '10': 'kind'
+    },
+    {
+      '1': 'reveal_operation_data',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.RevealOperationData',
+      '9': 0,
+      '10': 'revealOperationData'
+    },
+    {
+      '1': 'transaction_operation_data',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.TransactionOperationData',
+      '9': 0,
+      '10': 'transactionOperationData'
+    },
+    {
+      '1': 'delegation_operation_data',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.DelegationOperationData',
+      '9': 0,
+      '10': 'delegationOperationData'
+    },
   ],
   '4': [Operation_OperationKind$json],
   '8': [
@@ -140,7 +198,14 @@ const TxObject$json = {
   '1': 'TxObject',
   '2': [
     {'1': 'from', '3': 1, '4': 1, '5': 9, '10': 'from'},
-    {'1': 'txs', '3': 2, '4': 3, '5': 11, '6': '.TW.Tezos.Proto.Txs', '10': 'txs'},
+    {
+      '1': 'txs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.Txs',
+      '10': 'txs'
+    },
   ],
 };
 
@@ -154,7 +219,14 @@ const FA2Parameters$json = {
   '1': 'FA2Parameters',
   '2': [
     {'1': 'entrypoint', '3': 1, '4': 1, '5': 9, '10': 'entrypoint'},
-    {'1': 'txs_object', '3': 2, '4': 3, '5': 11, '6': '.TW.Tezos.Proto.TxObject', '10': 'txsObject'},
+    {
+      '1': 'txs_object',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.TxObject',
+      '10': 'txsObject'
+    },
   ],
 };
 
@@ -167,8 +239,24 @@ final $typed_data.Uint8List fA2ParametersDescriptor = $convert.base64Decode(
 const OperationParameters$json = {
   '1': 'OperationParameters',
   '2': [
-    {'1': 'fa12_parameters', '3': 1, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.FA12Parameters', '9': 0, '10': 'fa12Parameters'},
-    {'1': 'fa2_parameters', '3': 2, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.FA2Parameters', '9': 0, '10': 'fa2Parameters'},
+    {
+      '1': 'fa12_parameters',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.FA12Parameters',
+      '9': 0,
+      '10': 'fa12Parameters'
+    },
+    {
+      '1': 'fa2_parameters',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.FA2Parameters',
+      '9': 0,
+      '10': 'fa2Parameters'
+    },
   ],
   '8': [
     {'1': 'parameters'},
@@ -188,8 +276,21 @@ const TransactionOperationData$json = {
   '2': [
     {'1': 'destination', '3': 1, '4': 1, '5': 9, '10': 'destination'},
     {'1': 'amount', '3': 2, '4': 1, '5': 3, '10': 'amount'},
-    {'1': 'encoded_parameter', '3': 3, '4': 1, '5': 12, '10': 'encodedParameter'},
-    {'1': 'parameters', '3': 4, '4': 1, '5': 11, '6': '.TW.Tezos.Proto.OperationParameters', '10': 'parameters'},
+    {
+      '1': 'encoded_parameter',
+      '3': 3,
+      '4': 1,
+      '5': 12,
+      '10': 'encodedParameter'
+    },
+    {
+      '1': 'parameters',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Tezos.Proto.OperationParameters',
+      '10': 'parameters'
+    },
   ],
 };
 
@@ -221,6 +322,6 @@ const DelegationOperationData$json = {
 };
 
 /// Descriptor for `DelegationOperationData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List delegationOperationDataDescriptor = $convert.base64Decode(
-    'ChdEZWxlZ2F0aW9uT3BlcmF0aW9uRGF0YRIaCghkZWxlZ2F0ZRgBIAEoCVIIZGVsZWdhdGU=');
-
+final $typed_data.Uint8List delegationOperationDataDescriptor =
+    $convert.base64Decode(
+        'ChdEZWxlZ2F0aW9uT3BlcmF0aW9uRGF0YRIaCghkZWxlZ2F0ZRgBIAEoCVIIZGVsZWdhdGU=');

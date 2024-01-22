@@ -51,8 +51,8 @@ const AssetOptIn$json = {
 };
 
 /// Descriptor for `AssetOptIn`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List assetOptInDescriptor = $convert.base64Decode(
-    'CgpBc3NldE9wdEluEhkKCGFzc2V0X2lkGAEgASgEUgdhc3NldElk');
+final $typed_data.Uint8List assetOptInDescriptor = $convert
+    .base64Decode('CgpBc3NldE9wdEluEhkKCGFzc2V0X2lkGAEgASgEUgdhc3NldElk');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
@@ -66,9 +66,33 @@ const SigningInput$json = {
     {'1': 'last_round', '3': 6, '4': 1, '5': 4, '10': 'lastRound'},
     {'1': 'fee', '3': 7, '4': 1, '5': 4, '10': 'fee'},
     {'1': 'public_key', '3': 8, '4': 1, '5': 12, '10': 'publicKey'},
-    {'1': 'transfer', '3': 10, '4': 1, '5': 11, '6': '.TW.Algorand.Proto.Transfer', '9': 0, '10': 'transfer'},
-    {'1': 'asset_transfer', '3': 11, '4': 1, '5': 11, '6': '.TW.Algorand.Proto.AssetTransfer', '9': 0, '10': 'assetTransfer'},
-    {'1': 'asset_opt_in', '3': 12, '4': 1, '5': 11, '6': '.TW.Algorand.Proto.AssetOptIn', '9': 0, '10': 'assetOptIn'},
+    {
+      '1': 'transfer',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Algorand.Proto.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'asset_transfer',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Algorand.Proto.AssetTransfer',
+      '9': 0,
+      '10': 'assetTransfer'
+    },
+    {
+      '1': 'asset_opt_in',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Algorand.Proto.AssetOptIn',
+      '9': 0,
+      '10': 'assetOptIn'
+    },
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -93,7 +117,14 @@ const SigningOutput$json = {
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'signature', '3': 2, '4': 1, '5': 9, '10': 'signature'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -103,4 +134,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSHAoJc2lnbmF0dXJlGA'
     'IgASgJUglzaWduYXR1cmUSMwoFZXJyb3IYAyABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmlu'
     'Z0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAQgASgJUgxlcnJvck1lc3NhZ2U=');
-

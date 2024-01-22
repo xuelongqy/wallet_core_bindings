@@ -47,15 +47,41 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'chain_id', '3': 1, '4': 1, '5': 12, '10': 'chainId'},
-    {'1': 'reference_block_id', '3': 2, '4': 1, '5': 12, '10': 'referenceBlockId'},
-    {'1': 'reference_block_time', '3': 3, '4': 1, '5': 15, '10': 'referenceBlockTime'},
+    {
+      '1': 'reference_block_id',
+      '3': 2,
+      '4': 1,
+      '5': 12,
+      '10': 'referenceBlockId'
+    },
+    {
+      '1': 'reference_block_time',
+      '3': 3,
+      '4': 1,
+      '5': 15,
+      '10': 'referenceBlockTime'
+    },
     {'1': 'currency', '3': 4, '4': 1, '5': 9, '10': 'currency'},
     {'1': 'sender', '3': 5, '4': 1, '5': 9, '10': 'sender'},
     {'1': 'recipient', '3': 6, '4': 1, '5': 9, '10': 'recipient'},
     {'1': 'memo', '3': 7, '4': 1, '5': 9, '10': 'memo'},
-    {'1': 'asset', '3': 8, '4': 1, '5': 11, '6': '.TW.EOS.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EOS.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'private_key', '3': 9, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'private_key_type', '3': 10, '4': 1, '5': 14, '6': '.TW.EOS.Proto.KeyType', '10': 'privateKeyType'},
+    {
+      '1': 'private_key_type',
+      '3': 10,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.EOS.Proto.KeyType',
+      '10': 'privateKeyType'
+    },
     {'1': 'expiration', '3': 11, '4': 1, '5': 15, '10': 'expiration'},
   ],
 };
@@ -76,7 +102,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'json_encoded', '3': 1, '4': 1, '5': 9, '10': 'jsonEncoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -86,4 +119,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EiEKDGpzb25fZW5jb2RlZBgBIAEoCVILanNvbkVuY29kZWQSMwoFZX'
     'Jyb3IYAiABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJv'
     'cl9tZXNzYWdlGAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

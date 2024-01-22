@@ -27,4 +27,5 @@ class TrustWalletCoreLib {
   }
 }
 
-bindings.TrustWalletCoreBindings get iTWBindings => TrustWalletCoreLib.bindingsInstance;
+bindings.TrustWalletCoreBindings get iTWBindings =>
+    TrustWalletCoreLib.bindingsInstance;

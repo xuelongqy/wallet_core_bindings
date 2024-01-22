@@ -58,31 +58,43 @@ class Transfer extends $pb.GeneratedMessage {
     return $result;
   }
   Transfer._() : super();
-  factory Transfer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Transfer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Transfer.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Transfer.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Transfer', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'), createEmptyInstance: create)
-    ..e<WalletVersion>(1, _omitFieldNames ? '' : 'walletVersion', $pb.PbFieldType.OE, defaultOrMaker: WalletVersion.WALLET_V3_R1, valueOf: WalletVersion.valueOf, enumValues: WalletVersion.values)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Transfer',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
+      createEmptyInstance: create)
+    ..e<WalletVersion>(
+        1, _omitFieldNames ? '' : 'walletVersion', $pb.PbFieldType.OE,
+        defaultOrMaker: WalletVersion.WALLET_V3_R1,
+        valueOf: WalletVersion.valueOf,
+        enumValues: WalletVersion.values)
     ..aOS(2, _omitFieldNames ? '' : 'dest')
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'sequenceNumber', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.int>(
+        4, _omitFieldNames ? '' : 'sequenceNumber', $pb.PbFieldType.OU3)
     ..a<$core.int>(5, _omitFieldNames ? '' : 'mode', $pb.PbFieldType.OU3)
     ..a<$core.int>(6, _omitFieldNames ? '' : 'expireAt', $pb.PbFieldType.OU3)
     ..aOS(7, _omitFieldNames ? '' : 'comment')
     ..aOB(8, _omitFieldNames ? '' : 'bounceable')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Transfer clone() => Transfer()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Transfer copyWith(void Function(Transfer) updates) => super.copyWith((message) => updates(message as Transfer)) as Transfer;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Transfer copyWith(void Function(Transfer) updates) =>
+      super.copyWith((message) => updates(message as Transfer)) as Transfer;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -91,14 +103,18 @@ class Transfer extends $pb.GeneratedMessage {
   Transfer createEmptyInstance() => create();
   static $pb.PbList<Transfer> createRepeated() => $pb.PbList<Transfer>();
   @$core.pragma('dart2js:noInline')
-  static Transfer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Transfer>(create);
+  static Transfer getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Transfer>(create);
   static Transfer? _defaultInstance;
 
   /// Wallet version
   @$pb.TagNumber(1)
   WalletVersion get walletVersion => $_getN(0);
   @$pb.TagNumber(1)
-  set walletVersion(WalletVersion v) { setField(1, v); }
+  set walletVersion(WalletVersion v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasWalletVersion() => $_has(0);
   @$pb.TagNumber(1)
@@ -108,7 +124,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get dest => $_getSZ(1);
   @$pb.TagNumber(2)
-  set dest($core.String v) { $_setString(1, v); }
+  set dest($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasDest() => $_has(1);
   @$pb.TagNumber(2)
@@ -118,7 +137,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get amount => $_getI64(2);
   @$pb.TagNumber(3)
-  set amount($fixnum.Int64 v) { $_setInt64(2, v); }
+  set amount($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
@@ -130,7 +152,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.int get sequenceNumber => $_getIZ(3);
   @$pb.TagNumber(4)
-  set sequenceNumber($core.int v) { $_setUnsignedInt32(3, v); }
+  set sequenceNumber($core.int v) {
+    $_setUnsignedInt32(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasSequenceNumber() => $_has(3);
   @$pb.TagNumber(4)
@@ -141,7 +166,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.int get mode => $_getIZ(4);
   @$pb.TagNumber(5)
-  set mode($core.int v) { $_setUnsignedInt32(4, v); }
+  set mode($core.int v) {
+    $_setUnsignedInt32(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasMode() => $_has(4);
   @$pb.TagNumber(5)
@@ -151,7 +179,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.int get expireAt => $_getIZ(5);
   @$pb.TagNumber(6)
-  set expireAt($core.int v) { $_setUnsignedInt32(5, v); }
+  set expireAt($core.int v) {
+    $_setUnsignedInt32(5, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasExpireAt() => $_has(5);
   @$pb.TagNumber(6)
@@ -161,7 +192,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.String get comment => $_getSZ(6);
   @$pb.TagNumber(7)
-  set comment($core.String v) { $_setString(6, v); }
+  set comment($core.String v) {
+    $_setString(6, v);
+  }
+
   @$pb.TagNumber(7)
   $core.bool hasComment() => $_has(6);
   @$pb.TagNumber(7)
@@ -171,7 +205,10 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   $core.bool get bounceable => $_getBF(7);
   @$pb.TagNumber(8)
-  set bounceable($core.bool v) { $_setBool(7, v); }
+  set bounceable($core.bool v) {
+    $_setBool(7, v);
+  }
+
   @$pb.TagNumber(8)
   $core.bool hasBounceable() => $_has(7);
   @$pb.TagNumber(8)
@@ -209,45 +246,63 @@ class JettonTransfer extends $pb.GeneratedMessage {
     return $result;
   }
   JettonTransfer._() : super();
-  factory JettonTransfer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory JettonTransfer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory JettonTransfer.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory JettonTransfer.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'JettonTransfer', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'), createEmptyInstance: create)
-    ..aOM<Transfer>(1, _omitFieldNames ? '' : 'transfer', subBuilder: Transfer.create)
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'queryId', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'jettonAmount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'JettonTransfer',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
+      createEmptyInstance: create)
+    ..aOM<Transfer>(1, _omitFieldNames ? '' : 'transfer',
+        subBuilder: Transfer.create)
+    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'queryId', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        3, _omitFieldNames ? '' : 'jettonAmount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(4, _omitFieldNames ? '' : 'toOwner')
     ..aOS(5, _omitFieldNames ? '' : 'responseAddress')
-    ..a<$fixnum.Int64>(6, _omitFieldNames ? '' : 'forwardAmount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..hasRequiredFields = false
-  ;
+    ..a<$fixnum.Int64>(
+        6, _omitFieldNames ? '' : 'forwardAmount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   JettonTransfer clone() => JettonTransfer()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  JettonTransfer copyWith(void Function(JettonTransfer) updates) => super.copyWith((message) => updates(message as JettonTransfer)) as JettonTransfer;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  JettonTransfer copyWith(void Function(JettonTransfer) updates) =>
+      super.copyWith((message) => updates(message as JettonTransfer))
+          as JettonTransfer;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static JettonTransfer create() => JettonTransfer._();
   JettonTransfer createEmptyInstance() => create();
-  static $pb.PbList<JettonTransfer> createRepeated() => $pb.PbList<JettonTransfer>();
+  static $pb.PbList<JettonTransfer> createRepeated() =>
+      $pb.PbList<JettonTransfer>();
   @$core.pragma('dart2js:noInline')
-  static JettonTransfer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<JettonTransfer>(create);
+  static JettonTransfer getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<JettonTransfer>(create);
   static JettonTransfer? _defaultInstance;
 
   /// Dest in Transfer means contract address of sender's jetton wallet.
   @$pb.TagNumber(1)
   Transfer get transfer => $_getN(0);
   @$pb.TagNumber(1)
-  set transfer(Transfer v) { setField(1, v); }
+  set transfer(Transfer v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasTransfer() => $_has(0);
   @$pb.TagNumber(1)
@@ -259,7 +314,10 @@ class JettonTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $fixnum.Int64 get queryId => $_getI64(1);
   @$pb.TagNumber(2)
-  set queryId($fixnum.Int64 v) { $_setInt64(1, v); }
+  set queryId($fixnum.Int64 v) {
+    $_setInt64(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasQueryId() => $_has(1);
   @$pb.TagNumber(2)
@@ -269,7 +327,10 @@ class JettonTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get jettonAmount => $_getI64(2);
   @$pb.TagNumber(3)
-  set jettonAmount($fixnum.Int64 v) { $_setInt64(2, v); }
+  set jettonAmount($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasJettonAmount() => $_has(2);
   @$pb.TagNumber(3)
@@ -279,7 +340,10 @@ class JettonTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.String get toOwner => $_getSZ(3);
   @$pb.TagNumber(4)
-  set toOwner($core.String v) { $_setString(3, v); }
+  set toOwner($core.String v) {
+    $_setString(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasToOwner() => $_has(3);
   @$pb.TagNumber(4)
@@ -289,7 +353,10 @@ class JettonTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.String get responseAddress => $_getSZ(4);
   @$pb.TagNumber(5)
-  set responseAddress($core.String v) { $_setString(4, v); }
+  set responseAddress($core.String v) {
+    $_setString(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasResponseAddress() => $_has(4);
   @$pb.TagNumber(5)
@@ -299,18 +366,17 @@ class JettonTransfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $fixnum.Int64 get forwardAmount => $_getI64(5);
   @$pb.TagNumber(6)
-  set forwardAmount($fixnum.Int64 v) { $_setInt64(5, v); }
+  set forwardAmount($fixnum.Int64 v) {
+    $_setInt64(5, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasForwardAmount() => $_has(5);
   @$pb.TagNumber(6)
   void clearForwardAmount() => clearField(6);
 }
 
-enum SigningInput_ActionOneof {
-  transfer, 
-  jettonTransfer, 
-  notSet
-}
+enum SigningInput_ActionOneof { transfer, jettonTransfer, notSet }
 
 class SigningInput extends $pb.GeneratedMessage {
   factory SigningInput({
@@ -331,51 +397,68 @@ class SigningInput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningInput._() : super();
-  factory SigningInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, SigningInput_ActionOneof> _SigningInput_ActionOneofByTag = {
-    2 : SigningInput_ActionOneof.transfer,
-    3 : SigningInput_ActionOneof.jettonTransfer,
-    0 : SigningInput_ActionOneof.notSet
+  static const $core.Map<$core.int, SigningInput_ActionOneof>
+      _SigningInput_ActionOneofByTag = {
+    2: SigningInput_ActionOneof.transfer,
+    3: SigningInput_ActionOneof.jettonTransfer,
+    0: SigningInput_ActionOneof.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningInput',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
+      createEmptyInstance: create)
     ..oo(0, [2, 3])
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
-    ..aOM<Transfer>(2, _omitFieldNames ? '' : 'transfer', subBuilder: Transfer.create)
-    ..aOM<JettonTransfer>(3, _omitFieldNames ? '' : 'jettonTransfer', subBuilder: JettonTransfer.create)
-    ..hasRequiredFields = false
-  ;
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
+    ..aOM<Transfer>(2, _omitFieldNames ? '' : 'transfer',
+        subBuilder: Transfer.create)
+    ..aOM<JettonTransfer>(3, _omitFieldNames ? '' : 'jettonTransfer',
+        subBuilder: JettonTransfer.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningInput clone() => SigningInput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningInput copyWith(void Function(SigningInput) updates) => super.copyWith((message) => updates(message as SigningInput)) as SigningInput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningInput copyWith(void Function(SigningInput) updates) =>
+      super.copyWith((message) => updates(message as SigningInput))
+          as SigningInput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningInput create() => SigningInput._();
   SigningInput createEmptyInstance() => create();
-  static $pb.PbList<SigningInput> createRepeated() => $pb.PbList<SigningInput>();
+  static $pb.PbList<SigningInput> createRepeated() =>
+      $pb.PbList<SigningInput>();
   @$core.pragma('dart2js:noInline')
-  static SigningInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
+  static SigningInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
-  SigningInput_ActionOneof whichActionOneof() => _SigningInput_ActionOneofByTag[$_whichOneof(0)]!;
+  SigningInput_ActionOneof whichActionOneof() =>
+      _SigningInput_ActionOneofByTag[$_whichOneof(0)]!;
   void clearActionOneof() => clearField($_whichOneof(0));
 
   /// The secret private key used for signing (32 bytes).
   @$pb.TagNumber(1)
   $core.List<$core.int> get privateKey => $_getN(0);
   @$pb.TagNumber(1)
-  set privateKey($core.List<$core.int> v) { $_setBytes(0, v); }
+  set privateKey($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasPrivateKey() => $_has(0);
   @$pb.TagNumber(1)
@@ -384,7 +467,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   Transfer get transfer => $_getN(1);
   @$pb.TagNumber(2)
-  set transfer(Transfer v) { setField(2, v); }
+  set transfer(Transfer v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasTransfer() => $_has(1);
   @$pb.TagNumber(2)
@@ -395,7 +481,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   JettonTransfer get jettonTransfer => $_getN(2);
   @$pb.TagNumber(3)
-  set jettonTransfer(JettonTransfer v) { setField(3, v); }
+  set jettonTransfer(JettonTransfer v) {
+    setField(3, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasJettonTransfer() => $_has(2);
   @$pb.TagNumber(3)
@@ -424,42 +513,57 @@ class SigningOutput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningOutput._() : super();
-  factory SigningOutput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningOutput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningOutput',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'encoded')
-    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
+    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningOutput clone() => SigningOutput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningOutput copyWith(void Function(SigningOutput) updates) => super.copyWith((message) => updates(message as SigningOutput)) as SigningOutput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningOutput copyWith(void Function(SigningOutput) updates) =>
+      super.copyWith((message) => updates(message as SigningOutput))
+          as SigningOutput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningOutput create() => SigningOutput._();
   SigningOutput createEmptyInstance() => create();
-  static $pb.PbList<SigningOutput> createRepeated() => $pb.PbList<SigningOutput>();
+  static $pb.PbList<SigningOutput> createRepeated() =>
+      $pb.PbList<SigningOutput>();
   @$core.pragma('dart2js:noInline')
-  static SigningOutput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
+  static SigningOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
   static SigningOutput? _defaultInstance;
 
   /// Signed and base64 encoded BOC message
   @$pb.TagNumber(1)
   $core.String get encoded => $_getSZ(0);
   @$pb.TagNumber(1)
-  set encoded($core.String v) { $_setString(0, v); }
+  set encoded($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasEncoded() => $_has(0);
   @$pb.TagNumber(1)
@@ -469,7 +573,10 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $0.SigningError get error => $_getN(1);
   @$pb.TagNumber(2)
-  set error($0.SigningError v) { setField(2, v); }
+  set error($0.SigningError v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasError() => $_has(1);
   @$pb.TagNumber(2)
@@ -479,13 +586,16 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get errorMessage => $_getSZ(2);
   @$pb.TagNumber(3)
-  set errorMessage($core.String v) { $_setString(2, v); }
+  set errorMessage($core.String v) {
+    $_setString(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasErrorMessage() => $_has(2);
   @$pb.TagNumber(3)
   void clearErrorMessage() => clearField(3);
 }
 
-
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

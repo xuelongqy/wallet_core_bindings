@@ -22,18 +22,11 @@ class TWData extends TWObjectFinalizable<Void> {
     Uint8List bytes, {
     bool attach = true,
   }) : super(
-          _twDataCreateWithBytes(bytes),
+          iTWBindings.TWDataCreateWithBytes(
+              bytes.toNativeUint8(), bytes.length),
           attach: attach,
           finalizer: _twDataFinalizer,
         );
-
-  static Pointer<Void> _twDataCreateWithBytes(Uint8List bytes) {
-    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
-    Pointer<Void> res =
-        iTWBindings.TWDataCreateWithBytes(bytes.toNativeUint8(), bytes.length);
-    malloc.free(bytesPointer);
-    return res;
-  }
 
   /// Creates an uninitialized block of data with the provided size.
   ///
@@ -97,11 +90,13 @@ class TWData extends TWObjectFinalizable<Void> {
   ///
   /// \param [start] starting index of the range - index need to be < TWDataSize(data)
   /// \param [size] size of the range we want to copy - size need to be < TWDataSize(data) - start
-  /// \param [output] The output buffer where we want to copy the data.
-  void copyBytes(int start, int size, Uint8List output) {
-    Pointer<Uint8> outputPointer = output.toNativeUint8();
+  /// \return The output buffer where we want to copy the data.
+  Uint8List copyBytes(int start, int size) {
+    Pointer<Uint8> outputPointer = malloc.allocate<Uint8>(size);
     iTWBindings.TWDataCopyBytes(_pointer, start, size, outputPointer);
+    final res = Uint8List.fromList(outputPointer.asTypedList(size));
     malloc.free(outputPointer);
+    return res;
   }
 
   /// Replaces a range of bytes with the contents of the provided buffer.
@@ -109,21 +104,16 @@ class TWData extends TWObjectFinalizable<Void> {
   /// \param [start] starting index of the range - index need to be < TWDataSize(data)
   /// \param [size] size of the range we want to replace - size need to be < TWDataSize(data) - start
   /// \param [bytes] The buffer that will replace the range of data
-  void replaceBytes(int start, int size, Uint8List bytes) {
-    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
-    iTWBindings.TWDataReplaceBytes(_pointer, start, size, bytesPointer);
-    malloc.free(bytesPointer);
-  }
+  void replaceBytes(int start, int size, Uint8List bytes) =>
+      iTWBindings.TWDataReplaceBytes(
+          _pointer, start, size, bytes.toNativeUint8());
 
   /// Appends data from a byte array.
   ///
   /// \param [bytes] Non-null byte array
   /// \param [size] The size of the byte array
-  void appendBytes(Uint8List bytes, int size) {
-    Pointer<Uint8> bytesPointer = bytes.toNativeUint8();
-    iTWBindings.TWDataAppendBytes(_pointer, bytesPointer, size);
-    malloc.free(bytesPointer);
-  }
+  void appendBytes(Uint8List bytes) => iTWBindings.TWDataAppendBytes(
+      _pointer, bytes.toNativeUint8(), bytes.length);
 
   /// Appends a single byte.
   ///
@@ -138,6 +128,9 @@ class TWData extends TWObjectFinalizable<Void> {
 
   /// Reverse the bytes.
   void reverse() => iTWBindings.TWDataReverse(_pointer);
+
+  /// Sets all bytes to the given value.
+  void reset() => iTWBindings.TWDataReset(_pointer);
 
   /// Deletes a block of data created with a `TWDataCreate*` method.
   @override

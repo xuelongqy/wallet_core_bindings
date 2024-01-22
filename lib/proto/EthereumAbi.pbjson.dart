@@ -46,8 +46,8 @@ const BoolType$json = {
 };
 
 /// Descriptor for `BoolType`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List boolTypeDescriptor = $convert.base64Decode(
-    'CghCb29sVHlwZQ==');
+final $typed_data.Uint8List boolTypeDescriptor =
+    $convert.base64Decode('CghCb29sVHlwZQ==');
 
 @$core.Deprecated('Use numberNTypeDescriptor instead')
 const NumberNType$json = {
@@ -58,8 +58,8 @@ const NumberNType$json = {
 };
 
 /// Descriptor for `NumberNType`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List numberNTypeDescriptor = $convert.base64Decode(
-    'CgtOdW1iZXJOVHlwZRISCgRiaXRzGAEgASgNUgRiaXRz');
+final $typed_data.Uint8List numberNTypeDescriptor =
+    $convert.base64Decode('CgtOdW1iZXJOVHlwZRISCgRiaXRzGAEgASgNUgRiaXRz');
 
 @$core.Deprecated('Use stringTypeDescriptor instead')
 const StringType$json = {
@@ -67,8 +67,8 @@ const StringType$json = {
 };
 
 /// Descriptor for `StringType`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stringTypeDescriptor = $convert.base64Decode(
-    'CgpTdHJpbmdUeXBl');
+final $typed_data.Uint8List stringTypeDescriptor =
+    $convert.base64Decode('CgpTdHJpbmdUeXBl');
 
 @$core.Deprecated('Use addressTypeDescriptor instead')
 const AddressType$json = {
@@ -76,14 +76,21 @@ const AddressType$json = {
 };
 
 /// Descriptor for `AddressType`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addressTypeDescriptor = $convert.base64Decode(
-    'CgtBZGRyZXNzVHlwZQ==');
+final $typed_data.Uint8List addressTypeDescriptor =
+    $convert.base64Decode('CgtBZGRyZXNzVHlwZQ==');
 
 @$core.Deprecated('Use arrayTypeDescriptor instead')
 const ArrayType$json = {
   '1': 'ArrayType',
   '2': [
-    {'1': 'element_type', '3': 1, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ParamType', '10': 'elementType'},
+    {
+      '1': 'element_type',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ParamType',
+      '10': 'elementType'
+    },
   ],
 };
 
@@ -97,7 +104,14 @@ const FixedArrayType$json = {
   '1': 'FixedArrayType',
   '2': [
     {'1': 'size', '3': 1, '4': 1, '5': 4, '10': 'size'},
-    {'1': 'element_type', '3': 2, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ParamType', '10': 'elementType'},
+    {
+      '1': 'element_type',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ParamType',
+      '10': 'elementType'
+    },
   ],
 };
 
@@ -112,8 +126,8 @@ const ByteArrayType$json = {
 };
 
 /// Descriptor for `ByteArrayType`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List byteArrayTypeDescriptor = $convert.base64Decode(
-    'Cg1CeXRlQXJyYXlUeXBl');
+final $typed_data.Uint8List byteArrayTypeDescriptor =
+    $convert.base64Decode('Cg1CeXRlQXJyYXlUeXBl');
 
 @$core.Deprecated('Use byteArrayFixTypeDescriptor instead')
 const ByteArrayFixType$json = {
@@ -124,14 +138,21 @@ const ByteArrayFixType$json = {
 };
 
 /// Descriptor for `ByteArrayFixType`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List byteArrayFixTypeDescriptor = $convert.base64Decode(
-    'ChBCeXRlQXJyYXlGaXhUeXBlEhIKBHNpemUYASABKARSBHNpemU=');
+final $typed_data.Uint8List byteArrayFixTypeDescriptor = $convert
+    .base64Decode('ChBCeXRlQXJyYXlGaXhUeXBlEhIKBHNpemUYASABKARSBHNpemU=');
 
 @$core.Deprecated('Use tupleTypeDescriptor instead')
 const TupleType$json = {
   '1': 'TupleType',
   '2': [
-    {'1': 'params', '3': 1, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Param', '10': 'params'},
+    {
+      '1': 'params',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Param',
+      '10': 'params'
+    },
   ],
 };
 
@@ -145,7 +166,14 @@ const Param$json = {
   '1': 'Param',
   '2': [
     {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'param', '3': 2, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ParamType', '10': 'param'},
+    {
+      '1': 'param',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ParamType',
+      '10': 'param'
+    },
   ],
 };
 
@@ -158,16 +186,96 @@ final $typed_data.Uint8List paramDescriptor = $convert.base64Decode(
 const ParamType$json = {
   '1': 'ParamType',
   '2': [
-    {'1': 'boolean', '3': 1, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.BoolType', '9': 0, '10': 'boolean'},
-    {'1': 'number_int', '3': 2, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.NumberNType', '9': 0, '10': 'numberInt'},
-    {'1': 'number_uint', '3': 3, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.NumberNType', '9': 0, '10': 'numberUint'},
-    {'1': 'string_param', '3': 7, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.StringType', '9': 0, '10': 'stringParam'},
-    {'1': 'address', '3': 8, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.AddressType', '9': 0, '10': 'address'},
-    {'1': 'byte_array', '3': 9, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ByteArrayType', '9': 0, '10': 'byteArray'},
-    {'1': 'byte_array_fix', '3': 10, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ByteArrayFixType', '9': 0, '10': 'byteArrayFix'},
-    {'1': 'array', '3': 14, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ArrayType', '9': 0, '10': 'array'},
-    {'1': 'fixed_array', '3': 15, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.FixedArrayType', '9': 0, '10': 'fixedArray'},
-    {'1': 'tuple', '3': 19, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.TupleType', '9': 0, '10': 'tuple'},
+    {
+      '1': 'boolean',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.BoolType',
+      '9': 0,
+      '10': 'boolean'
+    },
+    {
+      '1': 'number_int',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.NumberNType',
+      '9': 0,
+      '10': 'numberInt'
+    },
+    {
+      '1': 'number_uint',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.NumberNType',
+      '9': 0,
+      '10': 'numberUint'
+    },
+    {
+      '1': 'string_param',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.StringType',
+      '9': 0,
+      '10': 'stringParam'
+    },
+    {
+      '1': 'address',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.AddressType',
+      '9': 0,
+      '10': 'address'
+    },
+    {
+      '1': 'byte_array',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ByteArrayType',
+      '9': 0,
+      '10': 'byteArray'
+    },
+    {
+      '1': 'byte_array_fix',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ByteArrayFixType',
+      '9': 0,
+      '10': 'byteArrayFix'
+    },
+    {
+      '1': 'array',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ArrayType',
+      '9': 0,
+      '10': 'array'
+    },
+    {
+      '1': 'fixed_array',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.FixedArrayType',
+      '9': 0,
+      '10': 'fixedArray'
+    },
+    {
+      '1': 'tuple',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.TupleType',
+      '9': 0,
+      '10': 'tuple'
+    },
   ],
   '8': [
     {'1': 'param'},
@@ -208,8 +316,22 @@ final $typed_data.Uint8List numberNParamDescriptor = $convert.base64Decode(
 const ArrayParam$json = {
   '1': 'ArrayParam',
   '2': [
-    {'1': 'element_type', '3': 1, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ParamType', '10': 'elementType'},
-    {'1': 'elements', '3': 2, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Token', '10': 'elements'},
+    {
+      '1': 'element_type',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ParamType',
+      '10': 'elementType'
+    },
+    {
+      '1': 'elements',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Token',
+      '10': 'elements'
+    },
   ],
 };
 
@@ -223,7 +345,14 @@ final $typed_data.Uint8List arrayParamDescriptor = $convert.base64Decode(
 const TupleParam$json = {
   '1': 'TupleParam',
   '2': [
-    {'1': 'params', '3': 1, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Token', '10': 'params'},
+    {
+      '1': 'params',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Token',
+      '10': 'params'
+    },
   ],
 };
 
@@ -238,15 +367,62 @@ const Token$json = {
   '2': [
     {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
     {'1': 'boolean', '3': 2, '4': 1, '5': 8, '9': 0, '10': 'boolean'},
-    {'1': 'number_int', '3': 3, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.NumberNParam', '9': 0, '10': 'numberInt'},
-    {'1': 'number_uint', '3': 4, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.NumberNParam', '9': 0, '10': 'numberUint'},
+    {
+      '1': 'number_int',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.NumberNParam',
+      '9': 0,
+      '10': 'numberInt'
+    },
+    {
+      '1': 'number_uint',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.NumberNParam',
+      '9': 0,
+      '10': 'numberUint'
+    },
     {'1': 'string_value', '3': 7, '4': 1, '5': 9, '9': 0, '10': 'stringValue'},
     {'1': 'address', '3': 8, '4': 1, '5': 9, '9': 0, '10': 'address'},
     {'1': 'byte_array', '3': 9, '4': 1, '5': 12, '9': 0, '10': 'byteArray'},
-    {'1': 'byte_array_fix', '3': 10, '4': 1, '5': 12, '9': 0, '10': 'byteArrayFix'},
-    {'1': 'array', '3': 14, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ArrayParam', '9': 0, '10': 'array'},
-    {'1': 'fixed_array', '3': 15, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.ArrayParam', '9': 0, '10': 'fixedArray'},
-    {'1': 'tuple', '3': 19, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.TupleParam', '9': 0, '10': 'tuple'},
+    {
+      '1': 'byte_array_fix',
+      '3': 10,
+      '4': 1,
+      '5': 12,
+      '9': 0,
+      '10': 'byteArrayFix'
+    },
+    {
+      '1': 'array',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ArrayParam',
+      '9': 0,
+      '10': 'array'
+    },
+    {
+      '1': 'fixed_array',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.ArrayParam',
+      '9': 0,
+      '10': 'fixedArray'
+    },
+    {
+      '1': 'tuple',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.TupleParam',
+      '9': 0,
+      '10': 'tuple'
+    },
   ],
   '8': [
     {'1': 'token'},
@@ -271,22 +447,43 @@ const ContractCallDecodingInput$json = {
   '1': 'ContractCallDecodingInput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'smart_contract_abi_json', '3': 2, '4': 1, '5': 9, '10': 'smartContractAbiJson'},
+    {
+      '1': 'smart_contract_abi_json',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'smartContractAbiJson'
+    },
   ],
 };
 
 /// Descriptor for `ContractCallDecodingInput`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List contractCallDecodingInputDescriptor = $convert.base64Decode(
-    'ChlDb250cmFjdENhbGxEZWNvZGluZ0lucHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSNQ'
-    'oXc21hcnRfY29udHJhY3RfYWJpX2pzb24YAiABKAlSFHNtYXJ0Q29udHJhY3RBYmlKc29u');
+final $typed_data.Uint8List contractCallDecodingInputDescriptor =
+    $convert.base64Decode(
+        'ChlDb250cmFjdENhbGxEZWNvZGluZ0lucHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSNQ'
+        'oXc21hcnRfY29udHJhY3RfYWJpX2pzb24YAiABKAlSFHNtYXJ0Q29udHJhY3RBYmlKc29u');
 
 @$core.Deprecated('Use contractCallDecodingOutputDescriptor instead')
 const ContractCallDecodingOutput$json = {
   '1': 'ContractCallDecodingOutput',
   '2': [
     {'1': 'decoded_json', '3': 1, '4': 1, '5': 9, '10': 'decodedJson'},
-    {'1': 'tokens', '3': 2, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Token', '10': 'tokens'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.EthereumAbi.Proto.AbiError', '10': 'error'},
+    {
+      '1': 'tokens',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Token',
+      '10': 'tokens'
+    },
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.EthereumAbi.Proto.AbiError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -302,7 +499,14 @@ final $typed_data.Uint8List contractCallDecodingOutputDescriptor = $convert.base
 const AbiParams$json = {
   '1': 'AbiParams',
   '2': [
-    {'1': 'params', '3': 1, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Param', '10': 'params'},
+    {
+      '1': 'params',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Param',
+      '10': 'params'
+    },
   ],
 };
 
@@ -317,7 +521,15 @@ const ParamsDecodingInput$json = {
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'abi_json', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'abiJson'},
-    {'1': 'abi_params', '3': 3, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.AbiParams', '9': 0, '10': 'abiParams'},
+    {
+      '1': 'abi_params',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.AbiParams',
+      '9': 0,
+      '10': 'abiParams'
+    },
   ],
   '8': [
     {'1': 'abi'},
@@ -334,8 +546,22 @@ final $typed_data.Uint8List paramsDecodingInputDescriptor = $convert.base64Decod
 const ParamsDecodingOutput$json = {
   '1': 'ParamsDecodingOutput',
   '2': [
-    {'1': 'tokens', '3': 1, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Token', '10': 'tokens'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.EthereumAbi.Proto.AbiError', '10': 'error'},
+    {
+      '1': 'tokens',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Token',
+      '10': 'tokens'
+    },
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.EthereumAbi.Proto.AbiError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -365,9 +591,23 @@ final $typed_data.Uint8List valueDecodingInputDescriptor = $convert.base64Decode
 const ValueDecodingOutput$json = {
   '1': 'ValueDecodingOutput',
   '2': [
-    {'1': 'token', '3': 1, '4': 1, '5': 11, '6': '.TW.EthereumAbi.Proto.Token', '10': 'token'},
+    {
+      '1': 'token',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Token',
+      '10': 'token'
+    },
     {'1': 'param_str', '3': 2, '4': 1, '5': 9, '10': 'paramStr'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.EthereumAbi.Proto.AbiError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.EthereumAbi.Proto.AbiError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -384,7 +624,14 @@ const FunctionEncodingInput$json = {
   '1': 'FunctionEncodingInput',
   '2': [
     {'1': 'function_name', '3': 1, '4': 1, '5': 9, '10': 'functionName'},
-    {'1': 'tokens', '3': 2, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Token', '10': 'tokens'},
+    {
+      '1': 'tokens',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Token',
+      '10': 'tokens'
+    },
   ],
 };
 
@@ -400,7 +647,14 @@ const FunctionEncodingOutput$json = {
   '2': [
     {'1': 'function_type', '3': 1, '4': 1, '5': 9, '10': 'functionType'},
     {'1': 'encoded', '3': 2, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.EthereumAbi.Proto.AbiError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.EthereumAbi.Proto.AbiError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -417,7 +671,14 @@ const FunctionGetTypeInput$json = {
   '1': 'FunctionGetTypeInput',
   '2': [
     {'1': 'function_name', '3': 1, '4': 1, '5': 9, '10': 'functionName'},
-    {'1': 'inputs', '3': 2, '4': 3, '5': 11, '6': '.TW.EthereumAbi.Proto.Param', '10': 'inputs'},
+    {
+      '1': 'inputs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.EthereumAbi.Proto.Param',
+      '10': 'inputs'
+    },
   ],
 };
 
@@ -426,4 +687,3 @@ final $typed_data.Uint8List functionGetTypeInputDescriptor = $convert.base64Deco
     'ChRGdW5jdGlvbkdldFR5cGVJbnB1dBIjCg1mdW5jdGlvbl9uYW1lGAEgASgJUgxmdW5jdGlvbk'
     '5hbWUSMwoGaW5wdXRzGAIgAygLMhsuVFcuRXRoZXJldW1BYmkuUHJvdG8uUGFyYW1SBmlucHV0'
     'cw==');
-

@@ -95,13 +95,53 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'version', '3': 1, '4': 1, '5': 5, '10': 'version'},
-    {'1': 'lock_time', '3': 2, '4': 1, '5': 11, '6': '.TW.Utxo.Proto.LockTime', '10': 'lockTime'},
-    {'1': 'inputs', '3': 3, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxIn', '10': 'inputs'},
-    {'1': 'outputs', '3': 4, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxOut', '10': 'outputs'},
-    {'1': 'input_selector', '3': 5, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.InputSelector', '10': 'inputSelector'},
+    {
+      '1': 'lock_time',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.LockTime',
+      '10': 'lockTime'
+    },
+    {
+      '1': 'inputs',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxIn',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxOut',
+      '10': 'outputs'
+    },
+    {
+      '1': 'input_selector',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.InputSelector',
+      '10': 'inputSelector'
+    },
     {'1': 'weight_base', '3': 6, '4': 1, '5': 4, '10': 'weightBase'},
-    {'1': 'change_script_pubkey', '3': 7, '4': 1, '5': 12, '10': 'changeScriptPubkey'},
-    {'1': 'disable_change_output', '3': 8, '4': 1, '5': 8, '10': 'disableChangeOutput'},
+    {
+      '1': 'change_script_pubkey',
+      '3': 7,
+      '4': 1,
+      '5': 12,
+      '10': 'changeScriptPubkey'
+    },
+    {
+      '1': 'disable_change_output',
+      '3': 8,
+      '4': 1,
+      '5': 8,
+      '10': 'disableChangeOutput'
+    },
   ],
 };
 
@@ -142,8 +182,22 @@ const TxIn$json = {
     {'1': 'value', '3': 3, '4': 1, '5': 4, '10': 'value'},
     {'1': 'sequence', '3': 4, '4': 1, '5': 13, '10': 'sequence'},
     {'1': 'script_pubkey', '3': 7, '4': 1, '5': 12, '10': 'scriptPubkey'},
-    {'1': 'sighash_type', '3': 8, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.SighashType', '10': 'sighashType'},
-    {'1': 'signing_method', '3': 9, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.SigningMethod', '10': 'signingMethod'},
+    {
+      '1': 'sighash_type',
+      '3': 8,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.SighashType',
+      '10': 'sighashType'
+    },
+    {
+      '1': 'signing_method',
+      '3': 9,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.SigningMethod',
+      '10': 'signingMethod'
+    },
     {'1': 'weight_estimate', '3': 10, '4': 1, '5': 4, '10': 'weightEstimate'},
     {'1': 'leaf_hash', '3': 11, '4': 1, '5': 12, '10': 'leafHash'},
   ],
@@ -177,11 +231,39 @@ final $typed_data.Uint8List txOutDescriptor = $convert.base64Decode(
 const PreSigningOutput$json = {
   '1': 'PreSigningOutput',
   '2': [
-    {'1': 'error', '3': 1, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.Error', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.Error',
+      '10': 'error'
+    },
     {'1': 'txid', '3': 2, '4': 1, '5': 12, '10': 'txid'},
-    {'1': 'sighashes', '3': 3, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.Sighash', '10': 'sighashes'},
-    {'1': 'inputs', '3': 4, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxIn', '10': 'inputs'},
-    {'1': 'outputs', '3': 5, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxOut', '10': 'outputs'},
+    {
+      '1': 'sighashes',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.Sighash',
+      '10': 'sighashes'
+    },
+    {
+      '1': 'inputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxIn',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxOut',
+      '10': 'outputs'
+    },
     {'1': 'weight_estimate', '3': 6, '4': 1, '5': 4, '10': 'weightEstimate'},
     {'1': 'fee_estimate', '3': 7, '4': 1, '5': 4, '10': 'feeEstimate'},
   ],
@@ -201,8 +283,22 @@ const Sighash$json = {
   '1': 'Sighash',
   '2': [
     {'1': 'sighash', '3': 1, '4': 1, '5': 12, '10': 'sighash'},
-    {'1': 'signing_method', '3': 2, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.SigningMethod', '10': 'signingMethod'},
-    {'1': 'sighash_type', '3': 3, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.SighashType', '10': 'sighashType'},
+    {
+      '1': 'signing_method',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.SigningMethod',
+      '10': 'signingMethod'
+    },
+    {
+      '1': 'sighash_type',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.SighashType',
+      '10': 'sighashType'
+    },
   ],
 };
 
@@ -218,9 +314,30 @@ const PreSerialization$json = {
   '1': 'PreSerialization',
   '2': [
     {'1': 'version', '3': 1, '4': 1, '5': 5, '10': 'version'},
-    {'1': 'lock_time', '3': 2, '4': 1, '5': 11, '6': '.TW.Utxo.Proto.LockTime', '10': 'lockTime'},
-    {'1': 'inputs', '3': 3, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxInClaim', '10': 'inputs'},
-    {'1': 'outputs', '3': 4, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxOut', '10': 'outputs'},
+    {
+      '1': 'lock_time',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.LockTime',
+      '10': 'lockTime'
+    },
+    {
+      '1': 'inputs',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxInClaim',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxOut',
+      '10': 'outputs'
+    },
     {'1': 'weight_base', '3': 5, '4': 1, '5': 4, '10': 'weightBase'},
   ],
 };
@@ -255,7 +372,14 @@ final $typed_data.Uint8List txInClaimDescriptor = $convert.base64Decode(
 const SerializedTransaction$json = {
   '1': 'SerializedTransaction',
   '2': [
-    {'1': 'error', '3': 1, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.Error', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.Error',
+      '10': 'error'
+    },
     {'1': 'encoded', '3': 2, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'txid', '3': 3, '4': 1, '5': 12, '10': 'txid'},
     {'1': 'weight', '3': 4, '4': 1, '5': 4, '10': 'weight'},
@@ -268,4 +392,3 @@ final $typed_data.Uint8List serializedTransactionDescriptor = $convert.base64Dec
     'ChVTZXJpYWxpemVkVHJhbnNhY3Rpb24SKgoFZXJyb3IYASABKA4yFC5UVy5VdHhvLlByb3RvLk'
     'Vycm9yUgVlcnJvchIYCgdlbmNvZGVkGAIgASgMUgdlbmNvZGVkEhIKBHR4aWQYAyABKAxSBHR4'
     'aWQSFgoGd2VpZ2h0GAQgASgEUgZ3ZWlnaHQSEAoDZmVlGAUgASgEUgNmZWU=');
-

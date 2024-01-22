@@ -87,7 +87,14 @@ final $typed_data.Uint8List statusCodeDescriptor = $convert.base64Decode(
 const Status$json = {
   '1': 'Status',
   '2': [
-    {'1': 'code', '3': 1, '4': 1, '5': 14, '6': '.TW.LiquidStaking.Proto.StatusCode', '10': 'code'},
+    {
+      '1': 'code',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.LiquidStaking.Proto.StatusCode',
+      '10': 'code'
+    },
     {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
   ],
 };
@@ -101,7 +108,14 @@ final $typed_data.Uint8List statusDescriptor = $convert.base64Decode(
 const Asset$json = {
   '1': 'Asset',
   '2': [
-    {'1': 'staking_token', '3': 1, '4': 1, '5': 14, '6': '.TW.LiquidStaking.Proto.Coin', '10': 'stakingToken'},
+    {
+      '1': 'staking_token',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.LiquidStaking.Proto.Coin',
+      '10': 'stakingToken'
+    },
     {'1': 'liquid_token', '3': 2, '4': 1, '5': 9, '10': 'liquidToken'},
     {'1': 'denom', '3': 3, '4': 1, '5': 9, '10': 'denom'},
     {'1': 'from_address', '3': 4, '4': 1, '5': 9, '10': 'fromAddress'},
@@ -119,7 +133,14 @@ final $typed_data.Uint8List assetDescriptor = $convert.base64Decode(
 const Stake$json = {
   '1': 'Stake',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 9, '10': 'amount'},
   ],
 };
@@ -133,7 +154,14 @@ final $typed_data.Uint8List stakeDescriptor = $convert.base64Decode(
 const Unstake$json = {
   '1': 'Unstake',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 9, '10': 'amount'},
     {'1': 'receiver_address', '3': 3, '4': 1, '5': 9, '10': 'receiverAddress'},
     {'1': 'receiver_chain_id', '3': 4, '4': 1, '5': 9, '10': 'receiverChainId'},
@@ -151,7 +179,14 @@ final $typed_data.Uint8List unstakeDescriptor = $convert.base64Decode(
 const Withdraw$json = {
   '1': 'Withdraw',
   '2': [
-    {'1': 'asset', '3': 1, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Asset', '10': 'asset'},
+    {
+      '1': 'asset',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Asset',
+      '10': 'asset'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 9, '10': 'amount'},
     {'1': 'idx', '3': 3, '4': 1, '5': 9, '10': 'idx'},
   ],
@@ -166,12 +201,56 @@ final $typed_data.Uint8List withdrawDescriptor = $convert.base64Decode(
 const Input$json = {
   '1': 'Input',
   '2': [
-    {'1': 'stake', '3': 1, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Stake', '9': 0, '10': 'stake'},
-    {'1': 'unstake', '3': 2, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Unstake', '9': 0, '10': 'unstake'},
-    {'1': 'withdraw', '3': 3, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Withdraw', '9': 0, '10': 'withdraw'},
-    {'1': 'smart_contract_address', '3': 4, '4': 1, '5': 9, '10': 'smartContractAddress'},
-    {'1': 'protocol', '3': 5, '4': 1, '5': 14, '6': '.TW.LiquidStaking.Proto.Protocol', '10': 'protocol'},
-    {'1': 'blockchain', '3': 6, '4': 1, '5': 14, '6': '.TW.LiquidStaking.Proto.Blockchain', '10': 'blockchain'},
+    {
+      '1': 'stake',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Stake',
+      '9': 0,
+      '10': 'stake'
+    },
+    {
+      '1': 'unstake',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Unstake',
+      '9': 0,
+      '10': 'unstake'
+    },
+    {
+      '1': 'withdraw',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Withdraw',
+      '9': 0,
+      '10': 'withdraw'
+    },
+    {
+      '1': 'smart_contract_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'smartContractAddress'
+    },
+    {
+      '1': 'protocol',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.LiquidStaking.Proto.Protocol',
+      '10': 'protocol'
+    },
+    {
+      '1': 'blockchain',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.LiquidStaking.Proto.Blockchain',
+      '10': 'blockchain'
+    },
   ],
   '8': [
     {'1': 'action'},
@@ -192,10 +271,41 @@ final $typed_data.Uint8List inputDescriptor = $convert.base64Decode(
 const Output$json = {
   '1': 'Output',
   '2': [
-    {'1': 'status', '3': 1, '4': 1, '5': 11, '6': '.TW.LiquidStaking.Proto.Status', '10': 'status'},
-    {'1': 'ethereum', '3': 2, '4': 1, '5': 11, '6': '.TW.Ethereum.Proto.SigningInput', '9': 0, '10': 'ethereum'},
-    {'1': 'cosmos', '3': 3, '4': 1, '5': 11, '6': '.TW.Cosmos.Proto.SigningInput', '9': 0, '10': 'cosmos'},
-    {'1': 'aptos', '3': 4, '4': 1, '5': 11, '6': '.TW.Aptos.Proto.SigningInput', '9': 0, '10': 'aptos'},
+    {
+      '1': 'status',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.LiquidStaking.Proto.Status',
+      '10': 'status'
+    },
+    {
+      '1': 'ethereum',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.SigningInput',
+      '9': 0,
+      '10': 'ethereum'
+    },
+    {
+      '1': 'cosmos',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.SigningInput',
+      '9': 0,
+      '10': 'cosmos'
+    },
+    {
+      '1': 'aptos',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.SigningInput',
+      '9': 0,
+      '10': 'aptos'
+    },
   ],
   '8': [
     {'1': 'signing_input_oneof'},
@@ -209,4 +319,3 @@ final $typed_data.Uint8List outputDescriptor = $convert.base64Decode(
     'bnB1dEgAUghldGhlcmV1bRI3CgZjb3Ntb3MYAyABKAsyHS5UVy5Db3Ntb3MuUHJvdG8uU2lnbm'
     'luZ0lucHV0SABSBmNvc21vcxI0CgVhcHRvcxgEIAEoCzIcLlRXLkFwdG9zLlByb3RvLlNpZ25p'
     'bmdJbnB1dEgAUgVhcHRvc0IVChNzaWduaW5nX2lucHV0X29uZW9m');
-

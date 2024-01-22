@@ -17,7 +17,15 @@ import 'dart:typed_data' as $typed_data;
 const Transaction$json = {
   '1': 'Transaction',
   '2': [
-    {'1': 'transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.InternetComputer.Proto.Transaction.Transfer', '9': 0, '10': 'transfer'},
+    {
+      '1': 'transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.InternetComputer.Proto.Transaction.Transfer',
+      '9': 0,
+      '10': 'transfer'
+    },
   ],
   '3': [Transaction_Transfer$json],
   '8': [
@@ -29,10 +37,22 @@ const Transaction$json = {
 const Transaction_Transfer$json = {
   '1': 'Transfer',
   '2': [
-    {'1': 'to_account_identifier', '3': 1, '4': 1, '5': 9, '10': 'toAccountIdentifier'},
+    {
+      '1': 'to_account_identifier',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'toAccountIdentifier'
+    },
     {'1': 'amount', '3': 2, '4': 1, '5': 4, '10': 'amount'},
     {'1': 'memo', '3': 3, '4': 1, '5': 4, '10': 'memo'},
-    {'1': 'current_timestamp_nanos', '3': 4, '4': 1, '5': 4, '10': 'currentTimestampNanos'},
+    {
+      '1': 'current_timestamp_nanos',
+      '3': 4,
+      '4': 1,
+      '5': 4,
+      '10': 'currentTimestampNanos'
+    },
   ],
 };
 
@@ -50,7 +70,14 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transaction', '3': 2, '4': 1, '5': 11, '6': '.TW.InternetComputer.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'transaction',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.InternetComputer.Proto.Transaction',
+      '10': 'transaction'
+    },
   ],
 };
 
@@ -64,8 +91,21 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
 const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
-    {'1': 'signed_transaction', '3': 1, '4': 1, '5': 12, '10': 'signedTransaction'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'signed_transaction',
+      '3': 1,
+      '4': 1,
+      '5': 12,
+      '10': 'signedTransaction'
+    },
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -75,4 +115,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0Ei0KEnNpZ25lZF90cmFuc2FjdGlvbhgBIAEoDFIRc2lnbmVkVHJhbn'
     'NhY3Rpb24SMwoFZXJyb3IYAiABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVl'
     'cnJvchIjCg1lcnJvcl9tZXNzYWdlGAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

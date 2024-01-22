@@ -40,42 +40,56 @@ class SigningInput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningInput._() : super();
-  factory SigningInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
-    ..aOM<OperationList>(1, _omitFieldNames ? '' : 'operationList', subBuilder: OperationList.create)
-    ..a<$core.List<$core.int>>(2, _omitFieldNames ? '' : 'encodedOperations', $pb.PbFieldType.OY)
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningInput',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
+    ..aOM<OperationList>(1, _omitFieldNames ? '' : 'operationList',
+        subBuilder: OperationList.create)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'encodedOperations', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningInput clone() => SigningInput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningInput copyWith(void Function(SigningInput) updates) => super.copyWith((message) => updates(message as SigningInput)) as SigningInput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningInput copyWith(void Function(SigningInput) updates) =>
+      super.copyWith((message) => updates(message as SigningInput))
+          as SigningInput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningInput create() => SigningInput._();
   SigningInput createEmptyInstance() => create();
-  static $pb.PbList<SigningInput> createRepeated() => $pb.PbList<SigningInput>();
+  static $pb.PbList<SigningInput> createRepeated() =>
+      $pb.PbList<SigningInput>();
   @$core.pragma('dart2js:noInline')
-  static SigningInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
+  static SigningInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
   /// One or more operations
   @$pb.TagNumber(1)
   OperationList get operationList => $_getN(0);
   @$pb.TagNumber(1)
-  set operationList(OperationList v) { setField(1, v); }
+  set operationList(OperationList v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasOperationList() => $_has(0);
   @$pb.TagNumber(1)
@@ -87,7 +101,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.List<$core.int> get encodedOperations => $_getN(1);
   @$pb.TagNumber(2)
-  set encodedOperations($core.List<$core.int> v) { $_setBytes(1, v); }
+  set encodedOperations($core.List<$core.int> v) {
+    $_setBytes(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasEncodedOperations() => $_has(1);
   @$pb.TagNumber(2)
@@ -97,7 +114,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.List<$core.int> get privateKey => $_getN(2);
   @$pb.TagNumber(3)
-  set privateKey($core.List<$core.int> v) { $_setBytes(2, v); }
+  set privateKey($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasPrivateKey() => $_has(2);
   @$pb.TagNumber(3)
@@ -125,42 +145,57 @@ class SigningOutput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningOutput._() : super();
-  factory SigningOutput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningOutput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'encoded', $pb.PbFieldType.OY)
-    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningOutput',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'encoded', $pb.PbFieldType.OY)
+    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningOutput clone() => SigningOutput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningOutput copyWith(void Function(SigningOutput) updates) => super.copyWith((message) => updates(message as SigningOutput)) as SigningOutput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningOutput copyWith(void Function(SigningOutput) updates) =>
+      super.copyWith((message) => updates(message as SigningOutput))
+          as SigningOutput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningOutput create() => SigningOutput._();
   SigningOutput createEmptyInstance() => create();
-  static $pb.PbList<SigningOutput> createRepeated() => $pb.PbList<SigningOutput>();
+  static $pb.PbList<SigningOutput> createRepeated() =>
+      $pb.PbList<SigningOutput>();
   @$core.pragma('dart2js:noInline')
-  static SigningOutput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
+  static SigningOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
   static SigningOutput? _defaultInstance;
 
   /// The encoded transaction
   @$pb.TagNumber(1)
   $core.List<$core.int> get encoded => $_getN(0);
   @$pb.TagNumber(1)
-  set encoded($core.List<$core.int> v) { $_setBytes(0, v); }
+  set encoded($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasEncoded() => $_has(0);
   @$pb.TagNumber(1)
@@ -170,7 +205,10 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $0.SigningError get error => $_getN(1);
   @$pb.TagNumber(2)
-  set error($0.SigningError v) { setField(2, v); }
+  set error($0.SigningError v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasError() => $_has(1);
   @$pb.TagNumber(2)
@@ -180,7 +218,10 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get errorMessage => $_getSZ(2);
   @$pb.TagNumber(3)
-  set errorMessage($core.String v) { $_setString(2, v); }
+  set errorMessage($core.String v) {
+    $_setString(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasErrorMessage() => $_has(2);
   @$pb.TagNumber(3)
@@ -204,41 +245,53 @@ class OperationList extends $pb.GeneratedMessage {
     return $result;
   }
   OperationList._() : super();
-  factory OperationList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OperationList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory OperationList.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory OperationList.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OperationList', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'OperationList',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'branch')
-    ..pc<Operation>(2, _omitFieldNames ? '' : 'operations', $pb.PbFieldType.PM, subBuilder: Operation.create)
-    ..hasRequiredFields = false
-  ;
+    ..pc<Operation>(2, _omitFieldNames ? '' : 'operations', $pb.PbFieldType.PM,
+        subBuilder: Operation.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   OperationList clone() => OperationList()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  OperationList copyWith(void Function(OperationList) updates) => super.copyWith((message) => updates(message as OperationList)) as OperationList;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  OperationList copyWith(void Function(OperationList) updates) =>
+      super.copyWith((message) => updates(message as OperationList))
+          as OperationList;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static OperationList create() => OperationList._();
   OperationList createEmptyInstance() => create();
-  static $pb.PbList<OperationList> createRepeated() => $pb.PbList<OperationList>();
+  static $pb.PbList<OperationList> createRepeated() =>
+      $pb.PbList<OperationList>();
   @$core.pragma('dart2js:noInline')
-  static OperationList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OperationList>(create);
+  static OperationList getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<OperationList>(create);
   static OperationList? _defaultInstance;
 
   /// branch
   @$pb.TagNumber(1)
   $core.String get branch => $_getSZ(0);
   @$pb.TagNumber(1)
-  set branch($core.String v) { $_setString(0, v); }
+  set branch($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasBranch() => $_has(0);
   @$pb.TagNumber(1)
@@ -250,9 +303,9 @@ class OperationList extends $pb.GeneratedMessage {
 }
 
 enum Operation_OperationData {
-  revealOperationData, 
-  transactionOperationData, 
-  delegationOperationData, 
+  revealOperationData,
+  transactionOperationData,
+  delegationOperationData,
   notSet
 }
 
@@ -301,39 +354,54 @@ class Operation extends $pb.GeneratedMessage {
     return $result;
   }
   Operation._() : super();
-  factory Operation.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Operation.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Operation.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Operation.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, Operation_OperationData> _Operation_OperationDataByTag = {
-    8 : Operation_OperationData.revealOperationData,
-    9 : Operation_OperationData.transactionOperationData,
-    11 : Operation_OperationData.delegationOperationData,
-    0 : Operation_OperationData.notSet
+  static const $core.Map<$core.int, Operation_OperationData>
+      _Operation_OperationDataByTag = {
+    8: Operation_OperationData.revealOperationData,
+    9: Operation_OperationData.transactionOperationData,
+    11: Operation_OperationData.delegationOperationData,
+    0: Operation_OperationData.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Operation', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Operation',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..oo(0, [8, 9, 11])
     ..aInt64(1, _omitFieldNames ? '' : 'counter')
     ..aOS(2, _omitFieldNames ? '' : 'source')
     ..aInt64(3, _omitFieldNames ? '' : 'fee')
     ..aInt64(4, _omitFieldNames ? '' : 'gasLimit')
     ..aInt64(5, _omitFieldNames ? '' : 'storageLimit')
-    ..e<Operation_OperationKind>(7, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE, defaultOrMaker: Operation_OperationKind.ENDORSEMENT, valueOf: Operation_OperationKind.valueOf, enumValues: Operation_OperationKind.values)
-    ..aOM<RevealOperationData>(8, _omitFieldNames ? '' : 'revealOperationData', subBuilder: RevealOperationData.create)
-    ..aOM<TransactionOperationData>(9, _omitFieldNames ? '' : 'transactionOperationData', subBuilder: TransactionOperationData.create)
-    ..aOM<DelegationOperationData>(11, _omitFieldNames ? '' : 'delegationOperationData', subBuilder: DelegationOperationData.create)
-    ..hasRequiredFields = false
-  ;
+    ..e<Operation_OperationKind>(
+        7, _omitFieldNames ? '' : 'kind', $pb.PbFieldType.OE,
+        defaultOrMaker: Operation_OperationKind.ENDORSEMENT,
+        valueOf: Operation_OperationKind.valueOf,
+        enumValues: Operation_OperationKind.values)
+    ..aOM<RevealOperationData>(8, _omitFieldNames ? '' : 'revealOperationData',
+        subBuilder: RevealOperationData.create)
+    ..aOM<TransactionOperationData>(
+        9, _omitFieldNames ? '' : 'transactionOperationData',
+        subBuilder: TransactionOperationData.create)
+    ..aOM<DelegationOperationData>(
+        11, _omitFieldNames ? '' : 'delegationOperationData',
+        subBuilder: DelegationOperationData.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Operation clone() => Operation()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Operation copyWith(void Function(Operation) updates) => super.copyWith((message) => updates(message as Operation)) as Operation;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Operation copyWith(void Function(Operation) updates) =>
+      super.copyWith((message) => updates(message as Operation)) as Operation;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -342,17 +410,22 @@ class Operation extends $pb.GeneratedMessage {
   Operation createEmptyInstance() => create();
   static $pb.PbList<Operation> createRepeated() => $pb.PbList<Operation>();
   @$core.pragma('dart2js:noInline')
-  static Operation getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Operation>(create);
+  static Operation getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Operation>(create);
   static Operation? _defaultInstance;
 
-  Operation_OperationData whichOperationData() => _Operation_OperationDataByTag[$_whichOneof(0)]!;
+  Operation_OperationData whichOperationData() =>
+      _Operation_OperationDataByTag[$_whichOneof(0)]!;
   void clearOperationData() => clearField($_whichOneof(0));
 
   /// counter
   @$pb.TagNumber(1)
   $fixnum.Int64 get counter => $_getI64(0);
   @$pb.TagNumber(1)
-  set counter($fixnum.Int64 v) { $_setInt64(0, v); }
+  set counter($fixnum.Int64 v) {
+    $_setInt64(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasCounter() => $_has(0);
   @$pb.TagNumber(1)
@@ -362,7 +435,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get source => $_getSZ(1);
   @$pb.TagNumber(2)
-  set source($core.String v) { $_setString(1, v); }
+  set source($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasSource() => $_has(1);
   @$pb.TagNumber(2)
@@ -372,7 +448,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $fixnum.Int64 get fee => $_getI64(2);
   @$pb.TagNumber(3)
-  set fee($fixnum.Int64 v) { $_setInt64(2, v); }
+  set fee($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasFee() => $_has(2);
   @$pb.TagNumber(3)
@@ -382,7 +461,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $fixnum.Int64 get gasLimit => $_getI64(3);
   @$pb.TagNumber(4)
-  set gasLimit($fixnum.Int64 v) { $_setInt64(3, v); }
+  set gasLimit($fixnum.Int64 v) {
+    $_setInt64(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasGasLimit() => $_has(3);
   @$pb.TagNumber(4)
@@ -392,7 +474,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $fixnum.Int64 get storageLimit => $_getI64(4);
   @$pb.TagNumber(5)
-  set storageLimit($fixnum.Int64 v) { $_setInt64(4, v); }
+  set storageLimit($fixnum.Int64 v) {
+    $_setInt64(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasStorageLimit() => $_has(4);
   @$pb.TagNumber(5)
@@ -402,7 +487,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   Operation_OperationKind get kind => $_getN(5);
   @$pb.TagNumber(7)
-  set kind(Operation_OperationKind v) { setField(7, v); }
+  set kind(Operation_OperationKind v) {
+    setField(7, v);
+  }
+
   @$pb.TagNumber(7)
   $core.bool hasKind() => $_has(5);
   @$pb.TagNumber(7)
@@ -411,7 +499,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   RevealOperationData get revealOperationData => $_getN(6);
   @$pb.TagNumber(8)
-  set revealOperationData(RevealOperationData v) { setField(8, v); }
+  set revealOperationData(RevealOperationData v) {
+    setField(8, v);
+  }
+
   @$pb.TagNumber(8)
   $core.bool hasRevealOperationData() => $_has(6);
   @$pb.TagNumber(8)
@@ -422,7 +513,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   TransactionOperationData get transactionOperationData => $_getN(7);
   @$pb.TagNumber(9)
-  set transactionOperationData(TransactionOperationData v) { setField(9, v); }
+  set transactionOperationData(TransactionOperationData v) {
+    setField(9, v);
+  }
+
   @$pb.TagNumber(9)
   $core.bool hasTransactionOperationData() => $_has(7);
   @$pb.TagNumber(9)
@@ -433,7 +527,10 @@ class Operation extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   DelegationOperationData get delegationOperationData => $_getN(8);
   @$pb.TagNumber(11)
-  set delegationOperationData(DelegationOperationData v) { setField(11, v); }
+  set delegationOperationData(DelegationOperationData v) {
+    setField(11, v);
+  }
+
   @$pb.TagNumber(11)
   $core.bool hasDelegationOperationData() => $_has(8);
   @$pb.TagNumber(11)
@@ -465,42 +562,53 @@ class FA12Parameters extends $pb.GeneratedMessage {
     return $result;
   }
   FA12Parameters._() : super();
-  factory FA12Parameters.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory FA12Parameters.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory FA12Parameters.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory FA12Parameters.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FA12Parameters', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'FA12Parameters',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'entrypoint')
     ..aOS(2, _omitFieldNames ? '' : 'from')
     ..aOS(3, _omitFieldNames ? '' : 'to')
     ..aOS(4, _omitFieldNames ? '' : 'value')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   FA12Parameters clone() => FA12Parameters()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  FA12Parameters copyWith(void Function(FA12Parameters) updates) => super.copyWith((message) => updates(message as FA12Parameters)) as FA12Parameters;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  FA12Parameters copyWith(void Function(FA12Parameters) updates) =>
+      super.copyWith((message) => updates(message as FA12Parameters))
+          as FA12Parameters;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static FA12Parameters create() => FA12Parameters._();
   FA12Parameters createEmptyInstance() => create();
-  static $pb.PbList<FA12Parameters> createRepeated() => $pb.PbList<FA12Parameters>();
+  static $pb.PbList<FA12Parameters> createRepeated() =>
+      $pb.PbList<FA12Parameters>();
   @$core.pragma('dart2js:noInline')
-  static FA12Parameters getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FA12Parameters>(create);
+  static FA12Parameters getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<FA12Parameters>(create);
   static FA12Parameters? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get entrypoint => $_getSZ(0);
   @$pb.TagNumber(1)
-  set entrypoint($core.String v) { $_setString(0, v); }
+  set entrypoint($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasEntrypoint() => $_has(0);
   @$pb.TagNumber(1)
@@ -509,7 +617,10 @@ class FA12Parameters extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get from => $_getSZ(1);
   @$pb.TagNumber(2)
-  set from($core.String v) { $_setString(1, v); }
+  set from($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasFrom() => $_has(1);
   @$pb.TagNumber(2)
@@ -518,7 +629,10 @@ class FA12Parameters extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get to => $_getSZ(2);
   @$pb.TagNumber(3)
-  set to($core.String v) { $_setString(2, v); }
+  set to($core.String v) {
+    $_setString(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasTo() => $_has(2);
   @$pb.TagNumber(3)
@@ -527,7 +641,10 @@ class FA12Parameters extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.String get value => $_getSZ(3);
   @$pb.TagNumber(4)
-  set value($core.String v) { $_setString(3, v); }
+  set value($core.String v) {
+    $_setString(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasValue() => $_has(3);
   @$pb.TagNumber(4)
@@ -553,26 +670,31 @@ class Txs extends $pb.GeneratedMessage {
     return $result;
   }
   Txs._() : super();
-  factory Txs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Txs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory Txs.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Txs.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Txs', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Txs',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'to')
     ..aOS(2, _omitFieldNames ? '' : 'tokenId')
     ..aOS(3, _omitFieldNames ? '' : 'amount')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Txs clone() => Txs()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Txs copyWith(void Function(Txs) updates) => super.copyWith((message) => updates(message as Txs)) as Txs;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Txs copyWith(void Function(Txs) updates) =>
+      super.copyWith((message) => updates(message as Txs)) as Txs;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -581,13 +703,17 @@ class Txs extends $pb.GeneratedMessage {
   Txs createEmptyInstance() => create();
   static $pb.PbList<Txs> createRepeated() => $pb.PbList<Txs>();
   @$core.pragma('dart2js:noInline')
-  static Txs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Txs>(create);
+  static Txs getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Txs>(create);
   static Txs? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get to => $_getSZ(0);
   @$pb.TagNumber(1)
-  set to($core.String v) { $_setString(0, v); }
+  set to($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasTo() => $_has(0);
   @$pb.TagNumber(1)
@@ -596,7 +722,10 @@ class Txs extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get tokenId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set tokenId($core.String v) { $_setString(1, v); }
+  set tokenId($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasTokenId() => $_has(1);
   @$pb.TagNumber(2)
@@ -605,7 +734,10 @@ class Txs extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get amount => $_getSZ(2);
   @$pb.TagNumber(3)
-  set amount($core.String v) { $_setString(2, v); }
+  set amount($core.String v) {
+    $_setString(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)
@@ -627,25 +759,31 @@ class TxObject extends $pb.GeneratedMessage {
     return $result;
   }
   TxObject._() : super();
-  factory TxObject.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TxObject.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory TxObject.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory TxObject.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TxObject', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TxObject',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'from')
-    ..pc<Txs>(2, _omitFieldNames ? '' : 'txs', $pb.PbFieldType.PM, subBuilder: Txs.create)
-    ..hasRequiredFields = false
-  ;
+    ..pc<Txs>(2, _omitFieldNames ? '' : 'txs', $pb.PbFieldType.PM,
+        subBuilder: Txs.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   TxObject clone() => TxObject()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  TxObject copyWith(void Function(TxObject) updates) => super.copyWith((message) => updates(message as TxObject)) as TxObject;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  TxObject copyWith(void Function(TxObject) updates) =>
+      super.copyWith((message) => updates(message as TxObject)) as TxObject;
 
   $pb.BuilderInfo get info_ => _i;
 
@@ -654,13 +792,17 @@ class TxObject extends $pb.GeneratedMessage {
   TxObject createEmptyInstance() => create();
   static $pb.PbList<TxObject> createRepeated() => $pb.PbList<TxObject>();
   @$core.pragma('dart2js:noInline')
-  static TxObject getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TxObject>(create);
+  static TxObject getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TxObject>(create);
   static TxObject? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get from => $_getSZ(0);
   @$pb.TagNumber(1)
-  set from($core.String v) { $_setString(0, v); }
+  set from($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasFrom() => $_has(0);
   @$pb.TagNumber(1)
@@ -685,40 +827,52 @@ class FA2Parameters extends $pb.GeneratedMessage {
     return $result;
   }
   FA2Parameters._() : super();
-  factory FA2Parameters.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory FA2Parameters.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory FA2Parameters.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory FA2Parameters.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FA2Parameters', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'FA2Parameters',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'entrypoint')
-    ..pc<TxObject>(2, _omitFieldNames ? '' : 'txsObject', $pb.PbFieldType.PM, subBuilder: TxObject.create)
-    ..hasRequiredFields = false
-  ;
+    ..pc<TxObject>(2, _omitFieldNames ? '' : 'txsObject', $pb.PbFieldType.PM,
+        subBuilder: TxObject.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   FA2Parameters clone() => FA2Parameters()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  FA2Parameters copyWith(void Function(FA2Parameters) updates) => super.copyWith((message) => updates(message as FA2Parameters)) as FA2Parameters;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  FA2Parameters copyWith(void Function(FA2Parameters) updates) =>
+      super.copyWith((message) => updates(message as FA2Parameters))
+          as FA2Parameters;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static FA2Parameters create() => FA2Parameters._();
   FA2Parameters createEmptyInstance() => create();
-  static $pb.PbList<FA2Parameters> createRepeated() => $pb.PbList<FA2Parameters>();
+  static $pb.PbList<FA2Parameters> createRepeated() =>
+      $pb.PbList<FA2Parameters>();
   @$core.pragma('dart2js:noInline')
-  static FA2Parameters getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FA2Parameters>(create);
+  static FA2Parameters getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<FA2Parameters>(create);
   static FA2Parameters? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get entrypoint => $_getSZ(0);
   @$pb.TagNumber(1)
-  set entrypoint($core.String v) { $_setString(0, v); }
+  set entrypoint($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasEntrypoint() => $_has(0);
   @$pb.TagNumber(1)
@@ -728,11 +882,7 @@ class FA2Parameters extends $pb.GeneratedMessage {
   $core.List<TxObject> get txsObject => $_getList(1);
 }
 
-enum OperationParameters_Parameters {
-  fa12Parameters, 
-  fa2Parameters, 
-  notSet
-}
+enum OperationParameters_Parameters { fa12Parameters, fa2Parameters, notSet }
 
 /// Generic operation parameters
 class OperationParameters extends $pb.GeneratedMessage {
@@ -750,49 +900,64 @@ class OperationParameters extends $pb.GeneratedMessage {
     return $result;
   }
   OperationParameters._() : super();
-  factory OperationParameters.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OperationParameters.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory OperationParameters.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory OperationParameters.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, OperationParameters_Parameters> _OperationParameters_ParametersByTag = {
-    1 : OperationParameters_Parameters.fa12Parameters,
-    2 : OperationParameters_Parameters.fa2Parameters,
-    0 : OperationParameters_Parameters.notSet
+  static const $core.Map<$core.int, OperationParameters_Parameters>
+      _OperationParameters_ParametersByTag = {
+    1: OperationParameters_Parameters.fa12Parameters,
+    2: OperationParameters_Parameters.fa2Parameters,
+    0: OperationParameters_Parameters.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OperationParameters', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'OperationParameters',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..oo(0, [1, 2])
-    ..aOM<FA12Parameters>(1, _omitFieldNames ? '' : 'fa12Parameters', subBuilder: FA12Parameters.create)
-    ..aOM<FA2Parameters>(2, _omitFieldNames ? '' : 'fa2Parameters', subBuilder: FA2Parameters.create)
-    ..hasRequiredFields = false
-  ;
+    ..aOM<FA12Parameters>(1, _omitFieldNames ? '' : 'fa12Parameters',
+        subBuilder: FA12Parameters.create)
+    ..aOM<FA2Parameters>(2, _omitFieldNames ? '' : 'fa2Parameters',
+        subBuilder: FA2Parameters.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   OperationParameters clone() => OperationParameters()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  OperationParameters copyWith(void Function(OperationParameters) updates) => super.copyWith((message) => updates(message as OperationParameters)) as OperationParameters;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  OperationParameters copyWith(void Function(OperationParameters) updates) =>
+      super.copyWith((message) => updates(message as OperationParameters))
+          as OperationParameters;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static OperationParameters create() => OperationParameters._();
   OperationParameters createEmptyInstance() => create();
-  static $pb.PbList<OperationParameters> createRepeated() => $pb.PbList<OperationParameters>();
+  static $pb.PbList<OperationParameters> createRepeated() =>
+      $pb.PbList<OperationParameters>();
   @$core.pragma('dart2js:noInline')
-  static OperationParameters getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OperationParameters>(create);
+  static OperationParameters getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<OperationParameters>(create);
   static OperationParameters? _defaultInstance;
 
-  OperationParameters_Parameters whichParameters() => _OperationParameters_ParametersByTag[$_whichOneof(0)]!;
+  OperationParameters_Parameters whichParameters() =>
+      _OperationParameters_ParametersByTag[$_whichOneof(0)]!;
   void clearParameters() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   FA12Parameters get fa12Parameters => $_getN(0);
   @$pb.TagNumber(1)
-  set fa12Parameters(FA12Parameters v) { setField(1, v); }
+  set fa12Parameters(FA12Parameters v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasFa12Parameters() => $_has(0);
   @$pb.TagNumber(1)
@@ -803,7 +968,10 @@ class OperationParameters extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   FA2Parameters get fa2Parameters => $_getN(1);
   @$pb.TagNumber(2)
-  set fa2Parameters(FA2Parameters v) { setField(2, v); }
+  set fa2Parameters(FA2Parameters v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasFa2Parameters() => $_has(1);
   @$pb.TagNumber(2)
@@ -837,42 +1005,57 @@ class TransactionOperationData extends $pb.GeneratedMessage {
     return $result;
   }
   TransactionOperationData._() : super();
-  factory TransactionOperationData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TransactionOperationData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory TransactionOperationData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory TransactionOperationData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TransactionOperationData', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TransactionOperationData',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'destination')
     ..aInt64(2, _omitFieldNames ? '' : 'amount')
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'encodedParameter', $pb.PbFieldType.OY)
-    ..aOM<OperationParameters>(4, _omitFieldNames ? '' : 'parameters', subBuilder: OperationParameters.create)
-    ..hasRequiredFields = false
-  ;
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'encodedParameter', $pb.PbFieldType.OY)
+    ..aOM<OperationParameters>(4, _omitFieldNames ? '' : 'parameters',
+        subBuilder: OperationParameters.create)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  TransactionOperationData clone() => TransactionOperationData()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  TransactionOperationData copyWith(void Function(TransactionOperationData) updates) => super.copyWith((message) => updates(message as TransactionOperationData)) as TransactionOperationData;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  TransactionOperationData clone() =>
+      TransactionOperationData()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  TransactionOperationData copyWith(
+          void Function(TransactionOperationData) updates) =>
+      super.copyWith((message) => updates(message as TransactionOperationData))
+          as TransactionOperationData;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static TransactionOperationData create() => TransactionOperationData._();
   TransactionOperationData createEmptyInstance() => create();
-  static $pb.PbList<TransactionOperationData> createRepeated() => $pb.PbList<TransactionOperationData>();
+  static $pb.PbList<TransactionOperationData> createRepeated() =>
+      $pb.PbList<TransactionOperationData>();
   @$core.pragma('dart2js:noInline')
-  static TransactionOperationData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransactionOperationData>(create);
+  static TransactionOperationData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TransactionOperationData>(create);
   static TransactionOperationData? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get destination => $_getSZ(0);
   @$pb.TagNumber(1)
-  set destination($core.String v) { $_setString(0, v); }
+  set destination($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDestination() => $_has(0);
   @$pb.TagNumber(1)
@@ -881,7 +1064,10 @@ class TransactionOperationData extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $fixnum.Int64 get amount => $_getI64(1);
   @$pb.TagNumber(2)
-  set amount($fixnum.Int64 v) { $_setInt64(1, v); }
+  set amount($fixnum.Int64 v) {
+    $_setInt64(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasAmount() => $_has(1);
   @$pb.TagNumber(2)
@@ -890,7 +1076,10 @@ class TransactionOperationData extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.List<$core.int> get encodedParameter => $_getN(2);
   @$pb.TagNumber(3)
-  set encodedParameter($core.List<$core.int> v) { $_setBytes(2, v); }
+  set encodedParameter($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasEncodedParameter() => $_has(2);
   @$pb.TagNumber(3)
@@ -899,7 +1088,10 @@ class TransactionOperationData extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   OperationParameters get parameters => $_getN(3);
   @$pb.TagNumber(4)
-  set parameters(OperationParameters v) { setField(4, v); }
+  set parameters(OperationParameters v) {
+    setField(4, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasParameters() => $_has(3);
   @$pb.TagNumber(4)
@@ -921,39 +1113,51 @@ class RevealOperationData extends $pb.GeneratedMessage {
     return $result;
   }
   RevealOperationData._() : super();
-  factory RevealOperationData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RevealOperationData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory RevealOperationData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RevealOperationData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RevealOperationData', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RevealOperationData',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   RevealOperationData clone() => RevealOperationData()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  RevealOperationData copyWith(void Function(RevealOperationData) updates) => super.copyWith((message) => updates(message as RevealOperationData)) as RevealOperationData;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RevealOperationData copyWith(void Function(RevealOperationData) updates) =>
+      super.copyWith((message) => updates(message as RevealOperationData))
+          as RevealOperationData;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static RevealOperationData create() => RevealOperationData._();
   RevealOperationData createEmptyInstance() => create();
-  static $pb.PbList<RevealOperationData> createRepeated() => $pb.PbList<RevealOperationData>();
+  static $pb.PbList<RevealOperationData> createRepeated() =>
+      $pb.PbList<RevealOperationData>();
   @$core.pragma('dart2js:noInline')
-  static RevealOperationData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RevealOperationData>(create);
+  static RevealOperationData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RevealOperationData>(create);
   static RevealOperationData? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<$core.int> get publicKey => $_getN(0);
   @$pb.TagNumber(1)
-  set publicKey($core.List<$core.int> v) { $_setBytes(0, v); }
+  set publicKey($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasPublicKey() => $_has(0);
   @$pb.TagNumber(1)
@@ -973,45 +1177,58 @@ class DelegationOperationData extends $pb.GeneratedMessage {
     return $result;
   }
   DelegationOperationData._() : super();
-  factory DelegationOperationData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DelegationOperationData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory DelegationOperationData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DelegationOperationData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DelegationOperationData', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DelegationOperationData',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Tezos.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'delegate')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  DelegationOperationData clone() => DelegationOperationData()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DelegationOperationData copyWith(void Function(DelegationOperationData) updates) => super.copyWith((message) => updates(message as DelegationOperationData)) as DelegationOperationData;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DelegationOperationData clone() =>
+      DelegationOperationData()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DelegationOperationData copyWith(
+          void Function(DelegationOperationData) updates) =>
+      super.copyWith((message) => updates(message as DelegationOperationData))
+          as DelegationOperationData;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static DelegationOperationData create() => DelegationOperationData._();
   DelegationOperationData createEmptyInstance() => create();
-  static $pb.PbList<DelegationOperationData> createRepeated() => $pb.PbList<DelegationOperationData>();
+  static $pb.PbList<DelegationOperationData> createRepeated() =>
+      $pb.PbList<DelegationOperationData>();
   @$core.pragma('dart2js:noInline')
-  static DelegationOperationData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DelegationOperationData>(create);
+  static DelegationOperationData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DelegationOperationData>(create);
   static DelegationOperationData? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get delegate => $_getSZ(0);
   @$pb.TagNumber(1)
-  set delegate($core.String v) { $_setString(0, v); }
+  set delegate($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasDelegate() => $_has(0);
   @$pb.TagNumber(1)
   void clearDelegate() => clearField(1);
 }
 
-
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

@@ -77,9 +77,33 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'transfer', '3': 2, '4': 1, '5': 11, '6': '.TW.Oasis.Proto.TransferMessage', '9': 0, '10': 'transfer'},
-    {'1': 'escrow', '3': 3, '4': 1, '5': 11, '6': '.TW.Oasis.Proto.EscrowMessage', '9': 0, '10': 'escrow'},
-    {'1': 'reclaimEscrow', '3': 4, '4': 1, '5': 11, '6': '.TW.Oasis.Proto.ReclaimEscrowMessage', '9': 0, '10': 'reclaimEscrow'},
+    {
+      '1': 'transfer',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Oasis.Proto.TransferMessage',
+      '9': 0,
+      '10': 'transfer'
+    },
+    {
+      '1': 'escrow',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Oasis.Proto.EscrowMessage',
+      '9': 0,
+      '10': 'escrow'
+    },
+    {
+      '1': 'reclaimEscrow',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Oasis.Proto.ReclaimEscrowMessage',
+      '9': 0,
+      '10': 'reclaimEscrow'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -99,7 +123,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -109,4 +140,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSMwoFZXJyb3IYAiABKA'
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
     'GAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

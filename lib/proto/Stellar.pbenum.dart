@@ -17,17 +17,18 @@ import 'package:protobuf/protobuf.dart' as $pb;
 /// Rest of predicates not currently supported
 /// See https://github.com/stellar/stellar-protocol/blob/master/core/cap-0023.md
 class ClaimPredicate extends $pb.ProtobufEnum {
-  static const ClaimPredicate Predicate_unconditional = ClaimPredicate._(0, _omitEnumNames ? '' : 'Predicate_unconditional');
+  static const ClaimPredicate Predicate_unconditional =
+      ClaimPredicate._(0, _omitEnumNames ? '' : 'Predicate_unconditional');
 
-  static const $core.List<ClaimPredicate> values = <ClaimPredicate> [
+  static const $core.List<ClaimPredicate> values = <ClaimPredicate>[
     Predicate_unconditional,
   ];
 
-  static final $core.Map<$core.int, ClaimPredicate> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static final $core.Map<$core.int, ClaimPredicate> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
   static ClaimPredicate? valueOf($core.int value) => _byValue[value];
 
   const ClaimPredicate._($core.int v, $core.String n) : super(v, n);
 }
-
 
 const _omitEnumNames = $core.bool.fromEnvironment('protobuf.omit_enum_names');

@@ -52,7 +52,14 @@ const TransactionOutput$json = {
     {'1': 'amount', '3': 2, '4': 1, '5': 18, '10': 'amount'},
     {'1': 'to_address', '3': 3, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'change_address', '3': 4, '4': 1, '5': 9, '10': 'changeAddress'},
-    {'1': 'extra_outputs', '3': 5, '4': 3, '5': 11, '6': '.TW.NEO.Proto.OutputAddress', '10': 'extraOutputs'},
+    {
+      '1': 'extra_outputs',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.OutputAddress',
+      '10': 'extraOutputs'
+    },
   ],
 };
 
@@ -67,8 +74,24 @@ final $typed_data.Uint8List transactionOutputDescriptor = $convert.base64Decode(
 const Transaction$json = {
   '1': 'Transaction',
   '2': [
-    {'1': 'nep5_transfer', '3': 1, '4': 1, '5': 11, '6': '.TW.NEO.Proto.Transaction.Nep5Transfer', '9': 0, '10': 'nep5Transfer'},
-    {'1': 'invocation_generic', '3': 2, '4': 1, '5': 11, '6': '.TW.NEO.Proto.Transaction.InvocationGeneric', '9': 0, '10': 'invocationGeneric'},
+    {
+      '1': 'nep5_transfer',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEO.Proto.Transaction.Nep5Transfer',
+      '9': 0,
+      '10': 'nep5Transfer'
+    },
+    {
+      '1': 'invocation_generic',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEO.Proto.Transaction.InvocationGeneric',
+      '9': 0,
+      '10': 'invocationGeneric'
+    },
   ],
   '3': [Transaction_Nep5Transfer$json, Transaction_InvocationGeneric$json],
   '8': [
@@ -112,14 +135,48 @@ final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
 const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
-    {'1': 'inputs', '3': 1, '4': 3, '5': 11, '6': '.TW.NEO.Proto.TransactionInput', '10': 'inputs'},
-    {'1': 'outputs', '3': 2, '4': 3, '5': 11, '6': '.TW.NEO.Proto.TransactionOutput', '10': 'outputs'},
+    {
+      '1': 'inputs',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.TransactionInput',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.TransactionOutput',
+      '10': 'outputs'
+    },
     {'1': 'private_key', '3': 3, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'fee', '3': 4, '4': 1, '5': 3, '10': 'fee'},
     {'1': 'gas_asset_id', '3': 5, '4': 1, '5': 9, '10': 'gasAssetId'},
-    {'1': 'gas_change_address', '3': 6, '4': 1, '5': 9, '10': 'gasChangeAddress'},
-    {'1': 'plan', '3': 7, '4': 1, '5': 11, '6': '.TW.NEO.Proto.TransactionPlan', '10': 'plan'},
-    {'1': 'transaction', '3': 8, '4': 1, '5': 11, '6': '.TW.NEO.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'gas_change_address',
+      '3': 6,
+      '4': 1,
+      '5': 9,
+      '10': 'gasChangeAddress'
+    },
+    {
+      '1': 'plan',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEO.Proto.TransactionPlan',
+      '10': 'plan'
+    },
+    {
+      '1': 'transaction',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.NEO.Proto.Transaction',
+      '10': 'transaction'
+    },
   ],
 };
 
@@ -138,7 +195,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -159,7 +223,14 @@ const TransactionOutputPlan$json = {
     {'1': 'asset_id', '3': 4, '4': 1, '5': 9, '10': 'assetId'},
     {'1': 'to_address', '3': 5, '4': 1, '5': 9, '10': 'toAddress'},
     {'1': 'change_address', '3': 6, '4': 1, '5': 9, '10': 'changeAddress'},
-    {'1': 'extra_outputs', '3': 7, '4': 3, '5': 11, '6': '.TW.NEO.Proto.OutputAddress', '10': 'extraOutputs'},
+    {
+      '1': 'extra_outputs',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.OutputAddress',
+      '10': 'extraOutputs'
+    },
   ],
 };
 
@@ -182,19 +253,48 @@ const TransactionAttributePlan$json = {
 };
 
 /// Descriptor for `TransactionAttributePlan`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transactionAttributePlanDescriptor = $convert.base64Decode(
-    'ChhUcmFuc2FjdGlvbkF0dHJpYnV0ZVBsYW4SFAoFdXNhZ2UYASABKAVSBXVzYWdlEhIKBGRhdG'
-    'EYAiABKAxSBGRhdGE=');
+final $typed_data.Uint8List transactionAttributePlanDescriptor =
+    $convert.base64Decode(
+        'ChhUcmFuc2FjdGlvbkF0dHJpYnV0ZVBsYW4SFAoFdXNhZ2UYASABKAVSBXVzYWdlEhIKBGRhdG'
+        'EYAiABKAxSBGRhdGE=');
 
 @$core.Deprecated('Use transactionPlanDescriptor instead')
 const TransactionPlan$json = {
   '1': 'TransactionPlan',
   '2': [
-    {'1': 'outputs', '3': 1, '4': 3, '5': 11, '6': '.TW.NEO.Proto.TransactionOutputPlan', '10': 'outputs'},
-    {'1': 'inputs', '3': 2, '4': 3, '5': 11, '6': '.TW.NEO.Proto.TransactionInput', '10': 'inputs'},
+    {
+      '1': 'outputs',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.TransactionOutputPlan',
+      '10': 'outputs'
+    },
+    {
+      '1': 'inputs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.TransactionInput',
+      '10': 'inputs'
+    },
     {'1': 'fee', '3': 3, '4': 1, '5': 3, '10': 'fee'},
-    {'1': 'error', '3': 4, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
-    {'1': 'attributes', '3': 5, '4': 3, '5': 11, '6': '.TW.NEO.Proto.TransactionAttributePlan', '10': 'attributes'},
+    {
+      '1': 'error',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
+    {
+      '1': 'attributes',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.NEO.Proto.TransactionAttributePlan',
+      '10': 'attributes'
+    },
   ],
 };
 
@@ -206,4 +306,3 @@ final $typed_data.Uint8List transactionPlanDescriptor = $convert.base64Decode(
     'EoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9yEkYKCmF0dHJpYnV0ZXMY'
     'BSADKAsyJi5UVy5ORU8uUHJvdG8uVHJhbnNhY3Rpb25BdHRyaWJ1dGVQbGFuUgphdHRyaWJ1dG'
     'Vz');
-

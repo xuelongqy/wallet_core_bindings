@@ -72,51 +72,70 @@ class SigningInput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningInput._() : super();
-  factory SigningInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ontology.Proto'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningInput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ontology.Proto'),
+      createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'contract')
     ..aOS(2, _omitFieldNames ? '' : 'method')
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'ownerPrivateKey', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'ownerPrivateKey', $pb.PbFieldType.OY)
     ..aOS(4, _omitFieldNames ? '' : 'toAddress')
-    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.List<$core.int>>(6, _omitFieldNames ? '' : 'payerPrivateKey', $pb.PbFieldType.OY)
-    ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'gasPrice', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(8, _omitFieldNames ? '' : 'gasLimit', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(
+        6, _omitFieldNames ? '' : 'payerPrivateKey', $pb.PbFieldType.OY)
+    ..a<$fixnum.Int64>(
+        7, _omitFieldNames ? '' : 'gasPrice', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        8, _omitFieldNames ? '' : 'gasLimit', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(9, _omitFieldNames ? '' : 'queryAddress')
     ..a<$core.int>(10, _omitFieldNames ? '' : 'nonce', $pb.PbFieldType.OU3)
     ..aOS(11, _omitFieldNames ? '' : 'ownerAddress')
     ..aOS(12, _omitFieldNames ? '' : 'payerAddress')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningInput clone() => SigningInput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningInput copyWith(void Function(SigningInput) updates) => super.copyWith((message) => updates(message as SigningInput)) as SigningInput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningInput copyWith(void Function(SigningInput) updates) =>
+      super.copyWith((message) => updates(message as SigningInput))
+          as SigningInput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningInput create() => SigningInput._();
   SigningInput createEmptyInstance() => create();
-  static $pb.PbList<SigningInput> createRepeated() => $pb.PbList<SigningInput>();
+  static $pb.PbList<SigningInput> createRepeated() =>
+      $pb.PbList<SigningInput>();
   @$core.pragma('dart2js:noInline')
-  static SigningInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
+  static SigningInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
   /// Contract ID, e.g. "ONT"
   @$pb.TagNumber(1)
   $core.String get contract => $_getSZ(0);
   @$pb.TagNumber(1)
-  set contract($core.String v) { $_setString(0, v); }
+  set contract($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasContract() => $_has(0);
   @$pb.TagNumber(1)
@@ -126,7 +145,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.String get method => $_getSZ(1);
   @$pb.TagNumber(2)
-  set method($core.String v) { $_setString(1, v); }
+  set method($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasMethod() => $_has(1);
   @$pb.TagNumber(2)
@@ -136,7 +158,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.List<$core.int> get ownerPrivateKey => $_getN(2);
   @$pb.TagNumber(3)
-  set ownerPrivateKey($core.List<$core.int> v) { $_setBytes(2, v); }
+  set ownerPrivateKey($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasOwnerPrivateKey() => $_has(2);
   @$pb.TagNumber(3)
@@ -146,7 +171,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.String get toAddress => $_getSZ(3);
   @$pb.TagNumber(4)
-  set toAddress($core.String v) { $_setString(3, v); }
+  set toAddress($core.String v) {
+    $_setString(3, v);
+  }
+
   @$pb.TagNumber(4)
   $core.bool hasToAddress() => $_has(3);
   @$pb.TagNumber(4)
@@ -156,7 +184,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $fixnum.Int64 get amount => $_getI64(4);
   @$pb.TagNumber(5)
-  set amount($fixnum.Int64 v) { $_setInt64(4, v); }
+  set amount($fixnum.Int64 v) {
+    $_setInt64(4, v);
+  }
+
   @$pb.TagNumber(5)
   $core.bool hasAmount() => $_has(4);
   @$pb.TagNumber(5)
@@ -166,7 +197,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.List<$core.int> get payerPrivateKey => $_getN(5);
   @$pb.TagNumber(6)
-  set payerPrivateKey($core.List<$core.int> v) { $_setBytes(5, v); }
+  set payerPrivateKey($core.List<$core.int> v) {
+    $_setBytes(5, v);
+  }
+
   @$pb.TagNumber(6)
   $core.bool hasPayerPrivateKey() => $_has(5);
   @$pb.TagNumber(6)
@@ -176,7 +210,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $fixnum.Int64 get gasPrice => $_getI64(6);
   @$pb.TagNumber(7)
-  set gasPrice($fixnum.Int64 v) { $_setInt64(6, v); }
+  set gasPrice($fixnum.Int64 v) {
+    $_setInt64(6, v);
+  }
+
   @$pb.TagNumber(7)
   $core.bool hasGasPrice() => $_has(6);
   @$pb.TagNumber(7)
@@ -186,7 +223,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   $fixnum.Int64 get gasLimit => $_getI64(7);
   @$pb.TagNumber(8)
-  set gasLimit($fixnum.Int64 v) { $_setInt64(7, v); }
+  set gasLimit($fixnum.Int64 v) {
+    $_setInt64(7, v);
+  }
+
   @$pb.TagNumber(8)
   $core.bool hasGasLimit() => $_has(7);
   @$pb.TagNumber(8)
@@ -196,7 +236,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   $core.String get queryAddress => $_getSZ(8);
   @$pb.TagNumber(9)
-  set queryAddress($core.String v) { $_setString(8, v); }
+  set queryAddress($core.String v) {
+    $_setString(8, v);
+  }
+
   @$pb.TagNumber(9)
   $core.bool hasQueryAddress() => $_has(8);
   @$pb.TagNumber(9)
@@ -206,7 +249,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   $core.int get nonce => $_getIZ(9);
   @$pb.TagNumber(10)
-  set nonce($core.int v) { $_setUnsignedInt32(9, v); }
+  set nonce($core.int v) {
+    $_setUnsignedInt32(9, v);
+  }
+
   @$pb.TagNumber(10)
   $core.bool hasNonce() => $_has(9);
   @$pb.TagNumber(10)
@@ -216,7 +262,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   $core.String get ownerAddress => $_getSZ(10);
   @$pb.TagNumber(11)
-  set ownerAddress($core.String v) { $_setString(10, v); }
+  set ownerAddress($core.String v) {
+    $_setString(10, v);
+  }
+
   @$pb.TagNumber(11)
   $core.bool hasOwnerAddress() => $_has(10);
   @$pb.TagNumber(11)
@@ -226,7 +275,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   $core.String get payerAddress => $_getSZ(11);
   @$pb.TagNumber(12)
-  set payerAddress($core.String v) { $_setString(11, v); }
+  set payerAddress($core.String v) {
+    $_setString(11, v);
+  }
+
   @$pb.TagNumber(12)
   $core.bool hasPayerAddress() => $_has(11);
   @$pb.TagNumber(12)
@@ -253,42 +305,58 @@ class SigningOutput extends $pb.GeneratedMessage {
     return $result;
   }
   SigningOutput._() : super();
-  factory SigningOutput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SigningOutput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SigningOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SigningOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SigningOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ontology.Proto'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'encoded', $pb.PbFieldType.OY)
-    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE, defaultOrMaker: $0.SigningError.OK, valueOf: $0.SigningError.valueOf, enumValues: $0.SigningError.values)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SigningOutput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ontology.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'encoded', $pb.PbFieldType.OY)
+    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
-    ..hasRequiredFields = false
-  ;
+    ..hasRequiredFields = false;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   SigningOutput clone() => SigningOutput()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SigningOutput copyWith(void Function(SigningOutput) updates) => super.copyWith((message) => updates(message as SigningOutput)) as SigningOutput;
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SigningOutput copyWith(void Function(SigningOutput) updates) =>
+      super.copyWith((message) => updates(message as SigningOutput))
+          as SigningOutput;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
   static SigningOutput create() => SigningOutput._();
   SigningOutput createEmptyInstance() => create();
-  static $pb.PbList<SigningOutput> createRepeated() => $pb.PbList<SigningOutput>();
+  static $pb.PbList<SigningOutput> createRepeated() =>
+      $pb.PbList<SigningOutput>();
   @$core.pragma('dart2js:noInline')
-  static SigningOutput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
+  static SigningOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
   static SigningOutput? _defaultInstance;
 
   /// Signed and encoded transaction bytes.
   @$pb.TagNumber(1)
   $core.List<$core.int> get encoded => $_getN(0);
   @$pb.TagNumber(1)
-  set encoded($core.List<$core.int> v) { $_setBytes(0, v); }
+  set encoded($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasEncoded() => $_has(0);
   @$pb.TagNumber(1)
@@ -298,7 +366,10 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $0.SigningError get error => $_getN(1);
   @$pb.TagNumber(2)
-  set error($0.SigningError v) { setField(2, v); }
+  set error($0.SigningError v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasError() => $_has(1);
   @$pb.TagNumber(2)
@@ -308,13 +379,16 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.String get errorMessage => $_getSZ(2);
   @$pb.TagNumber(3)
-  set errorMessage($core.String v) { $_setString(2, v); }
+  set errorMessage($core.String v) {
+    $_setString(2, v);
+  }
+
   @$pb.TagNumber(3)
   $core.bool hasErrorMessage() => $_has(2);
   @$pb.TagNumber(3)
   void clearErrorMessage() => clearField(3);
 }
 
-
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
-const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
+const _omitMessageNames =
+    $core.bool.fromEnvironment('protobuf.omit_message_names');

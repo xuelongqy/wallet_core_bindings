@@ -20,7 +20,14 @@ const SigningInput$json = {
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
     {'1': 'parent_block', '3': 2, '4': 1, '5': 12, '10': 'parentBlock'},
     {'1': 'link_block', '3': 3, '4': 1, '5': 12, '9': 0, '10': 'linkBlock'},
-    {'1': 'link_recipient', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'linkRecipient'},
+    {
+      '1': 'link_recipient',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'linkRecipient'
+    },
     {'1': 'representative', '3': 5, '4': 1, '5': 9, '10': 'representative'},
     {'1': 'balance', '3': 6, '4': 1, '5': 9, '10': 'balance'},
     {'1': 'work', '3': 7, '4': 1, '5': 9, '10': 'work'},
@@ -47,7 +54,14 @@ const SigningOutput$json = {
     {'1': 'signature', '3': 1, '4': 1, '5': 12, '10': 'signature'},
     {'1': 'block_hash', '3': 2, '4': 1, '5': 12, '10': 'blockHash'},
     {'1': 'json', '3': 3, '4': 1, '5': 9, '10': 'json'},
-    {'1': 'error', '3': 4, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 5, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -58,4 +72,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'hhc2gYAiABKAxSCWJsb2NrSGFzaBISCgRqc29uGAMgASgJUgRqc29uEjMKBWVycm9yGAQgASgO'
     'Mh0uVFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZR'
     'gFIAEoCVIMZXJyb3JNZXNzYWdl');
-

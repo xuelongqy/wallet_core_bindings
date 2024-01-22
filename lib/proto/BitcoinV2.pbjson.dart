@@ -100,14 +100,61 @@ const SigningInput$json = {
   '2': [
     {'1': 'version', '3': 1, '4': 1, '5': 5, '10': 'version'},
     {'1': 'private_key', '3': 2, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'lock_time', '3': 3, '4': 1, '5': 11, '6': '.TW.Utxo.Proto.LockTime', '10': 'lockTime'},
-    {'1': 'inputs', '3': 5, '4': 3, '5': 11, '6': '.TW.BitcoinV2.Proto.Input', '10': 'inputs'},
-    {'1': 'outputs', '3': 6, '4': 3, '5': 11, '6': '.TW.BitcoinV2.Proto.Output', '10': 'outputs'},
-    {'1': 'input_selector', '3': 7, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.InputSelector', '10': 'inputSelector'},
+    {
+      '1': 'lock_time',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.LockTime',
+      '10': 'lockTime'
+    },
+    {
+      '1': 'inputs',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output',
+      '10': 'outputs'
+    },
+    {
+      '1': 'input_selector',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.InputSelector',
+      '10': 'inputSelector'
+    },
     {'1': 'fee_per_vb', '3': 8, '4': 1, '5': 4, '10': 'feePerVb'},
-    {'1': 'change_output', '3': 9, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output', '10': 'changeOutput'},
-    {'1': 'disable_change_output', '3': 10, '4': 1, '5': 8, '10': 'disableChangeOutput'},
-    {'1': 'dangerous_use_fixed_schnorr_rng', '3': 11, '4': 1, '5': 8, '10': 'dangerousUseFixedSchnorrRng'},
+    {
+      '1': 'change_output',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output',
+      '10': 'changeOutput'
+    },
+    {
+      '1': 'disable_change_output',
+      '3': 10,
+      '4': 1,
+      '5': 8,
+      '10': 'disableChangeOutput'
+    },
+    {
+      '1': 'dangerous_use_fixed_schnorr_rng',
+      '3': 11,
+      '4': 1,
+      '5': 8,
+      '10': 'dangerousUseFixedSchnorrRng'
+    },
   ],
 };
 
@@ -132,13 +179,49 @@ const Input$json = {
     {'1': 'txid', '3': 2, '4': 1, '5': 12, '10': 'txid'},
     {'1': 'vout', '3': 3, '4': 1, '5': 13, '10': 'vout'},
     {'1': 'sequence', '3': 4, '4': 1, '5': 13, '10': 'sequence'},
-    {'1': 'sequence_enable_zero', '3': 5, '4': 1, '5': 8, '10': 'sequenceEnableZero'},
+    {
+      '1': 'sequence_enable_zero',
+      '3': 5,
+      '4': 1,
+      '5': 8,
+      '10': 'sequenceEnableZero'
+    },
     {'1': 'value', '3': 6, '4': 1, '5': 4, '10': 'value'},
-    {'1': 'sighash_type', '3': 7, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.SighashType', '10': 'sighashType'},
-    {'1': 'builder', '3': 8, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputBuilder', '9': 0, '10': 'builder'},
-    {'1': 'custom_script', '3': 9, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputScriptWitness', '9': 0, '10': 'customScript'},
+    {
+      '1': 'sighash_type',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.SighashType',
+      '10': 'sighashType'
+    },
+    {
+      '1': 'builder',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputBuilder',
+      '9': 0,
+      '10': 'builder'
+    },
+    {
+      '1': 'custom_script',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputScriptWitness',
+      '9': 0,
+      '10': 'customScript'
+    },
   ],
-  '3': [Input_InputBuilder$json, Input_InputScriptWitness$json, Input_InputTaprootKeyPath$json, Input_InputTaprootScriptPath$json, Input_InputOrdinalInscription$json, Input_InputBrc20Inscription$json],
+  '3': [
+    Input_InputBuilder$json,
+    Input_InputScriptWitness$json,
+    Input_InputTaprootKeyPath$json,
+    Input_InputTaprootScriptPath$json,
+    Input_InputOrdinalInscription$json,
+    Input_InputBrc20Inscription$json
+  ],
   '8': [
     {'1': 'to_recipient'},
   ],
@@ -152,10 +235,42 @@ const Input_InputBuilder$json = {
     {'1': 'p2pkh', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'p2pkh'},
     {'1': 'p2wsh', '3': 3, '4': 1, '5': 12, '9': 0, '10': 'p2wsh'},
     {'1': 'p2wpkh', '3': 6, '4': 1, '5': 12, '9': 0, '10': 'p2wpkh'},
-    {'1': 'p2tr_key_path', '3': 7, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputTaprootKeyPath', '9': 0, '10': 'p2trKeyPath'},
-    {'1': 'p2tr_script_path', '3': 8, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputTaprootScriptPath', '9': 0, '10': 'p2trScriptPath'},
-    {'1': 'brc20_inscribe', '3': 9, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputBrc20Inscription', '9': 0, '10': 'brc20Inscribe'},
-    {'1': 'ordinal_inscribe', '3': 10, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputOrdinalInscription', '9': 0, '10': 'ordinalInscribe'},
+    {
+      '1': 'p2tr_key_path',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputTaprootKeyPath',
+      '9': 0,
+      '10': 'p2trKeyPath'
+    },
+    {
+      '1': 'p2tr_script_path',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputTaprootScriptPath',
+      '9': 0,
+      '10': 'p2trScriptPath'
+    },
+    {
+      '1': 'brc20_inscribe',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputBrc20Inscription',
+      '9': 0,
+      '10': 'brc20Inscribe'
+    },
+    {
+      '1': 'ordinal_inscribe',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputOrdinalInscription',
+      '9': 0,
+      '10': 'ordinalInscribe'
+    },
   ],
   '8': [
     {'1': 'variant'},
@@ -169,7 +284,14 @@ const Input_InputScriptWitness$json = {
     {'1': 'script_pubkey', '3': 1, '4': 1, '5': 12, '10': 'scriptPubkey'},
     {'1': 'script_sig', '3': 2, '4': 1, '5': 12, '10': 'scriptSig'},
     {'1': 'witness_items', '3': 3, '4': 3, '5': 12, '10': 'witnessItems'},
-    {'1': 'signing_method', '3': 5, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.SigningMethod', '10': 'signingMethod'},
+    {
+      '1': 'signing_method',
+      '3': 5,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.SigningMethod',
+      '10': 'signingMethod'
+    },
   ],
 };
 
@@ -252,11 +374,32 @@ const Output$json = {
   '1': 'Output',
   '2': [
     {'1': 'value', '3': 1, '4': 1, '5': 4, '10': 'value'},
-    {'1': 'builder', '3': 2, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output.OutputBuilder', '9': 0, '10': 'builder'},
-    {'1': 'custom_script_pubkey', '3': 3, '4': 1, '5': 12, '9': 0, '10': 'customScriptPubkey'},
+    {
+      '1': 'builder',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output.OutputBuilder',
+      '9': 0,
+      '10': 'builder'
+    },
+    {
+      '1': 'custom_script_pubkey',
+      '3': 3,
+      '4': 1,
+      '5': 12,
+      '9': 0,
+      '10': 'customScriptPubkey'
+    },
     {'1': 'from_address', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'fromAddress'},
   ],
-  '3': [Output_OutputBuilder$json, Output_OutputRedeemScriptOrHash$json, Output_OutputTaprootScriptPath$json, Output_OutputOrdinalInscription$json, Output_OutputBrc20Inscription$json],
+  '3': [
+    Output_OutputBuilder$json,
+    Output_OutputRedeemScriptOrHash$json,
+    Output_OutputTaprootScriptPath$json,
+    Output_OutputOrdinalInscription$json,
+    Output_OutputBrc20Inscription$json
+  ],
   '8': [
     {'1': 'to_recipient'},
   ],
@@ -266,15 +409,85 @@ const Output$json = {
 const Output_OutputBuilder$json = {
   '1': 'OutputBuilder',
   '2': [
-    {'1': 'p2sh', '3': 1, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output.OutputRedeemScriptOrHash', '9': 0, '10': 'p2sh'},
-    {'1': 'p2pkh', '3': 2, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.ToPublicKeyOrHash', '9': 0, '10': 'p2pkh'},
-    {'1': 'p2wsh', '3': 3, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output.OutputRedeemScriptOrHash', '9': 0, '10': 'p2wsh'},
-    {'1': 'p2wpkh', '3': 4, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.ToPublicKeyOrHash', '9': 0, '10': 'p2wpkh'},
-    {'1': 'p2tr_key_path', '3': 5, '4': 1, '5': 12, '9': 0, '10': 'p2trKeyPath'},
-    {'1': 'p2tr_script_path', '3': 6, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output.OutputTaprootScriptPath', '9': 0, '10': 'p2trScriptPath'},
-    {'1': 'p2tr_dangerous_assume_tweaked', '3': 7, '4': 1, '5': 12, '9': 0, '10': 'p2trDangerousAssumeTweaked'},
-    {'1': 'brc20_inscribe', '3': 8, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output.OutputBrc20Inscription', '9': 0, '10': 'brc20Inscribe'},
-    {'1': 'ordinal_inscribe', '3': 9, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output.OutputOrdinalInscription', '9': 0, '10': 'ordinalInscribe'},
+    {
+      '1': 'p2sh',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output.OutputRedeemScriptOrHash',
+      '9': 0,
+      '10': 'p2sh'
+    },
+    {
+      '1': 'p2pkh',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.ToPublicKeyOrHash',
+      '9': 0,
+      '10': 'p2pkh'
+    },
+    {
+      '1': 'p2wsh',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output.OutputRedeemScriptOrHash',
+      '9': 0,
+      '10': 'p2wsh'
+    },
+    {
+      '1': 'p2wpkh',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.ToPublicKeyOrHash',
+      '9': 0,
+      '10': 'p2wpkh'
+    },
+    {
+      '1': 'p2tr_key_path',
+      '3': 5,
+      '4': 1,
+      '5': 12,
+      '9': 0,
+      '10': 'p2trKeyPath'
+    },
+    {
+      '1': 'p2tr_script_path',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output.OutputTaprootScriptPath',
+      '9': 0,
+      '10': 'p2trScriptPath'
+    },
+    {
+      '1': 'p2tr_dangerous_assume_tweaked',
+      '3': 7,
+      '4': 1,
+      '5': 12,
+      '9': 0,
+      '10': 'p2trDangerousAssumeTweaked'
+    },
+    {
+      '1': 'brc20_inscribe',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output.OutputBrc20Inscription',
+      '9': 0,
+      '10': 'brc20Inscribe'
+    },
+    {
+      '1': 'ordinal_inscribe',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output.OutputOrdinalInscription',
+      '9': 0,
+      '10': 'ordinalInscribe'
+    },
   ],
   '8': [
     {'1': 'variant'},
@@ -285,7 +498,14 @@ const Output_OutputBuilder$json = {
 const Output_OutputRedeemScriptOrHash$json = {
   '1': 'OutputRedeemScriptOrHash',
   '2': [
-    {'1': 'redeem_script', '3': 1, '4': 1, '5': 12, '9': 0, '10': 'redeemScript'},
+    {
+      '1': 'redeem_script',
+      '3': 1,
+      '4': 1,
+      '5': 12,
+      '9': 0,
+      '10': 'redeemScript'
+    },
     {'1': 'hash', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'hash'},
   ],
   '8': [
@@ -371,12 +591,40 @@ final $typed_data.Uint8List toPublicKeyOrHashDescriptor = $convert.base64Decode(
 const PreSigningOutput$json = {
   '1': 'PreSigningOutput',
   '2': [
-    {'1': 'error', '3': 1, '4': 1, '5': 14, '6': '.TW.BitcoinV2.Proto.Error', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.BitcoinV2.Proto.Error',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
     {'1': 'txid', '3': 3, '4': 1, '5': 12, '10': 'txid'},
-    {'1': 'sighashes', '3': 4, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.Sighash', '10': 'sighashes'},
-    {'1': 'utxo_inputs', '3': 5, '4': 3, '5': 11, '6': '.TW.Utxo.Proto.TxIn', '10': 'utxoInputs'},
-    {'1': 'utxo_outputs', '3': 6, '4': 3, '5': 11, '6': '.TW.BitcoinV2.Proto.PreSigningOutput.TxOut', '10': 'utxoOutputs'},
+    {
+      '1': 'sighashes',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.Sighash',
+      '10': 'sighashes'
+    },
+    {
+      '1': 'utxo_inputs',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.TxIn',
+      '10': 'utxoInputs'
+    },
+    {
+      '1': 'utxo_outputs',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.PreSigningOutput.TxOut',
+      '10': 'utxoOutputs'
+    },
     {'1': 'weight_estimate', '3': 7, '4': 1, '5': 4, '10': 'weightEstimate'},
     {'1': 'fee_estimate', '3': 8, '4': 1, '5': 4, '10': 'feeEstimate'},
   ],
@@ -411,9 +659,23 @@ final $typed_data.Uint8List preSigningOutputDescriptor = $convert.base64Decode(
 const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
-    {'1': 'error', '3': 1, '4': 1, '5': 14, '6': '.TW.BitcoinV2.Proto.Error', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.BitcoinV2.Proto.Error',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
-    {'1': 'transaction', '3': 3, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Transaction', '10': 'transaction'},
+    {
+      '1': 'transaction',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Transaction',
+      '10': 'transaction'
+    },
     {'1': 'encoded', '3': 4, '4': 1, '5': 12, '10': 'encoded'},
     {'1': 'txid', '3': 5, '4': 1, '5': 12, '10': 'txid'},
     {'1': 'weight', '3': 6, '4': 1, '5': 4, '10': 'weight'},
@@ -434,9 +696,30 @@ const Transaction$json = {
   '1': 'Transaction',
   '2': [
     {'1': 'version', '3': 1, '4': 1, '5': 5, '10': 'version'},
-    {'1': 'lock_time', '3': 2, '4': 1, '5': 11, '6': '.TW.Utxo.Proto.LockTime', '10': 'lockTime'},
-    {'1': 'inputs', '3': 3, '4': 3, '5': 11, '6': '.TW.BitcoinV2.Proto.TransactionInput', '10': 'inputs'},
-    {'1': 'outputs', '3': 4, '4': 3, '5': 11, '6': '.TW.BitcoinV2.Proto.TransactionOutput', '10': 'outputs'},
+    {
+      '1': 'lock_time',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Utxo.Proto.LockTime',
+      '10': 'lockTime'
+    },
+    {
+      '1': 'inputs',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.TransactionInput',
+      '10': 'inputs'
+    },
+    {
+      '1': 'outputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.TransactionOutput',
+      '10': 'outputs'
+    },
   ],
 };
 
@@ -486,7 +769,15 @@ final $typed_data.Uint8List transactionOutputDescriptor = $convert.base64Decode(
 const ComposePlan$json = {
   '1': 'ComposePlan',
   '2': [
-    {'1': 'brc20', '3': 1, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.ComposePlan.ComposeBrc20Plan', '9': 0, '10': 'brc20'},
+    {
+      '1': 'brc20',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.ComposePlan.ComposeBrc20Plan',
+      '9': 0,
+      '10': 'brc20'
+    },
   ],
   '3': [ComposePlan_ComposeBrc20Plan$json],
   '8': [
@@ -499,13 +790,54 @@ const ComposePlan_ComposeBrc20Plan$json = {
   '1': 'ComposeBrc20Plan',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'inputs', '3': 2, '4': 3, '5': 11, '6': '.TW.BitcoinV2.Proto.Input', '10': 'inputs'},
-    {'1': 'input_selector', '3': 3, '4': 1, '5': 14, '6': '.TW.Utxo.Proto.InputSelector', '10': 'inputSelector'},
-    {'1': 'tagged_output', '3': 4, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output', '10': 'taggedOutput'},
-    {'1': 'inscription', '3': 5, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Input.InputBrc20Inscription', '10': 'inscription'},
+    {
+      '1': 'inputs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input',
+      '10': 'inputs'
+    },
+    {
+      '1': 'input_selector',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Utxo.Proto.InputSelector',
+      '10': 'inputSelector'
+    },
+    {
+      '1': 'tagged_output',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output',
+      '10': 'taggedOutput'
+    },
+    {
+      '1': 'inscription',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Input.InputBrc20Inscription',
+      '10': 'inscription'
+    },
     {'1': 'fee_per_vb', '3': 6, '4': 1, '5': 4, '10': 'feePerVb'},
-    {'1': 'change_output', '3': 7, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.Output', '10': 'changeOutput'},
-    {'1': 'disable_change_output', '3': 8, '4': 1, '5': 8, '10': 'disableChangeOutput'},
+    {
+      '1': 'change_output',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Output',
+      '10': 'changeOutput'
+    },
+    {
+      '1': 'disable_change_output',
+      '3': 8,
+      '4': 1,
+      '5': 8,
+      '10': 'disableChangeOutput'
+    },
   ],
 };
 
@@ -527,9 +859,24 @@ final $typed_data.Uint8List composePlanDescriptor = $convert.base64Decode(
 const TransactionPlan$json = {
   '1': 'TransactionPlan',
   '2': [
-    {'1': 'error', '3': 1, '4': 1, '5': 14, '6': '.TW.BitcoinV2.Proto.Error', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.BitcoinV2.Proto.Error',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
-    {'1': 'brc20', '3': 3, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.TransactionPlan.Brc20Plan', '9': 0, '10': 'brc20'},
+    {
+      '1': 'brc20',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.TransactionPlan.Brc20Plan',
+      '9': 0,
+      '10': 'brc20'
+    },
   ],
   '3': [TransactionPlan_Brc20Plan$json],
   '8': [
@@ -541,8 +888,22 @@ const TransactionPlan$json = {
 const TransactionPlan_Brc20Plan$json = {
   '1': 'Brc20Plan',
   '2': [
-    {'1': 'commit', '3': 1, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.SigningInput', '10': 'commit'},
-    {'1': 'reveal', '3': 2, '4': 1, '5': 11, '6': '.TW.BitcoinV2.Proto.SigningInput', '10': 'reveal'},
+    {
+      '1': 'commit',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.SigningInput',
+      '10': 'commit'
+    },
+    {
+      '1': 'reveal',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.SigningInput',
+      '10': 'reveal'
+    },
   ],
 };
 
@@ -554,4 +915,3 @@ final $typed_data.Uint8List transactionPlanDescriptor = $convert.base64Decode(
     'BSBWJyYzIwGn8KCUJyYzIwUGxhbhI4CgZjb21taXQYASABKAsyIC5UVy5CaXRjb2luVjIuUHJv'
     'dG8uU2lnbmluZ0lucHV0UgZjb21taXQSOAoGcmV2ZWFsGAIgASgLMiAuVFcuQml0Y29pblYyLl'
     'Byb3RvLlNpZ25pbmdJbnB1dFIGcmV2ZWFsQgYKBHBsYW4=');
-

@@ -32,7 +32,14 @@ final $typed_data.Uint8List currencyAmountDescriptor = $convert.base64Decode(
 const OperationTrustSet$json = {
   '1': 'OperationTrustSet',
   '2': [
-    {'1': 'limit_amount', '3': 1, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.CurrencyAmount', '10': 'limitAmount'},
+    {
+      '1': 'limit_amount',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.CurrencyAmount',
+      '10': 'limitAmount'
+    },
   ],
 };
 
@@ -46,7 +53,15 @@ const OperationPayment$json = {
   '1': 'OperationPayment',
   '2': [
     {'1': 'amount', '3': 1, '4': 1, '5': 3, '9': 0, '10': 'amount'},
-    {'1': 'currency_amount', '3': 2, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.CurrencyAmount', '9': 0, '10': 'currencyAmount'},
+    {
+      '1': 'currency_amount',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.CurrencyAmount',
+      '9': 0,
+      '10': 'currencyAmount'
+    },
     {'1': 'destination', '3': 3, '4': 1, '5': 9, '10': 'destination'},
     {'1': 'destination_tag', '3': 4, '4': 1, '5': 3, '10': 'destinationTag'},
   ],
@@ -135,9 +150,10 @@ const OperationNFTokenCreateOffer$json = {
 };
 
 /// Descriptor for `OperationNFTokenCreateOffer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List operationNFTokenCreateOfferDescriptor = $convert.base64Decode(
-    'ChtPcGVyYXRpb25ORlRva2VuQ3JlYXRlT2ZmZXISHQoKbmZ0b2tlbl9pZBgBIAEoDFIJbmZ0b2'
-    'tlbklkEiAKC2Rlc3RpbmF0aW9uGAIgASgJUgtkZXN0aW5hdGlvbg==');
+final $typed_data.Uint8List operationNFTokenCreateOfferDescriptor =
+    $convert.base64Decode(
+        'ChtPcGVyYXRpb25ORlRva2VuQ3JlYXRlT2ZmZXISHQoKbmZ0b2tlbl9pZBgBIAEoDFIJbmZ0b2'
+        'tlbklkEiAKC2Rlc3RpbmF0aW9uGAIgASgJUgtkZXN0aW5hdGlvbg==');
 
 @$core.Deprecated('Use operationNFTokenAcceptOfferDescriptor instead')
 const OperationNFTokenAcceptOffer$json = {
@@ -148,9 +164,10 @@ const OperationNFTokenAcceptOffer$json = {
 };
 
 /// Descriptor for `OperationNFTokenAcceptOffer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List operationNFTokenAcceptOfferDescriptor = $convert.base64Decode(
-    'ChtPcGVyYXRpb25ORlRva2VuQWNjZXB0T2ZmZXISHQoKc2VsbF9vZmZlchgBIAEoDFIJc2VsbE'
-    '9mZmVy');
+final $typed_data.Uint8List operationNFTokenAcceptOfferDescriptor =
+    $convert.base64Decode(
+        'ChtPcGVyYXRpb25ORlRva2VuQWNjZXB0T2ZmZXISHQoKc2VsbF9vZmZlchgBIAEoDFIJc2VsbE'
+        '9mZmVy');
 
 @$core.Deprecated('Use operationNFTokenCancelOfferDescriptor instead')
 const OperationNFTokenCancelOffer$json = {
@@ -161,9 +178,10 @@ const OperationNFTokenCancelOffer$json = {
 };
 
 /// Descriptor for `OperationNFTokenCancelOffer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List operationNFTokenCancelOfferDescriptor = $convert.base64Decode(
-    'ChtPcGVyYXRpb25ORlRva2VuQ2FuY2VsT2ZmZXISIQoMdG9rZW5fb2ZmZXJzGAEgAygMUgt0b2'
-    'tlbk9mZmVycw==');
+final $typed_data.Uint8List operationNFTokenCancelOfferDescriptor =
+    $convert.base64Decode(
+        'ChtPcGVyYXRpb25ORlRva2VuQ2FuY2VsT2ZmZXISIQoMdG9rZW5fb2ZmZXJzGAEgAygMUgt0b2'
+        'tlbk9mZmVycw==');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
@@ -171,19 +189,97 @@ const SigningInput$json = {
   '2': [
     {'1': 'fee', '3': 1, '4': 1, '5': 3, '10': 'fee'},
     {'1': 'sequence', '3': 2, '4': 1, '5': 5, '10': 'sequence'},
-    {'1': 'last_ledger_sequence', '3': 3, '4': 1, '5': 5, '10': 'lastLedgerSequence'},
+    {
+      '1': 'last_ledger_sequence',
+      '3': 3,
+      '4': 1,
+      '5': 5,
+      '10': 'lastLedgerSequence'
+    },
     {'1': 'account', '3': 4, '4': 1, '5': 9, '10': 'account'},
     {'1': 'flags', '3': 5, '4': 1, '5': 3, '10': 'flags'},
     {'1': 'private_key', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'op_trust_set', '3': 7, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationTrustSet', '9': 0, '10': 'opTrustSet'},
-    {'1': 'op_payment', '3': 8, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationPayment', '9': 0, '10': 'opPayment'},
-    {'1': 'op_nftoken_burn', '3': 9, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationNFTokenBurn', '9': 0, '10': 'opNftokenBurn'},
-    {'1': 'op_nftoken_create_offer', '3': 10, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationNFTokenCreateOffer', '9': 0, '10': 'opNftokenCreateOffer'},
-    {'1': 'op_nftoken_accept_offer', '3': 11, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationNFTokenAcceptOffer', '9': 0, '10': 'opNftokenAcceptOffer'},
-    {'1': 'op_nftoken_cancel_offer', '3': 12, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationNFTokenCancelOffer', '9': 0, '10': 'opNftokenCancelOffer'},
-    {'1': 'op_escrow_create', '3': 16, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationEscrowCreate', '9': 0, '10': 'opEscrowCreate'},
-    {'1': 'op_escrow_cancel', '3': 17, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationEscrowCancel', '9': 0, '10': 'opEscrowCancel'},
-    {'1': 'op_escrow_finish', '3': 18, '4': 1, '5': 11, '6': '.TW.Ripple.Proto.OperationEscrowFinish', '9': 0, '10': 'opEscrowFinish'},
+    {
+      '1': 'op_trust_set',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationTrustSet',
+      '9': 0,
+      '10': 'opTrustSet'
+    },
+    {
+      '1': 'op_payment',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationPayment',
+      '9': 0,
+      '10': 'opPayment'
+    },
+    {
+      '1': 'op_nftoken_burn',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationNFTokenBurn',
+      '9': 0,
+      '10': 'opNftokenBurn'
+    },
+    {
+      '1': 'op_nftoken_create_offer',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationNFTokenCreateOffer',
+      '9': 0,
+      '10': 'opNftokenCreateOffer'
+    },
+    {
+      '1': 'op_nftoken_accept_offer',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationNFTokenAcceptOffer',
+      '9': 0,
+      '10': 'opNftokenAcceptOffer'
+    },
+    {
+      '1': 'op_nftoken_cancel_offer',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationNFTokenCancelOffer',
+      '9': 0,
+      '10': 'opNftokenCancelOffer'
+    },
+    {
+      '1': 'op_escrow_create',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationEscrowCreate',
+      '9': 0,
+      '10': 'opEscrowCreate'
+    },
+    {
+      '1': 'op_escrow_cancel',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationEscrowCancel',
+      '9': 0,
+      '10': 'opEscrowCancel'
+    },
+    {
+      '1': 'op_escrow_finish',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ripple.Proto.OperationEscrowFinish',
+      '9': 0,
+      '10': 'opEscrowFinish'
+    },
     {'1': 'public_key', '3': 15, '4': 1, '5': 12, '10': 'publicKey'},
   ],
   '8': [
@@ -218,7 +314,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'encoded', '3': 1, '4': 1, '5': 12, '10': 'encoded'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -228,4 +331,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQSMwoFZXJyb3IYAiABKA'
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
     'GAMgASgJUgxlcnJvck1lc3NhZ2U=');
-

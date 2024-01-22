@@ -48,4 +48,3 @@ const SigningOutput$json = {
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAlSB2VuY29kZWQSHAoJc2lnbmF0dXJlGA'
     'IgASgJUglzaWduYXR1cmU=');
-

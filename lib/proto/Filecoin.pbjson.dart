@@ -38,7 +38,14 @@ const SigningInput$json = {
     {'1': 'gas_fee_cap', '3': 6, '4': 1, '5': 12, '10': 'gasFeeCap'},
     {'1': 'gas_premium', '3': 7, '4': 1, '5': 12, '10': 'gasPremium'},
     {'1': 'params', '3': 8, '4': 1, '5': 12, '10': 'params'},
-    {'1': 'derivation', '3': 9, '4': 1, '5': 14, '6': '.TW.Filecoin.Proto.DerivationType', '10': 'derivation'},
+    {
+      '1': 'derivation',
+      '3': 9,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Filecoin.Proto.DerivationType',
+      '10': 'derivation'
+    },
     {'1': 'public_key', '3': 10, '4': 1, '5': 12, '10': 'publicKey'},
   ],
 };
@@ -57,7 +64,14 @@ const SigningOutput$json = {
   '1': 'SigningOutput',
   '2': [
     {'1': 'json', '3': 1, '4': 1, '5': 9, '10': 'json'},
-    {'1': 'error', '3': 2, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -67,4 +81,3 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhIKBGpzb24YASABKAlSBGpzb24SMwoFZXJyb3IYAiABKA4yHS5UVy'
     '5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAMgASgJ'
     'UgxlcnJvck1lc3NhZ2U=');
-

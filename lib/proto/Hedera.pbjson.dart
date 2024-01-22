@@ -31,7 +31,14 @@ final $typed_data.Uint8List timestampDescriptor = $convert.base64Decode(
 const TransactionID$json = {
   '1': 'TransactionID',
   '2': [
-    {'1': 'transactionValidStart', '3': 1, '4': 1, '5': 11, '6': '.TW.Hedera.Proto.Timestamp', '10': 'transactionValidStart'},
+    {
+      '1': 'transactionValidStart',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Hedera.Proto.Timestamp',
+      '10': 'transactionValidStart'
+    },
     {'1': 'accountID', '3': 2, '4': 1, '5': 9, '10': 'accountID'},
     {'1': 'scheduled', '3': 3, '4': 1, '5': 8, '10': 'scheduled'},
     {'1': 'nonce', '3': 4, '4': 1, '5': 5, '10': 'nonce'},
@@ -64,12 +71,33 @@ final $typed_data.Uint8List transferMessageDescriptor = $convert.base64Decode(
 const TransactionBody$json = {
   '1': 'TransactionBody',
   '2': [
-    {'1': 'transactionID', '3': 1, '4': 1, '5': 11, '6': '.TW.Hedera.Proto.TransactionID', '10': 'transactionID'},
+    {
+      '1': 'transactionID',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Hedera.Proto.TransactionID',
+      '10': 'transactionID'
+    },
     {'1': 'nodeAccountID', '3': 2, '4': 1, '5': 9, '10': 'nodeAccountID'},
     {'1': 'transactionFee', '3': 3, '4': 1, '5': 4, '10': 'transactionFee'},
-    {'1': 'transactionValidDuration', '3': 4, '4': 1, '5': 3, '10': 'transactionValidDuration'},
+    {
+      '1': 'transactionValidDuration',
+      '3': 4,
+      '4': 1,
+      '5': 3,
+      '10': 'transactionValidDuration'
+    },
     {'1': 'memo', '3': 5, '4': 1, '5': 9, '10': 'memo'},
-    {'1': 'transfer', '3': 6, '4': 1, '5': 11, '6': '.TW.Hedera.Proto.TransferMessage', '9': 0, '10': 'transfer'},
+    {
+      '1': 'transfer',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Hedera.Proto.TransferMessage',
+      '9': 0,
+      '10': 'transfer'
+    },
   ],
   '8': [
     {'1': 'data'},
@@ -90,7 +118,14 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'body', '3': 2, '4': 1, '5': 11, '6': '.TW.Hedera.Proto.TransactionBody', '10': 'body'},
+    {
+      '1': 'body',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Hedera.Proto.TransactionBody',
+      '10': 'body'
+    },
   ],
 };
 
@@ -108,6 +143,5 @@ const SigningOutput$json = {
 };
 
 /// Descriptor for `SigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
-    'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQ=');
-
+final $typed_data.Uint8List signingOutputDescriptor = $convert
+    .base64Decode('Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAxSB2VuY29kZWQ=');

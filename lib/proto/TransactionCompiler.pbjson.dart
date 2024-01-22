@@ -19,7 +19,14 @@ const PreSigningOutput$json = {
   '2': [
     {'1': 'data_hash', '3': 1, '4': 1, '5': 12, '10': 'dataHash'},
     {'1': 'data', '3': 2, '4': 1, '5': 12, '10': 'data'},
-    {'1': 'error', '3': 3, '4': 1, '5': 14, '6': '.TW.Common.Proto.SigningError', '10': 'error'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
     {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
@@ -29,4 +36,3 @@ final $typed_data.Uint8List preSigningOutputDescriptor = $convert.base64Decode(
     'ChBQcmVTaWduaW5nT3V0cHV0EhsKCWRhdGFfaGFzaBgBIAEoDFIIZGF0YUhhc2gSEgoEZGF0YR'
     'gCIAEoDFIEZGF0YRIzCgVlcnJvchgDIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJy'
     'b3JSBWVycm9yEiMKDWVycm9yX21lc3NhZ2UYBCABKAlSDGVycm9yTWVzc2FnZQ==');
-
