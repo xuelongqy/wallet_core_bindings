@@ -8,9 +8,9 @@ void main() {
   group(TWData, () {
     test('Create with hex string', () {
       {
-        TWData data = TWData.createWithHexString('deadbeef');
+        final data = TWData.createWithHexString('deadbeef');
 
-        expect(data.size(), 4);
+        expect(data.size, 4);
         expect(data.bytes()![0], 0xde);
         expect(data.bytes()![1], 0xad);
         expect(data.bytes()![2], 0xbe);
@@ -23,7 +23,7 @@ void main() {
       {
         TWData data = TWData.createWithHexString('00');
 
-        expect(data.size(), 1);
+        expect(data.size, 1);
         expect(data.bytes()![0], 0);
 
         TWString string = TWString.createWithHexData(data);

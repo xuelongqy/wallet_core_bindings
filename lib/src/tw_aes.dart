@@ -9,14 +9,18 @@ class TWAES {
   /// \param [iv] initialization vector.
   /// \param [mode] padding mode.
   /// \return encrypted Data.
-  static TWData encryptCBC({
-    required TWData key,
-    required TWData data,
-    required TWData iv,
+  static Uint8List? encryptCBC({
+    required Uint8List key,
+    required Uint8List data,
+    required Uint8List iv,
     required int mode,
   }) {
     return TWData.fromPointer(iTWBindings.TWAESEncryptCBC(
-        key.pointer, data.pointer, iv.pointer, mode));
+      TWData(key).pointer,
+      TWData(data).pointer,
+      TWData(iv).pointer,
+      mode,
+    )).bytes();
   }
 
   /// Decrypts a block of data using AES in Cipher Block Chaining (CBC) mode.
@@ -26,14 +30,18 @@ class TWAES {
   /// \param [iv] initialization vector Data.
   /// \param [mode] padding mode.
   /// \return decrypted Data.
-  static TWData decryptCBC({
-    required TWData key,
-    required TWData data,
-    required TWData iv,
+  static Uint8List? decryptCBC({
+    required Uint8List key,
+    required Uint8List data,
+    required Uint8List iv,
     required int mode,
   }) {
     return TWData.fromPointer(iTWBindings.TWAESDecryptCBC(
-        key.pointer, data.pointer, iv.pointer, mode));
+      TWData(key).pointer,
+      TWData(data).pointer,
+      TWData(iv).pointer,
+      mode,
+    )).bytes();
   }
 
   /// Encrypts a block of data using AES in Counter (CTR) mode.
@@ -42,13 +50,16 @@ class TWAES {
   /// \param [data] Data to encrypt.
   /// \param [iv] initialization vector Data.
   /// \return encrypted Data.
-  static TWData encryptCTR({
-    required TWData key,
-    required TWData data,
-    required TWData iv,
+  static Uint8List? encryptCTR({
+    required Uint8List key,
+    required Uint8List data,
+    required Uint8List iv,
   }) {
-    return TWData.fromPointer(
-        iTWBindings.TWAESEncryptCTR(key.pointer, data.pointer, iv.pointer));
+    return TWData.fromPointer(iTWBindings.TWAESEncryptCTR(
+      TWData(key).pointer,
+      TWData(data).pointer,
+      TWData(iv).pointer,
+    )).bytes();
   }
 
   /// Decrypts a block of data using AES in Counter (CTR) mode.
@@ -57,12 +68,15 @@ class TWAES {
   /// \param [data] Data to decrypt.
   /// \param [iv] initialization vector Data.
   /// \return decrypted Data.
-  static TWData decryptCTR({
-    required TWData key,
-    required TWData data,
-    required TWData iv,
+  static Uint8List? decryptCTR({
+    required Uint8List key,
+    required Uint8List data,
+    required Uint8List iv,
   }) {
-    return TWData.fromPointer(
-        iTWBindings.TWAESDecryptCTR(key.pointer, data.pointer, iv.pointer));
+    return TWData.fromPointer(iTWBindings.TWAESDecryptCTR(
+      TWData(key).pointer,
+      TWData(data).pointer,
+      TWData(iv).pointer,
+    )).bytes();
   }
 }

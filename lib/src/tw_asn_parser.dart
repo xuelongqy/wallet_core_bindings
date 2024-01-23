@@ -6,6 +6,7 @@ class TWAsnParser {
   ///
   /// \param [encoded] The ASN.1 DER encoded signature.
   /// \return The ECDSA signature standard binary representation: RS, where R - 32 byte array, S - 32 byte array.
-  static TWData ecdsaSignatureFromDer(TWData encoded) => TWData.fromPointer(
-      iTWBindings.TWAsnParserEcdsaSignatureFromDer(encoded.pointer));
+  static Uint8List? ecdsaSignatureFromDer(TWData encoded) => TWData.fromPointer(
+          iTWBindings.TWAsnParserEcdsaSignatureFromDer(encoded.pointer))
+      .bytes();
 }

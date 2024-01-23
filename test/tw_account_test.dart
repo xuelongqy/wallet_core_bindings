@@ -21,12 +21,12 @@ void main() {
         publicKey: pubKey,
       );
 
-      expect(account.address(), addressAdd);
-      expect(account.coin(), coin);
-      expect(account.derivation(), TWDerivation.TWDerivationDefault);
-      expect(account.derivationPath(), derivationPath);
-      expect(account.extendedPublicKey(), extPubKeyAdd);
-      expect(account.publicKey(), pubKey);
+      expect(account.address, addressAdd);
+      expect(account.coin, coin);
+      expect(account.derivation, TWDerivation.TWDerivationDefault);
+      expect(account.derivationPath, derivationPath);
+      expect(account.extendedPublicKey, extPubKeyAdd);
+      expect(account.publicKey, pubKey);
     });
   });
 }

@@ -59,8 +59,17 @@ class TWString extends TWObjectFinalizable<Void> {
   }) : super(iTWBindings.TWStringCreateWithHexData(data.pointer),
             attach: attach, finalizer: _twStringFinalizer);
 
+  /// Creates a hexadecimal string from a block of data. It must be deleted at the end.
+  ///
+  /// \param [bytes] a block of data.
+  TWString.createWithHexBytes(
+    Uint8List bytes, {
+    bool attach = true,
+  }) : super(iTWBindings.TWStringCreateWithHexData(TWData(bytes).pointer),
+            attach: attach, finalizer: _twStringFinalizer);
+
   /// Returns the string size in bytes.
-  int size() => iTWBindings.TWStringSize(_pointer);
+  int get size => iTWBindings.TWStringSize(_pointer);
 
   /// Returns the byte at the provided index.
   ///
@@ -75,7 +84,7 @@ class TWString extends TWObjectFinalizable<Void> {
   Pointer<Char> utf8Bytes() => iTWBindings.TWStringUTF8Bytes(_pointer);
 
   /// Returns raw data.
-  Uint8List bytes() => utf8Bytes().cast<Uint8>().asTypedList(size());
+  Uint8List bytes() => utf8Bytes().cast<Uint8>().asTypedList(size);
 
   @override
   String toString() {

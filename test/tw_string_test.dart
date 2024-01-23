@@ -11,7 +11,7 @@ void main() {
       TWString string2 = TWString.createWithHexData(TWData(bytes));
 
       expect(string.toString(), 'deadbeef');
-      expect(string.size(), 8);
+      expect(string.size, 8);
       expect(string[1], 'e');
       expect(string == string2, true);
     });

@@ -168,7 +168,8 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   int coin() => iTWBindings.TWAnyAddressCoin(_pointer);
 
   /// Returns underlaying data (public key or key hash)
-  TWData data() => TWData.fromPointer(iTWBindings.TWAnyAddressData(_pointer));
+  Uint8List get data =>
+      TWData.fromPointer(iTWBindings.TWAnyAddressData(_pointer)).bytes()!;
 
   /// Determines if the string is a valid Any address.
   ///
