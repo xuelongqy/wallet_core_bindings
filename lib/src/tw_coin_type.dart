@@ -15,13 +15,13 @@ int TWCoinTypeBlockchain(int coin) => iTWBindings.TWCoinTypeBlockchain(coin);
 ///
 /// \param [coin] A coin type
 /// \return purpose associated to the given coin type
-int TWCoinTypePurpose(int coin) => iTWBindings.TWCoinTypeBlockchain(coin);
+int TWCoinTypePurpose(int coin) => iTWBindings.TWCoinTypePurpose(coin);
 
 /// Returns the curve that should be used for a coin type.
 ///
 /// \param [coin] A coin type
 /// \return curve that should be used for the given coin type
-int TWCoinTypeCurve(int coin) => iTWBindings.TWCoinTypeBlockchain(coin);
+int TWCoinTypeCurve(int coin) => iTWBindings.TWCoinTypeCurve(coin);
 
 /// Returns the xpub HD version that should be used for a coin type.
 ///
@@ -47,7 +47,7 @@ bool TWCoinTypeValidate(int coin, String address) =>
 ///
 /// \param [coin] A coin type
 /// \return the default derivation path for the given coin type.
-String TWCoinTypeDerivationPath(int coin, int derivation) =>
+String TWCoinTypeDerivationPath(int coin) =>
     TWString.fromPointer(iTWBindings.TWCoinTypeDerivationPath(coin)).toString();
 
 /// Returns the derivation path for a particular coin with the explicit given derivation.
