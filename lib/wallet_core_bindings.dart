@@ -21,6 +21,7 @@ part 'src/tw_base32.dart';
 part 'src/tw_base58.dart';
 part 'src/tw_base64.dart';
 part 'src/tw_blockchain.dart';
+part 'src/tw_bitcoin_address.dart';
 part 'src/tw_coin_type.dart';
 part 'src/tw_data.dart';
 part 'src/tw_derivation.dart';
