@@ -54,6 +54,6 @@ class TWDataVector extends TWObjectFinalizable<bindings.TWDataVector> {
   ///
   /// \param [index] index element of the vector to be retrieved, need to be < TWDataVectorSize
   /// \return A non-null block of data
-  Uint8List get(int index) =>
-      TWData.fromPointer(iTWBindings.TWDataVectorGet(_pointer, index)).bytes()!;
+  Uint8List? get(int index) =>
+      TWData.fromPointer(iTWBindings.TWDataVectorGet(_pointer, index)).bytes();
 }
