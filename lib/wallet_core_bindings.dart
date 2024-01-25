@@ -30,6 +30,7 @@ part 'src/tw_cardano.dart';
 part 'src/tw_coin_type.dart';
 part 'src/tw_coin_type_configuration.dart';
 part 'src/tw_data.dart';
+part 'src/tw_data_vector.dart';
 part 'src/tw_derivation.dart';
 part 'src/tw_filecoin_address_type.dart';
 part 'src/tw_hash.dart';
