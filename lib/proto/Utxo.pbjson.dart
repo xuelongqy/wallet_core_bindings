@@ -26,7 +26,8 @@ const Error$json = {
     {'1': 'Error_missing_sighash_method', '2': 6},
     {'1': 'Error_failed_encoding', '2': 7},
     {'1': 'Error_insufficient_inputs', '2': 8},
-    {'1': 'Error_missing_change_script_pubkey', '2': 9},
+    {'1': 'Error_no_outputs_specified', '2': 9},
+    {'1': 'Error_missing_change_script_pubkey', '2': 10},
   ],
 };
 
@@ -36,23 +37,23 @@ final $typed_data.Uint8List errorDescriptor = $convert.base64Decode(
     '52YWxpZF9zaWdoYXNoX3R5cGUQAhIbChdFcnJvcl9pbnZhbGlkX2xvY2tfdGltZRADEhYKEkVy'
     'cm9yX2ludmFsaWRfdHhpZBAEEhgKFEVycm9yX3NpZ2hhc2hfZmFpbGVkEAUSIAocRXJyb3JfbW'
     'lzc2luZ19zaWdoYXNoX21ldGhvZBAGEhkKFUVycm9yX2ZhaWxlZF9lbmNvZGluZxAHEh0KGUVy'
-    'cm9yX2luc3VmZmljaWVudF9pbnB1dHMQCBImCiJFcnJvcl9taXNzaW5nX2NoYW5nZV9zY3JpcH'
-    'RfcHVia2V5EAk=');
+    'cm9yX2luc3VmZmljaWVudF9pbnB1dHMQCBIeChpFcnJvcl9ub19vdXRwdXRzX3NwZWNpZmllZB'
+    'AJEiYKIkVycm9yX21pc3NpbmdfY2hhbmdlX3NjcmlwdF9wdWJrZXkQCg==');
 
 @$core.Deprecated('Use inputSelectorDescriptor instead')
 const InputSelector$json = {
   '1': 'InputSelector',
   '2': [
-    {'1': 'UseAll', '2': 0},
+    {'1': 'SelectAscending', '2': 0},
     {'1': 'SelectInOrder', '2': 1},
-    {'1': 'SelectAscending', '2': 2},
+    {'1': 'UseAll', '2': 10},
   ],
 };
 
 /// Descriptor for `InputSelector`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List inputSelectorDescriptor = $convert.base64Decode(
-    'Cg1JbnB1dFNlbGVjdG9yEgoKBlVzZUFsbBAAEhEKDVNlbGVjdEluT3JkZXIQARITCg9TZWxlY3'
-    'RBc2NlbmRpbmcQAg==');
+    'Cg1JbnB1dFNlbGVjdG9yEhMKD1NlbGVjdEFzY2VuZGluZxAAEhEKDVNlbGVjdEluT3JkZXIQAR'
+    'IKCgZVc2VBbGwQCg==');
 
 @$core.Deprecated('Use signingMethodDescriptor instead')
 const SigningMethod$json = {
@@ -356,17 +357,19 @@ const TxInClaim$json = {
   '2': [
     {'1': 'txid', '3': 1, '4': 1, '5': 12, '10': 'txid'},
     {'1': 'vout', '3': 2, '4': 1, '5': 13, '10': 'vout'},
-    {'1': 'sequence', '3': 3, '4': 1, '5': 13, '10': 'sequence'},
-    {'1': 'script_sig', '3': 4, '4': 1, '5': 12, '10': 'scriptSig'},
-    {'1': 'witness_items', '3': 5, '4': 3, '5': 12, '10': 'witnessItems'},
+    {'1': 'value', '3': 3, '4': 1, '5': 4, '10': 'value'},
+    {'1': 'sequence', '3': 4, '4': 1, '5': 13, '10': 'sequence'},
+    {'1': 'script_sig', '3': 5, '4': 1, '5': 12, '10': 'scriptSig'},
+    {'1': 'witness_items', '3': 6, '4': 3, '5': 12, '10': 'witnessItems'},
   ],
 };
 
 /// Descriptor for `TxInClaim`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List txInClaimDescriptor = $convert.base64Decode(
-    'CglUeEluQ2xhaW0SEgoEdHhpZBgBIAEoDFIEdHhpZBISCgR2b3V0GAIgASgNUgR2b3V0EhoKCH'
-    'NlcXVlbmNlGAMgASgNUghzZXF1ZW5jZRIdCgpzY3JpcHRfc2lnGAQgASgMUglzY3JpcHRTaWcS'
-    'IwoNd2l0bmVzc19pdGVtcxgFIAMoDFIMd2l0bmVzc0l0ZW1z');
+    'CglUeEluQ2xhaW0SEgoEdHhpZBgBIAEoDFIEdHhpZBISCgR2b3V0GAIgASgNUgR2b3V0EhQKBX'
+    'ZhbHVlGAMgASgEUgV2YWx1ZRIaCghzZXF1ZW5jZRgEIAEoDVIIc2VxdWVuY2USHQoKc2NyaXB0'
+    'X3NpZxgFIAEoDFIJc2NyaXB0U2lnEiMKDXdpdG5lc3NfaXRlbXMYBiADKAxSDHdpdG5lc3NJdG'
+    'Vtcw==');
 
 @$core.Deprecated('Use serializedTransactionDescriptor instead')
 const SerializedTransaction$json = {

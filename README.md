@@ -39,8 +39,8 @@ dart run ffigen
 Refer to the TrustWalletCore build [documentation](https://developer.trustwallet.com/developer/wallet-core/developing-the-library/building) and complete the steps to generate files. Extract proto files in src/proto and use [protoc_plugin](https://pub.dev/packages/protoc_plugin) to compile them into Dart code.
 
 ```shell
-cd ./proto
-protoc --dart_out=../../lib/src/proto/ ./*
+cd ./proto/TrustWalletCore/
+protoc --dart_out=../../lib/proto/ ./*
 ```
 
 ## Additional information

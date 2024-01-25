@@ -90,7 +90,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: Output.create)
     ..e<$1.InputSelector>(
         7, _omitFieldNames ? '' : 'inputSelector', $pb.PbFieldType.OE,
-        defaultOrMaker: $1.InputSelector.UseAll,
+        defaultOrMaker: $1.InputSelector.SelectAscending,
         valueOf: $1.InputSelector.valueOf,
         enumValues: $1.InputSelector.values)
     ..a<$fixnum.Int64>(
@@ -919,7 +919,7 @@ class Input_InputBrc20Inscription extends $pb.GeneratedMessage {
     $core.bool? onePrevout,
     $core.List<$core.int>? inscribeTo,
     $core.String? ticker,
-    $fixnum.Int64? transferAmount,
+    $core.String? transferAmount,
   }) {
     final $result = create();
     if (onePrevout != null) {
@@ -953,9 +953,7 @@ class Input_InputBrc20Inscription extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(
         2, _omitFieldNames ? '' : 'inscribeTo', $pb.PbFieldType.OY)
     ..aOS(3, _omitFieldNames ? '' : 'ticker')
-    ..a<$fixnum.Int64>(
-        4, _omitFieldNames ? '' : 'transferAmount', $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(4, _omitFieldNames ? '' : 'transferAmount')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1025,10 +1023,10 @@ class Input_InputBrc20Inscription extends $pb.GeneratedMessage {
 
   /// The BRC20 token transfer amount.
   @$pb.TagNumber(4)
-  $fixnum.Int64 get transferAmount => $_getI64(3);
+  $core.String get transferAmount => $_getSZ(3);
   @$pb.TagNumber(4)
-  set transferAmount($fixnum.Int64 v) {
-    $_setInt64(3, v);
+  set transferAmount($core.String v) {
+    $_setString(3, v);
   }
 
   @$pb.TagNumber(4)
@@ -1830,7 +1828,7 @@ class Output_OutputBrc20Inscription extends $pb.GeneratedMessage {
   factory Output_OutputBrc20Inscription({
     $core.List<$core.int>? inscribeTo,
     $core.String? ticker,
-    $fixnum.Int64? transferAmount,
+    $core.String? transferAmount,
   }) {
     final $result = create();
     if (inscribeTo != null) {
@@ -1860,9 +1858,7 @@ class Output_OutputBrc20Inscription extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'inscribeTo', $pb.PbFieldType.OY)
     ..aOS(2, _omitFieldNames ? '' : 'ticker')
-    ..a<$fixnum.Int64>(
-        3, _omitFieldNames ? '' : 'transferAmount', $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(3, _omitFieldNames ? '' : 'transferAmount')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1920,10 +1916,10 @@ class Output_OutputBrc20Inscription extends $pb.GeneratedMessage {
 
   /// The BRC20 token transfer amount.
   @$pb.TagNumber(3)
-  $fixnum.Int64 get transferAmount => $_getI64(2);
+  $core.String get transferAmount => $_getSZ(2);
   @$pb.TagNumber(3)
-  set transferAmount($fixnum.Int64 v) {
-    $_setInt64(2, v);
+  set transferAmount($core.String v) {
+    $_setString(2, v);
   }
 
   @$pb.TagNumber(3)
@@ -3055,7 +3051,7 @@ class ComposePlan_ComposeBrc20Plan extends $pb.GeneratedMessage {
         subBuilder: Input.create)
     ..e<$1.InputSelector>(
         3, _omitFieldNames ? '' : 'inputSelector', $pb.PbFieldType.OE,
-        defaultOrMaker: $1.InputSelector.UseAll,
+        defaultOrMaker: $1.InputSelector.SelectAscending,
         valueOf: $1.InputSelector.valueOf,
         enumValues: $1.InputSelector.values)
     ..aOM<Output>(4, _omitFieldNames ? '' : 'taggedOutput',

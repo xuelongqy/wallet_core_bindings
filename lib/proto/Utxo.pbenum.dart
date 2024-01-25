@@ -31,8 +31,10 @@ class Error extends $pb.ProtobufEnum {
       Error._(7, _omitEnumNames ? '' : 'Error_failed_encoding');
   static const Error Error_insufficient_inputs =
       Error._(8, _omitEnumNames ? '' : 'Error_insufficient_inputs');
+  static const Error Error_no_outputs_specified =
+      Error._(9, _omitEnumNames ? '' : 'Error_no_outputs_specified');
   static const Error Error_missing_change_script_pubkey =
-      Error._(9, _omitEnumNames ? '' : 'Error_missing_change_script_pubkey');
+      Error._(10, _omitEnumNames ? '' : 'Error_missing_change_script_pubkey');
 
   static const $core.List<Error> values = <Error>[
     OK,
@@ -44,6 +46,7 @@ class Error extends $pb.ProtobufEnum {
     Error_missing_sighash_method,
     Error_failed_encoding,
     Error_insufficient_inputs,
+    Error_no_outputs_specified,
     Error_missing_change_script_pubkey,
   ];
 
@@ -55,17 +58,17 @@ class Error extends $pb.ProtobufEnum {
 }
 
 class InputSelector extends $pb.ProtobufEnum {
-  static const InputSelector UseAll =
-      InputSelector._(0, _omitEnumNames ? '' : 'UseAll');
+  static const InputSelector SelectAscending =
+      InputSelector._(0, _omitEnumNames ? '' : 'SelectAscending');
   static const InputSelector SelectInOrder =
       InputSelector._(1, _omitEnumNames ? '' : 'SelectInOrder');
-  static const InputSelector SelectAscending =
-      InputSelector._(2, _omitEnumNames ? '' : 'SelectAscending');
+  static const InputSelector UseAll =
+      InputSelector._(10, _omitEnumNames ? '' : 'UseAll');
 
   static const $core.List<InputSelector> values = <InputSelector>[
-    UseAll,
-    SelectInOrder,
     SelectAscending,
+    SelectInOrder,
+    UseAll,
   ];
 
   static final $core.Map<$core.int, InputSelector> _byValue =

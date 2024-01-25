@@ -77,7 +77,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: TxOut.create)
     ..e<InputSelector>(
         5, _omitFieldNames ? '' : 'inputSelector', $pb.PbFieldType.OE,
-        defaultOrMaker: InputSelector.UseAll,
+        defaultOrMaker: InputSelector.SelectAscending,
         valueOf: InputSelector.valueOf,
         enumValues: InputSelector.values)
     ..a<$fixnum.Int64>(
@@ -982,6 +982,7 @@ class TxInClaim extends $pb.GeneratedMessage {
   factory TxInClaim({
     $core.List<$core.int>? txid,
     $core.int? vout,
+    $fixnum.Int64? value,
     $core.int? sequence,
     $core.List<$core.int>? scriptSig,
     $core.Iterable<$core.List<$core.int>>? witnessItems,
@@ -992,6 +993,9 @@ class TxInClaim extends $pb.GeneratedMessage {
     }
     if (vout != null) {
       $result.vout = vout;
+    }
+    if (value != null) {
+      $result.value = value;
     }
     if (sequence != null) {
       $result.sequence = sequence;
@@ -1019,11 +1023,13 @@ class TxInClaim extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'txid', $pb.PbFieldType.OY)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'vout', $pb.PbFieldType.OU3)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.OU3)
     ..a<$core.List<$core.int>>(
-        4, _omitFieldNames ? '' : 'scriptSig', $pb.PbFieldType.OY)
+        5, _omitFieldNames ? '' : 'scriptSig', $pb.PbFieldType.OY)
     ..p<$core.List<$core.int>>(
-        5, _omitFieldNames ? '' : 'witnessItems', $pb.PbFieldType.PY)
+        6, _omitFieldNames ? '' : 'witnessItems', $pb.PbFieldType.PY)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1073,35 +1079,48 @@ class TxInClaim extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearVout() => clearField(2);
 
+  /// The value of this input, such as satoshis.
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get value => $_getI64(2);
+  @$pb.TagNumber(3)
+  set value($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasValue() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearValue() => clearField(3);
+
   /// The sequence number (TODO).
-  @$pb.TagNumber(3)
-  $core.int get sequence => $_getIZ(2);
-  @$pb.TagNumber(3)
+  @$pb.TagNumber(4)
+  $core.int get sequence => $_getIZ(3);
+  @$pb.TagNumber(4)
   set sequence($core.int v) {
-    $_setUnsignedInt32(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasSequence() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearSequence() => clearField(3);
-
-  /// The script used for claiming an input.
-  @$pb.TagNumber(4)
-  $core.List<$core.int> get scriptSig => $_getN(3);
-  @$pb.TagNumber(4)
-  set scriptSig($core.List<$core.int> v) {
-    $_setBytes(3, v);
+    $_setUnsignedInt32(3, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasScriptSig() => $_has(3);
+  $core.bool hasSequence() => $_has(3);
   @$pb.TagNumber(4)
-  void clearScriptSig() => clearField(4);
+  void clearSequence() => clearField(4);
 
   /// The script used for claiming an input.
   @$pb.TagNumber(5)
-  $core.List<$core.List<$core.int>> get witnessItems => $_getList(4);
+  $core.List<$core.int> get scriptSig => $_getN(4);
+  @$pb.TagNumber(5)
+  set scriptSig($core.List<$core.int> v) {
+    $_setBytes(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasScriptSig() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearScriptSig() => clearField(5);
+
+  /// The script used for claiming an input.
+  @$pb.TagNumber(6)
+  $core.List<$core.List<$core.int>> get witnessItems => $_getList(5);
 }
 
 class SerializedTransaction extends $pb.GeneratedMessage {

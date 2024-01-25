@@ -31,6 +31,8 @@ class Error extends $pb.ProtobufEnum {
       Error._(8, _omitEnumNames ? '' : 'Error_utxo_failed_encoding');
   static const Error Error_utxo_insufficient_inputs =
       Error._(9, _omitEnumNames ? '' : 'Error_utxo_insufficient_inputs');
+  static const Error Error_utxo_no_outputs_specified =
+      Error._(43, _omitEnumNames ? '' : 'Error_utxo_no_outputs_specified');
   static const Error Error_utxo_missing_change_script_pubkey = Error._(
       10, _omitEnumNames ? '' : 'Error_utxo_missing_change_script_pubkey');
   static const Error Error_zero_sequence_not_enabled =
@@ -110,6 +112,7 @@ class Error extends $pb.ProtobufEnum {
     Error_utxo_missing_sighash_method,
     Error_utxo_failed_encoding,
     Error_utxo_insufficient_inputs,
+    Error_utxo_no_outputs_specified,
     Error_utxo_missing_change_script_pubkey,
     Error_zero_sequence_not_enabled,
     Error_unmatched_input_signature_count,
