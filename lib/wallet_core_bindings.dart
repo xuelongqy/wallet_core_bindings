@@ -28,6 +28,7 @@ part 'src/tw_bitcoin_sig_hash_type.dart';
 part 'src/tw_blockchain.dart';
 part 'src/tw_cardano.dart';
 part 'src/tw_coin_type.dart';
+part 'src/tw_coin_type_configuration.dart';
 part 'src/tw_data.dart';
 part 'src/tw_derivation.dart';
 part 'src/tw_filecoin_address_type.dart';
