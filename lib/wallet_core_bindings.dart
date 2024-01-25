@@ -26,6 +26,7 @@ part 'src/tw_bitcoin_message_signer.dart';
 part 'src/tw_bitcoin_script.dart';
 part 'src/tw_bitcoin_sig_hash_type.dart';
 part 'src/tw_blockchain.dart';
+part 'src/tw_cardano.dart';
 part 'src/tw_coin_type.dart';
 part 'src/tw_data.dart';
 part 'src/tw_derivation.dart';
