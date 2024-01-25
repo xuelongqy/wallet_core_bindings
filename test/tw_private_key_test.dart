@@ -89,8 +89,8 @@ void main() {
         expect(TWString.createWithHexBytes(publickKey.data).toString(),
             '0499c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c166b489a4b7c491e7688e6ebea3a71fc3a1a48d60f98d5ce84c93b65e423fde91');
 
-        final publicKeyByType =
-            privateKey.getPublicKeyByType(TWCoinTypePublicKeyType(TWCoinType.TWCoinTypeEthereum));
+        final publicKeyByType = privateKey.getPublicKeyByType(
+            TWCoinTypePublicKeyType(TWCoinType.TWCoinTypeEthereum));
 
         expect(TWString.createWithHexBytes(publickKey.data).toString(),
             TWString.createWithHexBytes(publicKeyByType.data).toString());

@@ -9,10 +9,12 @@ typedef TWHDVersion = bindings.TWHDVersion;
 ///
 /// \param [version] HD version
 /// \return true if the version is public, false otherwise
-bool TWHDVersionIsPublic(int version) => iTWBindings.TWHDVersionIsPublic(version);
+bool TWHDVersionIsPublic(int version) =>
+    iTWBindings.TWHDVersionIsPublic(version);
 
 /// Determine if the HD Version is private
 ///
 /// \param [version] HD version
 /// \return true if the version is private, false otherwise
-bool TWHDVersionIsPrivate(int version) => iTWBindings.TWHDVersionIsPrivate(version);
+bool TWHDVersionIsPrivate(int version) =>
+    iTWBindings.TWHDVersionIsPrivate(version);

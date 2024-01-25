@@ -504,12 +504,14 @@ void main() {
     });
 
     test('TWCoinTypeDerivationPathWithDerivation', () {
-      final res = TWCoinTypeDerivationPathWithDerivation(TWCoinType.TWCoinTypeBitcoin, TWDerivation.TWDerivationBitcoinLegacy);
+      final res = TWCoinTypeDerivationPathWithDerivation(
+          TWCoinType.TWCoinTypeBitcoin, TWDerivation.TWDerivationBitcoinLegacy);
       expect(res, "m/44'/0'/0'/0/0");
     });
 
     test('TWCoinTypeDerivationPathWithDerivation Solana', () {
-      final res = TWCoinTypeDerivationPathWithDerivation(TWCoinType.TWCoinTypeSolana, TWDerivation.TWDerivationSolanaSolana);
+      final res = TWCoinTypeDerivationPathWithDerivation(
+          TWCoinType.TWCoinTypeSolana, TWDerivation.TWDerivationSolanaSolana);
       expect(res, "m/44'/501'/0'/0'");
     });
   });
