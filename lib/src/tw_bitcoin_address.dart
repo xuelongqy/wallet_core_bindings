@@ -1,5 +1,6 @@
 part of '../wallet_core_bindings.dart';
 
+/// TWBitcoinAddress finalizer.
 final _twBitcoinAddressFinalizer =
     Finalizer<Pointer<bindings.TWBitcoinAddress>>(
         (Pointer<bindings.TWBitcoinAddress> token) {
@@ -66,6 +67,9 @@ class TWBitcoinAddress extends TWObjectFinalizable<bindings.TWBitcoinAddress> {
   /// \return bool indicating the addresses are equal.
   bool equal(TWBitcoinAddress another) =>
       iTWBindings.TWBitcoinAddressEqual(_pointer, another.pointer);
+
+  /// Overloaded operator ==, equivalent to [TWBitcoinAddress.equal].
+  bool operator ==(Object other) => other is TWBitcoinAddress && equal(other);
 
   /// Determines if the data is a valid Bitcoin address.
   ///
