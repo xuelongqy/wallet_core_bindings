@@ -160,7 +160,7 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   }
 
   /// Returns the address string representation.
-  String description() =>
+  String get description =>
       TWString.fromPointer(iTWBindings.TWAnyAddressDescription(_pointer))
           .toString();
 

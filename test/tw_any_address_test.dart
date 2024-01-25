@@ -224,7 +224,7 @@ void main() {
 
       final addr = TWAnyAddress.createWithPublicKey(
           publicKey: pubkey_obj, coin: TWCoinType.TWCoinTypeBitcoin);
-      expect(addr.description(), 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
+      expect(addr.description, 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
     });
 
     test('createFromPubKeyDerivation', () {
@@ -241,8 +241,7 @@ void main() {
           coin: TWCoinType.TWCoinTypeBitcoin,
           derivation: TWDerivation.TWDerivationDefault,
         );
-        expect(
-            addr.description(), 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
+        expect(addr.description, 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
       }
 
       {
@@ -251,7 +250,7 @@ void main() {
           coin: TWCoinType.TWCoinTypeBitcoin,
           derivation: TWDerivation.TWDerivationBitcoinLegacy,
         );
-        expect(addr.description(), '1JvRfEQFv5q5qy9uTSAezH7kVQf4hqnHXx');
+        expect(addr.description, '1JvRfEQFv5q5qy9uTSAezH7kVQf4hqnHXx');
       }
 
       {
@@ -260,8 +259,7 @@ void main() {
           coin: TWCoinType.TWCoinTypeBitcoin,
           derivation: TWDerivation.TWDerivationBitcoinTestnet,
         );
-        expect(
-            addr.description(), 'tb1qcj2vfjec3c3luf9fx9vddnglhh9gawmnjan4v3');
+        expect(addr.description, 'tb1qcj2vfjec3c3luf9fx9vddnglhh9gawmnjan4v3');
       }
     });
 
@@ -278,7 +276,7 @@ void main() {
             publicKey: pubkey_obj,
             filecoinAddressType:
                 TWFilecoinAddressType.TWFilecoinAddressTypeDefault);
-        final actual = addr.description();
+        final actual = addr.description;
         expect(actual, 'f1syn25x7infncgfvodhriq2dudvmudabtavm3wyy');
         expect(
             TWAnyAddress.isValid(actual, TWCoinType.TWCoinTypeFilecoin), true);
@@ -289,7 +287,7 @@ void main() {
             publicKey: pubkey_obj,
             filecoinAddressType:
                 TWFilecoinAddressType.TWFilecoinAddressTypeDelegated);
-        final actual = addr.description();
+        final actual = addr.description;
         expect(actual, 'f410fvak24cyg3saddajborn6idt7rrtfj2ptauk5pbq');
         expect(
             TWAnyAddress.isValid(actual, TWCoinType.TWCoinTypeFilecoin), true);
