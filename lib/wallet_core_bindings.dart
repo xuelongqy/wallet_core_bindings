@@ -65,4 +65,5 @@ part 'src/tw_ripple_x_address.dart';
 part 'src/tw_segwit_address.dart';
 part 'src/tw_solana_address.dart';
 part 'src/tw_ss58_address_type.dart';
+part 'src/tw_stark_ex_message_signer.dart';
 part 'src/tw_string.dart';
