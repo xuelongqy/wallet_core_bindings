@@ -6,7 +6,7 @@ class TWTHORChainSwap {
   ///
   /// \param input The serialized data of SwapInput.
   /// \return The serialized data of SwapOutput.
-  Uint8List buildSwap(Uint8List input) => TWData.fromPointer(
+  static Uint8List buildSwap(Uint8List input) => TWData.fromPointer(
           iTWBindings.TWTHORChainSwapBuildSwap(TWData(input).pointer))
       .bytes()!;
 }

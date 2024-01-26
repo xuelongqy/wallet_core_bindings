@@ -76,3 +76,4 @@ part 'src/tw_stored_key_encryption_level.dart';
 part 'src/tw_string.dart';
 part 'src/tw_tezos_message_signer.dart';
 part 'src/tw_thor_chain_swap.dart';
+part 'src/tw_transaction_compiler.dart';
