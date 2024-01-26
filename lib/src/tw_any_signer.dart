@@ -25,7 +25,7 @@ class TWAnySigner {
   }) =>
       TWString.fromPointer(iTWBindings.TWAnySignerSignJSON(
               TWString(json).pointer, key.pointer, coin))
-          .toString();
+          .value!;
 
   /// Check if AnySigner supports signing JSON representation of signing input.
   ///

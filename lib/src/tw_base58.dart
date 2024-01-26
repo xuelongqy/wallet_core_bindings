@@ -7,7 +7,7 @@ class TWBase58 {
   /// \return the encoded Base58 string with checksum.
   static String encode(Uint8List data) =>
       TWString.fromPointer(iTWBindings.TWBase58Encode(TWData(data).pointer))
-          .toString();
+          .value!;
 
   /// Encodes data as a Base58 string, not including the checksum.
   ///
@@ -15,7 +15,7 @@ class TWBase58 {
   /// \return then encoded Base58 string without checksum.
   static String encodeNoCheck(Uint8List data) => TWString.fromPointer(
           iTWBindings.TWBase58EncodeNoCheck(TWData(data).pointer))
-      .toString();
+      .value!;
 
   /// Decodes a Base58 string, checking the checksum. Returns null if the string is not a valid Base58 string.
   ///

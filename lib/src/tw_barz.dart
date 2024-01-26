@@ -8,7 +8,7 @@ class TWBarz {
   /// \return The address.
   static String getCounterfactualAddress(TWData input) => TWString.fromPointer(
           iTWBindings.TWBarzGetCounterfactualAddress(input.pointer))
-      .toString();
+      .value!;
 
   /// Returns the init code parameter of ERC-4337 User Operation
   ///

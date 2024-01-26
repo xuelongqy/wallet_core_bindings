@@ -16,7 +16,7 @@ class TWEthereumMessageSigner {
           privateKey.pointer,
           TWString(messageJson).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Sign a typed message EIP-712 V4 with EIP-155 replay attack protection.
   ///
@@ -32,7 +32,7 @@ class TWEthereumMessageSigner {
           TWString(messageJson).pointer,
           chainId,
         ),
-      ).toString();
+      ).value!;
 
   /// Sign a message.
   ///
@@ -45,7 +45,7 @@ class TWEthereumMessageSigner {
           privateKey.pointer,
           TWString(message).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Sign a message with Immutable X msg type.
   ///
@@ -59,7 +59,7 @@ class TWEthereumMessageSigner {
           privateKey.pointer,
           TWString(message).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Sign a message with Eip-155 msg type.
   ///
@@ -75,7 +75,7 @@ class TWEthereumMessageSigner {
           TWString(message).pointer,
           chainId,
         ),
-      ).toString();
+      ).value!;
 
   /// Verify signature for a message.
   ///

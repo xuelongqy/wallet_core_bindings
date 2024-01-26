@@ -16,7 +16,7 @@ void main() {
       expect(result != null, true);
       expect(result!.length, 10);
 
-      expect(TWString.createWithRawBytes(result).toString(), 'HelloWorld');
+      expect(TWString.createWithRawBytes(result).value!, 'HelloWorld');
     });
 
     test('DecodeWithAlphabet', () {
@@ -29,7 +29,7 @@ void main() {
       expect(result != null, true);
       expect(result!.length, 39);
 
-      expect(TWString.createWithRawBytes(result).toString(),
+      expect(TWString.createWithRawBytes(result).value!,
           '7uoq6tp427uzv7fztkbsnn64iwotfrristwpryy');
     });
 

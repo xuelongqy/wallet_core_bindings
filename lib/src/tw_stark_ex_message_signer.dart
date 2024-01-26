@@ -16,7 +16,7 @@ class TWStarkExMessageSigner {
           privateKey.pointer,
           TWString(message).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Verify signature for a message.
   ///

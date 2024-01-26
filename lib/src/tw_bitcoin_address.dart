@@ -88,7 +88,7 @@ class TWBitcoinAddress extends TWObjectFinalizable<bindings.TWBitcoinAddress> {
   /// Returns the address in Base58 string representation.
   String get description =>
       TWString.fromPointer(iTWBindings.TWBitcoinAddressDescription(_pointer))
-          .toString();
+          .value!;
 
   /// Returns the address prefix.
   int prefix() => iTWBindings.TWBitcoinAddressPrefix(_pointer);

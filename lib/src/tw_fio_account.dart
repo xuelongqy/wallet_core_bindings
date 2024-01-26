@@ -43,5 +43,5 @@ class TWFIOAccount extends TWObjectFinalizable<bindings.TWFIOAccount> {
   /// \return Account non-null string representation
   String get description => TWString.fromPointer(
         iTWBindings.TWFIOAccountDescription(_pointer),
-      ).toString();
+      ).value!;
 }

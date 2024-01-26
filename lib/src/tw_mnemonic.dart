@@ -22,5 +22,5 @@ class TWMnemonic {
   /// \return Single non-null string, space-separated list of words containing BIP39 words that match the given prefix.
   static String suggest(String word) => TWString.fromPointer(
           iTWBindings.TWMnemonicSuggest(TWString(word).pointer))
-      .toString();
+      .value!;
 }

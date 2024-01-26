@@ -22,7 +22,7 @@ class TWBitcoinMessageSigner {
         privateKey.pointer,
         TWString(address).pointer,
         TWString(message).pointer,
-      )).toString();
+      )).value!;
 
   /// Verify signature for a message.
   ///

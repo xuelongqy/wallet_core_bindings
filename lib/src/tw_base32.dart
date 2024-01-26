@@ -37,7 +37,7 @@ class TWBase32 {
   }) =>
       TWString.fromPointer(iTWBindings.TWBase32EncodeWithAlphabet(
               TWData(data).pointer, TWString(alphabet).pointer))
-          .toString();
+          .value!;
 
   /// Encode an input to Base32 with the default alphabet (ALPHABET_RFC4648)
   ///
@@ -46,5 +46,5 @@ class TWBase32 {
   /// \note Call TWBase32EncodeWithAlphabet with nullptr.
   static String encode(Uint8List data) =>
       TWString.fromPointer(iTWBindings.TWBase32Encode(TWData(data).pointer))
-          .toString();
+          .value!;
 }

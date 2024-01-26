@@ -14,8 +14,7 @@ void main() {
       );
       expect(publickKey.pointer != nullptr, true);
       final publicKeyData = publickKey.data;
-      expect(
-          TWString.createWithHexBytes(publicKeyData).toString(), publickKeyHex);
+      expect(TWString.createWithHexBytes(publicKeyData).value!, publickKeyHex);
     });
 
     test('Create from private Secp256k1', () {
@@ -26,7 +25,7 @@ void main() {
 
       expect(publickKey.data.length, TWPublicKey.compressedSize);
       final publickKeyData = publickKey.data;
-      expect(TWString.createWithHexBytes(publickKeyData).toString(),
+      expect(TWString.createWithHexBytes(publickKeyData).value!,
           '0399c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c1');
       expect(publickKey.description,
           '0399c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c1');
@@ -114,7 +113,7 @@ void main() {
       expect(publickKey.pointer != nullptr, true);
       expect(publickKey.type, TWPublicKeyType.TWPublicKeyTypeSECP256k1Extended);
       final publicKeyData = publickKey.data;
-      expect(TWString.createWithHexBytes(publicKeyData).toString(),
+      expect(TWString.createWithHexBytes(publicKeyData).value!,
           '0456d8089137b1fd0d890f8c7d4a04d0fd4520a30b19518ee87bd168ea12ed8090329274c4c6c0d9df04515776f2741eeffc30235d596065d718c3973e19711ad0');
     });
 

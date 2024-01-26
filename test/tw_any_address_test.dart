@@ -23,7 +23,7 @@ void main() {
         final string = '0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeEthereum);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '4e5b2e1dc63f6b91cb6cd759936495434c7e972f');
       }
 
@@ -32,7 +32,7 @@ void main() {
         final string = '0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F';
         final addr = TWAnyAddress(
             string: string, coin: TWCoinType.TWCoinTypeSmartBitcoinCash);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '4e5b2e1dc63f6b91cb6cd759936495434c7e972f');
       }
 
@@ -41,7 +41,7 @@ void main() {
         final string = '0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F';
         final addr = TWAnyAddress(
             string: string, coin: TWCoinType.TWCoinTypeKuCoinCommunityChain);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '4e5b2e1dc63f6b91cb6cd759936495434c7e972f');
       }
 
@@ -50,7 +50,7 @@ void main() {
         final string = 'bnb1hlly02l6ahjsgxw9wlcswnlwdhg4xhx38yxpd5';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeBinance);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, 'bffe47abfaede50419c577f1074fee6dd1535cd1');
       }
 
@@ -59,7 +59,7 @@ void main() {
         final string = 'bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeBitcoin);
-        final witness = TWString.createWithHexBytes(addr.data).toString();
+        final witness = TWString.createWithHexBytes(addr.data).value!;
         expect(witness, '751e76e8199196d454941c45d1b3a323f1433bd6');
       }
 
@@ -69,7 +69,7 @@ void main() {
             'bc1pw508d6qejxtdg4y5r3zarvary0c5xw7kw508d6qejxtdg4y5r3zarvary0c5xw7kt5nd6y';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeBitcoin);
-        final witness = TWString.createWithHexBytes(addr.data).toString();
+        final witness = TWString.createWithHexBytes(addr.data).value!;
         expect(witness,
             '751e76e8199196d454941c45d1b3a323f1433bd6751e76e8199196d454941c45d1b3a323f1433bd6');
       }
@@ -79,7 +79,7 @@ void main() {
         final string = 'bitcoincash:qzxf0wl63ahx6jsxu8uuldcw7n5aatwppvnteraqaw';
         final addr = TWAnyAddress(
             string: string, coin: TWCoinType.TWCoinTypeBitcoinCash);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '8c97bbfa8f6e6d4a06e1f9cfb70ef4e9deadc10b');
       }
 
@@ -88,7 +88,7 @@ void main() {
         final string = 'DQkiL71KkuGEgS9QFCKJkBeHmzM5YFYGkG';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeDogecoin);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, 'd726d32d9ff0560e7df35764987fcf01a6a343cf');
       }
 
@@ -97,7 +97,7 @@ void main() {
         final string = 'Dsb4fb7SfdLPhKVQFapGRGnokncgNiYmkAe';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeDecred);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '6ec8261586091a51ea706a62161eceba4b583b49');
       }
 
@@ -106,7 +106,7 @@ void main() {
         final string = 't3PkLgT71TnF112nSwBToXsD77yNbx2gJJY';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeZcash);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '38dfa4066f0032c86024bb5899adfa167c80189c');
       }
 
@@ -116,7 +116,7 @@ void main() {
             'nano_1ie9ffzo57nh51p53eaiqen8y6mxe1z5etcnpmucyts77qk7mqzm1x7yiyjk';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeNano);
-        final pubkey = TWString.createWithHexBytes(addr.data).toString();
+        final pubkey = TWString.createWithHexBytes(addr.data).value!;
         expect(pubkey,
             '41876b7f51968f182c30b110bb286f127d603e366954b4f6af6b252de459dff3');
       }
@@ -129,7 +129,7 @@ void main() {
 
         final expectedKeyHash = "F9dad33332CF77E783B3452aE982c85effCa6DDf";
         final keyHash = addr.data;
-        final checksumed = TWString.createWithRawBytes(keyHash).toString();
+        final checksumed = TWString.createWithRawBytes(keyHash).value!;
         expect(checksumed, expectedKeyHash);
       }
 
@@ -138,7 +138,7 @@ void main() {
         final string = 'HewiDTQv92L2bVtkziZC8ASxrFUxr6ajQ62RXAnwQ8FDVmg';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeKusama);
-        final pubkey = TWString.createWithHexBytes(addr.data).toString();
+        final pubkey = TWString.createWithHexBytes(addr.data).value!;
         expect(pubkey,
             'e0b3fcccfe0283cc0f8c105c68b5690aab8c5c1692a868e55eaca836c8779085');
       }
@@ -148,7 +148,7 @@ void main() {
         final string = '16fir1SPRAaWGtF4ZkKNDq3S6LnD9mbphGXqL923DoH85Exz';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypePolkadot);
-        final pubkey = TWString.createWithHexBytes(addr.data).toString();
+        final pubkey = TWString.createWithHexBytes(addr.data).value!;
         expect(pubkey,
             'fab55af5eaaa1a284b615946dc3dd403c44ce3448c15884d61b2dcba3ddb245a');
       }
@@ -159,7 +159,7 @@ void main() {
             'addr1q8043m5heeaydnvtmmkyuhe6qv5havvhsf0d26q3jygsspxlyfpyk6yqkw0yhtyvtr0flekj84u64az82cufmqn65zdsylzk23';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeCardano);
-        final pubkey = TWString.createWithHexBytes(addr.data).toString();
+        final pubkey = TWString.createWithHexBytes(addr.data).value!;
         expect(pubkey,
             '01df58ee97ce7a46cd8bdeec4e5f3a03297eb197825ed5681191110804df22424b6880b39e4bac8c58de9fe6d23d79aaf44756389d827aa09b');
       }
@@ -169,7 +169,7 @@ void main() {
         final string = 'AKmrAHRD9ZDUnu4m3vWWonpsojo4vgSuqp';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeNEO);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '172bdf43265c0adfe105a1a8c45b3f406a38362f24');
       }
 
@@ -179,7 +179,7 @@ void main() {
             'erd1l453hd0gt5gzdp7czpuall8ggt2dcv5zwmfdf3sd3lguxseux2fsmsgldz';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeMultiversX);
-        final pubkey = TWString.createWithHexBytes(addr.data).toString();
+        final pubkey = TWString.createWithHexBytes(addr.data).value!;
         expect(pubkey,
             'fd691bb5e85d102687d81079dffce842d4dc328276d2d4c60d8fd1c3433c3293');
       }
@@ -189,7 +189,7 @@ void main() {
         final string = 'NEARTDDWrUMdoC2rA1eU6gNrSU2zyGKdR71TNucTvsQHyfAXjKcJb';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeNEAR);
-        final pubkey = TWString.createWithHexBytes(addr.data).toString();
+        final pubkey = TWString.createWithHexBytes(addr.data).value!;
         expect(pubkey,
             '3b83b07cab54824a59c3d3f2e203a7cd913b7fcdc4439595983e2402c2cf791d');
       }
@@ -199,7 +199,7 @@ void main() {
         final string = 'ecash:qzxf0wl63ahx6jsxu8uuldcw7n5aatwppv2xdgx6me';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeECash);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash, '8c97bbfa8f6e6d4a06e1f9cfb70ef4e9deadc10b');
       }
 
@@ -208,7 +208,7 @@ void main() {
         final string = '2gVkYWexTHR5Hb2aLeQN3tnngvWzisFKXDUPrgMHpdST';
         final addr =
             TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeSolana);
-        final keyHash = TWString.createWithHexBytes(addr.data).toString();
+        final keyHash = TWString.createWithHexBytes(addr.data).value!;
         expect(keyHash,
             '18f9d8d877393bbbe8d697a8a2e52879cc7e84f467656d1cce6bab5a8d2637ec');
       }

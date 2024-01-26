@@ -19,5 +19,5 @@ class TWEthereum {
         TWString(layer).pointer,
         TWString(application).pointer,
         TWString(index).pointer,
-      )).toString();
+      )).value!;
 }

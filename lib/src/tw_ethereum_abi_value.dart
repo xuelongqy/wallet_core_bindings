@@ -98,7 +98,7 @@ class TWEthereumAbiValue {
   /// \return Non-null decoded string value
   static String decodeUInt256(Uint8List input) => TWString.fromPointer(
           iTWBindings.TWEthereumAbiValueDecodeUInt256(TWData(input).pointer))
-      .toString();
+      .value!;
 
   /// Decode an arbitrary type, return value as string
   ///
@@ -109,7 +109,7 @@ class TWEthereumAbiValue {
       TWString.fromPointer(iTWBindings.TWEthereumAbiValueDecodeValue(
         TWData(input).pointer,
         TWString(type).pointer,
-      )).toString();
+      )).value!;
 
   /// Decode an array of given simple types.  Return a '\n'-separated string of elements
   ///
@@ -120,5 +120,5 @@ class TWEthereumAbiValue {
       TWString.fromPointer(iTWBindings.TWEthereumAbiValueDecodeArray(
         TWData(input).pointer,
         TWString(type).pointer,
-      )).toString();
+      )).value!;
 }

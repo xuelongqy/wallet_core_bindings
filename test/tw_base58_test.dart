@@ -27,14 +27,14 @@ void main() {
     test('Decode', () {
       final input = '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx';
       final result = TWBase58.decode(input);
-      expect(TWString.createWithHexBytes(result!).toString(),
+      expect(TWString.createWithHexBytes(result!).value!,
           '00769bdff96a02f9135a1d19b749db6a78fe07dc90');
     });
 
     test('DecodeNoCheck', () {
       final input = '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx';
       final result = TWBase58.decodeNoCheck(input);
-      expect(TWString.createWithHexBytes(result!).toString(),
+      expect(TWString.createWithHexBytes(result!).value!,
           '00769bdff96a02f9135a1d19b749db6a78fe07dc90c3507da5');
     });
 
@@ -48,7 +48,7 @@ void main() {
       final input = '1Bp9U1ogV3A14FMvKbRJms7ctyso5FdSz2';
       final result = TWBase58.decodeNoCheck(input);
       // decodes despite wrong checksum
-      expect(TWString.createWithHexBytes(result!).toString(),
+      expect(TWString.createWithHexBytes(result!).value!,
           '00769bdff96a02f9135a1d19b749db6a78fe07dc90deadbeef');
     });
 

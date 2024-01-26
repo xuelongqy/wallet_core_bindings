@@ -39,5 +39,5 @@ class TWNEARAccount extends TWObjectFinalizable<bindings.TWNEARAccount> {
   /// Returns the user friendly string representation.
   String get description => TWString.fromPointer(
         iTWBindings.TWNEARAccountDescription(_pointer),
-      ).toString();
+      ).value!;
 }

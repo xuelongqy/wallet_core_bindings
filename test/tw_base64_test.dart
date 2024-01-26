@@ -9,7 +9,7 @@ void main() {
 
       expect(result.length, 5);
 
-      expect(TWString.createWithRawBytes(result).toString(), '+\'?ab');
+      expect(TWString.createWithRawBytes(result).value!, '+\'?ab');
     });
 
     test('Encode', () {
@@ -25,7 +25,7 @@ void main() {
 
       expect(result.length, 5);
 
-      expect(TWString.createWithRawBytes(result).toString(), '+\'?ab');
+      expect(TWString.createWithRawBytes(result).value!, '+\'?ab');
     });
 
     test('Encode', () {

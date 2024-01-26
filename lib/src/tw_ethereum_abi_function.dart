@@ -43,7 +43,7 @@ class TWEthereumAbiFunction
   /// Return the function type signature, of the form "baz(int32,uint256)"
   String getType() => TWString.fromPointer(
         iTWBindings.TWEthereumAbiFunctionGetType(_pointer),
-      ).toString();
+      ).value!;
 
   /// Methods for adding parameters of the given type (input or output).
   /// For output parameters (isOutput=true) a value has to be specified, although usually not need;
@@ -312,7 +312,7 @@ class TWEthereumAbiFunction
   String getParamString(int idx, bool isOutput) =>
       TWString.fromPointer(iTWBindings.TWEthereumAbiFunctionGetParamString(
               _pointer, idx, isOutput))
-          .toString();
+          .value!;
 
   /// Get an address type parameter at the given index
   ///

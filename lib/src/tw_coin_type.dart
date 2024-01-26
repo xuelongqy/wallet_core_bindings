@@ -48,7 +48,7 @@ bool TWCoinTypeValidate(int coin, String address) =>
 /// \param [coin] A coin type
 /// \return the default derivation path for the given coin type.
 String TWCoinTypeDerivationPath(int coin) =>
-    TWString.fromPointer(iTWBindings.TWCoinTypeDerivationPath(coin)).toString();
+    TWString.fromPointer(iTWBindings.TWCoinTypeDerivationPath(coin)).value!;
 
 /// Returns the derivation path for a particular coin with the explicit given derivation.
 ///
@@ -58,7 +58,7 @@ String TWCoinTypeDerivationPath(int coin) =>
 String TWCoinTypeDerivationPathWithDerivation(int coin, int derivation) =>
     TWString.fromPointer(iTWBindings.TWCoinTypeDerivationPathWithDerivation(
             coin, derivation))
-        .toString();
+        .value!;
 
 /// Derives the address for a particular coin from the private key.
 ///
@@ -68,7 +68,7 @@ String TWCoinTypeDerivationPathWithDerivation(int coin, int derivation) =>
 String TWCoinTypeDeriveAddress(int coin, TWPrivateKey privateKey) =>
     TWString.fromPointer(
             iTWBindings.TWCoinTypeDeriveAddress(coin, privateKey.pointer))
-        .toString();
+        .value!;
 
 /// Derives the address for a particular coin from the public key.
 ///
@@ -78,7 +78,7 @@ String TWCoinTypeDeriveAddress(int coin, TWPrivateKey privateKey) =>
 String TWCoinTypeDeriveAddressFromPublicKey(int coin, TWPublicKey publicKey) =>
     TWString.fromPointer(iTWBindings.TWCoinTypeDeriveAddressFromPublicKey(
             coin, publicKey.pointer))
-        .toString();
+        .value!;
 
 /// Derives the address for a particular coin from the public key with the derivation.
 String TWCoinTypeDeriveAddressFromPublicKeyAndDerivation(
@@ -88,7 +88,7 @@ String TWCoinTypeDeriveAddressFromPublicKeyAndDerivation(
       coin,
       publicKey.pointer,
       derivation,
-    )).toString();
+    )).value!;
 
 /// HRP for this coin type
 ///
@@ -121,7 +121,7 @@ int TWCoinTypeStaticPrefix(int coin) =>
 /// \return ChainID for the given coin type.
 /// \note Caller must free returned object.
 String TWCoinTypeChainId(int coin) =>
-    TWString.fromPointer(iTWBindings.TWCoinTypeChainId(coin)).toString();
+    TWString.fromPointer(iTWBindings.TWCoinTypeChainId(coin)).value!;
 
 /// SLIP-0044 id for this coin type
 ///

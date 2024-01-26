@@ -9,7 +9,7 @@ class TWCoinTypeConfiguration {
   /// \note Caller must free returned object
   static String getSymbol(int type) =>
       TWString.fromPointer(iTWBindings.TWCoinTypeConfigurationGetSymbol(type))
-          .toString();
+          .value!;
 
   /// Returns max count decimal places for minimal coin unit
   ///
@@ -27,7 +27,7 @@ class TWCoinTypeConfiguration {
       TWString.fromPointer(iTWBindings.TWCoinTypeConfigurationGetTransactionURL(
         type,
         TWString(transactionID).pointer,
-      )).toString();
+      )).value!;
 
   /// Returns account url in blockchain explorer
   ///
@@ -38,7 +38,7 @@ class TWCoinTypeConfiguration {
       TWString.fromPointer(iTWBindings.TWCoinTypeConfigurationGetAccountURL(
         type,
         TWString(accountID).pointer,
-      )).toString();
+      )).value!;
 
   /// Returns full name of coin in lower case
   ///
@@ -46,7 +46,7 @@ class TWCoinTypeConfiguration {
   /// \return Returns a non-null TWString, full name of coin in lower case
   static String getID(int type) =>
       TWString.fromPointer(iTWBindings.TWCoinTypeConfigurationGetID(type))
-          .toString();
+          .value!;
 
   /// Returns full name of coin
   ///
@@ -54,5 +54,5 @@ class TWCoinTypeConfiguration {
   /// \return Returns a non-null TWString, full name of coin
   static String getName(int type) =>
       TWString.fromPointer(iTWBindings.TWCoinTypeConfigurationGetName(type))
-          .toString();
+          .value!;
 }

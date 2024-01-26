@@ -7,7 +7,7 @@ class TWBase64 {
   /// \return The encoded data
   static String encode(Uint8List data) =>
       TWString.fromPointer(iTWBindings.TWBase64Encode(TWData(data).pointer))
-          .toString();
+          .value!;
 
   /// Encode an input to Base64 with the alphabet safe for URL-s and filenames (RFC4648 with '-', '_')
   ///
@@ -15,7 +15,7 @@ class TWBase64 {
   /// \return The encoded data
   static String encodeUrl(Uint8List data) =>
       TWString.fromPointer(iTWBindings.TWBase64EncodeUrl(TWData(data).pointer))
-          .toString();
+          .value!;
 
   /// Decode a Base64 input with the default alphabet (RFC4648 with '+', '/')
   ///

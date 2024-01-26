@@ -24,7 +24,8 @@ class TWTronMessageSigner {
   /// \param [message] the message signed (without prefix)
   /// \param [signature] in Hex-encoded form.
   /// \returns false on any invalid input (does not throw), true if the message can be recovered from the signature
-  static bool verifyMessage(TWPublicKey pubKey, String message, String signature) =>
+  static bool verifyMessage(
+          TWPublicKey pubKey, String message, String signature) =>
       iTWBindings.TWTronMessageSignerVerifyMessage(
         pubKey.pointer,
         TWString(message).pointer,

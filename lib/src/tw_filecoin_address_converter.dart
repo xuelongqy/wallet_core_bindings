@@ -10,7 +10,7 @@ class TWFilecoinAddressConverter {
         iTWBindings.TWFilecoinAddressConverterConvertToEthereum(
           TWString(filecoinAddress).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Converts an Ethereum address to Filecoin.
   ///
@@ -20,5 +20,5 @@ class TWFilecoinAddressConverter {
         iTWBindings.TWFilecoinAddressConverterConvertFromEthereum(
           TWString(ethAddress).pointer,
         ),
-      ).toString();
+      ).value!;
 }

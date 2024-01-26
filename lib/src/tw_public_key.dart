@@ -157,6 +157,5 @@ class TWPublicKey extends TWObjectFinalizable<bindings.TWPublicKey> {
   ///
   /// \return Non-null pointer to a string representing the description of the public key
   String get description =>
-      TWString.fromPointer(iTWBindings.TWPublicKeyDescription(_pointer))
-          .toString();
+      TWString.fromPointer(iTWBindings.TWPublicKeyDescription(_pointer)).value!;
 }

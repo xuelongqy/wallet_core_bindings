@@ -16,7 +16,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha1(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -31,7 +31,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -46,7 +46,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha512(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -63,7 +63,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha512_256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -78,7 +78,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.keccak256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -93,7 +93,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.keccak512(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -108,7 +108,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha3_256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -123,7 +123,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha3_512(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -136,7 +136,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.ripemd(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -151,7 +151,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.blake256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -166,7 +166,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.blake2b(data, 64);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -181,7 +181,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.groestl512(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -196,7 +196,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha256SHA256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -209,7 +209,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha256RIPEMD(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -222,7 +222,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.sha3_256RIPEMD(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -237,7 +237,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.blake256Blake256(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -250,7 +250,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.blake256RIPEMD(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
 
@@ -265,7 +265,7 @@ void main() {
       for (final item in tests.entries) {
         final data = TWData(TWString(item.key).bytes()).bytes()!;
         final hash = TWHash.groestl512Groestl512(data);
-        expect(TWString.createWithHexBytes(hash).toString(), item.value);
+        expect(TWString.createWithHexBytes(hash).value!, item.value);
       }
     });
   });

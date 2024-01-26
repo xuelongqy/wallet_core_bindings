@@ -75,7 +75,7 @@ class TWEthereumAbi {
   static String decodeCall(Uint8List data, String abi) => TWString.fromPointer(
         iTWBindings.TWEthereumAbiDecodeCall(
             TWData(data).pointer, TWString(abi).pointer),
-      ).toString();
+      ).value!;
 
   /// Compute the hash of a struct, used for signing, according to EIP712 ("v4").
   /// Input is a Json object (as string), with following fields:

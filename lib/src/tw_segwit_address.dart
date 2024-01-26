@@ -76,7 +76,7 @@ class TWSegwitAddress extends TWObjectFinalizable<bindings.TWSegwitAddress> {
   /// Returns the address string representation.
   String get description => TWString.fromPointer(
         iTWBindings.TWSegwitAddressDescription(_pointer),
-      ).toString();
+      ).value!;
 
   /// Returns the human-readable part.
   int get hrp => iTWBindings.TWSegwitAddressHRP(_pointer);

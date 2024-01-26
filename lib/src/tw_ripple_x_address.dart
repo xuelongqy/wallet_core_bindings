@@ -76,7 +76,7 @@ class TWRippleXAddress extends TWObjectFinalizable<bindings.TWRippleXAddress> {
   /// Returns the address string representation.
   String get description => TWString.fromPointer(
         iTWBindings.TWRippleXAddressDescription(_pointer),
-      ).toString();
+      ).value!;
 
   /// Returns the destination tag.
   int get tag => iTWBindings.TWRippleXAddressTag(_pointer);

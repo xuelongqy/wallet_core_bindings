@@ -236,12 +236,11 @@ class TWStoredKey extends TWObjectFinalizable<bindings.TWStoredKey> {
 
   /// Stored key unique identifier.
   String get identifier =>
-      TWString.fromPointer(iTWBindings.TWStoredKeyIdentifier(_pointer))
-          .toString();
+      TWString.fromPointer(iTWBindings.TWStoredKeyIdentifier(_pointer)).value!;
 
   /// Stored key namer.
   String get name =>
-      TWString.fromPointer(iTWBindings.TWStoredKeyName(_pointer)).toString();
+      TWString.fromPointer(iTWBindings.TWStoredKeyName(_pointer)).value!;
 
   /// Whether this key is a mnemonic phrase for a HD wallet.
   bool get isMnemonic => iTWBindings.TWStoredKeyIsMnemonic(_pointer);
@@ -394,7 +393,7 @@ class TWStoredKey extends TWObjectFinalizable<bindings.TWStoredKey> {
           _pointer,
           TWData(password).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Returns the private key for a specific coin.  Returned object needs to be deleted.
   ///

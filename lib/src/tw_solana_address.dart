@@ -48,10 +48,10 @@ class TWSolanaAddress extends TWObjectFinalizable<bindings.TWSolanaAddress> {
           _pointer,
           TWString(tokenMintAddress).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Returns the address string representation.
   String get description => TWString.fromPointer(
         iTWBindings.TWSolanaAddressDescription(_pointer),
-      ).toString();
+      ).value!;
 }

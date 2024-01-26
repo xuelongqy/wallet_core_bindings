@@ -13,7 +13,7 @@ void main() {
       expect(privateKey.pointer != nullptr, true);
 
       final data = privateKey.data;
-      expect(TWString.createWithHexBytes(data).toString(), key1Hex);
+      expect(TWString.createWithHexBytes(data).value!, key1Hex);
     });
 
     test('Create new random', () {
@@ -70,39 +70,39 @@ void main() {
           'afeefca74d9a325cf1d6b6911d61a65c32afa8e02bd5e78e2e4ac2910bab45f5');
       {
         final publickKey = privateKey.getPublicKeySecp256k1(false);
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
             '0499c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c166b489a4b7c491e7688e6ebea3a71fc3a1a48d60f98d5ce84c93b65e423fde91');
       }
       {
         final publickKey = privateKey.getPublicKeyNist256p1();
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
             '026d786ab8fda678cf50f71d13641049a393b325063b8c0d4e5070de48a2caf9ab');
       }
       {
         final publickKey = privateKey.getPublicKeyCurve25519();
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
             '686cfce9108566dd43fc6aa75e31f9a9f319c9e9c04d6ad0a52505b86bc17c3a');
       }
       {
         final publickKey =
             privateKey.getPublicKey(TWCoinType.TWCoinTypeEthereum);
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
             '0499c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c166b489a4b7c491e7688e6ebea3a71fc3a1a48d60f98d5ce84c93b65e423fde91');
 
         final publicKeyByType = privateKey.getPublicKeyByType(
             TWCoinTypePublicKeyType(TWCoinType.TWCoinTypeEthereum));
 
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
-            TWString.createWithHexBytes(publicKeyByType.data).toString());
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
+            TWString.createWithHexBytes(publicKeyByType.data).value!);
       }
       {
         final publickKey = privateKey.getPublicKey(TWCoinType.TWCoinTypeNEO);
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
             '026d786ab8fda678cf50f71d13641049a393b325063b8c0d4e5070de48a2caf9ab');
       }
       {
         final publickKey = privateKey.getPublicKey(TWCoinType.TWCoinTypeWaves);
-        expect(TWString.createWithHexBytes(publickKey.data).toString(),
+        expect(TWString.createWithHexBytes(publickKey.data).value!,
             '686cfce9108566dd43fc6aa75e31f9a9f319c9e9c04d6ad0a52505b86bc17c3a');
       }
     });
@@ -117,7 +117,7 @@ void main() {
 
       final actual = privateKey.sign(hash, TWCurve.TWCurveSECP256k1);
 
-      expect(TWString.createWithHexBytes(actual).toString(),
+      expect(TWString.createWithHexBytes(actual).value!,
           '8720a46b5b3963790d94bcc61ad57ca02fd153584315bfa161ed3455e336ba624d68df010ed934b8792c5b6a57ba86c3da31d039f9612b44d1bf054132254de901');
     });
 
@@ -131,7 +131,7 @@ void main() {
 
       final actual = privateKey.signAsDER(hash);
 
-      expect(TWString.createWithHexBytes(actual).toString(),
+      expect(TWString.createWithHexBytes(actual).value!,
           '30450221008720a46b5b3963790d94bcc61ad57ca02fd153584315bfa161ed3455e336ba6202204d68df010ed934b8792c5b6a57ba86c3da31d039f9612b44d1bf054132254de9');
     });
   });

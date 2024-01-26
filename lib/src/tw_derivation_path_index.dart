@@ -50,5 +50,5 @@ class TWDerivationPathIndex
   /// Returns the string description of a derivation path index.
   String get description => TWString.fromPointer(
           iTWBindings.TWDerivationPathIndexDescription(_pointer))
-      .toString();
+      .value!;
 }

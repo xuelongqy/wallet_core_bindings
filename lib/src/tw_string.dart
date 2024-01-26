@@ -86,11 +86,6 @@ class TWString extends TWObjectFinalizable<Void> {
   /// Returns raw data.
   Uint8List bytes() => utf8Bytes().cast<Uint8>().asTypedList(size);
 
-  @override
-  String toString() {
-    return value.toString();
-  }
-
   /// Returns the string value.
   String? get value {
     if (_pointer == nullptr) {

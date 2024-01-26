@@ -77,5 +77,5 @@ class TWGroestlcoinAddress
   /// Returns the address base58 string representation.
   String get description => TWString.fromPointer(
         iTWBindings.TWGroestlcoinAddressDescription(_pointer),
-      ).toString();
+      ).value!;
 }

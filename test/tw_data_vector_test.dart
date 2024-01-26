@@ -31,7 +31,7 @@ void main() {
 
       final readElem1 = vec.get(0);
 
-      expect(TWString.createWithHexBytes(readElem1!).toString(), elem1d);
+      expect(TWString.createWithHexBytes(readElem1!).value!, elem1d);
     });
 
     test('Add', () {
@@ -46,7 +46,7 @@ void main() {
 
       expect(vec.size, 1);
       final readElem1 = vec.get(0);
-      expect(TWString.createWithHexBytes(readElem1!).toString(), elem1d);
+      expect(TWString.createWithHexBytes(readElem1!).value!, elem1d);
 
       final elem2d = '0202';
       final elem2 = TWData.createWithHexString(elem2d);
@@ -54,7 +54,7 @@ void main() {
 
       expect(vec.size, 2);
       final readElem2 = vec.get(1);
-      expect(TWString.createWithHexBytes(readElem2!).toString(), elem2d);
+      expect(TWString.createWithHexBytes(readElem2!).value!, elem2d);
     });
 
     test('Get', () {
@@ -68,7 +68,7 @@ void main() {
       {
         // Get element
         final readElem1 = vec.get(0);
-        expect(TWString.createWithHexBytes(readElem1!).toString(), elem1d);
+        expect(TWString.createWithHexBytes(readElem1!).value!, elem1d);
       }
 
       {

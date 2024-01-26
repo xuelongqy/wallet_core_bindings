@@ -52,7 +52,7 @@ class TWAccount extends TWObjectFinalizable<bindings.TWAccount> {
 
   /// Returns the address of an account.
   String get address =>
-      TWString.fromPointer(iTWBindings.TWAccountAddress(_pointer)).toString();
+      TWString.fromPointer(iTWBindings.TWAccountAddress(_pointer)).value!;
 
   /// Return CoinType enum of an account.
   int get coin => iTWBindings.TWAccountCoin(_pointer);
@@ -63,14 +63,14 @@ class TWAccount extends TWObjectFinalizable<bindings.TWAccount> {
   /// Returns hex encoded publicKey of an account.
   String get derivationPath =>
       TWString.fromPointer(iTWBindings.TWAccountDerivationPath(_pointer))
-          .toString();
+          .value!;
 
   /// Returns hex encoded publicKey of an account.
   String get publicKey =>
-      TWString.fromPointer(iTWBindings.TWAccountPublicKey(_pointer)).toString();
+      TWString.fromPointer(iTWBindings.TWAccountPublicKey(_pointer)).value!;
 
   /// Returns Base58 encoded extendedPublicKey of an account.
   String get extendedPublicKey =>
       TWString.fromPointer(iTWBindings.TWAccountExtendedPublicKey(_pointer))
-          .toString();
+          .value!;
 }

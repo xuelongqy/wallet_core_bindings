@@ -24,7 +24,7 @@ class TWCardano {
         TWString(toAddress).pointer,
         TWData(tokenBundle).pointer,
         TWString(coinsPerUtxoByte).pointer,
-      )).toString();
+      )).value!;
 
   /// Return the staking address associated to (contained in) this address. Must be a Base address.
   /// Empty string is returned on error. Result must be freed.
@@ -32,12 +32,12 @@ class TWCardano {
   /// \return the associated staking (reward) address, as string, or empty string on error.
   static String getStakingAddress(String baseAddress) => TWString.fromPointer(
           iTWBindings.TWCardanoGetStakingAddress(TWString(baseAddress).pointer))
-      .toString();
+      .value!;
 
   /// Return the legacy(byron) address.
   /// \param [publicKey] A valid public key with TWPublicKeyTypeED25519Cardano type.
   /// \return the legacy(byron) address, as string, or empty string on error.
   static String getByronAddress(TWPublicKey publicKey) => TWString.fromPointer(
           iTWBindings.TWCardanoGetByronAddress(publicKey.pointer))
-      .toString();
+      .value!;
 }

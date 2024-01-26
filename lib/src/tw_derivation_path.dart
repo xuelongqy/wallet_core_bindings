@@ -103,5 +103,5 @@ class TWDerivationPath extends TWObjectFinalizable<bindings.TWDerivationPath> {
   /// \return The string description of the derivation path.
   String get description =>
       TWString.fromPointer(iTWBindings.TWDerivationPathDescription(_pointer))
-          .toString();
+          .value!;
 }

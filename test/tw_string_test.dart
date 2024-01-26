@@ -10,7 +10,7 @@ void main() {
       Uint8List bytes = Uint8List.fromList([0xde, 0xad, 0xbe, 0xef]);
       TWString string2 = TWString.createWithHexData(TWData(bytes));
 
-      expect(string.toString(), 'deadbeef');
+      expect(string.value!, 'deadbeef');
       expect(string.size, 8);
       expect(string[1], 'e');
       expect(string == string2, true);

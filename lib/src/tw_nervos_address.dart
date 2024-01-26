@@ -57,7 +57,7 @@ class TWNervosAddress extends TWObjectFinalizable<bindings.TWNervosAddress> {
   /// Returns the address string representation.
   String get description => TWString.fromPointer(
         iTWBindings.TWNervosAddressDescription(_pointer),
-      ).toString();
+      ).value!;
 
   /// Returns the Code hash
   Uint8List get codeHash => TWData.fromPointer(
@@ -67,7 +67,7 @@ class TWNervosAddress extends TWObjectFinalizable<bindings.TWNervosAddress> {
   /// Returns the address hash type
   String get hashType => TWString.fromPointer(
         iTWBindings.TWNervosAddressHashType(_pointer),
-      ).toString();
+      ).value!;
 
   /// Returns the address args data.
   Uint8List get args => TWData.fromPointer(

@@ -162,7 +162,7 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// Returns the address string representation.
   String get description =>
       TWString.fromPointer(iTWBindings.TWAnyAddressDescription(_pointer))
-          .toString();
+          .value!;
 
   /// Returns coin type of address.
   int coin() => iTWBindings.TWAnyAddressCoin(_pointer);

@@ -109,7 +109,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
   ///
   /// \return The wallet mnemonic as a non-null TWString
   String get mnemonic =>
-      TWString.fromPointer(iTWBindings.TWHDWalletMnemonic(_pointer)).toString();
+      TWString.fromPointer(iTWBindings.TWHDWalletMnemonic(_pointer)).value!;
 
   /// Wallet entropy
   ///
@@ -139,7 +139,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
   /// \return return the default address for the specified coin as a non-null TWString
   String getAddressForCoin(int coin) => TWString.fromPointer(
           iTWBindings.TWHDWalletGetAddressForCoin(_pointer, coin))
-      .toString();
+      .value!;
 
   /// Generates the default address for the specified coin and derivation (without exposing intermediary private key).
   ///
@@ -150,7 +150,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
   String getAddressDerivation(int coin, int derivation) =>
       TWString.fromPointer(iTWBindings.TWHDWalletGetAddressDerivation(
               _pointer, coin, derivation))
-          .toString();
+          .value!;
 
   /// Generates the private key for the specified derivation path.
   ///
@@ -231,7 +231,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
         purpose,
         coin,
         version,
-      )).toString();
+      )).value!;
 
   /// Returns the extended public key (for default 0 account).
   ///
@@ -249,7 +249,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
         purpose,
         coin,
         version,
-      )).toString();
+      )).value!;
 
   /// Returns the extended private key, for custom account.
   ///
@@ -273,7 +273,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
         derivation,
         version,
         account,
-      )).toString();
+      )).value!;
 
   /// Returns the extended public key, for custom account.
   ///
@@ -297,7 +297,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
         derivation,
         version,
         account,
-      )).toString();
+      )).value!;
 
   /// Returns the extended private key (for default 0 account with derivation).
   ///
@@ -319,7 +319,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
         coin,
         derivation,
         version,
-      )).toString();
+      )).value!;
 
   /// Returns the extended public key (for default 0 account with derivation).
   ///
@@ -340,7 +340,7 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
         coin,
         derivation,
         version,
-      )).toString();
+      )).value!;
 
   /// Computes the public key from an extended public key representation.
   ///

@@ -12,7 +12,7 @@ class TWTezosMessageSigner {
           TWString(message).pointer,
           TWString(url).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Implement input to payload as described in: https://tezostaquito.io/docs/signing/
   ///
@@ -22,7 +22,7 @@ class TWTezosMessageSigner {
         iTWBindings.TWTezosMessageSignerInputToPayload(
           TWString(message).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Sign a message as described in https://tezostaquito.io/docs/signing/
   ///
@@ -35,7 +35,7 @@ class TWTezosMessageSigner {
           privateKey.pointer,
           TWString(message).pointer,
         ),
-      ).toString();
+      ).value!;
 
   /// Verify signature for a message as described in https://tezostaquito.io/docs/signing/
   ///

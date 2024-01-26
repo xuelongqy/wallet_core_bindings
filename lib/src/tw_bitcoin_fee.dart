@@ -11,5 +11,5 @@ class TWBitcoinFee {
       TWString.fromPointer(iTWBindings.TWBitcoinFeeCalculateFee(
         TWData(data).pointer,
         TWString(satVb).pointer,
-      )).toString();
+      )).value!;
 }
