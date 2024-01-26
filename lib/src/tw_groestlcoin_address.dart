@@ -71,7 +71,7 @@ class TWGroestlcoinAddress
   ///
   /// \param [string] Non-null string.
   /// \return true if it's a valid address, false otherwise
-  bool isValidString(String string) =>
+  static bool isValidString(String string) =>
       iTWBindings.TWGroestlcoinAddressIsValidString(TWString(string).pointer);
 
   /// Returns the address base58 string representation.

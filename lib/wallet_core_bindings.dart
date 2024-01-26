@@ -61,4 +61,5 @@ part 'src/tw_private_key_type.dart';
 part 'src/tw_public_key.dart';
 part 'src/tw_public_key_type.dart';
 part 'src/tw_purpose.dart';
+part 'src/tw_ripple_x_address.dart';
 part 'src/tw_string.dart';
