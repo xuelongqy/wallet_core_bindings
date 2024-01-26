@@ -77,3 +77,4 @@ part 'src/tw_string.dart';
 part 'src/tw_tezos_message_signer.dart';
 part 'src/tw_thor_chain_swap.dart';
 part 'src/tw_transaction_compiler.dart';
+part 'src/tw_tron_message_signer.dart';

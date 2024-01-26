@@ -439,5 +439,5 @@ class TWStoredKey extends TWObjectFinalizable<bindings.TWStoredKey> {
   /// \param key Non-null pointer to a stored key
   String? get encryptionParameters => TWString.fromPointer(
         iTWBindings.TWStoredKeyEncryptionParameters(_pointer),
-      ).value();
+      ).value;
 }

@@ -92,7 +92,7 @@ class TWString extends TWObjectFinalizable<Void> {
   }
 
   /// Returns the string value.
-  String? value() {
+  String? get value {
     if (_pointer == nullptr) {
       return null;
     }
