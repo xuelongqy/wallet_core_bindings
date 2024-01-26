@@ -20,8 +20,6 @@ class TWFIOAccount extends TWObjectFinalizable<bindings.TWFIOAccount> {
   /// Create a FIO Account
   ///
   /// \param [string] Account name
-  /// \note Must be deleted with \TWFIOAccountDelete
-  /// \return Pointer to a nullable FIO Account
   TWFIOAccount(
     String string, {
     bool attach = true,
