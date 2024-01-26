@@ -79,3 +79,4 @@ part 'src/tw_thor_chain_swap.dart';
 part 'src/tw_transaction_compiler.dart';
 part 'src/tw_tron_message_signer.dart';
 part 'src/tw_wallet_connect_request.dart';
+part 'src/tw_web_authn.dart';
