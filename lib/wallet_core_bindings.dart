@@ -70,6 +70,7 @@ part 'src/tw_stark_ware.dart';
 part 'src/tw_stellar_memo_type.dart';
 part 'src/tw_stellar_passphrase.dart';
 part 'src/tw_stellar_version_byte.dart';
+part 'src/tw_stored_key.dart';
 part 'src/tw_stored_key_encryption.dart';
 part 'src/tw_stored_key_encryption_level.dart';
 part 'src/tw_string.dart';

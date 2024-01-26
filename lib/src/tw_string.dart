@@ -88,9 +88,16 @@ class TWString extends TWObjectFinalizable<Void> {
 
   @override
   String toString() {
+    return value.toString();
+  }
+
+  /// Returns the string value.
+  String? value() {
+    if (_pointer == nullptr) {
+      return null;
+    }
     Pointer<Char> resPointer = utf8Bytes();
     String res = resPointer.cast<Utf8>().toDartString();
-    //malloc.free(resPointer);
     return res;
   }
 
