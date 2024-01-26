@@ -10,7 +10,7 @@ class TWTronMessageSigner {
   /// \param [privateKey] the private key used for signing
   /// \param [message] A custom message which is input to the signing.
   /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
-  String? signMessage(TWPrivateKey privateKey, String message) =>
+  static String? signMessage(TWPrivateKey privateKey, String message) =>
       TWString.fromPointer(
         iTWBindings.TWTronMessageSignerSignMessage(
           privateKey.pointer,
@@ -24,7 +24,7 @@ class TWTronMessageSigner {
   /// \param [message] the message signed (without prefix)
   /// \param [signature] in Hex-encoded form.
   /// \returns false on any invalid input (does not throw), true if the message can be recovered from the signature
-  bool verifyMessage(TWPublicKey pubKey, String message, String signature) =>
+  static bool verifyMessage(TWPublicKey pubKey, String message, String signature) =>
       iTWBindings.TWTronMessageSignerVerifyMessage(
         pubKey.pointer,
         TWString(message).pointer,
