@@ -53,6 +53,7 @@ part 'src/tw_hrp.dart';
 part 'src/tw_liquid_staking.dart';
 part 'src/tw_mnemonic.dart';
 part 'src/tw_near_account.dart';
+part 'src/tw_nervos_address.dart';
 part 'src/tw_object.dart';
 part 'src/tw_private_key.dart';
 part 'src/tw_private_key_type.dart';
