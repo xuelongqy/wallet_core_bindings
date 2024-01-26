@@ -46,6 +46,7 @@ const InputSelector$json = {
   '2': [
     {'1': 'SelectAscending', '2': 0},
     {'1': 'SelectInOrder', '2': 1},
+    {'1': 'SelectDescending', '2': 2},
     {'1': 'UseAll', '2': 10},
   ],
 };
@@ -53,7 +54,7 @@ const InputSelector$json = {
 /// Descriptor for `InputSelector`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List inputSelectorDescriptor = $convert.base64Decode(
     'Cg1JbnB1dFNlbGVjdG9yEhMKD1NlbGVjdEFzY2VuZGluZxAAEhEKDVNlbGVjdEluT3JkZXIQAR'
-    'IKCgZVc2VBbGwQCg==');
+    'IUChBTZWxlY3REZXNjZW5kaW5nEAISCgoGVXNlQWxsEAo=');
 
 @$core.Deprecated('Use signingMethodDescriptor instead')
 const SigningMethod$json = {

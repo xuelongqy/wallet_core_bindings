@@ -3817,6 +3817,107 @@ class Message extends $pb.GeneratedMessage {
   Message_THORChainDeposit ensureThorchainDepositMessage() => $_ensure(21);
 }
 
+/// Custom Signer info required to sign a transaction and generate a broadcast JSON message.
+class SignerInfo extends $pb.GeneratedMessage {
+  factory SignerInfo({
+    SignerPublicKeyType? publicKeyType,
+    $core.String? jsonType,
+    $core.String? protobufType,
+  }) {
+    final $result = create();
+    if (publicKeyType != null) {
+      $result.publicKeyType = publicKeyType;
+    }
+    if (jsonType != null) {
+      $result.jsonType = jsonType;
+    }
+    if (protobufType != null) {
+      $result.protobufType = protobufType;
+    }
+    return $result;
+  }
+  SignerInfo._() : super();
+  factory SignerInfo.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SignerInfo.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SignerInfo',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Cosmos.Proto'),
+      createEmptyInstance: create)
+    ..e<SignerPublicKeyType>(
+        1, _omitFieldNames ? '' : 'publicKeyType', $pb.PbFieldType.OE,
+        defaultOrMaker: SignerPublicKeyType.Secp256k1,
+        valueOf: SignerPublicKeyType.valueOf,
+        enumValues: SignerPublicKeyType.values)
+    ..aOS(2, _omitFieldNames ? '' : 'jsonType')
+    ..aOS(3, _omitFieldNames ? '' : 'protobufType')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  SignerInfo clone() => SignerInfo()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SignerInfo copyWith(void Function(SignerInfo) updates) =>
+      super.copyWith((message) => updates(message as SignerInfo)) as SignerInfo;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SignerInfo create() => SignerInfo._();
+  SignerInfo createEmptyInstance() => create();
+  static $pb.PbList<SignerInfo> createRepeated() => $pb.PbList<SignerInfo>();
+  @$core.pragma('dart2js:noInline')
+  static SignerInfo getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SignerInfo>(create);
+  static SignerInfo? _defaultInstance;
+
+  /// Public key type used to sign a transaction.
+  /// It can be different from the value from `registry.json`.
+  @$pb.TagNumber(1)
+  SignerPublicKeyType get publicKeyType => $_getN(0);
+  @$pb.TagNumber(1)
+  set publicKeyType(SignerPublicKeyType v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPublicKeyType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPublicKeyType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get jsonType => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set jsonType($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasJsonType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearJsonType() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get protobufType => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set protobufType($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasProtobufType() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearProtobufType() => clearField(3);
+}
+
 /// Input data necessary to create a signed transaction.
 class SigningInput extends $pb.GeneratedMessage {
   factory SigningInput({
@@ -3830,6 +3931,8 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.Iterable<Message>? messages,
     BroadcastMode? mode,
     $core.List<$core.int>? publicKey,
+    TxHasher? txHasher,
+    SignerInfo? signerInfo,
   }) {
     final $result = create();
     if (signingMode != null) {
@@ -3861,6 +3964,12 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (publicKey != null) {
       $result.publicKey = publicKey;
+    }
+    if (txHasher != null) {
+      $result.txHasher = txHasher;
+    }
+    if (signerInfo != null) {
+      $result.signerInfo = signerInfo;
     }
     return $result;
   }
@@ -3901,6 +4010,12 @@ class SigningInput extends $pb.GeneratedMessage {
         enumValues: BroadcastMode.values)
     ..a<$core.List<$core.int>>(
         10, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..e<TxHasher>(11, _omitFieldNames ? '' : 'txHasher', $pb.PbFieldType.OE,
+        defaultOrMaker: TxHasher.UseDefault,
+        valueOf: TxHasher.valueOf,
+        enumValues: TxHasher.values)
+    ..aOM<SignerInfo>(12, _omitFieldNames ? '' : 'signerInfo',
+        subBuilder: SignerInfo.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -4047,6 +4162,33 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.bool hasPublicKey() => $_has(9);
   @$pb.TagNumber(10)
   void clearPublicKey() => clearField(10);
+
+  @$pb.TagNumber(11)
+  TxHasher get txHasher => $_getN(10);
+  @$pb.TagNumber(11)
+  set txHasher(TxHasher v) {
+    setField(11, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasTxHasher() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearTxHasher() => clearField(11);
+
+  /// Optional. If set, use a different Signer info when signing the transaction.
+  @$pb.TagNumber(12)
+  SignerInfo get signerInfo => $_getN(11);
+  @$pb.TagNumber(12)
+  set signerInfo(SignerInfo v) {
+    setField(12, v);
+  }
+
+  @$pb.TagNumber(12)
+  $core.bool hasSignerInfo() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearSignerInfo() => clearField(12);
+  @$pb.TagNumber(12)
+  SignerInfo ensureSignerInfo() => $_ensure(11);
 }
 
 /// Result containing the signed and encoded transaction.

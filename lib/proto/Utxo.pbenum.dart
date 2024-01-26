@@ -62,12 +62,15 @@ class InputSelector extends $pb.ProtobufEnum {
       InputSelector._(0, _omitEnumNames ? '' : 'SelectAscending');
   static const InputSelector SelectInOrder =
       InputSelector._(1, _omitEnumNames ? '' : 'SelectInOrder');
+  static const InputSelector SelectDescending =
+      InputSelector._(2, _omitEnumNames ? '' : 'SelectDescending');
   static const InputSelector UseAll =
       InputSelector._(10, _omitEnumNames ? '' : 'UseAll');
 
   static const $core.List<InputSelector> values = <InputSelector>[
     SelectAscending,
     SelectInOrder,
+    SelectDescending,
     UseAll,
   ];
 

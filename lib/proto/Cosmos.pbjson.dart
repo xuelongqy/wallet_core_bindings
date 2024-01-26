@@ -40,6 +40,34 @@ const SigningMode$json = {
 final $typed_data.Uint8List signingModeDescriptor = $convert
     .base64Decode('CgtTaWduaW5nTW9kZRIICgRKU09OEAASDAoIUHJvdG9idWYQAQ==');
 
+@$core.Deprecated('Use txHasherDescriptor instead')
+const TxHasher$json = {
+  '1': 'TxHasher',
+  '2': [
+    {'1': 'UseDefault', '2': 0},
+    {'1': 'Sha256', '2': 1},
+    {'1': 'Keccak256', '2': 2},
+  ],
+};
+
+/// Descriptor for `TxHasher`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List txHasherDescriptor = $convert.base64Decode(
+    'CghUeEhhc2hlchIOCgpVc2VEZWZhdWx0EAASCgoGU2hhMjU2EAESDQoJS2VjY2FrMjU2EAI=');
+
+@$core.Deprecated('Use signerPublicKeyTypeDescriptor instead')
+const SignerPublicKeyType$json = {
+  '1': 'SignerPublicKeyType',
+  '2': [
+    {'1': 'Secp256k1', '2': 0},
+    {'1': 'Secp256k1Extended', '2': 1},
+  ],
+};
+
+/// Descriptor for `SignerPublicKeyType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List signerPublicKeyTypeDescriptor = $convert.base64Decode(
+    'ChNTaWduZXJQdWJsaWNLZXlUeXBlEg0KCVNlY3AyNTZrMRAAEhUKEVNlY3AyNTZrMUV4dGVuZG'
+    'VkEAE=');
+
 @$core.Deprecated('Use amountDescriptor instead')
 const Amount$json = {
   '1': 'Amount',
@@ -976,6 +1004,29 @@ final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
     'IHCgNZRVMQARILCgdBQlNUQUlOEAISBgoCTk8QAxIQCgxOT19XSVRIX1ZFVE8QBEIPCg1tZXNz'
     'YWdlX29uZW9m');
 
+@$core.Deprecated('Use signerInfoDescriptor instead')
+const SignerInfo$json = {
+  '1': 'SignerInfo',
+  '2': [
+    {
+      '1': 'public_key_type',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cosmos.Proto.SignerPublicKeyType',
+      '10': 'publicKeyType'
+    },
+    {'1': 'json_type', '3': 2, '4': 1, '5': 9, '10': 'jsonType'},
+    {'1': 'protobuf_type', '3': 3, '4': 1, '5': 9, '10': 'protobufType'},
+  ],
+};
+
+/// Descriptor for `SignerInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List signerInfoDescriptor = $convert.base64Decode(
+    'CgpTaWduZXJJbmZvEkwKD3B1YmxpY19rZXlfdHlwZRgBIAEoDjIkLlRXLkNvc21vcy5Qcm90by'
+    '5TaWduZXJQdWJsaWNLZXlUeXBlUg1wdWJsaWNLZXlUeXBlEhsKCWpzb25fdHlwZRgCIAEoCVII'
+    'anNvblR5cGUSIwoNcHJvdG9idWZfdHlwZRgDIAEoCVIMcHJvdG9idWZUeXBl');
+
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
   '1': 'SigningInput',
@@ -1018,6 +1069,22 @@ const SigningInput$json = {
       '10': 'mode'
     },
     {'1': 'public_key', '3': 10, '4': 1, '5': 12, '10': 'publicKey'},
+    {
+      '1': 'tx_hasher',
+      '3': 11,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cosmos.Proto.TxHasher',
+      '10': 'txHasher'
+    },
+    {
+      '1': 'signer_info',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cosmos.Proto.SignerInfo',
+      '10': 'signerInfo'
+    },
   ],
 };
 
@@ -1030,7 +1097,9 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'BFIIc2VxdWVuY2USHwoLcHJpdmF0ZV9rZXkYByABKAxSCnByaXZhdGVLZXkSNAoIbWVzc2FnZX'
     'MYCCADKAsyGC5UVy5Db3Ntb3MuUHJvdG8uTWVzc2FnZVIIbWVzc2FnZXMSMgoEbW9kZRgJIAEo'
     'DjIeLlRXLkNvc21vcy5Qcm90by5Ccm9hZGNhc3RNb2RlUgRtb2RlEh0KCnB1YmxpY19rZXkYCi'
-    'ABKAxSCXB1YmxpY0tleQ==');
+    'ABKAxSCXB1YmxpY0tleRI2Cgl0eF9oYXNoZXIYCyABKA4yGS5UVy5Db3Ntb3MuUHJvdG8uVHhI'
+    'YXNoZXJSCHR4SGFzaGVyEjwKC3NpZ25lcl9pbmZvGAwgASgLMhsuVFcuQ29zbW9zLlByb3RvLl'
+    'NpZ25lckluZm9SCnNpZ25lckluZm8=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

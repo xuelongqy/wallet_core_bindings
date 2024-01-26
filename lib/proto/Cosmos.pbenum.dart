@@ -54,6 +54,44 @@ class SigningMode extends $pb.ProtobufEnum {
   const SigningMode._($core.int v, $core.String n) : super(v, n);
 }
 
+class TxHasher extends $pb.ProtobufEnum {
+  static const TxHasher UseDefault =
+      TxHasher._(0, _omitEnumNames ? '' : 'UseDefault');
+  static const TxHasher Sha256 = TxHasher._(1, _omitEnumNames ? '' : 'Sha256');
+  static const TxHasher Keccak256 =
+      TxHasher._(2, _omitEnumNames ? '' : 'Keccak256');
+
+  static const $core.List<TxHasher> values = <TxHasher>[
+    UseDefault,
+    Sha256,
+    Keccak256,
+  ];
+
+  static final $core.Map<$core.int, TxHasher> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static TxHasher? valueOf($core.int value) => _byValue[value];
+
+  const TxHasher._($core.int v, $core.String n) : super(v, n);
+}
+
+class SignerPublicKeyType extends $pb.ProtobufEnum {
+  static const SignerPublicKeyType Secp256k1 =
+      SignerPublicKeyType._(0, _omitEnumNames ? '' : 'Secp256k1');
+  static const SignerPublicKeyType Secp256k1Extended =
+      SignerPublicKeyType._(1, _omitEnumNames ? '' : 'Secp256k1Extended');
+
+  static const $core.List<SignerPublicKeyType> values = <SignerPublicKeyType>[
+    Secp256k1,
+    Secp256k1Extended,
+  ];
+
+  static final $core.Map<$core.int, SignerPublicKeyType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static SignerPublicKeyType? valueOf($core.int value) => _byValue[value];
+
+  const SignerPublicKeyType._($core.int v, $core.String n) : super(v, n);
+}
+
 ///  AuthorizationType defines the type of staking module authorization type
 ///
 ///  Since: cosmos-sdk 0.43
