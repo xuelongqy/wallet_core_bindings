@@ -47,6 +47,7 @@ part 'src/tw_groestlcoin_address.dart';
 part 'src/tw_filecoin_address_type.dart';
 part 'src/tw_hash.dart';
 part 'src/tw_hd_version.dart';
+part 'src/tw_hd_wallet.dart';
 part 'src/tw_hrp.dart';
 part 'src/tw_curve.dart';
 part 'src/tw_object.dart';

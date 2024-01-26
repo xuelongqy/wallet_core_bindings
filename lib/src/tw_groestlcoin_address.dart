@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings.dart';
 
-/// TWFIOAccount finalizer.
+/// TWGroestlcoinAddress finalizer.
 final _twGroestlcoinAddressFinalizer =
     Finalizer<Pointer<bindings.TWGroestlcoinAddress>>(
         (Pointer<bindings.TWGroestlcoinAddress> token) {
