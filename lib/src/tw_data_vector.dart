@@ -11,7 +11,11 @@ class TWDataVector extends TWObjectFinalizable<bindings.TWDataVector> {
   TWDataVector.fromPointer(
     Pointer<bindings.TWDataVector> pointer, {
     bool attach = true,
-  }) : super(pointer, attach: attach, finalizer: _twDataVectorFinalizer);
+  }) : super(
+          pointer,
+          attach: attach,
+          finalizer: _twDataVectorFinalizer,
+        );
 
   /// Creates a Vector of Data.
   TWDataVector({
