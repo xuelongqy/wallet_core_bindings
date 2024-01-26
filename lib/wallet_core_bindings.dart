@@ -43,6 +43,7 @@ part 'src/tw_ethereum_message_signer.dart';
 part 'src/tw_ethereum_rip.dart';
 part 'src/tw_filecoin_address_converter.dart';
 part 'src/tw_fio_account.dart';
+part 'src/tw_groestlcoin_address.dart';
 part 'src/tw_filecoin_address_type.dart';
 part 'src/tw_hash.dart';
 part 'src/tw_hd_version.dart';

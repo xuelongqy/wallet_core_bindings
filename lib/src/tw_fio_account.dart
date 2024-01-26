@@ -6,6 +6,7 @@ final _twFIOAccountFinalizer = Finalizer<Pointer<bindings.TWFIOAccount>>(
   iTWBindings.TWFIOAccountDelete(token);
 });
 
+/// Represents a FIO Account name
 class TWFIOAccount extends TWObjectFinalizable<bindings.TWFIOAccount> {
   TWFIOAccount.fromPointer(
     Pointer<bindings.TWFIOAccount> pointer, {
