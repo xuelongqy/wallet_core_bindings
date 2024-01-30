@@ -4,6 +4,8 @@ import 'dart:typed_data';
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
+import '../utils.dart';
+
 const wordsStr =
     "ripple scissors kick mammal hire column oak again sun offer wealth tomorrow wagon turn fatal";
 const gWords = wordsStr;
@@ -11,10 +13,6 @@ const gPassphrase = "TREZOR";
 const seedHex =
     "7ae6f661157bda6492f6162701e570097fc726b6235011ea5ad09bf04986731ed4d92bc43cbdee047b60ea0dd1b1fa4274377c9bf5bd14ab1982c272d8076f29";
 const entropyHex = "ba5821e8c356c05ba5f025d9532fe0f21f65d594";
-
-void expectHex(Uint8List actual, String expected) {
-  expect(TWString.createWithHexBytes(actual).value, expected);
-}
 
 void main() {
   group(TWHDWallet, () {

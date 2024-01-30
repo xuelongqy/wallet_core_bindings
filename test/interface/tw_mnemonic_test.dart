@@ -4,8 +4,14 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 void main() {
   group(TWMnemonic, () {
     test('IsValid', () {
-      expect(TWMnemonic.isValid('credit expect life fade cover suit response wash pear what skull force'), true);
-      expect(TWMnemonic.isValid('ripple scissors hisc mammal hire column oak again sun offer wealth tomorrow'), false);
+      expect(
+          TWMnemonic.isValid(
+              'credit expect life fade cover suit response wash pear what skull force'),
+          true);
+      expect(
+          TWMnemonic.isValid(
+              'ripple scissors hisc mammal hire column oak again sun offer wealth tomorrow'),
+          false);
     });
 
     test('isValidWord', () {
