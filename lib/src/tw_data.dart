@@ -75,9 +75,8 @@ class TWData extends TWObjectFinalizable<Void> {
       : iTWBindings.TWDataBytes(_pointer).asTypedList(size);
 
   /// Returns the hex string of data.
-  String? hexString() => _pointer == nullptr
-      ? null
-      : TWString.createWithHexData(this).value;
+  String? hexString() =>
+      _pointer == nullptr ? null : TWString.createWithHexData(this).value;
 
   /// Returns the byte at the provided index.
   ///
