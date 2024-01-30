@@ -131,10 +131,11 @@ class TWStoredKey extends TWObjectFinalizable<bindings.TWStoredKey> {
   ///
   /// \param [json] Json stored key import format as a non-null block of data
   TWStoredKey.importJSON(
-    Uint8List json, {
+    String json, {
     bool attach = true,
   }) : super(
-          iTWBindings.TWStoredKeyImportJSON(TWData(json).pointer),
+          iTWBindings.TWStoredKeyImportJSON(
+              TWData(Uint8List.fromList(json.codeUnits)).pointer),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
         );
@@ -421,9 +422,15 @@ class TWStoredKey extends TWObjectFinalizable<bindings.TWStoredKey> {
       );
 
   /// Exports the key as JSON
-  Uint8List? exportJSON() => TWData.fromPointer(
-        iTWBindings.TWStoredKeyExportJSON(_pointer),
-      ).bytes();
+  String? exportJSON() {
+    final data = TWData.fromPointer(
+      iTWBindings.TWStoredKeyExportJSON(_pointer),
+    ).bytes();
+    if (data != null) {
+      return String.fromCharCodes(data);
+    }
+    return null;
+  }
 
   /// Fills in empty and invalid addresses.
   /// This method needs the encryption password to re-derive addresses from private keys.

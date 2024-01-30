@@ -64,6 +64,20 @@ class TWData extends TWObjectFinalizable<Void> {
           finalizer: _twDataFinalizer,
         );
 
+  /// Creates a block of data from a string.
+  ///
+  /// \param [string] input string
+  TWData.createWithString(
+    String string, {
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWDataCreateWithBytes(
+              TWString(string).utf8Bytes().cast<Uint8>(),
+              TWString(string).size),
+          attach: attach,
+          finalizer: _twDataFinalizer,
+        );
+
   /// Returns the size in bytes.
   ///
   /// \return the size of the given block of data

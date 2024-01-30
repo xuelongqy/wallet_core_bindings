@@ -453,7 +453,7 @@ void main() {
       expect(zprv1,
           'zprvAdG4iTXWBoAS2cCGuaGevCvH54GCunrvLJb2hoWCSuE3D9LS42XVg3c6sPm64w6VMq3w18vJf8nF3cBA2kUMkyWHsq6enWVXivzw42UrVHG');
 
-      final zpub0 = wallet.getExtendedPrivateKeyAccount(
+      final zpub0 = wallet.getExtendedPublicKeyAccount(
         purpose: TWPurpose.TWPurposeBIP84,
         coin: TWCoinType.TWCoinTypeBitcoin,
         derivation: TWDerivation.TWDerivationBitcoinSegwit,
@@ -462,11 +462,11 @@ void main() {
       );
       expect(zpub0,
           'zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs');
-      final zpub1 = wallet.getExtendedPrivateKeyAccount(
+      final zpub1 = wallet.getExtendedPublicKeyAccount(
         purpose: TWPurpose.TWPurposeBIP84,
         coin: TWCoinType.TWCoinTypeBitcoin,
         derivation: TWDerivation.TWDerivationBitcoinSegwit,
-        version: TWHDVersion.TWHDVersionZPRV,
+        version: TWHDVersion.TWHDVersionZPUB,
         account: 1,
       );
       expect(zpub1,
@@ -604,8 +604,7 @@ void main() {
     test('GetKeyByCurve', () {
       final derivPath = "m/44'/539'/0'/0/0";
 
-      final wallet =
-          TWHDWallet.createWithMnemonic(gWords, passphrase: gPassphrase);
+      final wallet = TWHDWallet.createWithMnemonic(gWords);
       final privateKey1 =
           wallet.getKeyByCurve(TWCurve.TWCurveSECP256k1, derivPath);
       final privateKeyData1 = privateKey1.data;
@@ -693,8 +692,7 @@ void main() {
       // Test different routes for deriving address from mnemonic, result should be the same:
       // - Direct: mnemonic -> seed -> privateKey -> publicKey -> address
       // - Extended Public: mnemonic -> seed -> zpub -> publicKey -> address
-      final wallet =
-          TWHDWallet.createWithMnemonic(gWords, passphrase: gPassphrase);
+      final wallet = TWHDWallet.createWithMnemonic(gWords);
       final coin = TWCoinType.TWCoinTypeBitcoin;
       final derivPath1 = "m/84'/0'/0'/0/0";
       final derivPath2 = "m/84'/0'/0'/0/2";
@@ -713,16 +711,16 @@ void main() {
         expectHex(publicKey1Data, expectedPublicKey1);
         final address1 =
             TWSegwitAddress.createWithPublicKey(TWHRP.TWHRPBitcoin, publicKey1);
-        expect(address1.description, expectedPublicKey1);
+        expect(address1.description, expectedAddress1);
       }
       {
         final privateKey2 = wallet.getKey(coin, derivPath2);
         final publicKey2 = privateKey2.getPublicKeySecp256k1(true);
         final publicKey2Data = publicKey2.data;
-        expectHex(publicKey2Data, expectedPublicKey2);
+        expectHex(TWData(publicKey2Data).bytes()!, expectedPublicKey2);
         final address2 =
             TWSegwitAddress.createWithPublicKey(TWHRP.TWHRPBitcoin, publicKey2);
-        expect(address2.description, expectedPublicKey2);
+        expect(address2.description, expectedAddress2);
       }
 
       // zpub -> publicKey
