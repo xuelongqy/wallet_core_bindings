@@ -6,11 +6,11 @@ class TWAnySigner {
   /// \param [input] The serialized data of a signing input (e.g. TW.Bitcoin.Proto.SigningInput).
   /// \param [coin] The given coin type to sign the transaction for.
   /// \return The serialized data of a `SigningOutput` proto object. (e.g. TW.Bitcoin.Proto.SigningOutput).
-  static TWData sign({
-    required TWData input,
-    required int coin,
-  }) =>
-      TWData.fromPointer(iTWBindings.TWAnySignerSign(input.pointer, coin));
+  static Uint8List sign(Uint8List input, int coin) =>
+      TWData.fromPointer(iTWBindings.TWAnySignerSign(
+        TWData(input).pointer,
+        coin,
+      )).bytes()!;
 
   /// Signs a transaction specified by the JSON representation of signing input, coin type and a private key, returning the JSON representation of the signing output.
   ///
@@ -20,12 +20,14 @@ class TWAnySigner {
   /// \return The JSON representation of a `SigningOutput` proto object.
   static String signJSON({
     required String json,
-    required TWData key,
+    required Uint8List key,
     required int coin,
   }) =>
       TWString.fromPointer(iTWBindings.TWAnySignerSignJSON(
-              TWString(json).pointer, key.pointer, coin))
-          .value!;
+        TWString(json).pointer,
+        TWData(key).pointer,
+        coin,
+      )).value!;
 
   /// Check if AnySigner supports signing JSON representation of signing input.
   ///
@@ -39,9 +41,9 @@ class TWAnySigner {
   /// \param [input] The serialized data of a signing input
   /// \param [coin] The given coin type to plan the transaction for.
   /// \return The serialized data of a `TransactionPlan` proto object.
-  static TWData plan({
-    required TWData input,
-    required int coin,
-  }) =>
-      TWData.fromPointer(iTWBindings.TWAnySignerPlan(input.pointer, coin));
+  static Uint8List plan(Uint8List input, int coin) =>
+      TWData.fromPointer(iTWBindings.TWAnySignerPlan(
+        TWData(input).pointer,
+        coin,
+      )).bytes()!;
 }
