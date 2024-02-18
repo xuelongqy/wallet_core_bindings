@@ -14,8 +14,6 @@ TW_EXTERN_C_BEGIN
 TW_EXPORT_STRUCT
 struct TWCardano;
 
-struct TWPublicKey;
-
 /// Calculates the minimum ADA amount needed for a UTXO.
 ///
 /// \deprecated consider using `TWCardanoOutputMinAdaAmount` instead.
