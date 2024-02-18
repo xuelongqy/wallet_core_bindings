@@ -17,6 +17,11 @@ void expectHex(Uint8List actual, String expected) {
   expect(TWString.createWithHexBytes(actual).value, expected);
 }
 
+void expectHexBytes(Uint8List actual, Uint8List expected) {
+  expect(TWString.createWithHexBytes(actual).value,
+      TWString.createWithHexBytes(expected).value);
+}
+
 Uint8List hexToBytes(String hexString, {int? length}) {
   String newHexString = hexString;
   if (length != null) {
