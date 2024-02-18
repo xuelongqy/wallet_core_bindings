@@ -13,6 +13,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'Barz.pbenum.dart';
+
+export 'Barz.pbenum.dart';
+
 /// Input parameters for calculating a counterfactual address for ERC-4337 based smart contract wallet
 class ContractAddressInput extends $pb.GeneratedMessage {
   factory ContractAddressInput({
@@ -216,6 +220,184 @@ class ContractAddressInput extends $pb.GeneratedMessage {
   $core.bool hasSalt() => $_has(8);
   @$pb.TagNumber(9)
   void clearSalt() => clearField(9);
+}
+
+/// FacetCut represents a single operation to be performed on a facet
+class FacetCut extends $pb.GeneratedMessage {
+  factory FacetCut({
+    $core.String? facetAddress,
+    FacetCutAction? action,
+    $core.Iterable<$core.List<$core.int>>? functionSelectors,
+  }) {
+    final $result = create();
+    if (facetAddress != null) {
+      $result.facetAddress = facetAddress;
+    }
+    if (action != null) {
+      $result.action = action;
+    }
+    if (functionSelectors != null) {
+      $result.functionSelectors.addAll(functionSelectors);
+    }
+    return $result;
+  }
+  FacetCut._() : super();
+  factory FacetCut.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory FacetCut.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'FacetCut',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Barz.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'facetAddress')
+    ..e<FacetCutAction>(2, _omitFieldNames ? '' : 'action', $pb.PbFieldType.OE,
+        defaultOrMaker: FacetCutAction.ADD,
+        valueOf: FacetCutAction.valueOf,
+        enumValues: FacetCutAction.values)
+    ..p<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'functionSelectors', $pb.PbFieldType.PY)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  FacetCut clone() => FacetCut()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  FacetCut copyWith(void Function(FacetCut) updates) =>
+      super.copyWith((message) => updates(message as FacetCut)) as FacetCut;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static FacetCut create() => FacetCut._();
+  FacetCut createEmptyInstance() => create();
+  static $pb.PbList<FacetCut> createRepeated() => $pb.PbList<FacetCut>();
+  @$core.pragma('dart2js:noInline')
+  static FacetCut getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FacetCut>(create);
+  static FacetCut? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get facetAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set facetAddress($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasFacetAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFacetAddress() => clearField(1);
+
+  @$pb.TagNumber(2)
+  FacetCutAction get action => $_getN(1);
+  @$pb.TagNumber(2)
+  set action(FacetCutAction v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasAction() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAction() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.List<$core.int>> get functionSelectors => $_getList(2);
+}
+
+/// DiamondCutInput represents the input parameters for a diamondCut operation
+class DiamondCutInput extends $pb.GeneratedMessage {
+  factory DiamondCutInput({
+    $core.Iterable<FacetCut>? facetCuts,
+    $core.String? initAddress,
+    $core.List<$core.int>? initData,
+  }) {
+    final $result = create();
+    if (facetCuts != null) {
+      $result.facetCuts.addAll(facetCuts);
+    }
+    if (initAddress != null) {
+      $result.initAddress = initAddress;
+    }
+    if (initData != null) {
+      $result.initData = initData;
+    }
+    return $result;
+  }
+  DiamondCutInput._() : super();
+  factory DiamondCutInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DiamondCutInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DiamondCutInput',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Barz.Proto'),
+      createEmptyInstance: create)
+    ..pc<FacetCut>(1, _omitFieldNames ? '' : 'facetCuts', $pb.PbFieldType.PM,
+        subBuilder: FacetCut.create)
+    ..aOS(2, _omitFieldNames ? '' : 'initAddress')
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'initData', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DiamondCutInput clone() => DiamondCutInput()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DiamondCutInput copyWith(void Function(DiamondCutInput) updates) =>
+      super.copyWith((message) => updates(message as DiamondCutInput))
+          as DiamondCutInput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DiamondCutInput create() => DiamondCutInput._();
+  DiamondCutInput createEmptyInstance() => create();
+  static $pb.PbList<DiamondCutInput> createRepeated() =>
+      $pb.PbList<DiamondCutInput>();
+  @$core.pragma('dart2js:noInline')
+  static DiamondCutInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DiamondCutInput>(create);
+  static DiamondCutInput? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<FacetCut> get facetCuts => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.String get initAddress => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set initAddress($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasInitAddress() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearInitAddress() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get initData => $_getN(2);
+  @$pb.TagNumber(3)
+  set initData($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasInitData() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearInitData() => clearField(3);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

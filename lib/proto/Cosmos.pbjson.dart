@@ -1085,6 +1085,7 @@ const SigningInput$json = {
       '6': '.TW.Cosmos.Proto.SignerInfo',
       '10': 'signerInfo'
     },
+    {'1': 'timeout_height', '3': 13, '4': 1, '5': 4, '10': 'timeoutHeight'},
   ],
 };
 
@@ -1099,7 +1100,8 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'DjIeLlRXLkNvc21vcy5Qcm90by5Ccm9hZGNhc3RNb2RlUgRtb2RlEh0KCnB1YmxpY19rZXkYCi'
     'ABKAxSCXB1YmxpY0tleRI2Cgl0eF9oYXNoZXIYCyABKA4yGS5UVy5Db3Ntb3MuUHJvdG8uVHhI'
     'YXNoZXJSCHR4SGFzaGVyEjwKC3NpZ25lcl9pbmZvGAwgASgLMhsuVFcuQ29zbW9zLlByb3RvLl'
-    'NpZ25lckluZm9SCnNpZ25lckluZm8=');
+    'NpZ25lckluZm9SCnNpZ25lckluZm8SJQoOdGltZW91dF9oZWlnaHQYDSABKARSDXRpbWVvdXRI'
+    'ZWlnaHQ=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

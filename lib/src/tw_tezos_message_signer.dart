@@ -7,7 +7,8 @@ class TWTezosMessageSigner {
   /// \param [message] message to format e.g: Hello, World
   /// \param [url] the app url, e.g: testUrl
   /// \returns the formatted message as a string
-  String formatMessage(String message, String url) => TWString.fromPointer(
+  static String formatMessage(String message, String url) =>
+      TWString.fromPointer(
         iTWBindings.TWTezosMessageSignerFormatMessage(
           TWString(message).pointer,
           TWString(url).pointer,
@@ -18,7 +19,7 @@ class TWTezosMessageSigner {
   ///
   /// \param [message] formatted message to be turned into an hex payload
   /// \return the hexpayload of the formated message as a hex string
-  String inputToPayload(String message) => TWString.fromPointer(
+  static String inputToPayload(String message) => TWString.fromPointer(
         iTWBindings.TWTezosMessageSignerInputToPayload(
           TWString(message).pointer,
         ),
@@ -29,7 +30,7 @@ class TWTezosMessageSigner {
   /// \param [privateKey] the private key used for signing
   /// \param [message] A custom message payload (hex) which is input to the signing.
   /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
-  String signMessage(TWPrivateKey privateKey, String message) =>
+  static String signMessage(TWPrivateKey privateKey, String message) =>
       TWString.fromPointer(
         iTWBindings.TWTezosMessageSignerSignMessage(
           privateKey.pointer,
@@ -43,7 +44,7 @@ class TWTezosMessageSigner {
   /// \param [message] the message signed as a payload (hex)
   /// \param [signature] in Base58-encoded form.
   /// \returns false on any invalid input (does not throw), true if the message can be verified from the signature
-  bool verifyMessage({
+  static bool verifyMessage({
     required TWPublicKey pubKey,
     required String message,
     required String signature,

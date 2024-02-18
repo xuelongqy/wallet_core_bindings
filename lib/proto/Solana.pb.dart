@@ -1740,6 +1740,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     $0.SigningError? error,
     $core.String? errorMessage,
     $core.String? unsignedTx,
+    $core.String? messageEncoded,
   }) {
     final $result = create();
     if (encoded != null) {
@@ -1753,6 +1754,9 @@ class SigningOutput extends $pb.GeneratedMessage {
     }
     if (unsignedTx != null) {
       $result.unsignedTx = unsignedTx;
+    }
+    if (messageEncoded != null) {
+      $result.messageEncoded = messageEncoded;
     }
     return $result;
   }
@@ -1776,6 +1780,7 @@ class SigningOutput extends $pb.GeneratedMessage {
         enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
     ..aOS(4, _omitFieldNames ? '' : 'unsignedTx')
+    ..aOS(5, _omitFieldNames ? '' : 'messageEncoded')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1852,6 +1857,20 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasUnsignedTx() => $_has(3);
   @$pb.TagNumber(4)
   void clearUnsignedTx() => clearField(4);
+
+  /// The encoded message. Can be used to estimate a transaction fee required to execute the message.
+  /// Please note that this is set only on `SolanaTransaction.updateBlockhashAndSign`, but no on `AnySigner.sign`.
+  @$pb.TagNumber(5)
+  $core.String get messageEncoded => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set messageEncoded($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasMessageEncoded() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMessageEncoded() => clearField(5);
 }
 
 /// / Transaction pre-signing output

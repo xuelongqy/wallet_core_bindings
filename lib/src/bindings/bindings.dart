@@ -3029,6 +3029,52 @@ class TrustWalletCoreBindings {
               ffi.Pointer<TWData1>,
               ffi.Pointer<TWString1>)>();
 
+  /// Returns the final hash to be signed by Barz for signing messages & typed data
+  ///
+  /// \param msgHash Original msgHash
+  /// \param barzAddress The address of Barz wallet signing the message
+  /// \param chainId The chainId of the network the verification will happen
+  /// \return The final hash to be signed
+  ffi.Pointer<TWData1> TWBarzGetPrefixedMsgHash(
+    ffi.Pointer<TWData1> msgHash,
+    ffi.Pointer<TWString1> barzAddress,
+    int chainId,
+  ) {
+    return _TWBarzGetPrefixedMsgHash(
+      msgHash,
+      barzAddress,
+      chainId,
+    );
+  }
+
+  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>, ffi.Uint32)>>('TWBarzGetPrefixedMsgHash');
+  late final _TWBarzGetPrefixedMsgHash =
+      _TWBarzGetPrefixedMsgHashPtr.asFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>, ffi.Pointer<TWString1>, int)>();
+
+  /// Returns the encoded diamondCut function call for Barz contract upgrades
+  ///
+  /// \param input The serialized data of DiamondCutInput
+  /// \return The encoded bytes of diamondCut function call
+  ffi.Pointer<TWData1> TWBarzGetDiamondCutCode(
+    ffi.Pointer<TWData1> input,
+  ) {
+    return _TWBarzGetDiamondCutCode(
+      input,
+    );
+  }
+
+  late final _TWBarzGetDiamondCutCodePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>>(
+      'TWBarzGetDiamondCutCode');
+  late final _TWBarzGetDiamondCutCode = _TWBarzGetDiamondCutCodePtr.asFunction<
+      ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>();
+
   /// Decode a Base32 input with the given alphabet
   ///
   /// \param string Encoded base32 input to be decoded
@@ -10662,6 +10708,39 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWString> Function(
               ffi.Pointer<TWData>, ffi.Pointer<TWString>)>();
 
+  /// Decode Solana transaction, update the recent blockhash and re-sign the transaction.
+  ///
+  /// # Warning
+  ///
+  /// This is a temporary solution. It will be removed when `Solana.proto` supports
+  /// direct transaction signing.
+  ///
+  /// \param encodedTx base64 encoded Solana transaction.
+  /// \param recentBlockhash base58 encoded recent blockhash.
+  /// \param privateKeys list of private keys that should be used to re-sign the transaction.
+  /// \return serialized `Solana::Proto::SigningOutput`.
+  ffi.Pointer<TWData1> TWSolanaTransactionUpdateBlockhashAndSign(
+    ffi.Pointer<TWString1> encodedTx,
+    ffi.Pointer<TWString1> recentBlockhash,
+    ffi.Pointer<TWDataVector> privateKeys,
+  ) {
+    return _TWSolanaTransactionUpdateBlockhashAndSign(
+      encodedTx,
+      recentBlockhash,
+      privateKeys,
+    );
+  }
+
+  late final _TWSolanaTransactionUpdateBlockhashAndSignPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
+                  ffi.Pointer<TWString1>, ffi.Pointer<TWDataVector>)>>(
+      'TWSolanaTransactionUpdateBlockhashAndSign');
+  late final _TWSolanaTransactionUpdateBlockhashAndSign =
+      _TWSolanaTransactionUpdateBlockhashAndSignPtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>, ffi.Pointer<TWDataVector>)>();
+
   /// Create a NEAR Account
   ///
   /// \param string Account name
@@ -12262,6 +12341,8 @@ final class TWSegwitAddress extends ffi.Opaque {}
 
 /// Represents Ethereum ABI value
 final class TWEthereumAbiValue extends ffi.Opaque {}
+
+final class TWSolanaTransaction extends ffi.Opaque {}
 
 /// Represents a NEAR Account name
 final class TWNEARAccount extends ffi.Opaque {}

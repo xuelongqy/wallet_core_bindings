@@ -456,6 +456,7 @@ const SigningOutput$json = {
     },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
     {'1': 'unsigned_tx', '3': 4, '4': 1, '5': 9, '10': 'unsignedTx'},
+    {'1': 'message_encoded', '3': 5, '4': 1, '5': 9, '10': 'messageEncoded'},
   ],
 };
 
@@ -463,7 +464,8 @@ const SigningOutput$json = {
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhgKB2VuY29kZWQYASABKAlSB2VuY29kZWQSMwoFZXJyb3IYAiABKA'
     '4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdl'
-    'GAMgASgJUgxlcnJvck1lc3NhZ2USHwoLdW5zaWduZWRfdHgYBCABKAlSCnVuc2lnbmVkVHg=');
+    'GAMgASgJUgxlcnJvck1lc3NhZ2USHwoLdW5zaWduZWRfdHgYBCABKAlSCnVuc2lnbmVkVHgSJw'
+    'oPbWVzc2FnZV9lbmNvZGVkGAUgASgJUg5tZXNzYWdlRW5jb2RlZA==');
 
 @$core.Deprecated('Use preSigningOutputDescriptor instead')
 const PreSigningOutput$json = {

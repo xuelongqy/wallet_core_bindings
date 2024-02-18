@@ -3933,6 +3933,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.List<$core.int>? publicKey,
     TxHasher? txHasher,
     SignerInfo? signerInfo,
+    $fixnum.Int64? timeoutHeight,
   }) {
     final $result = create();
     if (signingMode != null) {
@@ -3970,6 +3971,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (signerInfo != null) {
       $result.signerInfo = signerInfo;
+    }
+    if (timeoutHeight != null) {
+      $result.timeoutHeight = timeoutHeight;
     }
     return $result;
   }
@@ -4016,6 +4020,9 @@ class SigningInput extends $pb.GeneratedMessage {
         enumValues: TxHasher.values)
     ..aOM<SignerInfo>(12, _omitFieldNames ? '' : 'signerInfo',
         subBuilder: SignerInfo.create)
+    ..a<$fixnum.Int64>(
+        13, _omitFieldNames ? '' : 'timeoutHeight', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -4189,6 +4196,19 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearSignerInfo() => clearField(12);
   @$pb.TagNumber(12)
   SignerInfo ensureSignerInfo() => $_ensure(11);
+
+  /// Optional timeout_height
+  @$pb.TagNumber(13)
+  $fixnum.Int64 get timeoutHeight => $_getI64(12);
+  @$pb.TagNumber(13)
+  set timeoutHeight($fixnum.Int64 v) {
+    $_setInt64(12, v);
+  }
+
+  @$pb.TagNumber(13)
+  $core.bool hasTimeoutHeight() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearTimeoutHeight() => clearField(13);
 }
 
 /// Result containing the signed and encoded transaction.
