@@ -14,7 +14,7 @@ String get projectRoot {
 }
 
 void expectHex(Uint8List actual, String expected) {
-  expect(TWString.createWithHexBytes(actual).value, expected);
+  expect(TWString.createWithHexBytes(actual).value, expected.replaceFirst('0x', ''));
 }
 
 void expectHexBytes(Uint8List actual, Uint8List expected) {
