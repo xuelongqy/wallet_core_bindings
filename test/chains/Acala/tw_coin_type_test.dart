@@ -8,7 +8,8 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
-      const txId = '0xf3d58aafb1208bc09d10ba74bbf1c7811dc55a9149c1505256b6fb5603f5047f';
+      const txId =
+          '0xf3d58aafb1208bc09d10ba74bbf1c7811dc55a9149c1505256b6fb5603f5047f';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = '26JqMKx4HJJcmb1kXo24HYYobiK2jURGCq6zuEzFBK3hQ9Ti';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
@@ -20,8 +21,10 @@ void main() {
       expect(TWCoinTypeBlockchain(coin), TWBlockchain.TWBlockchainPolkadot);
       expect(TWCoinTypeP2shPrefix(coin), 0x0);
       expect(TWCoinTypeStaticPrefix(coin), 0x0);
-      expect(txUrl, 'https://acala.subscan.io/extrinsic/0xf3d58aafb1208bc09d10ba74bbf1c7811dc55a9149c1505256b6fb5603f5047f');
-      expect(accUrl, 'https://acala.subscan.io/account/26JqMKx4HJJcmb1kXo24HYYobiK2jURGCq6zuEzFBK3hQ9Ti');
+      expect(txUrl,
+          'https://acala.subscan.io/extrinsic/0xf3d58aafb1208bc09d10ba74bbf1c7811dc55a9149c1505256b6fb5603f5047f');
+      expect(accUrl,
+          'https://acala.subscan.io/account/26JqMKx4HJJcmb1kXo24HYYobiK2jURGCq6zuEzFBK3hQ9Ti');
     });
   });
 }
