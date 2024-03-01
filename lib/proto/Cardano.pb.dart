@@ -190,7 +190,7 @@ class TokenAmount extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearAssetName() => clearField(2);
 
-  /// The amount (uint256, serialized little endian)
+  /// The amount (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get amount => $_getN(2);
   @$pb.TagNumber(3)

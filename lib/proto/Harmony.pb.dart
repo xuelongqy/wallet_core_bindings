@@ -97,7 +97,7 @@ class SigningInput extends $pb.GeneratedMessage {
       _SigningInput_MessageOneofByTag[$_whichOneof(0)]!;
   void clearMessageOneof() => clearField($_whichOneof(0));
 
-  /// Chain identifier (uint256, serialized little endian)
+  /// Chain identifier (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get chainId => $_getN(0);
   @$pb.TagNumber(1)
@@ -403,7 +403,7 @@ class TransactionMessage extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TransactionMessage>(create);
   static TransactionMessage? _defaultInstance;
 
-  /// Nonce (uint256, serialized little endian)
+  /// Nonce (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get nonce => $_getN(0);
   @$pb.TagNumber(1)
@@ -416,7 +416,7 @@ class TransactionMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearNonce() => clearField(1);
 
-  /// Gas price (uint256, serialized little endian)
+  /// Gas price (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get gasPrice => $_getN(1);
   @$pb.TagNumber(2)
@@ -429,7 +429,7 @@ class TransactionMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearGasPrice() => clearField(2);
 
-  /// Gas limit (uint256, serialized little endian)
+  /// Gas limit (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get gasLimit => $_getN(2);
   @$pb.TagNumber(3)
@@ -455,7 +455,7 @@ class TransactionMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearToAddress() => clearField(4);
 
-  /// Amount to send in wei (uint256, serialized little endian)
+  /// Amount to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(5)
   $core.List<$core.int> get amount => $_getN(4);
   @$pb.TagNumber(5)
@@ -481,7 +481,7 @@ class TransactionMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearPayload() => clearField(6);
 
-  /// From shard ID (uint256, serialized little endian)
+  /// From shard ID (uint256, serialized big endian)
   @$pb.TagNumber(7)
   $core.List<$core.int> get fromShardId => $_getN(6);
   @$pb.TagNumber(7)
@@ -494,7 +494,7 @@ class TransactionMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearFromShardId() => clearField(7);
 
-  /// To Shard ID (uint256, serialized little endian)
+  /// To Shard ID (uint256, serialized big endian)
   @$pb.TagNumber(8)
   $core.List<$core.int> get toShardId => $_getN(7);
   @$pb.TagNumber(8)
@@ -696,7 +696,7 @@ class StakingMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   DirectiveCollectRewards ensureCollectRewards() => $_ensure(4);
 
-  /// Nonce (uint256, serialized little endian)
+  /// Nonce (uint256, serialized big endian)
   @$pb.TagNumber(6)
   $core.List<$core.int> get nonce => $_getN(5);
   @$pb.TagNumber(6)
@@ -709,7 +709,7 @@ class StakingMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearNonce() => clearField(6);
 
-  /// Gas price (uint256, serialized little endian)
+  /// Gas price (uint256, serialized big endian)
   @$pb.TagNumber(7)
   $core.List<$core.int> get gasPrice => $_getN(6);
   @$pb.TagNumber(7)
@@ -722,7 +722,7 @@ class StakingMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearGasPrice() => clearField(7);
 
-  /// Gas limit (uint256, serialized little endian)
+  /// Gas limit (uint256, serialized big endian)
   @$pb.TagNumber(8)
   $core.List<$core.int> get gasLimit => $_getN(7);
   @$pb.TagNumber(8)
@@ -1537,7 +1537,7 @@ class DirectiveDelegate extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearValidatorAddress() => clearField(2);
 
-  /// Delegate amount (uint256, serialized little endian)
+  /// Delegate amount (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get amount => $_getN(2);
   @$pb.TagNumber(3)
@@ -1638,7 +1638,7 @@ class DirectiveUndelegate extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearValidatorAddress() => clearField(2);
 
-  /// Undelegate amount (uint256, serialized little endian)
+  /// Undelegate amount (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get amount => $_getN(2);
   @$pb.TagNumber(3)

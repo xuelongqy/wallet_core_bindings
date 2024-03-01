@@ -130,7 +130,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearToAddress() => clearField(2);
 
-  /// Amount (uint256, serialized little endian)
+  /// Amount (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get amount => $_getN(2);
   @$pb.TagNumber(3)
@@ -143,7 +143,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearAmount() => clearField(3);
 
-  /// Fee amount (uint256, serialized little endian)
+  /// Fee amount (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get fee => $_getN(3);
   @$pb.TagNumber(4)

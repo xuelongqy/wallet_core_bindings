@@ -129,7 +129,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearFromAddress() => clearField(1);
 
-  /// Chain identifier (uint256, serialized little endian)
+  /// Chain identifier (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get chainId => $_getN(1);
   @$pb.TagNumber(2)
@@ -142,7 +142,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearChainId() => clearField(2);
 
-  /// Nonce (uint256, serialized little endian)
+  /// Nonce (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get nonce => $_getN(2);
   @$pb.TagNumber(3)
@@ -155,7 +155,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearNonce() => clearField(3);
 
-  /// Gas price (uint256, serialized little endian)
+  /// Gas price (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get gasPrice => $_getN(3);
   @$pb.TagNumber(4)
@@ -168,7 +168,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearGasPrice() => clearField(4);
 
-  /// Gas limit (uint256, serialized little endian)
+  /// Gas limit (uint256, serialized big endian)
   @$pb.TagNumber(5)
   $core.List<$core.int> get gasLimit => $_getN(4);
   @$pb.TagNumber(5)
@@ -194,7 +194,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearToAddress() => clearField(6);
 
-  /// Amount to send in wei, 1 NAS = 10^18 Wei (uint256, serialized little endian)
+  /// Amount to send in wei, 1 NAS = 10^18 Wei (uint256, serialized big endian)
   @$pb.TagNumber(7)
   $core.List<$core.int> get amount => $_getN(6);
   @$pb.TagNumber(7)
@@ -207,7 +207,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearAmount() => clearField(7);
 
-  /// Timestamp to create transaction (uint256, serialized little endian)
+  /// Timestamp to create transaction (uint256, serialized big endian)
   @$pb.TagNumber(8)
   $core.List<$core.int> get timestamp => $_getN(7);
   @$pb.TagNumber(8)
@@ -579,7 +579,7 @@ class RawTransaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearTo() => clearField(3);
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get value => $_getN(3);
   @$pb.TagNumber(4)
@@ -646,7 +646,7 @@ class RawTransaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   void clearChainId() => clearField(8);
 
-  /// gas price (uint256, serialized little endian)
+  /// gas price (uint256, serialized big endian)
   @$pb.TagNumber(9)
   $core.List<$core.int> get gasPrice => $_getN(8);
   @$pb.TagNumber(9)
@@ -659,7 +659,7 @@ class RawTransaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   void clearGasPrice() => clearField(9);
 
-  /// gas limit (uint256, serialized little endian)
+  /// gas limit (uint256, serialized big endian)
   @$pb.TagNumber(10)
   $core.List<$core.int> get gasLimit => $_getN(9);
   @$pb.TagNumber(10)

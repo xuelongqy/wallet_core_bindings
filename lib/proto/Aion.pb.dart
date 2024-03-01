@@ -108,7 +108,7 @@ class SigningInput extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
-  /// Nonce (uint256, serialized little endian)
+  /// Nonce (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get nonce => $_getN(0);
   @$pb.TagNumber(1)
@@ -121,7 +121,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearNonce() => clearField(1);
 
-  /// Gas price (uint256, serialized little endian)
+  /// Gas price (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get gasPrice => $_getN(1);
   @$pb.TagNumber(2)
@@ -134,7 +134,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearGasPrice() => clearField(2);
 
-  /// Gas limit (uint256, serialized little endian)
+  /// Gas limit (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get gasLimit => $_getN(2);
   @$pb.TagNumber(3)
@@ -160,7 +160,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearToAddress() => clearField(4);
 
-  /// Amount to send in wei (uint256, serialized little endian)
+  /// Amount to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(5)
   $core.List<$core.int> get amount => $_getN(4);
   @$pb.TagNumber(5)

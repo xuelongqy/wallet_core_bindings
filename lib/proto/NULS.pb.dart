@@ -281,7 +281,7 @@ class TransactionCoinTo extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearAssetsId() => clearField(3);
 
-  /// transaction amount (uint256, serialized little endian)
+  /// transaction amount (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get idAmount => $_getN(3);
   @$pb.TagNumber(4)
@@ -763,7 +763,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearTo() => clearField(3);
 
-  /// Transfer amount (uint256, serialized little endian)
+  /// Transfer amount (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get amount => $_getN(3);
   @$pb.TagNumber(4)

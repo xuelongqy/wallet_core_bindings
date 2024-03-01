@@ -66,7 +66,7 @@ class Transaction_Transfer extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Transaction_Transfer>(create);
   static Transaction_Transfer? _defaultInstance;
 
-  /// Amount to send (uint256, serialized little endian)
+  /// Amount to send (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get amount => $_getN(0);
   @$pb.TagNumber(1)
@@ -143,7 +143,7 @@ class Transaction_Raw extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Transaction_Raw>(create);
   static Transaction_Raw? _defaultInstance;
 
-  /// Amount to send (uint256, serialized little endian)
+  /// Amount to send (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get amount => $_getN(0);
   @$pb.TagNumber(1)

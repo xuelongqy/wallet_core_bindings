@@ -342,7 +342,7 @@ class Balance_Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearToAddress() => clearField(1);
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get value => $_getN(1);
   @$pb.TagNumber(2)
@@ -933,7 +933,7 @@ class Staking_Bond extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearController() => clearField(1);
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get value => $_getN(1);
   @$pb.TagNumber(2)
@@ -1066,7 +1066,7 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearController() => clearField(1);
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get value => $_getN(1);
   @$pb.TagNumber(2)
@@ -1169,7 +1169,7 @@ class Staking_BondExtra extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Staking_BondExtra>(create);
   static Staking_BondExtra? _defaultInstance;
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get value => $_getN(0);
   @$pb.TagNumber(1)
@@ -1255,7 +1255,7 @@ class Staking_Unbond extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Staking_Unbond>(create);
   static Staking_Unbond? _defaultInstance;
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get value => $_getN(0);
   @$pb.TagNumber(1)
@@ -1341,7 +1341,7 @@ class Staking_Rebond extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Staking_Rebond>(create);
   static Staking_Rebond? _defaultInstance;
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get value => $_getN(0);
   @$pb.TagNumber(1)
@@ -1592,7 +1592,7 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Staking_ChillAndUnbond>(create);
   static Staking_ChillAndUnbond? _defaultInstance;
 
-  /// amount (uint256, serialized little endian)
+  /// amount (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get value => $_getN(0);
   @$pb.TagNumber(1)

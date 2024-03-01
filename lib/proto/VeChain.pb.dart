@@ -89,7 +89,7 @@ class Clause extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTo() => clearField(1);
 
-  /// / Transaction amount (uint256, serialized little endian)
+  /// / Transaction amount (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get value => $_getN(1);
   @$pb.TagNumber(2)

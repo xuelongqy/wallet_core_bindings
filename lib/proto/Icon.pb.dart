@@ -131,7 +131,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearToAddress() => clearField(2);
 
-  /// Transfer amount (uint256, serialized little endian)
+  /// Transfer amount (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get value => $_getN(2);
   @$pb.TagNumber(3)

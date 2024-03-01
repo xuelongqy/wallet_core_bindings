@@ -77,7 +77,7 @@ class Transaction_Transfer extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Transaction_Transfer>(create);
   static Transaction_Transfer? _defaultInstance;
 
-  /// Amount to send in wei (uint256, serialized little endian)
+  /// Amount to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get amount => $_getN(0);
   @$pb.TagNumber(1)
@@ -175,7 +175,7 @@ class Transaction_ERC20Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearTo() => clearField(1);
 
-  /// Amount to send (uint256, serialized little endian)
+  /// Amount to send (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get amount => $_getN(1);
   @$pb.TagNumber(2)
@@ -260,7 +260,7 @@ class Transaction_ERC20Approve extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearSpender() => clearField(1);
 
-  /// Amount to send (uint256, serialized little endian)
+  /// Amount to send (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get amount => $_getN(1);
   @$pb.TagNumber(2)
@@ -364,7 +364,7 @@ class Transaction_ERC721Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearTo() => clearField(2);
 
-  /// ID of the token (uint256, serialized little endian)
+  /// ID of the token (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get tokenId => $_getN(2);
   @$pb.TagNumber(3)
@@ -481,7 +481,7 @@ class Transaction_ERC1155Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearTo() => clearField(2);
 
-  /// ID of the token (uint256, serialized little endian)
+  /// ID of the token (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get tokenId => $_getN(2);
   @$pb.TagNumber(3)
@@ -494,7 +494,7 @@ class Transaction_ERC1155Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearTokenId() => clearField(3);
 
-  /// The amount of tokens being transferred (uint256, serialized little endian)
+  /// The amount of tokens being transferred (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get value => $_getN(3);
   @$pb.TagNumber(4)
@@ -581,7 +581,7 @@ class Transaction_ContractGeneric extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<Transaction_ContractGeneric>(create);
   static Transaction_ContractGeneric? _defaultInstance;
 
-  /// Amount to send in wei (uint256, serialized little endian)
+  /// Amount to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get amount => $_getN(0);
   @$pb.TagNumber(1)
@@ -686,7 +686,7 @@ class Transaction_Batch_BatchedCall extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearAddress() => clearField(1);
 
-  /// Amounts to send in wei (uint256, serialized little endian)
+  /// Amounts to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get amount => $_getN(1);
   @$pb.TagNumber(2)
@@ -1255,7 +1255,7 @@ class SigningInput extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
-  /// Chain identifier (uint256, serialized little endian)
+  /// Chain identifier (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get chainId => $_getN(0);
   @$pb.TagNumber(1)
@@ -1268,7 +1268,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearChainId() => clearField(1);
 
-  /// Nonce (uint256, serialized little endian)
+  /// Nonce (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get nonce => $_getN(1);
   @$pb.TagNumber(2)
@@ -1295,7 +1295,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearTxMode() => clearField(3);
 
-  /// Gas price (uint256, serialized little endian)
+  /// Gas price (uint256, serialized big endian)
   /// Relevant for legacy transactions only (disregarded for enveloped/EIP1559)
   @$pb.TagNumber(4)
   $core.List<$core.int> get gasPrice => $_getN(3);
@@ -1309,7 +1309,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearGasPrice() => clearField(4);
 
-  /// Gas limit (uint256, serialized little endian)
+  /// Gas limit (uint256, serialized big endian)
   @$pb.TagNumber(5)
   $core.List<$core.int> get gasLimit => $_getN(4);
   @$pb.TagNumber(5)
@@ -1322,7 +1322,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearGasLimit() => clearField(5);
 
-  /// Maximum optional inclusion fee (aka tip) (uint256, serialized little endian)
+  /// Maximum optional inclusion fee (aka tip) (uint256, serialized big endian)
   /// Relevant for enveloped/EIP1559 transactions only, tx_mode=Enveloped, (disregarded for legacy)
   @$pb.TagNumber(6)
   $core.List<$core.int> get maxInclusionFeePerGas => $_getN(5);
@@ -1336,7 +1336,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearMaxInclusionFeePerGas() => clearField(6);
 
-  /// Maximum fee (uint256, serialized little endian)
+  /// Maximum fee (uint256, serialized big endian)
   /// Relevant for enveloped/EIP1559 transactions only, tx_mode=Enveloped, (disregarded for legacy)
   @$pb.TagNumber(7)
   $core.List<$core.int> get maxFeePerGas => $_getN(6);
@@ -1514,7 +1514,7 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEncoded() => clearField(1);
 
-  /// The V, R, S components of the resulting signature, (each uint256, serialized little endian)
+  /// The V, R, S components of the resulting signature, (each uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get v => $_getN(1);
   @$pb.TagNumber(2)

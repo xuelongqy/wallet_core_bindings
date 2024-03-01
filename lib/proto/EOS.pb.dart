@@ -224,7 +224,7 @@ class SigningInput extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
-  /// Chain id (uint256, serialized little endian)
+  /// Chain id (uint256, serialized big endian)
   @$pb.TagNumber(1)
   $core.List<$core.int> get chainId => $_getN(0);
   @$pb.TagNumber(1)
@@ -237,7 +237,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearChainId() => clearField(1);
 
-  /// Reference Block Id (uint256, serialized little endian)
+  /// Reference Block Id (uint256, serialized big endian)
   @$pb.TagNumber(2)
   $core.List<$core.int> get referenceBlockId => $_getN(1);
   @$pb.TagNumber(2)

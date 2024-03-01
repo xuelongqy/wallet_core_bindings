@@ -133,7 +133,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearToAddress() => clearField(2);
 
-  /// / Theta token amount to send in wei (uint256, serialized little endian)
+  /// / Theta token amount to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(3)
   $core.List<$core.int> get thetaAmount => $_getN(2);
   @$pb.TagNumber(3)
@@ -146,7 +146,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearThetaAmount() => clearField(3);
 
-  /// / TFuel token amount to send in wei (uint256, serialized little endian)
+  /// / TFuel token amount to send in wei (uint256, serialized big endian)
   @$pb.TagNumber(4)
   $core.List<$core.int> get tfuelAmount => $_getN(3);
   @$pb.TagNumber(4)
@@ -172,7 +172,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearSequence() => clearField(5);
 
-  /// / Fee amount in TFuel wei for the transaction (uint256, serialized little endian)
+  /// / Fee amount in TFuel wei for the transaction (uint256, serialized big endian)
   @$pb.TagNumber(6)
   $core.List<$core.int> get fee => $_getN(5);
   @$pb.TagNumber(6)
