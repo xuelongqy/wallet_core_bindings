@@ -38,6 +38,22 @@ class TWDataVector extends TWObjectFinalizable<bindings.TWDataVector> {
           finalizer: _twDataVectorFinalizer,
         );
 
+  /// Creates a Vector of Data with the given list of elements
+  ///
+  /// \param [dataList] A non-null list of valid blocks of data
+  TWDataVector.createWithDataList(
+    List<Uint8List> dataList, {
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWDataVectorCreate(),
+          attach: attach,
+          finalizer: _twDataVectorFinalizer,
+        ) {
+    for (var data in dataList) {
+      add(data);
+    }
+  }
+
   /// Delete/Deallocate a Vector of Data
   @override
   void delete() {

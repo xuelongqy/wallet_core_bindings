@@ -18,7 +18,7 @@ void main() {
           .bytes()!;
       final key = TWPrivateKey.createWithData(privateKey);
       final publicKey =
-          key.getPublicKey(TWPublicKeyType.TWPublicKeyTypeED25519);
+          key.getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519);
 
       final input = Aion.SigningInput(
         toAddress:
@@ -51,11 +51,52 @@ void main() {
         coin: TWCoinType.TWCoinTypeAion,
         txInputData: txInputData,
         signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(privateKey),
+        publicKeys: TWDataVector.createWithData(publicKey.data),
       );
 
       const ExpectedTx =
           'f89b09a0a082c3de528b7807dc27ad66debb16d4cfe4054209398cee619dd95955063d1e8227108085242019b04d8252088800000004a817c80001b860a775daa30b33fda3091768f0561c8042ee23cb48a6a3e5d7e8248b13d04a48a7d3d3386742c2716031b79950cef5fcb49c079a5cab095c8b08915e126b9741389924ba2d5c00036a3b39c2a8562fa0800f1a13a566ce6e027274ce63a41dec07';
+      {
+        final output = Aion.SigningOutput.fromBuffer(outputData);
+        expectHex(output.encoded, ExpectedTx);
+      }
+
+      // double check
+      {
+        final output = Aion.SigningOutput.fromBuffer(
+          TWAnySigner.sign(
+            input.writeToBuffer(),
+            TWCoinType.TWCoinTypeAion,
+          ),
+        );
+        expectHex(output.encoded, ExpectedTx);
+      }
+
+      {
+        // Negative: inconsistent signatures & publicKeys
+        final outputData = TWTransactionCompiler.compileWithSignatures(
+          coin: TWCoinType.TWCoinTypeAion,
+          txInputData: txInputData,
+          signatures: TWDataVector.createWithDataList([signature, signature]),
+          publicKeys: TWDataVector.createWithData(publicKey.data),
+        );
+        final output = Aion.SigningOutput.fromBuffer(outputData);
+        expect(output.encoded.length, 0);
+        expect(output.error, Common.SigningError.Error_no_support_n2n);
+      }
+
+      {
+        // Negative: empty signatures
+        final outputData = TWTransactionCompiler.compileWithSignatures(
+          coin: TWCoinType.TWCoinTypeAion,
+          txInputData: txInputData,
+          signatures: TWDataVector(),
+          publicKeys: TWDataVector(),
+        );
+        final output = Aion.SigningOutput.fromBuffer(outputData);
+        expect(output.encoded.length, 0);
+        expect(output.error, Common.SigningError.Error_invalid_params);
+      }
     });
   });
 }
