@@ -7,14 +7,14 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
-  ffi: ^2.1.0
+  ffi: ^2.1.2
   protobuf: ^3.1.0
   fixnum: ^1.1.0
 
 dev_dependencies:
   lints: ^3.0.0
   ffigen: ^11.0.0
-  test: ^1.24.9
+  test: ^1.25.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

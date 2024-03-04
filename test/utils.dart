@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
@@ -25,7 +26,7 @@ void expectHexBytes(Uint8List actual, Uint8List expected) {
 }
 
 void expectJson(String actual, String expected) {
-  expect(json.encode(json.decode(actual)), json.encode(json.decode(expected)));
+  expect(DeepCollectionEquality().equals(json.decode(actual), json.decode(expected)), true);
 }
 
 Uint8List hexToBytes(String hexString, {int? length}) {
