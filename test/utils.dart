@@ -26,7 +26,10 @@ void expectHexBytes(Uint8List actual, Uint8List expected) {
 }
 
 void expectJson(String actual, String expected) {
-  expect(DeepCollectionEquality().equals(json.decode(actual), json.decode(expected)), true);
+  expect(
+      DeepCollectionEquality()
+          .equals(json.decode(actual), json.decode(expected)),
+      true);
 }
 
 Uint8List hexToBytes(String hexString, {int? length}) {

@@ -2,27 +2,31 @@ import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 void main() {
-  group('TWArbitrumCoinType', () {
+  group('TWArbitrumNovaCoinType', () {
     test('TWCoinType', () {
-      const coin = TWCoinType.TWCoinTypeArbitrum;
+      const coin = TWCoinType.TWCoinTypeArbitrumNova;
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final chainId = TWCoinTypeChainId(coin);
       const txId =
-          '0xa1e319be22c08155e5904aa211fb87df5f4ade48de79c6578b1cf3dfda9e498c';
+          '0xfdfee13848c2d21813c82c53afc9925f31770564c3117477960a81055702c1be';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
-      const accId = '0xecf9ffa7f51e1194f89c25ad8c484f6bfd04e1ac';
+      const accId = '0x0d0707963952f2fba59dd06f2b425ace40b492fe';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
 
-      expect(id, 'arbitrum');
-      expect(name, 'Arbitrum');
+      expect(id, 'arbitrumnova');
+      expect(name, 'Arbitrum Nova');
       expect(symbol, 'ETH');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(TWCoinTypeBlockchain(coin), TWBlockchain.TWBlockchainEthereum);
+      expect(TWCoinTypeP2shPrefix(coin), 0x0);
+      expect(TWCoinTypeStaticPrefix(coin), 0x0);
+      expect(chainId, '42170');
       expect(txUrl,
-          'https://arbiscan.io/tx/0xa1e319be22c08155e5904aa211fb87df5f4ade48de79c6578b1cf3dfda9e498c');
+          'https://nova.arbiscan.io/tx/0xfdfee13848c2d21813c82c53afc9925f31770564c3117477960a81055702c1be');
       expect(accUrl,
-          'https://arbiscan.io/address/0xecf9ffa7f51e1194f89c25ad8c484f6bfd04e1ac');
+          'https://nova.arbiscan.io/address/0x0d0707963952f2fba59dd06f2b425ace40b492fe');
     });
   });
 }
