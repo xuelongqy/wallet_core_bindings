@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -21,6 +22,10 @@ void expectHex(List<int> actual, String expected) {
 void expectHexBytes(Uint8List actual, Uint8List expected) {
   expect(TWString.createWithHexBytes(actual).value,
       TWString.createWithHexBytes(expected).value);
+}
+
+void expectJson(String actual, String expected) {
+  expect(json.encode(json.decode(actual)), json.encode(json.decode(expected)));
 }
 
 Uint8List hexToBytes(String hexString, {int? length}) {
