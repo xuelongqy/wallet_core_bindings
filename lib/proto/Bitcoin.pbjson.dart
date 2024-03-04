@@ -242,8 +242,19 @@ const SigningInput$json = {
       '6': '.TW.BitcoinV2.Proto.SigningInput',
       '10': 'signingV2'
     },
+    {
+      '1': 'fixed_dust_threshold',
+      '3': 24,
+      '4': 1,
+      '5': 3,
+      '9': 0,
+      '10': 'fixedDustThreshold'
+    },
   ],
   '3': [SigningInput_ScriptsEntry$json],
+  '8': [
+    {'1': 'dust_policy'},
+  ],
 };
 
 @$core.Deprecated('Use signingInputDescriptor instead')
@@ -273,8 +284,9 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'aWx0ZXISEgoEdGltZRgRIAEoDVIEdGltZRItChNpc19pdF9icmNfb3BlcmF0aW9uGBIgASgIUh'
     'Bpc0l0QnJjT3BlcmF0aW9uEkAKC3BsYW5uaW5nX3YyGBQgASgLMh8uVFcuQml0Y29pblYyLlBy'
     'b3RvLkNvbXBvc2VQbGFuUgpwbGFubmluZ1YyEj8KCnNpZ25pbmdfdjIYFSABKAsyIC5UVy5CaX'
-    'Rjb2luVjIuUHJvdG8uU2lnbmluZ0lucHV0UglzaWduaW5nVjIaOgoMU2NyaXB0c0VudHJ5EhAK'
-    'A2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgMUgV2YWx1ZToCOAE=');
+    'Rjb2luVjIuUHJvdG8uU2lnbmluZ0lucHV0UglzaWduaW5nVjISMgoUZml4ZWRfZHVzdF90aHJl'
+    'c2hvbGQYGCABKANIAFISZml4ZWREdXN0VGhyZXNob2xkGjoKDFNjcmlwdHNFbnRyeRIQCgNrZX'
+    'kYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoDFIFdmFsdWU6AjgBQg0KC2R1c3RfcG9saWN5');
 
 @$core.Deprecated('Use transactionPlanDescriptor instead')
 const TransactionPlan$json = {

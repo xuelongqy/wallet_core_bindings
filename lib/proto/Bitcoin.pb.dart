@@ -676,6 +676,8 @@ class OutputAddress extends $pb.GeneratedMessage {
   void clearAmount() => clearField(2);
 }
 
+enum SigningInput_DustPolicy { fixedDustThreshold, notSet }
+
 /// Input data necessary to create a signed transaction.
 class SigningInput extends $pb.GeneratedMessage {
   factory SigningInput({
@@ -699,6 +701,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.bool? isItBrcOperation,
     $2.ComposePlan? planningV2,
     $2.SigningInput? signingV2,
+    $fixnum.Int64? fixedDustThreshold,
   }) {
     final $result = create();
     if (hashType != null) {
@@ -761,6 +764,9 @@ class SigningInput extends $pb.GeneratedMessage {
     if (signingV2 != null) {
       $result.signingV2 = signingV2;
     }
+    if (fixedDustThreshold != null) {
+      $result.fixedDustThreshold = fixedDustThreshold;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -771,11 +777,17 @@ class SigningInput extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, SigningInput_DustPolicy>
+      _SigningInput_DustPolicyByTag = {
+    24: SigningInput_DustPolicy.fixedDustThreshold,
+    0: SigningInput_DustPolicy.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'SigningInput',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Bitcoin.Proto'),
       createEmptyInstance: create)
+    ..oo(0, [24])
     ..a<$core.int>(1, _omitFieldNames ? '' : 'hashType', $pb.PbFieldType.OU3)
     ..aInt64(2, _omitFieldNames ? '' : 'amount')
     ..aInt64(3, _omitFieldNames ? '' : 'byteFee')
@@ -810,6 +822,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: $2.ComposePlan.create)
     ..aOM<$2.SigningInput>(21, _omitFieldNames ? '' : 'signingV2',
         subBuilder: $2.SigningInput.create)
+    ..aInt64(24, _omitFieldNames ? '' : 'fixedDustThreshold')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -834,6 +847,10 @@ class SigningInput extends $pb.GeneratedMessage {
   static SigningInput getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
+
+  SigningInput_DustPolicy whichDustPolicy() =>
+      _SigningInput_DustPolicyByTag[$_whichOneof(0)]!;
+  void clearDustPolicy() => clearField($_whichOneof(0));
 
   /// Hash type to use when signing.
   @$pb.TagNumber(1)
@@ -1072,6 +1089,19 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearSigningV2() => clearField(21);
   @$pb.TagNumber(21)
   $2.SigningInput ensureSigningV2() => $_ensure(19);
+
+  /// Use a constant "Dust" threshold.
+  @$pb.TagNumber(24)
+  $fixnum.Int64 get fixedDustThreshold => $_getI64(20);
+  @$pb.TagNumber(24)
+  set fixedDustThreshold($fixnum.Int64 v) {
+    $_setInt64(20, v);
+  }
+
+  @$pb.TagNumber(24)
+  $core.bool hasFixedDustThreshold() => $_has(20);
+  @$pb.TagNumber(24)
+  void clearFixedDustThreshold() => clearField(24);
 }
 
 /// Describes a preliminary transaction plan.

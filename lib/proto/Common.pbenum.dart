@@ -65,6 +65,8 @@ class SigningError extends $pb.ProtobufEnum {
           23, _omitEnumNames ? '' : 'Error_invalid_requested_token_amount');
   static const SigningError Error_not_supported =
       SigningError._(24, _omitEnumNames ? '' : 'Error_not_supported');
+  static const SigningError Error_dust_amount_requested =
+      SigningError._(25, _omitEnumNames ? '' : 'Error_dust_amount_requested');
 
   static const $core.List<SigningError> values = <SigningError>[
     OK,
@@ -92,6 +94,7 @@ class SigningError extends $pb.ProtobufEnum {
     Error_invalid_params,
     Error_invalid_requested_token_amount,
     Error_not_supported,
+    Error_dust_amount_requested,
   ];
 
   static final $core.Map<$core.int, SigningError> _byValue =

@@ -8,7 +8,9 @@ import '../../utils.dart';
 void main() {
   group('TWAnySignerAeternity', () {
     test('Sign', () {
-      final privateKey = TWData.createWithHexString('4646464646464646464646464646464646464646464646464646464646464646').bytes()!;
+      final privateKey = TWData.createWithHexString(
+              '4646464646464646464646464646464646464646464646464646464646464646')
+          .bytes()!;
 
       final input = Aeternity.SigningInput(
         fromAddress: 'ak_2p5878zbFhxnrm7meL7TmqwtvBaqcBddyp5eGzZbovZ5FeVfcw',
@@ -21,9 +23,11 @@ void main() {
         privateKey: privateKey,
       );
 
-      final output = Aeternity.SigningOutput.fromBuffer(TWAnySigner.sign(input.writeToBuffer(), TWCoinType.TWCoinTypeAeternity));
+      final output = Aeternity.SigningOutput.fromBuffer(TWAnySigner.sign(
+          input.writeToBuffer(), TWCoinType.TWCoinTypeAeternity));
 
-      expect(output.encoded, 'tx_+KkLAfhCuEDZ2XDV5OuHv1iuLn66sFLBUwnzp1K8JW1Zz+fEgmuEh6HEvNu0R112M3IYkVzvTSnT0pJ3TWhVOumgJ+IWwW8HuGH4XwwBoQHuk6T2b40WuBm7m+uf/M383BQS6H/uajJMKpmh4OZxSKEBHxOjsIvwAUAGYqaLadh194A87EwIZH9u1dhMeJe9UKMKhhIwnOVAAIMBQ0Uxi0hlbGxvIFdvcmxkDZqNSg==');
+      expect(output.encoded,
+          'tx_+KkLAfhCuEDZ2XDV5OuHv1iuLn66sFLBUwnzp1K8JW1Zz+fEgmuEh6HEvNu0R112M3IYkVzvTSnT0pJ3TWhVOumgJ+IWwW8HuGH4XwwBoQHuk6T2b40WuBm7m+uf/M383BQS6H/uajJMKpmh4OZxSKEBHxOjsIvwAUAGYqaLadh194A87EwIZH9u1dhMeJe9UKMKhhIwnOVAAIMBQ0Uxi0hlbGxvIFdvcmxkDZqNSg==');
     });
   });
 }
