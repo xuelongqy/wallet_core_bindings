@@ -231,6 +231,18 @@ class TWEthereumAbiFunction
         isOutput,
       );
 
+  /// Add an address type parameter
+  ///
+  /// \param [val] for output parameters, value has to be specified
+  /// \param [isOutput] determines if the parameter is an input or output
+  /// \return the index of the parameter (0-based).
+  int addParamAddressHex(String val, bool isOutput) =>
+      iTWBindings.TWEthereumAbiFunctionAddParamAddress(
+        _pointer,
+        TWData.createWithHexString(val).pointer,
+        isOutput,
+      );
+
   /// Add a bytes type parameter
   ///
   /// \param [val] for output parameters, value has to be specified
@@ -479,4 +491,9 @@ class TWEthereumAbiFunction
   int addInArrayParamBytesFix(int arrayIdx, int size, Uint8List val) =>
       iTWBindings.TWEthereumAbiFunctionAddInArrayParamBytesFix(
           _pointer, arrayIdx, size, TWData(val).pointer);
+
+  /// Encode function to Eth ABI binary
+  ///
+  /// \return Non-null encoded block of data
+  Uint8List encode() => TWEthereumAbi.encode(this);
 }

@@ -6,7 +6,6 @@ import 'package:wallet_core_bindings/proto/Binance.pb.dart' as Binance;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:wallet_core_bindings/proto/WalletConnect.pb.dart'
     as WalletConnect;
-import 'package:fixnum/fixnum.dart' as $fixnum;
 
 import '../../utils.dart';
 
