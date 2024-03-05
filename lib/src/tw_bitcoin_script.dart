@@ -194,29 +194,29 @@ class TWBitcoinScript extends TWObjectFinalizable<bindings.TWBitcoinScript> {
   bool operator ==(Object other) => other is TWBitcoinScript && equal(other);
 
   /// Matches the script to a pay-to-public-key (P2PK) script.
-  Uint8List matchPayToPubkey() =>
+  Uint8List? matchPayToPubkey() =>
       TWData.fromPointer(iTWBindings.TWBitcoinScriptMatchPayToPubkey(_pointer))
-          .bytes()!;
+          .bytes();
 
   /// Matches the script to a pay-to-public-key-hash (P2PKH).
-  Uint8List matchPayToPubkeyHash() => TWData.fromPointer(
+  Uint8List? matchPayToPubkeyHash() => TWData.fromPointer(
           iTWBindings.TWBitcoinScriptMatchPayToPubkeyHash(_pointer))
-      .bytes()!;
+      .bytes();
 
   /// Matches the script to a pay-to-script-hash (P2SH).
-  Uint8List matchPayToScriptHash() => TWData.fromPointer(
+  Uint8List? matchPayToScriptHash() => TWData.fromPointer(
           iTWBindings.TWBitcoinScriptMatchPayToScriptHash(_pointer))
-      .bytes()!;
+      .bytes();
 
   /// Matches the script to a pay-to-witness-public-key-hash (P2WPKH).
-  Uint8List matchPayToWitnessPublicKeyHash() => TWData.fromPointer(
+  Uint8List? matchPayToWitnessPublicKeyHash() => TWData.fromPointer(
           iTWBindings.TWBitcoinScriptMatchPayToWitnessPublicKeyHash(_pointer))
-      .bytes()!;
+      .bytes();
 
   /// Matches the script to a pay-to-witness-script-hash (P2WSH).
-  Uint8List matchPayToWitnessScriptHash() => TWData.fromPointer(
+  Uint8List? matchPayToWitnessScriptHash() => TWData.fromPointer(
           iTWBindings.TWBitcoinScriptMatchPayToWitnessScriptHash(_pointer))
-      .bytes()!;
+      .bytes();
 
   /// Encodes the script.
   Uint8List encode() =>

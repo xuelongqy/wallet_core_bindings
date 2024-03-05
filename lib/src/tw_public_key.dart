@@ -170,4 +170,24 @@ class TWPublicKey extends TWObjectFinalizable<bindings.TWPublicKey> {
   /// \return Non-null pointer to a string representing the description of the public key
   String get description =>
       TWString.fromPointer(iTWBindings.TWPublicKeyDescription(_pointer)).value!;
+
+  /// Get the public key HASH.
+  ///
+  /// \param [prefix] Non-null block of data representing the prefix
+  /// \param [hasher] Non-null hasher function
+  /// \param [skipTypeByte] Non-null bool
+  /// \return Non-null block of data representing the hash of the public key
+  Uint8List hash(
+    Uint8List prefix, {
+    TWHasher hasher = TWHash.sha256RIPEMD,
+    bool skipTypeByte = false,
+  }) {
+    final hashData = data.toList();
+    if (skipTypeByte) {
+      data.removeAt(0);
+    }
+    final hash = hasher(Uint8List.fromList(hashData));
+
+    return Uint8List.fromList([...prefix, ...hash]);
+  }
 }

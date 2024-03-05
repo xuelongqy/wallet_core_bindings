@@ -361,7 +361,7 @@ void main() {
               utxoScript.data, '00146641abedacf9483b793afe1718689cc9420bbb1c');
         }
 
-        final keyHash = utxoScript.matchPayToWitnessPublicKeyHash();
+        final keyHash = utxoScript.matchPayToWitnessPublicKeyHash()!;
         if (count == 0) {
           expect(keyHash, inPubKeyHash0);
         }

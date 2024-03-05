@@ -97,4 +97,7 @@ class TWBitcoinAddress extends TWObjectFinalizable<bindings.TWBitcoinAddress> {
   Uint8List hash() =>
       TWData.fromPointer(iTWBindings.TWBitcoinAddressKeyhash(_pointer))
           .bytes()!;
+
+  /// Returns the address data.
+  Uint8List get data => Uint8List.fromList([prefix(), ...hash()]);
 }

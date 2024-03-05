@@ -1,5 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
+/// Hasher function type.
+typedef Uint8List TWHasher(Uint8List data);
+
 /// Hash functions
 class TWHash {
   static const int sha1Length = 20;
