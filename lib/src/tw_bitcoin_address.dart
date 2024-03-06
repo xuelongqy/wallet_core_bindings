@@ -91,13 +91,13 @@ class TWBitcoinAddress extends TWObjectFinalizable<bindings.TWBitcoinAddress> {
           .value!;
 
   /// Returns the address prefix.
-  int prefix() => iTWBindings.TWBitcoinAddressPrefix(_pointer);
+  int get prefix => iTWBindings.TWBitcoinAddressPrefix(_pointer);
 
   /// Returns the key hash data.
-  Uint8List hash() =>
+  Uint8List get keyHash =>
       TWData.fromPointer(iTWBindings.TWBitcoinAddressKeyhash(_pointer))
           .bytes()!;
 
   /// Returns the address data.
-  Uint8List get data => Uint8List.fromList([prefix(), ...hash()]);
+  Uint8List get data => Uint8List.fromList([prefix, ...keyHash]);
 }
