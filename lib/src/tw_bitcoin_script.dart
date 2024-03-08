@@ -219,8 +219,8 @@ class TWBitcoinScript extends TWObjectFinalizable<bindings.TWBitcoinScript> {
       .bytes();
 
   /// Encodes the script.
-  Uint8List encode() =>
-      TWData.fromPointer(iTWBindings.TWBitcoinScriptEncode(_pointer)).bytes()!;
+  Uint8List? encode() =>
+      TWData.fromPointer(iTWBindings.TWBitcoinScriptEncode(_pointer)).bytes();
 
   /// Builds the Ordinals inscripton for BRC20 transfer.
   ///
