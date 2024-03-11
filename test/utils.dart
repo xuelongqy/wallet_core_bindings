@@ -58,4 +58,12 @@ Uint8List bigIntStringToBytes(String value, {int? length}) {
   return hexToBytes(hex, length: length);
 }
 
+Uint8List parse_hex(String hex) {
+  return TWData.createWithHexString(hex).bytes()!;
+}
+
+String hex(List<int> bytes) {
+  return TWString.createWithHexBytes(Uint8List.fromList(bytes)).value!;
+}
+
 void main() {}
