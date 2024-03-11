@@ -15,6 +15,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'Binance.pb.dart' as $7;
 import 'Common.pbenum.dart' as $0;
+import 'Solana.pb.dart' as $8;
 import 'WalletConnect.pbenum.dart';
 
 export 'WalletConnect.pbenum.dart';
@@ -125,13 +126,14 @@ class ParseRequestInput extends $pb.GeneratedMessage {
   void clearPayload() => clearField(3);
 }
 
-enum ParseRequestOutput_SigningInputOneof { binance, notSet }
+enum ParseRequestOutput_SigningInputOneof { binance, solana, notSet }
 
 class ParseRequestOutput extends $pb.GeneratedMessage {
   factory ParseRequestOutput({
     $0.SigningError? error,
     $core.String? errorMessage,
     $7.SigningInput? binance,
+    $8.SigningInput? solana,
   }) {
     final $result = create();
     if (error != null) {
@@ -142,6 +144,9 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
     }
     if (binance != null) {
       $result.binance = binance;
+    }
+    if (solana != null) {
+      $result.solana = solana;
     }
     return $result;
   }
@@ -156,6 +161,7 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, ParseRequestOutput_SigningInputOneof>
       _ParseRequestOutput_SigningInputOneofByTag = {
     3: ParseRequestOutput_SigningInputOneof.binance,
+    4: ParseRequestOutput_SigningInputOneof.solana,
     0: ParseRequestOutput_SigningInputOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -163,7 +169,7 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'TW.WalletConnect.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [3])
+    ..oo(0, [3, 4])
     ..e<$0.SigningError>(1, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
         defaultOrMaker: $0.SigningError.OK,
         valueOf: $0.SigningError.valueOf,
@@ -171,6 +177,8 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'errorMessage')
     ..aOM<$7.SigningInput>(3, _omitFieldNames ? '' : 'binance',
         subBuilder: $7.SigningInput.create)
+    ..aOM<$8.SigningInput>(4, _omitFieldNames ? '' : 'solana',
+        subBuilder: $8.SigningInput.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -239,6 +247,20 @@ class ParseRequestOutput extends $pb.GeneratedMessage {
   void clearBinance() => clearField(3);
   @$pb.TagNumber(3)
   $7.SigningInput ensureBinance() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $8.SigningInput get solana => $_getN(3);
+  @$pb.TagNumber(4)
+  set solana($8.SigningInput v) {
+    setField(4, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasSolana() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSolana() => clearField(4);
+  @$pb.TagNumber(4)
+  $8.SigningInput ensureSolana() => $_ensure(3);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

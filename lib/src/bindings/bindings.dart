@@ -10286,6 +10286,28 @@ class TrustWalletCoreBindings {
       _TWSolanaAddressDescriptionPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWSolanaAddress>)>();
 
+  /// Decodes a transaction from a binary representation.
+  ///
+  /// \param coin coin type.
+  /// \param encodedTx encoded transaction data.
+  /// \return serialized protobuf message specific for the given coin.
+  ffi.Pointer<TWData> TWTransactionDecoderDecode(
+    int coinType,
+    ffi.Pointer<TWData> encodedTx,
+  ) {
+    return _TWTransactionDecoderDecode(
+      coinType,
+      encodedTx,
+    );
+  }
+
+  late final _TWTransactionDecoderDecodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Int32, ffi.Pointer<TWData>)>>('TWTransactionDecoderDecode');
+  late final _TWTransactionDecoderDecode = _TWTransactionDecoderDecodePtr
+      .asFunction<ffi.Pointer<TWData> Function(int, ffi.Pointer<TWData>)>();
+
   /// Compares two addresses for equality.
   ///
   /// \param lhs left non-null pointer to a Bech32 Address
@@ -12335,6 +12357,8 @@ final class TWBitcoinMessageSigner extends ffi.Opaque {}
 
 /// Solana address helper functions
 final class TWSolanaAddress extends ffi.Opaque {}
+
+final class TWTransactionDecoder extends ffi.Opaque {}
 
 /// Represents a BIP 0173 address.
 final class TWSegwitAddress extends ffi.Opaque {}

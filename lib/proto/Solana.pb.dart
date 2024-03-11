@@ -15,6 +15,9 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'Common.pbenum.dart' as $0;
+import 'Solana.pbenum.dart';
+
+export 'Solana.pbenum.dart';
 
 /// Transfer transaction
 class Transfer extends $pb.GeneratedMessage {
@@ -1276,6 +1279,922 @@ class AdvanceNonceAccount extends $pb.GeneratedMessage {
   void clearNonceAccount() => clearField(1);
 }
 
+class PubkeySignature extends $pb.GeneratedMessage {
+  factory PubkeySignature({
+    $core.String? pubkey,
+    $core.String? signature,
+  }) {
+    final $result = create();
+    if (pubkey != null) {
+      $result.pubkey = pubkey;
+    }
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    return $result;
+  }
+  PubkeySignature._() : super();
+  factory PubkeySignature.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory PubkeySignature.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PubkeySignature',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'pubkey')
+    ..aOS(2, _omitFieldNames ? '' : 'signature')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  PubkeySignature clone() => PubkeySignature()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  PubkeySignature copyWith(void Function(PubkeySignature) updates) =>
+      super.copyWith((message) => updates(message as PubkeySignature))
+          as PubkeySignature;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PubkeySignature create() => PubkeySignature._();
+  PubkeySignature createEmptyInstance() => create();
+  static $pb.PbList<PubkeySignature> createRepeated() =>
+      $pb.PbList<PubkeySignature>();
+  @$core.pragma('dart2js:noInline')
+  static PubkeySignature getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PubkeySignature>(create);
+  static PubkeySignature? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get pubkey => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set pubkey($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPubkey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPubkey() => clearField(1);
+
+  /// base58 encoded signature.
+  @$pb.TagNumber(2)
+  $core.String get signature => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set signature($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasSignature() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSignature() => clearField(2);
+}
+
+class RawMessage_MessageHeader extends $pb.GeneratedMessage {
+  factory RawMessage_MessageHeader({
+    $core.int? numRequiredSignatures,
+    $core.int? numReadonlySignedAccounts,
+    $core.int? numReadonlyUnsignedAccounts,
+  }) {
+    final $result = create();
+    if (numRequiredSignatures != null) {
+      $result.numRequiredSignatures = numRequiredSignatures;
+    }
+    if (numReadonlySignedAccounts != null) {
+      $result.numReadonlySignedAccounts = numReadonlySignedAccounts;
+    }
+    if (numReadonlyUnsignedAccounts != null) {
+      $result.numReadonlyUnsignedAccounts = numReadonlyUnsignedAccounts;
+    }
+    return $result;
+  }
+  RawMessage_MessageHeader._() : super();
+  factory RawMessage_MessageHeader.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RawMessage_MessageHeader.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RawMessage.MessageHeader',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.int>(
+        1, _omitFieldNames ? '' : 'numRequiredSignatures', $pb.PbFieldType.OU3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'numReadonlySignedAccounts',
+        $pb.PbFieldType.OU3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'numReadonlyUnsignedAccounts',
+        $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageHeader clone() =>
+      RawMessage_MessageHeader()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageHeader copyWith(
+          void Function(RawMessage_MessageHeader) updates) =>
+      super.copyWith((message) => updates(message as RawMessage_MessageHeader))
+          as RawMessage_MessageHeader;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageHeader create() => RawMessage_MessageHeader._();
+  RawMessage_MessageHeader createEmptyInstance() => create();
+  static $pb.PbList<RawMessage_MessageHeader> createRepeated() =>
+      $pb.PbList<RawMessage_MessageHeader>();
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageHeader getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RawMessage_MessageHeader>(create);
+  static RawMessage_MessageHeader? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get numRequiredSignatures => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set numRequiredSignatures($core.int v) {
+    $_setUnsignedInt32(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasNumRequiredSignatures() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNumRequiredSignatures() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get numReadonlySignedAccounts => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set numReadonlySignedAccounts($core.int v) {
+    $_setUnsignedInt32(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasNumReadonlySignedAccounts() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearNumReadonlySignedAccounts() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get numReadonlyUnsignedAccounts => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set numReadonlyUnsignedAccounts($core.int v) {
+    $_setUnsignedInt32(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasNumReadonlyUnsignedAccounts() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNumReadonlyUnsignedAccounts() => clearField(3);
+}
+
+class RawMessage_Instruction extends $pb.GeneratedMessage {
+  factory RawMessage_Instruction({
+    $core.int? programId,
+    $core.Iterable<$core.int>? accounts,
+    $core.List<$core.int>? programData,
+  }) {
+    final $result = create();
+    if (programId != null) {
+      $result.programId = programId;
+    }
+    if (accounts != null) {
+      $result.accounts.addAll(accounts);
+    }
+    if (programData != null) {
+      $result.programData = programData;
+    }
+    return $result;
+  }
+  RawMessage_Instruction._() : super();
+  factory RawMessage_Instruction.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RawMessage_Instruction.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RawMessage.Instruction',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'programId', $pb.PbFieldType.OU3)
+    ..p<$core.int>(2, _omitFieldNames ? '' : 'accounts', $pb.PbFieldType.KU3)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'programData', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RawMessage_Instruction clone() =>
+      RawMessage_Instruction()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RawMessage_Instruction copyWith(
+          void Function(RawMessage_Instruction) updates) =>
+      super.copyWith((message) => updates(message as RawMessage_Instruction))
+          as RawMessage_Instruction;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_Instruction create() => RawMessage_Instruction._();
+  RawMessage_Instruction createEmptyInstance() => create();
+  static $pb.PbList<RawMessage_Instruction> createRepeated() =>
+      $pb.PbList<RawMessage_Instruction>();
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_Instruction getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RawMessage_Instruction>(create);
+  static RawMessage_Instruction? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get programId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set programId($core.int v) {
+    $_setUnsignedInt32(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasProgramId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearProgramId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get accounts => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get programData => $_getN(2);
+  @$pb.TagNumber(3)
+  set programData($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasProgramData() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearProgramData() => clearField(3);
+}
+
+class RawMessage_MessageAddressTableLookup extends $pb.GeneratedMessage {
+  factory RawMessage_MessageAddressTableLookup({
+    $core.String? accountKey,
+    $core.Iterable<$core.int>? writableIndexes,
+    $core.Iterable<$core.int>? readonlyIndexes,
+  }) {
+    final $result = create();
+    if (accountKey != null) {
+      $result.accountKey = accountKey;
+    }
+    if (writableIndexes != null) {
+      $result.writableIndexes.addAll(writableIndexes);
+    }
+    if (readonlyIndexes != null) {
+      $result.readonlyIndexes.addAll(readonlyIndexes);
+    }
+    return $result;
+  }
+  RawMessage_MessageAddressTableLookup._() : super();
+  factory RawMessage_MessageAddressTableLookup.fromBuffer(
+          $core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RawMessage_MessageAddressTableLookup.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RawMessage.MessageAddressTableLookup',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'accountKey')
+    ..p<$core.int>(
+        2, _omitFieldNames ? '' : 'writableIndexes', $pb.PbFieldType.KU3)
+    ..p<$core.int>(
+        3, _omitFieldNames ? '' : 'readonlyIndexes', $pb.PbFieldType.KU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageAddressTableLookup clone() =>
+      RawMessage_MessageAddressTableLookup()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageAddressTableLookup copyWith(
+          void Function(RawMessage_MessageAddressTableLookup) updates) =>
+      super.copyWith((message) =>
+              updates(message as RawMessage_MessageAddressTableLookup))
+          as RawMessage_MessageAddressTableLookup;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageAddressTableLookup create() =>
+      RawMessage_MessageAddressTableLookup._();
+  RawMessage_MessageAddressTableLookup createEmptyInstance() => create();
+  static $pb.PbList<RawMessage_MessageAddressTableLookup> createRepeated() =>
+      $pb.PbList<RawMessage_MessageAddressTableLookup>();
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageAddressTableLookup getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          RawMessage_MessageAddressTableLookup>(create);
+  static RawMessage_MessageAddressTableLookup? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get accountKey => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set accountKey($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasAccountKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAccountKey() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get writableIndexes => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get readonlyIndexes => $_getList(2);
+}
+
+class RawMessage_MessageLegacy extends $pb.GeneratedMessage {
+  factory RawMessage_MessageLegacy({
+    RawMessage_MessageHeader? header,
+    $core.Iterable<$core.String>? accountKeys,
+    $core.String? recentBlockhash,
+    $core.Iterable<RawMessage_Instruction>? instructions,
+  }) {
+    final $result = create();
+    if (header != null) {
+      $result.header = header;
+    }
+    if (accountKeys != null) {
+      $result.accountKeys.addAll(accountKeys);
+    }
+    if (recentBlockhash != null) {
+      $result.recentBlockhash = recentBlockhash;
+    }
+    if (instructions != null) {
+      $result.instructions.addAll(instructions);
+    }
+    return $result;
+  }
+  RawMessage_MessageLegacy._() : super();
+  factory RawMessage_MessageLegacy.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RawMessage_MessageLegacy.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RawMessage.MessageLegacy',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOM<RawMessage_MessageHeader>(1, _omitFieldNames ? '' : 'header',
+        subBuilder: RawMessage_MessageHeader.create)
+    ..pPS(2, _omitFieldNames ? '' : 'accountKeys')
+    ..aOS(3, _omitFieldNames ? '' : 'recentBlockhash')
+    ..pc<RawMessage_Instruction>(
+        4, _omitFieldNames ? '' : 'instructions', $pb.PbFieldType.PM,
+        subBuilder: RawMessage_Instruction.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageLegacy clone() =>
+      RawMessage_MessageLegacy()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageLegacy copyWith(
+          void Function(RawMessage_MessageLegacy) updates) =>
+      super.copyWith((message) => updates(message as RawMessage_MessageLegacy))
+          as RawMessage_MessageLegacy;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageLegacy create() => RawMessage_MessageLegacy._();
+  RawMessage_MessageLegacy createEmptyInstance() => create();
+  static $pb.PbList<RawMessage_MessageLegacy> createRepeated() =>
+      $pb.PbList<RawMessage_MessageLegacy>();
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageLegacy getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RawMessage_MessageLegacy>(create);
+  static RawMessage_MessageLegacy? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  RawMessage_MessageHeader get header => $_getN(0);
+  @$pb.TagNumber(1)
+  set header(RawMessage_MessageHeader v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasHeader() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearHeader() => clearField(1);
+  @$pb.TagNumber(1)
+  RawMessage_MessageHeader ensureHeader() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get accountKeys => $_getList(1);
+
+  /// Relatively recent block hash (base58 encoded).
+  @$pb.TagNumber(3)
+  $core.String get recentBlockhash => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set recentBlockhash($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasRecentBlockhash() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRecentBlockhash() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<RawMessage_Instruction> get instructions => $_getList(3);
+}
+
+class RawMessage_MessageV0 extends $pb.GeneratedMessage {
+  factory RawMessage_MessageV0({
+    RawMessage_MessageHeader? header,
+    $core.Iterable<$core.String>? accountKeys,
+    $core.String? recentBlockhash,
+    $core.Iterable<RawMessage_Instruction>? instructions,
+    $core.Iterable<RawMessage_MessageAddressTableLookup>? addressTableLookups,
+  }) {
+    final $result = create();
+    if (header != null) {
+      $result.header = header;
+    }
+    if (accountKeys != null) {
+      $result.accountKeys.addAll(accountKeys);
+    }
+    if (recentBlockhash != null) {
+      $result.recentBlockhash = recentBlockhash;
+    }
+    if (instructions != null) {
+      $result.instructions.addAll(instructions);
+    }
+    if (addressTableLookups != null) {
+      $result.addressTableLookups.addAll(addressTableLookups);
+    }
+    return $result;
+  }
+  RawMessage_MessageV0._() : super();
+  factory RawMessage_MessageV0.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RawMessage_MessageV0.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RawMessage.MessageV0',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOM<RawMessage_MessageHeader>(1, _omitFieldNames ? '' : 'header',
+        subBuilder: RawMessage_MessageHeader.create)
+    ..pPS(2, _omitFieldNames ? '' : 'accountKeys')
+    ..aOS(3, _omitFieldNames ? '' : 'recentBlockhash')
+    ..pc<RawMessage_Instruction>(
+        4, _omitFieldNames ? '' : 'instructions', $pb.PbFieldType.PM,
+        subBuilder: RawMessage_Instruction.create)
+    ..pc<RawMessage_MessageAddressTableLookup>(
+        5, _omitFieldNames ? '' : 'addressTableLookups', $pb.PbFieldType.PM,
+        subBuilder: RawMessage_MessageAddressTableLookup.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageV0 clone() =>
+      RawMessage_MessageV0()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RawMessage_MessageV0 copyWith(void Function(RawMessage_MessageV0) updates) =>
+      super.copyWith((message) => updates(message as RawMessage_MessageV0))
+          as RawMessage_MessageV0;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageV0 create() => RawMessage_MessageV0._();
+  RawMessage_MessageV0 createEmptyInstance() => create();
+  static $pb.PbList<RawMessage_MessageV0> createRepeated() =>
+      $pb.PbList<RawMessage_MessageV0>();
+  @$core.pragma('dart2js:noInline')
+  static RawMessage_MessageV0 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RawMessage_MessageV0>(create);
+  static RawMessage_MessageV0? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  RawMessage_MessageHeader get header => $_getN(0);
+  @$pb.TagNumber(1)
+  set header(RawMessage_MessageHeader v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasHeader() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearHeader() => clearField(1);
+  @$pb.TagNumber(1)
+  RawMessage_MessageHeader ensureHeader() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get accountKeys => $_getList(1);
+
+  /// Relatively recent block hash (base58 encoded).
+  @$pb.TagNumber(3)
+  $core.String get recentBlockhash => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set recentBlockhash($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasRecentBlockhash() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRecentBlockhash() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<RawMessage_Instruction> get instructions => $_getList(3);
+
+  @$pb.TagNumber(5)
+  $core.List<RawMessage_MessageAddressTableLookup> get addressTableLookups =>
+      $_getList(4);
+}
+
+enum RawMessage_Message { legacy, v0, notSet }
+
+class RawMessage extends $pb.GeneratedMessage {
+  factory RawMessage({
+    $core.Iterable<PubkeySignature>? signatures,
+    RawMessage_MessageLegacy? legacy,
+    RawMessage_MessageV0? v0,
+  }) {
+    final $result = create();
+    if (signatures != null) {
+      $result.signatures.addAll(signatures);
+    }
+    if (legacy != null) {
+      $result.legacy = legacy;
+    }
+    if (v0 != null) {
+      $result.v0 = v0;
+    }
+    return $result;
+  }
+  RawMessage._() : super();
+  factory RawMessage.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RawMessage.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static const $core.Map<$core.int, RawMessage_Message>
+      _RawMessage_MessageByTag = {
+    2: RawMessage_Message.legacy,
+    3: RawMessage_Message.v0,
+    0: RawMessage_Message.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'RawMessage',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..oo(0, [2, 3])
+    ..pc<PubkeySignature>(
+        1, _omitFieldNames ? '' : 'signatures', $pb.PbFieldType.PM,
+        subBuilder: PubkeySignature.create)
+    ..aOM<RawMessage_MessageLegacy>(2, _omitFieldNames ? '' : 'legacy',
+        subBuilder: RawMessage_MessageLegacy.create)
+    ..aOM<RawMessage_MessageV0>(3, _omitFieldNames ? '' : 'v0',
+        subBuilder: RawMessage_MessageV0.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RawMessage clone() => RawMessage()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RawMessage copyWith(void Function(RawMessage) updates) =>
+      super.copyWith((message) => updates(message as RawMessage)) as RawMessage;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RawMessage create() => RawMessage._();
+  RawMessage createEmptyInstance() => create();
+  static $pb.PbList<RawMessage> createRepeated() => $pb.PbList<RawMessage>();
+  @$core.pragma('dart2js:noInline')
+  static RawMessage getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RawMessage>(create);
+  static RawMessage? _defaultInstance;
+
+  RawMessage_Message whichMessage() =>
+      _RawMessage_MessageByTag[$_whichOneof(0)]!;
+  void clearMessage() => clearField($_whichOneof(0));
+
+  /// Transaction signatures.
+  /// If private keys are set in `SigningInput`, corresponding signatures will be overriden.
+  /// It's also possible some or all the signatures are be used to compile a transaction if corresponding private keys are not set.
+  @$pb.TagNumber(1)
+  $core.List<PubkeySignature> get signatures => $_getList(0);
+
+  @$pb.TagNumber(2)
+  RawMessage_MessageLegacy get legacy => $_getN(1);
+  @$pb.TagNumber(2)
+  set legacy(RawMessage_MessageLegacy v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasLegacy() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLegacy() => clearField(2);
+  @$pb.TagNumber(2)
+  RawMessage_MessageLegacy ensureLegacy() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  RawMessage_MessageV0 get v0 => $_getN(2);
+  @$pb.TagNumber(3)
+  set v0(RawMessage_MessageV0 v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasV0() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearV0() => clearField(3);
+  @$pb.TagNumber(3)
+  RawMessage_MessageV0 ensureV0() => $_ensure(2);
+}
+
+class DecodingTransactionOutput extends $pb.GeneratedMessage {
+  factory DecodingTransactionOutput({
+    RawMessage? transaction,
+    $0.SigningError? error,
+    $core.String? errorMessage,
+  }) {
+    final $result = create();
+    if (transaction != null) {
+      $result.transaction = transaction;
+    }
+    if (error != null) {
+      $result.error = error;
+    }
+    if (errorMessage != null) {
+      $result.errorMessage = errorMessage;
+    }
+    return $result;
+  }
+  DecodingTransactionOutput._() : super();
+  factory DecodingTransactionOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DecodingTransactionOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DecodingTransactionOutput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOM<RawMessage>(1, _omitFieldNames ? '' : 'transaction',
+        subBuilder: RawMessage.create)
+    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
+    ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DecodingTransactionOutput clone() =>
+      DecodingTransactionOutput()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DecodingTransactionOutput copyWith(
+          void Function(DecodingTransactionOutput) updates) =>
+      super.copyWith((message) => updates(message as DecodingTransactionOutput))
+          as DecodingTransactionOutput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DecodingTransactionOutput create() => DecodingTransactionOutput._();
+  DecodingTransactionOutput createEmptyInstance() => create();
+  static $pb.PbList<DecodingTransactionOutput> createRepeated() =>
+      $pb.PbList<DecodingTransactionOutput>();
+  @$core.pragma('dart2js:noInline')
+  static DecodingTransactionOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DecodingTransactionOutput>(create);
+  static DecodingTransactionOutput? _defaultInstance;
+
+  /// Decoded transaction info.
+  @$pb.TagNumber(1)
+  RawMessage get transaction => $_getN(0);
+  @$pb.TagNumber(1)
+  set transaction(RawMessage v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasTransaction() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTransaction() => clearField(1);
+  @$pb.TagNumber(1)
+  RawMessage ensureTransaction() => $_ensure(0);
+
+  /// Error code, 0 is ok, other codes will be treated as errors
+  @$pb.TagNumber(2)
+  $0.SigningError get error => $_getN(1);
+  @$pb.TagNumber(2)
+  set error($0.SigningError v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasError() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearError() => clearField(2);
+
+  /// Error code description
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => clearField(3);
+}
+
+/// Specific compute unit limit that the transaction is allowed to consume.
+class PriorityFeePrice extends $pb.GeneratedMessage {
+  factory PriorityFeePrice({
+    $fixnum.Int64? price,
+  }) {
+    final $result = create();
+    if (price != null) {
+      $result.price = price;
+    }
+    return $result;
+  }
+  PriorityFeePrice._() : super();
+  factory PriorityFeePrice.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory PriorityFeePrice.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PriorityFeePrice',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'price', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  PriorityFeePrice clone() => PriorityFeePrice()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  PriorityFeePrice copyWith(void Function(PriorityFeePrice) updates) =>
+      super.copyWith((message) => updates(message as PriorityFeePrice))
+          as PriorityFeePrice;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PriorityFeePrice create() => PriorityFeePrice._();
+  PriorityFeePrice createEmptyInstance() => create();
+  static $pb.PbList<PriorityFeePrice> createRepeated() =>
+      $pb.PbList<PriorityFeePrice>();
+  @$core.pragma('dart2js:noInline')
+  static PriorityFeePrice getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PriorityFeePrice>(create);
+  static PriorityFeePrice? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get price => $_getI64(0);
+  @$pb.TagNumber(1)
+  set price($fixnum.Int64 v) {
+    $_setInt64(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPrice() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPrice() => clearField(1);
+}
+
+/// Compute unit price in "micro-lamports" to pay a higher transaction fee for higher transaction prioritization.
+class PriorityFeeLimit extends $pb.GeneratedMessage {
+  factory PriorityFeeLimit({
+    $core.int? limit,
+  }) {
+    final $result = create();
+    if (limit != null) {
+      $result.limit = limit;
+    }
+    return $result;
+  }
+  PriorityFeeLimit._() : super();
+  factory PriorityFeeLimit.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory PriorityFeeLimit.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PriorityFeeLimit',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  PriorityFeeLimit clone() => PriorityFeeLimit()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  PriorityFeeLimit copyWith(void Function(PriorityFeeLimit) updates) =>
+      super.copyWith((message) => updates(message as PriorityFeeLimit))
+          as PriorityFeeLimit;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PriorityFeeLimit create() => PriorityFeeLimit._();
+  PriorityFeeLimit createEmptyInstance() => create();
+  static $pb.PbList<PriorityFeeLimit> createRepeated() =>
+      $pb.PbList<PriorityFeeLimit>();
+  @$core.pragma('dart2js:noInline')
+  static PriorityFeeLimit getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PriorityFeeLimit>(create);
+  static PriorityFeeLimit? _defaultInstance;
+
+  @$pb.TagNumber(2)
+  $core.int get limit => $_getIZ(0);
+  @$pb.TagNumber(2)
+  set limit($core.int v) {
+    $_setUnsignedInt32(0, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasLimit() => $_has(0);
+  @$pb.TagNumber(2)
+  void clearLimit() => clearField(2);
+}
+
 enum SigningInput_TransactionType {
   transferTransaction,
   delegateStakeTransaction,
@@ -1314,6 +2233,10 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.List<$core.int>? feePayerPrivateKey,
     $core.String? feePayer,
     AdvanceNonceAccount? advanceNonceAccount,
+    RawMessage? rawMessage,
+    Encoding? txEncoding,
+    PriorityFeePrice? priorityFeePrice,
+    PriorityFeeLimit? priorityFeeLimit,
   }) {
     final $result = create();
     if (privateKey != null) {
@@ -1373,6 +2296,18 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (advanceNonceAccount != null) {
       $result.advanceNonceAccount = advanceNonceAccount;
+    }
+    if (rawMessage != null) {
+      $result.rawMessage = rawMessage;
+    }
+    if (txEncoding != null) {
+      $result.txEncoding = txEncoding;
+    }
+    if (priorityFeePrice != null) {
+      $result.priorityFeePrice = priorityFeePrice;
+    }
+    if (priorityFeeLimit != null) {
+      $result.priorityFeeLimit = priorityFeeLimit;
     }
     return $result;
   }
@@ -1444,6 +2379,16 @@ class SigningInput extends $pb.GeneratedMessage {
     ..aOS(18, _omitFieldNames ? '' : 'feePayer')
     ..aOM<AdvanceNonceAccount>(19, _omitFieldNames ? '' : 'advanceNonceAccount',
         subBuilder: AdvanceNonceAccount.create)
+    ..aOM<RawMessage>(20, _omitFieldNames ? '' : 'rawMessage',
+        subBuilder: RawMessage.create)
+    ..e<Encoding>(21, _omitFieldNames ? '' : 'txEncoding', $pb.PbFieldType.OE,
+        defaultOrMaker: Encoding.Base58,
+        valueOf: Encoding.valueOf,
+        enumValues: Encoding.values)
+    ..aOM<PriorityFeePrice>(22, _omitFieldNames ? '' : 'priorityFeePrice',
+        subBuilder: PriorityFeePrice.create)
+    ..aOM<PriorityFeeLimit>(23, _omitFieldNames ? '' : 'priorityFeeLimit',
+        subBuilder: PriorityFeeLimit.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1731,6 +2676,67 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearAdvanceNonceAccount() => clearField(19);
   @$pb.TagNumber(19)
   AdvanceNonceAccount ensureAdvanceNonceAccount() => $_ensure(18);
+
+  /// Optional message plan. For signing an already prepared message.
+  @$pb.TagNumber(20)
+  RawMessage get rawMessage => $_getN(19);
+  @$pb.TagNumber(20)
+  set rawMessage(RawMessage v) {
+    setField(20, v);
+  }
+
+  @$pb.TagNumber(20)
+  $core.bool hasRawMessage() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearRawMessage() => clearField(20);
+  @$pb.TagNumber(20)
+  RawMessage ensureRawMessage() => $_ensure(19);
+
+  /// Output transaction encoding.
+  @$pb.TagNumber(21)
+  Encoding get txEncoding => $_getN(20);
+  @$pb.TagNumber(21)
+  set txEncoding(Encoding v) {
+    setField(21, v);
+  }
+
+  @$pb.TagNumber(21)
+  $core.bool hasTxEncoding() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearTxEncoding() => clearField(21);
+
+  /// Optional. Set a specific compute unit limit that the transaction is allowed to consume.
+  /// https://solana.com/docs/intro/transaction_fees#prioritization-fee
+  @$pb.TagNumber(22)
+  PriorityFeePrice get priorityFeePrice => $_getN(21);
+  @$pb.TagNumber(22)
+  set priorityFeePrice(PriorityFeePrice v) {
+    setField(22, v);
+  }
+
+  @$pb.TagNumber(22)
+  $core.bool hasPriorityFeePrice() => $_has(21);
+  @$pb.TagNumber(22)
+  void clearPriorityFeePrice() => clearField(22);
+  @$pb.TagNumber(22)
+  PriorityFeePrice ensurePriorityFeePrice() => $_ensure(21);
+
+  /// Optional. Set a compute unit price in "micro-lamports" to pay a higher transaction
+  /// fee for higher transaction prioritization.
+  /// https://solana.com/docs/intro/transaction_fees#prioritization-fee
+  @$pb.TagNumber(23)
+  PriorityFeeLimit get priorityFeeLimit => $_getN(22);
+  @$pb.TagNumber(23)
+  set priorityFeeLimit(PriorityFeeLimit v) {
+    setField(23, v);
+  }
+
+  @$pb.TagNumber(23)
+  $core.bool hasPriorityFeeLimit() => $_has(22);
+  @$pb.TagNumber(23)
+  void clearPriorityFeeLimit() => clearField(23);
+  @$pb.TagNumber(23)
+  PriorityFeeLimit ensurePriorityFeeLimit() => $_ensure(22);
 }
 
 /// Result containing the signed and encoded transaction.
@@ -1740,7 +2746,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     $0.SigningError? error,
     $core.String? errorMessage,
     $core.String? unsignedTx,
-    $core.String? messageEncoded,
+    $core.Iterable<PubkeySignature>? signatures,
   }) {
     final $result = create();
     if (encoded != null) {
@@ -1755,8 +2761,8 @@ class SigningOutput extends $pb.GeneratedMessage {
     if (unsignedTx != null) {
       $result.unsignedTx = unsignedTx;
     }
-    if (messageEncoded != null) {
-      $result.messageEncoded = messageEncoded;
+    if (signatures != null) {
+      $result.signatures.addAll(signatures);
     }
     return $result;
   }
@@ -1780,7 +2786,9 @@ class SigningOutput extends $pb.GeneratedMessage {
         enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
     ..aOS(4, _omitFieldNames ? '' : 'unsignedTx')
-    ..aOS(5, _omitFieldNames ? '' : 'messageEncoded')
+    ..pc<PubkeySignature>(
+        5, _omitFieldNames ? '' : 'signatures', $pb.PbFieldType.PM,
+        subBuilder: PubkeySignature.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1845,7 +2853,7 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearErrorMessage() => clearField(3);
 
-  /// The unsigned transaction
+  /// The encoded message. Can be used to estimate a transaction fee required to execute the message.
   @$pb.TagNumber(4)
   $core.String get unsignedTx => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -1858,19 +2866,9 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearUnsignedTx() => clearField(4);
 
-  /// The encoded message. Can be used to estimate a transaction fee required to execute the message.
-  /// Please note that this is set only on `SolanaTransaction.updateBlockhashAndSign`, but no on `AnySigner.sign`.
+  /// Transaction signatures (may include external signatures).
   @$pb.TagNumber(5)
-  $core.String get messageEncoded => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set messageEncoded($core.String v) {
-    $_setString(4, v);
-  }
-
-  @$pb.TagNumber(5)
-  $core.bool hasMessageEncoded() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearMessageEncoded() => clearField(5);
+  $core.List<PubkeySignature> get signatures => $_getList(4);
 }
 
 /// / Transaction pre-signing output
@@ -1943,11 +2941,11 @@ class PreSigningOutput extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<PreSigningOutput>(create);
   static PreSigningOutput? _defaultInstance;
 
-  /// / Signer list
+  /// Signer list
   @$pb.TagNumber(1)
   $core.List<$core.List<$core.int>> get signers => $_getList(0);
 
-  /// / Pre-image data. There is no hashing for Solana presign image
+  /// Pre-image data. There is no hashing for Solana presign image
   @$pb.TagNumber(2)
   $core.List<$core.int> get data => $_getN(1);
   @$pb.TagNumber(2)

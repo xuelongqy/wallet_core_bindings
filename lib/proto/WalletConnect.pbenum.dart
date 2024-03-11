@@ -33,10 +33,13 @@ class Method extends $pb.ProtobufEnum {
   static const Method Unknown = Method._(0, _omitEnumNames ? '' : 'Unknown');
   static const Method CosmosSignAmino =
       Method._(1, _omitEnumNames ? '' : 'CosmosSignAmino');
+  static const Method SolanaSignTransaction =
+      Method._(2, _omitEnumNames ? '' : 'SolanaSignTransaction');
 
   static const $core.List<Method> values = <Method>[
     Unknown,
     CosmosSignAmino,
+    SolanaSignTransaction,
   ];
 
   static final $core.Map<$core.int, Method> _byValue =

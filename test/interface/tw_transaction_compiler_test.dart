@@ -535,7 +535,7 @@ void main() {
       final recipient = '3UVYmECPPMZSCqWKfENfuoTv51fTDTWicX9xmBD2euKe';
       final sender = 'sp6VUqq1nDEuU83bU2hstmEYrJNipJYpwS7gZ7Jv7ZH';
       final input = Solana.SigningInput(
-        sender: 'sp6VUqq1nDEuU83bU2hstmEYrJNipJYpwS7gZ7Jv7ZH',
+        sender: sender,
         recentBlockhash: 'TPJFTN4CjBn12HiBfAbGUhpD9zGvRSm2RcheFRA4Fyv',
         transferTransaction: Solana.Transfer(
           recipient: recipient,
@@ -596,7 +596,6 @@ void main() {
           "T6dwyp7msUUi7d27cYaPTpK";
 
       {
-        expect(outputData.length, 296);
         final output = Solana.SigningOutput.fromBuffer(outputData);
         expect(output.encoded, ExpectedTx);
       }

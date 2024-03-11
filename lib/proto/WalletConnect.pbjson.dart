@@ -31,12 +31,14 @@ const Method$json = {
   '2': [
     {'1': 'Unknown', '2': 0},
     {'1': 'CosmosSignAmino', '2': 1},
+    {'1': 'SolanaSignTransaction', '2': 2},
   ],
 };
 
 /// Descriptor for `Method`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List methodDescriptor = $convert
-    .base64Decode('CgZNZXRob2QSCwoHVW5rbm93bhAAEhMKD0Nvc21vc1NpZ25BbWlubxAB');
+final $typed_data.Uint8List methodDescriptor = $convert.base64Decode(
+    'CgZNZXRob2QSCwoHVW5rbm93bhAAEhMKD0Nvc21vc1NpZ25BbWlubxABEhkKFVNvbGFuYVNpZ2'
+    '5UcmFuc2FjdGlvbhAC');
 
 @$core.Deprecated('Use parseRequestInputDescriptor instead')
 const ParseRequestInput$json = {
@@ -90,6 +92,15 @@ const ParseRequestOutput$json = {
       '9': 0,
       '10': 'binance'
     },
+    {
+      '1': 'solana',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.SigningInput',
+      '9': 0,
+      '10': 'solana'
+    },
   ],
   '8': [
     {'1': 'signing_input_oneof'},
@@ -101,4 +112,5 @@ final $typed_data.Uint8List parseRequestOutputDescriptor = $convert.base64Decode
     'ChJQYXJzZVJlcXVlc3RPdXRwdXQSMwoFZXJyb3IYASABKA4yHS5UVy5Db21tb24uUHJvdG8uU2'
     'lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAIgASgJUgxlcnJvck1lc3NhZ2US'
     'OgoHYmluYW5jZRgDIAEoCzIeLlRXLkJpbmFuY2UuUHJvdG8uU2lnbmluZ0lucHV0SABSB2Jpbm'
-    'FuY2VCFQoTc2lnbmluZ19pbnB1dF9vbmVvZg==');
+    'FuY2USNwoGc29sYW5hGAQgASgLMh0uVFcuU29sYW5hLlByb3RvLlNpZ25pbmdJbnB1dEgAUgZz'
+    'b2xhbmFCFQoTc2lnbmluZ19pbnB1dF9vbmVvZg==');
