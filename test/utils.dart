@@ -6,6 +6,8 @@ import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
+const UINT32_MAX = 0xffffffff;
+
 String? _projectRoot;
 
 String get projectRoot {

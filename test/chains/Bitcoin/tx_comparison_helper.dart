@@ -84,7 +84,8 @@ bool verifySelectedUTXOs(
 }
 
 bool verifyPlan(Bitcoin.TransactionPlan plan, List<int> utxoAmounts,
-    int outputAmount, int fee, Common.SigningError error) {
+    int outputAmount, int fee,
+    [Common.SigningError error = Common.SigningError.OK]) {
   bool ret = true;
   if (!verifySelectedUTXOs(plan.utxos, utxoAmounts)) {
     ret = false;
