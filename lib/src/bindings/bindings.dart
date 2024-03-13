@@ -7167,6 +7167,29 @@ class TrustWalletCoreBindings {
       _TWAnyAddressCreateWithPublicKeyFilecoinAddressTypePtr.asFunction<
           ffi.Pointer<TWAnyAddress> Function(ffi.Pointer<TWPublicKey>, int)>();
 
+  /// Creates a Firo address from a public key and a given address type.
+  ///
+  /// \param publicKey derivates the address from the public key.
+  /// \param firoAddressType Firo address type.
+  /// \return TWAnyAddress pointer or nullptr if public key is invalid.
+  ffi.Pointer<TWAnyAddress> TWAnyAddressCreateWithPublicKeyFiroAddressType(
+    ffi.Pointer<TWPublicKey> publicKey,
+    int firoAddressType,
+  ) {
+    return _TWAnyAddressCreateWithPublicKeyFiroAddressType(
+      publicKey,
+      firoAddressType,
+    );
+  }
+
+  late final _TWAnyAddressCreateWithPublicKeyFiroAddressTypePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWAnyAddress> Function(ffi.Pointer<TWPublicKey>,
+              ffi.Int32)>>('TWAnyAddressCreateWithPublicKeyFiroAddressType');
+  late final _TWAnyAddressCreateWithPublicKeyFiroAddressType =
+      _TWAnyAddressCreateWithPublicKeyFiroAddressTypePtr.asFunction<
+          ffi.Pointer<TWAnyAddress> Function(ffi.Pointer<TWPublicKey>, int)>();
+
   /// Deletes an address.
   ///
   /// \param address address to delete.
@@ -12271,6 +12294,12 @@ final class TWBitcoinFee extends ffi.Opaque {}
 abstract class TWFilecoinAddressType {
   static const int TWFilecoinAddressTypeDefault = 0;
   static const int TWFilecoinAddressTypeDelegated = 1;
+}
+
+/// Firo address type.
+abstract class TWFiroAddressType {
+  static const int TWFiroAddressTypeDefault = 0;
+  static const int TWFiroAddressTypeExchange = 1;
 }
 
 /// Represents an address in C++ for almost any blockchain.

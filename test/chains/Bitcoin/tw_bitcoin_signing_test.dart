@@ -2447,5 +2447,83 @@ void main() {
         ,
       );
     });
+
+    test('Sign_ManyUtxos_400', () {
+      final ownAddress = "bc1q0yy3juscd3zfavw76g4h3eqdqzda7qyf58rj4m";
+      final ownPrivateKey =
+          "eb696a065ef48a2192da5b28b694f87544b30fae8327c4510137a922f32c6dcf";
+
+      // Setup input
+      final input = Bitcoin.SigningInput();
+
+      const n = 400;
+      var utxoSum = 0;
+
+      for (int i = 0; i < n; ++i) {
+        final utxoScript = TWBitcoinScript.lockScriptForAddress(
+            ownAddress, TWCoinType.TWCoinTypeBitcoin);
+        final keyHash = utxoScript.matchPayToWitnessPublicKeyHash()!;
+        expectHex(keyHash, '79091972186c449eb1ded22b78e40d009bdf0089');
+
+        final redeemScript = TWBitcoinScript.buildPayToPublicKeyHash(keyHash);
+        input.scripts[hex(keyHash)] = redeemScript.data;
+
+        final utxo = Bitcoin.UnspentTransaction(
+          script: utxoScript.data,
+          amount: $fixnum.Int64(1000 + (i + 1) * 10),
+          outPoint: Bitcoin.OutPoint(
+            hash: parse_hex(
+                    "a85fd6a9a7f2f54cacb57e83dfd408e51c0a5fc82885e3fa06be8692962bc407")
+                .reversed
+                .toList(),
+            index: 0,
+            sequence: UINT32_MAX,
+          ),
+        );
+        input.utxo.add(utxo);
+        utxoSum += utxo.amount.toInt();
+      }
+      expect(utxoSum, 1202000);
+
+      input.coinType = TWCoinType.TWCoinTypeBitcoin;
+      input.hashType =
+          TWBitcoinScript.hashTypeForCoin(TWCoinType.TWCoinTypeBitcoin);
+      input.useMaxAmount = false;
+      input.amount = $fixnum.Int64(300000);
+      input.byteFee = $fixnum.Int64(1);
+      input.toAddress = 'bc1qauwlpmzamwlf9tah6z4w0t8sunh6pnyyjgk0ne';
+      input.changeAddress = ownAddress;
+
+      // Plan
+      final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+
+      // expected result: 66 utxos, with the largest amounts
+      final subset = <int>[];
+      int subsetSum = 0;
+      for (int i = n - 66; i < n; ++i) {
+        final val = 1000 + (i + 1) * 10;
+        subset.add(val);
+        subsetSum += val;
+      }
+      expect(subset.length, 66);
+      expect(subsetSum, 308550);
+      expect(verifyPlan(plan, subset, 300000, 4561), true);
+
+      // Extend input with keys, reuse plan, Sign
+      final privKey = TWPrivateKey.createWithHexString(ownPrivateKey);
+      input.privateKey.add(privKey.data);
+      input.plan = plan;
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      expect(result.encoded.length, 9871);
+    });
   });
 }

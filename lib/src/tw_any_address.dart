@@ -142,6 +142,22 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
           finalizer: _twAnyAddressFinalizer,
         );
 
+  /// Creates a Firo address from a public key and a given address type.
+  ///
+  /// \param [publicKey] derivates the address from the public key.
+  /// \param [firoAddressType] Firo address type.
+  /// \return TWAnyAddress pointer or nullptr if public key is invalid.
+  TWAnyAddress.createWithPublicKeyFiroAddressType({
+    required TWPublicKey publicKey,
+    required int firoAddressType,
+    bool attach = true,
+  }) : super(
+          iTWBindings.TWAnyAddressCreateWithPublicKeyFiroAddressType(
+              publicKey.pointer, firoAddressType),
+          attach: attach,
+          finalizer: _twAnyAddressFinalizer,
+        );
+
   /// Compares two addresses for equality.
   ///
   /// \param [another] The second address to compare.
