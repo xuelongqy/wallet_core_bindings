@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
@@ -71,6 +73,184 @@ Bitcoin.SigningInput buildInputP2PKH([bool omitKey = false]) {
     privateKey: omitKey ? null : [utxoKey0.data, utxoKey1.data],
     utxo: [utxo0, utxo1],
   );
+
+  return input;
+}
+
+Bitcoin.SigningInput buildInputP2WPKH(
+    int amount, int hashType, int utxo0Amount, int utxo1Amount,
+    [bool useMaxAmount = false]) {
+  final hash0 = parse_hex(
+      "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f");
+  final hash1 = parse_hex(
+      "ef51e1b804cc89d182d279655c3aa89e815b1b309fe287d9b2b55d57b90ec68a");
+
+  // Setup input
+  final input = Bitcoin.SigningInput(
+    hashType: hashType,
+    amount: $fixnum.Int64(amount),
+    useMaxAmount: useMaxAmount,
+    byteFee: $fixnum.Int64(1),
+    toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
+    changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
+    coinType: TWCoinType.TWCoinTypeBitcoin,
+  );
+
+  final utxoKey0 = TWPrivateKey.createWithData(TWData.createWithHexString(
+          'bbc27228ddcb9209d7fd6f36b02f7dfa6252af40bb2f1cbc7a557da8027ff866')
+      .bytes()!);
+  final pubKey0 =
+      utxoKey0.getPublicKey(TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+  final utxoPubkeyHash0 = TWHash.ripemd(TWHash.sha256(pubKey0.data));
+  expectHex(utxoPubkeyHash0, 'b7cd046b6d522a3d61dbcb5235c0e9cc97265457');
+  input.privateKey.add(utxoKey0.data);
+
+  final utxoKey1 = TWPrivateKey.createWithData(TWData.createWithHexString(
+          '619c335025c7f4012e556c2a58b2506e30b8511b53ade95ea316fd8c3286feb9')
+      .bytes()!);
+  final pubKey1 =
+      utxoKey1.getPublicKey(TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+  final utxoPubkeyHash1 = TWHash.ripemd(TWHash.sha256(pubKey1.data));
+  expectHex(utxoPubkeyHash1, '1d0f172a0ecb48aee1be1f2687d2963ae33f71a1');
+  input.privateKey.add(utxoKey1.data);
+
+  final scriptPub1 = TWBitcoinScript.createWithBytes(parse_hex("0014"
+      "1d0f172a0ecb48aee1be1f2687d2963ae33f71a1"));
+  final scriptHash = scriptPub1.matchPayToWitnessPublicKeyHash()!;
+  final scriptHashHex = hex(scriptHash);
+  expect(scriptHashHex, '1d0f172a0ecb48aee1be1f2687d2963ae33f71a1');
+
+  final redeemScript = TWBitcoinScript.buildPayToWitnessPubkeyHash(
+      parse_hex("1d0f172a0ecb48aee1be1f2687d2963ae33f71a1"));
+  input.scripts[scriptHashHex] = redeemScript.data;
+
+  final utxo0 = Bitcoin.UnspentTransaction(
+    script: parse_hex(
+        "2103c9f4836b9a4f77fc0d81f7bcb01b7f1b35916864b9476c241ce9fc198bd25432ac"),
+    amount: $fixnum.Int64(utxo0Amount),
+    outPoint: Bitcoin.OutPoint(
+      hash: hash0,
+      index: 0,
+      sequence: UINT32_MAX,
+    ),
+  );
+  input.utxo.add(utxo0);
+
+  final utxo1 = Bitcoin.UnspentTransaction(
+    script: parse_hex("0014"
+        "1d0f172a0ecb48aee1be1f2687d2963ae33f71a1"),
+    amount: $fixnum.Int64(utxo1Amount),
+    outPoint: Bitcoin.OutPoint(
+      hash: hash1,
+      index: 1,
+      sequence: UINT32_MAX,
+    ),
+  );
+  input.utxo.add(utxo1);
+  return input;
+}
+
+Bitcoin.SigningInput buildInputP2WSH(int hashType,
+    [bool omitScript = false, bool omitKeys = false]) {
+  final input = Bitcoin.SigningInput(
+    hashType: hashType,
+    amount: $fixnum.Int64(1000),
+    byteFee: $fixnum.Int64(1),
+    toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
+    changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
+    fixedDustThreshold: $fixnum.Int64(50),
+  );
+
+  if (!omitKeys) {
+    final utxoKey0 = TWPrivateKey.createWithData(TWData.createWithHexString(
+            'ed00a0841cd53aedf89b0c616742d1d2a930f8ae2b0fb514765a17bb62c7521a')
+        .bytes()!);
+    input.privateKey.add(utxoKey0.data);
+
+    final utxoKey1 = TWPrivateKey.createWithData(TWData.createWithHexString(
+            '619c335025c7f4012e556c2a58b2506e30b8511b53ade95ea316fd8c3286feb9')
+        .bytes()!);
+    input.privateKey.add(utxoKey1.data);
+  }
+
+  if (!omitScript) {
+    final redeemScript = TWBitcoinScript.createWithBytes(parse_hex(
+        '2103596d3451025c19dbbdeb932d6bf8bfb4ad499b95b6f88db8899efac102e5fc71ac'));
+    final scriptHash = '593128f9f90e38b706c18623151e37d2da05c229';
+    input.scripts[scriptHash] = redeemScript.data;
+  }
+
+  final utxo0 = Bitcoin.UnspentTransaction(
+    script: TWBitcoinScript.buildPayToWitnessScriptHash(parse_hex(
+            "ff25429251b5a84f452230a3c75fd886b7fc5a7865ce4a7bb7a9d7c5be6da3db"))
+        .data,
+    amount: $fixnum.Int64(1226),
+    outPoint: Bitcoin.OutPoint(
+      hash: parse_hex(
+          '0001000000000000000000000000000000000000000000000000000000000000'),
+      index: 0,
+      sequence: UINT32_MAX,
+    ),
+  );
+  input.utxo.add(utxo0);
+
+  return input;
+}
+
+Bitcoin.SigningInput buildInputP2SH_P2WPKH(
+    [bool omitScript = false,
+    bool omitKeys = false,
+    bool invalidOutputScript = false,
+    bool invalidRedeemScript = false]) {
+  // Setup input
+  final input = Bitcoin.SigningInput(
+    hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.TWCoinTypeBitcoin),
+    amount: $fixnum.Int64(200000000),
+    byteFee: $fixnum.Int64(1),
+    toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
+    changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
+    coinType: TWCoinType.TWCoinTypeBitcoin,
+  );
+
+  final utxoKey0 = TWPrivateKey.createWithHexString(
+      'eb696a065ef48a2192da5b28b694f87544b30fae8327c4510137a922f32c6dcf');
+  final pubKey0 =
+      utxoKey0.getPublicKey(TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+  final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(pubKey0.data));
+  expectHex(utxoPubkeyHash, '79091972186c449eb1ded22b78e40d009bdf0089');
+  if (!omitKeys) {
+    input.privateKey.add(utxoKey0.data);
+  }
+
+  if (!omitScript && !invalidRedeemScript) {
+    final redeemScript =
+        TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
+    final scriptHash = TWHash.ripemd(TWHash.sha256(redeemScript.data));
+    expectHex(scriptHash, '4733f37cf4db86fbc2efed2500b4f4e49f312023');
+    input.scripts[hex(scriptHash)] = redeemScript.data;
+  } else if (invalidRedeemScript) {
+    final redeemScript =
+        TWBitcoinScript.createWithBytes(parse_hex('FAFBFCFDFE'));
+    final scriptHash = TWHash.ripemd(TWHash.sha256(redeemScript.data));
+    input.scripts[hex(scriptHash)] = redeemScript.data;
+  }
+
+  var utxo0Script = TWBitcoinScript.createWithBytes(
+      parse_hex('a9144733f37cf4db86fbc2efed2500b4f4e49f31202387'));
+  if (invalidOutputScript) {
+    utxo0Script = TWBitcoinScript.createWithBytes(parse_hex('FFFEFDFCFB'));
+  }
+  final utxo0 = Bitcoin.UnspentTransaction(
+    script: utxo0Script.data,
+    amount: $fixnum.Int64(1000000000),
+    outPoint: Bitcoin.OutPoint(
+      hash: parse_hex(
+          "db6b1b20aa0fd7b23880be2ecbd4a98130974cf4748fb66092ac4d3ceb1a5477"),
+      index: 1,
+      sequence: UINT32_MAX,
+    ),
+  );
+  input.utxo.add(utxo0);
 
   return input;
 }
@@ -1268,6 +1448,1003 @@ void main() {
         "21"
         "025476c2e83188368da1ff3e292e7acafcdb3566bb0ad253f62fc70f07aeee6357"
         "11000000",
+      );
+    });
+
+    test('SignP2WPKH', () {
+      final input = buildInputP2WPKH(335790000,
+          TWBitcoinSigHashType.TWBitcoinSigHashTypeAll, 625000000, 600000000);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [625000000], 335790000, 192), true);
+      }
+
+      // Signs
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+
+      expect(result.encoded.length, 192);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "01" // inputs
+        "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f"
+        "00000000"
+        "49"
+        "483045022100c327babdd370f0fc5b24cf920736446bf7d9c5660e4a5f7df432386fd652fe280220269c4fc3690c1c248e50c8bf2435c20b4ef00f308b403575f4437f862a91c53a01"
+        "ffffffff"
+        "02" // outputs
+        "b0bf031400000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "d0fd3c1100000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WPKH_HashSingle_TwoInput', () {
+      final input = buildInputP2WPKH(
+          335790000,
+          TWBitcoinSigHashType.TWBitcoinSigHashTypeSingle,
+          210000000,
+          210000000);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [210000000, 210000000], 335790000, 261), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "02" // inputs
+        "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f"
+        "00000000"
+        "49"
+        "483045022100fd8591c3611a07b55f509ec850534c7a9c49713c9b8fa0e844ea06c2e65e19d702205e3806676192e790bc93dd4c28e937c4bf97b15f189158ba1a30d7ecff5ee75503"
+        "ffffffff"
+        "ef51e1b804cc89d182d279655c3aa89e815b1b309fe287d9b2b55d57b90ec68a"
+        "01000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "b0bf031400000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "4bf0040500000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "00"
+        "02"
+        "47"
+        "30440220096d20c7e92f991c2bf38dc28118feb34019ae74ec1c17179b28cb041de7517402204594f46a911f24bdc7109ca192e6860ebf2f3a0087579b3c128d5ce0cd5ed46803"
+        "21"
+        "025476c2e83188368da1ff3e292e7acafcdb3566bb0ad253f62fc70f07aeee6357"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WPKH_HashAnyoneCanPay_TwoInput', () {
+      final input = buildInputP2WPKH(
+          335790000,
+          TWBitcoinSigHashType.TWBitcoinSigHashTypeAnyoneCanPay,
+          210000000,
+          210000000);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [210000000, 210000000], 335790000, 261), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "02" // inputs
+        "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f"
+        "00000000"
+        "49"
+        "483045022100e21fb2f1cfd59bdb3703fd45db38fd680d0c06e5d0be86fb7dc233c07ee7ab2f02207367220a73e43df4352a6831f6f31d8dc172c83c9f613a9caf679f0f15621c5e80"
+        "ffffffff"
+        "ef51e1b804cc89d182d279655c3aa89e815b1b309fe287d9b2b55d57b90ec68a"
+        "01000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "b0bf031400000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "4bf0040500000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "00"
+        "02"
+        "48"
+        "304502210095f9cc913d2f0892b953f2380112533e8930b67c53e00a7bbd7a01d547156adc022026efe3a684aa7432a00a919dbf81b63e635fb92d3149453e95b4a7ccea59f7c480"
+        "21"
+        "025476c2e83188368da1ff3e292e7acafcdb3566bb0ad253f62fc70f07aeee6357"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WPKH_MaxAmount', () {
+      final input = buildInputP2WPKH(
+          1000,
+          TWBitcoinSigHashType.TWBitcoinSigHashTypeAll,
+          625000000,
+          600000000,
+          true);
+      input.amount = $fixnum.Int64(1224999773);
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [625000000, 600000000], 1224999773, 227), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "02" // inputs
+        "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f"
+        "00000000"
+        "49"
+        "483045022100a8b3c1619e985923994e80efdc0be0eac12f2419e11ce5e4286a0a5ac27c775d02205d6feee85ffe19ae0835cba1562beb3beb172107cd02ac4caf24a8be3749811f01"
+        "ffffffff"
+        "ef51e1b804cc89d182d279655c3aa89e815b1b309fe287d9b2b55d57b90ec68a"
+        "01000000"
+        "00"
+        ""
+        "ffffffff"
+        "01" // outputs
+        "5d03044900000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        // witness
+        "00"
+        "02"
+        "48"
+        "3045022100db1199de92f6fb638a0ba706d13ec686bb01138a254dec2c397616cd74bad30e02200d7286d6d2d4e00d145955bf3d3b848b03c0d1eef8899e4645687a3035d7def401"
+        "21"
+        "025476c2e83188368da1ff3e292e7acafcdb3566bb0ad253f62fc70f07aeee6357"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WSH', () {
+      // Setup input
+      final input = buildInputP2WSH(
+          TWBitcoinScript.hashTypeForCoin(TWCoinType.TWCoinTypeBitcoin));
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [1226], 1000, 147), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "0001000000000000000000000000000000000000000000000000000000000000"
+        "00000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "e803000000000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "4f00000000000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "02"
+        "48"
+        "30450221009eefc1befe96158f82b74e6804f1f713768c6172636ca11fcc975c316ea86f75022057914c48bc24f717498b851a47a2926f96242e3943ebdf08d5a97a499efc8b9001"
+        "23"
+        "2103596d3451025c19dbbdeb932d6bf8bfb4ad499b95b6f88db8899efac102e5fc71ac"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WSH_HashNone', () {
+      // Setup input
+      final input =
+          buildInputP2WSH(TWBitcoinSigHashType.TWBitcoinSigHashTypeNone);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [1226], 1000, 147), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "0001000000000000000000000000000000000000000000000000000000000000"
+        "00000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "e803000000000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "4f00000000000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "02"
+        "48"
+        "3045022100caa585732cfc50226a90834a306d23d5d2ab1e94af2c66136a637e3d9bad3688022069028750908e53a663bb1f434fd655bcc0cf8d394c6fa1fd5a4983790135722e02"
+        "23"
+        "2103596d3451025c19dbbdeb932d6bf8bfb4ad499b95b6f88db8899efac102e5fc71ac"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WSH_HashSingle', () {
+      // Setup input
+      final input =
+          buildInputP2WSH(TWBitcoinSigHashType.TWBitcoinSigHashTypeSingle);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [1226], 1000, 147), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "0001000000000000000000000000000000000000000000000000000000000000"
+        "00000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "e803000000000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "4f00000000000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "02"
+        "47"
+        "304402201ba80b2c48fe82915297dc9782ae2141e40263001fafd21b02c04a092503f01e0220666d6c63475c6c52abd09371c200ac319bcf4a7c72eb3782e95790f5c847f0b903"
+        "23"
+        "2103596d3451025c19dbbdeb932d6bf8bfb4ad499b95b6f88db8899efac102e5fc71ac"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WSH_HashAnyoneCanPay', () {
+      // Setup input
+      final input = buildInputP2WSH(
+          TWBitcoinSigHashType.TWBitcoinSigHashTypeAnyoneCanPay);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [1226], 1000, 147), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "0001000000000000000000000000000000000000000000000000000000000000"
+        "00000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "e803000000000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "4f00000000000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "02"
+        "48"
+        "3045022100d14699fc9b7337768bcd1430098d279cfaf05f6abfa75dd542da2dc038ae1700022063f0751c08796c086ac23b39c25f4320f432092e0c11bec46af0723cc4f55a3980"
+        "23"
+        "2103596d3451025c19dbbdeb932d6bf8bfb4ad499b95b6f88db8899efac102e5fc71ac"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2WSH_NegativeMissingScript', () {
+      // Setup input
+      final input =
+          buildInputP2WSH(TWBitcoinSigHashType.TWBitcoinSigHashTypeAll, true);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [1226], 1000, 174), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_script_redeem);
+    });
+
+    test('SignP2WSH_NegativeMissingKeys', () {
+      // Setup input
+      final input = buildInputP2WSH(
+          TWBitcoinSigHashType.TWBitcoinSigHashTypeAll, false, true);
+
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [1226], 1000, 147), true);
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_missing_private_key);
+    });
+
+    test('SignP2WSH_NegativeNoUTXOs', () {
+      // Setup input
+      final input =
+          buildInputP2WSH(TWBitcoinSigHashType.TWBitcoinSigHashTypeAll);
+      input.utxo.clear();
+      expect(input.utxo.length, 0);
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_missing_input_utxos);
+    });
+
+    test('SignP2SH_P2WPKH', () {
+      final input = buildInputP2SH_P2WPKH();
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(
+          verifyPlan(plan, [1000000000], 200000000, 170),
+          true,
+        );
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "db6b1b20aa0fd7b23880be2ecbd4a98130974cf4748fb66092ac4d3ceb1a5477"
+        "01000000"
+        "17"
+        "16001479091972186c449eb1ded22b78e40d009bdf0089"
+        "ffffffff"
+        "02" // outputs
+        "00c2eb0b00000000"
+        "19"
+        "76a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "5607af2f00000000"
+        "19"
+        "76a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        // witness
+        "02"
+        "47"
+        "3044022062b408cc7f92c8add622f3297b8992d68403849c6421ef58274ed6fc077102f30220250696eacc0aad022f55882d742dda7178bea780c03705bf9cdbee9f812f785301"
+        "21"
+        "03ad1d8e89212f0b92c74d23bb710c00662ad1470198ac48c43f7d6f93a2a26873"
+        "00000000" // nLockTime
+        ,
+      );
+    });
+
+    test('SignP2SH_P2WPKH_NegativeOmitScript', () {
+      final input = buildInputP2SH_P2WPKH(true, false);
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(
+          verifyPlan(plan, [1000000000], 200000000, 174),
+          true,
+        );
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_script_redeem);
+    });
+
+    test('SignP2SH_P2WPKH_NegativeInvalidOutputScript', () {
+      final input = buildInputP2SH_P2WPKH(false, false, true);
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(
+          verifyPlan(plan, [1000000000], 200000000, 174),
+          true,
+        );
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_script_output);
+    });
+
+    test('SignP2SH_P2WPKH_NegativeInvalidOutputScript', () {
+      final input = buildInputP2SH_P2WPKH(false, false, false, true);
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(
+          verifyPlan(plan, [1000000000], 200000000, 174),
+          true,
+        );
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_script_redeem);
+    });
+
+    test('SignP2SH_P2WPKH_NegativeOmitKeys', () {
+      final input = buildInputP2SH_P2WPKH(false, true);
+      {
+        // test plan (but do not reuse plan result)
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(
+          verifyPlan(plan, [1000000000], 200000000, 170),
+          true,
+        );
+      }
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_missing_private_key);
+    });
+
+    test('SignP2SH_P2WSH', () {
+      // Setup signing input
+      final input = Bitcoin.SigningInput(
+        amount: $fixnum.Int64(900000000),
+        hashType: 0,
+        toAddress: '16AQVuBMt818u2HBcbxztAZTT2VTDKupPS',
+        changeAddress: '1Bd1VA2bnLjoBk4ook3H19tZWETk8s6Ym5',
+        privateKey: [
+          parse_hex(
+              "730fff80e1413068a05b57d6a58261f07551163369787f349438ea38ca80fac6"),
+          parse_hex(
+              "11fa3d25a17cbc22b29c44a484ba552b5a53149d106d3d853e22fdd05a2d8bb3"),
+          parse_hex(
+              "77bf4141a87d55bdd7f3cd0bdccf6e9e642935fec45f2f30047be7b799120661"),
+          parse_hex(
+              "14af36970f5025ea3e8b5542c0f8ebe7763e674838d08808896b63c3351ffe49"),
+          parse_hex(
+              "fe9a95c19eef81dde2b95c1284ef39be497d128e2aa46916fb02d552485e0323"),
+          parse_hex(
+              "428a7aee9f0c2af0cd19af3cf1c78149951ea528726989b2e83e4778d2c3f890"),
+        ],
+      );
+
+      final redeemScript = TWBitcoinScript.buildPayToWitnessScriptHash(parse_hex(
+          "a16b5755f7f6f96dbd65f5f0d6ab9418b89af4b1f14a1bb8a09062c35f0dcb54"));
+      final scriptHash = TWHash.ripemd(TWHash.sha256(redeemScript.data));
+      input.scripts[hex(scriptHash)] = redeemScript.data;
+
+      final witnessScript = TWBitcoinScript.createWithBytes(parse_hex("56"
+          "210307b8ae49ac90a048e9b53357a2354b3334e9c8bee813ecb98e99a7e07e8c3ba3"
+          "2103b28f0c28bfab54554ae8c658ac5c3e0ce6e79ad336331f78c428dd43eea8449b"
+          "21034b8113d703413d57761b8b9781957b8c0ac1dfe69f492580ca4195f50376ba4a"
+          "21033400f6afecb833092a9a21cfdf1ed1376e58c5d1f47de74683123987e967a8f4"
+          "2103a6d48b1131e94ba04d9737d61acdaa1322008af9602b3b14862c07a1789aac16"
+          "2102d8b661b0b3302ee2f162b09e07a55ad5dfbe673a9f01d9f0c19617681024306b"
+          "56ae"));
+      final witnessScriptHash =
+          TWHash.ripemd(TWHash.sha256(witnessScript.data));
+      input.scripts[hex(witnessScriptHash)] = witnessScript.data;
+
+      final utxo0Script = TWBitcoinScript.createWithBytes(
+          parse_hex('a9149993a429037b5d912407a71c252019287b8d27a587'));
+      input.utxo.add(Bitcoin.UnspentTransaction(
+        outPoint: Bitcoin.OutPoint(
+          hash: parse_hex(
+              "36641869ca081e70f394c6948e8af409e18b619df2ed74aa106c1ca29787b96e"),
+          index: 1,
+          sequence: UINT32_MAX,
+        ),
+        script: utxo0Script.data,
+        amount: $fixnum.Int64(987654321),
+      ));
+
+      final plan = Bitcoin.TransactionPlan(
+        amount: input.amount,
+        availableAmount: input.utxo[0].amount,
+        change: $fixnum.Int64(87000000),
+        fee: input.utxo[0].amount - input.amount - $fixnum.Int64(87000000),
+        utxos: input.utxo,
+      );
+      input.plan = plan;
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+
+      final expected = "01000000" // version
+          "0001" // marker & flag
+          "01" // inputs
+          "36641869ca081e70f394c6948e8af409e18b619df2ed74aa106c1ca29787b96e"
+          "01000000"
+          "23"
+          "220020a16b5755f7f6f96dbd65f5f0d6ab9418b89af4b1f14a1bb8a09062c35f0dcb54"
+          "ffffffff"
+          "02" // outputs
+          "00e9a43500000000"
+          "19"
+          "76a914389ffce9cd9ae88dcc0631e88a821ffdbe9bfe2688ac"
+          "c0832f0500000000"
+          "19"
+          "76a9147480a33f950689af511e6e84c138dbbd3c3ee41588ac"
+          // witness
+          "08"
+          "00"
+          ""
+          "47"
+          "304402201992f5426ae0bab04cf206d7640b7e00410297bfe5487637f6c2427ee8496be002204ad4e64dc2d269f593cc4820db1fc1e8dc34774f602945115ce485940e05c64200"
+          "47"
+          "304402201e412363fa554b994528fd44149f3985b18bb901289ef6b71105b27c7d0e336c0220595e4a1e67154337757562ed5869127533e3e5084c3c2e128518f5f0b85b721800"
+          "47"
+          "3044022003b0a20ccf545b3f12c5ade10db8717e97b44da2e800387adfd82c95caf529d902206aee3a2395530d52f476d0ddd9d20ba062820ae6f4e1be4921c3630395743ad900"
+          "48"
+          "3045022100ed7a0eeaf72b84351bceac474b0c0510f67065b1b334f77e6843ed102f968afe022004d97d0cfc4bf5651e46487d6f87bd4af6aef894459f9778f2293b0b2c5b7bc700"
+          "48"
+          "3045022100934a0c364820588154aed2d519cbcc61969d837b91960f4abbf0e374f03aa39d022036b5c58b754bd44cb5c7d34806c89d9778ea1a1c900618a841e9fbfbe805ff9b00"
+          "47"
+          "3044022044e3b59b06931d46f857c82fa1d53d89b116a40a581527eac35c5eb5b7f0785302207d0f8b5d063ffc6749fb4e133db7916162b540c70dee40ec0b21e142d8843b3a00"
+          "cf"
+          "56210307b8ae49ac90a048e9b53357a2354b3334e9c8bee813ecb98e99a7e07e8c3ba32103b28f0c28bfab54554ae8c658ac5c3e0ce6e79ad336331f78c428dd43eea8449b21034b8113d703413d57761b8b9781957b8c0ac1dfe69f492580ca4195f50376ba4a21033400f6afecb833092a9a21cfdf1ed1376e58c5d1f47de74683123987e967a8f42103a6d48b1131e94ba04d9737d61acdaa1322008af9602b3b14862c07a1789aac162102d8b661b0b3302ee2f162b09e07a55ad5dfbe673a9f01d9f0c19617681024306b56ae"
+          "00000000" // nLockTime
+          ;
+      expect(signedTx, expected);
+    });
+
+    test('Sign_NegativeNoUtxos', () {
+      final hash0 = parse_hex(
+          "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f");
+      final hash1 = parse_hex(
+          "ef51e1b804cc89d182d279655c3aa89e815b1b309fe287d9b2b55d57b90ec68a");
+
+      // Setup input
+      final input = Bitcoin.SigningInput(
+        hashType: TWBitcoinSigHashType.TWBitcoinSigHashTypeAll,
+        amount: $fixnum.Int64(335790000),
+        byteFee: $fixnum.Int64(1),
+        toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
+        changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
+      );
+
+      final scriptPub1 = TWBitcoinScript.createWithBytes(
+          parse_hex('00141d0f172a0ecb48aee1be1f2687d2963ae33f71a1'));
+      final scriptHash = scriptPub1.matchPayToWitnessPublicKeyHash()!;
+      final scriptHashHex = hex(scriptHash);
+      expect(scriptHashHex, '1d0f172a0ecb48aee1be1f2687d2963ae33f71a1');
+
+      final redeemScript = TWBitcoinScript.buildPayToPublicKeyHash(scriptHash);
+      input.scripts[scriptHashHex] = redeemScript.data;
+
+      {
+        // plan returns empty, as there are 0 utxos
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(
+            verifyPlan(
+                plan, [], 0, 0, Common.SigningError.Error_missing_input_utxos),
+            true);
+      }
+
+      // Invoke Sign nonetheless
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+
+      // Fails as there are 0 utxos
+      expect(result.error, Common.SigningError.Error_missing_input_utxos);
+    });
+
+    test('Sign_NegativeInvalidAddress', () {
+      final hash0 = parse_hex(
+          "fff7f7881a8099afa6940d42d1e7f6362bec38171ea3edf433541db4e4ad969f");
+      final hash1 = parse_hex(
+          "ef51e1b804cc89d182d279655c3aa89e815b1b309fe287d9b2b55d57b90ec68a");
+
+      // Setup input
+      final input = Bitcoin.SigningInput(
+        hashType: TWBitcoinSigHashType.TWBitcoinSigHashTypeAll,
+        amount: $fixnum.Int64(335790000),
+        byteFee: $fixnum.Int64(1),
+        toAddress: 'THIS-IS-NOT-A-BITCOIN-ADDRESS',
+        changeAddress: 'THIS-IS-NOT-A-BITCOIN-ADDRESS-EITHER',
+      );
+
+      final utxoKey0 = TWPrivateKey.createWithHexString(
+          'bbc27228ddcb9209d7fd6f36b02f7dfa6252af40bb2f1cbc7a557da8027ff866');
+      input.privateKey.add(utxoKey0.data);
+
+      final utxoKey1 = TWPrivateKey.createWithHexString(
+          '619c335025c7f4012e556c2a58b2506e30b8511b53ade95ea316fd8c3286feb9');
+      input.privateKey.add(utxoKey1.data);
+
+      final scriptPub1 = TWBitcoinScript.createWithBytes(
+          parse_hex('00141d0f172a0ecb48aee1be1f2687d2963ae33f71a1'));
+      final scriptHash = scriptPub1.matchPayToWitnessPublicKeyHash()!;
+      final scriptHashHex = hex(scriptHash);
+      expect(scriptHashHex, '1d0f172a0ecb48aee1be1f2687d2963ae33f71a1');
+
+      final redeemScript = TWBitcoinScript.buildPayToPublicKeyHash(scriptHash);
+      input.scripts[scriptHashHex] = redeemScript.data;
+
+      final utxo0Script = TWBitcoinScript.createWithBytes(parse_hex(
+          "2103c9f4836b9a4f77fc0d81f7bcb01b7f1b35916864b9476c241ce9fc198bd25432ac"));
+      final utxo1Script = TWBitcoinScript.createWithBytes(
+          parse_hex("00141d0f172a0ecb48aee1be1f2687d2963ae33f71a1"));
+      input.utxo.addAll([
+        Bitcoin.UnspentTransaction(
+          script: utxo0Script.data,
+          amount: $fixnum.Int64(625000000),
+          outPoint: Bitcoin.OutPoint(
+            hash: hash0,
+            index: 0,
+            sequence: UINT32_MAX,
+          ),
+        ),
+        Bitcoin.UnspentTransaction(
+          script: utxo1Script.data,
+          amount: $fixnum.Int64(600000000),
+          outPoint: Bitcoin.OutPoint(
+            hash: hash1,
+            index: 1,
+            sequence: UINT32_MAX,
+          ),
+        ),
+      ]);
+
+      {
+        // plan returns empty, as there are 0 utxos
+        final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+          input.writeToBuffer(),
+          TWCoinType.TWCoinTypeBitcoin,
+        ));
+        expect(verifyPlan(plan, [625000000], 335790000, 174), true);
+      }
+
+      // Invoke Sign nonetheless
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+
+      // Fails as there are 0 utxos
+      expect(result.error, Common.SigningError.Error_invalid_address);
+    });
+
+    test('Plan_10input_MaxAmount', () {
+      final ownAddress = "bc1q0yy3juscd3zfavw76g4h3eqdqzda7qyf58rj4m";
+      final ownPrivateKey =
+          "eb696a065ef48a2192da5b28b694f87544b30fae8327c4510137a922f32c6dcf";
+
+      final input = Bitcoin.SigningInput();
+
+      for (int i = 0; i < 10; ++i) {
+        final utxoScript = TWBitcoinScript.lockScriptForAddress(
+            ownAddress, TWCoinType.TWCoinTypeBitcoin);
+        final keyHash = utxoScript.matchPayToWitnessPublicKeyHash()!;
+        expectHex(keyHash, '79091972186c449eb1ded22b78e40d009bdf0089');
+
+        final redeemScript = TWBitcoinScript.buildPayToPublicKeyHash(keyHash);
+        input.scripts[hex(keyHash)] = redeemScript.data;
+
+        final utxo = Bitcoin.UnspentTransaction(
+          script: utxoScript.data,
+          amount: $fixnum.Int64(1000000 + i * 10000),
+          outPoint: Bitcoin.OutPoint(
+            hash: parse_hex(
+                    'a85fd6a9a7f2f54cacb57e83dfd408e51c0a5fc82885e3fa06be8692962bc407')
+                .reversed
+                .toList(),
+            index: 0,
+            sequence: UINT32_MAX,
+          ),
+        );
+        input.utxo.add(utxo);
+      }
+
+      input.coinType = TWCoinType.TWCoinTypeBitcoin;
+      input.hashType =
+          TWBitcoinScript.hashTypeForCoin(TWCoinType.TWCoinTypeBitcoin);
+      input.useMaxAmount = true;
+      input.amount = $fixnum.Int64(2000000);
+      input.byteFee = $fixnum.Int64(1);
+      input.toAddress = "bc1qauwlpmzamwlf9tah6z4w0t8sunh6pnyyjgk0ne";
+      input.changeAddress = ownAddress;
+
+      // Plan.
+      // Estimated size: witness size: 10 * (1 + 1 + 72 + 1 + 33) + 2 = 1082; base 451; raw 451 + 1082 = 1533; vsize 451 + 1082/4 --> 722
+      // Actual size:    witness size:                                  1078; base 451; raw 451 + 1078 = 1529; vsize 451 + 1078/4 --> 721
+      final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(
+          verifyPlan(
+              plan,
+              [
+                1000000,
+                1010000,
+                1020000,
+                1030000,
+                1040000,
+                1050000,
+                1060000,
+                1070000,
+                1080000,
+                1090000
+              ],
+              10449278,
+              722),
+          true);
+
+      // Extend input with keys, reuse plan, Sign
+      final privKey = TWPrivateKey.createWithHexString(ownPrivateKey);
+      input.privateKey.add(privKey.data);
+      input.plan = plan;
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      expect(result.encoded.length, 1529);
+    });
+
+    test('PlanAndSign_LitecoinReal_8435', () {
+      final coin = TWCoinType.TWCoinTypeLitecoin;
+      final ownAddress = "ltc1q0dvup9kzplv6yulzgzzxkge8d35axkq4n45hum";
+      final ownPrivateKey =
+          "690b34763f34e0226ad2a4d47098269322e0402f847c97166e8f39959fcaff5a";
+
+      // Setup input for Plan
+      final input = Bitcoin.SigningInput(
+        coinType: coin,
+        hashType: TWBitcoinScript.hashTypeForCoin(coin),
+        amount: $fixnum.Int64(1200000),
+        useMaxAmount: false,
+        byteFee: $fixnum.Int64(1),
+        toAddress: 'ltc1qt36tu30tgk35tyzsve6jjq3dnhu2rm8l8v5q00',
+        changeAddress: ownAddress,
+      );
+
+      final utxo0Script =
+          TWBitcoinScript.lockScriptForAddress(ownAddress, coin);
+      final keyHash0 = utxo0Script.matchPayToWitnessPublicKeyHash()!;
+      expectHex(keyHash0, '7b59c096c20fd9a273e240846b23276c69d35815');
+
+      final redeemScript = TWBitcoinScript.buildPayToPublicKeyHash(keyHash0);
+      input.scripts[hex(keyHash0)] = redeemScript.data;
+
+      input.utxo.add(Bitcoin.UnspentTransaction(
+        script: utxo0Script.data,
+        amount: $fixnum.Int64(3899774),
+        outPoint: Bitcoin.OutPoint(
+          hash: parse_hex(
+                  "a85fd6a9a7f2f54cacb57e83dfd408e51c0a5fc82885e3fa06be8692962bc407")
+              .reversed
+              .toList(),
+          index: 0,
+          sequence: UINT32_MAX,
+        ),
+      ));
+
+      // Plan
+      final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+        input.writeToBuffer(),
+        coin,
+      ));
+      expect(verifyPlan(plan, [3899774], 1200000, 141), true);
+
+      // Extend input with keys and plan, for Sign
+      final privKey = TWPrivateKey.createWithHexString(ownPrivateKey);
+      input.privateKey.add(privKey.data);
+      input.plan = plan;
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        coin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "07c42b969286be06fae38528c85f0a1ce508d4df837eb5ac4cf5f2a7a9d65fa8"
+        "00000000"
+        "00"
+        ""
+        "ffffffff"
+        "02" // outputs
+        "804f120000000000"
+        "16"
+        "00145c74be45eb45a3459050667529022d9df8a1ecff"
+        "7131290000000000"
+        "16"
+        "00147b59c096c20fd9a273e240846b23276c69d35815"
+        // witness
+        "02"
+        "47"
+        "304402204139b82927dd80445f27a5d2c29fa4881dbd2911714452a4a706145bc43cc4bf022016fbdf4b09bc5a9c43e79edb1c1061759779a20c35535082bdc469a61ed0771f01"
+        "21"
+        "02499e327a05cc8bb4b3c34c8347ecfcb152517c9927c092fa273be5379fde3226"
+        "00000000" // nLockTime
+        ,
       );
     });
   });
