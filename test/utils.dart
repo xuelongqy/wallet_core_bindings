@@ -22,9 +22,9 @@ void expectHex(List<int> actual, String expected) {
       expected.replaceFirst('0x', ''));
 }
 
-void expectHexBytes(Uint8List actual, Uint8List expected) {
-  expect(TWString.createWithHexBytes(actual).value,
-      TWString.createWithHexBytes(expected).value);
+void expectHexBytes(List<int> actual, List<int> expected) {
+  expect(TWString.createWithHexBytes(Uint8List.fromList(actual)).value,
+      TWString.createWithHexBytes(Uint8List.fromList(expected)).value);
 }
 
 void expectJson(String actual, String expected) {

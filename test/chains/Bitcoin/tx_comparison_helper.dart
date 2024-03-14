@@ -6,17 +6,17 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import '../../utils.dart';
 
 final Bitcoin.OutPoint emptyTxOutPoint = Bitcoin.OutPoint(
-  hash: parse_hex("1d0f172a0ecb48aee1be1f2687d2963ae33f71a1"),
+  hash: parse_hex(
+      "1d0f172a0ecb48aee1be1f2687d2963ae33f71a1aaaaaaaaaaaaaaaaaaaaaaaa"),
   index: 0,
-  sequence: 0xffffffff,
+  sequence: UINT32_MAX,
 );
 
 Bitcoin.UnspentTransaction buildTestUTXO(int amount) {
   return Bitcoin.UnspentTransaction(
     amount: $fixnum.Int64(amount),
-    script: TWBitcoinAddress.createWithData(TWData.createWithHexString(
-                '0014' '1d0f172a0ecb48aee1be1f2687d2963ae33f71a1')
-            .bytes()!)
+    script: TWBitcoinScript.createWithBytes(
+            parse_hex('0014' '1d0f172a0ecb48aee1be1f2687d2963ae33f71a1'))
         .data,
     outPoint: emptyTxOutPoint,
   );
@@ -27,15 +27,15 @@ List<Bitcoin.UnspentTransaction> buildTestUTXOs(List<int> amounts) {
 }
 
 Bitcoin.SigningInput buildSigningInput(
-  String amount,
+  int amount,
   int byteFee,
-  List<Bitcoin.UnspentTransaction> utxos,
-  bool useMaxAmount,
-  int coin,
-  bool omitPrivateKey,
-) {
+  List<Bitcoin.UnspentTransaction> utxos, [
+  bool useMaxAmount = false,
+  int coin = TWCoinType.TWCoinTypeBitcoin,
+  bool omitPrivateKey = false,
+]) {
   final input = Bitcoin.SigningInput(
-    amount: $fixnum.Int64(int.parse(amount)),
+    amount: $fixnum.Int64(amount),
     byteFee: $fixnum.Int64(byteFee),
     useMaxAmount: useMaxAmount,
     coinType: coin,
