@@ -1265,6 +1265,92 @@ void main() {
       expect(output.error, Common.SigningError.Error_not_enough_utxos);
     });
 
+    // Deposit 0.0001 BTC from bc1q2sphzvc2uqmxqte2w9dd4gzy4sy9vvfv0me9ke to 0xa8491D40d4F71A752cA41DA0516AEd80c33a1B56 on ZETA mainnet.
+// https://www.zetachain.com/docs/developers/omnichain/bitcoin/#example-1-deposit-btc-into-an-account-in-zevm
+    test('SignDepositBtcToZetaChain', () {
+      final myPrivateKey = TWPrivateKey.createWithHexString(
+          '428d66be0b5a620f126a00fa67637222ce3dc9badfe5c605189520760810cfac');
+      final myPublicKey = myPrivateKey
+          .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+      final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(myPublicKey.data));
+      final redeemScript =
+          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
+
+      final ownAddress = "bc1q2sphzvc2uqmxqte2w9dd4gzy4sy9vvfv0me9ke";
+      final ownZetaEvmAddress =
+          parse_hex("a8491D40d4F71A752cA41DA0516AEd80c33a1B56");
+      // https://www.zetachain.com/docs/reference/glossary/#tss
+      final zetaTssAddress = "bc1qm24wp577nk8aacckv8np465z3dvmu7ry45el6y";
+
+      final utxoHash0 = parse_hex(
+              "17a6adb5db1e33c87467a58aa31cddbb3800052315015cf3cf1c2b0119310e20")
+          .reversed
+          .toList();
+      final utxoAmount0 = 20000;
+      final utxoOutputIndex0 = 0;
+
+      final sendAmount = 10000;
+      final dustAmount = 546;
+
+      final signingInput = Bitcoin.SigningInput(
+        coinType: TWCoinType.TWCoinTypeBitcoin,
+        hashType: TWBitcoinSigHashType.TWBitcoinSigHashTypeAll,
+        byteFee: $fixnum.Int64(15),
+        amount: $fixnum.Int64(sendAmount),
+        toAddress: zetaTssAddress,
+        changeAddress: ownAddress,
+        fixedDustThreshold: $fixnum.Int64(dustAmount),
+        outputOpReturn: ownZetaEvmAddress,
+        // OP_RETURN must be the second output before the change.
+        outputOpReturnIndex: Bitcoin.OutputIndex(
+          index: 1,
+        ),
+        privateKey: [myPrivateKey.data],
+        utxo: [
+          Bitcoin.UnspentTransaction(
+            script: redeemScript.data,
+            amount: $fixnum.Int64(utxoAmount0),
+            outPoint: Bitcoin.OutPoint(
+              hash: utxoHash0,
+              index: utxoOutputIndex0,
+              sequence: UINT32_MAX,
+            ),
+          ),
+        ],
+      );
+
+      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        signingInput.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+      expect(output.error, Common.SigningError.OK);
+
+      expect(output.transaction.outputs.length, 3);
+      // P2WPKH to the TSS address.
+      expect(output.transaction.outputs[0].value.toInt(), sendAmount);
+      // OP_RETURN
+      expect(output.transaction.outputs[1].value.toInt(), 0);
+      // Transaction fee.
+      expect(output.transaction.outputs[2].value.toInt(), 7420);
+
+      // Successfully broadcasted:
+      // https://mempool.space/tx/2b871b6c1112ad0a777f6db1f7a7709154c4d9af8e771ba4eca148915f830e9d
+      // https://explorer.zetachain.com/cc/tx/0x269e319478f8849247abb28b33a7b8e0a849dab4551bab328bf58bf67b02a807
+      final expectedTx =
+          "01000000000101200e3119012b1ccff35c011523050038bbdd1ca38aa56774c8331edbb5ada6170000000000ffffffff031027000000000000160014daaae0d3de9d8fdee31661e61aea828b59be78640000000000000000166a14a8491d40d4f71a752ca41da0516aed80c33a1b56fc1c000000000000160014540371330ae036602f2a715adaa044ac0856312c02483045022100e29731f7474f9103c6df3434c8c62a540a21ad0e10e23df343b1e81e4b26110602202d37fb4fee5341a41f9e4e65ba2d3e0d2309425ea9806d94eb268efe6f21007001210369cdaf80b4a5fdad91e9face90e848225512884ec2e3ed572ca11dc68e75054700000000";
+
+      expectHex(output.encoded, expectedTx);
+
+      final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+        signingInput.writeToBuffer(),
+        TWCoinType.TWCoinTypeBitcoin,
+      ));
+
+      expect(plan.error, Common.SigningError.OK);
+      expect(plan.hasOutputOpReturnIndex(), true);
+      expect(plan.outputOpReturnIndex.index, 1);
+    });
+
     test('SignP2PKH', () {
       final input = buildInputP2PKH();
 

@@ -1,6 +1,3 @@
-import 'dart:math';
-import 'dart:typed_data';
-
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
@@ -711,6 +708,7 @@ void main() {
       expect(txPlan.outputOpReturn.length, 59);
       expectHex(txPlan.outputOpReturn,
           '535741503a54484f522e52554e453a74686f72317470657263616d6b6b7865633071306a6b366c74646e6c7176737732396775617038776d636c3a');
+      expect(txPlan.outputOpReturnIndex.hasIndex(), false);
     });
   });
 }

@@ -676,6 +676,68 @@ class OutputAddress extends $pb.GeneratedMessage {
   void clearAmount() => clearField(2);
 }
 
+/// Optional index of a corresponding output in the transaction.
+class OutputIndex extends $pb.GeneratedMessage {
+  factory OutputIndex({
+    $core.int? index,
+  }) {
+    final $result = create();
+    if (index != null) {
+      $result.index = index;
+    }
+    return $result;
+  }
+  OutputIndex._() : super();
+  factory OutputIndex.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory OutputIndex.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'OutputIndex',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Bitcoin.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'index', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  OutputIndex clone() => OutputIndex()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  OutputIndex copyWith(void Function(OutputIndex) updates) =>
+      super.copyWith((message) => updates(message as OutputIndex))
+          as OutputIndex;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static OutputIndex create() => OutputIndex._();
+  OutputIndex createEmptyInstance() => create();
+  static $pb.PbList<OutputIndex> createRepeated() => $pb.PbList<OutputIndex>();
+  @$core.pragma('dart2js:noInline')
+  static OutputIndex getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<OutputIndex>(create);
+  static OutputIndex? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get index => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set index($core.int v) {
+    $_setUnsignedInt32(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasIndex() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIndex() => clearField(1);
+}
+
 enum SigningInput_DustPolicy { fixedDustThreshold, notSet }
 
 /// Input data necessary to create a signed transaction.
@@ -702,6 +764,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $2.ComposePlan? planningV2,
     $2.SigningInput? signingV2,
     $fixnum.Int64? fixedDustThreshold,
+    OutputIndex? outputOpReturnIndex,
   }) {
     final $result = create();
     if (hashType != null) {
@@ -767,6 +830,9 @@ class SigningInput extends $pb.GeneratedMessage {
     if (fixedDustThreshold != null) {
       $result.fixedDustThreshold = fixedDustThreshold;
     }
+    if (outputOpReturnIndex != null) {
+      $result.outputOpReturnIndex = outputOpReturnIndex;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -823,6 +889,8 @@ class SigningInput extends $pb.GeneratedMessage {
     ..aOM<$2.SigningInput>(21, _omitFieldNames ? '' : 'signingV2',
         subBuilder: $2.SigningInput.create)
     ..aInt64(24, _omitFieldNames ? '' : 'fixedDustThreshold')
+    ..aOM<OutputIndex>(26, _omitFieldNames ? '' : 'outputOpReturnIndex',
+        subBuilder: OutputIndex.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1102,6 +1170,22 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.bool hasFixedDustThreshold() => $_has(20);
   @$pb.TagNumber(24)
   void clearFixedDustThreshold() => clearField(24);
+
+  /// Optional index of the OP_RETURN output in the transaction.
+  /// If not set, OP_RETURN output will be pushed as the latest output.
+  @$pb.TagNumber(26)
+  OutputIndex get outputOpReturnIndex => $_getN(21);
+  @$pb.TagNumber(26)
+  set outputOpReturnIndex(OutputIndex v) {
+    setField(26, v);
+  }
+
+  @$pb.TagNumber(26)
+  $core.bool hasOutputOpReturnIndex() => $_has(21);
+  @$pb.TagNumber(26)
+  void clearOutputOpReturnIndex() => clearField(26);
+  @$pb.TagNumber(26)
+  OutputIndex ensureOutputOpReturnIndex() => $_ensure(21);
 }
 
 /// Describes a preliminary transaction plan.
@@ -1118,6 +1202,7 @@ class TransactionPlan extends $pb.GeneratedMessage {
     $core.List<$core.int>? preblockhash,
     $fixnum.Int64? preblockheight,
     $2.TransactionPlan? planningResultV2,
+    OutputIndex? outputOpReturnIndex,
   }) {
     final $result = create();
     if (amount != null) {
@@ -1152,6 +1237,9 @@ class TransactionPlan extends $pb.GeneratedMessage {
     }
     if (planningResultV2 != null) {
       $result.planningResultV2 = planningResultV2;
+    }
+    if (outputOpReturnIndex != null) {
+      $result.outputOpReturnIndex = outputOpReturnIndex;
     }
     return $result;
   }
@@ -1188,6 +1276,8 @@ class TransactionPlan extends $pb.GeneratedMessage {
     ..aInt64(10, _omitFieldNames ? '' : 'preblockheight')
     ..aOM<$2.TransactionPlan>(12, _omitFieldNames ? '' : 'planningResultV2',
         subBuilder: $2.TransactionPlan.create)
+    ..aOM<OutputIndex>(14, _omitFieldNames ? '' : 'outputOpReturnIndex',
+        subBuilder: OutputIndex.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1349,6 +1439,22 @@ class TransactionPlan extends $pb.GeneratedMessage {
   void clearPlanningResultV2() => clearField(12);
   @$pb.TagNumber(12)
   $2.TransactionPlan ensurePlanningResultV2() => $_ensure(10);
+
+  /// Optional index of the OP_RETURN output in the transaction.
+  /// If not set, OP_RETURN output will be pushed as the latest output.
+  @$pb.TagNumber(14)
+  OutputIndex get outputOpReturnIndex => $_getN(11);
+  @$pb.TagNumber(14)
+  set outputOpReturnIndex(OutputIndex v) {
+    setField(14, v);
+  }
+
+  @$pb.TagNumber(14)
+  $core.bool hasOutputOpReturnIndex() => $_has(11);
+  @$pb.TagNumber(14)
+  void clearOutputOpReturnIndex() => clearField(14);
+  @$pb.TagNumber(14)
+  OutputIndex ensureOutputOpReturnIndex() => $_ensure(11);
 }
 
 /// Result containing the signed and encoded transaction.
