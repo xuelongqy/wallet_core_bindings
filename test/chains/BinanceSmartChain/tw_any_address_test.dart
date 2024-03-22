@@ -13,7 +13,7 @@ void main() {
 
       final address =
           TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
-      final expected = TWAnyAddress(string: string, coin: coin);
+      final expected = TWAnyAddress(string, coin);
 
       final addressString = address.description;
       final expectedString = expected.description;

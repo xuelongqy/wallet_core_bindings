@@ -24,8 +24,7 @@ void main() {
           inputs: [
             Binance.SendOrder_Input(
               address: TWAnyAddress(
-                      string: 'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2',
-                      coin: coin)
+                      'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2', coin)
                   .data,
               coins: [
                 Binance.SendOrder_Token(
@@ -38,8 +37,7 @@ void main() {
           outputs: [
             Binance.SendOrder_Output(
               address: TWAnyAddress(
-                      string: 'bnb1hlly02l6ahjsgxw9wlcswnlwdhg4xhx38yxpd5',
-                      coin: coin)
+                      'bnb1hlly02l6ahjsgxw9wlcswnlwdhg4xhx38yxpd5', coin)
                   .data,
               coins: [
                 Binance.SendOrder_Token(

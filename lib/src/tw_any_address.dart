@@ -17,9 +17,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   ///
   /// \param [string] address to create.
   /// \param [coin] coin type of the address.
-  TWAnyAddress({
-    required String string,
-    required int coin,
+  TWAnyAddress(
+    String string,
+    int coin, {
     bool attach = true,
   }) : super(
           iTWBindings.TWAnyAddressCreateWithString(

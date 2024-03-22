@@ -27,8 +27,7 @@ void main() {
 
     test('ValidAddress', () {
       final string = 'bitcoincash:qqa2qx0d8tegw32xk8u75ws055en4x3h2u0e6k46y4';
-      final address =
-          TWAnyAddress(string: string, coin: TWCoinType.TWCoinTypeBitcoinCash);
+      final address = TWAnyAddress(string, TWCoinType.TWCoinTypeBitcoinCash);
       expect(address.pointer != nullptr, true);
 
       final script = TWBitcoinScript.lockScriptForAddress(
@@ -105,8 +104,8 @@ void main() {
 
     test('LockScript', () {
       final address = TWAnyAddress(
-          string: 'bitcoincash:qpk05r5kcd8uuzwqunn8rlx5xvuvzjqju5rch3tc0u',
-          coin: TWCoinType.TWCoinTypeBitcoinCash);
+          'bitcoincash:qpk05r5kcd8uuzwqunn8rlx5xvuvzjqju5rch3tc0u',
+          TWCoinType.TWCoinTypeBitcoinCash);
       final data = address.data;
       final rawData = <int>[];
       rawData.add(0x00);

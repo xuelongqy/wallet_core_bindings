@@ -61,8 +61,7 @@ void main() {
 
     test('createFromString', () {
       const acalaAddress = '24CKv1LJ1T3U9ujCN63YzTPuQjcmURGA2xTjim98UKXxgNXT';
-      final anyAddr =
-          TWAnyAddress(string: acalaAddress, coin: TWCoinType.TWCoinTypeAcala);
+      final anyAddr = TWAnyAddress(acalaAddress, TWCoinType.TWCoinTypeAcala);
       final addrDescription = anyAddr.description;
       expect(
         TWAnyAddress.isValidSS58(

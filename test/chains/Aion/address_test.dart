@@ -21,16 +21,13 @@ void main() {
     test('FromString', () {
       const aionAddress =
           "0xa0d2312facea71b740679c926d040c9056a65a4bfa2ddd18ec160064f82909e7";
-      final address =
-          TWAnyAddress(string: aionAddress, coin: TWCoinType.TWCoinTypeAion);
+      final address = TWAnyAddress(aionAddress, TWCoinType.TWCoinTypeAion);
       expect(address.description, aionAddress);
     });
 
     test('InvalidFromData', () {
       expect(
-          TWAnyAddress(string: '0xffff', coin: TWCoinType.TWCoinTypeAion)
-              .pointer,
-          nullptr);
+          TWAnyAddress('0xffff', TWCoinType.TWCoinTypeAion).pointer, nullptr);
     });
 
     test('isValid', () {

@@ -53,8 +53,8 @@ void main() {
 
     test('FromString', () {
       final address = TWAnyAddress(
-        string: 'PITDOF57RHOVLT37KM7DCXDCETLDL3OA5CBAN7LQ44Z36LGFC27IJ2IQ64',
-        coin: coin,
+        'PITDOF57RHOVLT37KM7DCXDCETLDL3OA5CBAN7LQ44Z36LGFC27IJ2IQ64',
+        coin,
       );
       expect(address.description,
           'PITDOF57RHOVLT37KM7DCXDCETLDL3OA5CBAN7LQ44Z36LGFC27IJ2IQ64');

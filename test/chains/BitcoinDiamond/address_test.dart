@@ -38,12 +38,10 @@ void main() {
     });
 
     test('FromString', () {
-      var address = TWAnyAddress(
-          string: '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8', coin: coin);
+      var address = TWAnyAddress('1G15VvshDxwFTnahZZECJfFwEkq9fP79o8', coin);
       expect(address.description, '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8');
 
-      address = TWAnyAddress(
-          string: '3PaCtJcD7sxpCf3JNPLpMNnHnwJHoBeucF', coin: coin);
+      address = TWAnyAddress('3PaCtJcD7sxpCf3JNPLpMNnHnwJHoBeucF', coin);
       expect(address.description, '3PaCtJcD7sxpCf3JNPLpMNnHnwJHoBeucF');
     });
 
@@ -58,13 +56,11 @@ void main() {
           derivation: TWDerivation.TWDerivationBitcoinSegwit);
 
       final data =
-          TWAnyAddress(string: '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8', coin: coin)
-              .data;
-      expectHex(data!, 'a48da46386ce52cccad178de900c71f06130c310');
-      expectHexBytes(data, address.data!);
+          TWAnyAddress('1G15VvshDxwFTnahZZECJfFwEkq9fP79o8', coin).data;
+      expectHex(data, 'a48da46386ce52cccad178de900c71f06130c310');
+      expectHexBytes(data, address.data);
 
-      address =
-          TWAnyAddress(string: '1G15VvshDxwFTnahZZECJfFwEkq9fP79', coin: coin);
+      address = TWAnyAddress('1G15VvshDxwFTnahZZECJfFwEkq9fP79', coin);
       expect(address.pointer, nullptr);
     });
   });
