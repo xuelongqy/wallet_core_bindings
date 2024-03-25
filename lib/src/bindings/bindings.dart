@@ -12184,6 +12184,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeNativeZetaChain = 10007000;
   static const int TWCoinTypeZetaEVM = 20007000;
   static const int TWCoinTypeDydx = 22000118;
+  static const int TWCoinTypeMerlin = 4200;
 }
 
 /// StarkEx message signing and verification.
@@ -12246,6 +12247,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDOkc = 66;
   static const int TWEthereumChainIDThundertoken = 108;
   static const int TWEthereumChainIDCfxevm = 1030;
+  static const int TWEthereumChainIDMerlin = 4200;
   static const int TWEthereumChainIDMantle = 5000;
   static const int TWEthereumChainIDGochain = 60;
   static const int TWEthereumChainIDZeneon = 7332;
