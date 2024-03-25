@@ -8,8 +8,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
-      const txId =
-          't123';
+      const txId = 't123';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = 'a12';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
@@ -21,10 +20,8 @@ void main() {
       expect(TWCoinTypeBlockchain(coin), TWBlockchain.TWBlockchainEthereum);
       expect(TWCoinTypeP2shPrefix(coin), 0x0);
       expect(TWCoinTypeStaticPrefix(coin), 0x0);
-      expect(txUrl,
-          'https://explorer.callisto.network/tx/t123');
-      expect(accUrl,
-          'https://explorer.callisto.network/addr/a12');
+      expect(txUrl, 'https://explorer.callisto.network/tx/t123');
+      expect(accUrl, 'https://explorer.callisto.network/addr/a12');
     });
   });
 }
