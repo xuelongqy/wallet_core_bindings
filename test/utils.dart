@@ -60,6 +60,10 @@ Uint8List bigIntStringToBytes(String value, {int? length}) {
   return hexToBytes(hex, length: length);
 }
 
+int bytesToInt(List<int> bytes) {
+  return int.parse(hex(bytes), radix: 16);
+}
+
 Uint8List parse_hex(String hex) {
   return TWData.createWithHexString(hex).bytes()!;
 }

@@ -18,8 +18,11 @@ class TWCardano {
   /// \param [tokenBundle] serialized data of TW.Cardano.Proto.TokenBundle.
   /// \param [coinsPerUtxoByte] cost per one byte of a serialized UTXO (Base-10 decimal string).
   /// \return the minimum ADA amount (Base-10 decimal string).
-  static String outputMinAdaAmount(
-          String toAddress, Uint8List tokenBundle, String coinsPerUtxoByte) =>
+  static String outputMinAdaAmount({
+    required String toAddress,
+    required Uint8List tokenBundle,
+    required String coinsPerUtxoByte,
+  }) =>
       TWString.fromPointer(iTWBindings.TWCardanoOutputMinAdaAmount(
         TWString(toAddress).pointer,
         TWData(tokenBundle).pointer,
