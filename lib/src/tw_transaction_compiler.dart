@@ -48,7 +48,7 @@ class TWTransactionCompiler {
   /// \param [signatures] signatures to compile, using TWDataVector.
   /// \param [publicKeys] public keys for signers to match private keys, using TWDataVector.
   /// \return serialized data of a proto object `SigningOutput`.
-  static Uint8List covariant({
+  static Uint8List compilerCompileWithSignaturesAndPubKeyType({
     required int coin,
     required Uint8List txInputData,
     required TWDataVector signatures,
