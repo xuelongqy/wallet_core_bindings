@@ -1,6 +1,7 @@
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Cardano.pb.dart' as Cardano;
+import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:wallet_core_bindings/proto/TransactionCompiler.pb.dart'
     as TransactionCompiler;
 import 'package:fixnum/fixnum.dart' as $fixnum;
@@ -106,6 +107,34 @@ void main() {
       {
         final output = Cardano.SigningOutput.fromBuffer(outData);
         expectHex(output.encoded, expectedTx);
+      }
+      {
+        // Negative: inconsistent signatures & publicKeys
+        final outputData =
+            TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
+          coin: coin,
+          txInputData: inputData,
+          signatures: TWDataVector.createWithDataList([sig, sig]),
+          publicKeys: TWDataVector.createWithData(publicKeyData),
+          pubKeyType: TWPublicKeyType.TWPublicKeyTypeED25519,
+        );
+        final output = Cardano.SigningOutput.fromBuffer(outputData);
+        expect(output.encoded.length, 0);
+        expect(output.error, Common.SigningError.Error_no_support_n2n);
+      }
+      {
+        // Negative: empty signatures
+        final outputData =
+            TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
+          coin: coin,
+          txInputData: inputData,
+          signatures: TWDataVector(),
+          publicKeys: TWDataVector(),
+          pubKeyType: TWPublicKeyType.TWPublicKeyTypeED25519,
+        );
+        final output = Cardano.SigningOutput.fromBuffer(outputData);
+        expect(output.encoded.length, 0);
+        expect(output.error, Common.SigningError.Error_invalid_params);
       }
     });
   });
