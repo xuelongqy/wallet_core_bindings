@@ -47,8 +47,8 @@ void main() {
 
     test('createFromPubKey', () {
       final pubkey = TWPublicKey.createWithHexString(
-       'e9590e4d99264a14a85e21e69537e4a64f66a875d38cb8f76b305f41fabe24a9',
-       TWPublicKeyType.TWPublicKeyTypeED25519,
+        'e9590e4d99264a14a85e21e69537e4a64f66a875d38cb8f76b305f41fabe24a9',
+        TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final addr = TWAnyAddress.createWithPublicKey(
         publicKey: pubkey,
@@ -84,8 +84,7 @@ void main() {
       final data = TWData.createWithHexString(
               '92fd9c237030356e26cfcc4568dc71055d5ec92dfe0ff903767e00611971bad3')
           .bytes()!;
-      final pubkey =
-          TWPublicKey(data, TWPublicKeyType.TWPublicKeyTypeED25519);
+      final pubkey = TWPublicKey(data, TWPublicKeyType.TWPublicKeyTypeED25519);
       final twAddress = TWAnyAddress.createSS58WithPublicKey(
         publicKey: pubkey,
         coin: TWCoinType.TWCoinTypePolkadot,
