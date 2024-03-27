@@ -22,7 +22,7 @@ void main() {
         final pkData = parse_hex(
             '0279BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798');
         final publicKey = TWPublicKey.createWithData(
-            data: pkData, type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+            pkData, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
         final addr = TWSegwitAddress.createWithPublicKey(
             TWHRP.TWHRPBitcoin, publicKey,
             attach: false);
@@ -35,7 +35,7 @@ void main() {
       final pkData = parse_hex(
           '0279BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798');
       final publicKey = TWPublicKey.createWithData(
-          data: pkData, type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          pkData, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       final address =
           TWSegwitAddress.createWithPublicKey(TWHRP.TWHRPBitcoin, publicKey);

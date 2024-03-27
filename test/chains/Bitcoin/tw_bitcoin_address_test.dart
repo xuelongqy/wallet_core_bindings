@@ -34,9 +34,8 @@ void main() {
 
     test('CreateWithPublicKey', () {
       final pubKey = TWPublicKey.createWithHexString(
-        hex:
-            '0239de350077b204f8fa1b63542b33580b8f125c4b9b827d5fc65cbe47fc1d9a52',
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        '0239de350077b204f8fa1b63542b33580b8f125c4b9b827d5fc65cbe47fc1d9a52',
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       expect(pubKey.pointer != nullptr, true);
       final addr = TWBitcoinAddress.createWithPublicKey(
@@ -80,8 +79,8 @@ void main() {
 
     test('CreateWithPublicKeyInvalid', () {
       final pubKey = TWPublicKey.createWithHexString(
-        hex: 'F61CF0BC8E891AD7636E0CD35229D579323AA2DA827EB85D8071407464DC2FA3',
-        type: TWPublicKeyType.TWPublicKeyTypeED25519,
+        'F61CF0BC8E891AD7636E0CD35229D579323AA2DA827EB85D8071407464DC2FA3',
+        TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       expect(pubKey.pointer != nullptr, true);
       final addr = TWBitcoinAddress.createWithPublicKey(

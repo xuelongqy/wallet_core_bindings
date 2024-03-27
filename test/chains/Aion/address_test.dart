@@ -7,10 +7,10 @@ void main() {
   group('AionAddress', () {
     test('FromPublicKey', () {
       final publicKey = TWPublicKey.createWithData(
-        data: TWData.createWithHexString(
+        TWData.createWithHexString(
                 '01a775daa30b33fda3091768f0561c8042ee23cb48a6a3e5d7e8248b13d04a48a7')
             .bytes()!,
-        type: TWPublicKeyType.TWPublicKeyTypeED25519,
+        TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final address = TWAnyAddress.createWithPublicKey(
           publicKey: publicKey, coin: TWCoinType.TWCoinTypeAion);

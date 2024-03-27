@@ -88,7 +88,7 @@ void main() {
       final publicKeyHex =
           "02f65e76c2a7c239bd6c8b18dc10b71d463b96c0b0d827c97345e6bbe8ee8f2ddc";
       final publicKey = TWPublicKey.createWithHexString(
-          hex: publicKeyHex, type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          publicKeyHex, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
       final preImageHash = preSigningOutput.hashPublicKeys[0].dataHash;
       final signature = parse_hex(
           "3045022100e2c048cdf844c77275ac92cc27cfc357155d42d9a82d5d22f62247dce7681467022052c57d744a2ea91970b14e8863efdbcb3fb91f6448c027c25a8e86b752acb5ce");

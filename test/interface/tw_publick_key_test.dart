@@ -9,8 +9,8 @@ void main() {
       final publickKeyHex =
           '0399c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c1';
       final publickKey = TWPublicKey.createWithData(
-        data: TWData.createWithHexString(publickKeyHex).bytes()!,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        TWData.createWithHexString(publickKeyHex).bytes()!,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       expect(publickKey.pointer != nullptr, true);
       final publicKeyData = publickKey.data;
@@ -35,8 +35,8 @@ void main() {
 
     test('Create invalid', () {
       final publicKey = TWPublicKey.createWithData(
-        data: TWData.createWithHexString('deadbeef').bytes()!,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        TWData.createWithHexString('deadbeef').bytes()!,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       expect(publicKey.pointer, nullptr);
     });

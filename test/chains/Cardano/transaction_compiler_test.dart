@@ -79,7 +79,7 @@ void main() {
       final publicKeyData = parse_hex(
           "17c55d712152ccabf28215fe2d008d615f94796e098a97f1aa43d986ac3cb946");
       final publicKey = TWPublicKey.createWithData(
-          data: publicKeyData, type: TWPublicKeyType.TWPublicKeyTypeED25519);
+          publicKeyData, TWPublicKeyType.TWPublicKeyTypeED25519);
       final sig = parse_hex(
           "1096ddcfb2ad21a4c0d861ef3fabe18841e8de88105b0d8e36430d7992c588634ead4100c32b2800b31b65e014d54a8238bdda63118d829bf0bcf1b631e86f0e");
 

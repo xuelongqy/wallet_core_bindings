@@ -95,8 +95,8 @@ void main() {
       int count = 0;
       for (final u in utxoInfos) {
         final publicKey = TWPublicKey.createWithData(
-          data: u.publicKey,
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+          u.publicKey,
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1,
         );
         final address = TWSegwitAddress.createWithPublicKey(
           hrpForString('bc'),
@@ -223,8 +223,7 @@ void main() {
         expect(sigInfo != null, true);
         final publicKeyData = sigInfo!.publicKey;
         final publicKey = TWPublicKey.createWithData(
-            data: publicKeyData,
-            type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+            publicKeyData, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
         final signature = sigInfo.signature;
 
         signatureVec.add(signature);

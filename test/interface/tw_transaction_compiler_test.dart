@@ -115,7 +115,7 @@ void main() {
               '026a35920088d98c3888ca68c53dfc93f4564602606cbb87f0fe5ee533db38e502')
           .bytes()!;
       final publicKey = TWPublicKey.createWithData(
-          data: publicKeyData, type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          publicKeyData, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
       final signature = TWData.createWithHexString(
               '1b1181faec30b60a2ddaa2804c253cf264c69180ec31814929b5de62088c0c5a45e8a816d1208fc5366bb8b041781a6771248550d04094c3d7a504f9e8310679')
           .bytes()!;
@@ -194,8 +194,8 @@ void main() {
               '044bc2a31265153f07e70e0bab08724e6b85e217f8cd628ceb62974247bb493382ce28cab79ad7119ee1ad3ebcdb98a16805211530ecc6cfefa1b88e6dff99232a')
           .bytes()!;
       final publicKey = TWPublicKey(
-        data: publicKeyData,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1Extended,
+        publicKeyData,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1Extended,
       );
       final signature = TWData.createWithHexString(
               '360a84fb41ad07f07c845fedc34cde728421803ebbaae392fc39c116b29fc07b53bd9d1376e15a191d844db458893b928f3efbfee90c9febf51ab84c9796677900')
@@ -330,8 +330,8 @@ void main() {
       int count = 0;
       for (final u in utxoInfos) {
         final publicKey = TWPublicKey(
-          data: u.publicKey,
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+          u.publicKey,
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1,
         );
         final address =
             TWSegwitAddress.createWithPublicKey(TWHRP.TWHRPBitcoin, publicKey);
@@ -458,8 +458,8 @@ void main() {
         final sigInfoFind = signatureInfos[key]!;
         final publicKeyData = sigInfoFind.publicKey;
         final publicKey = TWPublicKey(
-          data: publicKeyData,
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+          publicKeyData,
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1,
         );
         final signature = sigInfoFind.signature;
         signatureVec.add(signature);
@@ -569,8 +569,8 @@ void main() {
               '0d044a62d0a4dfe5a037a15b59fa4d4d0d3ab81103a2c10a6da08a4d058611c0')
           .bytes()!;
       final publicKey = TWPublicKey.createWithData(
-        data: publicKeyData,
-        type: TWPublicKeyType.TWPublicKeyTypeED25519,
+        publicKeyData,
+        TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final signature = TWData.createWithHexString(
               "a8c610697087eaf8a34b3facbe06f8e9bb9603bb03270dad021ffcd2fc37b6e9efcdcb78b227401f"
@@ -662,8 +662,8 @@ void main() {
               '033c87a3d9b812556b3034b6471cad5131a01e210c1d7ca06dd53b7d0aff0ee045')
           .bytes()!;
       final publicKey = TWPublicKey.createWithData(
-        data: publicKeyData,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        publicKeyData,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       final signature = TWData.createWithHexString(
               "a5234269eab6fe8a1510dd0cb36070a03464b48856e1ef2681dbb79a5ec656f92961ac01d401a6f8"
@@ -763,8 +763,8 @@ void main() {
               '033c87a3d9b812556b3034b6471cad5131a01e210c1d7ca06dd53b7d0aff0ee045')
           .bytes()!;
       final publicKey = TWPublicKey.createWithData(
-        data: publicKeyData,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        publicKeyData,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       final signature = TWData.createWithHexString(
               "5ddea604c6cdfcf6cbe32f5873937641676ee5f9aee3c40aa9857c59aefedff25b77429cf62307d4"

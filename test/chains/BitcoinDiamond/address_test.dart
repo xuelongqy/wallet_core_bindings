@@ -20,9 +20,8 @@ void main() {
 
     test('FromPublicKey', () {
       final publicKey = TWPublicKey.createWithHexString(
-          hex:
-              '02485a209514cc896f8ed736e205bc4c35bd5299ef3f9e84054475336b964c02a3',
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          '02485a209514cc896f8ed736e205bc4c35bd5299ef3f9e84054475336b964c02a3',
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1);
       final address =
           TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
       expect(address.description, '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8');
@@ -47,9 +46,8 @@ void main() {
 
     test('AddressData', () {
       final publicKey = TWPublicKey.createWithHexString(
-          hex:
-              '02485a209514cc896f8ed736e205bc4c35bd5299ef3f9e84054475336b964c02a3',
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          '02485a209514cc896f8ed736e205bc4c35bd5299ef3f9e84054475336b964c02a3',
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1);
       var address = TWAnyAddress.createWithPublicKeyDerivation(
           publicKey: publicKey,
           coin: coin,

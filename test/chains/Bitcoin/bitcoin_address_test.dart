@@ -24,8 +24,8 @@ void main() {
 
     test('P2PKH_CreateFromPubkey', () {
       final publicKey = TWPublicKey.createWithHexString(
-        hex: TestPubKey1,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        TestPubKey1,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       final address = TWBitcoinAddress.createWithPublicKey(
           publicKey, TWCoinTypeP2pkhPrefix(coin));
@@ -43,8 +43,8 @@ void main() {
     test('P2WPKH_Nested_P2SH', () {
       // P2SH address cannot be created directly from pubkey, script is built
       final publicKey = TWPublicKey.createWithHexString(
-        hex: TestPubKey1,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        TestPubKey1,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
 
       final pubkeyHash = publicKey.hash(Uint8List(0));

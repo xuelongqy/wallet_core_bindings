@@ -77,8 +77,8 @@ void main() {
 
     test('FromPublicKey', () {
       final publicKey = TWPublicKey.createWithHexString(
-        hex: 'ad0e293a56c9fc648d1872a00521d97e6b65724519a2676c2c47cb95d131cf5a',
-        type: TWPublicKeyType.TWPublicKeyTypeED25519,
+        'ad0e293a56c9fc648d1872a00521d97e6b65724519a2676c2c47cb95d131cf5a',
+        TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final address = TWAnyAddress.createWithPublicKey(
         publicKey: publicKey,

@@ -199,8 +199,7 @@ void main() {
           '02753f5c275e1847ba4d2fd3df36ad00af2e165650b35fe3991e9c9c46f68b12bc';
       final pubkey_data = TWData.createWithHexString(pubkey);
       final pubkey_obj = TWPublicKey.createWithData(
-          data: pubkey_data.bytes()!,
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          pubkey_data.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       final addr = TWAnyAddress.createWithPublicKey(
           publicKey: pubkey_obj, coin: TWCoinType.TWCoinTypeBitcoin);
@@ -212,8 +211,7 @@ void main() {
           '02753f5c275e1847ba4d2fd3df36ad00af2e165650b35fe3991e9c9c46f68b12bc';
       final pubkey_data = TWData.createWithHexString(pubkey);
       final pubkey_obj = TWPublicKey.createWithData(
-          data: pubkey_data.bytes()!,
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          pubkey_data.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       {
         final addr = TWAnyAddress.createWithPublicKeyDerivation(
@@ -247,9 +245,8 @@ void main() {
       final pubkey =
           '0419bf99082cf2fcdaa812d6eba1eba9036ff3a3d84c1817c84954d4e8ae283fec5313e427a0f5f68dec3169b2eda876b1d9f97b1ede7f958baee6a2ce78f6e94a';
       final pubkey_data = TWData.createWithHexString(pubkey);
-      final pubkey_obj = TWPublicKey.createWithData(
-          data: pubkey_data.bytes()!,
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1Extended);
+      final pubkey_obj = TWPublicKey.createWithData(pubkey_data.bytes()!,
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1Extended);
 
       {
         final addr = TWAnyAddress.createWithPublicKeyFilecoinAddressType(

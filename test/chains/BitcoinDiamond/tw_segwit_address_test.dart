@@ -21,9 +21,8 @@ void main() {
     /// Initializes a Bech32 address with a public key and a HRP prefix.
     test('PubkeyToAddress', () {
       final publicKey = TWPublicKey.createWithHexString(
-          hex:
-              '032a9ccb9cc6fd461df091b0f711730daa4292f9226aec918ac19381ac2af5e9ee',
-          type: TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+          '032a9ccb9cc6fd461df091b0f711730daa4292f9226aec918ac19381ac2af5e9ee',
+          TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       /// construct with public key
       final address =

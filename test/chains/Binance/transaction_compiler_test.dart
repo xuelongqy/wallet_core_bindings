@@ -72,8 +72,8 @@ void main() {
               '026a35920088d98c3888ca68c53dfc93f4564602606cbb87f0fe5ee533db38e502')
           .bytes()!;
       final publicKey = TWPublicKey.createWithData(
-        data: publicKeyData,
-        type: TWPublicKeyType.TWPublicKeyTypeSECP256k1,
+        publicKeyData,
+        TWPublicKeyType.TWPublicKeyTypeSECP256k1,
       );
       final signature = TWData.createWithHexString(
               '1b1181faec30b60a2ddaa2804c253cf264c69180ec31814929b5de62088c0c5a45e8a816d1208fc5366bb8b041781a6771248550d04094c3d7a504f9e8310679')

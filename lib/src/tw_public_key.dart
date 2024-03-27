@@ -20,9 +20,9 @@ class TWPublicKey extends TWObjectFinalizable<bindings.TWPublicKey> {
   ///
   /// \param [data] Non-null block of data representing the public key
   /// \param [type] type of the public key
-  TWPublicKey.createWithData({
-    required Uint8List data,
-    required int type,
+  TWPublicKey.createWithData(
+    Uint8List data,
+    int type, {
     bool attach = true,
   }) : super(
           iTWBindings.TWPublicKeyCreateWithData(TWData(data).pointer, type),
@@ -34,9 +34,9 @@ class TWPublicKey extends TWObjectFinalizable<bindings.TWPublicKey> {
   ///
   /// \param [data] Non-null block of data representing the public key
   /// \param [type] type of the public key
-  TWPublicKey({
-    required Uint8List data,
-    required int type,
+  TWPublicKey(
+    Uint8List data,
+    int type, {
     bool attach = true,
   }) : super(
           iTWBindings.TWPublicKeyCreateWithData(TWData(data).pointer, type),
@@ -48,9 +48,9 @@ class TWPublicKey extends TWObjectFinalizable<bindings.TWPublicKey> {
   ///
   /// \param [hex] Non-null hex of data representing the public key
   /// \param [type] type of the public key
-  TWPublicKey.createWithHexString({
-    required String hex,
-    required int type,
+  TWPublicKey.createWithHexString(
+    String hex,
+    int type, {
     bool attach = true,
   }) : super(
           iTWBindings.TWPublicKeyCreateWithData(

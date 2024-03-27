@@ -31,8 +31,8 @@ void main() {
       final pubkey =
           '02bf9a5e2b514492326e7ba9a5161b6e47df7a4aa970dd2d13c398bec89608d8d0';
       final publicKey = TWPublicKey.createWithHexString(
-        hex: pubkey,
-        type: TWCoinTypePublicKeyType(coin),
+        pubkey,
+        TWCoinTypePublicKeyType(coin),
       );
       final address =
           TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
@@ -40,8 +40,8 @@ void main() {
 
       // testnet
       final tPublicKey = TWPublicKey.createWithHexString(
-        hex: pubkey,
-        type: TWCoinTypePublicKeyType(TWCoinType.TWCoinTypeTBinance),
+        pubkey,
+        TWCoinTypePublicKeyType(TWCoinType.TWCoinTypeTBinance),
       );
       final tAddress = TWAnyAddress.createWithPublicKey(
           publicKey: tPublicKey, coin: TWCoinType.TWCoinTypeTBinance);
