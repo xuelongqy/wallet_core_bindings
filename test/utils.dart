@@ -72,4 +72,9 @@ String hex(List<int> bytes) {
   return TWString.createWithHexBytes(Uint8List.fromList(bytes)).value!;
 }
 
+String hexString(String value) {
+  return TWString.createWithHexBytes(Uint8List.fromList(utf8.encode(value)))
+      .value!;
+}
+
 void main() {}

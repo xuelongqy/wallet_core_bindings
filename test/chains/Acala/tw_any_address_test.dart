@@ -8,9 +8,9 @@ void main() {
     test('IsValid', () {
       expect(
         TWAnyAddress.isValidSS58(
-          '212ywJGVK2Nxnt5bjKXVHi4YY7FCFd4rVvhyt95CjpeHGZee',
-          TWCoinType.TWCoinTypePolkadot,
-          acalaPrefix,
+          string: '212ywJGVK2Nxnt5bjKXVHi4YY7FCFd4rVvhyt95CjpeHGZee',
+          coin: TWCoinType.TWCoinTypePolkadot,
+          ss58Prefix: acalaPrefix,
         ),
         true,
       );
@@ -37,9 +37,9 @@ void main() {
       );
       expect(
         TWAnyAddress.isValidSS58(
-          '15KRsCq9LLNmCxNFhGk55s5bEyazKefunDxUH24GFZwsTxyu',
-          TWCoinType.TWCoinTypePolkadot,
-          acalaPrefix,
+          string: '15KRsCq9LLNmCxNFhGk55s5bEyazKefunDxUH24GFZwsTxyu',
+          coin: TWCoinType.TWCoinTypePolkadot,
+          ss58Prefix: acalaPrefix,
         ),
         false,
       );
@@ -65,9 +65,9 @@ void main() {
       final addrDescription = anyAddr.description;
       expect(
         TWAnyAddress.isValidSS58(
-          addrDescription,
-          TWCoinType.TWCoinTypeAcala,
-          acalaPrefix,
+          string: addrDescription,
+          coin: TWCoinType.TWCoinTypeAcala,
+          ss58Prefix: acalaPrefix,
         ),
         true,
       );
@@ -104,9 +104,9 @@ void main() {
       final addrDescription = anyAddr.description;
       expect(
         TWAnyAddress.isValidSS58(
-          addrDescription,
-          TWCoinType.TWCoinTypePolkadot,
-          acalaPrefix,
+          string: addrDescription,
+          coin: TWCoinType.TWCoinTypePolkadot,
+          ss58Prefix: acalaPrefix,
         ),
         true,
       );

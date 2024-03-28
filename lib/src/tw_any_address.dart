@@ -201,7 +201,11 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// \param [coin] coin type of the address.
   /// \param [hrp] explicit given hrp of the given address.
   /// \return bool indicating if the address is valid.
-  static bool isValidBech32(String string, int coin, String hrp) =>
+  static bool isValidBech32({
+    required String string,
+    required int coin,
+    required String hrp,
+  }) =>
       iTWBindings.TWAnyAddressIsValidBech32(
           TWString(string).pointer, coin, TWString(hrp).pointer);
 
@@ -211,7 +215,11 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// \param [coin] coin type of the address.
   /// \param [ss58Prefix] ss58Prefix of the given address.
   /// \return bool indicating if the address is valid.
-  static bool isValidSS58(String string, int coin, int ss58Prefix) =>
+  static bool isValidSS58({
+    required String string,
+    required int coin,
+    required int ss58Prefix,
+  }) =>
       iTWBindings.TWAnyAddressIsValidSS58(
           TWString(string).pointer, coin, ss58Prefix);
 }
