@@ -3,16 +3,16 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 import '../cosmos_test_helpers.dart';
 
-final gAxelarAddr = "axelar1mry47pkga5tdswtluy0m8teslpalkdq060xxh5";
-final gAxelarHrp = "axelar";
+final gAkashAddr = "akash1mry47pkga5tdswtluy0m8teslpalkdq0n6af90";
+final gAkashHrp = "akash";
 
 void main() {
-  group('TWAxelarAnyAddress', () {
-    test('AllAxelarAddressTests', () {
+  group('TWAkashAnyAddress', () {
+    test('AllAkashAddressTests', () {
       final parameters = CosmosAddressParameters(
-        hrp: gAxelarHrp,
-        coinType: TWCoinType.TWCoinTypeAxelar,
-        address: gAxelarAddr,
+        hrp: gAkashHrp,
+        coinType: TWCoinType.TWCoinTypeAkash,
+        address: gAkashAddr,
       );
       TWCosmosTests.TestCosmosAddressParameters(parameters);
     });

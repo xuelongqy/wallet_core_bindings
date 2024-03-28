@@ -2,31 +2,31 @@ import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 void main() {
-  group('TWAxelarCoinType', () {
+  group('TWAkashCoinType', () {
     test('TWCoinType', () {
-      const coin = TWCoinType.TWCoinTypeAxelar;
+      const coin = TWCoinType.TWCoinTypeAkash;
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
       const txId =
-          '838F31D023B273E6A8282085202A4CCEDE1693D2503ACCD557B37C9DAB33A79C';
+          'C0083856344425908D5333D4325E3E0DE9D697BA568C6D99C34303819F615D25';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
-      const accId = 'axelar1mry47pkga5tdswtluy0m8teslpalkdq060xxh5';
+      const accId = 'akash1f4nskxfw8ufhwnajh7xwt0wmdtxm02vwta6krg';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
       final chainId = TWCoinTypeChainId(coin);
 
-      expect(id, 'axelar');
-      expect(name, 'Axelar');
-      expect(symbol, 'AXL');
+      expect(id, 'akash');
+      expect(name, 'Akash');
+      expect(symbol, 'AKT');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 6);
       expect(TWCoinTypeBlockchain(coin), TWBlockchain.TWBlockchainCosmos);
       expect(TWCoinTypeP2shPrefix(coin), 0x0);
       expect(TWCoinTypeStaticPrefix(coin), 0x0);
-      expect(chainId, "axelar-dojo-1");
+      expect(chainId, "akashnet-2");
       expect(txUrl,
-          'https://www.mintscan.io/axelar/txs/838F31D023B273E6A8282085202A4CCEDE1693D2503ACCD557B37C9DAB33A79C');
+          'https://www.mintscan.io/akash/txs/C0083856344425908D5333D4325E3E0DE9D697BA568C6D99C34303819F615D25');
       expect(accUrl,
-          'https://www.mintscan.io/axelar/account/axelar1mry47pkga5tdswtluy0m8teslpalkdq060xxh5');
+          'https://www.mintscan.io/akash/account/akash1f4nskxfw8ufhwnajh7xwt0wmdtxm02vwta6krg');
     });
   });
 }
