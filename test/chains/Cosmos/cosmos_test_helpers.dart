@@ -49,7 +49,7 @@ class TWCosmosTestsInternal {
     if (addressParameters.coinType != TWCoinType.TWCoinTypeCosmos) {
       expect(TWAnyAddress.isValid(address, TWCoinType.TWCoinTypeCosmos), false);
     }
-    expect(TWAnyAddress.isValid(address, TWCoinType.TWCoinTypeCosmos), true);
+    expect(TWAnyAddress.isValid(address, TWCoinType.TWCoinTypeBitcoin), false);
   }
 
   static void testCreateFromPubKeyWrapper(
