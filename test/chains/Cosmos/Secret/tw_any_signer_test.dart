@@ -5,11 +5,6 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 
 import '../../../utils.dart';
 
-final Address1 = "cro1ctwtcwpgksky988dhth6jslxveumgu0d45zgf0";
-final Address2 = "cro1xpahy6c7wldxacv6ld99h435mhvfnsup24vcus";
-final PrivateKey1 =
-    "200e439e39cf1aad465ee3de6166247f914cbc0f823fc2dd48bf16dcd556f39d";
-
 void main() {
   group('TWAnySignerSecret', () {
     const coin = TWCoinType.TWCoinTypeSecret;
