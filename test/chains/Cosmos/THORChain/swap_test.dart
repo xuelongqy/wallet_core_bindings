@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Cosmos.pb.dart' as Cosmos;
+import 'package:wallet_core_bindings/proto/Binance.pb.dart' as Binance;
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
 import 'package:wallet_core_bindings/proto/Ethereum.pb.dart' as Ethereum;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
@@ -650,6 +651,715 @@ void main() {
       // https://viewblock.io/thorchain/tx/B5E88D61157E7073995CA8729B75DAB2C1684A7B145DB711327CA4B8FF7DBDE7
       // https://snowtrace.io/tx/0xb5e88d61157e7073995ca8729b75dab2c1684a7b145db711327ca4b8ff7dbde7
       // https://thorchain.net/tx/B5E88D61157E7073995CA8729B75DAB2C1684A7B145DB711327CA4B8FF7DBDE7
+    });
+
+    test('SwapBscBnb', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BSC,
+          tokenId: '0x0000000000000000000000000000000000000000',
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+          symbol: 'BNB',
+        ),
+        fromAddress: '0xf8192E9c51c070d199a8F262c12DDD1034274083',
+        toAddress: 'bnb1tjcup6q8nere6r0pdt2ucc4g0xcrhm0jy5xql8',
+        vaultAddress: '0xcBE4334E4a0fC7C5Fa8083223B28a4b9F695A06C',
+        routerAddress: '0xb30eC53F98ff5947EDe720D32aC2da7e52A5f56b',
+        fromAmount: '10000000000000000',
+        toAmountLimit: '100000',
+        expirationTime: $fixnum.Int64(1775669796),
+        affiliateFeeAddress: 't',
+        affiliateFeeRateBp: '0',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.ethereum.writeToBuffer(),
+          '0a01001201002201002a0100422a3078623330654335334639386666353934374544653732304433326143326461376535324135663536625293023290020a072386f26fc1000012840244bc937b000000000000000000000000cbe4334e4a0fc7c5fa8083223b28a4b9f695a06c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc1000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000069d69224000000000000000000000000000000000000000000000000000000000000003f3d3a424e422e424e423a626e6231746a6375703671386e65726536723070647432756363346730786372686d306a793578716c383a3130303030303a743a3000');
+
+      final tx = Ethereum.SigningInput.fromBuffer(out.ethereum.writeToBuffer());
+
+      // check fields
+      expect(tx.toAddress, '0xb30eC53F98ff5947EDe720D32aC2da7e52A5f56b');
+      expect(tx.transaction.hasContractGeneric(), true);
+
+      expectHex(tx.privateKey, '');
+
+      // set few fields before signing
+      tx.chainId = intToBytes(56);
+      tx.nonce = intToBytes(0);
+      // 0,000000001
+      tx.gasPrice = intToBytes(3000000000);
+      tx.gasLimit = intToBytes(50000);
+      tx.privateKey = parse_hex(
+          '74c452b55e0da4139172bc3b32bec469cfefbcdce373edda8e33afcfbf9c0a87');
+
+      // sign and encode resulting input
+      final output = Ethereum.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeEthereum));
+      expectHex(output.encoded,
+          'f901718084b2d05e0082c35094b30ec53f98ff5947ede720d32ac2da7e52a5f56b872386f26fc10000b9010444bc937b000000000000000000000000cbe4334e4a0fc7c5fa8083223b28a4b9f695a06c0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002386f26fc1000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000069d69224000000000000000000000000000000000000000000000000000000000000003f3d3a424e422e424e423a626e6231746a6375703671386e65726536723070647432756363346730786372686d306a793578716c383a3130303030303a743a30008194a05b0032d4150a3fa3b39a047648c02cb44b3256b9c34b7780265643c33d2aa2c6a017fece0465a271b7bddf655f7ac77419fb0433f9acf64b455b9aa17183b6eb98');
+      // https://viewblock.io/thorchain/tx/4292A5068BAA5619CF7A35861058915423688DF3CAE8F241453D8FCC6E0BF0A9
+      // https://bscscan.com/tx/0x4292a5068baa5619cf7a35861058915423688df3cae8f241453d8fcc6e0bf0a9
+      // https://explorer.bnbchain.org/tx/88A1B6F9D64F3B48CE1107979CD325E817446C5D6729EE6FC917589A6FADA79D
+    });
+
+    test('SwapAvaxBnb', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.AVAX,
+          tokenId: '0x0000000000000000000000000000000000000000',
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+          symbol: 'BNB',
+        ),
+        fromAddress: '0xbB7cF2f05a01DB5394234FE1257D907059edFa66',
+        toAddress: 'bnb16gk7gczst59wy8rnxrqnt3yn6f60uw6ec0w6uv',
+        vaultAddress: '0x3bd92906c60e5843ce01b2dc54e6dc3575b5215a',
+        routerAddress: '0x8f66c4ae756bebc49ec8b81966dd8bba9f127549',
+        fromAmount: '150000000000000000',
+        toAmountLimit: '297039',
+        expirationTime: $fixnum.Int64(1775669796),
+        affiliateFeeAddress: 't',
+        affiliateFeeRateBp: '0',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.ethereum.writeToBuffer(),
+          '0a010012010018012201002a0100422a3078386636366334616537353662656263343965633862383139363664643862626139663132373534395294023291020a080214e8348c4f000012840244bc937b0000000000000000000000003bd92906c60e5843ce01b2dc54e6dc3575b5215a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000214e8348c4f000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000069d69224000000000000000000000000000000000000000000000000000000000000003f3d3a424e422e424e423a626e623136676b3767637a73743539777938726e7872716e7433796e36663630757736656330773675763a3239373033393a743a3000');
+
+      final tx = Ethereum.SigningInput.fromBuffer(out.ethereum.writeToBuffer());
+
+      // check fields
+      expect(tx.toAddress, '0x8f66c4ae756bebc49ec8b81966dd8bba9f127549');
+      expect(tx.transaction.hasContractGeneric(), true);
+
+      expectHex(tx.privateKey, '');
+
+      // set few fields before signing
+      tx.chainId = intToBytes(43114);
+      tx.nonce = intToBytes(5);
+      tx.maxInclusionFeePerGas = intToBytes(2000000000);
+      tx.maxFeePerGas = intToBytes(25000000000);
+      tx.gasLimit = intToBytes(108810);
+      tx.privateKey = parse_hex(
+          '09da019c250b7e2b140645df36fd839806c5ae8eecf4d8f35e8ff57cf3bd1e57');
+
+      // sign and encode resulting input
+      final output = Ethereum.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeEthereum));
+      expectHex(output.encoded,
+          '02f9017c82a86a0584773594008505d21dba008301a90a948f66c4ae756bebc49ec8b81966dd8bba9f127549880214e8348c4f0000b9010444bc937b0000000000000000000000003bd92906c60e5843ce01b2dc54e6dc3575b5215a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000214e8348c4f000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000069d69224000000000000000000000000000000000000000000000000000000000000003f3d3a424e422e424e423a626e623136676b3767637a73743539777938726e7872716e7433796e36663630757736656330773675763a3239373033393a743a3000c080a0a794b7cd86242df0f69bfc2555adec7841ad1f3a02e478be0d63571da8d41f20a06cd214b052d2a2aee598c2d3d57a972979e4c49a447c52828657101e9ad39737');
+      // https://viewblock.io/thorchain/tx/8A29B132443BF1B0A0BD3E00F8155D10FEEEC7737BDC912C4A1AFB0A52E4FD4F
+      // https://snowtrace.io/tx/0x8A29B132443BF1B0A0BD3E00F8155D10FEEEC7737BDC912C4A1AFB0A52E4FD4F
+      // https://binance.mintscan.io/txs/9D250C8BAC8205B942A597AFB345045439A55CAB8DD588B75870D4E47D751C16
+    });
+
+    test('SwapEthBnb', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.ETH,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+          symbol: 'BNB',
+        ),
+        fromAddress: Address1Eth,
+        toAddress: Address1Bnb,
+        vaultAddress: VaultEth,
+        fromAmount: '50000000000000000',
+        toAmountLimit: '600003',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.ethereum.writeToBuffer(),
+          '0a010012010018012201002a0100422a30783130393163344465366133634630394364413030416244416544343263376333423639433833454352480a460a07b1a2bc2ec50000123b3d3a424e422e424e423a626e62317573343777646866783038636839377a6475656833783375356d757266727833306a656372783a363030303033');
+
+      final tx = Ethereum.SigningInput.fromBuffer(out.ethereum.writeToBuffer());
+
+      // check fields
+      expect(tx.toAddress, VaultEth);
+      expect(tx.transaction.hasContractGeneric(), false);
+
+      expectHex(tx.privateKey, '');
+
+      // set few fields before signing
+      tx.chainId = intToBytes(1);
+      tx.nonce = intToBytes(3);
+      tx.gasPrice = intToBytes(30000000000);
+      tx.gasLimit = intToBytes(80000);
+      tx.privateKey = TestKey1Eth;
+
+      // sign and encode resulting input
+      final output = Ethereum.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeEthereum));
+      expectHex(output.encoded,
+          '02f8a60103808083013880941091c4de6a3cf09cda00abdaed42c7c3b69c83ec87b1a2bc2ec50000b83b3d3a424e422e424e423a626e62317573343777646866783038636839377a6475656833783375356d757266727833306a656372783a363030303033c080a00d605807f983650fafbfdcf0c33bdf0c524c7185eae8c1501ae24892faf16b1ba03b51b0a35e4754ab21d1e48fed635d8486048df50c253ba9af4cebdb6a92a450');
+    });
+
+    test('SwapBnbBtc', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BTC,
+          symbol: 'BTC',
+        ),
+        fromAddress: Address1Bnb,
+        toAddress: Address1Btc,
+        vaultAddress: VaultBnb,
+        fromAmount: '10000000',
+        toAmountLimit: '10000000',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.binance.writeToBuffer(),
+          '2a3d3d3a4254432e4254433a62633171706a756c7433346b3973706a66796d38687373326a72776a676630786a6634307a65307070383a313030303030303052480a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e421080ade20412220a1499730371c7c77cb81ffa76b566dcef7c1e5dc19c120a0a03424e421080ade204');
+
+      final tx = Binance.SigningInput.fromBuffer(out.binance.writeToBuffer());
+
+      // check fields
+      expect(tx.memo,
+          "=:BTC.BTC:bc1qpjult34k9spjfym8hss2jrwjgf0xjf40ze0pp8:10000000");
+      expect(tx.hasSendOrder(), true);
+      expect(tx.sendOrder.inputs.length, 1);
+      expect(tx.sendOrder.outputs.length, 1);
+      expectHex(tx.sendOrder.inputs[0].address,
+          'e42be736e933cf8b97c26f33789a3ca6f8348cd1');
+      expectHex(tx.sendOrder.outputs[0].address,
+          '99730371c7c77cb81ffa76b566dcef7c1e5dc19c');
+      expectHex(tx.privateKey, '');
+
+      // set few fields before signing
+      tx.chainId = 'Binance-Chain-Tigris';
+      tx.privateKey = TestKey1Bnb;
+
+      // sign and encode resulting input
+      final output = Binance.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeBinance));
+      expectHex(output.encoded,
+          'fd01f0625dee0a4c2a2c87fa0a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e421080ade20412220a1499730371c7c77cb81ffa76b566dcef7c1e5dc19c120a0a03424e421080ade204126a0a26eb5ae9872103ea4b4bc12dc6f36a28d2c9775e01eef44def32cc70fb54f0e4177b659dbc0e19124086d43e9bdf12508a9a1415f5f970dfa5ff5930dee01d922f99779b63190735ba1d69694bda203b6678939a5c1eab0a52ed32bb67864ec7864de37b333533ae0c1a3d3d3a4254432e4254433a62633171706a756c7433346b3973706a66796d38687373326a72776a676630786a6634307a65307070383a3130303030303030');
+    });
+
+    test('SwapBnbEth', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.ETH,
+          symbol: 'ETH',
+        ),
+        fromAddress: Address1Bnb,
+        toAddress: Address1Eth,
+        vaultAddress: VaultBnb,
+        fromAmount: '27000000',
+        toAmountLimit: '123456',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.binance.writeToBuffer(),
+          '2a3b3d3a4554482e4554483a3078623966353737316332373636346266323238326439386530396437663530636563376362303161373a31323334353652480a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e4210c0f9ef0c12220a1499730371c7c77cb81ffa76b566dcef7c1e5dc19c120a0a03424e4210c0f9ef0c');
+
+      final tx = Binance.SigningInput.fromBuffer(out.binance.writeToBuffer());
+
+      // check fields
+      expect(tx.memo,
+          "=:ETH.ETH:0xb9f5771c27664bf2282d98e09d7f50cec7cb01a7:123456");
+      expect(tx.hasSendOrder(), true);
+      expect(tx.sendOrder.inputs.length, 1);
+      expect(tx.sendOrder.outputs.length, 1);
+      expectHex(tx.sendOrder.inputs[0].address,
+          'e42be736e933cf8b97c26f33789a3ca6f8348cd1');
+      expectHex(tx.sendOrder.outputs[0].address,
+          '99730371c7c77cb81ffa76b566dcef7c1e5dc19c');
+      expectHex(tx.privateKey, '');
+
+      // set private key and few other fields
+      expect(
+          TWCoinTypeDeriveAddress(TWCoinType.TWCoinTypeBinance,
+              TWPrivateKey.createWithData(TestKey1Bnb)),
+          Address1Bnb);
+      tx.privateKey = TestKey1Bnb;
+      tx.chainId = 'Binance-Chain-Tigris';
+      tx.accountNumber = $fixnum.Int64(1902570);
+      tx.sequence = $fixnum.Int64(12);
+
+      // sign and encode resulting input
+      final output = Binance.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeBinance));
+      expectHex(output.encoded,
+          '8102f0625dee0a4c2a2c87fa0a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e4210c0f9ef0c12220a1499730371c7c77cb81ffa76b566dcef7c1e5dc19c120a0a03424e4210c0f9ef0c12700a26eb5ae9872103ea4b4bc12dc6f36a28d2c9775e01eef44def32cc70fb54f0e4177b659dbc0e1912409ad3d44f3cc8d5dd2701b0bf3758ef674683533fb63e3e94d39728688c0279f8410395d631075dac62dee74b972c320f5a58e88ab81be6f1bb6a9564468ae1b618ea8f74200c1a3b3d3a4554482e4554483a3078623966353737316332373636346266323238326439386530396437663530636563376362303161373a313233343536');
+      // real transaction:
+      // https://explorer.binance.org/tx/F0CFDB0D9467E83B5BBF6DF92E4E2D04FE9EFF9B0A1C71D88DCEF566233DCAA2
+      // https://viewblock.io/thorchain/tx/F0CFDB0D9467E83B5BBF6DF92E4E2D04FE9EFF9B0A1C71D88DCEF566233DCAA2
+      // https://etherscan.io/tx/0x8e5bb7d87e17af86e649e402bc5c182ea8c32ddaca153804679de1184e0d9747
+    });
+
+    test('SwapBnbRune', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.THOR,
+          symbol: 'RUNE',
+        ),
+        fromAddress: Address1Bnb,
+        toAddress: Address1Thor,
+        vaultAddress: VaultBnb,
+        fromAmount: '4000000',
+        toAmountLimit: '121065076',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.binance.writeToBuffer(),
+          '2a413d3a54484f522e52554e453a74686f72317a3533777765376d64366365777a39737177717a6e306161767061756e3067773065786e32723a31323130363530373652480a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e42108092f40112220a1499730371c7c77cb81ffa76b566dcef7c1e5dc19c120a0a03424e42108092f401');
+
+      final tx = Binance.SigningInput.fromBuffer(out.binance.writeToBuffer());
+
+      // check fields
+      expect(tx.memo,
+          "=:THOR.RUNE:thor1z53wwe7md6cewz9sqwqzn0aavpaun0gw0exn2r:121065076");
+      expect(tx.hasSendOrder(), true);
+      expect(tx.sendOrder.inputs.length, 1);
+      expect(tx.sendOrder.outputs.length, 1);
+      expectHex(tx.sendOrder.inputs[0].address,
+          'e42be736e933cf8b97c26f33789a3ca6f8348cd1');
+      expectHex(tx.sendOrder.outputs[0].address,
+          '99730371c7c77cb81ffa76b566dcef7c1e5dc19c');
+      expectHex(tx.privateKey, '');
+
+      // set private key and few other fields
+      expect(
+          TWCoinTypeDeriveAddress(TWCoinType.TWCoinTypeBinance,
+              TWPrivateKey.createWithData(TestKey1Bnb)),
+          Address1Bnb);
+      tx.privateKey = TestKey1Bnb;
+      tx.chainId = 'Binance-Chain-Tigris';
+      tx.accountNumber = $fixnum.Int64(1902570);
+      tx.sequence = $fixnum.Int64(4);
+
+      // sign and encode resulting input
+      final output = Binance.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeBinance));
+      expectHex(output.encoded,
+          '8702f0625dee0a4c2a2c87fa0a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e42108092f40112220a1499730371c7c77cb81ffa76b566dcef7c1e5dc19c120a0a03424e42108092f40112700a26eb5ae9872103ea4b4bc12dc6f36a28d2c9775e01eef44def32cc70fb54f0e4177b659dbc0e191240f0bd5a0b4936ce73b1564f737a22cb7cfa3c171a3598b1fe42f6c926c516777042673f3b30148d54b591dcfcb88c2aa04bb87b4b492e8d17c72e4d263f57159018ea8f7420041a413d3a54484f522e52554e453a74686f72317a3533777765376d64366365777a39737177717a6e306161767061756e3067773065786e32723a313231303635303736');
+
+      // real transaction:
+      // https://explorer.binance.org/tx/84EE429B35945F0568097527A084532A9DE7BBAB0E6A5562E511CEEFB188DE69
+      // https://viewblock.io/thorchain/tx/D582E1473FE229F02F162055833C64F49FB4FF515989A4785ED7898560A448FC
+    });
+
+    test('SwapBnbBnbToken', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+          symbol: 'BNB',
+          tokenId: 'TWT-8C2',
+        ),
+        fromAddress: 'bnb1us47wdhfx08ch97zdueh3x3u5murfrx30jecrx',
+        toAddress: 'bnb1us47wdhfx08ch97zdueh3x3u5murfrx30jecrx',
+        vaultAddress: 'bnb1qefsjm654cdw94ejj8g4s49w7z8te75veslusz',
+        fromAmount: '10000000',
+        toAmountLimit: '5400000000',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.binance.writeToBuffer(),
+          '2a433d3a424e422e5457542d3843323a626e62317573343777646866783038636839377a6475656833783375356d757266727833306a656372783a3534303030303030303052480a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e421080ade20412220a140653096f54ae1ae2d73291d15854aef08ebcfa8c120a0a03424e421080ade204');
+
+      final tx = Binance.SigningInput.fromBuffer(out.binance.writeToBuffer());
+
+      // check fields
+      expect(tx.memo,
+          "=:BNB.TWT-8C2:bnb1us47wdhfx08ch97zdueh3x3u5murfrx30jecrx:5400000000");
+      expect(tx.hasSendOrder(), true);
+      expect(tx.sendOrder.inputs.length, 1);
+      expect(tx.sendOrder.outputs.length, 1);
+      expectHex(tx.sendOrder.inputs[0].address,
+          'e42be736e933cf8b97c26f33789a3ca6f8348cd1');
+      expectHex(tx.sendOrder.outputs[0].address,
+          '0653096f54ae1ae2d73291d15854aef08ebcfa8c');
+      expectHex(tx.privateKey, '');
+
+      // set private key and few other fields
+      final privateKey = parse_hex(
+          "bcf8b072560dda05122c99390def2c385ec400e1a93df0657a85cf6b57a715da");
+      tx.privateKey = privateKey;
+      tx.chainId = 'Binance-Chain-Tigris';
+      tx.accountNumber = $fixnum.Int64(1902570);
+      tx.sequence = $fixnum.Int64(18);
+
+      // sign and encode resulting input
+      final output = Binance.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeBinance));
+      expectHex(output.encoded,
+          '8902f0625dee0a4c2a2c87fa0a220a14e42be736e933cf8b97c26f33789a3ca6f8348cd1120a0a03424e421080ade20412220a140653096f54ae1ae2d73291d15854aef08ebcfa8c120a0a03424e421080ade20412700a26eb5ae9872103ea4b4bc12dc6f36a28d2c9775e01eef44def32cc70fb54f0e4177b659dbc0e191240918963970aedc528e3a9ba34f37fb544ec18e7d2caade2ebf7b8371928c93e6e0eca072313ddfda393c1340766d5fef00e6b0cb7147ef3382b6303f3a6ca01a318ea8f7420121a433d3a424e422e5457542d3843323a626e62317573343777646866783038636839377a6475656833783375356d757266727833306a656372783a35343030303030303030');
+
+      // real transaction:
+      // curl -X GET "http://dataseed1.binance.org/broadcast_tx_sync?tx=0x8c02...3030"
+      // https://viewblock.io/thorchain/tx/6D1EDC9BD9BFAFEF0F88F95A164191262EA02A0413BF3D9773110AD5676E1523
+      // https://explorer.binance.org/tx/6D1EDC9BD9BFAFEF0F88F95A164191262EA02A0413BF3D9773110AD5676E1523
+      // https://explorer.binance.org/tx/60C54C9F253B89C36A2788AB66951045E8AC5F5729597CB6C64A13013A7A54CC
+    });
+
+    test('SwapBtcEthWithAffFee', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BTC,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.ETH,
+          symbol: 'ETH',
+        ),
+        fromAddress: Address1Btc,
+        toAddress: Address1Eth,
+        vaultAddress: VaultBtc,
+        fromAmount: '1000000',
+        toAmountLimit: '140000000000000000',
+        affiliateFeeAddress: 'thrnm',
+        affiliateFeeRateBp: '10',
+      );
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.bitcoin.writeToBuffer(),
+          '080110c0843d1801222a62633171366d397532717375386d68387937763872723279776176746a38673561727a6c796863656a372a2a62633171706a756c7433346b3973706a66796d38687373326a72776a676630786a6634307a65307070386a503d3a4554482e4554483a3078623966353737316332373636346266323238326439386530396437663530636563376362303161373a3134303030303030303030303030303030303a7468726e6d3a3130');
+
+      final tx = Bitcoin.SigningInput.fromBuffer(out.bitcoin.writeToBuffer());
+
+      // check fields
+      expect(tx.amount.toInt(), 1000000);
+      expect(tx.toAddress, VaultBtc);
+      expect(tx.changeAddress, Address1Btc);
+      expect(String.fromCharCodes(tx.outputOpReturn),
+          '=:ETH.ETH:0xb9f5771c27664bf2282d98e09d7f50cec7cb01a7:140000000000000000:thrnm:10');
+      expect(tx.coinType, 0);
+      expect(tx.privateKey.length, 0);
+      expect(tx.hasPlan(), false);
+
+      // set few fields before signing
+      tx.byteFee = $fixnum.Int64(20);
+      expect(
+        TWSegwitAddress.createWithPublicKey(
+                hrpForString('bc'),
+                TWPrivateKey.createWithData(TestKey1Btc).getPublicKeyByType(
+                    TWPublicKeyType.TWPublicKeyTypeSECP256k1))
+            .description,
+        Address1Btc,
+      );
+      tx.privateKey.add(TestKey1Btc);
+      tx.utxo.add(Bitcoin.UnspentTransaction(
+        outPoint: Bitcoin.OutPoint(
+          hash: parse_hex(
+              '1234000000000000000000000000000000000000000000000000000000005678'),
+          index: 0,
+          sequence: UINT32_MAX,
+        ),
+        script: TWBitcoinScript.lockScriptForAddress(
+                Address1Btc, TWCoinType.TWCoinTypeBitcoin)
+            .data,
+        amount: $fixnum.Int64(50000000),
+      ));
+      tx.useMaxAmount = false;
+
+      // sign and encode resulting input
+      final output = Bitcoin.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeBitcoin));
+      expect(output.error, Common.SigningError.OK);
+      expectHex(
+        output.encoded, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "1234000000000000000000000000000000000000000000000000000000005678"
+        "00000000"
+        "00"
+        ""
+        "ffffffff"
+        "03" // outputs
+        "40420f0000000000"
+        "16"
+        "0014d6cbc5021c3eee72798718d447758b91d14e8c5f"
+        "0c9ceb0200000000"
+        "16"
+        "00140cb9f5c6b62c03249367bc20a90dd2425e6926af"
+        "0000000000000000"
+        "53"
+        "6a4c503d3a4554482e4554483a3078623966353737316332373636346266323238326439386530396437663530636563376362303161373a3134303030303030303030303030303030303a7468726e6d3a3130"
+        // witness
+        "02"
+        "47"
+        "3044022056e918d8dea9431057b7b8b7f7c990ff72d653aef296eda9a85e546537e1eaa4022050b64766ea4ce56ecd3325f184d67b20924fd4539cb40bbad916ede1cc26017f01"
+        "21"
+        "021e582a887bd94d648a9267143eb600449a8d59a0db0653740b1378067a6d0cee"
+        "00000000", // nLockTime
+      );
+    });
+
+    test('SwapEthBnbWithAffFee', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.ETH,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BNB,
+          symbol: 'BNB',
+        ),
+        fromAddress: Address1Eth,
+        toAddress: Address1Bnb,
+        vaultAddress: VaultEth,
+        fromAmount: '50000000000000000',
+        toAmountLimit: '600003',
+        affiliateFeeAddress: 'tthor1ql2tcqyrqsgnql2tcqyj2n8kfdmt9lh0yzql2tcqy',
+        affiliateFeeRateBp: '10',
+      );
+
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.ethereum.writeToBuffer(),
+          '0a010012010018012201002a0100422a307831303931633444653661336346303943644130304162444165443432633763334236394338334543527b0a790a07b1a2bc2ec50000126e3d3a424e422e424e423a626e62317573343777646866783038636839377a6475656833783375356d757266727833306a656372783a3630303030333a7474686f7231716c3274637179727173676e716c32746371796a326e386b66646d74396c6830797a716c32746371793a3130');
+
+      final tx = Ethereum.SigningInput.fromBuffer(out.ethereum.writeToBuffer());
+
+      // check fields
+      expect(tx.toAddress, VaultEth);
+      expect(tx.transaction.hasContractGeneric(), false);
+
+      expectHex(tx.privateKey, '');
+
+      // set few fields before signing
+      tx.chainId = intToBytes(1);
+      tx.nonce = intToBytes(3);
+      tx.gasPrice = intToBytes(30000000000);
+      tx.gasLimit = intToBytes(80000);
+      tx.privateKey = TestKey1Eth;
+
+      // sign and encode resulting input
+      final output = Ethereum.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeEthereum));
+      expectHex(output.encoded,
+          '02f8d90103808083013880941091c4de6a3cf09cda00abdaed42c7c3b69c83ec87b1a2bc2ec50000b86e3d3a424e422e424e423a626e62317573343777646866783038636839377a6475656833783375356d757266727833306a656372783a3630303030333a7474686f7231716c3274637179727173676e716c32746371796a326e386b66646d74396c6830797a716c32746371793a3130c001a05c16871b66fd0fa8f658d6f171310bab332d09e0533d6c97329a59ddc93a9a11a05ed2be94e6dbb640e58920c8be4fa597cd5f0a918123245acb899042dd43777f');
+    });
+
+    test('SwapBtcNegativeMemoTooLong', () {
+      final input = THORChainSwap.SwapInput(
+        fromAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.BTC,
+        ),
+        toAsset: THORChainSwap.Asset(
+          chain: THORChainSwap.Chain.ETH,
+          symbol: 'ETH',
+        ),
+        fromAddress: Address1Btc,
+        toAddress: Address1Eth,
+        vaultAddress: VaultBtc,
+        fromAmount: '1000000',
+        toAmountLimit: '140000000000000000',
+        affiliateFeeAddress: 'affiliate_address',
+        affiliateFeeRateBp: '10',
+        extraMemo: 'extra_memo_very_loooooooooooooong',
+      );
+      final out = THORChainSwap.SwapOutput.fromBuffer(
+          TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+      expect(out.error.code, THORChainSwap.ErrorCode.OK);
+      expectHex(out.bitcoin.writeToBuffer(),
+          '080110c0843d1801222a62633171366d397532717375386d68387937763872723279776176746a38673561727a6c796863656a372a2a62633171706a756c7433346b3973706a66796d38687373326a72776a676630786a6634307a65307070386a7e3d3a4554482e4554483a3078623966353737316332373636346266323238326439386530396437663530636563376362303161373a3134303030303030303030303030303030303a616666696c696174655f616464726573733a31303a65787472615f6d656d6f5f766572795f6c6f6f6f6f6f6f6f6f6f6f6f6f6f6f6e67');
+
+      final tx = Bitcoin.SigningInput.fromBuffer(out.bitcoin.writeToBuffer());
+
+      // check fields
+      expect(tx.amount.toInt(), 1000000);
+      expect(tx.toAddress, VaultBtc);
+      expect(tx.changeAddress, Address1Btc);
+      expect(String.fromCharCodes(tx.outputOpReturn),
+          '=:ETH.ETH:0xb9f5771c27664bf2282d98e09d7f50cec7cb01a7:140000000000000000:affiliate_address:10:extra_memo_very_loooooooooooooong');
+      expect(tx.outputOpReturn.length, 126);
+      expect(tx.coinType, 0);
+      expect(tx.privateKey.length, 0);
+      expect(tx.hasPlan(), false);
+
+      // set few fields before signing
+      tx.byteFee = $fixnum.Int64(20);
+      expect(
+        TWSegwitAddress.createWithPublicKey(
+                hrpForString('bc'),
+                TWPrivateKey.createWithData(TestKey1Btc).getPublicKeyByType(
+                    TWPublicKeyType.TWPublicKeyTypeSECP256k1))
+            .description,
+        Address1Btc,
+      );
+      tx.privateKey.add(TestKey1Btc);
+      tx.utxo.add(Bitcoin.UnspentTransaction(
+        outPoint: Bitcoin.OutPoint(
+          hash: parse_hex(
+              '1234000000000000000000000000000000000000000000000000000000005678'),
+          index: 0,
+          sequence: UINT32_MAX,
+        ),
+        script: TWBitcoinScript.lockScriptForAddress(
+                Address1Btc, TWCoinType.TWCoinTypeBitcoin)
+            .data,
+        amount: $fixnum.Int64(50000000),
+      ));
+      tx.useMaxAmount = false;
+
+      // sign and encode resulting input
+      final output = Bitcoin.SigningOutput.fromBuffer(
+          TWAnySigner.sign(tx.writeToBuffer(), TWCoinType.TWCoinTypeBitcoin));
+      expect(output.error, Common.SigningError.Error_invalid_memo);
+      expectHex(output.encoded, '');
+    });
+
+    test('WrongFromAddress', () {
+      final fromAsset = THORChainSwap.Asset(
+        chain: THORChainSwap.Chain.BNB,
+      );
+      final toAsset = THORChainSwap.Asset(
+        chain: THORChainSwap.Chain.ETH,
+        symbol: 'ETH',
+      );
+      {
+        final input = THORChainSwap.SwapInput(
+          fromAsset: fromAsset,
+          toAsset: toAsset,
+          fromAddress: 'DummyAddress',
+          toAddress: Address1Eth,
+          vaultAddress: VaultEth,
+          fromAmount: '1000000',
+          toAmountLimit: '100000',
+        );
+        final out = THORChainSwap.SwapOutput.fromBuffer(
+            TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+        expect(
+            out.error.code, THORChainSwap.ErrorCode.Error_Invalid_from_address);
+        expect(out.error.message, 'Invalid from address');
+      }
+      {
+        final input = THORChainSwap.SwapInput(
+          fromAsset: fromAsset,
+          toAsset: toAsset,
+          fromAddress: Address1Btc,
+          toAddress: Address1Eth,
+          vaultAddress: VaultEth,
+          fromAmount: '1000000',
+          toAmountLimit: '100000',
+        );
+        final out = THORChainSwap.SwapOutput.fromBuffer(
+            TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+        expect(
+            out.error.code, THORChainSwap.ErrorCode.Error_Invalid_from_address);
+        expect(out.error.message, 'Invalid from address');
+      }
+    });
+
+    test('WrongToAddress', () {
+      final fromAsset = THORChainSwap.Asset(
+        chain: THORChainSwap.Chain.BNB,
+      );
+      final toAsset = THORChainSwap.Asset(
+        chain: THORChainSwap.Chain.ETH,
+        symbol: 'ETH',
+      );
+      {
+        final input = THORChainSwap.SwapInput(
+          fromAsset: fromAsset,
+          toAsset: toAsset,
+          fromAddress: Address1Bnb,
+          toAddress: 'DummyAddress',
+          vaultAddress: VaultEth,
+          fromAmount: '1000000',
+          toAmountLimit: '100000',
+        );
+        final out = THORChainSwap.SwapOutput.fromBuffer(
+            TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+        expect(
+            out.error.code, THORChainSwap.ErrorCode.Error_Invalid_to_address);
+        expect(out.error.message, 'Invalid to address');
+      }
+      {
+        final input = THORChainSwap.SwapInput(
+          fromAsset: fromAsset,
+          toAsset: toAsset,
+          fromAddress: Address1Bnb,
+          toAddress: Address1Btc,
+          vaultAddress: VaultEth,
+          fromAmount: '1000000',
+          toAmountLimit: '100000',
+        );
+        final out = THORChainSwap.SwapOutput.fromBuffer(
+            TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+        expect(
+            out.error.code, THORChainSwap.ErrorCode.Error_Invalid_to_address);
+        expect(out.error.message, 'Invalid to address');
+      }
+    });
+
+    test('EthInvalidVault', () {
+      final fromAsset = THORChainSwap.Asset(
+        chain: THORChainSwap.Chain.ETH,
+      );
+      final toAsset = THORChainSwap.Asset(
+        chain: THORChainSwap.Chain.BNB,
+        symbol: 'BNB',
+      );
+      {
+        fromAsset.tokenId = '0x53595320f158d4546677b4795cc66dff59d154db';
+        final input = THORChainSwap.SwapInput(
+          fromAsset: fromAsset,
+          toAsset: toAsset,
+          fromAddress: Address1Eth,
+          toAddress: Address1Bnb,
+          vaultAddress: '_INVALID_ADDRESS_',
+          routerAddress: RouterEth,
+          fromAmount: '50000000000000000',
+          toAmountLimit: '600003',
+        );
+        final out = THORChainSwap.SwapOutput.fromBuffer(
+            TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+        expect(out.error.code,
+            THORChainSwap.ErrorCode.Error_Invalid_vault_address);
+        expect(out.error.message, 'Invalid vault address: _INVALID_ADDRESS_');
+      }
+      {
+        final input = THORChainSwap.SwapInput(
+          fromAsset: fromAsset,
+          toAsset: toAsset,
+          fromAddress: Address1Eth,
+          toAddress: Address1Bnb,
+          vaultAddress: VaultEth,
+          routerAddress: '_INVALID_ADDRESS_',
+          fromAmount: '50000000000000000',
+          toAmountLimit: '600003',
+        );
+        final out = THORChainSwap.SwapOutput.fromBuffer(
+            TWTHORChainSwap.buildSwap(input.writeToBuffer()));
+        expect(out.error.code,
+            THORChainSwap.ErrorCode.Error_Invalid_router_address);
+        expect(out.error.message, 'Invalid router address: _INVALID_ADDRESS_');
+      }
     });
   });
 }
