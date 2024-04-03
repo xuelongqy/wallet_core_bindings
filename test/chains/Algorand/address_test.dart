@@ -43,9 +43,8 @@ void main() {
       final privateKey = TWPrivateKey.createWithHexString(
           '526d96fffdbfe787b2f00586298538f9a019e97f6587964dc61aae9ad1d7fa23');
       final address = TWAnyAddress.createWithPublicKey(
-        publicKey: privateKey
-            .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519),
-        coin: coin,
+        privateKey.getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519),
+        coin,
       );
       expect(address.description,
           'JBCQYJ2FREG667NAN7BFKH4RFIKPT7CYDQJNW3SNN5Z7F7ILFLKQ346TSU');

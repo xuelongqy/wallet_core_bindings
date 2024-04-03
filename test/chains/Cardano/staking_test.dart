@@ -23,8 +23,7 @@ void main() {
       final publicKey = TWPrivateKey.createWithData(privateKeyData)
           .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519Cardano);
       final ownAddress =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin)
-              .description;
+          TWAnyAddress.createWithPublicKey(publicKey, coin).description;
       expect(ownAddress, ownAddress1);
       final stakingAddress = TWCardano.getStakingAddress(ownAddress);
       expect(stakingAddress, stakingAddress1);
@@ -75,8 +74,7 @@ void main() {
       final publicKey = TWPrivateKey.createWithData(privateKeyData)
           .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519Cardano);
       final ownAddress =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin)
-              .description;
+          TWAnyAddress.createWithPublicKey(publicKey, coin).description;
       expect(ownAddress, ownAddress1);
       final stakingAddress = TWCardano.getStakingAddress(ownAddress);
       expect(stakingAddress, stakingAddress1);
@@ -127,8 +125,7 @@ void main() {
       final publicKey = TWPrivateKey.createWithData(privateKeyData)
           .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519Cardano);
       final ownAddress =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin)
-              .description;
+          TWAnyAddress.createWithPublicKey(publicKey, coin).description;
       expect(ownAddress, ownAddress1);
       final stakingAddress = TWCardano.getStakingAddress(ownAddress);
       expect(stakingAddress, stakingAddress1);
@@ -180,8 +177,7 @@ void main() {
       final publicKey = TWPrivateKey.createWithData(privateKeyData)
           .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519Cardano);
       final ownAddress =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin)
-              .description;
+          TWAnyAddress.createWithPublicKey(publicKey, coin).description;
       expect(ownAddress, ownAddress1);
       final stakingAddress = TWCardano.getStakingAddress(ownAddress);
       expect(stakingAddress, stakingAddress1);
@@ -288,8 +284,7 @@ void main() {
       final publicKey = TWPrivateKey.createWithData(privateKeyData)
           .getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519Cardano);
       final ownAddress =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin)
-              .description;
+          TWAnyAddress.createWithPublicKey(publicKey, coin).description;
       expect(ownAddress, ownAddress1);
       final stakingAddress = TWCardano.getStakingAddress(ownAddress);
       expect(stakingAddress, stakingAddress1);

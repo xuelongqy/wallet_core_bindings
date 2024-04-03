@@ -11,8 +11,7 @@ void main() {
       final publicKey = privateKey.getPublicKeySecp256k1(false);
       final string = '0xf3d468DBb386aaD46E92FF222adDdf872C8CC064';
 
-      final address =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+      final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       final expected = TWAnyAddress(string, coin);
 
       final addressString = address.description;

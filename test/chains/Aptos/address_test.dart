@@ -68,8 +68,8 @@ void main() {
       final pubkey =
           privateKey.getPublicKeyByType(TWPublicKeyType.TWPublicKeyTypeED25519);
       final address = TWAnyAddress.createWithPublicKey(
-        publicKey: pubkey,
-        coin: coin,
+        pubkey,
+        coin,
       );
       expect(address.description,
           '0xe9c4d0b6fe32a5cc8ebd1e9ad5b54a0276a57f2d081dcb5e30342319963626c3');
@@ -81,8 +81,8 @@ void main() {
         TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final address = TWAnyAddress.createWithPublicKey(
-        publicKey: publicKey,
-        coin: coin,
+        publicKey,
+        coin,
       );
       expect(address.description,
           '0xe9c4d0b6fe32a5cc8ebd1e9ad5b54a0276a57f2d081dcb5e30342319963626c3');

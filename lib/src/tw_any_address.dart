@@ -66,9 +66,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   ///
   /// \param [publicKey] derivates the address from the public key.
   /// \param [coin] coin type of the address.
-  TWAnyAddress.createWithPublicKey({
-    required TWPublicKey publicKey,
-    required int coin,
+  TWAnyAddress.createWithPublicKey(
+    TWPublicKey publicKey,
+    int coin, {
     bool attach = true,
   }) : super(
           iTWBindings.TWAnyAddressCreateWithPublicKey(publicKey.pointer, coin),
@@ -131,9 +131,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   ///
   /// \param [publicKey] derivates the address from the public key.
   /// \param [filecoinAddressType] Filecoin address type.
-  TWAnyAddress.createWithPublicKeyFilecoinAddressType({
-    required TWPublicKey publicKey,
-    required int filecoinAddressType,
+  TWAnyAddress.createWithPublicKeyFilecoinAddressType(
+    TWPublicKey publicKey,
+    int filecoinAddressType, {
     bool attach = true,
   }) : super(
           iTWBindings.TWAnyAddressCreateWithPublicKeyFilecoinAddressType(
@@ -147,9 +147,9 @@ class TWAnyAddress extends TWObjectFinalizable<bindings.TWAnyAddress> {
   /// \param [publicKey] derivates the address from the public key.
   /// \param [firoAddressType] Firo address type.
   /// \return TWAnyAddress pointer or nullptr if public key is invalid.
-  TWAnyAddress.createWithPublicKeyFiroAddressType({
-    required TWPublicKey publicKey,
-    required int firoAddressType,
+  TWAnyAddress.createWithPublicKeyFiroAddressType(
+    TWPublicKey publicKey,
+    int firoAddressType, {
     bool attach = true,
   }) : super(
           iTWBindings.TWAnyAddressCreateWithPublicKeyFiroAddressType(

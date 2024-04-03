@@ -13,8 +13,7 @@ void main() {
           '0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798',
           TWPublicKeyType.TWPublicKeyTypeSECP256k1,
         );
-        final address =
-            TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+        final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
         expect(address.description, 'DsmcYVbP1Nmag2H4AS17UTvmWXmGeA7nLDx');
       }
       {
@@ -22,8 +21,7 @@ void main() {
             'a1269039e4ffdf43687852d7247a295f0b5bc55e6dda031cffaa3295ca0a9d7a');
         final publicKey =
             privateKey.getPublicKey(TWPublicKeyType.TWPublicKeyTypeED25519);
-        final address =
-            TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+        final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
         expect(address.pointer != nullptr, true);
       }
     });

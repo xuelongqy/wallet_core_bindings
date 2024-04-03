@@ -16,8 +16,7 @@ void main() {
       final privateKey = wallet.getKey(coin, TWCoinTypeDerivationPath(coin));
 
       final publicKey = privateKey.getPublicKeyEd25519();
-      final address =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+      final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       final addressStr = address.description;
 
       expect(addressStr,

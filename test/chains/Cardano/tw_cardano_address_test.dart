@@ -17,8 +17,7 @@ void main() {
       final publicKey = privateKey.getPublicKeyEd25519Cardano();
       expect(publicKey.pointer != nullptr, true);
       expect(publicKey.data.length, 128);
-      final address =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+      final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       final addressString = address.description;
       expect(addressString,
           'addr1qx4z6twzknkkux0hhp0kq6hvdfutczp56g56y5em8r8mgvxalp7nkkk25vuspleke2zltaetmlwrfxv7t049cq9jmwjswmfw6t');

@@ -44,8 +44,8 @@ void main() {
       final utxoKey0 = TWPrivateKey.createWithHexString(
           'd2b9f2846d3adcead910ee0124a3ba7ae29e8a4729787d27f9bea1f532928eee');
       final utxoAddr0 = TWAnyAddress.createWithPublicKey(
-        publicKey: utxoKey0.getPublicKey(coin),
-        coin: coin,
+        utxoKey0.getPublicKey(coin),
+        coin,
       );
       expect(utxoAddr0.description, '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8');
       final script0 =

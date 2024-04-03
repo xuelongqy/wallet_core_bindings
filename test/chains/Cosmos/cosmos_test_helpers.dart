@@ -85,8 +85,8 @@ class TWCosmosTestsInternal {
         addressParameters.publicKeyType,
       );
       final address = TWAnyAddress.createWithPublicKey(
-        publicKey: publicKey,
-        coin: addressParameters.coinType,
+        publicKey,
+        addressParameters.coinType,
       );
     }
   }
@@ -95,8 +95,8 @@ class TWCosmosTestsInternal {
     final privateKey =
         TWPrivateKey.createWithHexString(addressParameters.privKey);
     final address = TWAnyAddress.createWithPublicKey(
-      publicKey: privateKey.getPublicKeyByType(addressParameters.publicKeyType),
-      coin: addressParameters.coinType,
+      privateKey.getPublicKeyByType(addressParameters.publicKeyType),
+      addressParameters.coinType,
     );
     expect(address.description, addressParameters.address);
   }

@@ -96,7 +96,7 @@ void main() {
       expect(addressString, '1PeUvjuxyf31aJKX6kCXuaqxhmG78ZUdL1');
 
       final cashAddress = TWAnyAddress.createWithPublicKey(
-          publicKey: publicKey, coin: TWCoinType.TWCoinTypeBitcoinCash);
+          publicKey, TWCoinType.TWCoinTypeBitcoinCash);
       final cashAddressString = cashAddress.description;
       expect(cashAddressString,
           'bitcoincash:qruxj7zq6yzpdx8dld0e9hfvt7u47zrw9gfr5hy0vh');
@@ -138,11 +138,11 @@ void main() {
           xpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/145'/0'/0/9");
 
       final address = TWAnyAddress.createWithPublicKey(
-          publicKey: pubKeys2, coin: TWCoinType.TWCoinTypeBitcoinCash);
+          pubKeys2, TWCoinType.TWCoinTypeBitcoinCash);
       final addressString = address.description;
 
       final address9 = TWAnyAddress.createWithPublicKey(
-          publicKey: pubKeys9, coin: TWCoinType.TWCoinTypeBitcoinCash);
+          pubKeys9, TWCoinType.TWCoinTypeBitcoinCash);
       final addressString9 = address9.description;
 
       expect(addressString,

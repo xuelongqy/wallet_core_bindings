@@ -34,8 +34,7 @@ void main() {
         pubkey,
         TWCoinTypePublicKeyType(coin),
       );
-      final address =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+      final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       expect(address.description, 'bnb1h8xf9htasu9aclra954dnnve8fgcda4ae7qfa8');
 
       // testnet
@@ -44,7 +43,7 @@ void main() {
         TWCoinTypePublicKeyType(TWCoinType.TWCoinTypeTBinance),
       );
       final tAddress = TWAnyAddress.createWithPublicKey(
-          publicKey: tPublicKey, coin: TWCoinType.TWCoinTypeTBinance);
+          tPublicKey, TWCoinType.TWCoinTypeTBinance);
       expect(
           tAddress.description, 'tbnb1h8xf9htasu9aclra954dnnve8fgcda4ahtfdak');
     });

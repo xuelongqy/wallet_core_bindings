@@ -40,8 +40,7 @@ void main() {
 
       final publicKey =
           TWPublicKey(publickData, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
-      final address =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+      final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       expect(
           address.description, 'cosmos1hsk6jryyqjfhp5dhc55tc9jtckygx0eph6dd02');
       expectHex(address.data, 'bc2da90c84049370d1b7c528bc164bc588833f21');
@@ -113,7 +112,7 @@ void main() {
           '03ed997e396cf4292f5fce5a42bba41599ccd5d96e313154a7c9ea7049de317c77');
 
       final address = TWAnyAddress.createWithPublicKey(
-          publicKey: publicKey, coin: TWCoinType.TWCoinTypeTHORChain);
+          publicKey, TWCoinType.TWCoinTypeTHORChain);
       expect(
           address.description, 'thor1z53wwe7md6cewz9sqwqzn0aavpaun0gw0exn2r');
       expectHex(address.data, '1522e767db6eb19708b0038029bfbd607bc9bd0e');

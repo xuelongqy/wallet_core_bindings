@@ -51,8 +51,8 @@ void main() {
         TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final addr = TWAnyAddress.createWithPublicKey(
-        publicKey: pubkey,
-        coin: TWCoinType.TWCoinTypeAcala,
+        pubkey,
+        TWCoinType.TWCoinTypeAcala,
       );
       final addrDescription = addr.description;
       expect(

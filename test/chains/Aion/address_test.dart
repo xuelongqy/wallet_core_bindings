@@ -13,7 +13,7 @@ void main() {
         TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final address = TWAnyAddress.createWithPublicKey(
-          publicKey: publicKey, coin: TWCoinType.TWCoinTypeAion);
+          publicKey, TWCoinType.TWCoinTypeAion);
       expect(address.description,
           '0xa0d2312facea71b740679c926d040c9056a65a4bfa2ddd18ec160064f82909e7');
     });

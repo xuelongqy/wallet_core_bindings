@@ -11,7 +11,7 @@ void main() {
         TWPublicKeyType.TWPublicKeyTypeED25519,
       );
       final address = TWAnyAddress.createWithPublicKey(
-          publicKey: publicKey, coin: TWCoinType.TWCoinTypeAeternity);
+          publicKey, TWCoinType.TWCoinTypeAeternity);
       expect(address.description,
           'ak_2p5878zbFhxnrm7meL7TmqwtvBaqcBddyp5eGzZbovZ5FeVfcw');
     });

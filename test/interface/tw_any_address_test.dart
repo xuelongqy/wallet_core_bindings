@@ -202,7 +202,7 @@ void main() {
           pubkey_data.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       final addr = TWAnyAddress.createWithPublicKey(
-          publicKey: pubkey_obj, coin: TWCoinType.TWCoinTypeBitcoin);
+          pubkey_obj, TWCoinType.TWCoinTypeBitcoin);
       expect(addr.description, 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
     });
 
@@ -250,9 +250,7 @@ void main() {
 
       {
         final addr = TWAnyAddress.createWithPublicKeyFilecoinAddressType(
-            publicKey: pubkey_obj,
-            filecoinAddressType:
-                TWFilecoinAddressType.TWFilecoinAddressTypeDefault);
+            pubkey_obj, TWFilecoinAddressType.TWFilecoinAddressTypeDefault);
         final actual = addr.description;
         expect(actual, 'f1syn25x7infncgfvodhriq2dudvmudabtavm3wyy');
         expect(
@@ -261,9 +259,7 @@ void main() {
 
       {
         final addr = TWAnyAddress.createWithPublicKeyFilecoinAddressType(
-            publicKey: pubkey_obj,
-            filecoinAddressType:
-                TWFilecoinAddressType.TWFilecoinAddressTypeDelegated);
+            pubkey_obj, TWFilecoinAddressType.TWFilecoinAddressTypeDelegated);
         final actual = addr.description;
         expect(actual, 'f410fvak24cyg3saddajborn6idt7rrtfj2ptauk5pbq');
         expect(

@@ -22,8 +22,7 @@ void main() {
       final publicKey = TWPublicKey.createWithHexString(
           '02485a209514cc896f8ed736e205bc4c35bd5299ef3f9e84054475336b964c02a3',
           TWPublicKeyType.TWPublicKeyTypeSECP256k1);
-      final address =
-          TWAnyAddress.createWithPublicKey(publicKey: publicKey, coin: coin);
+      final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       expect(address.description, '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8');
 
       final wallet = TWHDWallet.createWithMnemonic(
