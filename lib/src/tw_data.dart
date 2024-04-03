@@ -86,7 +86,7 @@ class TWData extends TWObjectFinalizable<Void> {
   /// Returns the raw pointer to the contents of data.
   Uint8List? bytes() => _pointer == nullptr
       ? null
-      : iTWBindings.TWDataBytes(_pointer).asTypedList(size);
+      : Uint8List.fromList(iTWBindings.TWDataBytes(_pointer).asTypedList(size));
 
   /// Returns the hex string of data.
   String? hexString() =>

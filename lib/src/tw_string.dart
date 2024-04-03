@@ -84,7 +84,8 @@ class TWString extends TWObjectFinalizable<Void> {
   Pointer<Char> utf8Bytes() => iTWBindings.TWStringUTF8Bytes(_pointer);
 
   /// Returns raw data.
-  Uint8List bytes() => utf8Bytes().cast<Uint8>().asTypedList(size);
+  Uint8List bytes() =>
+      Uint8List.fromList(utf8Bytes().cast<Uint8>().asTypedList(size));
 
   /// Returns the string value.
   String? get value {
