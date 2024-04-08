@@ -6,9 +6,10 @@ class TWBarz {
   ///
   /// \param [input] The serialized data of ContractAddressInput.
   /// \return The address.
-  static String getCounterfactualAddress(TWData input) => TWString.fromPointer(
-          iTWBindings.TWBarzGetCounterfactualAddress(input.pointer))
-      .value!;
+  static String getCounterfactualAddress(Uint8List input) =>
+      TWString.fromPointer(
+              iTWBindings.TWBarzGetCounterfactualAddress(TWData(input).pointer))
+          .value!;
 
   /// Returns the init code parameter of ERC-4337 User Operation
   ///
@@ -16,17 +17,18 @@ class TWBarz {
   /// \param [publicKey] Public key for the verification facet
   /// \param [verificationFacet] Verification facet address
   /// \return The address.
-  static TWData getInitCode({
+  static Uint8List getInitCode({
     required String factory,
     required TWPublicKey publicKey,
     required String verificationFacet,
     required int salt,
   }) =>
       TWData.fromPointer(iTWBindings.TWBarzGetInitCode(
-          TWString(factory).pointer,
-          publicKey.pointer,
-          TWString(verificationFacet).pointer,
-          salt));
+              TWString(factory).pointer,
+              publicKey.pointer,
+              TWString(verificationFacet).pointer,
+              salt))
+          .bytes()!;
 
   /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
   ///
@@ -35,15 +37,17 @@ class TWBarz {
   /// \param [authenticatorData] Returned from Webauthn API
   /// \param [clientDataJSON] Returned from Webauthn API
   /// \return Bytes of the formatted signature
-  static TWData getFormattedSignature({
-    required TWData signature,
-    required TWData challenge,
-    required TWData authenticatorData,
+  static Uint8List getFormattedSignature({
+    required Uint8List signature,
+    required Uint8List challenge,
+    required Uint8List authenticatorData,
     required String clientDataJSON,
   }) =>
-      TWData.fromPointer(iTWBindings.TWBarzGetFormattedSignature(
-          signature.pointer,
-          challenge.pointer,
-          authenticatorData.pointer,
-          TWString(clientDataJSON).pointer));
+      TWData.fromPointer(
+        iTWBindings.TWBarzGetFormattedSignature(
+            TWData(signature).pointer,
+            TWData(challenge).pointer,
+            TWData(authenticatorData).pointer,
+            TWString(clientDataJSON).pointer),
+      ).bytes()!;
 }
