@@ -24,11 +24,11 @@ class TWBarz {
     required int salt,
   }) =>
       TWData.fromPointer(iTWBindings.TWBarzGetInitCode(
-              TWString(factory).pointer,
-              publicKey.pointer,
-              TWString(verificationFacet).pointer,
-              salt))
-          .bytes()!;
+        TWString(factory).pointer,
+        publicKey.pointer,
+        TWString(verificationFacet).pointer,
+        salt,
+      )).bytes()!;
 
   /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
   ///
@@ -45,9 +45,37 @@ class TWBarz {
   }) =>
       TWData.fromPointer(
         iTWBindings.TWBarzGetFormattedSignature(
-            TWData(signature).pointer,
-            TWData(challenge).pointer,
-            TWData(authenticatorData).pointer,
-            TWString(clientDataJSON).pointer),
+          TWData(signature).pointer,
+          TWData(challenge).pointer,
+          TWData(authenticatorData).pointer,
+          TWString(clientDataJSON).pointer,
+        ),
       ).bytes()!;
+
+  /// Returns the final hash to be signed by Barz for signing messages & typed data
+  ///
+  /// \param [msgHash] Original msgHash
+  /// \param [barzAddress] The address of Barz wallet signing the message
+  /// \param [chainId] The chainId of the network the verification will happen
+  /// \return The final hash to be signed
+  static Uint8List getPrefixedMsgHash({
+    required Uint8List msgHash,
+    required String barzAddress,
+    required int chainId,
+  }) =>
+      TWData.fromPointer(
+        iTWBindings.TWBarzGetPrefixedMsgHash(
+          TWData(msgHash).pointer,
+          TWString(barzAddress).pointer,
+          chainId,
+        ),
+      ).bytes()!;
+
+  /// Returns the encoded diamondCut function call for Barz contract upgrades
+  ///
+  /// \param [input] The serialized data of DiamondCutInput
+  /// \return The encoded bytes of diamondCut function call
+  static Uint8List getDiamondCutCode(Uint8List input) => TWData.fromPointer(
+          iTWBindings.TWBarzGetDiamondCutCode(TWData(input).pointer))
+      .bytes()!;
 }
