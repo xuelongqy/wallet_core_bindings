@@ -17,6 +17,10 @@ String get projectRoot {
   return _projectRoot!;
 }
 
+String get TESTS_ROOT {
+  return '${projectRoot}/test';
+}
+
 void expectHex(List<int> actual, String expected) {
   expect(TWString.createWithHexBytes(Uint8List.fromList(actual)).value,
       expected.replaceFirst('0x', ''));
