@@ -23,6 +23,7 @@ class Transaction_Transfer extends $pb.GeneratedMessage {
     $fixnum.Int64? amount,
     $fixnum.Int64? memo,
     $fixnum.Int64? currentTimestampNanos,
+    $fixnum.Int64? permittedDrift,
   }) {
     final $result = create();
     if (toAccountIdentifier != null) {
@@ -36,6 +37,9 @@ class Transaction_Transfer extends $pb.GeneratedMessage {
     }
     if (currentTimestampNanos != null) {
       $result.currentTimestampNanos = currentTimestampNanos;
+    }
+    if (permittedDrift != null) {
+      $result.permittedDrift = permittedDrift;
     }
     return $result;
   }
@@ -59,6 +63,9 @@ class Transaction_Transfer extends $pb.GeneratedMessage {
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(
         4, _omitFieldNames ? '' : 'currentTimestampNanos', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        5, _omitFieldNames ? '' : 'permittedDrift', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
@@ -133,6 +140,18 @@ class Transaction_Transfer extends $pb.GeneratedMessage {
   $core.bool hasCurrentTimestampNanos() => $_has(3);
   @$pb.TagNumber(4)
   void clearCurrentTimestampNanos() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $fixnum.Int64 get permittedDrift => $_getI64(4);
+  @$pb.TagNumber(5)
+  set permittedDrift($fixnum.Int64 v) {
+    $_setInt64(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasPermittedDrift() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPermittedDrift() => clearField(5);
 }
 
 enum Transaction_TransactionOneof { transfer, notSet }

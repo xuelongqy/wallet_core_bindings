@@ -2379,6 +2379,147 @@ class SideChainUndelegate extends $pb.GeneratedMessage {
   void clearChainId() => clearField(4);
 }
 
+/// Message for BNB Beacon Chain -> BSC Stake Migration.
+/// https://github.com/bnb-chain/javascript-sdk/blob/26f6db8b67326e6214e74203ff90c89777b592a1/src/types/msg/stake/stakeMigrationMsg.ts#L13-L18
+class SideChainStakeMigration extends $pb.GeneratedMessage {
+  factory SideChainStakeMigration({
+    $core.List<$core.int>? validatorSrcAddr,
+    $core.List<$core.int>? validatorDstAddr,
+    $core.List<$core.int>? delegatorAddr,
+    $core.List<$core.int>? refundAddr,
+    SendOrder_Token? amount,
+  }) {
+    final $result = create();
+    if (validatorSrcAddr != null) {
+      $result.validatorSrcAddr = validatorSrcAddr;
+    }
+    if (validatorDstAddr != null) {
+      $result.validatorDstAddr = validatorDstAddr;
+    }
+    if (delegatorAddr != null) {
+      $result.delegatorAddr = delegatorAddr;
+    }
+    if (refundAddr != null) {
+      $result.refundAddr = refundAddr;
+    }
+    if (amount != null) {
+      $result.amount = amount;
+    }
+    return $result;
+  }
+  SideChainStakeMigration._() : super();
+  factory SideChainStakeMigration.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SideChainStakeMigration.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'SideChainStakeMigration',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'validatorSrcAddr', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'validatorDstAddr', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'delegatorAddr', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'refundAddr', $pb.PbFieldType.OY)
+    ..aOM<SendOrder_Token>(5, _omitFieldNames ? '' : 'amount',
+        subBuilder: SendOrder_Token.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  SideChainStakeMigration clone() =>
+      SideChainStakeMigration()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SideChainStakeMigration copyWith(
+          void Function(SideChainStakeMigration) updates) =>
+      super.copyWith((message) => updates(message as SideChainStakeMigration))
+          as SideChainStakeMigration;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static SideChainStakeMigration create() => SideChainStakeMigration._();
+  SideChainStakeMigration createEmptyInstance() => create();
+  static $pb.PbList<SideChainStakeMigration> createRepeated() =>
+      $pb.PbList<SideChainStakeMigration>();
+  @$core.pragma('dart2js:noInline')
+  static SideChainStakeMigration getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SideChainStakeMigration>(create);
+  static SideChainStakeMigration? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get validatorSrcAddr => $_getN(0);
+  @$pb.TagNumber(1)
+  set validatorSrcAddr($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasValidatorSrcAddr() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValidatorSrcAddr() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get validatorDstAddr => $_getN(1);
+  @$pb.TagNumber(2)
+  set validatorDstAddr($core.List<$core.int> v) {
+    $_setBytes(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasValidatorDstAddr() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearValidatorDstAddr() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get delegatorAddr => $_getN(2);
+  @$pb.TagNumber(3)
+  set delegatorAddr($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDelegatorAddr() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDelegatorAddr() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get refundAddr => $_getN(3);
+  @$pb.TagNumber(4)
+  set refundAddr($core.List<$core.int> v) {
+    $_setBytes(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasRefundAddr() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRefundAddr() => clearField(4);
+
+  @$pb.TagNumber(5)
+  SendOrder_Token get amount => $_getN(4);
+  @$pb.TagNumber(5)
+  set amount(SendOrder_Token v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasAmount() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearAmount() => clearField(5);
+  @$pb.TagNumber(5)
+  SendOrder_Token ensureAmount() => $_ensure(4);
+}
+
 /// Message for TimeLock order
 class TimeLockOrder extends $pb.GeneratedMessage {
   factory TimeLockOrder({
@@ -2724,6 +2865,7 @@ enum SigningInput_OrderOneof {
   timeLockOrder,
   timeRelockOrder,
   timeUnlockOrder,
+  sideStakeMigrationOrder,
   notSet
 }
 
@@ -2755,6 +2897,7 @@ class SigningInput extends $pb.GeneratedMessage {
     TimeLockOrder? timeLockOrder,
     TimeRelockOrder? timeRelockOrder,
     TimeUnlockOrder? timeUnlockOrder,
+    SideChainStakeMigration? sideStakeMigrationOrder,
   }) {
     final $result = create();
     if (chainId != null) {
@@ -2832,6 +2975,9 @@ class SigningInput extends $pb.GeneratedMessage {
     if (timeUnlockOrder != null) {
       $result.timeUnlockOrder = timeUnlockOrder;
     }
+    if (sideStakeMigrationOrder != null) {
+      $result.sideStakeMigrationOrder = sideStakeMigrationOrder;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -2863,6 +3009,7 @@ class SigningInput extends $pb.GeneratedMessage {
     24: SigningInput_OrderOneof.timeLockOrder,
     25: SigningInput_OrderOneof.timeRelockOrder,
     26: SigningInput_OrderOneof.timeUnlockOrder,
+    27: SigningInput_OrderOneof.sideStakeMigrationOrder,
     0: SigningInput_OrderOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -2889,7 +3036,8 @@ class SigningInput extends $pb.GeneratedMessage {
       23,
       24,
       25,
-      26
+      26,
+      27
     ])
     ..aOS(1, _omitFieldNames ? '' : 'chainId')
     ..aInt64(2, _omitFieldNames ? '' : 'accountNumber')
@@ -2936,6 +3084,9 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: TimeRelockOrder.create)
     ..aOM<TimeUnlockOrder>(26, _omitFieldNames ? '' : 'timeUnlockOrder',
         subBuilder: TimeUnlockOrder.create)
+    ..aOM<SideChainStakeMigration>(
+        27, _omitFieldNames ? '' : 'sideStakeMigrationOrder',
+        subBuilder: SideChainStakeMigration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -3312,6 +3463,20 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearTimeUnlockOrder() => clearField(26);
   @$pb.TagNumber(26)
   TimeUnlockOrder ensureTimeUnlockOrder() => $_ensure(24);
+
+  @$pb.TagNumber(27)
+  SideChainStakeMigration get sideStakeMigrationOrder => $_getN(25);
+  @$pb.TagNumber(27)
+  set sideStakeMigrationOrder(SideChainStakeMigration v) {
+    setField(27, v);
+  }
+
+  @$pb.TagNumber(27)
+  $core.bool hasSideStakeMigrationOrder() => $_has(25);
+  @$pb.TagNumber(27)
+  void clearSideStakeMigrationOrder() => clearField(27);
+  @$pb.TagNumber(27)
+  SideChainStakeMigration ensureSideStakeMigrationOrder() => $_ensure(25);
 }
 
 /// Result containing the signed and encoded transaction.

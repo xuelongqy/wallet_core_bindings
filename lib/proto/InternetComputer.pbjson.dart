@@ -53,17 +53,18 @@ const Transaction_Transfer$json = {
       '5': 4,
       '10': 'currentTimestampNanos'
     },
+    {'1': 'permitted_drift', '3': 5, '4': 1, '5': 4, '10': 'permittedDrift'},
   ],
 };
 
 /// Descriptor for `Transaction`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
     'CgtUcmFuc2FjdGlvbhJNCgh0cmFuc2ZlchgBIAEoCzIvLlRXLkludGVybmV0Q29tcHV0ZXIuUH'
-    'JvdG8uVHJhbnNhY3Rpb24uVHJhbnNmZXJIAFIIdHJhbnNmZXIaogEKCFRyYW5zZmVyEjIKFXRv'
+    'JvdG8uVHJhbnNhY3Rpb24uVHJhbnNmZXJIAFIIdHJhbnNmZXIaywEKCFRyYW5zZmVyEjIKFXRv'
     'X2FjY291bnRfaWRlbnRpZmllchgBIAEoCVITdG9BY2NvdW50SWRlbnRpZmllchIWCgZhbW91bn'
     'QYAiABKARSBmFtb3VudBISCgRtZW1vGAMgASgEUgRtZW1vEjYKF2N1cnJlbnRfdGltZXN0YW1w'
-    'X25hbm9zGAQgASgEUhVjdXJyZW50VGltZXN0YW1wTmFub3NCEwoRdHJhbnNhY3Rpb25fb25lb2'
-    'Y=');
+    'X25hbm9zGAQgASgEUhVjdXJyZW50VGltZXN0YW1wTmFub3MSJwoPcGVybWl0dGVkX2RyaWZ0GA'
+    'UgASgEUg5wZXJtaXR0ZWREcmlmdEITChF0cmFuc2FjdGlvbl9vbmVvZg==');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {

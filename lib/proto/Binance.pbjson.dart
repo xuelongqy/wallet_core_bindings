@@ -455,6 +455,45 @@ final $typed_data.Uint8List sideChainUndelegateDescriptor = $convert.base64Decod
     'IAEoCzIhLlRXLkJpbmFuY2UuUHJvdG8uU2VuZE9yZGVyLlRva2VuUgZhbW91bnQSGQoIY2hhaW'
     '5faWQYBCABKAlSB2NoYWluSWQ=');
 
+@$core.Deprecated('Use sideChainStakeMigrationDescriptor instead')
+const SideChainStakeMigration$json = {
+  '1': 'SideChainStakeMigration',
+  '2': [
+    {
+      '1': 'validator_src_addr',
+      '3': 1,
+      '4': 1,
+      '5': 12,
+      '10': 'validatorSrcAddr'
+    },
+    {
+      '1': 'validator_dst_addr',
+      '3': 2,
+      '4': 1,
+      '5': 12,
+      '10': 'validatorDstAddr'
+    },
+    {'1': 'delegator_addr', '3': 3, '4': 1, '5': 12, '10': 'delegatorAddr'},
+    {'1': 'refund_addr', '3': 4, '4': 1, '5': 12, '10': 'refundAddr'},
+    {
+      '1': 'amount',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SendOrder.Token',
+      '10': 'amount'
+    },
+  ],
+};
+
+/// Descriptor for `SideChainStakeMigration`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sideChainStakeMigrationDescriptor = $convert.base64Decode(
+    'ChdTaWRlQ2hhaW5TdGFrZU1pZ3JhdGlvbhIsChJ2YWxpZGF0b3Jfc3JjX2FkZHIYASABKAxSEH'
+    'ZhbGlkYXRvclNyY0FkZHISLAoSdmFsaWRhdG9yX2RzdF9hZGRyGAIgASgMUhB2YWxpZGF0b3JE'
+    'c3RBZGRyEiUKDmRlbGVnYXRvcl9hZGRyGAMgASgMUg1kZWxlZ2F0b3JBZGRyEh8KC3JlZnVuZF'
+    '9hZGRyGAQgASgMUgpyZWZ1bmRBZGRyEjkKBmFtb3VudBgFIAEoCzIhLlRXLkJpbmFuY2UuUHJv'
+    'dG8uU2VuZE9yZGVyLlRva2VuUgZhbW91bnQ=');
+
 @$core.Deprecated('Use timeLockOrderDescriptor instead')
 const TimeLockOrder$json = {
   '1': 'TimeLockOrder',
@@ -701,6 +740,15 @@ const SigningInput$json = {
       '9': 0,
       '10': 'timeUnlockOrder'
     },
+    {
+      '1': 'side_stake_migration_order',
+      '3': 27,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Binance.Proto.SideChainStakeMigration',
+      '9': 0,
+      '10': 'sideStakeMigrationOrder'
+    },
   ],
   '8': [
     {'1': 'order_oneof'},
@@ -738,7 +786,9 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'LlByb3RvLlRpbWVMb2NrT3JkZXJIAFINdGltZUxvY2tPcmRlchJPChF0aW1lX3JlbG9ja19vcm'
     'RlchgZIAEoCzIhLlRXLkJpbmFuY2UuUHJvdG8uVGltZVJlbG9ja09yZGVySABSD3RpbWVSZWxv'
     'Y2tPcmRlchJPChF0aW1lX3VubG9ja19vcmRlchgaIAEoCzIhLlRXLkJpbmFuY2UuUHJvdG8uVG'
-    'ltZVVubG9ja09yZGVySABSD3RpbWVVbmxvY2tPcmRlckINCgtvcmRlcl9vbmVvZg==');
+    'ltZVVubG9ja09yZGVySABSD3RpbWVVbmxvY2tPcmRlchJoChpzaWRlX3N0YWtlX21pZ3JhdGlv'
+    'bl9vcmRlchgbIAEoCzIpLlRXLkJpbmFuY2UuUHJvdG8uU2lkZUNoYWluU3Rha2VNaWdyYXRpb2'
+    '5IAFIXc2lkZVN0YWtlTWlncmF0aW9uT3JkZXJCDQoLb3JkZXJfb25lb2Y=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {
