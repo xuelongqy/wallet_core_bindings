@@ -22,20 +22,20 @@ class TWTransactionCompiler {
   /// to the hashes enable identifying the private key needed for signing the hash.
   /// \param [coin] coin type.
   /// \param [txInputData] The serialized data of a signing input.
-  /// \param [signatures] signatures to compile, using TWDataVector.
-  /// \param [publicKeys] public keys for signers to match private keys, using TWDataVector.
+  /// \param [signatures] signatures to compile.
+  /// \param [publicKeys] public keys for signers to match private keys.
   /// \return serialized data of a proto object `SigningOutput`.
   static Uint8List compileWithSignatures({
     required int coin,
     required Uint8List txInputData,
-    required TWDataVector signatures,
-    required TWDataVector publicKeys,
+    required List<Uint8List> signatures,
+    required List<Uint8List> publicKeys,
   }) =>
       TWData.fromPointer(iTWBindings.TWTransactionCompilerCompileWithSignatures(
         coin,
         TWData(txInputData).pointer,
-        signatures.pointer,
-        publicKeys.pointer,
+        TWDataVector.createWithDataList(signatures).pointer,
+        TWDataVector.createWithDataList(publicKeys).pointer,
       )).bytes()!;
 
   /// Compiles a complete transation with one or more external signatures.
@@ -45,22 +45,22 @@ class TWTransactionCompiler {
   /// to the hashes enable identifying the private key needed for signing the hash.
   /// \param [coin] coin type.
   /// \param [txInputData] The serialized data of a signing input.
-  /// \param [signatures] signatures to compile, using TWDataVector.
-  /// \param [publicKeys] public keys for signers to match private keys, using TWDataVector.
+  /// \param [signatures] signatures to compile.
+  /// \param [publicKeys] public keys for signers to match private keys.
   /// \return serialized data of a proto object `SigningOutput`.
   static Uint8List compilerCompileWithSignaturesAndPubKeyType({
     required int coin,
     required Uint8List txInputData,
-    required TWDataVector signatures,
-    required TWDataVector publicKeys,
+    required List<Uint8List> signatures,
+    required List<Uint8List> publicKeys,
     required int pubKeyType,
   }) =>
       TWData.fromPointer(
           iTWBindings.TWTransactionCompilerCompileWithSignaturesAndPubKeyType(
         coin,
         TWData(txInputData).pointer,
-        signatures.pointer,
-        publicKeys.pointer,
+        TWDataVector.createWithDataList(signatures).pointer,
+        TWDataVector.createWithDataList(publicKeys).pointer,
         pubKeyType,
       )).bytes()!;
 }

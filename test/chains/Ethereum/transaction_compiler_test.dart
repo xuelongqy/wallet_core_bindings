@@ -75,8 +75,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
 
       // We dont care about public key in ethereum. It is not part of the transaction.
@@ -84,8 +84,8 @@ void main() {
           TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector(),
+        signatures: [signature],
+        publicKeys: [],
       );
 
       expect(outputData, outputDataWithoutPubKey);
@@ -122,8 +122,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
         );
         final output = Ethereum.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);

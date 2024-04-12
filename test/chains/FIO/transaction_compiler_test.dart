@@ -79,8 +79,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: inputStrData,
-          signatures: TWDataVector.createWithData(signature),
-          publicKeys: TWDataVector.createWithData(pubKeyA.data),
+          signatures: [signature],
+          publicKeys: [pubKeyA.data],
         );
 
         final output = FIO.SigningOutput.fromBuffer(outputData);
@@ -103,8 +103,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: inputStrData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector.createWithData(pubKeyA.data),
+          signatures: [],
+          publicKeys: [pubKeyA.data],
         );
 
         final output = FIO.SigningOutput.fromBuffer(outputData);
@@ -118,9 +118,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: inputStrData,
-          signatures:
-              TWDataVector.createWithData(Uint8List.fromList(sigStr.codeUnits)),
-          publicKeys: TWDataVector(),
+          signatures: [Uint8List.fromList(sigStr.codeUnits)],
+          publicKeys: [],
         );
 
         final output = FIO.SigningOutput.fromBuffer(outputData);
@@ -134,12 +133,11 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: inputStrData,
-          signatures:
-              TWDataVector.createWithData(Uint8List.fromList(sigStr.codeUnits)),
-          publicKeys: TWDataVector.createWithDataList([
+          signatures: [Uint8List.fromList(sigStr.codeUnits)],
+          publicKeys: [
             pubKeyA.data,
             pubKeyA.data,
-          ]),
+          ],
         );
 
         final output = FIO.SigningOutput.fromBuffer(outputData);

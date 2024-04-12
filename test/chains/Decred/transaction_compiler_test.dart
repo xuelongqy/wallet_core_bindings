@@ -75,8 +75,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKey.data),
+        signatures: [signature],
+        publicKeys: [publicKey.data],
       );
       final signingOutput = Decred.SigningOutput.fromBuffer(outputData);
       expectHex(signingOutput.encoded,
@@ -94,8 +94,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector.createWithDataList([signature, signature]),
-          publicKeys: TWDataVector.createWithData(publicKey.data),
+          signatures: [signature, signature],
+          publicKeys: [publicKey.data],
         );
         final output = Decred.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);
@@ -107,8 +107,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
         );
         final output = Decred.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);

@@ -92,8 +92,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
       final ExpectedTx =
           "b801f0625dee0a462a2c87fa0a1f0a1440c2979694bbc961023d1d27be6fc4d21a9febe612070a03424e421001"
@@ -125,8 +125,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector.createWithDataList([signature, signature]),
-          publicKeys: TWDataVector.createWithData(publicKeyData),
+          signatures: [signature, signature],
+          publicKeys: [publicKeyData],
         );
         final output = Binance.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);
@@ -138,8 +138,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
         );
         final output = Binance.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);

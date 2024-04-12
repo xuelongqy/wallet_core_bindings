@@ -58,8 +58,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: TWCoinType.TWCoinTypeAptos,
         txInputData: inputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKey),
+        signatures: [signature],
+        publicKeys: [publicKey],
       );
       final output = Aptos.SigningOutput.fromBuffer(outputData);
 
@@ -154,8 +154,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: TWCoinType.TWCoinTypeAptos,
         txInputData: inputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKey),
+        signatures: [signature],
+        publicKeys: [publicKey],
       );
       final output = Aptos.SigningOutput.fromBuffer(outputData);
 

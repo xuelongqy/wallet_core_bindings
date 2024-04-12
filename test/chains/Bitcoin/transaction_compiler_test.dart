@@ -239,8 +239,8 @@ void main() {
       final compileWithSignatures = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithDataList(signatureVec),
-        publicKeys: TWDataVector.createWithDataList(pubkeyVec),
+        signatures: signatureVec,
+        publicKeys: pubkeyVec,
       );
 
       final ExpectedTx =

@@ -100,8 +100,8 @@ void main() {
           true);
 
       // Simulate signatures, normally obtained from signature server.
-      final signatureVec = TWDataVector.createWithData(signature);
-      final pubkeyVec = TWDataVector.createWithData(publicKey.data);
+      final signatureVec = [signature];
+      final pubkeyVec = [publicKey.data];
 
       /// Step 3: Compile transaction info
       final outputData = TWTransactionCompiler.compileWithSignatures(
@@ -123,7 +123,7 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector.createWithDataList([signature, signature]),
+          signatures: [signature, signature],
           publicKeys: pubkeyVec,
         );
         final output = Bitcoin.SigningOutput.fromBuffer(outputData);
@@ -136,8 +136,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
         );
         final output = Bitcoin.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);
@@ -152,7 +152,7 @@ void main() {
           coin: coin,
           txInputData: txInputData,
           signatures: signatureVec,
-          publicKeys: TWDataVector.createWithData(publicKeyBlake),
+          publicKeys: [publicKeyBlake],
         );
         final output = Bitcoin.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);
@@ -164,9 +164,11 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: txInputData,
-          signatures: TWDataVector.createWithData(parse_hex(
-              "415502201857bc6e6e48b46046a4bd204136fc77e24c240943fb5a1f0e86387aae59b349022"
-              "00a7f31478784e51c49f46ef072745a4f263d7efdbc9c6784aa2571ff4f6f3b51")),
+          signatures: [
+            parse_hex(
+                "415502201857bc6e6e48b46046a4bd204136fc77e24c240943fb5a1f0e86387aae59b349022"
+                "00a7f31478784e51c49f46ef072745a4f263d7efdbc9c6784aa2571ff4f6f3b51")
+          ],
           publicKeys: pubkeyVec,
         );
         final output = Bitcoin.SigningOutput.fromBuffer(outputData);

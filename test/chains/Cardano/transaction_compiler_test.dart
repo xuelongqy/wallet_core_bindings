@@ -99,8 +99,8 @@ void main() {
           TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
         coin: coin,
         txInputData: inputData,
-        signatures: TWDataVector.createWithData(sig),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [sig],
+        publicKeys: [publicKeyData],
         pubKeyType: TWPublicKeyType.TWPublicKeyTypeED25519,
       );
 
@@ -114,8 +114,8 @@ void main() {
             TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
           coin: coin,
           txInputData: inputData,
-          signatures: TWDataVector.createWithDataList([sig, sig]),
-          publicKeys: TWDataVector.createWithData(publicKeyData),
+          signatures: [sig, sig],
+          publicKeys: [publicKeyData],
           pubKeyType: TWPublicKeyType.TWPublicKeyTypeED25519,
         );
         final output = Cardano.SigningOutput.fromBuffer(outputData);
@@ -128,8 +128,8 @@ void main() {
             TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
           coin: coin,
           txInputData: inputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
           pubKeyType: TWPublicKeyType.TWPublicKeyTypeED25519,
         );
         final output = Cardano.SigningOutput.fromBuffer(outputData);

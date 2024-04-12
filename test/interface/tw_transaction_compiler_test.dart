@@ -131,8 +131,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
 
       final ExpectedTx =
@@ -213,8 +213,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputDataData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
 
       final ExpectedTx =
@@ -447,8 +447,8 @@ void main() {
           Uint8List.fromList(hashes[2].publicKeyHash), inPubKeyHash0);
 
       // Simulate signatures, normally obtained from signature server.
-      final signatureVec = TWDataVector();
-      final pubkeyVec = TWDataVector();
+      final signatureVec = <Uint8List>[];
+      final pubkeyVec = <Uint8List>[];
       for (final h in hashes) {
         final preImageHash_ = Uint8List.fromList(h.dataHash);
         final pubkeyHash = Uint8List.fromList(h.publicKeyHash);
@@ -585,8 +585,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
 
       final ExpectedTx =
@@ -677,8 +677,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: inputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
 
       final ExpectedTx =
@@ -778,8 +778,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKeyData),
+        signatures: [signature],
+        publicKeys: [publicKeyData],
       );
       final ExpectedTx =
           "0200f885885d0000d202170100012c177a01a7afbe98e094007b99476534fb7926b70900010080969800000000"

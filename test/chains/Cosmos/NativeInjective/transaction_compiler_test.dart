@@ -93,10 +93,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: protoInputData,
-          signatures:
-              TWDataVector.createWithData(Uint8List.fromList(signature)),
-          publicKeys:
-              TWDataVector.createWithData(Uint8List.fromList(publicKey.data)),
+          signatures: [Uint8List.fromList(signature)],
+          publicKeys: [Uint8List.fromList(publicKey.data)],
         );
 
         final output = Cosmos.SigningOutput.fromBuffer(outputData);

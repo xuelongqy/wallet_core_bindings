@@ -122,8 +122,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: protoInputData,
-          signatures: TWDataVector.createWithDataList([signature, signature]),
-          publicKeys: TWDataVector.createWithData(publicKey.data),
+          signatures: [signature, signature],
+          publicKeys: [publicKey.data],
         );
         final output = Cosmos.SigningOutput.fromBuffer(outputData);
         expect(output.serialized.length, 0);
@@ -135,8 +135,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: protoInputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
         );
         final output = Cosmos.SigningOutput.fromBuffer(outputData);
         expect(output.serialized.length, 0);
@@ -177,8 +177,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: jsonInputData,
-          signatures: TWDataVector.createWithData(signature),
-          publicKeys: TWDataVector.createWithData(publicKey.data),
+          signatures: [signature],
+          publicKeys: [publicKey.data],
         );
         final output = Cosmos.SigningOutput.fromBuffer(outputData);
 

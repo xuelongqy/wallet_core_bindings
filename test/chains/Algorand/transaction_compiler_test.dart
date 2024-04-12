@@ -58,8 +58,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: TWCoinType.TWCoinTypeAlgorand,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKey.data),
+        signatures: [signature],
+        publicKeys: [publicKey.data],
       );
 
       const ExpectedTx =
@@ -85,8 +85,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: TWCoinType.TWCoinTypeAlgorand,
           txInputData: txInputData,
-          signatures: TWDataVector.createWithDataList([signature, signature]),
-          publicKeys: TWDataVector.createWithData(publicKey.data),
+          signatures: [signature, signature],
+          publicKeys: [publicKey.data],
         );
         final output = Algorand.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);
@@ -98,8 +98,8 @@ void main() {
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: TWCoinType.TWCoinTypeAlgorand,
           txInputData: txInputData,
-          signatures: TWDataVector(),
-          publicKeys: TWDataVector(),
+          signatures: [],
+          publicKeys: [],
         );
         final output = Algorand.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.length, 0);

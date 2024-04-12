@@ -70,8 +70,8 @@ void main() {
       final outputData = TWTransactionCompiler.compileWithSignatures(
         coin: coin,
         txInputData: txInputData,
-        signatures: TWDataVector.createWithData(signature),
-        publicKeys: TWDataVector.createWithData(publicKey.data),
+        signatures: [signature],
+        publicKeys: [publicKey.data],
       );
 
       final ExpectedTx =
