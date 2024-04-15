@@ -12185,6 +12185,8 @@ abstract class TWCoinType {
   static const int TWCoinTypeZetaEVM = 20007000;
   static const int TWCoinTypeDydx = 22000118;
   static const int TWCoinTypeMerlin = 4200;
+  static const int TWCoinTypeLightlink = 1890;
+  static const int TWCoinTypeBlast = 81457;
 }
 
 /// StarkEx message signing and verification.
@@ -12247,6 +12249,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDOkc = 66;
   static const int TWEthereumChainIDThundertoken = 108;
   static const int TWEthereumChainIDCfxevm = 1030;
+  static const int TWEthereumChainIDLightlink = 1890;
   static const int TWEthereumChainIDMerlin = 4200;
   static const int TWEthereumChainIDMantle = 5000;
   static const int TWEthereumChainIDGochain = 60;
@@ -12255,6 +12258,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDMeter = 82;
   static const int TWEthereumChainIDCelo = 42220;
   static const int TWEthereumChainIDLinea = 59144;
+  static const int TWEthereumChainIDBlast = 81457;
   static const int TWEthereumChainIDScroll = 534352;
   static const int TWEthereumChainIDWanchain = 888;
   static const int TWEthereumChainIDCronos = 25;
