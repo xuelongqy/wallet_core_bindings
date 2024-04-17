@@ -3,7 +3,7 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 void main() {
   group('TWLineaCoinType', () {
-    test('TWLineaCoinType', () {
+    test('TWCoinType', () {
       const coin = TWCoinType.TWCoinTypeLinea;
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
