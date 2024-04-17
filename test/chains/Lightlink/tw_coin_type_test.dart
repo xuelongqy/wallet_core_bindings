@@ -21,7 +21,7 @@ void main() {
       expect(TWCoinTypeBlockchain(coin), TWBlockchain.TWBlockchainEthereum);
       expect(TWCoinTypeP2shPrefix(coin), 0x0);
       expect(TWCoinTypeStaticPrefix(coin), 0x0);
-      expect(TWCoinTypeP2shPrefix(coin), 0x0);
+      expect(TWCoinTypeP2pkhPrefix(coin), 0x0);
       expect(txUrl,
           'https://phoenix.lightlink.io/tx/0xc65f82445aefc883fd4ffe09149c8ce48f61b670c0734528a49d4a8bd8309bb0');
       expect(accUrl,
