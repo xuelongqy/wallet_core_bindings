@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 void main() {
-  group('TWLightlinkCoinType', () {
+  group('TWLineaCoinType', () {
     test('TWLineaCoinType', () {
       const coin = TWCoinType.TWCoinTypeLinea;
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
