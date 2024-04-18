@@ -447,6 +447,102 @@ class Action_AddPubAddress extends $pb.GeneratedMessage {
   void clearFee() => clearField(3);
 }
 
+/// Action for removing public chain addresses from a FIO name; remove_pub_address
+/// Note: actor is not needed, computed from private key
+class Action_RemovePubAddress extends $pb.GeneratedMessage {
+  factory Action_RemovePubAddress({
+    $core.String? fioAddress,
+    $core.Iterable<PublicAddress>? publicAddresses,
+    $fixnum.Int64? fee,
+  }) {
+    final $result = create();
+    if (fioAddress != null) {
+      $result.fioAddress = fioAddress;
+    }
+    if (publicAddresses != null) {
+      $result.publicAddresses.addAll(publicAddresses);
+    }
+    if (fee != null) {
+      $result.fee = fee;
+    }
+    return $result;
+  }
+  Action_RemovePubAddress._() : super();
+  factory Action_RemovePubAddress.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Action_RemovePubAddress.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Action.RemovePubAddress',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.FIO.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'fioAddress')
+    ..pc<PublicAddress>(
+        2, _omitFieldNames ? '' : 'publicAddresses', $pb.PbFieldType.PM,
+        subBuilder: PublicAddress.create)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'fee', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Action_RemovePubAddress clone() =>
+      Action_RemovePubAddress()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Action_RemovePubAddress copyWith(
+          void Function(Action_RemovePubAddress) updates) =>
+      super.copyWith((message) => updates(message as Action_RemovePubAddress))
+          as Action_RemovePubAddress;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Action_RemovePubAddress create() => Action_RemovePubAddress._();
+  Action_RemovePubAddress createEmptyInstance() => create();
+  static $pb.PbList<Action_RemovePubAddress> createRepeated() =>
+      $pb.PbList<Action_RemovePubAddress>();
+  @$core.pragma('dart2js:noInline')
+  static Action_RemovePubAddress getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Action_RemovePubAddress>(create);
+  static Action_RemovePubAddress? _defaultInstance;
+
+  /// The FIO name already registered to the owner. Ex.: "alice@trust"
+  @$pb.TagNumber(1)
+  $core.String get fioAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set fioAddress($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasFioAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFioAddress() => clearField(1);
+
+  /// List of public addresses to be unregistered, ex. {{"BTC", "bc1qv...7v"},{"BNB", "bnb1ts3...9s"}}
+  @$pb.TagNumber(2)
+  $core.List<PublicAddress> get publicAddresses => $_getList(1);
+
+  /// Max fee to spend, can be obtained using get_fee API.
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get fee => $_getI64(2);
+  @$pb.TagNumber(3)
+  set fee($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasFee() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFee() => clearField(3);
+}
+
 /// Action for transferring FIO coins; transfer_tokens_pub_key
 /// Note: actor is not needed, computed from private key
 class Action_Transfer extends $pb.GeneratedMessage {
@@ -800,6 +896,7 @@ enum Action_MessageOneof {
   transferMessage,
   renewFioAddressMessage,
   newFundsRequestMessage,
+  removePubAddressMessage,
   notSet
 }
 
@@ -811,6 +908,7 @@ class Action extends $pb.GeneratedMessage {
     Action_Transfer? transferMessage,
     Action_RenewFioAddress? renewFioAddressMessage,
     Action_NewFundsRequest? newFundsRequestMessage,
+    Action_RemovePubAddress? removePubAddressMessage,
   }) {
     final $result = create();
     if (registerFioAddressMessage != null) {
@@ -827,6 +925,9 @@ class Action extends $pb.GeneratedMessage {
     }
     if (newFundsRequestMessage != null) {
       $result.newFundsRequestMessage = newFundsRequestMessage;
+    }
+    if (removePubAddressMessage != null) {
+      $result.removePubAddressMessage = removePubAddressMessage;
     }
     return $result;
   }
@@ -845,13 +946,14 @@ class Action extends $pb.GeneratedMessage {
     3: Action_MessageOneof.transferMessage,
     4: Action_MessageOneof.renewFioAddressMessage,
     5: Action_MessageOneof.newFundsRequestMessage,
+    6: Action_MessageOneof.removePubAddressMessage,
     0: Action_MessageOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'Action',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.FIO.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5])
+    ..oo(0, [1, 2, 3, 4, 5, 6])
     ..aOM<Action_RegisterFioAddress>(
         1, _omitFieldNames ? '' : 'registerFioAddressMessage',
         subBuilder: Action_RegisterFioAddress.create)
@@ -866,6 +968,9 @@ class Action extends $pb.GeneratedMessage {
     ..aOM<Action_NewFundsRequest>(
         5, _omitFieldNames ? '' : 'newFundsRequestMessage',
         subBuilder: Action_NewFundsRequest.create)
+    ..aOM<Action_RemovePubAddress>(
+        6, _omitFieldNames ? '' : 'removePubAddressMessage',
+        subBuilder: Action_RemovePubAddress.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -962,6 +1067,20 @@ class Action extends $pb.GeneratedMessage {
   void clearNewFundsRequestMessage() => clearField(5);
   @$pb.TagNumber(5)
   Action_NewFundsRequest ensureNewFundsRequestMessage() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  Action_RemovePubAddress get removePubAddressMessage => $_getN(5);
+  @$pb.TagNumber(6)
+  set removePubAddressMessage(Action_RemovePubAddress v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasRemovePubAddressMessage() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearRemovePubAddressMessage() => clearField(6);
+  @$pb.TagNumber(6)
+  Action_RemovePubAddress ensureRemovePubAddressMessage() => $_ensure(5);
 }
 
 /// Represents current parameters of the FIO blockchain
@@ -1232,6 +1351,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     $core.String? json,
     $0.SigningError? error,
     $core.String? errorMessage,
+    $core.String? actionName,
   }) {
     final $result = create();
     if (json != null) {
@@ -1242,6 +1362,9 @@ class SigningOutput extends $pb.GeneratedMessage {
     }
     if (errorMessage != null) {
       $result.errorMessage = errorMessage;
+    }
+    if (actionName != null) {
+      $result.actionName = actionName;
     }
     return $result;
   }
@@ -1263,6 +1386,7 @@ class SigningOutput extends $pb.GeneratedMessage {
         valueOf: $0.SigningError.valueOf,
         enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
+    ..aOS(4, _omitFieldNames ? '' : 'actionName')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1326,6 +1450,19 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasErrorMessage() => $_has(2);
   @$pb.TagNumber(3)
   void clearErrorMessage() => clearField(3);
+
+  /// Performed action name, ex. "addaddress", "remaddress", "trnsfiopubky" etc.
+  @$pb.TagNumber(4)
+  $core.String get actionName => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set actionName($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasActionName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearActionName() => clearField(4);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

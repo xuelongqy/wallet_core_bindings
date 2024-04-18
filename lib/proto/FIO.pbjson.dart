@@ -102,10 +102,20 @@ const Action$json = {
       '9': 0,
       '10': 'newFundsRequestMessage'
     },
+    {
+      '1': 'remove_pub_address_message',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.FIO.Proto.Action.RemovePubAddress',
+      '9': 0,
+      '10': 'removePubAddressMessage'
+    },
   ],
   '3': [
     Action_RegisterFioAddress$json,
     Action_AddPubAddress$json,
+    Action_RemovePubAddress$json,
     Action_Transfer$json,
     Action_RenewFioAddress$json,
     Action_NewFundsRequest$json
@@ -134,6 +144,23 @@ const Action_RegisterFioAddress$json = {
 @$core.Deprecated('Use actionDescriptor instead')
 const Action_AddPubAddress$json = {
   '1': 'AddPubAddress',
+  '2': [
+    {'1': 'fio_address', '3': 1, '4': 1, '5': 9, '10': 'fioAddress'},
+    {
+      '1': 'public_addresses',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.FIO.Proto.PublicAddress',
+      '10': 'publicAddresses'
+    },
+    {'1': 'fee', '3': 3, '4': 1, '5': 4, '10': 'fee'},
+  ],
+};
+
+@$core.Deprecated('Use actionDescriptor instead')
+const Action_RemovePubAddress$json = {
+  '1': 'RemovePubAddress',
   '2': [
     {'1': 'fio_address', '3': 1, '4': 1, '5': 9, '10': 'fioAddress'},
     {
@@ -203,20 +230,24 @@ final $typed_data.Uint8List actionDescriptor = $convert.base64Decode(
     'JNZXNzYWdlEmEKGXJlbmV3X2Zpb19hZGRyZXNzX21lc3NhZ2UYBCABKAsyJC5UVy5GSU8uUHJv'
     'dG8uQWN0aW9uLlJlbmV3RmlvQWRkcmVzc0gAUhZyZW5ld0Zpb0FkZHJlc3NNZXNzYWdlEmEKGW'
     '5ld19mdW5kc19yZXF1ZXN0X21lc3NhZ2UYBSABKAsyJC5UVy5GSU8uUHJvdG8uQWN0aW9uLk5l'
-    'd0Z1bmRzUmVxdWVzdEgAUhZuZXdGdW5kc1JlcXVlc3RNZXNzYWdlGngKElJlZ2lzdGVyRmlvQW'
-    'RkcmVzcxIfCgtmaW9fYWRkcmVzcxgBIAEoCVIKZmlvQWRkcmVzcxIvChRvd25lcl9maW9fcHVi'
-    'bGljX2tleRgCIAEoCVIRb3duZXJGaW9QdWJsaWNLZXkSEAoDZmVlGAMgASgEUgNmZWUaigEKDU'
-    'FkZFB1YkFkZHJlc3MSHwoLZmlvX2FkZHJlc3MYASABKAlSCmZpb0FkZHJlc3MSRgoQcHVibGlj'
-    'X2FkZHJlc3NlcxgCIAMoCzIbLlRXLkZJTy5Qcm90by5QdWJsaWNBZGRyZXNzUg9wdWJsaWNBZG'
-    'RyZXNzZXMSEAoDZmVlGAMgASgEUgNmZWUaXgoIVHJhbnNmZXISKAoQcGF5ZWVfcHVibGljX2tl'
-    'eRgBIAEoCVIOcGF5ZWVQdWJsaWNLZXkSFgoGYW1vdW50GAIgASgEUgZhbW91bnQSEAoDZmVlGA'
-    'MgASgEUgNmZWUadQoPUmVuZXdGaW9BZGRyZXNzEh8KC2Zpb19hZGRyZXNzGAEgASgJUgpmaW9B'
-    'ZGRyZXNzEi8KFG93bmVyX2Zpb19wdWJsaWNfa2V5GAIgASgJUhFvd25lckZpb1B1YmxpY0tleR'
-    'IQCgNmZWUYAyABKARSA2ZlZRrUAQoPTmV3RnVuZHNSZXF1ZXN0EiQKDnBheWVyX2Zpb19uYW1l'
-    'GAEgASgJUgxwYXllckZpb05hbWUSKgoRcGF5ZXJfZmlvX2FkZHJlc3MYAiABKAlSD3BheWVyRm'
-    'lvQWRkcmVzcxIkCg5wYXllZV9maW9fbmFtZRgDIAEoCVIMcGF5ZWVGaW9OYW1lEjcKB2NvbnRl'
-    'bnQYBCABKAsyHS5UVy5GSU8uUHJvdG8uTmV3RnVuZHNDb250ZW50Ugdjb250ZW50EhAKA2ZlZR'
-    'gFIAEoBFIDZmVlQg8KDW1lc3NhZ2Vfb25lb2Y=');
+    'd0Z1bmRzUmVxdWVzdEgAUhZuZXdGdW5kc1JlcXVlc3RNZXNzYWdlEmQKGnJlbW92ZV9wdWJfYW'
+    'RkcmVzc19tZXNzYWdlGAYgASgLMiUuVFcuRklPLlByb3RvLkFjdGlvbi5SZW1vdmVQdWJBZGRy'
+    'ZXNzSABSF3JlbW92ZVB1YkFkZHJlc3NNZXNzYWdlGngKElJlZ2lzdGVyRmlvQWRkcmVzcxIfCg'
+    'tmaW9fYWRkcmVzcxgBIAEoCVIKZmlvQWRkcmVzcxIvChRvd25lcl9maW9fcHVibGljX2tleRgC'
+    'IAEoCVIRb3duZXJGaW9QdWJsaWNLZXkSEAoDZmVlGAMgASgEUgNmZWUaigEKDUFkZFB1YkFkZH'
+    'Jlc3MSHwoLZmlvX2FkZHJlc3MYASABKAlSCmZpb0FkZHJlc3MSRgoQcHVibGljX2FkZHJlc3Nl'
+    'cxgCIAMoCzIbLlRXLkZJTy5Qcm90by5QdWJsaWNBZGRyZXNzUg9wdWJsaWNBZGRyZXNzZXMSEA'
+    'oDZmVlGAMgASgEUgNmZWUajQEKEFJlbW92ZVB1YkFkZHJlc3MSHwoLZmlvX2FkZHJlc3MYASAB'
+    'KAlSCmZpb0FkZHJlc3MSRgoQcHVibGljX2FkZHJlc3NlcxgCIAMoCzIbLlRXLkZJTy5Qcm90by'
+    '5QdWJsaWNBZGRyZXNzUg9wdWJsaWNBZGRyZXNzZXMSEAoDZmVlGAMgASgEUgNmZWUaXgoIVHJh'
+    'bnNmZXISKAoQcGF5ZWVfcHVibGljX2tleRgBIAEoCVIOcGF5ZWVQdWJsaWNLZXkSFgoGYW1vdW'
+    '50GAIgASgEUgZhbW91bnQSEAoDZmVlGAMgASgEUgNmZWUadQoPUmVuZXdGaW9BZGRyZXNzEh8K'
+    'C2Zpb19hZGRyZXNzGAEgASgJUgpmaW9BZGRyZXNzEi8KFG93bmVyX2Zpb19wdWJsaWNfa2V5GA'
+    'IgASgJUhFvd25lckZpb1B1YmxpY0tleRIQCgNmZWUYAyABKARSA2ZlZRrUAQoPTmV3RnVuZHNS'
+    'ZXF1ZXN0EiQKDnBheWVyX2Zpb19uYW1lGAEgASgJUgxwYXllckZpb05hbWUSKgoRcGF5ZXJfZm'
+    'lvX2FkZHJlc3MYAiABKAlSD3BheWVyRmlvQWRkcmVzcxIkCg5wYXllZV9maW9fbmFtZRgDIAEo'
+    'CVIMcGF5ZWVGaW9OYW1lEjcKB2NvbnRlbnQYBCABKAsyHS5UVy5GSU8uUHJvdG8uTmV3RnVuZH'
+    'NDb250ZW50Ugdjb250ZW50EhAKA2ZlZRgFIAEoBFIDZmVlQg8KDW1lc3NhZ2Vfb25lb2Y=');
 
 @$core.Deprecated('Use chainParamsDescriptor instead')
 const ChainParams$json = {
@@ -283,6 +314,7 @@ const SigningOutput$json = {
       '10': 'error'
     },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
+    {'1': 'action_name', '3': 4, '4': 1, '5': 9, '10': 'actionName'},
   ],
 };
 
@@ -290,4 +322,4 @@ const SigningOutput$json = {
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhIKBGpzb24YASABKAlSBGpzb24SMwoFZXJyb3IYAiABKA4yHS5UVy'
     '5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9yUgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAMgASgJ'
-    'UgxlcnJvck1lc3NhZ2U=');
+    'UgxlcnJvck1lc3NhZ2USHwoLYWN0aW9uX25hbWUYBCABKAlSCmFjdGlvbk5hbWU=');
