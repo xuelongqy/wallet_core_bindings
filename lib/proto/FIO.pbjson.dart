@@ -111,14 +111,34 @@ const Action$json = {
       '9': 0,
       '10': 'removePubAddressMessage'
     },
+    {
+      '1': 'remove_all_pub_addresses_message',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.FIO.Proto.Action.RemoveAllPubAddress',
+      '9': 0,
+      '10': 'removeAllPubAddressesMessage'
+    },
+    {
+      '1': 'add_bundled_transactions_message',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.FIO.Proto.Action.AddBundledTransactions',
+      '9': 0,
+      '10': 'addBundledTransactionsMessage'
+    },
   ],
   '3': [
     Action_RegisterFioAddress$json,
     Action_AddPubAddress$json,
     Action_RemovePubAddress$json,
+    Action_RemoveAllPubAddress$json,
     Action_Transfer$json,
     Action_RenewFioAddress$json,
-    Action_NewFundsRequest$json
+    Action_NewFundsRequest$json,
+    Action_AddBundledTransactions$json
   ],
   '8': [
     {'1': 'message_oneof'},
@@ -176,6 +196,15 @@ const Action_RemovePubAddress$json = {
 };
 
 @$core.Deprecated('Use actionDescriptor instead')
+const Action_RemoveAllPubAddress$json = {
+  '1': 'RemoveAllPubAddress',
+  '2': [
+    {'1': 'fio_address', '3': 1, '4': 1, '5': 9, '10': 'fioAddress'},
+    {'1': 'fee', '3': 3, '4': 1, '5': 4, '10': 'fee'},
+  ],
+};
+
+@$core.Deprecated('Use actionDescriptor instead')
 const Action_Transfer$json = {
   '1': 'Transfer',
   '2': [
@@ -220,6 +249,16 @@ const Action_NewFundsRequest$json = {
   ],
 };
 
+@$core.Deprecated('Use actionDescriptor instead')
+const Action_AddBundledTransactions$json = {
+  '1': 'AddBundledTransactions',
+  '2': [
+    {'1': 'fio_address', '3': 1, '4': 1, '5': 9, '10': 'fioAddress'},
+    {'1': 'bundle_sets', '3': 2, '4': 1, '5': 4, '10': 'bundleSets'},
+    {'1': 'fee', '3': 3, '4': 1, '5': 4, '10': 'fee'},
+  ],
+};
+
 /// Descriptor for `Action`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List actionDescriptor = $convert.base64Decode(
     'CgZBY3Rpb24SagoccmVnaXN0ZXJfZmlvX2FkZHJlc3NfbWVzc2FnZRgBIAEoCzInLlRXLkZJTy'
@@ -232,22 +271,30 @@ final $typed_data.Uint8List actionDescriptor = $convert.base64Decode(
     '5ld19mdW5kc19yZXF1ZXN0X21lc3NhZ2UYBSABKAsyJC5UVy5GSU8uUHJvdG8uQWN0aW9uLk5l'
     'd0Z1bmRzUmVxdWVzdEgAUhZuZXdGdW5kc1JlcXVlc3RNZXNzYWdlEmQKGnJlbW92ZV9wdWJfYW'
     'RkcmVzc19tZXNzYWdlGAYgASgLMiUuVFcuRklPLlByb3RvLkFjdGlvbi5SZW1vdmVQdWJBZGRy'
-    'ZXNzSABSF3JlbW92ZVB1YkFkZHJlc3NNZXNzYWdlGngKElJlZ2lzdGVyRmlvQWRkcmVzcxIfCg'
-    'tmaW9fYWRkcmVzcxgBIAEoCVIKZmlvQWRkcmVzcxIvChRvd25lcl9maW9fcHVibGljX2tleRgC'
-    'IAEoCVIRb3duZXJGaW9QdWJsaWNLZXkSEAoDZmVlGAMgASgEUgNmZWUaigEKDUFkZFB1YkFkZH'
-    'Jlc3MSHwoLZmlvX2FkZHJlc3MYASABKAlSCmZpb0FkZHJlc3MSRgoQcHVibGljX2FkZHJlc3Nl'
-    'cxgCIAMoCzIbLlRXLkZJTy5Qcm90by5QdWJsaWNBZGRyZXNzUg9wdWJsaWNBZGRyZXNzZXMSEA'
-    'oDZmVlGAMgASgEUgNmZWUajQEKEFJlbW92ZVB1YkFkZHJlc3MSHwoLZmlvX2FkZHJlc3MYASAB'
-    'KAlSCmZpb0FkZHJlc3MSRgoQcHVibGljX2FkZHJlc3NlcxgCIAMoCzIbLlRXLkZJTy5Qcm90by'
-    '5QdWJsaWNBZGRyZXNzUg9wdWJsaWNBZGRyZXNzZXMSEAoDZmVlGAMgASgEUgNmZWUaXgoIVHJh'
-    'bnNmZXISKAoQcGF5ZWVfcHVibGljX2tleRgBIAEoCVIOcGF5ZWVQdWJsaWNLZXkSFgoGYW1vdW'
-    '50GAIgASgEUgZhbW91bnQSEAoDZmVlGAMgASgEUgNmZWUadQoPUmVuZXdGaW9BZGRyZXNzEh8K'
-    'C2Zpb19hZGRyZXNzGAEgASgJUgpmaW9BZGRyZXNzEi8KFG93bmVyX2Zpb19wdWJsaWNfa2V5GA'
-    'IgASgJUhFvd25lckZpb1B1YmxpY0tleRIQCgNmZWUYAyABKARSA2ZlZRrUAQoPTmV3RnVuZHNS'
-    'ZXF1ZXN0EiQKDnBheWVyX2Zpb19uYW1lGAEgASgJUgxwYXllckZpb05hbWUSKgoRcGF5ZXJfZm'
-    'lvX2FkZHJlc3MYAiABKAlSD3BheWVyRmlvQWRkcmVzcxIkCg5wYXllZV9maW9fbmFtZRgDIAEo'
-    'CVIMcGF5ZWVGaW9OYW1lEjcKB2NvbnRlbnQYBCABKAsyHS5UVy5GSU8uUHJvdG8uTmV3RnVuZH'
-    'NDb250ZW50Ugdjb250ZW50EhAKA2ZlZRgFIAEoBFIDZmVlQg8KDW1lc3NhZ2Vfb25lb2Y=');
+    'ZXNzSABSF3JlbW92ZVB1YkFkZHJlc3NNZXNzYWdlEnIKIHJlbW92ZV9hbGxfcHViX2FkZHJlc3'
+    'Nlc19tZXNzYWdlGAcgASgLMiguVFcuRklPLlByb3RvLkFjdGlvbi5SZW1vdmVBbGxQdWJBZGRy'
+    'ZXNzSABSHHJlbW92ZUFsbFB1YkFkZHJlc3Nlc01lc3NhZ2USdgogYWRkX2J1bmRsZWRfdHJhbn'
+    'NhY3Rpb25zX21lc3NhZ2UYCCABKAsyKy5UVy5GSU8uUHJvdG8uQWN0aW9uLkFkZEJ1bmRsZWRU'
+    'cmFuc2FjdGlvbnNIAFIdYWRkQnVuZGxlZFRyYW5zYWN0aW9uc01lc3NhZ2UaeAoSUmVnaXN0ZX'
+    'JGaW9BZGRyZXNzEh8KC2Zpb19hZGRyZXNzGAEgASgJUgpmaW9BZGRyZXNzEi8KFG93bmVyX2Zp'
+    'b19wdWJsaWNfa2V5GAIgASgJUhFvd25lckZpb1B1YmxpY0tleRIQCgNmZWUYAyABKARSA2ZlZR'
+    'qKAQoNQWRkUHViQWRkcmVzcxIfCgtmaW9fYWRkcmVzcxgBIAEoCVIKZmlvQWRkcmVzcxJGChBw'
+    'dWJsaWNfYWRkcmVzc2VzGAIgAygLMhsuVFcuRklPLlByb3RvLlB1YmxpY0FkZHJlc3NSD3B1Ym'
+    'xpY0FkZHJlc3NlcxIQCgNmZWUYAyABKARSA2ZlZRqNAQoQUmVtb3ZlUHViQWRkcmVzcxIfCgtm'
+    'aW9fYWRkcmVzcxgBIAEoCVIKZmlvQWRkcmVzcxJGChBwdWJsaWNfYWRkcmVzc2VzGAIgAygLMh'
+    'suVFcuRklPLlByb3RvLlB1YmxpY0FkZHJlc3NSD3B1YmxpY0FkZHJlc3NlcxIQCgNmZWUYAyAB'
+    'KARSA2ZlZRpIChNSZW1vdmVBbGxQdWJBZGRyZXNzEh8KC2Zpb19hZGRyZXNzGAEgASgJUgpmaW'
+    '9BZGRyZXNzEhAKA2ZlZRgDIAEoBFIDZmVlGl4KCFRyYW5zZmVyEigKEHBheWVlX3B1YmxpY19r'
+    'ZXkYASABKAlSDnBheWVlUHVibGljS2V5EhYKBmFtb3VudBgCIAEoBFIGYW1vdW50EhAKA2ZlZR'
+    'gDIAEoBFIDZmVlGnUKD1JlbmV3RmlvQWRkcmVzcxIfCgtmaW9fYWRkcmVzcxgBIAEoCVIKZmlv'
+    'QWRkcmVzcxIvChRvd25lcl9maW9fcHVibGljX2tleRgCIAEoCVIRb3duZXJGaW9QdWJsaWNLZX'
+    'kSEAoDZmVlGAMgASgEUgNmZWUa1AEKD05ld0Z1bmRzUmVxdWVzdBIkCg5wYXllcl9maW9fbmFt'
+    'ZRgBIAEoCVIMcGF5ZXJGaW9OYW1lEioKEXBheWVyX2Zpb19hZGRyZXNzGAIgASgJUg9wYXllck'
+    'Zpb0FkZHJlc3MSJAoOcGF5ZWVfZmlvX25hbWUYAyABKAlSDHBheWVlRmlvTmFtZRI3Cgdjb250'
+    'ZW50GAQgASgLMh0uVFcuRklPLlByb3RvLk5ld0Z1bmRzQ29udGVudFIHY29udGVudBIQCgNmZW'
+    'UYBSABKARSA2ZlZRpsChZBZGRCdW5kbGVkVHJhbnNhY3Rpb25zEh8KC2Zpb19hZGRyZXNzGAEg'
+    'ASgJUgpmaW9BZGRyZXNzEh8KC2J1bmRsZV9zZXRzGAIgASgEUgpidW5kbGVTZXRzEhAKA2ZlZR'
+    'gDIAEoBFIDZmVlQg8KDW1lc3NhZ2Vfb25lb2Y=');
 
 @$core.Deprecated('Use chainParamsDescriptor instead')
 const ChainParams$json = {

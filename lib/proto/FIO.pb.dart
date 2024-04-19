@@ -543,6 +543,92 @@ class Action_RemovePubAddress extends $pb.GeneratedMessage {
   void clearFee() => clearField(3);
 }
 
+/// Action for removing public chain addresses from a FIO name; remove_pub_address
+/// Note: actor is not needed, computed from private key
+class Action_RemoveAllPubAddress extends $pb.GeneratedMessage {
+  factory Action_RemoveAllPubAddress({
+    $core.String? fioAddress,
+    $fixnum.Int64? fee,
+  }) {
+    final $result = create();
+    if (fioAddress != null) {
+      $result.fioAddress = fioAddress;
+    }
+    if (fee != null) {
+      $result.fee = fee;
+    }
+    return $result;
+  }
+  Action_RemoveAllPubAddress._() : super();
+  factory Action_RemoveAllPubAddress.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Action_RemoveAllPubAddress.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Action.RemoveAllPubAddress',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.FIO.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'fioAddress')
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'fee', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Action_RemoveAllPubAddress clone() =>
+      Action_RemoveAllPubAddress()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Action_RemoveAllPubAddress copyWith(
+          void Function(Action_RemoveAllPubAddress) updates) =>
+      super.copyWith(
+              (message) => updates(message as Action_RemoveAllPubAddress))
+          as Action_RemoveAllPubAddress;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Action_RemoveAllPubAddress create() => Action_RemoveAllPubAddress._();
+  Action_RemoveAllPubAddress createEmptyInstance() => create();
+  static $pb.PbList<Action_RemoveAllPubAddress> createRepeated() =>
+      $pb.PbList<Action_RemoveAllPubAddress>();
+  @$core.pragma('dart2js:noInline')
+  static Action_RemoveAllPubAddress getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Action_RemoveAllPubAddress>(create);
+  static Action_RemoveAllPubAddress? _defaultInstance;
+
+  /// The FIO name already registered to the owner. Ex.: "alice@trust"
+  @$pb.TagNumber(1)
+  $core.String get fioAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set fioAddress($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasFioAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFioAddress() => clearField(1);
+
+  /// Max fee to spend, can be obtained using get_fee API.
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get fee => $_getI64(1);
+  @$pb.TagNumber(3)
+  set fee($fixnum.Int64 v) {
+    $_setInt64(1, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasFee() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearFee() => clearField(3);
+}
+
 /// Action for transferring FIO coins; transfer_tokens_pub_key
 /// Note: actor is not needed, computed from private key
 class Action_Transfer extends $pb.GeneratedMessage {
@@ -890,6 +976,112 @@ class Action_NewFundsRequest extends $pb.GeneratedMessage {
   void clearFee() => clearField(5);
 }
 
+/// Action for adding `100 * bundle_sets` bundled transactions to the supplied FIO Handle. When bundles are purchased one or more sets of bundled transactions are added to the existing count.
+class Action_AddBundledTransactions extends $pb.GeneratedMessage {
+  factory Action_AddBundledTransactions({
+    $core.String? fioAddress,
+    $fixnum.Int64? bundleSets,
+    $fixnum.Int64? fee,
+  }) {
+    final $result = create();
+    if (fioAddress != null) {
+      $result.fioAddress = fioAddress;
+    }
+    if (bundleSets != null) {
+      $result.bundleSets = bundleSets;
+    }
+    if (fee != null) {
+      $result.fee = fee;
+    }
+    return $result;
+  }
+  Action_AddBundledTransactions._() : super();
+  factory Action_AddBundledTransactions.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Action_AddBundledTransactions.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Action.AddBundledTransactions',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.FIO.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'fioAddress')
+    ..a<$fixnum.Int64>(
+        2, _omitFieldNames ? '' : 'bundleSets', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'fee', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Action_AddBundledTransactions clone() =>
+      Action_AddBundledTransactions()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Action_AddBundledTransactions copyWith(
+          void Function(Action_AddBundledTransactions) updates) =>
+      super.copyWith(
+              (message) => updates(message as Action_AddBundledTransactions))
+          as Action_AddBundledTransactions;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Action_AddBundledTransactions create() =>
+      Action_AddBundledTransactions._();
+  Action_AddBundledTransactions createEmptyInstance() => create();
+  static $pb.PbList<Action_AddBundledTransactions> createRepeated() =>
+      $pb.PbList<Action_AddBundledTransactions>();
+  @$core.pragma('dart2js:noInline')
+  static Action_AddBundledTransactions getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Action_AddBundledTransactions>(create);
+  static Action_AddBundledTransactions? _defaultInstance;
+
+  /// The FIO name already registered to the owner. Ex.: "alice@trust"
+  @$pb.TagNumber(1)
+  $core.String get fioAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set fioAddress($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasFioAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFioAddress() => clearField(1);
+
+  /// Number of bundled sets. One set is 100 bundled transactions.
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get bundleSets => $_getI64(1);
+  @$pb.TagNumber(2)
+  set bundleSets($fixnum.Int64 v) {
+    $_setInt64(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasBundleSets() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBundleSets() => clearField(2);
+
+  /// Max fee to spend, can be obtained using get_fee API.
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get fee => $_getI64(2);
+  @$pb.TagNumber(3)
+  set fee($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasFee() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFee() => clearField(3);
+}
+
 enum Action_MessageOneof {
   registerFioAddressMessage,
   addPubAddressMessage,
@@ -897,6 +1089,8 @@ enum Action_MessageOneof {
   renewFioAddressMessage,
   newFundsRequestMessage,
   removePubAddressMessage,
+  removeAllPubAddressesMessage,
+  addBundledTransactionsMessage,
   notSet
 }
 
@@ -909,6 +1103,8 @@ class Action extends $pb.GeneratedMessage {
     Action_RenewFioAddress? renewFioAddressMessage,
     Action_NewFundsRequest? newFundsRequestMessage,
     Action_RemovePubAddress? removePubAddressMessage,
+    Action_RemoveAllPubAddress? removeAllPubAddressesMessage,
+    Action_AddBundledTransactions? addBundledTransactionsMessage,
   }) {
     final $result = create();
     if (registerFioAddressMessage != null) {
@@ -929,6 +1125,12 @@ class Action extends $pb.GeneratedMessage {
     if (removePubAddressMessage != null) {
       $result.removePubAddressMessage = removePubAddressMessage;
     }
+    if (removeAllPubAddressesMessage != null) {
+      $result.removeAllPubAddressesMessage = removeAllPubAddressesMessage;
+    }
+    if (addBundledTransactionsMessage != null) {
+      $result.addBundledTransactionsMessage = addBundledTransactionsMessage;
+    }
     return $result;
   }
   Action._() : super();
@@ -947,13 +1149,15 @@ class Action extends $pb.GeneratedMessage {
     4: Action_MessageOneof.renewFioAddressMessage,
     5: Action_MessageOneof.newFundsRequestMessage,
     6: Action_MessageOneof.removePubAddressMessage,
+    7: Action_MessageOneof.removeAllPubAddressesMessage,
+    8: Action_MessageOneof.addBundledTransactionsMessage,
     0: Action_MessageOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'Action',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.FIO.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8])
     ..aOM<Action_RegisterFioAddress>(
         1, _omitFieldNames ? '' : 'registerFioAddressMessage',
         subBuilder: Action_RegisterFioAddress.create)
@@ -971,6 +1175,12 @@ class Action extends $pb.GeneratedMessage {
     ..aOM<Action_RemovePubAddress>(
         6, _omitFieldNames ? '' : 'removePubAddressMessage',
         subBuilder: Action_RemovePubAddress.create)
+    ..aOM<Action_RemoveAllPubAddress>(
+        7, _omitFieldNames ? '' : 'removeAllPubAddressesMessage',
+        subBuilder: Action_RemoveAllPubAddress.create)
+    ..aOM<Action_AddBundledTransactions>(
+        8, _omitFieldNames ? '' : 'addBundledTransactionsMessage',
+        subBuilder: Action_AddBundledTransactions.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1081,6 +1291,36 @@ class Action extends $pb.GeneratedMessage {
   void clearRemovePubAddressMessage() => clearField(6);
   @$pb.TagNumber(6)
   Action_RemovePubAddress ensureRemovePubAddressMessage() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  Action_RemoveAllPubAddress get removeAllPubAddressesMessage => $_getN(6);
+  @$pb.TagNumber(7)
+  set removeAllPubAddressesMessage(Action_RemoveAllPubAddress v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasRemoveAllPubAddressesMessage() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearRemoveAllPubAddressesMessage() => clearField(7);
+  @$pb.TagNumber(7)
+  Action_RemoveAllPubAddress ensureRemoveAllPubAddressesMessage() =>
+      $_ensure(6);
+
+  @$pb.TagNumber(8)
+  Action_AddBundledTransactions get addBundledTransactionsMessage => $_getN(7);
+  @$pb.TagNumber(8)
+  set addBundledTransactionsMessage(Action_AddBundledTransactions v) {
+    setField(8, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasAddBundledTransactionsMessage() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearAddBundledTransactionsMessage() => clearField(8);
+  @$pb.TagNumber(8)
+  Action_AddBundledTransactions ensureAddBundledTransactionsMessage() =>
+      $_ensure(7);
 }
 
 /// Represents current parameters of the FIO blockchain
