@@ -30,7 +30,7 @@ void main() {
       expect(address.description, 'NboLGGKWtK5eXzaah5GVpXju9jCcoMi4cc');
     });
 
-    test('FromPrivateKey', () {
+    test('FromPublicKey', () {
       final publicKey = TWPublicKey.createWithHexString(
         '03787a4c5ff72dce6d97f9b6360dc302b2d8a833e8c570dcc124a96e5f564bb524',
         TWPublicKeyType.TWPublicKeyTypeSECP256k1,
