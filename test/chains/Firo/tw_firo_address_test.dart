@@ -75,10 +75,16 @@ void main() {
     test('DeriveFromXpub', () {
       final xpub =
           'xpub6Cb8Q6pDeS8PdKNbDv9Hvq4WpJXL3JvKvmHHwR1wD2H543hiCUE1f1tB5AXE6yg13k7xZ6PzEXMNUFHXk6kkx4RYte8VB1i4tCX9rwQVR4a';
-      final pubKey3 =
-          TWHDWallet.getPublicKeyFromExtended(xpub, coin, "m/44'/136'/0'/0/3");
-      final pubKey5 =
-          TWHDWallet.getPublicKeyFromExtended(xpub, coin, "m/44'/136'/0'/0/5");
+      final pubKey3 = TWHDWallet.getPublicKeyFromExtended(
+        extended: xpub,
+        coin: coin,
+        derivationPath: "m/44'/136'/0'/0/3",
+      );
+      final pubKey5 = TWHDWallet.getPublicKeyFromExtended(
+        extended: xpub,
+        coin: coin,
+        derivationPath: "m/44'/136'/0'/0/5",
+      );
 
       final address3 = TWBitcoinAddress.createWithPublicKey(
           pubKey3, TWCoinTypeP2pkhPrefix(coin));

@@ -32,7 +32,10 @@ void main() {
       final dpub =
           'dpubZFUmm9oh5zmQkR2Tr2AXS4tCkTWg4B27SpCPFkapZrrAqgU1EwgEFgrmi6EnLGXhak86yDHhXPxFAnGU58W5S4e8NCKG1ASUVaxwRqqNdfP';
       final pubKey0 = TWHDWallet.getPublicKeyFromExtended(
-          dpub, TWCoinType.TWCoinTypeDecred, "m/44'/42'/0'/0/0");
+        extended: dpub,
+        coin: TWCoinType.TWCoinTypeDecred,
+        derivationPath: "m/44'/42'/0'/0/0",
+      );
       final address0 = TWCoinTypeDeriveAddressFromPublicKey(
           TWCoinType.TWCoinTypeDecred, pubKey0);
 

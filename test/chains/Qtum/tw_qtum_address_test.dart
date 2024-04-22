@@ -112,10 +112,16 @@ void main() {
     test('DeriveFromXpub', () {
       final xpub =
           "xpub6CAkJZPecMDxRXEXZpDwyxcQ6CGie8GdovuJhsGwc2gFbLxdGr1PyqBXmsL7aYds1wfY2rB3YMVZiEE3CB3Lkj6KGoq1rEJ1wuaGkMDBf1m";
-      final pubKey2 =
-          TWHDWallet.getPublicKeyFromExtended(xpub, coin, "m/44'/2301'/0'/0/2");
-      final pubKey9 =
-          TWHDWallet.getPublicKeyFromExtended(xpub, coin, "m/44'/2301'/0'/0/9");
+      final pubKey2 = TWHDWallet.getPublicKeyFromExtended(
+        extended: xpub,
+        coin: coin,
+        derivationPath: "m/44'/2301'/0'/0/2",
+      );
+      final pubKey9 = TWHDWallet.getPublicKeyFromExtended(
+        extended: xpub,
+        coin: coin,
+        derivationPath: "m/44'/2301'/0'/0/9",
+      );
 
       final address2 = TWBitcoinAddress.createWithPublicKey(
           pubKey2, TWCoinTypeP2pkhPrefix(coin));
@@ -132,10 +138,16 @@ void main() {
     test('DeriveFromZpub', () {
       final zpub =
           "zpub6rJJqJZcpaC7DrdsYiprLfUfvtaf11ZZWmrmYeWMkdZTx6tgfQLiBZuisraogskwBRLMGWfXoCyWRrXSypwPdNV2UWJXm5bDVQvBXvrzz9d";
-      final pubKey4 =
-          TWHDWallet.getPublicKeyFromExtended(zpub, coin, "m/44'/2301'/0'/0/4");
+      final pubKey4 = TWHDWallet.getPublicKeyFromExtended(
+        extended: zpub,
+        coin: coin,
+        derivationPath: "m/44'/2301'/0'/0/4",
+      );
       final pubKey11 = TWHDWallet.getPublicKeyFromExtended(
-          zpub, coin, "m/44'/2301'/0'/0/11");
+        extended: zpub,
+        coin: coin,
+        derivationPath: "m/44'/2301'/0'/0/11",
+      );
 
       final address4 =
           TWSegwitAddress.createWithPublicKey(TWHRP.TWHRPQtum, pubKey4);

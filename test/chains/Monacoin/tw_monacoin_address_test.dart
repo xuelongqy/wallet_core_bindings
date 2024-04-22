@@ -110,10 +110,16 @@ void main() {
     test('DeriveFromZpub', () {
       final xpub =
           'xpub6CYWFE1BgTCW2vtbDm1RRT81i3hBkQrXCfGs5hYp211fpgLZV5xCEwXMWPAL3LgaBA9koXpLZSUo7rTyJ8q1JwqKhvzVpdzBKRGyyGb31KF';
-      final pubKey2 =
-          TWHDWallet.getPublicKeyFromExtended(xpub, coin, "m/44'/22'/0'/0/2");
-      final pubKey9 =
-          TWHDWallet.getPublicKeyFromExtended(xpub, coin, "m/44'/22'/0'/0/9");
+      final pubKey2 = TWHDWallet.getPublicKeyFromExtended(
+        extended: xpub,
+        coin: coin,
+        derivationPath: "m/44'/22'/0'/0/2",
+      );
+      final pubKey9 = TWHDWallet.getPublicKeyFromExtended(
+        extended: xpub,
+        coin: coin,
+        derivationPath: "m/44'/22'/0'/0/9",
+      );
 
       final address2 = TWAnyAddress.createWithPublicKey(pubKey2, coin);
       final address2String = address2.description;

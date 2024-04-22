@@ -348,8 +348,11 @@ class TWHDWallet extends TWObjectFinalizable<bindings.TWHDWallet> {
   /// \param [coin] a coin type
   /// \param [derivationPath] a derivation path
   /// \return Nullable TWPublic key
-  static TWPublicKey getPublicKeyFromExtended(
-          String extended, int coin, String derivationPath) =>
+  static TWPublicKey getPublicKeyFromExtended({
+    required String extended,
+    required int coin,
+    required String derivationPath,
+  }) =>
       TWPublicKey.fromPointer(iTWBindings.TWHDWalletGetPublicKeyFromExtended(
         TWString(extended).pointer,
         coin,

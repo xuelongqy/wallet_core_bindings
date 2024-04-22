@@ -133,9 +133,15 @@ void main() {
       final xpub =
           'xpub6CEHLxCHR9sNtpcxtaTPLNxvnY9SQtbcFdov22riJ7jmhxmLFvXAoLbjHSzwXwNNuxC1jUP6tsHzFV9rhW9YKELfmR9pJaKFaM8C3zMPgjw';
       final pubKeys2 = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/145'/0'/0/2");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/145'/0'/0/2",
+      );
       final pubKeys9 = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/145'/0'/0/9");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/145'/0'/0/9",
+      );
 
       final address = TWAnyAddress.createWithPublicKey(
           pubKeys2, TWCoinType.TWCoinTypeBitcoinCash);

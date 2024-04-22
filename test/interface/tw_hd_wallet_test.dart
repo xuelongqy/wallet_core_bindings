@@ -477,9 +477,15 @@ void main() {
       final xpub =
           'xpub6BosfCnifzxcFwrSzQiqu2DBVTshkCXacvNsWGYJVVhhawA7d4R5WSWGFNbi8Aw6ZRc1brxMyWMzG3DSSSSoekkudhUd9yLb6qx39T9nMdj';
       final xpubAddr2 = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/145'/0'/0/2");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/145'/0'/0/2",
+      );
       final xpubAddr9 = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/145'/0'/0/9");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/145'/0'/0/9",
+      );
 
       final data2 = xpubAddr2.data;
       final data9 = xpubAddr9.data;
@@ -493,7 +499,10 @@ void main() {
     test('PublicKeyInvalid', () {
       final xpub = 'xpub0000';
       final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/145'/0'/0/0");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/145'/0'/0/0",
+      );
       expect(xpubAddr.pointer, nullptr);
     });
 
@@ -501,9 +510,15 @@ void main() {
       final ypub =
           'ypub6Ww3ibxVfGzLrAH1PNcjyAWenMTbbAosGNB6VvmSEgytSER9azLDWCxoJwW7Ke7icmizBMXrzBx9979FfaHxHcrArf3zbeJJJUZPf663zsP';
       final ypubAddr3 = TWHDWallet.getPublicKeyFromExtended(
-          ypub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/0'/0'/0/3");
+        extended: ypub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/0'/0'/0/3",
+      );
       final ypubAddr10 = TWHDWallet.getPublicKeyFromExtended(
-          ypub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/0'/0'/0/10");
+        extended: ypub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/0'/0'/0/10",
+      );
 
       final data3 = ypubAddr3.data;
       final data10 = ypubAddr10.data;
@@ -518,9 +533,15 @@ void main() {
       final zpub =
           'zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs';
       final zpubAddr4 = TWHDWallet.getPublicKeyFromExtended(
-          zpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/0'/0'/0/4");
+        extended: zpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/0'/0'/0/4",
+      );
       final zpubAddr11 = TWHDWallet.getPublicKeyFromExtended(
-          zpub, TWCoinType.TWCoinTypeBitcoinCash, "m/44'/0'/0'/0/11");
+        extended: zpub,
+        coin: TWCoinType.TWCoinTypeBitcoinCash,
+        derivationPath: "m/44'/0'/0'/0/11",
+      );
 
       final data4 = zpubAddr4.data;
       final data11 = zpubAddr11.data;
@@ -540,7 +561,10 @@ void main() {
       final xpub =
           'xpub6C7LtZJgtz1BKXG9mExKUxYvX7HSF38UMMmGbpqNQw3DfYwAw8E6sH7VSVxFipvEEm2afSqTjoRgcLmycXX4zfxCWJ4HY73a9KdgvfHEQGB';
       final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeEthereum, "m/44'/60'/0'/0/1");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeEthereum,
+        derivationPath: "m/44'/60'/0'/0/1",
+      );
       expect(xpubAddr.pointer != nullptr, true);
       final data = xpubAddr.data;
       expectHex(data,
@@ -551,7 +575,10 @@ void main() {
       final xpub =
           'xpub6BosfCnifzxcFwrSzQiqu2DBVTshkCXacvNsWGYJVVhhawA7d4R5WSWGFNbi8Aw6ZRc1brxMyWMzG3DSSSSoekkudhUd9yLb6qx39T9nMdj';
       final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-          xpub, TWCoinType.TWCoinTypeNEO, "m/44'/888'/0'/0/0");
+        extended: xpub,
+        coin: TWCoinType.TWCoinTypeNEO,
+        derivationPath: "m/44'/888'/0'/0/0",
+      );
       expect(xpubAddr.pointer != nullptr, true);
       final data = xpubAddr.data;
       expectHex(data,
@@ -564,25 +591,37 @@ void main() {
       {
         // Ed25519
         final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-            xpub, TWCoinType.TWCoinTypeSolana, "m/44'/501'/0'");
+          extended: xpub,
+          coin: TWCoinType.TWCoinTypeSolana,
+          derivationPath: "m/44'/501'/0'",
+        );
         expect(xpubAddr.pointer, nullptr);
       }
       {
         // Ed25519Extended
         final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-            xpub, TWCoinType.TWCoinTypeCardano, "m/1852'/1815'/0'/0/0");
+          extended: xpub,
+          coin: TWCoinType.TWCoinTypeCardano,
+          derivationPath: "m/1852'/1815'/0'/0/0",
+        );
         expect(xpubAddr.pointer, nullptr);
       }
       {
         // Ed25519Blake2bNano
         final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-            xpub, TWCoinType.TWCoinTypeNano, "m/44'/165'/0'");
+          extended: xpub,
+          coin: TWCoinType.TWCoinTypeNano,
+          derivationPath: "m/44'/165'/0'",
+        );
         expect(xpubAddr.pointer, nullptr);
       }
       {
         // Curve25519
         final xpubAddr = TWHDWallet.getPublicKeyFromExtended(
-            xpub, TWCoinType.TWCoinTypeWaves, "m/44'/5741564'/0'/0'/0'");
+          extended: xpub,
+          coin: TWCoinType.TWCoinTypeWaves,
+          derivationPath: "m/44'/5741564'/0'/0'/0'",
+        );
         expect(xpubAddr.pointer, nullptr);
       }
     });
@@ -732,8 +771,11 @@ void main() {
       expect(zpub,
           'zpub6rNUNtxSa9Gxvm4Bdxf1MPMwrvkzwDx6vP96Hkzw3jiQKdg3fhXBStxjn12YixQB8h88B3RMSRscRstf9AEVaYr3MAqVBEWBDuEJU4PGaT9');
       {
-        final publicKey1 =
-            TWHDWallet.getPublicKeyFromExtended(zpub, coin, derivPath1);
+        final publicKey1 = TWHDWallet.getPublicKeyFromExtended(
+          extended: zpub,
+          coin: coin,
+          derivationPath: derivPath1,
+        );
         expect(publicKey1.pointer != nullptr, true);
         final publicKey1Data = publicKey1.data;
         expectHex(publicKey1Data, expectedPublicKey1);
@@ -742,8 +784,11 @@ void main() {
         expect(address1.description, expectedAddress1);
       }
       {
-        final publicKey2 =
-            TWHDWallet.getPublicKeyFromExtended(zpub, coin, derivPath2);
+        final publicKey2 = TWHDWallet.getPublicKeyFromExtended(
+          extended: zpub,
+          coin: coin,
+          derivationPath: derivPath2,
+        );
         expect(publicKey2.pointer != nullptr, true);
         final publicKey2Data = publicKey2.data;
         expectHex(publicKey2Data, expectedPublicKey2);
