@@ -12,13 +12,13 @@ class TWTronMessageSigner {
   /// \param [privateKey] the private key used for signing
   /// \param [message] A custom message which is input to the signing.
   /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
-  static String? signMessage(TWPrivateKey privateKey, String message) =>
+  static String signMessage(TWPrivateKey privateKey, String message) =>
       TWString.fromPointer(
         iTWBindings.TWTronMessageSignerSignMessage(
           privateKey.pointer,
           TWString(message).pointer,
         ),
-      ).value;
+      ).value!;
 
   /// Verify signature for a message.
   ///
