@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWSolanaTransaction {
+  TWSolanaTransaction._();
+
   /// Decode Solana transaction, update the recent blockhash and re-sign the transaction.
   ///
   /// # Warning
@@ -15,11 +17,11 @@ class TWSolanaTransaction {
   static Uint8List updateBlockhashAndSign({
     required String encodedTx,
     required String recentBlockhash,
-    required TWDataVector privateKeys,
+    required List<Uint8List> privateKeys,
   }) =>
       TWData.fromPointer(iTWBindings.TWSolanaTransactionUpdateBlockhashAndSign(
         TWString(encodedTx).pointer,
         TWString(recentBlockhash).pointer,
-        privateKeys.pointer,
+        TWDataVector.createWithDataList(privateKeys).pointer,
       )).bytes()!;
 }
