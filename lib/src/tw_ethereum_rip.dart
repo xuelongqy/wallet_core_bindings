@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWEthereumRlp {
+  TWEthereumRlp._();
+
   /// Encode an item or a list of items as Eth RLP binary format.
   ///
   /// \param [coin] EVM-compatible coin type.

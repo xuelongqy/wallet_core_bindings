@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Non-core transaction utility methods, like building a transaction using an external signature.
 class TWTransactionCompiler {
+  TWTransactionCompiler._();
+
   /// Obtains pre-signing hashes of a transaction.
   ///
   /// We provide a default `PreSigningOutput` in TransactionCompiler.proto.

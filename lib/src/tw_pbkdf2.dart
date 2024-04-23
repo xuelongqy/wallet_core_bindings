@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Password-Based Key Derivation Function 2
 class TWPBKDF2 {
+  TWPBKDF2._();
+
   /// Derives a key from a password and a salt using PBKDF2 + Sha256.
   ///
   /// \param [password] is the master password from which a derived key is generated

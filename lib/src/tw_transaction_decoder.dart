@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Non-core transaction utility methods, like building a transaction using an external signature.
 class TWTransactionDecoder {
+  TWTransactionDecoder._();
+
   /// Decodes a transaction from a binary representation.
   ///
   /// \param [coinType] coin type.

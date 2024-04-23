@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWEthereum {
+  TWEthereum._();
+
   /// Generate a layer 2 eip2645 derivation path from eth address, layer, application and given index.
   ///
   /// \param [ethAddress] non-null Ethereum address

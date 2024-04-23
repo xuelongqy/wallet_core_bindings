@@ -5,6 +5,8 @@ part of '../wallet_core_bindings.dart';
 /// Ethereum and some other wallets support a message signing & verification format, to create a proof (a signature)
 /// that someone has access to the private keys of a specific address.
 class TWEthereumMessageSigner {
+  TWEthereumMessageSigner._();
+
   /// Sign a typed message EIP-712 V4.
   ///
   /// \param [privateKey] the private key used for signing

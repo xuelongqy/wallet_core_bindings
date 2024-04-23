@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Represents a WalletConnect signing request.
 class TWWalletConnectRequest {
+  TWWalletConnectRequest._();
+
   /// Parses the WalletConnect signing request as a `SigningInput`.
   ///
   /// \param [coin] The given coin type to plan the transaction for.

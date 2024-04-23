@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Tezos message signing, verification and utilities.
 class TWTezosMessageSigner {
+  TWTezosMessageSigner._();
+
   /// Implement format input as described in https://tezostaquito.io/docs/signing/
   ///
   /// \param [message] message to format e.g: Hello, World

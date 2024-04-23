@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// THORChain swap functions
 class TWTHORChainSwap {
+  TWTHORChainSwap._();
+
   /// Builds a THORChainSwap transaction input.
   ///
   /// \param input The serialized data of SwapInput.

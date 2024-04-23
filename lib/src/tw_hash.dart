@@ -5,6 +5,8 @@ typedef Uint8List TWHasher(Uint8List data);
 
 /// Hash functions
 class TWHash {
+  TWHash._();
+
   static const int sha1Length = 20;
   static const int sha256Length = 32;
   static const int sha512Length = 64;

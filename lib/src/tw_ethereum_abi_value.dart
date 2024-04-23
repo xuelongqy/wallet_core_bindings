@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Represents Ethereum ABI value
 class TWEthereumAbiValue {
+  TWEthereumAbiValue._();
+
   /// Encode a bool according to Ethereum ABI, into 32 bytes.  Values are padded by 0 on the left, unless specified otherwise
   ///
   /// \param [value] a boolean value

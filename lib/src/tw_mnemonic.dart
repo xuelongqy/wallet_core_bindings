@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Mnemonic validate / lookup functions
 class TWMnemonic {
+  TWMnemonic._();
+
   /// Determines whether a BIP39 English mnemonic phrase is valid.
   ///
   /// \param [mnemonic] Non-null BIP39 english mnemonic

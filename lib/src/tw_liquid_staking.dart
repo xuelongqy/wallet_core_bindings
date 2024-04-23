@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// THORChain swap functions
 class TWLiquidStaking {
+  TWLiquidStaking._();
+
   /// Builds a LiquidStaking transaction input.
   ///
   /// \param [input] The serialized data of LiquidStakingInput.

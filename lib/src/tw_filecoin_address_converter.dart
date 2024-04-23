@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Filecoin-Ethereum address converter.
 class TWFilecoinAddressConverter {
+  TWFilecoinAddressConverter._();
+
   /// Converts a Filecoin address to Ethereum.
   ///
   /// \param [filecoinAddress] a Filecoin address.

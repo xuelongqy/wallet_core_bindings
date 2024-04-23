@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Wrapper class for Ethereum ABI encoding & decoding.
 class TWEthereumAbi {
+  TWEthereumAbi._();
+
   /// Decode a contract call (function input) according to an ABI json.
   ///
   /// \param [coin] EVM-compatible coin type.

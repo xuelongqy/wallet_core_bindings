@@ -5,6 +5,8 @@ part of '../wallet_core_bindings.dart';
 /// StarkEx and some other wallets support a message signing & verification format, to create a proof (a signature)
 /// that someone has access to the private keys of a specific address.
 class TWStarkExMessageSigner {
+  TWStarkExMessageSigner._();
+
   /// Sign a message.
   ///
   /// \param [privateKey] the private key used for signing

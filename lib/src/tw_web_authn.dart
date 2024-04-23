@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWWebAuthn {
+  TWWebAuthn._();
+
   /// Converts attestation object to the public key on P256 curve
   ///
   /// \param attestationObject Attestation object retrieved from webuthn.get method
