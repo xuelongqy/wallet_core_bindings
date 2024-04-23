@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// CoinTypeConfiguration functions
 class TWCoinTypeConfiguration {
+  TWCoinTypeConfiguration._();
+
   /// Returns stock symbol of coin
   ///
   /// \param [type] A coin type

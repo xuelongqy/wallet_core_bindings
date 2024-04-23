@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Calculates the fee of any Bitcoin transaction.
 class TWBitcoinFee {
+  TWBitcoinFee._();
+
   /// Calculates the fee of any Bitcoin transaction.
   ///
   /// \param [data] the signed transaction in its final form.

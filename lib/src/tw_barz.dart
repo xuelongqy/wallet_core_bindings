@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Barz functions
 class TWBarz {
+  TWBarz._();
+
   /// Calculate a counterfactual address for the smart contract wallet
   ///
   /// \param [input] The serialized data of ContractAddressInput.

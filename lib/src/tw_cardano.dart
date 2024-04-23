@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Cardano helper functions
 class TWCardano {
+  TWCardano._();
+
   /// Calculates the minimum ADA amount needed for a UTXO.
   ///
   /// \deprecated consider using `TWCardanoOutputMinAdaAmount` instead.

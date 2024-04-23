@@ -6,6 +6,8 @@ part of '../wallet_core_bindings.dart';
 /// that someone has access to the private keys of a specific address.
 /// This feature currently works on old legacy addresses only.
 class TWBitcoinMessageSigner {
+  TWBitcoinMessageSigner._();
+
   /// Sign a message.
   ///
   /// \param [privateKey] the private key used for signing

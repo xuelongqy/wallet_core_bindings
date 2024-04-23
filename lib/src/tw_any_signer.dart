@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWAnySigner {
+  TWAnySigner._();
+
   /// Signs a transaction specified by the signing input and coin type.
   ///
   /// \param [input] The serialized data of a signing input (e.g. TW.Bitcoin.Proto.SigningInput).

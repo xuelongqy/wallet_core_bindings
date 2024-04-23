@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// AES encryption/decryption methods.
 class TWAES {
+  TWAES._();
+
   /// Encrypts a block of Data using AES in Cipher Block Chaining (CBC) mode.
   ///
   /// \param [key] encryption key Data, must be 16, 24, or 32 bytes long.

@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWBase64 {
+  TWBase64._();
+
   /// Encode an input to Base64 with the default alphabet (RFC4648 with '+', '/')
   ///
   /// \param [data] Data to be encoded (raw bytes)

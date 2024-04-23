@@ -1,6 +1,8 @@
 part of '../wallet_core_bindings.dart';
 
 class TWBase58 {
+  TWBase58._();
+
   /// Encodes data as a Base58 string, including the checksum.
   ///
   /// \param [data] The data to encode.

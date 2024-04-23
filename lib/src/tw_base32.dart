@@ -2,6 +2,8 @@ part of '../wallet_core_bindings.dart';
 
 /// Base32 encode / decode functions
 class TWBase32 {
+  TWBase32._();
+
   /// Decode a Base32 input with the given alphabet
   ///
   /// \param [string] Encoded base32 input to be decoded
