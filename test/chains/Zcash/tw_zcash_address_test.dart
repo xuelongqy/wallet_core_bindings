@@ -4,7 +4,7 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import '../../utils.dart';
 
 void main() {
-  group('ZcashAddress', () {
+  group('TWZcash', () {
     const coin = TWCoinType.TWCoinTypeZcash;
 
     test('TransparentAddress', () {
