@@ -6,10 +6,10 @@ import 'package:wallet_core_bindings/proto/VeChain.pb.dart' as VeChain;
 import '../../utils.dart';
 
 void main() {
-  group('TWAnySignerTron', () {
+  group('TWAnySignerVeChain', () {
     const coin = TWCoinType.TWCoinTypeVeChain;
 
-    test('SignTransferAsset', () {
+    test('Sign', () {
       final input = VeChain.SigningInput(
         chainTag: 1,
         blockRef: $fixnum.Int64(1),
