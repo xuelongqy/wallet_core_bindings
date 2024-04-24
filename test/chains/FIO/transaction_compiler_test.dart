@@ -85,6 +85,7 @@ void main() {
 
         final output = FIO.SigningOutput.fromBuffer(outputData);
         expect(ExpectedTx, output.json);
+        expect(output.actionName, 'trnsfiopubky');
       }
 
       {
