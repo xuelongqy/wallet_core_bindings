@@ -90,7 +90,7 @@ void main() {
           'ypub6XKNHSpLM1pDsoiNvePsY4PwQv1CiwRCDhfVSr8jrbjy5sNhPqzy3QBgYdCayJhq5st63XZTWrea8So84QYbPgP2EvVR5dhSrW18ud4GZaT');
 
       // .bip84
-      final zptv = wallet.getExtendedPrivateKey(
+      final zprv = wallet.getExtendedPrivateKey(
         purpose: TWPurpose.TWPurposeBIP84,
         coin: coin,
         version: TWHDVersion.TWHDVersionZPRV,
@@ -101,13 +101,13 @@ void main() {
         version: TWHDVersion.TWHDVersionZPUB,
       );
 
-      expect(zptv,
+      expect(zprv,
           'zprvAdi4KQxm5ofVJqh1Y5KxSTuC1CSEibkz3Ei4dnNMzyLt6FiW3rMPTgKUCiwv1cw4rVeDW9ju82ChFz27UNG2kxvtFsngJCYtHjDYURsefzX');
       expect(zpub,
           'zpub6rhQivVevBDnXKmUe6rxobqvZEGj84UqQTdfSAmyZJsry43ebPfe1Udx3zUNDB3cHu2ozNCDhsy8BuNCjCvStNmodzdR2E2wWAsLyNFu5i1');
     });
 
-    test('DeriveFromZpub', () {
+    test('DeriveFromXpub', () {
       final xpub =
           'xpub6CYWFE1BgTCW2vtbDm1RRT81i3hBkQrXCfGs5hYp211fpgLZV5xCEwXMWPAL3LgaBA9koXpLZSUo7rTyJ8q1JwqKhvzVpdzBKRGyyGb31KF';
       final pubKey2 = TWHDWallet.getPublicKeyFromExtended(
