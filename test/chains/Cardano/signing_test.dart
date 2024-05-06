@@ -19,7 +19,7 @@ Cardano.SigningInput createSampleInput(
   String alternateToAddress = '',
   bool omitPrivateKey = false,
 ]) {
-  final toAddress = (alternateToAddress.length > 0)
+  final toAddress = (alternateToAddress.isNotEmpty)
       ? alternateToAddress
       : "addr1q92cmkgzv9h4e5q7mnrzsuxtgayvg4qr7y3gyx97ukmz3dfx7r9fu73vqn25377ke6r0xk97zw07dqr9y5myxlgadl2s0dgke5";
 

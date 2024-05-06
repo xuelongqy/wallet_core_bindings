@@ -14,7 +14,7 @@ void main() {
     const coin = TWCoinType.TWCoinTypeBinance;
 
     test('SendOrder', () {
-      final private_key = TWData.createWithHexString(
+      final privateKey = TWData.createWithHexString(
               '95949f757db1f57ca94a5dff23314accbe7abee89597bf6a3c7382c84d7eb832')
           .bytes()!;
       final payload = json.encode({
@@ -66,7 +66,7 @@ void main() {
       expect(parsingOutput.hasBinance(), true);
       final signingInput = parsingOutput.binance;
 
-      signingInput.privateKey = private_key;
+      signingInput.privateKey = privateKey;
 
       final output = Binance.SigningOutput.fromBuffer(
           TWAnySigner.sign(signingInput.writeToBuffer(), coin));

@@ -299,7 +299,7 @@ void main() {
     // The typed message was used to sign a Greenfield transaction:
     // https://greenfieldscan.com/tx/9F895CF2DD64FB1F428CEFCF2A6585A813C3540FC9FE1EF42DB1DA2CB1DF55AB
     test('SignTypedMessageExtraTypesOrder', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/eip712_greenfield.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/eip712_greenfield.json";
       final typeData = load_file(path);
 
       final ethKey = TWPrivateKey.createWithHexString(

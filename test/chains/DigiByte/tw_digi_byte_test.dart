@@ -19,7 +19,7 @@ void main() {
           https://dgb2.trezor.io/tx/6eb7e134cafbe4030032aa9f44a14420826e8d290cddff1a53339c3916b19f30
       */
 
-      final utxo_amount = 105000000;
+      final utxoAmount = 105000000;
       final amount = 101000000;
       final fee = 1000;
 
@@ -41,7 +41,7 @@ void main() {
               index: 0,
               sequence: UINT32_MAX,
             ),
-            amount: $fixnum.Int64(utxo_amount),
+            amount: $fixnum.Int64(utxoAmount),
             script:
                 parse_hex("76a91447825943ca6a936b177fdc7c9dc05251640169c288ac"),
           ),
@@ -52,7 +52,7 @@ void main() {
       input.plan = Bitcoin.TransactionPlan(
         amount: $fixnum.Int64(amount),
         fee: $fixnum.Int64(fee),
-        change: $fixnum.Int64(utxo_amount - amount - fee),
+        change: $fixnum.Int64(utxoAmount - amount - fee),
         utxos: input.utxo,
       );
 
@@ -89,7 +89,7 @@ void main() {
         https://dgb2.trezor.io/tx/4c9d48df9cc5a047b62a0ec5a19bbf1f88aa60faffab554dcc8fe833e4ff6080
       */
 
-      final utxo_amount = 3980000;
+      final utxoAmount = 3980000;
       final amount = 2000000;
 
       final utxoKey0 = parse_hex(
@@ -110,7 +110,7 @@ void main() {
               index: 1,
               sequence: UINT32_MAX,
             ),
-            amount: $fixnum.Int64(utxo_amount),
+            amount: $fixnum.Int64(utxoAmount),
             script: TWBitcoinScript.createWithBytes(
                     parse_hex('00144b62694cfdd7bdac59cbed211288ccd5c0dabd02'))
                 .data,

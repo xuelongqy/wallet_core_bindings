@@ -16,16 +16,16 @@ void main() {
 
     test('CompileWithSignatures', () {
       /// Step 1: Prepare transaction input (protobuf)
-      final NEO_ASSET_ID =
+      final neoAssetId =
           "9b7cffdaa674beae0f930ebe6085af9093e5fe56b34a5c220ccdcf6efc336fc5";
-      final GAS_ASSET_ID =
+      final gasAssetId =
           "e72d286979ee6cb1b7e65dfddfb2e384100b8d148e7758de42e4168b71792c60";
 
       final privateKey = TWPrivateKey.createWithHexString(
           'F18B2F726000E86B4950EBEA7BFF151F69635951BC4A31C44F28EE6AF7AEC128');
       final publicKey = privateKey.getPublicKey(coin);
       final input = NEO.SigningInput(
-        gasAssetId: GAS_ASSET_ID,
+        gasAssetId: gasAssetId,
         gasChangeAddress: 'AdtSLMBqACP4jv8tRWwyweXGpyGG46eMXV',
         inputs: [
           NEO.TransactionInput(
@@ -34,13 +34,13 @@ void main() {
                 .reversed
                 .toList(),
             prevIndex: 1,
-            assetId: NEO_ASSET_ID,
+            assetId: neoAssetId,
             value: $fixnum.Int64(89300000000),
           ),
         ],
         outputs: [
           NEO.TransactionOutput(
-            assetId: NEO_ASSET_ID,
+            assetId: neoAssetId,
             toAddress: 'Ad9A1xPbuA5YBFr1XPznDwBwQzdckAjCev',
             changeAddress: 'AdtSLMBqACP4jv8tRWwyweXGpyGG46eMXV',
             amount: $fixnum.Int64(100000000),
@@ -141,8 +141,8 @@ void main() {
       // https://neoscan.io/transaction/6368FC6127DD7FAA3B7548CA97162D5BE18D4B2FA0046A79853E5864318E19B8
 
       /// Step 1: Prepare transaction input (protobuf)
-      final ASSET_ID = "f56c89be8bfcdec617e2402b5c3fd5b6d71b820d";
-      final GAS_ASSET_ID =
+      final assetId = "f56c89be8bfcdec617e2402b5c3fd5b6d71b820d";
+      final gasAssetId =
           "e72d286979ee6cb1b7e65dfddfb2e384100b8d148e7758de42e4168b71792c60";
 
       final publicKey = TWPublicKey.createWithHexString(
@@ -150,20 +150,20 @@ void main() {
         TWCoinTypePublicKeyType(coin),
       );
       final input = NEO.SigningInput(
-        gasAssetId: GAS_ASSET_ID,
+        gasAssetId: gasAssetId,
         gasChangeAddress: 'AJzoeKrj7RHMwSrPQDPdv61ciVEYpmhkjk',
         inputs: [
           NEO.TransactionInput(
             prevHash: parse_hex(
                 "f231ee7b5097d912a22fe7cb6b7417490d2ddde200e3c57042be5abcdf6f974c"),
             prevIndex: 0,
-            assetId: GAS_ASSET_ID,
+            assetId: gasAssetId,
             value: $fixnum.Int64(7011673),
           ),
         ],
         outputs: [
           NEO.TransactionOutput(
-            assetId: GAS_ASSET_ID,
+            assetId: gasAssetId,
             toAddress: 'AJzoeKrj7RHMwSrPQDPdv61ciVEYpmhkjk',
             changeAddress: 'AJzoeKrj7RHMwSrPQDPdv61ciVEYpmhkjk',
             amount: $fixnum.Int64(6911673),
@@ -174,7 +174,7 @@ void main() {
       // set nep5 transfer
       input.transaction = NEO.Transaction(
         nep5Transfer: NEO.Transaction_Nep5Transfer(
-          assetId: ASSET_ID,
+          assetId: assetId,
           from: 'AJzoeKrj7RHMwSrPQDPdv61ciVEYpmhkjk',
           to: 'AeRsDBqPiGKZhzNtL2vWhXbXGccJLCGrbJ',
           amount: intToBytes(110000000),

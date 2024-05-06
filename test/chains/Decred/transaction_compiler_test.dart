@@ -52,11 +52,11 @@ void main() {
 
       // build preimage
       final txInputData = input.writeToBuffer();
-      expect(txInputData.length != 0, true);
+      expect(txInputData.isNotEmpty, true);
 
       final preImageHashes =
           TWTransactionCompiler.preImageHashes(coin, txInputData);
-      expect(preImageHashes.length != 0, true);
+      expect(preImageHashes.isNotEmpty, true);
 
       final preSigningOutput =
           Bitcoin.PreSigningOutput.fromBuffer(preImageHashes);
@@ -148,11 +148,11 @@ void main() {
 
       // build preimage
       final txInputData = input.writeToBuffer();
-      expect(txInputData.length != 0, true);
+      expect(txInputData.isNotEmpty, true);
 
       final preImageHashes =
           TWTransactionCompiler.preImageHashes(coin, txInputData);
-      expect(preImageHashes.length != 0, true);
+      expect(preImageHashes.isNotEmpty, true);
 
       final preSigningOutput =
           Bitcoin.PreSigningOutput.fromBuffer(preImageHashes);

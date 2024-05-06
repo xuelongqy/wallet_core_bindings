@@ -21,7 +21,7 @@ void main() {
         tx - https://blockbook.electrum-mona.org/tx/0c2916dee64b1e60414199debfa22300c7ecd1f94f3a5602d2e5b9e120b63573
       */
 
-      final utxo_amount = 100000000;
+      final utxoAmount = 100000000;
       final amount = 50000000;
       final fee = 20000;
 
@@ -40,7 +40,7 @@ void main() {
               index: 0,
               sequence: UINT32_MAX,
             ),
-            amount: $fixnum.Int64(utxo_amount),
+            amount: $fixnum.Int64(utxoAmount),
             script:
                 parse_hex("76a914fea39370769d4fed2d8ab98dd5daa482cc56113b88ac"),
           ),
@@ -55,7 +55,7 @@ void main() {
           input.writeToBuffer(), TWCoinType.TWCoinTypeDigiByte));
       plan.amount = $fixnum.Int64(amount);
       plan.fee = $fixnum.Int64(fee);
-      plan.change = $fixnum.Int64(utxo_amount - amount - fee);
+      plan.change = $fixnum.Int64(utxoAmount - amount - fee);
 
       input.plan = plan;
 

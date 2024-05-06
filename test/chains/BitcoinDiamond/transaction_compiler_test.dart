@@ -70,7 +70,7 @@ void main() {
 
       // Serialize input
       final txInputData = input.writeToBuffer();
-      expect(txInputData.length != 0, true);
+      expect(txInputData.isNotEmpty, true);
 
       /// Step 2: Obtain preimage hashes
       final preImageHashes =

@@ -58,10 +58,10 @@ void main() {
       expect(address.description,
           '0:83a0352908060fa87839195d8a763a8d9ab28f8fa41468832b398a719cc6469a');
 
-      final address_uppercase = TWAnyAddress(
+      final addressUppercase = TWAnyAddress(
           '0:83a0352908060fa87839195d8a763a8d9ab28f8fa41468832b398a719cc6469a',
           coin);
-      expect(address_uppercase.description,
+      expect(addressUppercase.description,
           '0:83a0352908060fa87839195d8a763a8d9ab28f8fa41468832b398a719cc6469a');
     });
 

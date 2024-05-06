@@ -197,25 +197,25 @@ void main() {
     test('createFromPubKey', () {
       final pubkey =
           '02753f5c275e1847ba4d2fd3df36ad00af2e165650b35fe3991e9c9c46f68b12bc';
-      final pubkey_data = TWData.createWithHexString(pubkey);
-      final pubkey_obj = TWPublicKey.createWithData(
-          pubkey_data.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+      final pubkeyData = TWData.createWithHexString(pubkey);
+      final pubkeyObj = TWPublicKey.createWithData(
+          pubkeyData.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       final addr = TWAnyAddress.createWithPublicKey(
-          pubkey_obj, TWCoinType.TWCoinTypeBitcoin);
+          pubkeyObj, TWCoinType.TWCoinTypeBitcoin);
       expect(addr.description, 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
     });
 
     test('createFromPubKeyDerivation', () {
       final pubkey =
           '02753f5c275e1847ba4d2fd3df36ad00af2e165650b35fe3991e9c9c46f68b12bc';
-      final pubkey_data = TWData.createWithHexString(pubkey);
-      final pubkey_obj = TWPublicKey.createWithData(
-          pubkey_data.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
+      final pubkeyData = TWData.createWithHexString(pubkey);
+      final pubkeyObj = TWPublicKey.createWithData(
+          pubkeyData.bytes()!, TWPublicKeyType.TWPublicKeyTypeSECP256k1);
 
       {
         final addr = TWAnyAddress.createWithPublicKeyDerivation(
-          publicKey: pubkey_obj,
+          publicKey: pubkeyObj,
           coin: TWCoinType.TWCoinTypeBitcoin,
           derivation: TWDerivation.TWDerivationDefault,
         );
@@ -224,7 +224,7 @@ void main() {
 
       {
         final addr = TWAnyAddress.createWithPublicKeyDerivation(
-          publicKey: pubkey_obj,
+          publicKey: pubkeyObj,
           coin: TWCoinType.TWCoinTypeBitcoin,
           derivation: TWDerivation.TWDerivationBitcoinLegacy,
         );
@@ -233,7 +233,7 @@ void main() {
 
       {
         final addr = TWAnyAddress.createWithPublicKeyDerivation(
-          publicKey: pubkey_obj,
+          publicKey: pubkeyObj,
           coin: TWCoinType.TWCoinTypeBitcoin,
           derivation: TWDerivation.TWDerivationBitcoinTestnet,
         );
@@ -244,13 +244,13 @@ void main() {
     test('createFromPubKeyFilecoinAddressType', () {
       final pubkey =
           '0419bf99082cf2fcdaa812d6eba1eba9036ff3a3d84c1817c84954d4e8ae283fec5313e427a0f5f68dec3169b2eda876b1d9f97b1ede7f958baee6a2ce78f6e94a';
-      final pubkey_data = TWData.createWithHexString(pubkey);
-      final pubkey_obj = TWPublicKey.createWithData(pubkey_data.bytes()!,
+      final pubkeyData = TWData.createWithHexString(pubkey);
+      final pubkeyObj = TWPublicKey.createWithData(pubkeyData.bytes()!,
           TWPublicKeyType.TWPublicKeyTypeSECP256k1Extended);
 
       {
         final addr = TWAnyAddress.createWithPublicKeyFilecoinAddressType(
-            pubkey_obj, TWFilecoinAddressType.TWFilecoinAddressTypeDefault);
+            pubkeyObj, TWFilecoinAddressType.TWFilecoinAddressTypeDefault);
         final actual = addr.description;
         expect(actual, 'f1syn25x7infncgfvodhriq2dudvmudabtavm3wyy');
         expect(
@@ -259,7 +259,7 @@ void main() {
 
       {
         final addr = TWAnyAddress.createWithPublicKeyFilecoinAddressType(
-            pubkey_obj, TWFilecoinAddressType.TWFilecoinAddressTypeDelegated);
+            pubkeyObj, TWFilecoinAddressType.TWFilecoinAddressTypeDelegated);
         final actual = addr.description;
         expect(actual, 'f410fvak24cyg3saddajborn6idt7rrtfj2ptauk5pbq');
         expect(

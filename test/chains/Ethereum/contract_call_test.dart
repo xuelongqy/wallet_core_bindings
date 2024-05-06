@@ -18,7 +18,7 @@ String load_json_str(String path) {
 void main() {
   group('ContractCall', () {
     test('Approval', () {
-      final path = '${TESTS_ROOT}/chains/Ethereum/Data/erc20.json';
+      final path = '$TESTS_ROOT/chains/Ethereum/Data/erc20.json';
       final abi = load_json_str(path);
       final call = parse_hex(
           "095ea7b30000000000000000000000005aaeb6053f3e94c9b9a09f33669435e7ef1beaed"
@@ -31,7 +31,7 @@ void main() {
     });
 
     test('UniswapSwapTokens', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/uniswap_router_v2.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/uniswap_router_v2.json";
       final abi = load_json_str(path);
       // https://etherscan.io/tx/0x57a2414f3cd9ca373b7e663ae67ecf933e40cb77a6e4ed28e4e28b5aa0d8ec63
       final call = parse_hex(
@@ -51,7 +51,7 @@ void main() {
     });
 
     test('KyberTrade', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/kyber_proxy.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/kyber_proxy.json";
       final abi = load_json_str(path);
 
       // https://etherscan.io/tx/0x51ffab782b9a27d754389505d5a50db525c04c68142ce20512d579f10f9e13e4
@@ -73,7 +73,7 @@ void main() {
     });
 
     test('ApprovalForAll', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/erc721.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/erc721.json";
       final abi = load_json_str(path);
 
       // https://etherscan.io/tx/0xc2744000a107aee4761cf8a638657f91c3003a54e2f1818c37d781be7e48187a
@@ -89,7 +89,7 @@ void main() {
     });
 
     test('CustomCall', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/custom.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/custom.json";
       final abi = load_json_str(path);
 
       final call = parse_hex(
@@ -103,7 +103,7 @@ void main() {
     });
 
     test('SetResolver', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/ens.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/ens.json";
       final abi = load_json_str(path);
 
       final call = parse_hex(
@@ -118,7 +118,7 @@ void main() {
     });
 
     test('RenewENS', () {
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/ens.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/ens.json";
       final abi = load_json_str(path);
 
       final call = parse_hex(
@@ -158,7 +158,7 @@ void main() {
           "000000000000000000000000000000000000000000000000000000000000000000");
       expect(call.length, 4 + 928);
 
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/ens.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/ens.json";
       final abi = load_json_str(path);
       final decoded = TWEthereumAbi.decodeCall(call, abi);
 
@@ -180,7 +180,7 @@ void main() {
           "0000000000000000000000000000000000000000000000000000000000000001"
           "000000000000000000000000f784682c82526e245f50975190ef0fff4e4fc077");
 
-      final path = TESTS_ROOT + "/chains/Ethereum/Data/getAmountsOut.json";
+      final path = "$TESTS_ROOT/chains/Ethereum/Data/getAmountsOut.json";
       final abi = load_json_str(path);
       final decoded = TWEthereumAbi.decodeCall(call, abi);
 
@@ -192,10 +192,9 @@ void main() {
     });
 
     test('1inch', () {
-      final abiPath = TESTS_ROOT + "/chains/Ethereum/Data/1inch.json";
-      ;
+      final abiPath = "$TESTS_ROOT/chains/Ethereum/Data/1inch.json";
       final decodedPath =
-          TESTS_ROOT + "/chains/Ethereum/Data/1inch_decoded.json";
+          "$TESTS_ROOT/chains/Ethereum/Data/1inch_decoded.json";
 
       final abi = load_json_str(abiPath);
       final expected = load_json(decodedPath);
@@ -211,9 +210,9 @@ void main() {
     });
 
     test('TupleNested', () {
-      final abiPath = TESTS_ROOT + "/chains/Ethereum/Data/tuple_nested.json";
+      final abiPath = "$TESTS_ROOT/chains/Ethereum/Data/tuple_nested.json";
       final decodedPath =
-          TESTS_ROOT + "/chains/Ethereum/Data/tuple_nested_decoded.json";
+          "$TESTS_ROOT/chains/Ethereum/Data/tuple_nested_decoded.json";
       final abi = load_json_str(abiPath);
       final expected = load_json(decodedPath);
 
@@ -232,9 +231,9 @@ void main() {
     });
 
     test('TupleArray', () {
-      final abiPath = TESTS_ROOT + "/chains/Ethereum/Data/swap_v2.json";
+      final abiPath = "$TESTS_ROOT/chains/Ethereum/Data/swap_v2.json";
       final decodedPath =
-          TESTS_ROOT + "/chains/Ethereum/Data/swap_v2_decoded.json";
+          "$TESTS_ROOT/chains/Ethereum/Data/swap_v2_decoded.json";
       final abi = load_json_str(abiPath);
       final expected = load_json(decodedPath);
 

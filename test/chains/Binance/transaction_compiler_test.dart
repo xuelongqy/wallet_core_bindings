@@ -57,7 +57,7 @@ void main() {
       /// Step 2: Obtain preimage hash
       final preImageHashes =
           TWTransactionCompiler.preImageHashes(coin, txInputData);
-      expect(preImageHashes.length == 0, false);
+      expect(preImageHashes.isEmpty, false);
 
       final preSigningOutput =
           TransactionCompiler.PreSigningOutput.fromBuffer(preImageHashes);

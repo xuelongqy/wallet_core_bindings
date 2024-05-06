@@ -90,7 +90,7 @@ void main() {
       final address = TWAnyAddress(
           'ecash:qpk05r5kcd8uuzwqunn8rlx5xvuvzjqju564r6szft', coin);
       final data = address.data;
-      final rawData = Uint8List.fromList([0x00, ...data.toList()]);
+      final rawData = Uint8List.fromList([0x00, ...data]);
 
       final legacyAddress = TWBitcoinAddress.createWithData(rawData);
       final legacyString = legacyAddress.description;

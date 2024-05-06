@@ -66,7 +66,7 @@ void main() {
         ),
       );
 
-      final proto_output = Harmony.SigningOutput.fromBuffer(
+      final protoOutput = Harmony.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
       final expectEncoded =
@@ -85,10 +85,10 @@ void main() {
       final s =
           "404c1a42442c2d39f84582353a1c67012451ff83ef6d3622f684041df9bf0072";
 
-      expect(hex(proto_output.encoded), expectEncoded);
-      expect(hex(proto_output.v), v);
-      expect(hex(proto_output.r), r);
-      expect(hex(proto_output.s), s);
+      expect(hex(protoOutput.encoded), expectEncoded);
+      expect(hex(protoOutput.v), v);
+      expect(hex(protoOutput.r), r);
+      expect(hex(protoOutput.s), s);
     });
 
     test('SignEditValidator', () {
@@ -133,7 +133,7 @@ void main() {
         ),
       );
 
-      final proto_output = Harmony.SigningOutput.fromBuffer(
+      final protoOutput = Harmony.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
       final expectEncoded =
@@ -145,10 +145,10 @@ void main() {
       final s =
           "4aafc5c51a95412760c089371b411a5ab8f235b456291a9754d544b162df4eef";
 
-      expect(hex(proto_output.encoded), expectEncoded);
-      expect(hex(proto_output.v), v);
-      expect(hex(proto_output.r), r);
-      expect(hex(proto_output.s), s);
+      expect(hex(protoOutput.encoded), expectEncoded);
+      expect(hex(protoOutput.v), v);
+      expect(hex(protoOutput.r), r);
+      expect(hex(protoOutput.s), s);
     });
 
     test('SignDelegate', () {
@@ -167,7 +167,7 @@ void main() {
         ),
       );
 
-      final proto_output = Harmony.SigningOutput.fromBuffer(
+      final protoOutput = Harmony.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
       final expectEncoded =
@@ -181,10 +181,10 @@ void main() {
       final s =
           "5c28dbc41763dc2391263e1aae30f842f90734d7ec68cee2352af0d4b0662b54";
 
-      expect(hex(proto_output.encoded), expectEncoded);
-      expect(hex(proto_output.v), v);
-      expect(hex(proto_output.r), r);
-      expect(hex(proto_output.s), s);
+      expect(hex(protoOutput.encoded), expectEncoded);
+      expect(hex(protoOutput.v), v);
+      expect(hex(protoOutput.r), r);
+      expect(hex(protoOutput.s), s);
     });
 
     test('SignUndelegate', () {
@@ -203,7 +203,7 @@ void main() {
         ),
       );
 
-      final proto_output = Harmony.SigningOutput.fromBuffer(
+      final protoOutput = Harmony.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
       final expectEncoded =
@@ -217,10 +217,10 @@ void main() {
       final s =
           "5202c4b51652d5144c6a30d14d1a7a316b5a4a6b49be985b4bc6980e49f7acb7";
 
-      expect(hex(proto_output.encoded), expectEncoded);
-      expect(hex(proto_output.v), v);
-      expect(hex(proto_output.r), r);
-      expect(hex(proto_output.s), s);
+      expect(hex(protoOutput.encoded), expectEncoded);
+      expect(hex(protoOutput.v), v);
+      expect(hex(protoOutput.r), r);
+      expect(hex(protoOutput.s), s);
     });
 
     test('SignCollectRewards', () {
@@ -237,7 +237,7 @@ void main() {
         ),
       );
 
-      final proto_output = Harmony.SigningOutput.fromBuffer(
+      final protoOutput = Harmony.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
       final expectEncoded =
@@ -251,10 +251,10 @@ void main() {
       final s =
           "55c13ea17c3efd1cd91f2988c7e7673950bac5a08c174f2d0af27a82039f1e3d";
 
-      expect(hex(proto_output.encoded), expectEncoded);
-      expect(hex(proto_output.v), v);
-      expect(hex(proto_output.r), r);
-      expect(hex(proto_output.s), s);
+      expect(hex(protoOutput.encoded), expectEncoded);
+      expect(hex(protoOutput.v), v);
+      expect(hex(protoOutput.r), r);
+      expect(hex(protoOutput.s), s);
     });
   });
 }

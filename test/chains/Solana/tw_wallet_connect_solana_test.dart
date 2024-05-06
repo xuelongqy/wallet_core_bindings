@@ -10,7 +10,7 @@ void main() {
     const coin = TWCoinType.TWCoinTypeSolana;
 
     test('UpdateBlockhashAndSign', () {
-      final private_key = TWBase58.decodeNoCheck(
+      final privateKey = TWBase58.decodeNoCheck(
           'A7psj2GW7ZMdY4E5hJq14KMeYg7HFjULSsWSrTXZLvYr')!;
       final payload =
           '{"transaction":"AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEDZsL1CMnFVcrMn7JtiOiN1U4hC7WovOVof2DX51xM0H/GizyJTHgrBanCf8bGbrFNTn0x3pCGq30hKbywSTr6AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAgIAAQwCAAAAKgAAAAAAAAA="}';
@@ -33,7 +33,7 @@ void main() {
       expect(parsingOutput.hasSolana(), true);
       final signingInput = parsingOutput.solana;
 
-      signingInput.privateKey = private_key;
+      signingInput.privateKey = privateKey;
       signingInput.txEncoding = Solana.Encoding.Base64;
 
       final output = Solana.SigningOutput.fromBuffer(

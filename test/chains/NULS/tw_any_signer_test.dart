@@ -48,7 +48,7 @@ void main() {
       final balance = intToBytes(100000000);
       final feePayerBalance = intToBytes(1000000);
       final nonce = '0000000000000000'.codeUnits;
-      final asset_nonce = '0000000000000000'.codeUnits;
+      final assetNonce = '0000000000000000'.codeUnits;
 
       final input = NULS.SigningInput(
         from: 'NULSd6Hgj7ZoVgsPN9ybB4C1N2TbvkgLc8Z9H',
@@ -59,7 +59,7 @@ void main() {
         privateKey: privateKey,
         balance: balance,
         timestamp: 1569228280,
-        nonce: asset_nonce,
+        nonce: assetNonce,
         feePayer: 'NULSd6Hgj7ZoVgsPN9ybB4C1N2TbvkgLc8Z9H',
         feePayerNonce: nonce,
         feePayerBalance: feePayerBalance,
@@ -138,7 +138,7 @@ void main() {
       final amount = intToBytes(100000);
       final balance = intToBytes(900000);
       final feePayerBalance = intToBytes(1000000);
-      final asset_nonce = '0000000000000000'.codeUnits;
+      final assetNonce = '0000000000000000'.codeUnits;
 
       final input = NULS.SigningInput(
         from: 'NULSd6HgYx7bdWWv7PxYhYeTRBhD6kZs1o5Ac',
@@ -149,7 +149,7 @@ void main() {
         privateKey: privateKey,
         balance: balance,
         timestamp: 1660636748,
-        nonce: asset_nonce,
+        nonce: assetNonce,
         // fee payer
         feePayer: 'NULSd6HgYj81NrQBFZYXvyQhHCJCkGYWDTNeA',
         feePayerNonce: 'e05d03df6ede0e22'.codeUnits,

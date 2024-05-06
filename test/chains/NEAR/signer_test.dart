@@ -39,9 +39,9 @@ void main() {
       final output = NEAR.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
-      final signed_transaction = output.signedTransaction;
+      final signedTransaction = output.signedTransaction;
       final outputInBase64 =
-          TWBase64.encode(Uint8List.fromList(signed_transaction));
+          TWBase64.encode(Uint8List.fromList(signedTransaction));
 
       expect(outputInBase64,
           'CQAAAHRlc3QubmVhcgCRez0mjUtY9/7BsVC9aNab4+5dTMOYVeNBU4Rlu3eGDQEAAAAAAAAADQAAAHdoYXRldmVyLm5lYXIPpHP9JpAd8pa+atxMxN800EDvokNSJLaYaRDmMML+9gEAAAADAQAAAAAAAAAAAAAAAAAAAACWmoMzIYbul1Xkg5MlUlgG4Ymj0tK7S0dg6URD6X4cTyLe7vAFmo6XExAO2m4ZFE2n6KDvflObIHCLodjQIb0B');

@@ -123,7 +123,7 @@ void main() {
       final balance = intToBytes(100000000);
       final feePayerBalance = intToBytes(100000000);
       final nonce = '0000000000000000'.codeUnits;
-      final asset_nonce = '0000000000000000'.codeUnits;
+      final assetNonce = '0000000000000000'.codeUnits;
 
       final input = NULS.SigningInput(
         from: from,
@@ -131,7 +131,7 @@ void main() {
         amount: amount,
         chainId: chainId,
         idassetsId: idassetsId,
-        nonce: asset_nonce,
+        nonce: assetNonce,
         balance: balance,
         timestamp: 1569228280,
         feePayer: from,

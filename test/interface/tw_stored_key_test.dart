@@ -37,14 +37,14 @@ TWStoredKey createDefaultStoredKey({
 void main() {
   group(TWStoredKey, () {
     test('loadPBKDF2Key', () {
-      final filename = '${projectRoot}/test/common/Keystore/Data/pbkdf2.json';
+      final filename = '$projectRoot/test/common/Keystore/Data/pbkdf2.json';
       final key = TWStoredKey.load(filename);
       final keyId = key.identifier;
       expect(keyId, "3198bc9c-6672-5ab3-d995-4942343ae5b6");
     });
 
     test('loadNonexistent', () {
-      final filename = '${projectRoot}/test/_NO_/_SUCH_/_FILE_';
+      final filename = '$projectRoot/test/_NO_/_SUCH_/_FILE_';
       final nokey = TWStoredKey.load(filename);
       expect(nokey.pointer, nullptr);
     });
@@ -270,7 +270,7 @@ void main() {
       final key = createDefaultStoredKey(
         encryption: TWStoredKeyEncryption.TWStoredKeyEncryptionAes256Ctr,
       );
-      final outFileName = '${projectRoot}/test/cache/TWStoredKey_store.json';
+      final outFileName = '$projectRoot/test/cache/TWStoredKey_store.json';
       expect(key.store(outFileName), true);
 
       final file = File(outFileName);
@@ -284,7 +284,7 @@ void main() {
 
     test('storeAndImportJSON', () {
       final key = createDefaultStoredKey();
-      final outFileName = '${projectRoot}/test/cache/TWStoredKey_store.json';
+      final outFileName = '$projectRoot/test/cache/TWStoredKey_store.json';
       expect(key.store(outFileName), true);
 
       final file = File(outFileName);

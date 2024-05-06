@@ -11,14 +11,12 @@ const UINT32_MAX = 0xffffffff;
 String? _projectRoot;
 
 String get projectRoot {
-  if (_projectRoot == null) {
-    _projectRoot = Directory.current.path;
-  }
+  _projectRoot ??= Directory.current.path;
   return _projectRoot!;
 }
 
 String get TESTS_ROOT {
-  return '${projectRoot}/test';
+  return '$projectRoot/test';
 }
 
 void expectHex(List<int> actual, String expected) {

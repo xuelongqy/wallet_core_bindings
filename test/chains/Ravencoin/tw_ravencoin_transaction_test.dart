@@ -20,7 +20,7 @@ void main() {
         tx - https://blockbook.ravencoin.org/tx/3717b528eb4925461d9de5a596d2eefe175985740b4fda153255e10135f236a6
       */
 
-      final utxo_amount = 100000000;
+      final utxoAmount = 100000000;
       final amount = 50000000;
       final fee = 2000000;
 
@@ -41,7 +41,7 @@ void main() {
           index: 0,
           sequence: UINT32_MAX,
         ),
-        amount: $fixnum.Int64(utxo_amount),
+        amount: $fixnum.Int64(utxoAmount),
         script: parse_hex("76a9145d6e33f3a108bbcc586cbbe90994d5baf5a9cce488ac"),
       ));
 
@@ -53,7 +53,7 @@ void main() {
           TWAnySigner.plan(input.writeToBuffer(), coin));
       plan.amount = $fixnum.Int64(amount);
       plan.fee = $fixnum.Int64(fee);
-      plan.change = $fixnum.Int64(utxo_amount - amount - fee);
+      plan.change = $fixnum.Int64(utxoAmount - amount - fee);
 
       input.plan = plan;
 
