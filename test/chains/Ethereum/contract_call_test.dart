@@ -193,8 +193,7 @@ void main() {
 
     test('1inch', () {
       final abiPath = "$TESTS_ROOT/chains/Ethereum/Data/1inch.json";
-      final decodedPath =
-          "$TESTS_ROOT/chains/Ethereum/Data/1inch_decoded.json";
+      final decodedPath = "$TESTS_ROOT/chains/Ethereum/Data/1inch_decoded.json";
 
       final abi = load_json_str(abiPath);
       final expected = load_json(decodedPath);
