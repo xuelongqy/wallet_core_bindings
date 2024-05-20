@@ -1,21 +1,21 @@
 name: wallet_core_bindings
 description: "Dart bindings for trust wallet core."
-version: 4.0.40
+version: 4.0.42
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: ">=3.2.4 <4.0.0"
 
 dependencies:
-  ffi: ^2.1.2
   protobuf: ^3.1.0
   fixnum: ^1.1.0
 
 dev_dependencies:
-  lints: ^3.0.0
-  ffigen: ^11.0.0
-  test: ^1.25.4
+  lints: ^4.0.0
+  test: ^1.25.5
   bech32: ^0.2.2
+  wallet_core_bindings_native:
+    path: ../wallet_core_bindings_native
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -53,11 +53,3 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
-
-ffigen:
-  output: 'lib/src/bindings/bindings.dart'
-  name: TrustWalletCoreBindings
-  description: Auto-generated, internal bindings to TrustWalletCore
-  headers:
-    entry-points:
-      - 'include/TrustWalletCore/**.h'

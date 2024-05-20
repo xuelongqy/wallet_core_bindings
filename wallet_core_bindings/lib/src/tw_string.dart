@@ -1,27 +1,25 @@
 part of '../wallet_core_bindings.dart';
 
-TWStringInterface get impl => WalletCoreBindingsInterface.instance.string;
-
 /// TWString finalizer.
 final _twStringFinalizer = Finalizer<int>((int token) {
-  impl.TWStringDelete(token);
+  _stringImpl.delete(token);
 });
 
 /// Defines a resizable string.
 ///
-/// The implementantion of these methods should be language-specific to minimize translation
+/// The _stringImplementantion of these methods should be language-specific to minimize translation
 /// overhead. For instance it should be a `jstring` for Java and an `NSString` for Swift. Create
 /// allocates memory, the delete call should be called at the end to release memory.
 class TWString extends TWObjectFinalizable {
   TWString.fromPointer(
-    int pointer, {
-    bool attach = true,
-  }) : super(pointer, attach: attach, finalizer: _twStringFinalizer);
+    super.pointer, {
+    super.attach = true,
+  }) : super(finalizer: _twStringFinalizer);
 
   TWString(
     String value, {
     bool attach = true,
-  }) : super(impl.TWStringCreate(value),
+  }) : super(_stringImpl.create(value),
             attach: attach, finalizer: _twStringFinalizer);
 
   /// Creates a string from a raw byte array and size. It must be deleted at the end.
@@ -31,7 +29,7 @@ class TWString extends TWObjectFinalizable {
     Uint8List bytes, {
     bool attach = true,
   }) : super(
-          impl.TWStringCreateWithRawBytes(bytes),
+          _stringImpl.createWithRawBytes(bytes),
           attach: attach,
           finalizer: _twStringFinalizer,
         );
@@ -42,23 +40,23 @@ class TWString extends TWObjectFinalizable {
   TWString.createWithHexBytes(
     Uint8List bytes, {
     bool attach = true,
-  }) : super(impl.TWStringCreateWithHexData(bytes),
+  }) : super(_stringImpl.createWithHexData(bytes),
             attach: attach, finalizer: _twStringFinalizer);
 
   /// Returns the string size in bytes.
-  int get size => impl.TWStringSize(_pointer);
+  int get size => _stringImpl.size(_pointer);
 
   /// Returns the byte at the provided index.
   ///
   /// \param [index] the index of the byte.
   String get(int index) =>
-      String.fromCharCode(impl.TWStringGet(_pointer, index));
+      String.fromCharCode(_stringImpl.get(_pointer, index));
 
   /// Overloaded operator ==, equivalent to [TWString.get].
   String operator [](int index) => get(index);
 
   /// Returns raw data.
-  Uint8List bytes() => impl.TWStringUTF8Bytes(_pointer);
+  Uint8List bytes() => _stringImpl.utf8Bytes(_pointer);
 
   /// Returns the string value.
   String? get value {
@@ -72,13 +70,13 @@ class TWString extends TWObjectFinalizable {
   @override
   void delete() {
     super.delete();
-    impl.TWStringDelete(_pointer);
+    _stringImpl.delete(_pointer);
   }
 
   /// Determines whether two string blocks are equal.
   ///
   /// \param [another] Another TWString pointer.
-  bool equal(TWString another) => impl.TWStringEqual(_pointer, another.pointer);
+  bool equal(TWString another) => _stringImpl.equal(_pointer, another.pointer);
 
   /// Overloaded operator ==, equivalent to [TWString.equal].
   @override

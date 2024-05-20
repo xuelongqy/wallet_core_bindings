@@ -1,9 +1,8 @@
 part of '../../wallet_core_bindings.dart';
 
 abstract class WalletCoreBindingsInterface {
-  final TWStringInterface string;
-
-  WalletCoreBindingsInterface({required this.string});
+  late TWDataInterface data;
+  late TWStringInterface string;
 
   static WalletCoreBindingsInterface? _instance;
 
@@ -15,4 +14,10 @@ abstract class WalletCoreBindingsInterface {
   static set instance(WalletCoreBindingsInterface instance) {
     _instance = instance;
   }
+
+  Future initialize();
 }
+
+TWDataInterface get _dataImpl => WalletCoreBindingsInterface.instance.data;
+TWStringInterface get _stringImpl =>
+    WalletCoreBindingsInterface.instance.string;
