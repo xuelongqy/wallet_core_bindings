@@ -23,26 +23,6 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 TODO: List prerequisites and provide or point to information on how to
 start using the package.
 
-## Generate
-
-We need to extract the files from [wallet-core](https://dart.dev/guides/libraries/create-library-packages) and generate the corresponding Dart code so that Dart can communicate with TrustWalletCore.
-
-### C Bindings
-
-Extract header files in include/TrustWalletCore and generate Dart bindings code.
-
-```shell
-dart run ffigen
-```
-
-### Protobuf
-Refer to the TrustWalletCore build [documentation](https://developer.trustwallet.com/developer/wallet-core/developing-the-library/building) and complete the steps to generate files. Extract proto files in src/proto and use [protoc_plugin](https://pub.dev/packages/protoc_plugin) to compile them into Dart code.
-
-```shell
-cd ./proto/TrustWalletCore/
-protoc --dart_out=../../lib/proto/ ./*
-```
-
 ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to

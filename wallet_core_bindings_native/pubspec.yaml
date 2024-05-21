@@ -59,4 +59,4 @@ ffigen:
   description: Auto-generated, internal bindings to TrustWalletCore
   headers:
     entry-points:
-      - "include/TrustWalletCore/**.h"
+      - "../include/TrustWalletCore/**.h"
