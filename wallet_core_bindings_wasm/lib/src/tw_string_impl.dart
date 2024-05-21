@@ -7,13 +7,7 @@ class TwStringImpl extends TWStringInterface {
 
   @override
   int create(String value) {
-    final func = wasm.getFunction('TWStringCreateWithUTF8Bytes')!;
-    final memory = wasm.getMemory('memory')!;
-    final utf8Bytes = utf8.encode(value);
-    final size = utf8Bytes.length;
-    final bytesPointer = TWData.createWithSize(size + 1).pointer;
-    memory.view.replaceRange(bytesPointer, bytesPointer + size, utf8Bytes);
-    return func([bytesPointer]).first as int;
+    return createWithUTF8Bytes(utf8.encode(value));
   }
 
   @override
@@ -33,9 +27,10 @@ class TwStringImpl extends TWStringInterface {
   int createWithUTF8Bytes(Uint8List bytes) {
     final func = wasm.getFunction('TWStringCreateWithUTF8Bytes')!;
     final memory = wasm.getMemory('memory')!;
-    final size = bytes.length;
+    final utf8Bytes = Uint8List.fromList(bytes.toList()..add(0));
+    final size = utf8Bytes.length;
     final bytesPointer = TWData.createWithSize(size + 1).pointer;
-    memory.view.replaceRange(bytesPointer, bytesPointer + size, bytes);
+    memory.view.setRange(bytesPointer, bytesPointer + size, utf8Bytes);
     return func([bytesPointer]).first as int;
   }
 

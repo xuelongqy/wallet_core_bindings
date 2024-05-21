@@ -39,10 +39,9 @@ class TwDataImpl extends TWDataInterface {
 
   @override
   int createWithBytes(Uint8List bytes) {
-    final memory = wasm.getMemory('memory')!;
     final size = bytes.length;
     final pointer = createWithSize(size);
-    memory.view.replaceRange(pointer, pointer + size, bytes);
+    replaceBytes(pointer, 0, size, bytes);
     return pointer;
   }
 
@@ -85,8 +84,9 @@ class TwDataImpl extends TWDataInterface {
 
   @override
   void replaceBytes(int pointer, int start, int size, Uint8List bytes) {
-    final memory = wasm.getMemory('memory')!;
-    memory.view.replaceRange(pointer + start, pointer + start + size, bytes);
+    for (int i = 0; i < size; i++) {
+      set(pointer, start + i, bytes[i]);
+    }
   }
 
   @override
