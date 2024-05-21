@@ -1,5 +1,7 @@
 part of '../wallet_core_bindings_wasm.dart';
 
+/// WalletCore bindings wasm implementation.
+/// Use WalletCore wasm. See [https://developer.trustwallet.com/developer/wallet-core/developing-the-library/building#wasm-building].
 class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
   /// Wasm instance.
   late WasmInstance _wasm;
@@ -7,6 +9,8 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
   /// Wasm bytes.
   Uint8List? _wasmBytes;
 
+  /// Creates a new WalletCore bindings wasm implementation.
+  /// [wasmBytes] is the wallet-core.wasm bytes.
   WalletCoreBindingsWasmImpl([Uint8List? wasmBytes]) : _wasmBytes = wasmBytes;
 
   @override

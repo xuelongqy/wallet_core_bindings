@@ -11,9 +11,9 @@ class TwStringImpl extends TWStringInterface {
   }
 
   @override
-  int createWithHexData(Uint8List data) {
+  int createWithHexData(int data) {
     final func = wasm.getFunction('TWStringCreateWithHexData')!;
-    return func([TWData(data).pointer]).first as int;
+    return func([data]).first as int;
   }
 
   @override

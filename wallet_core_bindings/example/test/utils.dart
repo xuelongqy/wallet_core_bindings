@@ -10,23 +10,27 @@ import 'package:wallet_core_bindings_native/wallet_core_bindings_native.dart';
 import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
 import 'package:wasm_run_flutter/wasm_run_flutter.dart';
 
+bool _isInit = false;
+
 void initTest() {
-  initNativeTest();
-}
-
-void initNativeTest() {
-  setUp(() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await WalletCoreBindingsNativeImpl().initialize();
+  if (_isInit) {
+    return;
+  }
+  setUpAll(() async {
+    await initWasmTest();
+    _isInit = true;
   });
 }
 
-void initWasmTest() {
-  setUp(() async {
-    await WasmRunLibrary.setUp(override: false);
-    WidgetsFlutterBinding.ensureInitialized();
-    await WalletCoreBindingsWasmImpl().initialize();
-  });
+Future initNativeTest() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await WalletCoreBindingsNativeImpl().initialize();
+}
+
+Future initWasmTest() async {
+  await WasmRunLibrary.setUp(override: false);
+  WidgetsFlutterBinding.ensureInitialized();
+  await WalletCoreBindingsWasmImpl().initialize();
 }
 
 const UINT32_MAX = 0xffffffff;
@@ -54,9 +58,10 @@ void expectHexBytes(List<int> actual, List<int> expected) {
 
 void expectJson(String actual, String expected) {
   expect(
-      DeepCollectionEquality()
-          .equals(json.decode(actual), json.decode(expected)),
-      true);
+    const DeepCollectionEquality()
+        .equals(json.decode(actual), json.decode(expected)),
+    true,
+  );
 }
 
 Uint8List hexToBytes(String hexString, {int? length}) {

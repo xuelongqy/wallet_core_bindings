@@ -40,7 +40,16 @@ class TWString extends TWObjectFinalizable {
   TWString.createWithHexBytes(
     Uint8List bytes, {
     bool attach = true,
-  }) : super(_stringImpl.createWithHexData(bytes),
+  }) : super(_stringImpl.createWithHexData(TWData(bytes).pointer),
+            attach: attach, finalizer: _twStringFinalizer);
+
+  /// Creates a hexadecimal string from a block of data. It must be deleted at the end.
+  ///
+  /// \param [data] a block of data.
+  TWString.createWithHexData(
+    TWData data, {
+    bool attach = true,
+  }) : super(_stringImpl.createWithHexData(data.pointer),
             attach: attach, finalizer: _twStringFinalizer);
 
   /// Returns the string size in bytes.

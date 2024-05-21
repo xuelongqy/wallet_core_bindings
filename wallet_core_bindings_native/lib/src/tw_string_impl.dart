@@ -14,9 +14,8 @@ class TwStringImpl extends TWStringInterface {
   }
 
   @override
-  int createWithHexData(Uint8List data) {
-    return bindings.TWStringCreateWithHexData(
-            Pointer.fromAddress(TWData(data).pointer))
+  int createWithHexData(int data) {
+    return bindings.TWStringCreateWithHexData(Pointer.fromAddress(data))
         .address;
   }
 
