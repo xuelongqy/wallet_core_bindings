@@ -1,9 +1,10 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-class TwStringImpl extends TWStringInterface {
+/// Native implementation for [TWString].
+class TWStringImpl extends TWStringInterface {
   final WasmInstance wasm;
 
-  TwStringImpl(this.wasm);
+  TWStringImpl(this.wasm);
 
   @override
   int create(String value) {
@@ -59,10 +60,15 @@ class TwStringImpl extends TWStringInterface {
   }
 
   @override
-  Uint8List utf8Bytes(int pointer) {
+  int utf8Bytes(int pointer) {
     final func = wasm.getFunction('TWStringUTF8Bytes')!;
+    return func([pointer]).first as int;
+  }
+
+  @override
+  Uint8List bytes(int pointer) {
     final memory = wasm.getMemory('memory')!;
-    final bytesPointer = func([pointer]).first as int;
+    final bytesPointer = utf8Bytes(pointer);
     return memory.view.sublist(bytesPointer, bytesPointer + size(pointer));
   }
 }

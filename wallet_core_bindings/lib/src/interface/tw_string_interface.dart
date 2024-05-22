@@ -14,7 +14,9 @@ abstract class TWStringInterface {
 
   int get(int pointer, int index);
 
-  Uint8List utf8Bytes(int pointer);
+  int utf8Bytes(int pointer);
+
+  Uint8List bytes(int pointer);
 
   bool equal(int lhs, int rhs);
 

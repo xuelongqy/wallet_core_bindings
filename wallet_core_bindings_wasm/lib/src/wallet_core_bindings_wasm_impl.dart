@@ -122,8 +122,15 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
       ),
     ]);
     _wasm = await builder.build();
-    string = TwStringImpl(_wasm);
-    data = TwDataImpl(_wasm);
+    bitcoinSigHashType = TWBitcoinSigHashTypeImpl(_wasm);
+    coinType = TWCoinTypeImpl(_wasm);
+    data = TWDataImpl(_wasm);
+    hash = TWHashImpl(_wasm);
+    hdVersion = TWHDVersionImpl(_wasm);
+    hrp = TWHRPImpl(_wasm);
+    privateKey = TWPrivateKeyImpl(_wasm);
+    publicKey = TWPublicKeyImpl(_wasm);
+    string = TWStringImpl(_wasm);
     WalletCoreBindingsInterface.instance = this;
   }
 }

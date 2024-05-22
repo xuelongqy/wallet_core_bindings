@@ -203,42 +203,51 @@ enum TWCoinType {
   ///
   /// \param [address] A public address
   /// \return true if the address is a valid public address of the given coin, false otherwise.
-  bool validate(String address) => _coinTypeImpl.validate(coin, address);
+  bool validate(String address) =>
+      _coinTypeImpl.validate(coin, TWString(address).pointer);
 
   /// Returns the default derivation path for a particular coin.
   ///
   /// \return the default derivation path for the given coin type.
-  String derivationPath(int coin) => _coinTypeImpl.derivationPath(coin);
+  String derivationPath(int coin) =>
+      TWString.fromPointer(_coinTypeImpl.derivationPath(coin)).value!;
 
   /// Returns the derivation path for a particular coin with the explicit given derivation.
   ///
   /// \param [derivation] A derivation type
   /// \return the derivation path for the given coin with the explicit given derivation
   String derivationPathWithDerivation(int coin, TWDerivation derivation) =>
-      _coinTypeImpl.derivationPathWithDerivation(coin, derivation.derivation);
+      TWString.fromPointer(_coinTypeImpl.derivationPathWithDerivation(
+              coin, derivation.derivation))
+          .value!;
 
   /// Derives the address for a particular coin from the private key.
   ///
   /// \param [privateKey] A valid private key
   /// \return Derived address for the given coin from the private key.
   String deriveAddress(int coin, TWPrivateKey privateKey) =>
-      _coinTypeImpl.deriveAddress(coin, privateKey.pointer);
+      TWString.fromPointer(
+              _coinTypeImpl.deriveAddress(coin, privateKey.pointer))
+          .value!;
 
   /// Derives the address for a particular coin from the public key.
   ///
   /// \param [publicKey] A valid public key
   /// \return Derived address for the given coin from the public key.
   String deriveAddressFromPublicKey(int coin, TWPublicKey publicKey) =>
-      _coinTypeImpl.deriveAddressFromPublicKey(coin, publicKey.pointer);
+      TWString.fromPointer(
+              _coinTypeImpl.deriveAddressFromPublicKey(coin, publicKey.pointer))
+          .value!;
 
   /// Derives the address for a particular coin from the public key with the derivation.
   String deriveAddressFromPublicKeyAndDerivation(
           int coin, TWPublicKey publicKey, TWDerivation derivation) =>
-      _coinTypeImpl.deriveAddressFromPublicKeyAndDerivation(
+      TWString.fromPointer(
+          _coinTypeImpl.deriveAddressFromPublicKeyAndDerivation(
         coin,
         publicKey.pointer,
         derivation.derivation,
-      );
+      )).value!;
 
   /// HRP for this coin type
   ///
@@ -264,7 +273,8 @@ enum TWCoinType {
   ///
   /// \return ChainID for the given coin type.
   /// \note Caller must free returned object.
-  String get chainId => _coinTypeImpl.chainId(coin);
+  String get chainId =>
+      TWString.fromPointer(_coinTypeImpl.chainId(coin)).value!;
 
   /// SLIP-0044 id for this coin type
   ///

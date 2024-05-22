@@ -1,9 +1,10 @@
 part of '../wallet_core_bindings_native.dart';
 
-class TwStringImpl extends TWStringInterface {
+/// Native interface for [TWString].
+class TWStringImpl extends TWStringInterface {
   final native_bindings.TrustWalletCoreBindings bindings;
 
-  TwStringImpl(this.bindings);
+  TWStringImpl(this.bindings);
 
   @override
   int create(String value) {
@@ -54,8 +55,13 @@ class TwStringImpl extends TWStringInterface {
   }
 
   @override
-  Uint8List utf8Bytes(int pointer) {
-    return bindings.TWStringUTF8Bytes(Pointer.fromAddress(pointer))
+  int utf8Bytes(int pointer) {
+    return bindings.TWStringUTF8Bytes(Pointer.fromAddress(pointer)).address;
+  }
+
+  @override
+  Uint8List bytes(int pointer) {
+    return Pointer.fromAddress(utf8Bytes(pointer))
         .cast<Uint8>()
         .asTypedList(size(pointer));
   }

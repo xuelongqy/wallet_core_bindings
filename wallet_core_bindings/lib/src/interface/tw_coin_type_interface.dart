@@ -12,17 +12,17 @@ abstract class TWCoinTypeInterface {
 
   int xprvVersion(int coin);
 
-  bool validate(int coin, String address);
+  bool validate(int coin, int address);
 
-  String derivationPath(int coin);
+  int derivationPath(int coin);
 
-  String derivationPathWithDerivation(int coin, int derivation);
+  int derivationPathWithDerivation(int coin, int derivation);
 
-  String deriveAddress(int coin, int privateKey);
+  int deriveAddress(int coin, int privateKey);
 
-  String deriveAddressFromPublicKey(int coin, int publicKey);
+  int deriveAddressFromPublicKey(int coin, int publicKey);
 
-  String deriveAddressFromPublicKeyAndDerivation(
+  int deriveAddressFromPublicKeyAndDerivation(
       int coin, int publicKey, int derivationPath);
 
   int hrp(int coin);
@@ -33,7 +33,7 @@ abstract class TWCoinTypeInterface {
 
   int staticPrefix(int coin);
 
-  String chainId(int coin);
+  int chainId(int coin);
 
   int slip44Id(int coin);
 

@@ -1,9 +1,10 @@
 part of '../wallet_core_bindings_native.dart';
 
-class TwDataImpl extends TWDataInterface {
+/// Native interface for [TWData].
+class TWDataImpl extends TWDataInterface {
   final native_bindings.TrustWalletCoreBindings bindings;
 
-  TwDataImpl(this.bindings);
+  TWDataImpl(this.bindings);
 
   @override
   void appendByte(int pointer, int byte) {

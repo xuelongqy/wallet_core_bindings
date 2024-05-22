@@ -28,8 +28,15 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
 
   @override
   Future initialize() async {
-    string = TwStringImpl(_bindings);
-    data = TwDataImpl(_bindings);
+    bitcoinSigHashType = TWBitcoinSigHashTypeImpl(_bindings);
+    coinType = TWCoinTypeImpl(_bindings);
+    data = TWDataImpl(_bindings);
+    hash = TWHashImpl(_bindings);
+    hdVersion = TWHDVersionImpl(_bindings);
+    hrp = TWHRPImpl(_bindings);
+    privateKey = TWPrivateKeyImpl(_bindings);
+    publicKey = TWPublicKeyImpl(_bindings);
+    string = TWStringImpl(_bindings);
     WalletCoreBindingsInterface.instance = this;
   }
 }

@@ -64,8 +64,11 @@ class TWString extends TWObjectFinalizable {
   /// Overloaded operator ==, equivalent to [TWString.get].
   String operator [](int index) => get(index);
 
+  /// Returns the raw pointer to the string's UTF8 bytes (null-terminated).
+  int utf8Bytes() => _stringImpl.utf8Bytes(_pointer);
+
   /// Returns raw data.
-  Uint8List bytes() => _stringImpl.utf8Bytes(_pointer);
+  Uint8List bytes() => _stringImpl.bytes(_pointer);
 
   /// Returns the string value.
   String? get value {
