@@ -5,13 +5,13 @@ extension WasmMemoryExtension on WasmMemory {
   /// Get a string from memory.
   String getDartString(int offset, [int? length]) {
     var len = length;
-    if (len == 0) {
+    if (len == null) {
       len = 0;
       while (view[offset + len!] != 0) {
         len++;
       }
     }
-    final bytes = view.sublist(offset, offset + len!);
+    final bytes = view.sublist(offset, offset + len);
     return utf8.decode(bytes);
   }
 }
