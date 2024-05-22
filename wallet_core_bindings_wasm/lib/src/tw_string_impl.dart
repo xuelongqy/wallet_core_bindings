@@ -30,9 +30,11 @@ class TWStringImpl extends TWStringInterface {
     final memory = wasm.getMemory('memory')!;
     final utf8Bytes = Uint8List.fromList(bytes.toList()..add(0));
     final size = utf8Bytes.length;
-    final bytesPointer = TWData.createWithSize(size + 1).pointer;
+    final bytesPointer = wasm.malloc(size);
     memory.view.setRange(bytesPointer, bytesPointer + size, utf8Bytes);
-    return func([bytesPointer]).first as int;
+    final pointer = func([bytesPointer]).first as int;
+    wasm.free(bytesPointer);
+    return pointer;
   }
 
   @override

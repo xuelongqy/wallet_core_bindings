@@ -17,4 +17,5 @@ part 'src/tw_hrp_impl.dart';
 part 'src/tw_private_key_impl.dart';
 part 'src/tw_public_key_impl.dart';
 part 'src/tw_string_impl.dart';
+part 'src/extensions/wasm_instance_extension.dart';
 part 'src/extensions/wasm_memory_extension.dart';

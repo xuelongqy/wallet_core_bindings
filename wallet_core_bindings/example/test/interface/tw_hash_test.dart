@@ -18,7 +18,7 @@ void main() {
         brownFoxDot: "408d94384216f890ff7a0c3528e8bed1e0b01621",
       };
       for (final item in tests.entries) {
-        final data = TWData(TWString(item.key).bytes()).bytes()!;
+        final data = TWString(item.key).bytes();
         final hash = TWHash.sha1(data);
         expect(TWString.createWithHexBytes(hash).value!, item.value);
       }

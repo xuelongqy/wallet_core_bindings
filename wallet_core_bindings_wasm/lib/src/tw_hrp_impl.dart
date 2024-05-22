@@ -14,7 +14,7 @@ class TWHRPImpl extends TWHRPInterface {
     if (strPointer == 0) {
       return null;
     }
-    return memory.getString(strPointer);
+    return memory.getDartString(strPointer);
   }
 
   @override
