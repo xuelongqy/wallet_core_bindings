@@ -42,7 +42,7 @@ void main() {
         TWData.createWithHexString('deadbeef').bytes()!,
         TWPublicKeyType.SECP256k1,
       );
-      expect(publicKey.pointer, nullptr);
+      expect(publicKey.pointer, nullptr.address);
     });
 
     test('Compressed extended', () {
