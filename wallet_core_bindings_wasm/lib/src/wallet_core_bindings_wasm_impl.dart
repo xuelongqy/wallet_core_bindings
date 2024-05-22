@@ -115,9 +115,26 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
         "wasi_snapshot_preview1",
         "fd_write",
         WasmFunction(
-          (int fd, int iovs, int iovslen, int size) => 0,
-          params: const [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
-          results: const [ValueTy.i32],
+              (int fd, int iovs, int iovs_len, int nwritten) {
+            // TO_DO Implement file descriptor
+            int bytesWritten = 0;
+            final byteData = _wasm.getMemory('memory')!.view.buffer.asByteData();
+            for (int i = 0; i < iovs_len; i++) {
+              int offset = i * 8;
+              int base = byteData.getUint32(iovs + offset, Endian.little);
+              int len =
+              byteData.getUint32(iovs + offset + 4, Endian.little);
+              print(
+                  utf8.decode(byteData.buffer.asUint8List(base, len)));
+              bytesWritten += len;
+            }
+            byteData.setUint32(nwritten, bytesWritten, Endian.little);
+            //printf_dart(
+            //   "bytes written: ${module.byteData.getUint32(nwritten, Endian.little)}");
+            return 0;
+          },
+          params: [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
+          results: [ValueTy.i32],
         ),
       ),
     ]);

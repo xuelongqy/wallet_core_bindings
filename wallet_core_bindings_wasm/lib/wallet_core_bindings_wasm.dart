@@ -1,6 +1,8 @@
 library wallet_core_bindings_wasm;
 
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:flutter/services.dart';
