@@ -100,7 +100,8 @@ class TWPublicKey extends TWObjectFinalizable {
   ///
   /// \param [type] type of the public key
   /// \return true if the block of data is a valid public key, false otherwise
-  bool valid(int type) => _publicKeyImpl.isValid(TWData(data).pointer, type);
+  bool valid(TWPublicKeyType type) =>
+      _publicKeyImpl.isValid(TWData(data).pointer, type.type);
 
   /// Determines if the given public key is compressed or not
   bool get isCompressed => _publicKeyImpl.isCompressed(_pointer);

@@ -9,7 +9,7 @@ class TWPrivateKeyImpl extends TWPrivateKeyInterface {
   @override
   int create() {
     final func = wasm.getFunction('TWPrivateKeyCreate')!;
-    return func([]).first as int;
+    return func().first as int;
   }
 
   @override

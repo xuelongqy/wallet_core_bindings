@@ -291,6 +291,6 @@ enum TWCoinType {
   ///
   /// \param [coin] A coin type
   /// \return public key type for the given coin type
-  TWPublicKeyType publicKeyType(int coin) =>
+  TWPublicKeyType get publicKeyType =>
       TWPublicKeyType.find(_coinTypeImpl.publicKeyType(coin));
 }
