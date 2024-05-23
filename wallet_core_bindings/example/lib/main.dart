@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_core_bindings/wallet_core_bindings.dart';
+import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
+import 'package:wasm_run_flutter/wasm_run_flutter.dart';
 
-void main() {
+void main() async {
+  await WasmRunLibrary.setUp(override: false);
+  WidgetsFlutterBinding.ensureInitialized();
+  await WalletCoreBindingsWasmImpl().initialize();
   runApp(const MyApp());
 }
 
@@ -58,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    TWPrivateKey();
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below

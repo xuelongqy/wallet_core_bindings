@@ -30,111 +30,23 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     if (_wasmBytes != null) {
       _wasmBytes = null;
     }
-    final builder = module.builder();
+    final builder = module.builder(
+      wasiConfig: WasiConfig(
+        preopenedDirs: [],
+        webBrowserFileSystem: {},
+      ),
+    );
     builder.addImports([
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "clock_time_get",
-        WasmFunction(
-          (int id, I64 precision, int ptr_time) {
-            BigInt nanosecondsSinceEpoch =
-                BigInt.from(DateTime.now().microsecondsSinceEpoch) *
-                    BigInt.from(1000);
-            _wasm.getMemory('memory')!.view.setAll(
-                ptr_time, hex.decode(nanosecondsSinceEpoch.toRadixString(16)));
-            return 0;
-          },
-          params: const [ValueTy.i32, ValueTy.i64, ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "proc_exit",
-        WasmFunction(
-          (int code) => throw Exception("Process exited with code $code"),
-          params: const [ValueTy.i32],
-          results: const [],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "environ_sizes_get",
-        WasmFunction(
-          (int len, int buflen) => 0,
-          params: const [ValueTy.i32, ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "environ_get",
-        WasmFunction(
-          (int environ, int environ_buf) => 0,
-          params: const [ValueTy.i32, ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "fd_close",
-        WasmFunction(
-          (int fd) => 0,
-          params: const [ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
       WasmImport(
         "env",
         "__syscall_getcwd",
         WasmFunction(
-          (int code) => 0,
-          params: const [ValueTy.i32, ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "fd_seek",
-        WasmFunction(
-          (int fd, I64 offset, int whence, int newOffset) => 0,
-          params: const [ValueTy.i32, ValueTy.i64, ValueTy.i32, ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "fd_read",
-        WasmFunction(
-          (int fd, int iovs, int iovslen, int size) => 0,
-          params: const [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
-          results: const [ValueTy.i32],
-        ),
-      ),
-      WasmImport(
-        "wasi_snapshot_preview1",
-        "fd_write",
-        WasmFunction(
-              (int fd, int iovs, int iovs_len, int nwritten) {
-            // TO_DO Implement file descriptor
-            int bytesWritten = 0;
-            final byteData = _wasm.getMemory('memory')!.view.buffer.asByteData();
-            for (int i = 0; i < iovs_len; i++) {
-              int offset = i * 8;
-              int base = byteData.getUint32(iovs + offset, Endian.little);
-              int len =
-              byteData.getUint32(iovs + offset + 4, Endian.little);
-              print(
-                  utf8.decode(byteData.buffer.asUint8List(base, len)));
-              bytesWritten += len;
-            }
-            byteData.setUint32(nwritten, bytesWritten, Endian.little);
-            //printf_dart(
-            //   "bytes written: ${module.byteData.getUint32(nwritten, Endian.little)}");
+          (int code) {
+            print('__syscall_getcwd');
             return 0;
           },
-          params: [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
-          results: [ValueTy.i32],
+          params: const [ValueTy.i32, ValueTy.i32],
+          results: const [ValueTy.i32],
         ),
       ),
     ]);
