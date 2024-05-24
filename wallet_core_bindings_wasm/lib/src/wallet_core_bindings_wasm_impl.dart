@@ -49,6 +49,121 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
           results: const [ValueTy.i32],
         ),
       ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "clock_time_get",
+      //   WasmFunction(
+      //     (int id, I64 precision, int ptr_time) {
+      //       print('clock_time_get');
+      //       BigInt nanosecondsSinceEpoch =
+      //           BigInt.from(DateTime.now().microsecondsSinceEpoch) *
+      //               BigInt.from(1000);
+      //       _wasm.getMemory('memory')!.view.setAll(
+      //           ptr_time, hex.decode(nanosecondsSinceEpoch.toRadixString(16)));
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32, ValueTy.i64, ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "proc_exit",
+      //   WasmFunction(
+      //     (int code) {
+      //       print('proc_exit');
+      //       throw Exception("Process exited with code $code");
+      //     },
+      //     params: const [ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "environ_sizes_get",
+      //   WasmFunction(
+      //     (int len, int buflen) {
+      //       print('environ_sizes_get');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32, ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "environ_get",
+      //   WasmFunction(
+      //     (int environ, int environ_buf) {
+      //       print('environ_get');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32, ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "fd_close",
+      //   WasmFunction(
+      //     (int fd) {
+      //       print('fd_close');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "fd_seek",
+      //   WasmFunction(
+      //     (int fd, I64 offset, int whence, int newOffset) {
+      //       print('fd_seek');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32, ValueTy.i64, ValueTy.i32, ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "fd_read",
+      //   WasmFunction(
+      //     (int fd, int iovs, int iovslen, int size) {
+      //       print('fd_read');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "wasi_snapshot_preview1",
+      //   "fd_write",
+      //   WasmFunction(
+      //     (int fd, int iovs, int iovs_len, int nwritten) {
+      //       print('fd_write');
+      //       // TO_DO Implement file descriptor
+      //       int bytesWritten = 0;
+      //       final byteData =
+      //           _wasm.getMemory('memory')!.view.buffer.asByteData();
+      //       for (int i = 0; i < iovs_len; i++) {
+      //         int offset = i * 8;
+      //         int base = byteData.getUint32(iovs + offset, Endian.little);
+      //         int len = byteData.getUint32(iovs + offset + 4, Endian.little);
+      //         print(utf8.decode(byteData.buffer.asUint8List(base, len)));
+      //         bytesWritten += len;
+      //       }
+      //       byteData.setUint32(nwritten, bytesWritten, Endian.little);
+      //       //printf_dart(
+      //       //   "bytes written: ${module.byteData.getUint32(nwritten, Endian.little)}");
+      //       return 0;
+      //     },
+      //     params: [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
+      //     results: [ValueTy.i32],
+      //   ),
+      // ),
     ]);
     _wasm = await builder.build();
     bitcoinSigHashType = TWBitcoinSigHashTypeImpl(_wasm);
