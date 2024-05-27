@@ -51,7 +51,12 @@ class TWPublicKeyImpl extends TWPublicKeyInterface {
   @override
   int recover(int signature, int message) {
     final func = wasm.getFunction('TWPublicKeyRecover')!;
-    return func([signature, message]).first as int;
+    try {
+      return func([signature, message]).first as int;
+    } catch (e, s) {
+      debugPrintStack(stackTrace: s, label: e.toString());
+      return 0;
+    }
   }
 
   @override

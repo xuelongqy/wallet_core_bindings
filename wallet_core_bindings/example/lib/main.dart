@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
@@ -64,10 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    TWPrivateKey();
-    // final deadbeef = TWData.createWithHexString('deadbeef');
-    // final publicKey =
-    // TWPublicKey.recover(deadbeef.bytes()!, deadbeef.bytes()!);
+    final privateKey = TWPrivateKey();
+    log(privateKey.data.toString());
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
