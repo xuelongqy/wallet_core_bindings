@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
@@ -16,7 +14,7 @@ void main() {
         TWData.createWithHexString(publickKeyHex).bytes()!,
         TWPublicKeyType.SECP256k1,
       );
-      expect(publickKey.pointer != nullptr.address, true);
+      expect(publickKey.pointer != 0, true);
       final publicKeyData = publickKey.data;
       expect(TWString.createWithHexBytes(publicKeyData).value!, publickKeyHex);
     });
@@ -42,7 +40,7 @@ void main() {
         TWData.createWithHexString('deadbeef').bytes()!,
         TWPublicKeyType.SECP256k1,
       );
-      expect(publicKey.pointer, nullptr.address);
+      expect(publicKey.pointer, 0);
     });
 
     test('Compressed extended', () {
@@ -111,7 +109,7 @@ void main() {
           '00000000000000000000000000000000000000000000000000000000000000020123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef80');
       final publickKey =
           TWPublicKey.recover(signature.bytes()!, message.bytes()!);
-      expect(publickKey.pointer != nullptr.address, true);
+      expect(publickKey.pointer != 0, true);
       expect(publickKey.type, TWPublicKeyType.SECP256k1Extended);
       final publicKeyData = publickKey.data;
       expect(TWString.createWithHexBytes(publicKeyData).value!,
@@ -122,7 +120,7 @@ void main() {
       final deadbeef = TWData.createWithHexString('deadbeef');
       final publicKey =
           TWPublicKey.recover(deadbeef.bytes()!, deadbeef.bytes()!);
-      expect(publicKey.pointer == nullptr.address, true);
+      expect(publicKey.pointer == 0, true);
     });
   });
 }

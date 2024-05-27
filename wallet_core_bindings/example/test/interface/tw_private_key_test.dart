@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
@@ -14,7 +12,7 @@ void main() {
   group(TWPrivateKey, () {
     test('Create', () {
       final privateKey = TWPrivateKey.createWithHexString(key1Hex);
-      expect(privateKey.pointer != nullptr.address, true);
+      expect(privateKey.pointer != 0, true);
 
       final data = privateKey.data;
       expect(TWString.createWithHexBytes(data).value!, key1Hex);
@@ -22,19 +20,19 @@ void main() {
 
     test('Create new random', () {
       final privateKey = TWPrivateKey();
-      expect(privateKey.pointer != nullptr.address, true);
+      expect(privateKey.pointer != 0, true);
     });
 
     test('Create invalid', () {
       final privateKey = TWPrivateKey.createWithHexString('deadbeef');
-      expect(privateKey.pointer == nullptr.address, true);
+      expect(privateKey.pointer == 0, true);
     });
 
     test('Create copy', () {
       final privateKey1 = TWPrivateKey.createWithHexString(key1Hex);
-      expect(privateKey1.pointer != nullptr.address, true);
+      expect(privateKey1.pointer != 0, true);
       final privateKey2 = TWPrivateKey.createCopy(privateKey1);
-      expect(privateKey2.pointer != nullptr.address, true);
+      expect(privateKey2.pointer != 0, true);
     });
 
     test('All zeros', () {
@@ -42,7 +40,7 @@ void main() {
       final bytes = data.bytes()!;
       final privateKey = TWPrivateKey.createWithData(bytes);
 
-      expect(privateKey.pointer == nullptr.address, true);
+      expect(privateKey.pointer == 0, true);
     });
 
     test('Invalid', () {

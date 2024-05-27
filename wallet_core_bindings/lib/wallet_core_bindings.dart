@@ -1,6 +1,6 @@
 library wallet_core_bindings;
 
-import 'dart:ffi';
+import 'ffi/finalizable.dart' if (dart.library.io) 'dart:ffi';
 import 'dart:typed_data';
 
 part 'src/tw_aes_padding_mode.dart';

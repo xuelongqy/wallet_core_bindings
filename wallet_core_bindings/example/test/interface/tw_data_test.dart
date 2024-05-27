@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -83,7 +82,7 @@ void main() {
 
     test('Delete', () {
       TWData data = TWData.createWithSize(8);
-      expect(data.pointer != nullptr, true);
+      expect(data.pointer != 0, true);
       data.delete();
     });
 

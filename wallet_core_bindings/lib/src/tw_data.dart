@@ -82,10 +82,10 @@ class TWData extends TWObjectFinalizable {
 
   /// Returns the raw pointer to the contents of data.
   Uint8List? bytes() =>
-      _pointer == nullptr.address ? null : _dataImpl.bytes(_pointer);
+      _pointer == 0 ? null : _dataImpl.bytes(_pointer);
 
   /// Returns the hex string of data.
-  String? hexString() => _pointer == nullptr.address
+  String? hexString() => _pointer == 0
       ? null
       : TWString.createWithHexBytes(bytes()!).value;
 

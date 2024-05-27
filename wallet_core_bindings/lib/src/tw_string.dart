@@ -72,7 +72,7 @@ class TWString extends TWObjectFinalizable {
 
   /// Returns the string value.
   String? get value {
-    if (_pointer == nullptr.address) {
+    if (_pointer == 0) {
       return null;
     }
     return String.fromCharCodes(bytes());
