@@ -5,6 +5,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wasm_run_flutter/wasm_run_flutter.dart';
