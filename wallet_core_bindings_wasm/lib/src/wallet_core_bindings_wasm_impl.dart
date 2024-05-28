@@ -170,6 +170,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     aes = TWAESImpl(_wasm);
     anyAddress = TWAnyAddressImpl(_wasm);
     anySigner = TWAnySignerImpl(_wasm);
+    asnParser = TWASNParserImpl(_wasm);
     barz = TWBarzImpl(_wasm);
     base32 = TWBase32Impl(_wasm);
     base58 = TWBase58Impl(_wasm);

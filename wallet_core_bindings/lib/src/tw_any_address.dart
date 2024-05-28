@@ -179,7 +179,7 @@ class TWAnyAddress extends TWObjectFinalizable {
       TWString.fromPointer(_anyAddressImpl.description(_pointer)).value!;
 
   /// Returns coin type of address.
-  TWCoinType coin() => TWCoinType.find(_anyAddressImpl.coin(_pointer));
+  TWCoinType get coin => TWCoinType.find(_anyAddressImpl.coin(_pointer));
 
   /// Returns underlaying data (public key or key hash)
   Uint8List get data =>

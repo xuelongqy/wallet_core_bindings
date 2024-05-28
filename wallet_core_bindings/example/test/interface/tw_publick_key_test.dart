@@ -118,9 +118,8 @@ void main() {
 
     test('Recover invalid', () {
       final deadbeef = TWData.createWithHexString('deadbeef');
-      final publicKey =
-          TWPublicKey.recover(deadbeef.bytes()!, deadbeef.bytes()!);
-      expect(publicKey.pointer == 0, true);
+      expect(() => {TWPublicKey.recover(deadbeef.bytes()!, deadbeef.bytes()!)},
+          throwsException);
     });
   });
 }

@@ -16,7 +16,7 @@ enum TWPurpose {
   const TWPurpose(this.purpose);
 
   /// Find a purpose enum by its value.
-  static TWPurpose find(int value) {
-    return values.firstWhere((element) => element.purpose == value);
+  static TWPurpose find(int purpose) {
+    return values.firstWhere((element) => element.purpose == purpose);
   }
 }

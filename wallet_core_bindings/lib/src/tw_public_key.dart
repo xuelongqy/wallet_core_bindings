@@ -35,10 +35,10 @@ class TWPublicKey extends TWObjectFinalizable {
   /// \param [type] type of the public key
   TWPublicKey(
     Uint8List data,
-    int type, {
+    TWPublicKeyType type, {
     bool attach = true,
   }) : super(
-          _publicKeyImpl.createWithData(TWData(data).pointer, type),
+          _publicKeyImpl.createWithData(TWData(data).pointer, type.type),
           attach: attach,
           finalizer: _twPublicKeyFinalizer,
         );

@@ -36,13 +36,13 @@ class TWAES {
     required Uint8List key,
     required Uint8List data,
     required Uint8List iv,
-    required int mode,
+    required TWAESPaddingMode mode,
   }) {
     return TWData.fromPointer(_aesImpl.decryptCBC(
       TWData(key).pointer,
       TWData(data).pointer,
       TWData(iv).pointer,
-      mode,
+      mode.mode,
     )).bytes();
   }
 

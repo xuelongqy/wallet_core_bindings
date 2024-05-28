@@ -32,6 +32,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     aes = TWAESImpl(_bindings);
     anyAddress = TWAnyAddressImpl(_bindings);
     anySigner = TWAnySignerImpl(_bindings);
+    asnParser = TWASNParserImpl(_bindings);
     barz = TWBarzImpl(_bindings);
     base32 = TWBase32Impl(_bindings);
     base58 = TWBase58Impl(_bindings);

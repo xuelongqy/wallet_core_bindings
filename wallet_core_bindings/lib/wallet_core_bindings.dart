@@ -133,3 +133,4 @@ part 'src/interface/tw_transaction_decoder_interface.dart';
 part 'src/interface/tw_tron_message_signer_interface.dart';
 part 'src/interface/tw_wallet_connect_request_interface.dart';
 part 'src/interface/tw_web_authn_interface.dart';
+part 'src/exception/tw_exception.dart';

@@ -22,7 +22,7 @@ class TWDerivationPath extends TWObjectFinalizable {
   /// \param [address] hex encoded public key.
   TWDerivationPath({
     required int purpose,
-    required TWCoinType coin,
+    required int coin,
     required int account,
     required int change,
     required int address,
@@ -30,7 +30,7 @@ class TWDerivationPath extends TWObjectFinalizable {
   }) : super(
           _derivationPathImpl.create(
             purpose,
-            coin.coin,
+            coin,
             account,
             change,
             address,
@@ -78,7 +78,7 @@ class TWDerivationPath extends TWObjectFinalizable {
   /// Returns the coin value of a derivation path.
   ///
   /// \return The coin part of the DerivationPath.
-  TWCoinType get coin => TWCoinType.find(_derivationPathImpl.coin(_pointer));
+  int get coin => _derivationPathImpl.coin(_pointer);
 
   /// Returns the account value of a derivation path.
   ///

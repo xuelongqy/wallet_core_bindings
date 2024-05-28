@@ -66,8 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    final privateKey = TWPrivateKey();
-    log(privateKey.data.toString());
+    TWAnyAddress('0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F', TWCoinType.Ethereum);
+    // final privateKey = TWPrivateKey();
+    // log(privateKey.data.toString());
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
