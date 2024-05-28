@@ -9,9 +9,9 @@ class TWTransactionDecoder {
   /// \param [coinType] coin type.
   /// \param [encodedTx] encoded transaction data.
   /// \return serialized protobuf message specific for the given coin.
-  static Uint8List decode(int coinType, Uint8List encodedTx) {
-    return TWData.fromPointer(iTWBindings.TWTransactionDecoderDecode(
-      coinType,
+  static Uint8List decode(TWCoinType coinType, Uint8List encodedTx) {
+    return TWData.fromPointer(_transactionDecoderImpl.decode(
+      coinType.coin,
       TWData(encodedTx).pointer,
     )).bytes()!;
   }

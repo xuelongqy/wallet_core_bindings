@@ -127,14 +127,14 @@ class TWBitcoinScript extends TWObjectFinalizable {
   /// Builds a appropriate lock script for the given address with replay.
   TWBitcoinScript.lockScriptForAddressReplay({
     required String address,
-    required int coin,
+    required TWCoinType coin,
     required Uint8List blockHash,
     required int blockHeight,
     bool attach = true,
   }) : super(
           _bitcoinScriptImpl.lockScriptForAddressReplay(
             TWString(address).pointer,
-            coin,
+            coin.coin,
             TWData(blockHash).pointer,
             blockHeight,
           ),

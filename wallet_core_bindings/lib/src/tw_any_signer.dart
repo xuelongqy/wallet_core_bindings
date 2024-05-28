@@ -43,9 +43,9 @@ class TWAnySigner {
   /// \param [input] The serialized data of a signing input
   /// \param [coin] The given coin type to plan the transaction for.
   /// \return The serialized data of a `TransactionPlan` proto object.
-  static Uint8List plan(Uint8List input, int coin) =>
+  static Uint8List plan(Uint8List input, TWCoinType coin) =>
       TWData.fromPointer(_anySignerImpl.plan(
         TWData(input).pointer,
-        coin,
+        coin.coin,
       )).bytes()!;
 }

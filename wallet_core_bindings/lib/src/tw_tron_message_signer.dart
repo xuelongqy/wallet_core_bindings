@@ -14,7 +14,7 @@ class TWTronMessageSigner {
   /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
   static String signMessage(TWPrivateKey privateKey, String message) =>
       TWString.fromPointer(
-        iTWBindings.TWTronMessageSignerSignMessage(
+        _tronMessageSignerImpl.signMessage(
           privateKey.pointer,
           TWString(message).pointer,
         ),
@@ -28,7 +28,7 @@ class TWTronMessageSigner {
   /// \returns false on any invalid input (does not throw), true if the message can be recovered from the signature
   static bool verifyMessage(
           TWPublicKey pubKey, String message, String signature) =>
-      iTWBindings.TWTronMessageSignerVerifyMessage(
+      _tronMessageSignerImpl.verifyMessage(
         pubKey.pointer,
         TWString(message).pointer,
         TWString(signature).pointer,

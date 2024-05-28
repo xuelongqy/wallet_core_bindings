@@ -33,12 +33,12 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [hrp] hrp of the address.
   TWAnyAddress.createBech32({
     required String string,
-    required int coin,
+    required TWCoinType coin,
     required String hrp,
     bool attach = true,
   }) : super(
           _anyAddressImpl.createBech32(
-              TWString(string).pointer, coin, TWString(hrp).pointer),
+              TWString(string).pointer, coin.coin, TWString(hrp).pointer),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -50,12 +50,12 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [ss58Prefix] ss58Prefix of the SS58 address.
   TWAnyAddress.createSS58({
     required String string,
-    required int coin,
+    required TWCoinType coin,
     required int ss58Prefix,
     bool attach = true,
   }) : super(
           _anyAddressImpl.createSS58(
-              TWString(string).pointer, coin, ss58Prefix),
+              TWString(string).pointer, coin.coin, ss58Prefix),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -66,10 +66,10 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [coin] coin type of the address.
   TWAnyAddress.createWithPublicKey(
     TWPublicKey publicKey,
-    int coin, {
+    TWCoinType coin, {
     bool attach = true,
   }) : super(
-          _anyAddressImpl.createWithPublicKey(publicKey.pointer, coin),
+          _anyAddressImpl.createWithPublicKey(publicKey.pointer, coin.coin),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -81,12 +81,12 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [derivation] the custom derivation to use.
   TWAnyAddress.createWithPublicKeyDerivation({
     required TWPublicKey publicKey,
-    required int coin,
+    required TWCoinType coin,
     required TWDerivation derivation,
     bool attach = true,
   }) : super(
           _anyAddressImpl.createWithPublicKeyDerivation(
-              publicKey.pointer, coin, derivation.derivation),
+              publicKey.pointer, coin.coin, derivation.derivation),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -98,12 +98,12 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [hrp] hrp of the address.
   TWAnyAddress.createBech32WithPublicKey({
     required TWPublicKey publicKey,
-    required int coin,
+    required TWCoinType coin,
     required String hrp,
     bool attach = true,
   }) : super(
           _anyAddressImpl.createBech32WithPublicKey(
-              publicKey.pointer, coin, TWString(hrp).pointer),
+              publicKey.pointer, coin.coin, TWString(hrp).pointer),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -115,12 +115,12 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [ss58Prefix] ss58Prefix of the SS58 address.
   TWAnyAddress.createSS58WithPublicKey({
     required TWPublicKey publicKey,
-    required int coin,
+    required TWCoinType coin,
     required int ss58Prefix,
     bool attach = true,
   }) : super(
           _anyAddressImpl.createSS58WithPublicKey(
-              publicKey.pointer, coin, ss58Prefix),
+              publicKey.pointer, coin.coin, ss58Prefix),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -201,11 +201,11 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \return bool indicating if the address is valid.
   static bool isValidBech32({
     required String string,
-    required int coin,
+    required TWCoinType coin,
     required String hrp,
   }) =>
       _anyAddressImpl.isValidBech32(
-          TWString(string).pointer, coin, TWString(hrp).pointer);
+          TWString(string).pointer, coin.coin, TWString(hrp).pointer);
 
   /// Determines if the string is a valid Any address with the given SS58 network prefix.
   ///
@@ -215,10 +215,11 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \return bool indicating if the address is valid.
   static bool isValidSS58({
     required String string,
-    required int coin,
+    required TWCoinType coin,
     required int ss58Prefix,
   }) =>
-      _anyAddressImpl.isValidSS58(TWString(string).pointer, coin, ss58Prefix);
+      _anyAddressImpl.isValidSS58(
+          TWString(string).pointer, coin.coin, ss58Prefix);
 
   @override
   int get hashCode => _pointer.hashCode;

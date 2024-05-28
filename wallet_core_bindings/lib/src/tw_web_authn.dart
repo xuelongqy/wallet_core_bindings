@@ -9,7 +9,7 @@ class TWWebAuthn {
   /// \return Public key.
   static TWPublicKey getPublicKey(Uint8List attestationObject) =>
       TWPublicKey.fromPointer(
-        iTWBindings.TWWebAuthnGetPublicKey(
+        _webAuthnImpl.getPublicKey(
           TWData(attestationObject).pointer,
         ),
       );
@@ -19,7 +19,7 @@ class TWWebAuthn {
   /// \param [signature] ASN encoded webauthn signature: https://www.w3.org/TR/webauthn-2/#sctn-signature-attestation-types
   /// \return Concatenated r and s values.
   static Uint8List getRSValues(Uint8List signature) => TWData.fromPointer(
-        iTWBindings.TWWebAuthnGetRSValues(
+        _webAuthnImpl.getRSValues(
           TWData(signature).pointer,
         ),
       ).bytes()!;
@@ -32,7 +32,7 @@ class TWWebAuthn {
   static Uint8List reconstructOriginalMessage(
           Uint8List authenticatorData, Uint8List clientDataJSON) =>
       TWData.fromPointer(
-        iTWBindings.TWWebAuthnReconstructOriginalMessage(
+        _webAuthnImpl.reconstructOriginalMessage(
           TWData(authenticatorData).pointer,
           TWData(clientDataJSON).pointer,
         ),

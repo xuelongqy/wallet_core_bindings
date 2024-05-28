@@ -11,7 +11,7 @@ class TWTezosMessageSigner {
   /// \returns the formatted message as a string
   static String formatMessage(String message, String url) =>
       TWString.fromPointer(
-        iTWBindings.TWTezosMessageSignerFormatMessage(
+        _tezosMessageSignerImpl.formatMessage(
           TWString(message).pointer,
           TWString(url).pointer,
         ),
@@ -22,7 +22,7 @@ class TWTezosMessageSigner {
   /// \param [message] formatted message to be turned into an hex payload
   /// \return the hexpayload of the formated message as a hex string
   static String inputToPayload(String message) => TWString.fromPointer(
-        iTWBindings.TWTezosMessageSignerInputToPayload(
+        _tezosMessageSignerImpl.inputToPayload(
           TWString(message).pointer,
         ),
       ).value!;
@@ -34,7 +34,7 @@ class TWTezosMessageSigner {
   /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
   static String signMessage(TWPrivateKey privateKey, String message) =>
       TWString.fromPointer(
-        iTWBindings.TWTezosMessageSignerSignMessage(
+        _tezosMessageSignerImpl.signMessage(
           privateKey.pointer,
           TWString(message).pointer,
         ),
@@ -51,7 +51,7 @@ class TWTezosMessageSigner {
     required String message,
     required String signature,
   }) =>
-      iTWBindings.TWTezosMessageSignerVerifyMessage(
+      _tezosMessageSignerImpl.verifyMessage(
         pubKey.pointer,
         TWString(message).pointer,
         TWString(signature).pointer,

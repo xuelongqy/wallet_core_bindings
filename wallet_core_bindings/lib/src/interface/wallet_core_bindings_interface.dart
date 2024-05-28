@@ -149,6 +149,27 @@ abstract class WalletCoreBindingsInterface {
   /// [TWString] interface.
   late TWStringInterface string;
 
+  /// [TWTezosMessageSigner] interface.
+  late TWTezosMessageSignerInterface tezosMessageSigner;
+
+  /// [TWTHORChainSwap] interface.
+  late TWTHORChainSwapInterface thorChainSwap;
+
+  /// [TWTransactionCompiler] interface.
+  late TWTransactionCompilerInterface transactionCompiler;
+
+  /// [TWTransactionDecoder] interface.
+  late TWTransactionDecoderInterface transactionDecoder;
+
+  /// [TWTronMessageSigner] interface.
+  late TWTronMessageSignerInterface tronMessageSigner;
+
+  /// [TWWalletConnectRequest] interface.
+  late TWWalletConnectRequestInterface walletConnectRequest;
+
+  /// [TWWebAuthn] interface.
+  late TWWebAuthnInterface webAuthn;
+
   /// WalletCore bindings instance.
   static WalletCoreBindingsInterface? _instance;
 
@@ -367,3 +388,31 @@ TWStoredKeyInterface get _storedKeyImpl =>
 /// [TWString] implement.
 TWStringInterface get _stringImpl =>
     WalletCoreBindingsInterface.instance.string;
+
+/// [TWTezosMessageSigner] implement.
+TWTezosMessageSignerInterface get _tezosMessageSignerImpl =>
+    WalletCoreBindingsInterface.instance.tezosMessageSigner;
+
+/// [TWTHORChainSwap] implement.
+TWTHORChainSwapInterface get _thorChainSwapImpl =>
+    WalletCoreBindingsInterface.instance.thorChainSwap;
+
+/// [TWTransactionCompiler] implement.
+TWTransactionCompilerInterface get _transactionCompilerImpl =>
+    WalletCoreBindingsInterface.instance.transactionCompiler;
+
+/// [TWTransactionDecoder] implement.
+TWTransactionDecoderInterface get _transactionDecoderImpl =>
+    WalletCoreBindingsInterface.instance.transactionDecoder;
+
+/// [TWTronMessageSigner] implement.
+TWTronMessageSignerInterface get _tronMessageSignerImpl =>
+    WalletCoreBindingsInterface.instance.tronMessageSigner;
+
+/// [TWWalletConnectRequest] implement.
+TWWalletConnectRequestInterface get _walletConnectRequestImpl =>
+    WalletCoreBindingsInterface.instance.walletConnectRequest;
+
+/// [TWWebAuthn] implement.
+TWWebAuthnInterface get _webAuthnImpl =>
+    WalletCoreBindingsInterface.instance.webAuthn;

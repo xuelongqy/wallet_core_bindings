@@ -11,9 +11,9 @@ class TWTransactionCompiler {
   /// \param [coin] coin type.
   /// \param [txInputData] The serialized data of a signing input
   /// \return serialized data of a proto object `PreSigningOutput` includes hash.
-  static Uint8List preImageHashes(int coin, Uint8List txInputData) =>
-      TWData.fromPointer(iTWBindings.TWTransactionCompilerPreImageHashes(
-        coin,
+  static Uint8List preImageHashes(TWCoinType coin, Uint8List txInputData) =>
+      TWData.fromPointer(_transactionCompilerImpl.preImageHashes(
+        coin.coin,
         TWData(txInputData).pointer,
       )).bytes()!;
 
@@ -28,13 +28,13 @@ class TWTransactionCompiler {
   /// \param [publicKeys] public keys for signers to match private keys.
   /// \return serialized data of a proto object `SigningOutput`.
   static Uint8List compileWithSignatures({
-    required int coin,
+    required TWCoinType coin,
     required Uint8List txInputData,
     required List<Uint8List> signatures,
     required List<Uint8List> publicKeys,
   }) =>
-      TWData.fromPointer(iTWBindings.TWTransactionCompilerCompileWithSignatures(
-        coin,
+      TWData.fromPointer(_transactionCompilerImpl.compileWithSignatures(
+        coin.coin,
         TWData(txInputData).pointer,
         TWDataVector.createWithDataList(signatures).pointer,
         TWDataVector.createWithDataList(publicKeys).pointer,
@@ -51,18 +51,18 @@ class TWTransactionCompiler {
   /// \param [publicKeys] public keys for signers to match private keys.
   /// \return serialized data of a proto object `SigningOutput`.
   static Uint8List compilerCompileWithSignaturesAndPubKeyType({
-    required int coin,
+    required TWCoinType coin,
     required Uint8List txInputData,
     required List<Uint8List> signatures,
     required List<Uint8List> publicKeys,
-    required int pubKeyType,
+    required TWPublicKeyType pubKeyType,
   }) =>
       TWData.fromPointer(
-          iTWBindings.TWTransactionCompilerCompileWithSignaturesAndPubKeyType(
-        coin,
+          _transactionCompilerImpl.compilerCompileWithSignaturesAndPubKeyType(
+        coin.coin,
         TWData(txInputData).pointer,
         TWDataVector.createWithDataList(signatures).pointer,
         TWDataVector.createWithDataList(publicKeys).pointer,
-        pubKeyType,
+        pubKeyType.type,
       )).bytes()!;
 }
