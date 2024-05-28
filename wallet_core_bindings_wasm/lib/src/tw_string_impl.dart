@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native implementation for [TWString].
+/// Wasm implementation for [TWString].
 class TWStringImpl extends TWStringInterface {
   final WasmInstance wasm;
 
