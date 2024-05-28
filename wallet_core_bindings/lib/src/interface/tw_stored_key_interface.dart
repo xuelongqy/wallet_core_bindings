@@ -40,17 +40,17 @@ abstract class TWStoredKeyInterface {
   int accountForCoinDerivation(
       int pointer, int coin, int derivation, int wallet);
 
-  int addAccountDerivation(int pointer, int address, int coin, int derivation,
+  void addAccountDerivation(int pointer, int address, int coin, int derivation,
       int derivationPath, int publicKey, int extendedPublicKey);
 
-  int addAccount(int pointer, int address, int coin, int derivationPath,
+  void addAccount(int pointer, int address, int coin, int derivationPath,
       int publicKey, int extendedPublicKey);
 
-  int removeAccountForCoin(int pointer, int coin);
+  void removeAccountForCoin(int pointer, int coin);
 
-  int removeAccountForCoinDerivation(int pointer, int coin, int derivation);
+  void removeAccountForCoinDerivation(int pointer, int coin, int derivation);
 
-  int removeAccountForCoinDerivationPath(
+  void removeAccountForCoinDerivationPath(
       int pointer, int coin, int derivationPath);
 
   bool store(int pointer, int path);

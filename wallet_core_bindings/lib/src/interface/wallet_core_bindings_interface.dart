@@ -12,7 +12,7 @@ abstract class WalletCoreBindingsInterface {
   late TWAnyAddressInterface anyAddress;
 
   /// [TWAnySigner] interface.
-  late TWAnySignerInterface anySinger;
+  late TWAnySignerInterface anySigner;
 
   /// [TWAsnParser] interface.
   late TWAsnParserInterface asnParser;
@@ -211,7 +211,7 @@ TWAESInterface get _aesImpl => WalletCoreBindingsInterface.instance.aes;
 
 /// [TWAnySigner] implement.
 TWAnySignerInterface get _anySignerImpl =>
-    WalletCoreBindingsInterface.instance.anySinger;
+    WalletCoreBindingsInterface.instance.anySigner;
 
 /// [TWAsnParser] implement.
 TWAsnParserInterface get _asnParserImpl =>

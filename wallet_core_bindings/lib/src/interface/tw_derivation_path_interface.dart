@@ -6,8 +6,6 @@ abstract class TWDerivationPathInterface {
 
   int createWithString(int string);
 
-  int createWithPublicKey(int publicKey, int coin);
-
   int indexAt(int pointer, int index);
 
   int indicesCount(int pointer);
