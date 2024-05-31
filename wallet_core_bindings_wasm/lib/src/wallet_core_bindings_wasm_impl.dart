@@ -41,12 +41,23 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
         "env",
         "__syscall_getcwd",
         WasmFunction(
-          (int code) {
+          (int param, int param2) {
             print('__syscall_getcwd');
             return 0;
           },
           params: const [ValueTy.i32, ValueTy.i32],
           results: const [ValueTy.i32],
+        ),
+      ),
+      WasmImport(
+        "env",
+        "emscripten_notify_memory_growth",
+        WasmFunction(
+              (int code) {
+            print('emscripten_notify_memory_growth');
+          },
+          params: const [ValueTy.i32],
+          results: const [],
         ),
       ),
       // WasmImport(
