@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    TWAnyAddress('0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F', TWCoinType.Ethereum);
+    TWAnyAddress.isValid('0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F', TWCoinType.Ethereum);
     // final privateKey = TWPrivateKey();
     // log(privateKey.data.toString());
     setState(() {
