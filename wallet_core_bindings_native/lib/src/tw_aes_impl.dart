@@ -20,8 +20,8 @@ class TWAESImpl extends TWAESInterface {
   int decryptCTR(int key, int data, int iv) {
     return bindings.TWAESDecryptCTR(
       Pointer.fromAddress(key),
-      Pointer.fromAddress(key),
-      Pointer.fromAddress(key),
+      Pointer.fromAddress(data),
+      Pointer.fromAddress(iv),
     ).address;
   }
 
@@ -39,8 +39,8 @@ class TWAESImpl extends TWAESInterface {
   int encryptCTR(int key, int data, int iv) {
     return bindings.TWAESEncryptCTR(
       Pointer.fromAddress(key),
-      Pointer.fromAddress(key),
-      Pointer.fromAddress(key),
+      Pointer.fromAddress(data),
+      Pointer.fromAddress(iv),
     ).address;
   }
 }
