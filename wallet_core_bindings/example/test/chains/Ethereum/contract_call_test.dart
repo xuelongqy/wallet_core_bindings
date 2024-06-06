@@ -15,8 +15,8 @@ String load_json_str(String path) {
   return File(path).readAsStringSync();
 }
 
-void main() {
-  initTest();
+void main() async {
+  await initWalletCoreImpl();
   group('ContractCall', () {
     test('Approval', () {
       final path = '$TESTS_ROOT/chains/Ethereum/Data/erc20.json';

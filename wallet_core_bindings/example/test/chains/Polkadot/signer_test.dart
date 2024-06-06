@@ -5,8 +5,8 @@ import 'package:wallet_core_bindings/proto/Polkadot.pb.dart' as Polkadot;
 
 import '../../utils.dart';
 
-void main() {
-  initTest();
+void main() async {
+  await initWalletCoreImpl();
   final privateKey = TWPrivateKey.createWithData(parse_hex(
       "0xabf8e5bdbe30c65656c0a3cbd181ff8a56294a69dfedd27982aace4a76909115"));
   final privateKeyIOS = TWPrivateKey.createWithData(parse_hex(

@@ -165,7 +165,7 @@ void main() {
 
       final input = Bitcoin.SigningInput(
         coinType: coin.coin,
-        hashType: TWBitcoinScript.hashTypeForCoin(coin).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(coin),
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'ecash:qpmfhhledgp0jy66r5vmwjwmdfu0up7ujqpvm4v8rm',

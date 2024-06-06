@@ -24,7 +24,7 @@ void main() {
       expect(coin.blockchain, TWBlockchain.Ethereum);
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
-      expect(20000714, coin);
+      expect(20000714, coin.coin);
       expect(txUrl,
           'https://bscscan.com/tx/0xb9ae2e808fe8e57171f303ad8f6e3fd17d949b0bfc7b4db6e8e30a71cc517d7e');
       expect(accUrl,
@@ -40,7 +40,7 @@ void main() {
 
       expect(id, 'bsc');
       expect(name, 'Smart Chain Legacy');
-      expect(10000714, coin);
+      expect(10000714, coin.coin);
     });
   });
 }

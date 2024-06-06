@@ -163,7 +163,7 @@ void main() {
       // https://blockchair.com/bitcoin-cash/transaction/96ee20002b34e468f9d3c5ee54f6a8ddaa61c118889c4f35395c2cd93ba5bbb4
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.BitcoinCash).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.BitcoinCash),
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',

@@ -9,8 +9,8 @@ void checkLast32BytesEqual(Uint8List data, String expected) {
   expectHex(data.sublist(data.length - 32), expected);
 }
 
-void main() {
-  initTest();
+void main() async {
+  await initWalletCoreImpl();
   group('EthereumAbiValueEncoder', () {
     test('encodeBool', () {
       Uint8List data;

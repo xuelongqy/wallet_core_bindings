@@ -5,8 +5,9 @@ import 'package:wallet_core_bindings/proto/Ethereum.pb.dart' as Ethereum;
 
 import '../../utils.dart';
 
-void main() {
-  initTest();
+void main() async {
+  await initWalletCoreImpl();
+
   group('Barz', () {
     const coin = TWCoinType.Ethereum;
     final publicKey = TWPublicKey.createWithHexString(

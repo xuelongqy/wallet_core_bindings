@@ -30,16 +30,4 @@ void main() {
           'https://mempool.space/address/17A16QmavnUfCW11DAApiJxp7ARnxN5pGX');
     });
   });
-
-  group('TWBinanceSmartChainLegacyCoinType', () {
-    test('TWCoinType', () {
-      const coin = TWCoinType.SmartChainLegacy;
-      final id = TWCoinTypeConfiguration.getID(coin);
-      final name = TWCoinTypeConfiguration.getName(coin);
-
-      expect(id, 'bsc');
-      expect(name, 'Smart Chain Legacy');
-      expect(10000714, coin);
-    });
-  });
 }

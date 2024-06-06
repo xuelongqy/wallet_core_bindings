@@ -22,9 +22,9 @@ void main() {
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,
-          'https://algoexplorer.io/tx/CR7POXFTYDLC7TV3IXHA7AZKWABUJC52BACLHJQNXAKZJGRPQY3A');
+          'https://app.dappflow.org/explorer/transaction/CR7POXFTYDLC7TV3IXHA7AZKWABUJC52BACLHJQNXAKZJGRPQY3A');
       expect(accUrl,
-          'https://algoexplorer.io/address/J4AEINCSSLDA7LNBNWM4ZXFCTLTOZT5LG3F5BLMFPJYGFWVCMU37EZI2AM');
+          'https://app.dappflow.org/explorer/account/J4AEINCSSLDA7LNBNWM4ZXFCTLTOZT5LG3F5BLMFPJYGFWVCMU37EZI2AM');
       expect(symbol, 'ALGO');
       expect(id, 'algorand');
       expect(name, 'Algorand');

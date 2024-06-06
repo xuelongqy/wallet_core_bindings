@@ -10,24 +10,28 @@ import 'package:wallet_core_bindings_native/wallet_core_bindings_native.dart';
 import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
 import 'package:wasm_run_flutter/wasm_run_flutter.dart';
 
-bool _isInit = false;
+bool _isInitWalletCore = false;
 
 void initTest() {
-  if (_isInit) {
-    return;
-  }
   setUpAll(() async {
-    await initNativeTest();
-    _isInit = true;
+    await initWalletCoreImpl();
   });
 }
 
-Future initNativeTest() async {
+Future initWalletCoreImpl() async {
+  if (_isInitWalletCore) {
+    return;
+  }
+  await initWalletCoreNativeImpl();
+  _isInitWalletCore = true;
+}
+
+Future initWalletCoreNativeImpl() async {
   WidgetsFlutterBinding.ensureInitialized();
   await WalletCoreBindingsNativeImpl().initialize();
 }
 
-Future initWasmTest() async {
+Future initWalletCoreWasmImpl() async {
   await WasmRunLibrary.setUp(override: false);
   WidgetsFlutterBinding.ensureInitialized();
   await WalletCoreBindingsWasmImpl().initialize();

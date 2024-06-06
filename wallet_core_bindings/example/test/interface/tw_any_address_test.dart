@@ -3,8 +3,8 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 import '../utils.dart';
 
-void main() {
-  initTest();
+void main() async {
+  await initWalletCoreImpl();
 
   group(TWAnyAddress, () {
     test('Invalid string', () {

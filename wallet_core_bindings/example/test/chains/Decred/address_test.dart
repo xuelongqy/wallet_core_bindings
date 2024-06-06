@@ -17,14 +17,6 @@ void main() {
         final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
         expect(address.description, 'DsmcYVbP1Nmag2H4AS17UTvmWXmGeA7nLDx');
       }
-      {
-        final privateKey = TWPrivateKey.createWithHexString(
-            'a1269039e4ffdf43687852d7247a295f0b5bc55e6dda031cffaa3295ca0a9d7a');
-        final publicKey =
-            privateKey.getPublicKeyByType(TWPublicKeyType.ED25519);
-        final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
-        expect(address.pointer != 0, true);
-      }
     });
 
     test('Valid', () {

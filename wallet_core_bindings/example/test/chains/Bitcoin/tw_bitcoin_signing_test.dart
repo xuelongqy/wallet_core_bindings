@@ -62,7 +62,7 @@ Bitcoin.SigningInput buildInputP2PKH([bool omitKey = false]) {
   );
 
   final input = Bitcoin.SigningInput(
-    hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type,
+    hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
     amount: $fixnum.Int64(335790000),
     byteFee: $fixnum.Int64(1),
     toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
@@ -146,10 +146,10 @@ Bitcoin.SigningInput buildInputP2WPKH(
   return input;
 }
 
-Bitcoin.SigningInput buildInputP2WSH(TWBitcoinSigHashType hashType,
+Bitcoin.SigningInput buildInputP2WSH(int hashType,
     [bool omitScript = false, bool omitKeys = false]) {
   final input = Bitcoin.SigningInput(
-    hashType: hashType.type,
+    hashType: hashType,
     amount: $fixnum.Int64(1000),
     byteFee: $fixnum.Int64(1),
     toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
@@ -200,7 +200,7 @@ Bitcoin.SigningInput buildInputP2SH_P2WPKH(
     bool invalidRedeemScript = false]) {
   // Setup input
   final input = Bitcoin.SigningInput(
-    hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type,
+    hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
     amount: $fixnum.Int64(200000000),
     byteFee: $fixnum.Int64(1),
     toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
@@ -272,7 +272,7 @@ void main() {
 
       // Setup input
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
         amount: $fixnum.Int64(546),
         useMaxAmount: false,
         useMaxUtxo: true,
@@ -1779,7 +1779,7 @@ void main() {
 
     test('SignP2WSH_HashNone', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.None);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.None.type);
 
       {
         // test plan (but do not reuse plan result)
@@ -1827,7 +1827,7 @@ void main() {
 
     test('SignP2WSH_HashSingle', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.Single);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.Single.type);
 
       {
         // test plan (but do not reuse plan result)
@@ -1875,7 +1875,7 @@ void main() {
 
     test('SignP2WSH_HashAnyoneCanPay', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.AnyoneCanPay);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.AnyoneCanPay.type);
 
       {
         // test plan (but do not reuse plan result)
@@ -1923,7 +1923,7 @@ void main() {
 
     test('SignP2WSH_NegativeMissingScript', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All, true);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type, true);
 
       {
         // test plan (but do not reuse plan result)
@@ -1944,7 +1944,7 @@ void main() {
 
     test('SignP2WSH_NegativeMissingKeys', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All, false, true);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type, false, true);
 
       {
         // test plan (but do not reuse plan result)
@@ -1965,7 +1965,7 @@ void main() {
 
     test('SignP2WSH_NegativeNoUTXOs', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type);
       input.utxo.clear();
       expect(input.utxo.length, 0);
 
@@ -2376,7 +2376,7 @@ void main() {
       }
 
       input.coinType = TWCoinType.Bitcoin.coin;
-      input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type;
+      input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin);
       input.useMaxAmount = true;
       input.amount = $fixnum.Int64(2000000);
       input.byteFee = $fixnum.Int64(1);
@@ -2432,7 +2432,7 @@ void main() {
       // Setup input for Plan
       final input = Bitcoin.SigningInput(
         coinType: coin.coin,
-        hashType: TWBitcoinScript.hashTypeForCoin(coin).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(coin),
         amount: $fixnum.Int64(1200000),
         useMaxAmount: false,
         byteFee: $fixnum.Int64(1),
@@ -2546,7 +2546,7 @@ void main() {
       expect(utxoSum, 1202000);
 
       input.coinType = TWCoinType.Bitcoin.coin;
-      input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type;
+      input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin);
       input.useMaxAmount = false;
       input.amount = $fixnum.Int64(300000);
       input.byteFee = $fixnum.Int64(1);
@@ -2623,7 +2623,7 @@ void main() {
       expect(utxoSum, 22010000);
 
       input.coinType = TWCoinType.Bitcoin.coin;
-      input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type;
+      input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin);
       input.useMaxAmount = false;
       input.amount = $fixnum.Int64(2000000);
       input.byteFee = $fixnum.Int64(1);
@@ -2680,7 +2680,7 @@ void main() {
       // Setup input for Plan
       final input = Bitcoin.SigningInput(
         coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
         amount: $fixnum.Int64(26972),
         useMaxAmount: true,
         byteFee: $fixnum.Int64(1),
@@ -2739,7 +2739,7 @@ void main() {
 
       // Setup input
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinScript.hashTypeForCoin(coin).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(coin),
         amount: $fixnum.Int64(1100),
         useMaxAmount: false,
         byteFee: $fixnum.Int64(1),
@@ -2848,7 +2848,7 @@ void main() {
 
       final input = Bitcoin.SigningInput(
         coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin).type,
+        hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
         amount: $fixnum.Int64(toAmount),
         byteFee: $fixnum.Int64(byteFee),
         toAddress: toAddress,

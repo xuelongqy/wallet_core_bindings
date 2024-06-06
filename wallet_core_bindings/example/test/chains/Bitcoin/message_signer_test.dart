@@ -5,8 +5,9 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 import '../../utils.dart';
 
-void main() {
-  initTest();
+void main() async {
+  await initWalletCoreImpl();
+
   final gPrivateKey = TWPrivateKey.createWithHexString(
       'afeefca74d9a325cf1d6b6911d61a65c32afa8e02bd5e78e2e4ac2910bab45f5');
 
