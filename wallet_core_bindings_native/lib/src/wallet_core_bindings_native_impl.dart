@@ -43,6 +43,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     bitcoinScript = TWBitcoinScriptImpl(_bindings);
     bitcoinSigHashType = TWBitcoinSigHashTypeImpl(_bindings);
     cardano = TWCardanoImpl(_bindings);
+    coinTypeConfiguration = TWCoinTypeConfigurationImpl(_bindings);
     coinType = TWCoinTypeImpl(_bindings);
     data = TWDataImpl(_bindings);
     dataVector = TWDataVectorImpl(_bindings);
@@ -79,6 +80,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     tezosMessageSigner = TWTezosMessageSignerImpl(_bindings);
     thorChainSwap = TWTHORChainSwapImpl(_bindings);
     transactionCompiler = TWTransactionCompilerImpl(_bindings);
+    transactionDecoder = TWTransactionDecoderImpl(_bindings);
     tronMessageSigner = TWTronMessageSignerImpl(_bindings);
     walletConnectRequest = TWWalletConnectRequestImpl(_bindings);
     webAuthn = TWWebAuthnImpl(_bindings);
