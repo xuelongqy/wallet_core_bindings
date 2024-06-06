@@ -67,7 +67,7 @@ void main() {
     });
 
     test('Create with size', () {
-      final n = 12;
+      const n = 12;
       TWData data = TWData.createWithSize(n);
       for (int i = 0; i < n; i++) {
         expect(data[i], 0);

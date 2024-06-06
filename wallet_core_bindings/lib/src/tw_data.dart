@@ -81,13 +81,11 @@ class TWData extends TWObjectFinalizable {
   int get size => _dataImpl.size(_pointer);
 
   /// Returns the raw pointer to the contents of data.
-  Uint8List? bytes() =>
-      _pointer == 0 ? null : _dataImpl.bytes(_pointer);
+  Uint8List? bytes() => _pointer == 0 ? null : _dataImpl.bytes(_pointer);
 
   /// Returns the hex string of data.
-  String? hexString() => _pointer == 0
-      ? null
-      : TWString.createWithHexBytes(bytes()!).value;
+  String? hexString() =>
+      _pointer == 0 ? null : TWString.createWithHexBytes(bytes()!).value;
 
   /// Returns the byte at the provided index.
   ///

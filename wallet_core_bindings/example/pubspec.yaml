@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  bech32: ^0.2.2
   fixnum: ^1.1.0
   wasm_run_flutter: ^0.1.0
   wallet_core_bindings:

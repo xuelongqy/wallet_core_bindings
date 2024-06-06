@@ -95,8 +95,7 @@ void main() {
       expect(TWHRP.Unknown, TWCoinType.Dogecoin.hrp);
       expect(TWHRP.Unknown, TWCoinType.EOS.hrp);
       expect(TWHRP.Unknown, TWCoinType.Ethereum.hrp);
-      expect(
-          TWHRP.Unknown, TWCoinType.EthereumClassic.hrp);
+      expect(TWHRP.Unknown, TWCoinType.EthereumClassic.hrp);
       expect(TWHRP.Unknown, TWCoinType.GoChain.hrp);
       expect(TWHRP.Unknown, TWCoinType.ICON.hrp);
       expect(TWHRP.Unknown, TWCoinType.Kin.hrp);

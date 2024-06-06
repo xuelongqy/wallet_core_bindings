@@ -248,8 +248,9 @@ class TWBitcoinScript extends TWObjectFinalizable {
   ///
   /// \param [coinType] coin type
   /// \return default HashType for the given coin
-  static int hashTypeForCoin(TWCoinType coinType) =>
-      _bitcoinScriptImpl.hashTypeForCoin(coinType.coin);
+  static TWBitcoinSigHashType hashTypeForCoin(TWCoinType coinType) =>
+      TWBitcoinSigHashType.find(
+          _bitcoinScriptImpl.hashTypeForCoin(coinType.coin));
 
   @override
   int get hashCode => _pointer.hashCode;

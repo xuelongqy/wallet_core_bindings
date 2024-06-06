@@ -2,7 +2,6 @@ part of '../../wallet_core_bindings_wasm.dart';
 
 /// Extension for [WasmInstance].
 extension WasmInstanceExtension on WasmInstance {
-
   /// Allocate memory in the Wasm instance.
   int malloc(int size) {
     final func = getFunction('malloc')!;

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
@@ -66,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    TWAnyAddress.isValid('0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F', TWCoinType.Ethereum);
+    TWAnyAddress.isValid(
+        '0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F', TWCoinType.Ethereum);
     // final privateKey = TWPrivateKey();
     // log(privateKey.data.toString());
     setState(() {
