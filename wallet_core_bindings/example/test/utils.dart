@@ -17,7 +17,7 @@ void initTest() {
     return;
   }
   setUpAll(() async {
-    await initWasmTest();
+    await initNativeTest();
     _isInit = true;
   });
 }
