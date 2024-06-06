@@ -41,7 +41,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
         "env",
         "__syscall_getcwd",
         WasmFunction(
-          (int code) {
+          (int param, int param2) {
             print('__syscall_getcwd');
             return 0;
           },
@@ -49,6 +49,191 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
           results: const [ValueTy.i32],
         ),
       ),
+      // WasmImport(
+      //   "env",
+      //   "__cxa_throw",
+      //   WasmFunction(
+      //         (int param, int param2, int param3) {
+      //       print('__cxa_throw');
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "__assert_fail",
+      //   WasmFunction(
+      //         (int param, int param2, int param3, int param4) {
+      //       print('__assert_fail');
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "getentropy",
+      //   WasmFunction(
+      //         (int param, int param2) {
+      //       print('getentropy');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "abort",
+      //   WasmFunction(
+      //         () {
+      //       print('abort');
+      //     },
+      //     params: const [],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "emscripten_memcpy_big",
+      //   WasmFunction(
+      //         (int param, int param2, int param3) {
+      //       print('emscripten_memcpy_big');
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "_tzset_js",
+      //   WasmFunction(
+      //         (int param, int param2, int param3) {
+      //       print('_tzset_js');
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "_gmtime_js",
+      //   WasmFunction(
+      //         (int param, int param2) {
+      //       print('_gmtime_js');
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "emscripten_date_now",
+      //   WasmFunction(
+      //         () {
+      //       print('emscripten_date_now');
+      //       return 1.0;
+      //     },
+      //     params: const [],
+      //     results: const [ValueTy.f64],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "_emscripten_get_now_is_monotonic",
+      //   WasmFunction(
+      //         () {
+      //       print('_emscripten_get_now_is_monotonic');
+      //       return 1;
+      //     },
+      //     params: const [],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "__syscall_fcntl64",
+      //   WasmFunction(
+      //         (int param, int param2, int param3) {
+      //       print('__syscall_fcntl64');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "__syscall_ioctl",
+      //   WasmFunction(
+      //         (int param, int param2, int param3) {
+      //       print('__syscall_ioctl');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "_munmap_js",
+      //   WasmFunction(
+      //         (int param, int param2, int param3,int param4, int param5, int param6) {
+      //       print('_munmap_js');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "__syscall_openat",
+      //   WasmFunction(
+      //         (int param, int param2, int param3,int param4) {
+      //       print('__syscall_openat');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "emscripten_resize_heap",
+      //   WasmFunction(
+      //         (int param, int param2, int param3,int param4) {
+      //       print('emscripten_resize_heap');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "strftime_l",
+      //   WasmFunction(
+      //         (int param, int param2, int param3,int param4, int param5) {
+      //       print('strftime_l');
+      //       return 0;
+      //     },
+      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
+      //     results: const [ValueTy.i32],
+      //   ),
+      // ),
+      // WasmImport(
+      //   "env",
+      //   "emscripten_notify_memory_growth",
+      //   WasmFunction(
+      //         (int code) {
+      //       print('emscripten_notify_memory_growth');
+      //     },
+      //     params: const [ValueTy.i32],
+      //     results: const [],
+      //   ),
+      // ),
       // WasmImport(
       //   "wasi_snapshot_preview1",
       //   "clock_time_get",
