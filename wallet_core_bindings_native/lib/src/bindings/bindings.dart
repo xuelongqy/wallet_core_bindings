@@ -12188,6 +12188,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeLightlink = 1890;
   static const int TWCoinTypeBlast = 81457;
   static const int TWCoinTypeBounceBit = 6001;
+  static const int TWCoinTypeZkLinkNova = 810180;
 }
 
 /// StarkEx message signing and verification.
@@ -12262,6 +12263,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDLinea = 59144;
   static const int TWEthereumChainIDBlast = 81457;
   static const int TWEthereumChainIDScroll = 534352;
+  static const int TWEthereumChainIDZklinknova = 810180;
   static const int TWEthereumChainIDWanchain = 888;
   static const int TWEthereumChainIDCronos = 25;
   static const int TWEthereumChainIDOptimism = 10;

@@ -160,7 +160,8 @@ enum TWCoinType {
   Merlin(4200),
   Lightlink(1890),
   Blast(81457),
-  BounceBit(6001);
+  BounceBit(6001),
+  ZkLinkNova(810180);
 
   final int coin;
 

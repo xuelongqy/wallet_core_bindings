@@ -29,6 +29,7 @@ enum TWEthereumChainID {
   Linea(59144),
   Blast(81457),
   Scroll(534352),
+  Zklinknova(534352),
   Wanchain(888),
   Cronos(25),
   Optimism(10),
