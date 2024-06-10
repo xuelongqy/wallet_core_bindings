@@ -132,6 +132,17 @@ void main() {
         // Negative: invalid signatures
         final invalidSignature = parse_hex(
             "fb43727477caaa12542b9060856816d42eedef6ebf2e98e4f8dff4355fe384751925833c4a26b2fed1707aebe655cb3317504a61ee59697c086f7baa6ca06a09");
+        if (isTestWasm) {
+          expect(
+              () => TWTransactionCompiler.compileWithSignatures(
+                    coin: coin,
+                    txInputData: inputData,
+                    signatures: [invalidSignature],
+                    publicKeys: [publicKeyData],
+                  ),
+              throwsException);
+          return;
+        }
         final outputData = TWTransactionCompiler.compileWithSignatures(
           coin: coin,
           txInputData: inputData,

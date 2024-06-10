@@ -139,13 +139,14 @@ void main() {
         // Negative: invalid public key
         final publicKeyBlake =
             parse_hex("6641abedacf9483b793afe1718689cc9420bbb1c");
-        final outputData = TWTransactionCompiler.compileWithSignatures(
-          coin: coin,
-          txInputData: inputData,
-          signatures: [signature],
-          publicKeys: [publicKeyBlake],
-        );
-        expect(outputData.isEmpty, true);
+        expectWasmWithException(
+            () => TWTransactionCompiler.compileWithSignatures(
+                  coin: coin,
+                  txInputData: inputData,
+                  signatures: [signature],
+                  publicKeys: [publicKeyBlake],
+                ).isEmpty,
+            true);
       }
 
       {

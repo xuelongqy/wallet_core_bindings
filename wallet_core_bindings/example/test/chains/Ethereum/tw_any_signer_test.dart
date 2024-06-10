@@ -81,6 +81,9 @@ void main() {
       const expected =
           'f8aa808509c7652400830130b9946b175474e89094c44da98b954eedeac495271d0f80b844a9059cbb0000000000000000000000005322b34c88ed0691971bf52a7047448f0f4efc840000000000000000000000000000000000000000000000001bc16d674ec8000025a0724c62ad4fbf47346b02de06e603e013f26f26b56fdc0be7ba3d6273401d98cea0032131cae15da7ddcda66963e8bef51ca0d9962bfef0547d3f02597a4a58c931';
 
+
+
+      print(input.writeToBuffer().length);
       // sign test
       final output = Ethereum.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));

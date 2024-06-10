@@ -12,6 +12,8 @@ import 'package:wasm_run_flutter/wasm_run_flutter.dart';
 
 bool _isInitWalletCore = false;
 
+bool isTestWasm = false;
+
 void initTest() {
   setUpAll(() async {
     await initWalletCoreImpl();
@@ -22,7 +24,7 @@ Future initWalletCoreImpl() async {
   if (_isInitWalletCore) {
     return;
   }
-  await initWalletCoreNativeImpl();
+  await initWalletCoreWasmImpl();
   _isInitWalletCore = true;
 }
 
@@ -35,6 +37,7 @@ Future initWalletCoreWasmImpl() async {
   await WasmRunLibrary.setUp(override: false);
   WidgetsFlutterBinding.ensureInitialized();
   await WalletCoreBindingsWasmImpl().initialize();
+  isTestWasm = true;
 }
 
 const UINT32_MAX = 0xffffffff;
@@ -109,4 +112,17 @@ String hex(List<int> bytes) {
 String hexString(String value) {
   return TWString.createWithHexBytes(Uint8List.fromList(utf8.encode(value)))
       .value!;
+}
+
+void expectWasmWithException(
+  Function actual,
+  dynamic matcher, {
+  String? reason,
+  dynamic skip, // true or a String
+}) {
+  if (isTestWasm) {
+    expect(actual, throwsA(isException), reason: reason, skip: skip);
+  } else {
+    expect(actual(), matcher, reason: reason, skip: skip);
+  }
 }

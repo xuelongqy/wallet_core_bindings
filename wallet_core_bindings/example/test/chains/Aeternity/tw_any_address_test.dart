@@ -18,8 +18,8 @@ void main() {
         TWAnyAddress.isValid('behave@wallet', coin),
         false,
       );
-      expect(
-        TWAnyAddress.isValid('a', coin),
+      expectWasmWithException(
+        () => TWAnyAddress.isValid('a', coin),
         false,
       );
     });

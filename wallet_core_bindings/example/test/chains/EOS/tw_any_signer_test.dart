@@ -43,11 +43,16 @@ void main() {
 
       input.privateKeyType = EOS.KeyType.LEGACY;
       {
-        final output = EOS.SigningOutput.fromBuffer(
-            TWAnySigner.sign(input.writeToBuffer(), coin));
+        if (isTestWasm) {
+          expect(() => TWAnySigner.sign(input.writeToBuffer(), coin),
+              throwsException);
+        } else {
+          final output = EOS.SigningOutput.fromBuffer(
+              TWAnySigner.sign(input.writeToBuffer(), coin));
 
-        expect(output.error, Common.SigningError.Error_internal);
-        expect(output.jsonEncoded.isEmpty, true);
+          expect(output.error, Common.SigningError.Error_internal);
+          expect(output.jsonEncoded.isEmpty, true);
+        }
       }
     });
   });

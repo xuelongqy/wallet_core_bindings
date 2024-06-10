@@ -3,35 +3,36 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 import '../../utils.dart';
 
-final PayToScriptHash = TWBitcoinScript.createWithBytes(
-    TWData.createWithHexString(
-            'a914' '4733f37cf4db86fbc2efed2500b4f4e49f312023' '87')
-        .bytes()!);
-final PayToWitnessScriptHash =
-    TWBitcoinScript.createWithBytes(TWData.createWithHexString('0020'
-            'ff25429251b5a84f452230a3c75fd886b7fc5a7865ce4a7bb7a9d7c5be6da3db')
-        .bytes()!);
-final PayToWitnessPublicKeyHash = TWBitcoinScript.createWithBytes(
-    TWData.createWithHexString(
-            '0014' '79091972186c449eb1ded22b78e40d009bdf0089')
-        .bytes()!);
-final PayToPublicKeySecp256k1 =
-    TWBitcoinScript.createWithBytes(TWData.createWithHexString('21'
-            '03c9f4836b9a4f77fc0d81f7bcb01b7f1b35916864b9476c241ce9fc198bd25432'
-            'ac')
-        .bytes()!);
-final PayToPublicKeySecp256k1Extended =
-    TWBitcoinScript.createWithBytes(TWData.createWithHexString('41'
-            '0499c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c1'
-            '66b489a4b7c491e7688e6ebea3a71fc3a1a48d60f98d5ce84c93b65e423fde91ac')
-        .bytes()!);
-final PayToPublicKeyHash = TWBitcoinScript.createWithBytes(
-    TWData.createWithHexString(
-            '76a914' '79091972186c449eb1ded22b78e40d009bdf0089' '88ac')
-        .bytes()!);
+void main() async {
+  await initWalletCoreImpl();
 
-void main() {
-  initTest();
+  final PayToScriptHash = TWBitcoinScript.createWithBytes(
+      TWData.createWithHexString(
+          'a914' '4733f37cf4db86fbc2efed2500b4f4e49f312023' '87')
+          .bytes()!);
+  final PayToWitnessScriptHash =
+  TWBitcoinScript.createWithBytes(TWData.createWithHexString('0020'
+      'ff25429251b5a84f452230a3c75fd886b7fc5a7865ce4a7bb7a9d7c5be6da3db')
+      .bytes()!);
+  final PayToWitnessPublicKeyHash = TWBitcoinScript.createWithBytes(
+      TWData.createWithHexString(
+          '0014' '79091972186c449eb1ded22b78e40d009bdf0089')
+          .bytes()!);
+  final PayToPublicKeySecp256k1 =
+  TWBitcoinScript.createWithBytes(TWData.createWithHexString('21'
+      '03c9f4836b9a4f77fc0d81f7bcb01b7f1b35916864b9476c241ce9fc198bd25432'
+      'ac')
+      .bytes()!);
+  final PayToPublicKeySecp256k1Extended =
+  TWBitcoinScript.createWithBytes(TWData.createWithHexString('41'
+      '0499c6f51ad6f98c9c583f8e92bb7758ab2ca9a04110c0a1126ec43e5453d196c1'
+      '66b489a4b7c491e7688e6ebea3a71fc3a1a48d60f98d5ce84c93b65e423fde91ac')
+      .bytes()!);
+  final PayToPublicKeyHash = TWBitcoinScript.createWithBytes(
+      TWData.createWithHexString(
+          '76a914' '79091972186c449eb1ded22b78e40d009bdf0089' '88ac')
+          .bytes()!);
+
   group('BitcoinScript', () {
     test('PayToPublicKey', () {
       final script = TWBitcoinScript.buildPayToPublicKey(TWData.createWithHexString(

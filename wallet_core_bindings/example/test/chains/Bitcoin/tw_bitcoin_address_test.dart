@@ -66,14 +66,18 @@ void main() {
     });
 
     test('CreateWithStringInvalid', () {
-      final addr = TWBitcoinAddress('__INVALID__');
-      expect(addr.pointer == 0, true);
+      expectWasmWithException(
+          () => TWBitcoinAddress('__INVALID__').pointer == 0, true);
     });
 
     test('CreateWithDataInvalid', () {
-      final addr = TWBitcoinAddress.createWithData(
-          TWData.createWithHexString('deadbeef').bytes()!);
-      expect(addr.pointer == 0, true);
+      expectWasmWithException(
+          () =>
+              TWBitcoinAddress.createWithData(
+                      TWData.createWithHexString('deadbeef').bytes()!)
+                  .pointer ==
+              0,
+          true);
     });
 
     test('CreateWithPublicKeyInvalid', () {
@@ -82,9 +86,13 @@ void main() {
         TWPublicKeyType.ED25519,
       );
       expect(pubKey.pointer != 0, true);
-      final addr = TWBitcoinAddress.createWithPublicKey(
-          pubKey, TWCoinType.Bitcoin.p2shPrefix);
-      expect(addr.pointer == 0, true);
+      expectWasmWithException(
+          () =>
+              TWBitcoinAddress.createWithPublicKey(
+                      pubKey, TWCoinType.Bitcoin.p2shPrefix)
+                  .pointer ==
+              0,
+          true);
     });
   });
 }

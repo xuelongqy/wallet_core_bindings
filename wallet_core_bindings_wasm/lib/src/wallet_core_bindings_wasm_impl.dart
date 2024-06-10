@@ -49,306 +49,17 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
           results: const [ValueTy.i32],
         ),
       ),
-      // WasmImport(
-      //   "env",
-      //   "__cxa_throw",
-      //   WasmFunction(
-      //         (int param, int param2, int param3) {
-      //       print('__cxa_throw');
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "__assert_fail",
-      //   WasmFunction(
-      //         (int param, int param2, int param3, int param4) {
-      //       print('__assert_fail');
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "getentropy",
-      //   WasmFunction(
-      //         (int param, int param2) {
-      //       print('getentropy');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "abort",
-      //   WasmFunction(
-      //         () {
-      //       print('abort');
-      //     },
-      //     params: const [],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "emscripten_memcpy_big",
-      //   WasmFunction(
-      //         (int param, int param2, int param3) {
-      //       print('emscripten_memcpy_big');
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "_tzset_js",
-      //   WasmFunction(
-      //         (int param, int param2, int param3) {
-      //       print('_tzset_js');
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "_gmtime_js",
-      //   WasmFunction(
-      //         (int param, int param2) {
-      //       print('_gmtime_js');
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "emscripten_date_now",
-      //   WasmFunction(
-      //         () {
-      //       print('emscripten_date_now');
-      //       return 1.0;
-      //     },
-      //     params: const [],
-      //     results: const [ValueTy.f64],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "_emscripten_get_now_is_monotonic",
-      //   WasmFunction(
-      //         () {
-      //       print('_emscripten_get_now_is_monotonic');
-      //       return 1;
-      //     },
-      //     params: const [],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "__syscall_fcntl64",
-      //   WasmFunction(
-      //         (int param, int param2, int param3) {
-      //       print('__syscall_fcntl64');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "__syscall_ioctl",
-      //   WasmFunction(
-      //         (int param, int param2, int param3) {
-      //       print('__syscall_ioctl');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "_munmap_js",
-      //   WasmFunction(
-      //         (int param, int param2, int param3,int param4, int param5, int param6) {
-      //       print('_munmap_js');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "__syscall_openat",
-      //   WasmFunction(
-      //         (int param, int param2, int param3,int param4) {
-      //       print('__syscall_openat');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "emscripten_resize_heap",
-      //   WasmFunction(
-      //         (int param, int param2, int param3,int param4) {
-      //       print('emscripten_resize_heap');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "strftime_l",
-      //   WasmFunction(
-      //         (int param, int param2, int param3,int param4, int param5) {
-      //       print('strftime_l');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32,ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "env",
-      //   "emscripten_notify_memory_growth",
-      //   WasmFunction(
-      //         (int code) {
-      //       print('emscripten_notify_memory_growth');
-      //     },
-      //     params: const [ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "clock_time_get",
-      //   WasmFunction(
-      //     (int id, I64 precision, int ptr_time) {
-      //       print('clock_time_get');
-      //       BigInt nanosecondsSinceEpoch =
-      //           BigInt.from(DateTime.now().microsecondsSinceEpoch) *
-      //               BigInt.from(1000);
-      //       _wasm.getMemory('memory')!.view.setAll(
-      //           ptr_time, hex.decode(nanosecondsSinceEpoch.toRadixString(16)));
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32, ValueTy.i64, ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "proc_exit",
-      //   WasmFunction(
-      //     (int code) {
-      //       print('proc_exit');
-      //       throw Exception("Process exited with code $code");
-      //     },
-      //     params: const [ValueTy.i32],
-      //     results: const [],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "environ_sizes_get",
-      //   WasmFunction(
-      //     (int len, int buflen) {
-      //       print('environ_sizes_get');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32, ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "environ_get",
-      //   WasmFunction(
-      //     (int environ, int environ_buf) {
-      //       print('environ_get');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32, ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "fd_close",
-      //   WasmFunction(
-      //     (int fd) {
-      //       print('fd_close');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "fd_seek",
-      //   WasmFunction(
-      //     (int fd, I64 offset, int whence, int newOffset) {
-      //       print('fd_seek');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32, ValueTy.i64, ValueTy.i32, ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "fd_read",
-      //   WasmFunction(
-      //     (int fd, int iovs, int iovslen, int size) {
-      //       print('fd_read');
-      //       return 0;
-      //     },
-      //     params: const [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
-      //     results: const [ValueTy.i32],
-      //   ),
-      // ),
-      // WasmImport(
-      //   "wasi_snapshot_preview1",
-      //   "fd_write",
-      //   WasmFunction(
-      //     (int fd, int iovs, int iovs_len, int nwritten) {
-      //       print('fd_write');
-      //       // TO_DO Implement file descriptor
-      //       int bytesWritten = 0;
-      //       final byteData =
-      //           _wasm.getMemory('memory')!.view.buffer.asByteData();
-      //       for (int i = 0; i < iovs_len; i++) {
-      //         int offset = i * 8;
-      //         int base = byteData.getUint32(iovs + offset, Endian.little);
-      //         int len = byteData.getUint32(iovs + offset + 4, Endian.little);
-      //         print(utf8.decode(byteData.buffer.asUint8List(base, len)));
-      //         bytesWritten += len;
-      //       }
-      //       byteData.setUint32(nwritten, bytesWritten, Endian.little);
-      //       //printf_dart(
-      //       //   "bytes written: ${module.byteData.getUint32(nwritten, Endian.little)}");
-      //       return 0;
-      //     },
-      //     params: [ValueTy.i32, ValueTy.i32, ValueTy.i32, ValueTy.i32],
-      //     results: [ValueTy.i32],
-      //   ),
-      // ),
+      WasmImport(
+        "env",
+        "emscripten_notify_memory_growth",
+        WasmFunction(
+              (int code) {
+            log('emscripten_notify_memory_growth');
+          },
+          params: const [ValueTy.i32],
+          results: const [],
+        ),
+      ),
     ]);
     _wasm = await builder.build();
     account = TWAccountImpl(_wasm);
@@ -367,6 +78,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     bitcoinSigHashType = TWBitcoinSigHashTypeImpl(_wasm);
     cardano = TWCardanoImpl(_wasm);
     coinType = TWCoinTypeImpl(_wasm);
+    coinTypeConfiguration = TWCoinTypeConfigurationImpl(_wasm);
     data = TWDataImpl(_wasm);
     dataVector = TWDataVectorImpl(_wasm);
     derivationPath = TWDerivationPathImpl(_wasm);
@@ -402,6 +114,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     tezosMessageSigner = TWTezosMessageSignerImpl(_wasm);
     thorChainSwap = TWTHORChainSwapImpl(_wasm);
     transactionCompiler = TWTransactionCompilerImpl(_wasm);
+    transactionDecoder = TWTransactionDecoderImpl(_wasm);
     tronMessageSigner = TWTronMessageSignerImpl(_wasm);
     walletConnectRequest = TWWalletConnectRequestImpl(_wasm);
     webAuthn = TWWebAuthnImpl(_wasm);

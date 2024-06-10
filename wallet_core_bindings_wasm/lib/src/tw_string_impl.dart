@@ -20,8 +20,13 @@ class TWStringImpl extends TWStringInterface {
   @override
   int createWithRawBytes(Uint8List bytes) {
     final func = wasm.getFunction('TWStringCreateWithRawBytes')!;
-    final bytesPointer = TWData(bytes).pointer;
-    return func([bytesPointer, bytes.length]).first as int;
+    final memory = wasm.getMemory('memory')!;
+    final size = bytes.length;
+    final bytesPointer = wasm.malloc(size);
+    memory.view.setRange(bytesPointer, bytesPointer + size, bytes);
+    final pointer = func([bytesPointer, size]).first as int;
+    wasm.free(bytesPointer);
+    return pointer;
   }
 
   @override

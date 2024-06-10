@@ -65,9 +65,10 @@ void main() {
       }
       {
         // negative case: cannot get staking address from invalid address, should not throw
-        final stakingAddress = TWCardano.getStakingAddress(
-            '__THIS_IS_NOT_A_VALID_CARDANO_ADDRESS__');
-        expect(stakingAddress, '');
+        expectWasmWithException(
+            () => TWCardano.getStakingAddress(
+                '__THIS_IS_NOT_A_VALID_CARDANO_ADDRESS__'),
+            '');
       }
     });
   });

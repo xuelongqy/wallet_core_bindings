@@ -27,7 +27,7 @@ class TWHDWalletImpl extends TWHDWalletInterface {
   @override
   int createWithMnemonicCheck(int mnemonic, int passphrase, bool check) {
     final func = wasm.getFunction('TWHDWalletCreateWithMnemonicCheck')!;
-    return func([mnemonic, passphrase, check]).first as int;
+    return func([mnemonic, passphrase, check ? 1 : 0]).first as int;
   }
 
   @override

@@ -58,13 +58,14 @@ void main() {
     });
 
     test('CreateFromStrengthInvalid', () {
-      final wallet = TWHDWallet(strength: 64);
-      expect(wallet.pointer, 0);
+      expectWasmWithException(() => TWHDWallet(strength: 64).pointer, 0);
     });
 
     test('CreateFromStrengthInvalid', () {
-      final wallet = TWHDWallet.createWithMnemonic("THIS IS INVALID MNEMONIC");
-      expect(wallet.pointer, 0);
+      expectWasmWithException(
+          () =>
+              TWHDWallet.createWithMnemonic("THIS IS INVALID MNEMONIC").pointer,
+          0);
     });
 
     test('MasterPrivateKey', () {

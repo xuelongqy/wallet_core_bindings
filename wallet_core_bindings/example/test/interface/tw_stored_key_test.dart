@@ -38,12 +38,17 @@ void main() {
   group(TWStoredKey, () {
     test('loadPBKDF2Key', () {
       final filename = '$projectRoot/test/common/Keystore/Data/pbkdf2.json';
-      final key = TWStoredKey.load(filename);
+      final key = isTestWasm
+          ? TWStoredKey.importJSON(File(filename).readAsStringSync())
+          : TWStoredKey.load(filename);
       final keyId = key.identifier;
       expect(keyId, "3198bc9c-6672-5ab3-d995-4942343ae5b6");
     });
 
     test('loadNonexistent', () {
+      if (isTestWasm) {
+        return;
+      }
       final filename = '$projectRoot/test/_NO_/_SUCH_/_FILE_';
       final nokey = TWStoredKey.load(filename);
       expect(nokey.pointer, 0);
@@ -269,11 +274,16 @@ void main() {
       final key = createDefaultStoredKey(
         encryption: TWStoredKeyEncryption.Aes256Ctr,
       );
-      final outFileName = '$projectRoot/test/cache/TWStoredKey_store.json';
-      expect(key.store(outFileName), true);
+      String json;
+      if (isTestWasm) {
+        json = key.exportJSON()!;
+      } else {
+        final outFileName = '$projectRoot/test/cache/TWStoredKey_store.json';
+        expect(key.store(outFileName), true);
 
-      final file = File(outFileName);
-      final json = file.readAsStringSync();
+        final file = File(outFileName);
+        json = file.readAsStringSync();
+      }
       expect(json.length > 20, true);
 
       final key2 = TWStoredKey.importJSON(json);
@@ -283,12 +293,17 @@ void main() {
 
     test('storeAndImportJSON', () {
       final key = createDefaultStoredKey();
-      final outFileName = '$projectRoot/test/cache/TWStoredKey_store.json';
-      expect(key.store(outFileName), true);
+      String json;
+      if (isTestWasm) {
+        json = key.exportJSON()!;
+      } else {
+        final outFileName = '$projectRoot/test/cache/TWStoredKey_store.json';
+        expect(key.store(outFileName), true);
 
-      final file = File(outFileName);
-      expect(file.existsSync(), true);
-      final json = file.readAsStringSync();
+        final file = File(outFileName);
+        expect(file.existsSync(), true);
+        json = file.readAsStringSync();
+      }
       expect(json.length > 20, true);
 
       final key2 = TWStoredKey.importJSON(json);

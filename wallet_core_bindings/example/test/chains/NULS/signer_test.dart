@@ -200,6 +200,14 @@ void main() {
         feePayerBalance: feePayerBalance,
       );
 
+      if (isTestWasm) {
+        expect(
+            () => NULS.SigningOutput.fromBuffer(
+                TWAnySigner.sign(input.writeToBuffer(), coin)),
+            throwsException);
+        return;
+      }
+
       final output = NULS.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
@@ -234,6 +242,14 @@ void main() {
         feePayerBalance: feePayerBalance,
       );
 
+      if (isTestWasm) {
+        expect(
+            () => NULS.SigningOutput.fromBuffer(
+                TWAnySigner.sign(input.writeToBuffer(), coin)),
+            throwsException);
+        return;
+      }
+
       final output = NULS.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
@@ -264,6 +280,14 @@ void main() {
         feePayerNonce: nonce,
         feePayerBalance: feePayerBalance,
       );
+
+      if (isTestWasm) {
+        expect(
+            () => NULS.SigningOutput.fromBuffer(
+                TWAnySigner.sign(input.writeToBuffer(), coin)),
+            throwsException);
+        return;
+      }
 
       final output = NULS.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));

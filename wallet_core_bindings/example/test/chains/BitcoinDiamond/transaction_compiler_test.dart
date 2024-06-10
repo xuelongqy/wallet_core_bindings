@@ -147,15 +147,24 @@ void main() {
         // Negative: invalid public key
         final publicKeyBlake = parse_hex(
             "b689ab808542e13f3d2ec56fe1efe43a1660dcadc73ce489fde7df98dd8ce5d9");
-        final outputData = TWTransactionCompiler.compileWithSignatures(
-          coin: coin,
-          txInputData: txInputData,
-          signatures: signatureVec,
-          publicKeys: [publicKeyBlake],
-        );
-        final output = Bitcoin.SigningOutput.fromBuffer(outputData);
-        expect(output.encoded.length, 0);
-        expect(output.error, Common.SigningError.OK);
+        if (isTestWasm) {
+          expect(() => TWTransactionCompiler.compileWithSignatures(
+            coin: coin,
+            txInputData: txInputData,
+            signatures: signatureVec,
+            publicKeys: [publicKeyBlake],
+          ), throwsException);
+        } else {
+          final outputData = TWTransactionCompiler.compileWithSignatures(
+            coin: coin,
+            txInputData: txInputData,
+            signatures: signatureVec,
+            publicKeys: [publicKeyBlake],
+          );
+          final output = Bitcoin.SigningOutput.fromBuffer(outputData);
+          expect(output.encoded.length, 0);
+          expect(output.error, Common.SigningError.OK);
+        }
       }
 
       {
