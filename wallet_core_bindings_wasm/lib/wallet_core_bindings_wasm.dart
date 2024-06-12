@@ -2,6 +2,7 @@ library wallet_core_bindings_wasm;
 
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';

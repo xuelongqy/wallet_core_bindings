@@ -161,8 +161,13 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
 
   @override
   int load(int path) {
-    final func = wasm.getFunction('TWStoredKeyLoad')!;
-    return func([path]).first as int;
+    final file = File(TWString.fromPointer(path, attach: false).value!);
+    if (!file.existsSync()) {
+      return 0;
+    }
+    return importJSON(TWString(file.readAsStringSync()).pointer);
+    // final func = wasm.getFunction('TWStoredKeyLoad')!;
+    // return func([path]).first as int;
   }
 
   @override
@@ -199,8 +204,17 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
 
   @override
   bool store(int pointer, int path) {
-    final func = wasm.getFunction('TWStoredKeyStore')!;
-    return func([pointer, path]).first as int != 0;
+    final json = exportJSON(pointer);
+    final filePath = TWString.fromPointer(path).value!;
+    try {
+      File(filePath).writeAsStringSync(TWString.fromPointer(json).value!);
+      return true;
+    } catch (_, s) {
+      debugPrintStack(stackTrace: s);
+      return false;
+    }
+    // final func = wasm.getFunction('TWStoredKeyStore')!;
+    // return func([pointer, path]).first as int != 0;
   }
 
   @override
