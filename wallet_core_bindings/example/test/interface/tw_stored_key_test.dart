@@ -38,17 +38,12 @@ void main() {
   group(TWStoredKey, () {
     test('loadPBKDF2Key', () {
       final filename = '$projectRoot/test/common/Keystore/Data/pbkdf2.json';
-      final key = isTestWasm
-          ? TWStoredKey.importJSON(File(filename).readAsStringSync())
-          : TWStoredKey.load(filename);
+      final key = TWStoredKey.load(filename);
       final keyId = key.identifier;
       expect(keyId, "3198bc9c-6672-5ab3-d995-4942343ae5b6");
     });
 
     test('loadNonexistent', () {
-      if (isTestWasm) {
-        return;
-      }
       final filename = '$projectRoot/test/_NO_/_SUCH_/_FILE_';
       final nokey = TWStoredKey.load(filename);
       expect(nokey.pointer, 0);
@@ -135,13 +130,14 @@ void main() {
 
       // invalid mnemonic
       const mnemonicInvalid = '_THIS_IS_AN_INVALID_MNEMONIC_';
-      final nokey = TWStoredKey.importHDWallet(
-        mnemonic: mnemonicInvalid,
-        name: name,
-        password: password,
-        coin: coin,
-      );
-      expect(nokey.pointer, 0);
+      expectWasmWithException(
+          () => TWStoredKey.importHDWallet(
+                mnemonic: mnemonicInvalid,
+                name: name,
+                password: password,
+                coin: coin,
+              ).pointer,
+          0);
     });
 
     test('importHDWalletAES256', () {
@@ -162,14 +158,15 @@ void main() {
 
       // invalid mnemonic
       const mnemonicInvalid = '_THIS_IS_AN_INVALID_MNEMONIC_';
-      final nokey = TWStoredKey.importHDWalletWithEncryption(
-        mnemonic: mnemonicInvalid,
-        name: name,
-        password: password,
-        coin: coin,
-        encryption: TWStoredKeyEncryption.Aes256Ctr,
-      );
-      expect(nokey.pointer, 0);
+      expectWasmWithException(
+          () => TWStoredKey.importHDWalletWithEncryption(
+                mnemonic: mnemonicInvalid,
+                name: name,
+                password: password,
+                coin: coin,
+                encryption: TWStoredKeyEncryption.Aes256Ctr,
+              ).pointer,
+          0);
     });
 
     test('addressAddRemove', () {
@@ -313,8 +310,8 @@ void main() {
 
     test('importJsonInvalid', () {
       const jsonInvalidStr = ']]]}}}_THIS_IS_AN_INVALID_JSON_}}}]]]';
-      final nokey = TWStoredKey.importJSON(jsonInvalidStr);
-      expect(nokey.pointer, 0);
+      expectWasmWithException(
+          () => TWStoredKey.importJSON(jsonInvalidStr).pointer, 0);
     });
 
     test('fixAddresses', () {
@@ -331,28 +328,25 @@ void main() {
           .bytes()!;
       const name = 'test';
       final password = TWData.createWithString(name).bytes()!;
-
-      final eth = TWStoredKey.importPrivateKey(
+      ;
+      expectWasmWithException(() => TWStoredKey.importPrivateKey(
         privateKey: data,
         name: name,
         password: password,
         coin: TWCoinType.Ethereum,
-      );
-      final ont = TWStoredKey.importPrivateKey(
+      ).pointer, 0);
+      expectWasmWithException(() => TWStoredKey.importPrivateKey(
         privateKey: data,
         name: name,
         password: password,
         coin: TWCoinType.Ontology,
-      );
+      ).pointer, 0);
       final tezos = TWStoredKey.importPrivateKey(
         privateKey: data,
         name: name,
         password: password,
         coin: TWCoinType.Tezos,
       );
-
-      expect(eth.pointer, 0);
-      expect(ont.pointer, 0);
       expect(tezos.pointer != 0, true);
     });
 
@@ -428,7 +422,7 @@ void main() {
         password: password,
       );
       expect(key.wallet(password).pointer != 0, true);
-      expect(key.wallet(invalidPassword).pointer, 0);
+      expectWasmWithException(() => key.wallet(invalidPassword).pointer, 0);
     });
 
     test('encryptionParameters', () {
