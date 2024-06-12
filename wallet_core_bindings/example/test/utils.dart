@@ -121,7 +121,7 @@ void expectWasmWithException(
   dynamic skip, // true or a String
 }) {
   if (isTestWasm) {
-    expect(actual, throwsA(isException), reason: reason, skip: skip);
+    expect(actual, throwsException, reason: reason, skip: skip);
   } else {
     expect(actual(), matcher, reason: reason, skip: skip);
   }
