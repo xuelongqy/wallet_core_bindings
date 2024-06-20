@@ -453,5 +453,47 @@ void main() async {
         'c101840088dc3417d5058ec4b4503e0c12ea1a0a89be200fe98922423d4334014fa6b0ee00bc4d7a166bd1e7e2bfe9b53e81239c9e340d5a326f17c0a3d2768fcc127f20f4f85d888ecb90aa3ed9a0943f8ae8116b9a19747e563c8d8151dfe3b1b5deb40ca5020c0006000700b08ef01b02',
       );
     });
+
+    test('SignTransfer_KusamaNewSpec', () {
+      final toAddress = TWAnyAddress.createSS58(
+        string: 'DAbYHrSQTULYZsuA1kvH2cQ33oBsCxxSRPM1XkhzGLeJuHG',
+        coin: TWCoinType.Kusama,
+        ss58Prefix: TWCoinType.Kusama.ss58Prefix,
+      );
+      final input = Polkadot.SigningInput(
+        network: TWCoinType.Kusama.ss58Prefix,
+        genesisHash: parse_hex(
+            "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe"),
+        blockHash: parse_hex(
+            "0x0c731c2b7f5332749432eae61cd5a919592965b28181cf9b73b0a1258ea73303"),
+        nonce: $fixnum.Int64(150),
+        specVersion: 1002005,
+        transactionVersion: 26,
+        privateKey: privateKeyThrow2.data,
+      );
+      {
+        final publicKey =
+            privateKeyThrow2.getPublicKeyByType(TWPublicKeyType.ED25519);
+        final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
+        expect(address.description, addressThrow2);
+      }
+      // era: for blockhash and block number, use curl -H "Content-Type: application/json" -H "Accept: text/plain" https://<polkadot-rpc-url>/transaction/material?noMeta=true
+      input.era = Polkadot.Era(
+        blockNumber: $fixnum.Int64(23610713),
+        period: $fixnum.Int64(64),
+      );
+
+      input.balanceCall = Polkadot.Balance(
+        transfer: Polkadot.Balance_Transfer(
+          value: intToBytes(2000000000),
+          toAddress: toAddress.description,
+        ),
+      );
+
+      final output = Polkadot.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+      expectHex(output.encoded,
+          '450284009dca538b7a925b8ea979cc546464a3c5f81d2398a3a272f6f93bdf4803f2f78300fc5a463d3b6972ac7e0b701110f9d95d377be5b6a2f356765553104c04765fc0066c235c11dabde650d487760dc310003d607abceaf85a0a0f47f1a90e3680029501590200000400001a2447c661c9b168bba4a2a178baef7d79eee006c1d145ffc832be76ff6ee9ce0300943577');
+    });
   });
 }

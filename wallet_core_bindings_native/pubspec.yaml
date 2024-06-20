@@ -1,6 +1,6 @@
 name: wallet_core_bindings_native
 description: "Dart bindings for trust wallet core."
-version: 4.0.42
+version: 4.0.46
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
@@ -14,7 +14,6 @@ dependencies:
 dev_dependencies:
   lints: ^4.0.0
   ffigen: ^12.0.0
-  bech32: ^0.2.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

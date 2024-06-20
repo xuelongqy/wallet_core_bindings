@@ -5,10 +5,12 @@ part of '../wallet_core_bindings_native.dart';
 class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
   /// Default TrustWalletCore library.
   static final _defaultWalletCoreLibrary = Platform.isWindows
-      ? DynamicLibrary.open('WalletCore.dll')
-      : (Platform.isMacOS || Platform.isIOS)
-          ? DynamicLibrary.open('WalletCore.xcframework')
-          : DynamicLibrary.open('libTrustWalletCore.so');
+      ? DynamicLibrary.open('libTrustWalletCore.dll')
+      : Platform.isMacOS
+          ? DynamicLibrary.open('libTrustWalletCore.dylib')
+          : Platform.isIOS
+              ? DynamicLibrary.open('WalletCore.xcframework')
+              : DynamicLibrary.open('libTrustWalletCore.so');
 
   /// Default TrustWalletCore bindings.
   static final _defaultBindings =
