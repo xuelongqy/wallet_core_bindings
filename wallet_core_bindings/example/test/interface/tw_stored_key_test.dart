@@ -322,25 +322,116 @@ void main() {
       expect(key.fixAddresses(password), true);
     });
 
+    // In this test, we add a TON account with an outdated bounceable (`EQ`) address to the key storage,
+    // and then check if `TWStoredKeyUpdateAddress` re-derives non-bounceable `UQ` instead.
+    test('UpdateAddressWithMnemonic', () {
+      const keyName = 'key';
+      const passwordString = 'password';
+      final password = TWData.createWithString(passwordString).bytes()!;
+
+      /// Create stored key with a dummy Bitcoin account.
+      final key = createAStoredKey(TWCoinType.Bitcoin, password);
+
+      const oldAddress = "EQDSRYDMMez8BdcOuPEiaR6aJZpO6EjlIwmOBFn14mMbnUtk";
+      const newAddress = "UQDSRYDMMez8BdcOuPEiaR6aJZpO6EjlIwmOBFn14mMbnRah";
+      const derivationPath = "m/44'/607'/0'";
+      const extPubKey = "";
+      const pubKey =
+          "b191d35f81aa8b144aa91c90a6b887e0b165ad9c2933b1c5266eb5c4e8bea241";
+
+      // Add a TON account with an outdated address (bounceable).
+      key.addAccount(
+        address: oldAddress,
+        coin: TWCoinType.TON,
+        derivationPath: derivationPath,
+        publicKey: pubKey,
+        extendedPublicKey: extPubKey,
+      );
+      expect(key.accountCount, 2);
+
+      // Last step - update TON account address.
+      // Expect to have a non-bounceable address in the end.
+      expect(key.updateAddress(TWCoinType.TON), true);
+      final tonAccount =
+          key.accountForCoin(TWCoinType.TON, TWHDWallet.fromPointer(0));
+      expect(tonAccount.address, newAddress);
+    });
+
+    // In this test, we add an Ethereum account with an outdated lowercase address to the key storage,
+    // and then check if `TWStoredKeyUpdateAddress` re-derives checksummed address instead.
+    test('UpdateAddressWithPrivateKey', () {
+      const keyName = 'key';
+      final privateKey = parse_hex(
+          '3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266');
+      const passwordString = 'password';
+      final password = TWData.createWithString(passwordString).bytes()!;
+
+      /// Create stored key with a dummy Bitcoin account.
+      final key = TWStoredKey.importPrivateKey(
+        privateKey: privateKey,
+        name: keyName,
+        password: password,
+        coin: TWCoinType.Bitcoin,
+      );
+
+      const oldAddress = "0xc2d7cf95645d33006175b78989035c7c9061d3f9";
+      const newAddress = "0xC2D7CF95645D33006175B78989035C7c9061d3F9";
+      const derivationPath = "m/44'/60'/0'";
+      const extPubKey = "";
+      const pubKey =
+          "04efb99d9860f4dec4cb548a5722c27e9ef58e37fbab9719c5b33d55c216db49311221a01f638ce5f255875b194e0acaa58b19a89d2e56a864427298f826a7f887";
+
+      // Add an Ethereum account with an outdated address (lowercase).
+      key.addAccount(
+        address: oldAddress,
+        coin: TWCoinType.Ethereum,
+        derivationPath: derivationPath,
+        publicKey: pubKey,
+        extendedPublicKey: extPubKey,
+      );
+      expect(key.accountCount, 2);
+
+      // Last step - update Ethereum account address.
+      // Expect to have a checksummed address in the end.
+      expect(key.updateAddress(TWCoinType.Ethereum), true);
+      final tonAccount =
+          key.accountForCoin(TWCoinType.Ethereum, TWHDWallet.fromPointer(0));
+      expect(tonAccount.address, newAddress);
+    });
+
+    test('updateAddressNoAssociatedAccounts', () {
+      const keyName = 'key';
+      const passwordString = 'password';
+      final password = TWData.createWithString(passwordString).bytes()!;
+
+      final key = createAStoredKey(TWCoinType.Bitcoin, password);
+      expect(key.updateAddress(TWCoinType.Ethereum), false);
+    });
+
     test('importInvalidKey', () {
       final data = TWData.createWithHexString(
               'fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141')
           .bytes()!;
       const name = 'test';
       final password = TWData.createWithString(name).bytes()!;
-      ;
-      expectWasmWithException(() => TWStoredKey.importPrivateKey(
-        privateKey: data,
-        name: name,
-        password: password,
-        coin: TWCoinType.Ethereum,
-      ).pointer, 0);
-      expectWasmWithException(() => TWStoredKey.importPrivateKey(
-        privateKey: data,
-        name: name,
-        password: password,
-        coin: TWCoinType.Ontology,
-      ).pointer, 0);
+      expectWasmWithException(
+        () => TWStoredKey.importPrivateKey(
+          privateKey: data,
+          name: name,
+          password: password,
+          coin: TWCoinType.Ethereum,
+        ).pointer,
+        0,
+      );
+      expectWasmWithException(
+        () => TWStoredKey.importPrivateKey(
+          privateKey: data,
+          name: name,
+          password: password,
+          coin: TWCoinType.Ontology,
+        ).pointer,
+        0,
+      );
       final tezos = TWStoredKey.importPrivateKey(
         privateKey: data,
         name: name,

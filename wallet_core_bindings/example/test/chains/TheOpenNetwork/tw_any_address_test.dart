@@ -19,7 +19,7 @@ void main() {
       final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       final addressStr = address.description;
 
-      expect(addressStr, 'EQDYW_1eScJVxtitoBRksvoV9cCYo4uKGWLVNIHB1JqRR3n0');
+      expect(addressStr, 'UQDYW_1eScJVxtitoBRksvoV9cCYo4uKGWLVNIHB1JqRRyQx');
     });
   });
 }

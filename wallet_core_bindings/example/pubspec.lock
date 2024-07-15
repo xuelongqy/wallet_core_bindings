@@ -443,21 +443,21 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.0.42"
+    version: "4.0.46"
   wallet_core_bindings_native:
     dependency: "direct main"
     description:
       path: "../../wallet_core_bindings_native"
       relative: true
     source: path
-    version: "4.0.42"
+    version: "4.0.46"
   wallet_core_bindings_wasm:
     dependency: "direct main"
     description:
       path: "../../wallet_core_bindings_wasm"
       relative: true
     source: path
-    version: "4.0.42"
+    version: "4.0.46"
   wasm_interop:
     dependency: transitive
     description:

@@ -81,6 +81,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     string = TWStringImpl(_bindings);
     tezosMessageSigner = TWTezosMessageSignerImpl(_bindings);
     thorChainSwap = TWTHORChainSwapImpl(_bindings);
+    tonAddressConverter = TWTONAddressConverterImpl(_bindings);
     transactionCompiler = TWTransactionCompilerImpl(_bindings);
     transactionDecoder = TWTransactionDecoderImpl(_bindings);
     tronMessageSigner = TWTronMessageSignerImpl(_bindings);

@@ -67,6 +67,8 @@ abstract class TWStoredKeyInterface {
 
   bool fixAddresses(int pointer, int password);
 
+  bool updateAddress(int pointer, int coin);
+
   int encryptionParameters(int pointer);
 
   void delete(int pointer);

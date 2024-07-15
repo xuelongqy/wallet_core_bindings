@@ -438,6 +438,16 @@ class TWStoredKey extends TWObjectFinalizable {
   bool fixAddresses(Uint8List password) =>
       _storedKeyImpl.fixAddresses(_pointer, TWData(password).pointer);
 
+  /// Re-derives address for the account(s) associated with the given coin.
+  /// This method can be used if address format has been changed.
+  /// In case of multiple accounts, all of them will be updated.
+  ///
+  /// \param [key] Non-null pointer to a stored key
+  /// \param [coin] Account(s) coin type to be updated
+  /// \return `false` if there are no accounts associated with the given coin, true otherwise
+  bool updateAddress(TWCoinType coin) =>
+      _storedKeyImpl.updateAddress(_pointer, coin.coin);
+
   /// Retrieve stored key encoding parameters, as JSON string.
   ///
   /// \param key Non-null pointer to a stored key

@@ -62,6 +62,7 @@ part 'src/tw_stored_key_impl.dart';
 part 'src/tw_string_impl.dart';
 part 'src/tw_tezos_message_signer_impl.dart';
 part 'src/tw_thor_chain_swap_impl.dart';
+part 'src/tw_ton_address_converter_impl.dart';
 part 'src/tw_transaction_compiler_impl.dart';
 part 'src/tw_transaction_decoder_impl.dart';
 part 'src/tw_tron_message_signer_impl.dart';

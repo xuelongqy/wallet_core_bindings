@@ -53,7 +53,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
         "env",
         "emscripten_notify_memory_growth",
         WasmFunction(
-              (int code) {
+          (int code) {
             log('emscripten_notify_memory_growth');
           },
           params: const [ValueTy.i32],
@@ -113,6 +113,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     string = TWStringImpl(_wasm);
     tezosMessageSigner = TWTezosMessageSignerImpl(_wasm);
     thorChainSwap = TWTHORChainSwapImpl(_wasm);
+    tonAddressConverter = TWTONAddressConverterImpl(_wasm);
     transactionCompiler = TWTransactionCompilerImpl(_wasm);
     transactionDecoder = TWTransactionDecoderImpl(_wasm);
     tronMessageSigner = TWTronMessageSignerImpl(_wasm);

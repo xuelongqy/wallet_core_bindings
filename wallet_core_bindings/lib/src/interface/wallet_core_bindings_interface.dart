@@ -155,6 +155,9 @@ abstract class WalletCoreBindingsInterface {
   /// [TWTHORChainSwap] interface.
   late TWTHORChainSwapInterface thorChainSwap;
 
+  /// [TWTONAddressConverter] interface.
+  late TWTONAddressConverterInterface tonAddressConverter;
+
   /// [TWTransactionCompiler] interface.
   late TWTransactionCompilerInterface transactionCompiler;
 
@@ -396,6 +399,10 @@ TWTezosMessageSignerInterface get _tezosMessageSignerImpl =>
 /// [TWTHORChainSwap] implement.
 TWTHORChainSwapInterface get _thorChainSwapImpl =>
     WalletCoreBindingsInterface.instance.thorChainSwap;
+
+/// [TWTONAddressConverter] implement.
+TWTONAddressConverterInterface get _tonAddressConverterImpl =>
+    WalletCoreBindingsInterface.instance.tonAddressConverter;
 
 /// [TWTransactionCompiler] implement.
 TWTransactionCompilerInterface get _transactionCompilerImpl =>

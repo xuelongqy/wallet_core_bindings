@@ -24,9 +24,9 @@ void main() {
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,
-          'https://tonscan.org/tx/fJXfn0EVhV09HFuEgUHu4Cchb24nUQtIMwSzmzk2tLs=');
+          'https://tonviewer.com/transaction/fJXfn0EVhV09HFuEgUHu4Cchb24nUQtIMwSzmzk2tLs=');
       expect(accUrl,
-          'https://tonscan.org/address/EQCD39VS5jcptHL8vMjEXrzGaRcCVYto7HUn4bpAOg8xqB2N');
+          'https://tonviewer.com/EQCD39VS5jcptHL8vMjEXrzGaRcCVYto7HUn4bpAOg8xqB2N');
     });
   });
 }

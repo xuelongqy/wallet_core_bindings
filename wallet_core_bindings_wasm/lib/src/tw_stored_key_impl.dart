@@ -222,4 +222,10 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
     final func = wasm.getFunction('TWStoredKeyWallet')!;
     return func([pointer, password]).first as int;
   }
+
+  @override
+  bool updateAddress(int pointer, int coin) {
+    final func = wasm.getFunction('TWStoredKeyUpdateAddress')!;
+    return func([pointer, coin]).first as int != 0;
+  }
 }

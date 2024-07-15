@@ -280,4 +280,12 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
       Pointer.fromAddress(password),
     ).address;
   }
+
+  @override
+  bool updateAddress(int pointer, int coin) {
+    return bindings.TWStoredKeyUpdateAddress(
+      Pointer.fromAddress(pointer),
+      coin,
+    );
+  }
 }
