@@ -240,21 +240,6 @@ const SigningInput$json = {
     },
     {'1': 'time', '3': 17, '4': 1, '5': 13, '10': 'time'},
     {
-      '1': 'is_it_brc_operation',
-      '3': 18,
-      '4': 1,
-      '5': 8,
-      '10': 'isItBrcOperation'
-    },
-    {
-      '1': 'planning_v2',
-      '3': 20,
-      '4': 1,
-      '5': 11,
-      '6': '.TW.BitcoinV2.Proto.ComposePlan',
-      '10': 'planningV2'
-    },
-    {
       '1': 'signing_v2',
       '3': 21,
       '4': 1,
@@ -302,13 +287,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'Vy5CaXRjb2luLlByb3RvLk91dHB1dEluZGV4UhNvdXRwdXRPcFJldHVybkluZGV4EkQKDWV4dH'
     'JhX291dHB1dHMYDiADKAsyHy5UVy5CaXRjb2luLlByb3RvLk91dHB1dEFkZHJlc3NSDGV4dHJh'
     'T3V0cHV0cxIgCgx1c2VfbWF4X3V0eG8YDyABKAhSCnVzZU1heFV0eG8SLgoTZGlzYWJsZV9kdX'
-    'N0X2ZpbHRlchgQIAEoCFIRZGlzYWJsZUR1c3RGaWx0ZXISEgoEdGltZRgRIAEoDVIEdGltZRIt'
-    'ChNpc19pdF9icmNfb3BlcmF0aW9uGBIgASgIUhBpc0l0QnJjT3BlcmF0aW9uEkAKC3BsYW5uaW'
-    '5nX3YyGBQgASgLMh8uVFcuQml0Y29pblYyLlByb3RvLkNvbXBvc2VQbGFuUgpwbGFubmluZ1Yy'
-    'Ej8KCnNpZ25pbmdfdjIYFSABKAsyIC5UVy5CaXRjb2luVjIuUHJvdG8uU2lnbmluZ0lucHV0Ug'
-    'lzaWduaW5nVjISMgoUZml4ZWRfZHVzdF90aHJlc2hvbGQYGCABKANIAFISZml4ZWREdXN0VGhy'
-    'ZXNob2xkGjoKDFNjcmlwdHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoDF'
-    'IFdmFsdWU6AjgBQg0KC2R1c3RfcG9saWN5');
+    'N0X2ZpbHRlchgQIAEoCFIRZGlzYWJsZUR1c3RGaWx0ZXISEgoEdGltZRgRIAEoDVIEdGltZRI/'
+    'CgpzaWduaW5nX3YyGBUgASgLMiAuVFcuQml0Y29pblYyLlByb3RvLlNpZ25pbmdJbnB1dFIJc2'
+    'lnbmluZ1YyEjIKFGZpeGVkX2R1c3RfdGhyZXNob2xkGBggASgDSABSEmZpeGVkRHVzdFRocmVz'
+    'aG9sZBo6CgxTY3JpcHRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAxSBX'
+    'ZhbHVlOgI4AUINCgtkdXN0X3BvbGljeQ==');
 
 @$core.Deprecated('Use transactionPlanDescriptor instead')
 const TransactionPlan$json = {

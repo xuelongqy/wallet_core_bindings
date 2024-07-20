@@ -7,24 +7,6 @@ class TWBitcoinScriptImpl extends TWBitcoinScriptInterface {
   TWBitcoinScriptImpl(this.bindings);
 
   @override
-  int buildBRC20InscribeTransfer(int ticker, int amount, int pubkey) {
-    return bindings.TWBitcoinScriptBuildBRC20InscribeTransfer(
-      Pointer.fromAddress(ticker),
-      Pointer.fromAddress(amount),
-      Pointer.fromAddress(pubkey),
-    ).address;
-  }
-
-  @override
-  int buildOrdinalNftInscription(int mimeType, int payload, int pubkey) {
-    return bindings.TWBitcoinScriptBuildOrdinalNftInscription(
-      Pointer.fromAddress(mimeType),
-      Pointer.fromAddress(payload),
-      Pointer.fromAddress(pubkey),
-    ).address;
-  }
-
-  @override
   int buildPayToPublicKey(int pubkey) {
     return bindings.TWBitcoinScriptBuildPayToPublicKey(
       Pointer.fromAddress(pubkey),

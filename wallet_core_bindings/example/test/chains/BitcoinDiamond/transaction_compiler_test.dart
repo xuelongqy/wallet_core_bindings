@@ -148,12 +148,15 @@ void main() {
         final publicKeyBlake = parse_hex(
             "b689ab808542e13f3d2ec56fe1efe43a1660dcadc73ce489fde7df98dd8ce5d9");
         if (isTestWasm) {
-          expect(() => TWTransactionCompiler.compileWithSignatures(
-            coin: coin,
-            txInputData: txInputData,
-            signatures: signatureVec,
-            publicKeys: [publicKeyBlake],
-          ), throwsException);
+          expect(
+            () => TWTransactionCompiler.compileWithSignatures(
+              coin: coin,
+              txInputData: txInputData,
+              signatures: signatureVec,
+              publicKeys: [publicKeyBlake],
+            ),
+            throwsException,
+          );
         } else {
           final outputData = TWTransactionCompiler.compileWithSignatures(
             coin: coin,

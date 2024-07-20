@@ -16,7 +16,7 @@ void main() {
       final addrStr = TWAnyAddress.createWithPublicKeyDerivation(
         publicKey: pubKey,
         coin: coin,
-        derivation: TWDerivation.LitecoinLegacy,
+        derivation: TWDerivation.Legacy,
       ).description;
       expect(addrStr, 'LW6HjAU6GL9fK2LZWUA6VZCzomTdrpx3nr');
 
@@ -33,7 +33,7 @@ void main() {
       final addrStr = TWAnyAddress.createWithPublicKeyDerivation(
         publicKey: pubKey,
         coin: coin,
-        derivation: TWDerivation.BitcoinSegwit,
+        derivation: TWDerivation.Segwit,
       ).description;
       expect(addrStr, 'ltc1q3m3ujh350qrqdl33pv7pjw0d0m9qnm6qjcjpga');
 

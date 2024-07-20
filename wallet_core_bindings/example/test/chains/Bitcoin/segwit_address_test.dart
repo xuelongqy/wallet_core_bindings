@@ -232,7 +232,7 @@ void main() {
           TWAnyAddress.createWithPublicKeyDerivation(
                   publicKey: pubKey,
                   coin: coin,
-                  derivation: TWDerivation.BitcoinTestnet)
+                  derivation: TWDerivation.Testnet)
               .description,
           'tb1qq8p994ak933c39d2jaj8n4sg598tnkhnyk5sg5',
         );
@@ -256,11 +256,11 @@ void main() {
           'bc1qpsp72plnsqe6e2dvtsetxtww2cz36ztmfxghpd');
       expect(wallet.getAddressDerivation(coin, TWDerivation.Default),
           'bc1qpsp72plnsqe6e2dvtsetxtww2cz36ztmfxghpd');
-      expect(wallet.getAddressDerivation(coin, TWDerivation.BitcoinSegwit),
+      expect(wallet.getAddressDerivation(coin, TWDerivation.Segwit),
           'bc1qpsp72plnsqe6e2dvtsetxtww2cz36ztmfxghpd');
-      expect(wallet.getAddressDerivation(coin, TWDerivation.BitcoinLegacy),
+      expect(wallet.getAddressDerivation(coin, TWDerivation.Legacy),
           '1GVb4mfQrvymPLz7zeZ3LnQ8sFv3NedZXe');
-      expect(wallet.getAddressDerivation(coin, TWDerivation.BitcoinTestnet),
+      expect(wallet.getAddressDerivation(coin, TWDerivation.Testnet),
           'tb1qq8p994ak933c39d2jaj8n4sg598tnkhnyk5sg5');
     });
   });

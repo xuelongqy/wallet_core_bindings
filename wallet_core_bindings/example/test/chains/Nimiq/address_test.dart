@@ -43,7 +43,7 @@ void main() {
       );
       // Invalid checksum
       expectWasmWithException(
-          () => TWAnyAddress.isValid(
+        () => TWAnyAddress.isValid(
             'NQXX 2H8F YGU5 RM77 QSN9 LYLH C56A CYYR 0MLA', coin),
         false,
       );

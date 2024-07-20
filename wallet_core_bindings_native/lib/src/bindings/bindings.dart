@@ -7840,30 +7840,6 @@ class TrustWalletCoreBindings {
       ffi.Pointer<TWData1> Function(
           ffi.Pointer<TWData1>, ffi.Pointer<TWData1>, int, int)>();
 
-  /// Calculates the fee of any Bitcoin transaction.
-  ///
-  /// \param data: the signed transaction in its final form.
-  /// \param satVb: the satoshis per vbyte amount. The passed on string is interpreted as a unit64_t.
-  /// \returns the fee denominated in satoshis or nullptr if the transaction failed to be decoded.
-  ffi.Pointer<TWString1> TWBitcoinFeeCalculateFee(
-    ffi.Pointer<TWData1> data,
-    ffi.Pointer<TWString1> satVb,
-  ) {
-    return _TWBitcoinFeeCalculateFee(
-      data,
-      satVb,
-    );
-  }
-
-  late final _TWBitcoinFeeCalculateFeePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWString1> Function(ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>)>>('TWBitcoinFeeCalculateFee');
-  late final _TWBitcoinFeeCalculateFee =
-      _TWBitcoinFeeCalculateFeePtr.asFunction<
-          ffi.Pointer<TWString1> Function(
-              ffi.Pointer<TWData1>, ffi.Pointer<TWString1>)>();
-
   /// Converts a Filecoin address to Ethereum.
   ///
   /// \param filecoinAddress: a Filecoin address.
@@ -10022,64 +9998,6 @@ class TrustWalletCoreBindings {
   late final _TWBitcoinScriptBuildPayToWitnessScriptHash =
       _TWBitcoinScriptBuildPayToWitnessScriptHashPtr.asFunction<
           ffi.Pointer<TWBitcoinScript> Function(ffi.Pointer<TWData>)>();
-
-  /// Builds the Ordinals inscripton for BRC20 transfer.
-  ///
-  /// \param ticker ticker of the brc20
-  /// \param amount uint64 transfer amount
-  /// \param pubkey Non-null pointer to a pubkey
-  /// \note Must be deleted with \TWBitcoinScriptDelete
-  /// \return A pointer to the built script
-  ffi.Pointer<TWData> TWBitcoinScriptBuildBRC20InscribeTransfer(
-    ffi.Pointer<TWString> ticker,
-    ffi.Pointer<TWString> amount,
-    ffi.Pointer<TWData> pubkey,
-  ) {
-    return _TWBitcoinScriptBuildBRC20InscribeTransfer(
-      ticker,
-      amount,
-      pubkey,
-    );
-  }
-
-  late final _TWBitcoinScriptBuildBRC20InscribeTransferPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
-                  ffi.Pointer<TWString>, ffi.Pointer<TWData>)>>(
-      'TWBitcoinScriptBuildBRC20InscribeTransfer');
-  late final _TWBitcoinScriptBuildBRC20InscribeTransfer =
-      _TWBitcoinScriptBuildBRC20InscribeTransferPtr.asFunction<
-          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
-              ffi.Pointer<TWString>, ffi.Pointer<TWData>)>();
-
-  /// Builds the Ordinals inscripton for NFT construction.
-  ///
-  /// \param mimeType the MIME type of the payload
-  /// \param payload the payload to inscribe
-  /// \param pubkey Non-null pointer to a pubkey
-  /// \note Must be deleted with \TWBitcoinScriptDelete
-  /// \return A pointer to the built script
-  ffi.Pointer<TWData> TWBitcoinScriptBuildOrdinalNftInscription(
-    ffi.Pointer<TWString> mimeType,
-    ffi.Pointer<TWData> payload,
-    ffi.Pointer<TWData> pubkey,
-  ) {
-    return _TWBitcoinScriptBuildOrdinalNftInscription(
-      mimeType,
-      payload,
-      pubkey,
-    );
-  }
-
-  late final _TWBitcoinScriptBuildOrdinalNftInscriptionPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
-                  ffi.Pointer<TWData>, ffi.Pointer<TWData>)>>(
-      'TWBitcoinScriptBuildOrdinalNftInscription');
-  late final _TWBitcoinScriptBuildOrdinalNftInscription =
-      _TWBitcoinScriptBuildOrdinalNftInscriptionPtr.asFunction<
-          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
-              ffi.Pointer<TWData>, ffi.Pointer<TWData>)>();
 
   /// Builds a appropriate lock script for the given address..
   ///
@@ -13536,11 +13454,10 @@ abstract class TWCurve {
 abstract class TWDerivation {
   static const int TWDerivationDefault = 0;
   static const int TWDerivationCustom = 1;
-  static const int TWDerivationBitcoinSegwit = 2;
-  static const int TWDerivationBitcoinLegacy = 3;
-  static const int TWDerivationBitcoinTestnet = 4;
-  static const int TWDerivationLitecoinLegacy = 5;
-  static const int TWDerivationSolanaSolana = 6;
+  static const int TWDerivationSegwit = 2;
+  static const int TWDerivationLegacy = 3;
+  static const int TWDerivationTestnet = 4;
+  static const int TWDerivationSolana = 5;
 }
 
 /// Registered HD version bytes
@@ -13971,8 +13888,6 @@ final class TWWebAuthn extends ffi.Opaque {}
 
 /// Password-Based Key Derivation Function 2
 final class TWPBKDF2 extends ffi.Opaque {}
-
-final class TWBitcoinFee extends ffi.Opaque {}
 
 /// Filecoin-Ethereum address converter.
 final class TWFilecoinAddressConverter extends ffi.Opaque {}

@@ -40,7 +40,6 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     base58 = TWBase58Impl(_bindings);
     base64 = TWBase64Impl(_bindings);
     bitcoinAddress = TWBitcoinAddressImpl(_bindings);
-    bitcoinFee = TWBitcoinFeeImpl(_bindings);
     bitcoinMessageSigner = TWBitcoinMessageSignerImpl(_bindings);
     bitcoinScript = TWBitcoinScriptImpl(_bindings);
     bitcoinSigHashType = TWBitcoinSigHashTypeImpl(_bindings);

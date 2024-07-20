@@ -7,18 +7,6 @@ class TWBitcoinScriptImpl extends TWBitcoinScriptInterface {
   TWBitcoinScriptImpl(this.wasm);
 
   @override
-  int buildBRC20InscribeTransfer(int ticker, int amount, int pubkey) {
-    final func = wasm.getFunction('TWBitcoinScriptBuildBRC20InscribeTransfer')!;
-    return func([ticker, amount, pubkey]).first as int;
-  }
-
-  @override
-  int buildOrdinalNftInscription(int mimeType, int payload, int pubkey) {
-    final func = wasm.getFunction('TWBitcoinScriptBuildOrdinalNftInscription')!;
-    return func([mimeType, payload, pubkey]).first as int;
-  }
-
-  @override
   int buildPayToPublicKey(int pubkey) {
     final func = wasm.getFunction('TWBitcoinScriptBuildPayToPublicKey')!;
     return func([pubkey]).first as int;

@@ -4,11 +4,10 @@ part of '../wallet_core_bindings.dart';
 enum TWDerivation {
   Default(0),
   Custom(1),
-  BitcoinSegwit(2),
-  BitcoinLegacy(3),
-  BitcoinTestnet(4),
-  LitecoinLegacy(5),
-  SolanaSolana(6);
+  Segwit(2),
+  Legacy(3),
+  Testnet(4),
+  Solana(5);
 
   final int derivation;
 

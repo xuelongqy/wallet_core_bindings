@@ -27,7 +27,7 @@ Refer to the TrustWalletCore build [documentation](https://developer.trustwallet
 
 ```shell
 cd ./proto/TrustWalletCore/
-protoc --dart_out=../../lib/wallet_core_bindings/proto/ ./*
+protoc --dart_out=../../wallet_core_bindings/lib/proto/ ./*
 ```
 
 ## License

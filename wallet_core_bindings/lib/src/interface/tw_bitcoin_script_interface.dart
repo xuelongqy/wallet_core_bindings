@@ -51,10 +51,6 @@ abstract class TWBitcoinScriptInterface {
 
   int encode(int pointer);
 
-  int buildBRC20InscribeTransfer(int ticker, int amount, int pubkey);
-
-  int buildOrdinalNftInscription(int mimeType, int payload, int pubkey);
-
   int hashTypeForCoin(int coin);
 
   void delete(int pointer);

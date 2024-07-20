@@ -21,7 +21,6 @@ part 'src/tw_base32_impl.dart';
 part 'src/tw_base58_impl.dart';
 part 'src/tw_base64_impl.dart';
 part 'src/tw_bitcoin_address_impl.dart';
-part 'src/tw_bitcoin_fee_impl.dart';
 part 'src/tw_bitcoin_message_signer_impl.dart';
 part 'src/tw_bitcoin_script_impl.dart';
 part 'src/tw_bitcoin_sig_hash_type_impl.dart';

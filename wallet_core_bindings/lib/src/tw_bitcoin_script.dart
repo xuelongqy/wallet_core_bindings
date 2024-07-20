@@ -212,38 +212,6 @@ class TWBitcoinScript extends TWObjectFinalizable {
   Uint8List? encode() =>
       TWData.fromPointer(_bitcoinScriptImpl.encode(_pointer)).bytes();
 
-  /// Builds the Ordinals inscripton for BRC20 transfer.
-  ///
-  /// \param [ticker] ticker of the brc20
-  /// \param [amount] uint64 transfer amount
-  /// \param [pubkey] Non-null pointer to a pubkey
-  static Uint8List buildBRC20InscribeTransfer({
-    required String ticker,
-    required String amount,
-    required Uint8List pubkey,
-  }) =>
-      TWData.fromPointer(_bitcoinScriptImpl.buildBRC20InscribeTransfer(
-        TWString(ticker).pointer,
-        TWString(amount).pointer,
-        TWData(pubkey).pointer,
-      )).bytes()!;
-
-  /// Builds the Ordinals inscripton for NFT construction.
-  ///
-  /// \param [mimeType] the MIME type of the payload
-  /// \param [payload] the payload to inscribe
-  /// \param [pubkey] Non-null pointer to a pubkey
-  static Uint8List buildOrdinalNftInscription({
-    required String mimeType,
-    required Uint8List payload,
-    required Uint8List pubkey,
-  }) =>
-      TWData.fromPointer(_bitcoinScriptImpl.buildOrdinalNftInscription(
-        TWString(mimeType).pointer,
-        TWData(payload).pointer,
-        TWData(pubkey).pointer,
-      )).bytes()!;
-
   /// Return the default HashType for the given coin, such as TWBitcoinSigHashTypeAll.
   ///
   /// \param [coinType] coin type

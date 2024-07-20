@@ -4,8 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
 import 'package:wallet_core_bindings/proto/BitcoinV2.pb.dart' as BitcoinV2;
-import 'package:wallet_core_bindings/proto/Utxo.pb.dart' as Utxo;
-import 'package:wallet_core_bindings/proto/Utxo.pbenum.dart' as Utxo;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 
@@ -601,74 +599,6 @@ void main() {
       expect(output0.value.toInt(), amountWithoutFee);
     });
 
-    test('SignBRC20TransferCommit', () {
-      final privateKey = parse_hex(
-          "e253373989199da27c48680e3a3fc0f648d50f9a727ef17a7fe6a4dc3b159129");
-      const fullAmount = 26400;
-      const minerFee = 3000;
-      const brcInscribeAmount = 7000;
-      const forFeeAmount = fullAmount - brcInscribeAmount - minerFee;
-      final txId = parse_hex(
-          "089098890d2653567b9e8df2d1fbe5c3c8bf1910ca7184e301db0ad3b495c88e");
-
-      final key = TWPrivateKey.createWithData(privateKey);
-      final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
-      final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(pubKey.data));
-      final inputP2wpkh =
-          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
-      final outputInscribe = TWBitcoinScript.buildBRC20InscribeTransfer(
-        ticker: 'oadf',
-        amount: '20',
-        pubkey: pubKey.data,
-      );
-      final outputInscribeProto =
-          Bitcoin.TransactionOutput.fromBuffer(outputInscribe);
-
-      final input = Bitcoin.SigningInput(
-        isItBrcOperation: true,
-        privateKey: [privateKey],
-        coinType: TWCoinType.Bitcoin.coin,
-        utxo: [
-          Bitcoin.UnspentTransaction(
-            amount: $fixnum.Int64(fullAmount),
-            script: inputP2wpkh.data,
-            variant: Bitcoin.TransactionVariant.P2WPKH,
-            outPoint: Bitcoin.OutPoint(
-              index: 1,
-              hash: txId,
-            ),
-          ),
-        ],
-        plan: Bitcoin.TransactionPlan(
-          utxos: [
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(brcInscribeAmount),
-              script: outputInscribeProto.script,
-              variant: Bitcoin.TransactionVariant.BRC20TRANSFER,
-            ),
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(forFeeAmount),
-              script: inputP2wpkh.data,
-              variant: Bitcoin.TransactionVariant.P2WPKH,
-            ),
-          ],
-        ),
-      );
-
-      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
-        input.writeToBuffer(),
-        TWCoinType.Bitcoin,
-      ));
-
-      expectHex(output.encoded,
-          '02000000000101089098890d2653567b9e8df2d1fbe5c3c8bf1910ca7184e301db0ad3b495c88e0100000000ffffffff02581b000000000000225120e8b706a97732e705e22ae7710703e7f589ed13c636324461afa443016134cc051040000000000000160014e311b8d6ddff856ce8e9a4e03bc6d4fe5050a83d02483045022100a44aa28446a9a886b378a4a65e32ad9a3108870bd725dc6105160bed4f317097022069e9de36422e4ce2e42b39884aa5f626f8f94194d1013007d5a1ea9220a06dce0121030f209b6ada5edb42c77fd2bc64ad650ae38314c8f451f3e36d80bc8e26f132cb00000000');
-      expect(output.transactionId,
-          '797d17d47ae66e598341f9dfdea020b04d4017dcf9cc33f0e51f7a6082171fb1');
-      expect(output.error, Common.SigningError.OK);
-
-      // Successfully broadcasted: https://www.blockchain.com/explorer/transactions/btc/797d17d47ae66e598341f9dfdea020b04d4017dcf9cc33f0e51f7a6082171fb1
-    });
-
     // Tests the BitcoinV2 API through the legacy `SigningInput`.
     test('SignBRC20TransferCommitV2', () {
       final privateKey = parse_hex(
@@ -684,18 +614,28 @@ void main() {
       final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
 
       final signing = BitcoinV2.SigningInput(
-        version: 2,
-        privateKey: privateKey,
-        inputSelector: Utxo.InputSelector.UseAll,
-        disableChangeOutput: true,
+        version: BitcoinV2.TransactionVersion.V2,
+        privateKeys: [privateKey],
+        inputSelector: BitcoinV2.InputSelector.UseAll,
+        dangerousUseFixedSchnorrRng: true,
+        fixedDustThreshold: $fixnum.Int64(546),
+        chainInfo: BitcoinV2.ChainInfo(
+          p2pkhPrefix: 0,
+          p2shPrefix: 5,
+        ),
         inputs: [
           BitcoinV2.Input(
-            txid: txId,
-            vout: 1,
-            value: $fixnum.Int64(fullAmount),
-            builder: BitcoinV2.Input_InputBuilder(
-              p2wpkh: pubKey.data,
+            outPoint: BitcoinV2.OutPoint(
+              hash: txId,
+              vout: 1,
             ),
+            value: $fixnum.Int64(fullAmount),
+            scriptBuilder: BitcoinV2.Input_InputBuilder(
+              p2wpkh: BitcoinV2.PublicKeyOrHash(
+                pubkey: pubKey.data,
+              ),
+            ),
+            sighashType: TWBitcoinSigHashType.All.type,
           ),
         ],
         outputs: [
@@ -712,7 +652,7 @@ void main() {
           BitcoinV2.Output(
             value: $fixnum.Int64(forFeeAmount),
             builder: BitcoinV2.Output_OutputBuilder(
-              p2wpkh: BitcoinV2.ToPublicKeyOrHash(
+              p2wpkh: BitcoinV2.PublicKeyOrHash(
                 pubkey: pubKey.data,
               ),
             ),
@@ -731,299 +671,13 @@ void main() {
 
       expect(output.error, Common.SigningError.OK);
       expect(output.hasSigningResultV2(), true);
-      expect(output.signingResultV2.error, BitcoinV2.Error.OK);
+      expect(output.signingResultV2.error, Common.SigningError.OK);
       expectHex(output.signingResultV2.encoded,
           '02000000000101089098890d2653567b9e8df2d1fbe5c3c8bf1910ca7184e301db0ad3b495c88e0100000000ffffffff02581b000000000000225120e8b706a97732e705e22ae7710703e7f589ed13c636324461afa443016134cc051040000000000000160014e311b8d6ddff856ce8e9a4e03bc6d4fe5050a83d02483045022100a44aa28446a9a886b378a4a65e32ad9a3108870bd725dc6105160bed4f317097022069e9de36422e4ce2e42b39884aa5f626f8f94194d1013007d5a1ea9220a06dce0121030f209b6ada5edb42c77fd2bc64ad650ae38314c8f451f3e36d80bc8e26f132cb00000000');
       expectHex(output.signingResultV2.txid,
           '797d17d47ae66e598341f9dfdea020b04d4017dcf9cc33f0e51f7a6082171fb1');
-    });
 
-    test('SignBRC20TransferReveal', () {
-      final privateKey = parse_hex(
-          "e253373989199da27c48680e3a3fc0f648d50f9a727ef17a7fe6a4dc3b159129");
-      const dustSatoshi = 546;
-      const brcInscribeAmount = 7000;
-      final txId = parse_hex(
-          "b11f1782607a1fe5f033ccf9dc17404db020a0dedff94183596ee67ad4177d79");
-
-      final key = TWPrivateKey.createWithData(privateKey);
-      final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
-      final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(pubKey.data));
-      final inputP2wpkh =
-          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
-      final outputInscribe = TWBitcoinScript.buildBRC20InscribeTransfer(
-        ticker: 'oadf',
-        amount: '20',
-        pubkey: pubKey.data,
-      );
-      final outputInscribeProto =
-          Bitcoin.TransactionOutput.fromBuffer(outputInscribe);
-
-      final input = Bitcoin.SigningInput(
-        isItBrcOperation: true,
-        privateKey: [privateKey],
-        coinType: TWCoinType.Bitcoin.coin,
-        utxo: [
-          Bitcoin.UnspentTransaction(
-            amount: $fixnum.Int64(brcInscribeAmount),
-            script: outputInscribeProto.script,
-            variant: Bitcoin.TransactionVariant.BRC20TRANSFER,
-            spendingScript: outputInscribeProto.spendingScript,
-            outPoint: Bitcoin.OutPoint(
-              index: 0,
-              hash: txId,
-            ),
-          ),
-        ],
-        plan: Bitcoin.TransactionPlan(
-          utxos: [
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(dustSatoshi),
-              script: inputP2wpkh.data,
-              variant: Bitcoin.TransactionVariant.P2WPKH,
-            ),
-          ],
-        ),
-      );
-
-      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
-        input.writeToBuffer(),
-        TWCoinType.Bitcoin,
-      ));
-
-      final result = hex(output.encoded);
-      expect(result.substring(0, 164),
-          '02000000000101b11f1782607a1fe5f033ccf9dc17404db020a0dedff94183596ee67ad4177d790000000000ffffffff012202000000000000160014e311b8d6ddff856ce8e9a4e03bc6d4fe5050a83d0340');
-      expect(result.substring(292),
-          '5b0063036f7264010118746578742f706c61696e3b636861727365743d7574662d3800377b2270223a226272632d3230222c226f70223a227472616e73666572222c227469636b223a226f616466222c22616d74223a223230227d6821c00f209b6ada5edb42c77fd2bc64ad650ae38314c8f451f3e36d80bc8e26f132cb00000000');
-      expect(output.transactionId,
-          '7046dc2689a27e143ea2ad1039710885147e9485ab6453fa7e87464aa7dd3eca');
-      expect(output.error, Common.SigningError.OK);
-    });
-
-    test('SignBRC20TransferInscription', () {
-      // Successfully broadcasted: https://www.blockchain.com/explorer/transactions/btc/3e3576eb02667fac284a5ecfcb25768969680cc4c597784602d0a33ba7c654b7
-
-      final privateKey = parse_hex(
-          "e253373989199da27c48680e3a3fc0f648d50f9a727ef17a7fe6a4dc3b159129");
-      const dustSatoshi = 546;
-      const brcInscribeAmount = 7000;
-      const fullAmount = 26400;
-      const minerFee = 3000;
-      const forFeeAmount = fullAmount - brcInscribeAmount - minerFee;
-      final txIDInscription = parse_hex(
-              "7046dc2689a27e143ea2ad1039710885147e9485ab6453fa7e87464aa7dd3eca")
-          .reversed
-          .toList();
-      final txIDForFees = parse_hex(
-              "797d17d47ae66e598341f9dfdea020b04d4017dcf9cc33f0e51f7a6082171fb1")
-          .reversed
-          .toList();
-
-      final key = TWPrivateKey.createWithData(privateKey);
-      final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
-      final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(pubKey.data));
-      final utxoPubkeyHashBob = TWHash.ripemd(TWHash.sha256(parse_hex(
-          "02f453bb46e7afc8796a9629e89e07b5cb0867e9ca340b571e7bcc63fc20c43f2e")));
-      final inputP2wpkh =
-          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
-      final outputP2wpkh =
-          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHashBob);
-      final outputInscribe = TWBitcoinScript.buildBRC20InscribeTransfer(
-          ticker: 'oadf', amount: '20', pubkey: pubKey.data);
-      final outputInscribeProto =
-          Bitcoin.TransactionOutput.fromBuffer(outputInscribe);
-
-      final input = Bitcoin.SigningInput(
-        isItBrcOperation: true,
-        privateKey: [privateKey],
-        coinType: TWCoinType.Bitcoin.coin,
-        utxo: [
-          Bitcoin.UnspentTransaction(
-            amount: $fixnum.Int64(dustSatoshi),
-            script: inputP2wpkh.data,
-            variant: Bitcoin.TransactionVariant.P2WPKH,
-            outPoint: Bitcoin.OutPoint(
-              index: 0,
-              hash: txIDInscription,
-            ),
-          ),
-          Bitcoin.UnspentTransaction(
-            amount: $fixnum.Int64(forFeeAmount),
-            script: inputP2wpkh.data,
-            variant: Bitcoin.TransactionVariant.P2WPKH,
-            outPoint: Bitcoin.OutPoint(
-              index: 1,
-              hash: txIDForFees,
-            ),
-          ),
-        ],
-        plan: Bitcoin.TransactionPlan(
-          utxos: [
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(dustSatoshi),
-              script: outputP2wpkh.data,
-              variant: Bitcoin.TransactionVariant.P2WPKH,
-            ),
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(forFeeAmount - minerFee),
-              script: inputP2wpkh.data,
-              variant: Bitcoin.TransactionVariant.P2WPKH,
-            ),
-          ],
-        ),
-      );
-
-      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
-        input.writeToBuffer(),
-        TWCoinType.Bitcoin,
-      ));
-
-      final result = hex(output.encoded);
-      expect(result,
-          '02000000000102ca3edda74a46877efa5364ab85947e148508713910ada23e147ea28926dc46700000000000ffffffffb11f1782607a1fe5f033ccf9dc17404db020a0dedff94183596ee67ad4177d790100000000ffffffff022202000000000000160014e891850afc55b64aa8247b2076f8894ebdf889015834000000000000160014e311b8d6ddff856ce8e9a4e03bc6d4fe5050a83d024830450221008798393eb0b7390217591a8c33abe18dd2f7ea7009766e0d833edeaec63f2ec302200cf876ff52e68dbaf108a3f6da250713a9b04949a8f1dcd1fb867b24052236950121030f209b6ada5edb42c77fd2bc64ad650ae38314c8f451f3e36d80bc8e26f132cb0248304502210096bbb9d1f0596d69875646689e46f29485e8ceccacde9d0025db87fd96d3066902206d6de2dd69d965d28df3441b94c76e812384ab9297e69afe3480ee4031e1b2060121030f209b6ada5edb42c77fd2bc64ad650ae38314c8f451f3e36d80bc8e26f132cb00000000');
-      expect(output.transactionId,
-          '3e3576eb02667fac284a5ecfcb25768969680cc4c597784602d0a33ba7c654b7');
-      expect(output.error, Common.SigningError.OK);
-    });
-
-    test('SignNftInscriptionCommit', () {
-      // Successfully broadcasted: https://www.blockchain.com/explorer/transactions/btc/f1e708e5c5847339e16accf8716c14b33717c14d6fe68f9db36627cecbde7117
-
-      final privateKey = parse_hex(
-          "e253373989199da27c48680e3a3fc0f648d50f9a727ef17a7fe6a4dc3b159129");
-      const fullAmount = 32400;
-      const minerFee = 1300;
-      const inscribeAmount = fullAmount - minerFee;
-      final txId = parse_hex(
-              "579590c3227253ad423b1e7e3c5b073b8a280d307c68aecd779df2600daa2f99")
-          .reversed
-          .toList();
-
-      // The inscribed image
-      final payload = parse_hex(nftInscriptionImageData);
-
-      final key = TWPrivateKey.createWithData(privateKey);
-      final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
-      final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(pubKey.data));
-      final inputP2wpkh =
-          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
-      final outputInscribe = TWBitcoinScript.buildOrdinalNftInscription(
-        mimeType: 'image/png',
-        payload: payload,
-        pubkey: pubKey.data,
-      );
-      final outputInscribeProto =
-          Bitcoin.TransactionOutput.fromBuffer(outputInscribe);
-
-      final input = Bitcoin.SigningInput(
-        isItBrcOperation: true,
-        privateKey: [privateKey],
-        coinType: TWCoinType.Bitcoin.coin,
-        utxo: [
-          Bitcoin.UnspentTransaction(
-            amount: $fixnum.Int64(fullAmount),
-            script: inputP2wpkh.data,
-            variant: Bitcoin.TransactionVariant.P2WPKH,
-            outPoint: Bitcoin.OutPoint(
-              index: 0,
-              hash: txId,
-            ),
-          ),
-        ],
-        plan: Bitcoin.TransactionPlan(
-          utxos: [
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(inscribeAmount),
-              script: outputInscribeProto.script,
-              variant: Bitcoin.TransactionVariant.NFTINSCRIPTION,
-            ),
-          ],
-        ),
-      );
-
-      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
-        input.writeToBuffer(),
-        TWCoinType.Bitcoin,
-      ));
-
-      final result = hex(output.encoded);
-      expect(result,
-          '02000000000101992faa0d60f29d77cdae687c300d288a3b075b3c7e1e3b42ad537222c39095570000000000ffffffff017c790000000000002251202ac69a7e9dba801e9fcba826055917b84ca6fba4d51a29e47d478de603eedab602473044022054212984443ed4c66fc103d825bfd2da7baf2ab65d286e3c629b36b98cd7debd022050214cfe5d3b12a17aaaf1a196bfeb2f0ad15ffb320c4717eb7614162453e4fe0121030f209b6ada5edb42c77fd2bc64ad650ae38314c8f451f3e36d80bc8e26f132cb00000000');
-      expect(output.transactionId,
-          'f1e708e5c5847339e16accf8716c14b33717c14d6fe68f9db36627cecbde7117');
-      expect(output.error, Common.SigningError.OK);
-    });
-
-    test('SignNftInscriptionReveal', () {
-      // Successfully broadcasted: https://www.blockchain.com/explorer/transactions/btc/173f8350b722243d44cc8db5584de76b432eb6d0888d9e66e662db51584f44ac
-
-      final privateKey = parse_hex(
-          "e253373989199da27c48680e3a3fc0f648d50f9a727ef17a7fe6a4dc3b159129");
-      const inscribeAmount = 31100;
-      const dustSatoshi = 546;
-      final txId = parse_hex(
-              "f1e708e5c5847339e16accf8716c14b33717c14d6fe68f9db36627cecbde7117")
-          .reversed
-          .toList();
-
-      // The inscribed image
-      final payload = parse_hex(nftInscriptionImageData);
-
-      // The expected TX hex output
-      const expectedHex = nftInscriptionRawHex;
-
-      final key = TWPrivateKey.createWithData(privateKey);
-      final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
-      final utxoPubkeyHash = TWHash.ripemd(TWHash.sha256(pubKey.data));
-      final inputInscribe = TWBitcoinScript.buildOrdinalNftInscription(
-        mimeType: 'image/png',
-        payload: payload,
-        pubkey: pubKey.data,
-      );
-      final inputInscribeProto =
-          Bitcoin.TransactionOutput.fromBuffer(inputInscribe);
-      final outputP2wpkh =
-          TWBitcoinScript.buildPayToWitnessPubkeyHash(utxoPubkeyHash);
-
-      final input = Bitcoin.SigningInput(
-        isItBrcOperation: true,
-        privateKey: [privateKey],
-        coinType: TWCoinType.Bitcoin.coin,
-        utxo: [
-          Bitcoin.UnspentTransaction(
-            amount: $fixnum.Int64(inscribeAmount),
-            script: inputInscribeProto.script,
-            variant: Bitcoin.TransactionVariant.NFTINSCRIPTION,
-            spendingScript: inputInscribeProto.spendingScript,
-            outPoint: Bitcoin.OutPoint(
-              index: 0,
-              hash: txId,
-            ),
-          ),
-        ],
-        plan: Bitcoin.TransactionPlan(
-          utxos: [
-            Bitcoin.UnspentTransaction(
-              amount: $fixnum.Int64(dustSatoshi),
-              script: outputP2wpkh.data,
-              variant: Bitcoin.TransactionVariant.P2WPKH,
-            ),
-          ],
-        ),
-      );
-
-      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
-        input.writeToBuffer(),
-        TWCoinType.Bitcoin,
-      ));
-
-      final result = hex(output.encoded);
-      expect(output.transactionId,
-          '173f8350b722243d44cc8db5584de76b432eb6d0888d9e66e662db51584f44ac');
-      expect(output.error, Common.SigningError.OK);
-      expect(result.substring(0, 164), expectedHex.substring(0, 164));
-      expect(result.substring(292), expectedHex.substring(292));
+      // Successfully broadcasted: https://www.blockchain.com/explorer/transactions/btc/797d17d47ae66e598341f9dfdea020b04d4017dcf9cc33f0e51f7a6082171fb1
     });
 
     test('SignPlanTransactionWithDustAmount', () {
@@ -1963,6 +1617,23 @@ void main() {
       expect(result.error, Common.SigningError.Error_missing_private_key);
     });
 
+    test('SignP2WSH_NegativePlanWithError', () {
+      // Setup input
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type);
+      input.plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+        input.writeToBuffer(),
+        TWCoinType.Bitcoin,
+      ));
+      input.plan.error = Common.SigningError.Error_missing_input_utxos;
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        TWCoinType.Bitcoin,
+      ));
+      expect(result.error, Common.SigningError.Error_missing_input_utxos);
+    });
+
     test('SignP2WSH_NegativeNoUTXOs', () {
       // Setup input
       final input = buildInputP2WSH(TWBitcoinSigHashType.All.type);
@@ -2421,6 +2092,90 @@ void main() {
       ));
       expect(result.error, Common.SigningError.OK);
       expect(result.encoded.length, 1529);
+    });
+
+    test('Sign_LitecoinReal_a85f', () {
+      const coin = TWCoinType.Litecoin;
+      const ownAddress = "ltc1qt36tu30tgk35tyzsve6jjq3dnhu2rm8l8v5q00";
+      const ownPrivateKey =
+          "b820f41f96c8b7442f3260acd23b3897e1450b8c7c6580136a3c2d3a14e34674";
+
+      // Setup input
+      final input = Bitcoin.SigningInput(
+        coinType: coin.coin,
+        hashType: TWBitcoinScript.hashTypeForCoin(coin),
+        amount: $fixnum.Int64(3899774),
+        useMaxAmount: true,
+        byteFee: $fixnum.Int64(1),
+        toAddress: 'ltc1q0dvup9kzplv6yulzgzzxkge8d35axkq4n45hum',
+        changeAddress: ownAddress,
+      );
+
+      final privKey = TWPrivateKey.createWithHexString(ownPrivateKey);
+      input.privateKey.add(privKey.data);
+
+      final utxo0Script =
+          TWBitcoinScript.lockScriptForAddress(ownAddress, coin);
+      final keyHash0 = utxo0Script.matchPayToWitnessPublicKeyHash()!;
+      expectHex(keyHash0, '5c74be45eb45a3459050667529022d9df8a1ecff');
+
+      final redeemScript = TWBitcoinScript.buildPayToPublicKeyHash(keyHash0);
+      input.scripts[hex(keyHash0)] = redeemScript.data;
+
+      input.utxo.add(Bitcoin.UnspentTransaction(
+        script: utxo0Script.data,
+        amount: $fixnum.Int64(3900000),
+        outPoint: Bitcoin.OutPoint(
+          hash: parse_hex(
+                  "7051cd18189401a844abf0f9c67e791315c4c154393870453f8ad98a818efdb5")
+              .reversed
+              .toList(),
+          index: 9,
+          sequence: UINT32_MAX - 1,
+        ),
+      ));
+
+      // set plan, to match real tx
+      final plan = Bitcoin.TransactionPlan(
+        availableAmount: $fixnum.Int64(3900000),
+        amount: $fixnum.Int64(3899774),
+        fee: $fixnum.Int64(226),
+        change: $fixnum.Int64(0),
+        utxos: [input.utxo[0]],
+      );
+      input.plan = plan;
+      expect(verifyPlan(plan, [3900000], 3899774, 226), true);
+
+      // Sign
+      final result = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        input.writeToBuffer(),
+        coin,
+      ));
+      expect(result.error, Common.SigningError.OK);
+      final signedTx = hex(result.encoded);
+      // https://blockchair.com/litecoin/transaction/a85fd6a9a7f2f54cacb57e83dfd408e51c0a5fc82885e3fa06be8692962bc407
+      expect(
+        signedTx, // printed using prettyPrintTransaction
+        "01000000" // version
+        "0001" // marker & flag
+        "01" // inputs
+        "b5fd8e818ad98a3f4570383954c1c41513797ec6f9f0ab44a801941818cd5170"
+        "09000000"
+        "00"
+        ""
+        "feffffff"
+        "01" // outputs
+        "7e813b0000000000"
+        "16"
+        "00147b59c096c20fd9a273e240846b23276c69d35815"
+        // witness
+        "02"
+        "47"
+        "3044022029153096af176f9cca0ba9b827e947689a8bb8d11dda570c880f9108bc590b3002202410c78b666722ade1ef4547ad85a128ddcbd4695c40f942457bea3d043b9bb301"
+        "21"
+        "036739829f2cfec79cfe6aaf1c22ecb7d4867dfd8ab4deb7121b36a00ab646caed"
+        "00000000", // nLockTime
+      );
     });
 
     test('PlanAndSign_LitecoinReal_8435', () {

@@ -32,9 +32,6 @@ abstract class WalletCoreBindingsInterface {
   /// [TWBitcoinAddress] interface.
   late TWBitcoinAddressInterface bitcoinAddress;
 
-  /// [TWBitcoinFee] interface.
-  late TWBitcoinFeeInterface bitcoinFee;
-
   /// [TWBitcoinMessageSigner] interface.
   late TWBitcoinMessageSignerInterface bitcoinMessageSigner;
 
@@ -238,10 +235,6 @@ TWBase64Interface get _base64Impl =>
 /// [TWBitcoinAddress] implement.
 TWBitcoinAddressInterface get _bitcoinAddressImpl =>
     WalletCoreBindingsInterface.instance.bitcoinAddress;
-
-/// [TWBitcoinFee] implement.
-TWBitcoinFeeInterface get _bitcoinFeeImpl =>
-    WalletCoreBindingsInterface.instance.bitcoinFee;
 
 /// [TWBitcoinMessageSigner] implement.
 TWBitcoinMessageSignerInterface get _bitcoinMessageSignerImpl =>
