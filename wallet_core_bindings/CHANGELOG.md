@@ -1,3 +1,7 @@
-## 0.0.1
+## 4.1.0
 
-* TODO: Describe initial release.
+* Sync wallet-core [4.1.0](https://github.com/trustwallet/wallet-core/releases/tag/4.1.0).
+
+## 4.0.49
+
+* Sync wallet-core [4.0.49](https://github.com/trustwallet/wallet-core/releases/tag/4.0.49).
