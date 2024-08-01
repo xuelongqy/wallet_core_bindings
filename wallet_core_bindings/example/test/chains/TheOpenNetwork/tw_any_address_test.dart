@@ -21,5 +21,19 @@ void main() {
 
       expect(addressStr, 'UQDYW_1eScJVxtitoBRksvoV9cCYo4uKGWLVNIHB1JqRRyQx');
     });
+
+    test('AddressValidate', () {
+      const string = 'EQCKhieGGl3ZbJ2zzggHsSLaXtRzk0znVopbSxw2HLsorkdl';
+
+      expect(TWAnyAddress.isValid(string, coin), true);
+      final addr = TWAnyAddress(string, coin);
+
+      final keyHash = addr.data;
+      expectHex(keyHash,
+          '8a8627861a5dd96c9db3ce0807b122da5ed473934ce7568a5b4b1c361cbb28ae');
+
+      final normalized = addr.description;
+      expect(normalized, 'UQCKhieGGl3ZbJ2zzggHsSLaXtRzk0znVopbSxw2HLsorhqg');
+    });
   });
 }
