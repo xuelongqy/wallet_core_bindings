@@ -250,7 +250,7 @@ void main() {
 
       final accountCoin2 = key.accountForCoinDerivation(
         coin: coin,
-        derivation: TWDerivation.Legacy,
+        derivation: TWDerivation.BitcoinLegacy,
         wallet: wallet,
       );
       final accountAddress2 = accountCoin2.address;

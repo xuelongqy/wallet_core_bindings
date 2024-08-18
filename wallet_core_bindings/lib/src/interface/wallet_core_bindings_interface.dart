@@ -50,6 +50,15 @@ abstract class WalletCoreBindingsInterface {
   /// [TWCoinTypeConfiguration] interface.
   late TWCoinTypeConfigurationInterface coinTypeConfiguration;
 
+  /// [TWCryptoBox] interface.
+  late TWCryptoBoxInterface cryptoBox;
+
+  /// [TWCryptoBoxSecretKey] interface.
+  late TWCryptoBoxSecretKeyInterface cryptoBoxSecretKey;
+
+  /// [TWCryptoBoxPublicKey] interface.
+  late TWCryptoBoxPublicKeyInterface cryptoBoxPublicKey;
+
   /// [TWData] interface.
   late TWDataInterface data;
 
@@ -155,6 +164,12 @@ abstract class WalletCoreBindingsInterface {
   /// [TWTONAddressConverter] interface.
   late TWTONAddressConverterInterface tonAddressConverter;
 
+  /// [TwTonMessageSigner] interface.
+  late TWTONMessageSignerInterface tonMessageSigner;
+
+  /// [TWTONWallet] interface.
+  late TWTONWalletInterface tonWallet;
+
   /// [TWTransactionCompiler] interface.
   late TWTransactionCompilerInterface transactionCompiler;
 
@@ -259,6 +274,18 @@ TWCoinTypeInterface get _coinTypeImpl =>
 /// [TWCoinTypeConfiguration] implement.
 TWCoinTypeConfigurationInterface get _coinTypeConfigurationImpl =>
     WalletCoreBindingsInterface.instance.coinTypeConfiguration;
+
+/// [TWCryptoBox] implement.
+TWCryptoBoxInterface get _cryptoBoxImpl =>
+    WalletCoreBindingsInterface.instance.cryptoBox;
+
+/// [TWCryptoBoxSecretKey] implement.
+TWCryptoBoxSecretKeyInterface get _cryptoBoxSecretKeyImpl =>
+    WalletCoreBindingsInterface.instance.cryptoBoxSecretKey;
+
+/// [TWCryptoBoxPublicKey] implement.
+TWCryptoBoxPublicKeyInterface get _cryptoBoxPublicKeyImpl =>
+    WalletCoreBindingsInterface.instance.cryptoBoxPublicKey;
 
 /// [TWData] implement.
 TWDataInterface get _dataImpl => WalletCoreBindingsInterface.instance.data;
@@ -396,6 +423,14 @@ TWTHORChainSwapInterface get _thorChainSwapImpl =>
 /// [TWTONAddressConverter] implement.
 TWTONAddressConverterInterface get _tonAddressConverterImpl =>
     WalletCoreBindingsInterface.instance.tonAddressConverter;
+
+/// [TWTonMessageSigner] implement.
+TWTONMessageSignerInterface get _tonMessageSignerImpl =>
+    WalletCoreBindingsInterface.instance.tonMessageSigner;
+
+/// [TWTONWallet] implement.
+TWTONWalletInterface get _tonWalletImpl =>
+    WalletCoreBindingsInterface.instance.tonWallet;
 
 /// [TWTransactionCompiler] implement.
 TWTransactionCompilerInterface get _transactionCompilerImpl =>

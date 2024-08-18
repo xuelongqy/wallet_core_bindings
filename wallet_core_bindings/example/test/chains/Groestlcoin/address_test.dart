@@ -52,7 +52,7 @@ void main() {
 
       address = coin.deriveAddressFromPublicKeyAndDerivation(
         wallet.getKey(coin, path).getPublicKey(coin),
-        TWDerivation.Legacy,
+        TWDerivation.BitcoinLegacy,
       );
       expect(address, 'FfsAQrzfdECwEsApubn2rvxgamU8CcqsLT');
     });
@@ -64,7 +64,7 @@ void main() {
       );
       var address = coin.deriveAddressFromPublicKeyAndDerivation(
         publicKey,
-        TWDerivation.Legacy,
+        TWDerivation.BitcoinLegacy,
       );
       expect(address, 'Fj62rBJi8LvbmWu2jzkaUX1NFXLEqDLoZM');
 
@@ -73,7 +73,7 @@ void main() {
 
       address = coin.deriveAddressFromPublicKeyAndDerivation(
         publicKey,
-        TWDerivation.Segwit,
+        TWDerivation.BitcoinSegwit,
       );
       expect(address, 'grs1qnzhs4t9r3zn7zqj02pwqxd3xmyyw8d22q55nf8');
 

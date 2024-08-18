@@ -1673,6 +1673,7 @@ class PreSigningOutput extends $pb.GeneratedMessage {
     $core.Iterable<HashPublicKey>? hashPublicKeys,
     $0.SigningError? error,
     $core.String? errorMessage,
+    $1.PreSigningOutput? preSigningResultV2,
   }) {
     final $result = create();
     if (hashPublicKeys != null) {
@@ -1683,6 +1684,9 @@ class PreSigningOutput extends $pb.GeneratedMessage {
     }
     if (errorMessage != null) {
       $result.errorMessage = errorMessage;
+    }
+    if (preSigningResultV2 != null) {
+      $result.preSigningResultV2 = preSigningResultV2;
     }
     return $result;
   }
@@ -1707,6 +1711,8 @@ class PreSigningOutput extends $pb.GeneratedMessage {
         valueOf: $0.SigningError.valueOf,
         enumValues: $0.SigningError.values)
     ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
+    ..aOM<$1.PreSigningOutput>(7, _omitFieldNames ? '' : 'preSigningResultV2',
+        subBuilder: $1.PreSigningOutput.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1761,6 +1767,22 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   $core.bool hasErrorMessage() => $_has(2);
   @$pb.TagNumber(3)
   void clearErrorMessage() => clearField(3);
+
+  /// Result of a transaction pre-signing using the Bitcoin 2.0 protocol.
+  /// Set if `Bitcoin.Proto.SigningInput.signing_v2` used.
+  @$pb.TagNumber(7)
+  $1.PreSigningOutput get preSigningResultV2 => $_getN(3);
+  @$pb.TagNumber(7)
+  set preSigningResultV2($1.PreSigningOutput v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasPreSigningResultV2() => $_has(3);
+  @$pb.TagNumber(7)
+  void clearPreSigningResultV2() => clearField(7);
+  @$pb.TagNumber(7)
+  $1.PreSigningOutput ensurePreSigningResultV2() => $_ensure(3);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

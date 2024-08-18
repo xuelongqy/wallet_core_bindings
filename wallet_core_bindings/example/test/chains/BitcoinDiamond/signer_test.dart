@@ -117,7 +117,7 @@ void main() {
       final utxoAddr0 = TWAnyAddress.createWithPublicKeyDerivation(
         publicKey: utxoKey0.getPublicKey(coin),
         coin: coin,
-        derivation: TWDerivation.Segwit,
+        derivation: TWDerivation.BitcoinSegwit,
       );
       expect(
           utxoAddr0.description, 'bcd1q5jx6gcuxeefvejk30r0fqrr37psnpscslrrd0y');
@@ -190,7 +190,7 @@ void main() {
       final utxoAddr0 = TWAnyAddress.createWithPublicKeyDerivation(
         publicKey: utxoKey0.getPublicKey(coin),
         coin: coin,
-        derivation: TWDerivation.Segwit,
+        derivation: TWDerivation.BitcoinSegwit,
       );
       expect(
           utxoAddr0.description, 'bcd1q5jx6gcuxeefvejk30r0fqrr37psnpscslrrd0y');

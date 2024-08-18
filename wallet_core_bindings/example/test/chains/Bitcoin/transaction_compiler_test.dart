@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
+import 'package:wallet_core_bindings/proto/BitcoinV2.pb.dart' as BitcoinV2;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 
@@ -24,6 +25,8 @@ class SignatureInfo {
 
   const SignatureInfo(this.signature, this.publicKey);
 }
+
+const ONE_BTC = 100000000;
 
 void main() {
   initTest();
@@ -293,6 +296,156 @@ void main() {
 
         expectHex(output.encoded, ExpectedTx);
       }
+
+      {
+        // Negative: not enough signatures
+        final outputData = TWTransactionCompiler.compileWithSignatures(
+          coin: coin,
+          txInputData: txInputData,
+          signatures: [signatureVec[0]],
+          publicKeys: pubkeyVec,
+        );
+        expect(outputData.length != 1, true);
+
+        final output = Bitcoin.SigningOutput.fromBuffer(outputData);
+        expect(output.encoded.length, 0);
+        expect(output.error, Common.SigningError.Error_invalid_params);
+      }
+
+      {
+        // Negative: invalid public key
+        final publicKeyBlake = parse_hex(
+            "b689ab808542e13f3d2ec56fe1efe43a1660dcadc73ce489fde7df98dd8ce5d9");
+        expectWasmWithException(
+          () => TWTransactionCompiler.compileWithSignatures(
+            coin: coin,
+            txInputData: txInputData,
+            signatures: signatureVec,
+            publicKeys: [pubkeyVec[0], pubkeyVec[1], publicKeyBlake],
+          ).length,
+          0,
+        );
+      }
+
+      {
+        // Negative: wrong signature (formally valid)
+        final outputData = TWTransactionCompiler.compileWithSignatures(
+          coin: coin,
+          txInputData: txInputData,
+          signatures: [
+            parse_hex(
+                "415502201857bc6e6e48b46046a4bd204136fc77e24c240943fb5a1f0e86387aae59b349022"
+                "00a7f31478784e51c49f46ef072745a4f263d7efdbc9c6784aa2571ff4f6f3b51"),
+            signatureVec[1],
+            signatureVec[2]
+          ],
+          publicKeys: pubkeyVec,
+        );
+        expect(outputData.length, 2);
+
+        final output = Bitcoin.SigningOutput.fromBuffer(outputData);
+        expect(output.encoded.length, 0);
+        expect(output.error, Common.SigningError.Error_signing);
+      }
+    });
+
+    test('CompileWithSignaturesV2', () {
+      final alicePrivateKey = TWPrivateKey.createWithHexString(
+          '56429688a1a6b00b90ccd22a0de0a376b6569d8684022ae92229a28478bfb657');
+      final alicePublicKey =
+          alicePrivateKey.getPublicKeyByType(TWPublicKeyType.SECP256k1);
+      final bobPublicKey = parse_hex(
+          "037ed9a436e11ec4947ac4b7823787e24ba73180f1edd2857bff19c9f4d62b65bf");
+
+      final txid0 = Uint8List.fromList(parse_hex(
+              "1e1cdc48aa990d7e154a161d5b5f1cad737742e97d2712ab188027bb42e6e47b")
+          .reversed
+          .toList());
+
+      final input = BitcoinV2.SigningInput(
+        // Step 1: Prepare transaction input (protobuf)
+        inputs: [
+          BitcoinV2.Input(
+            outPoint: BitcoinV2.OutPoint(
+              hash: txid0,
+              vout: 0,
+            ),
+            value: $fixnum.Int64(ONE_BTC * 50),
+            sighashType: TWBitcoinSigHashType.All.type,
+            // Set the Alice public key as the owner of the P2PKH input.
+            scriptBuilder: BitcoinV2.Input_InputBuilder(
+              p2pkh: BitcoinV2.PublicKeyOrHash(
+                pubkey: alicePublicKey.data,
+              ),
+            ),
+          ),
+        ],
+        outputs: [
+          BitcoinV2.Output(
+            value: $fixnum.Int64(ONE_BTC * 50 - 1000000),
+            // Set the Bob public key as the receiver of the P2PKH output.
+            builder: BitcoinV2.Output_OutputBuilder(
+              p2pkh: BitcoinV2.PublicKeyOrHash(
+                pubkey: bobPublicKey,
+              ),
+            ),
+          ),
+        ],
+        version: BitcoinV2.TransactionVersion.V2,
+        publicKeys: [alicePublicKey.data],
+        chainInfo: BitcoinV2.ChainInfo(
+          p2pkhPrefix: 0,
+          p2shPrefix: 5,
+        ),
+        fixedDustThreshold: $fixnum.Int64(546),
+      );
+      final inputLegacy = Bitcoin.SigningInput(
+        signingV2: input,
+      );
+
+      final inputLegacyData = inputLegacy.writeToBuffer();
+
+      // Step 2: Obtain preimage hashes
+      final preOutputData = TWTransactionCompiler.preImageHashes(
+          TWCoinType.Bitcoin, inputLegacyData);
+      final preOutput = Bitcoin.PreSigningOutput.fromBuffer(preOutputData);
+
+      expect(preOutput.error, Common.SigningError.OK);
+      expect(preOutput.hasPreSigningResultV2(), true);
+      expect(preOutput.preSigningResultV2.error, Common.SigningError.OK);
+
+      final sighashes = preOutput.preSigningResultV2.sighashes;
+      expect(sighashes.length, 1);
+      final sighash0 = sighashes.first;
+      expect(sighash0.publicKey, alicePublicKey.data);
+      expectHex(sighash0.sighash,
+          '6a0e072da66b141fdb448323d54765cafcaf084a06d2fa13c8aed0c694e50d18');
+
+      // Step 3: Simulate signature, normally obtained from signature server
+      final sig0 = alicePrivateKey.sign(
+          Uint8List.fromList(sighash0.sighash), TWCurve.SECP256k1);
+      expectHex(sig0,
+          '78eda020d4b86fcb3af78ef919912e6d79b81164dbbb0b0b96da6ac58a2de4b11a5fd8d48734d5a02371c4b5ee551a69dca3842edbf577d863cf8ae9fdbbd45900');
+
+      // Step 4: Compile transaction info
+      final signatures = [sig0];
+      final publicKeys = [alicePublicKey.data];
+      final outputData = TWTransactionCompiler.compileWithSignatures(
+        coin: TWCoinType.Bitcoin,
+        txInputData: inputLegacyData,
+        signatures: signatures,
+        publicKeys: publicKeys,
+      );
+      final output = Bitcoin.SigningOutput.fromBuffer(outputData);
+
+      expect(output.error, Common.SigningError.OK);
+      expect(output.hasSigningResultV2(), true);
+      final outputV2 = output.signingResultV2;
+      expect(outputV2.error, Common.SigningError.OK);
+      expectHex(outputV2.encoded,
+          '02000000017be4e642bb278018ab12277de9427773ad1c5f5b1d164a157e0d99aa48dc1c1e000000006a473044022078eda020d4b86fcb3af78ef919912e6d79b81164dbbb0b0b96da6ac58a2de4b102201a5fd8d48734d5a02371c4b5ee551a69dca3842edbf577d863cf8ae9fdbbd4590121036666dd712e05a487916384bfcd5973eb53e8038eccbbf97f7eed775b87389536ffffffff01c0aff629010000001976a9145eaaa4f458f9158f86afcba08dd7448d27045e3d88ac00000000');
+      expectHex(outputV2.txid,
+          'c19f410bf1d70864220e93bca20f836aaaf8cdde84a46692616e9f4480d54885');
     });
   });
 }

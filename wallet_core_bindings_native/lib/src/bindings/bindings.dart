@@ -6340,6 +6340,33 @@ class TrustWalletCoreBindings {
   late final _TWSegwitAddressWitnessProgram = _TWSegwitAddressWitnessProgramPtr
       .asFunction<ffi.Pointer<TWData> Function(ffi.Pointer<TWSegwitAddress>)>();
 
+  /// Constructs a TON Wallet V4R2 stateInit encoded as BoC (BagOfCells) for the given `public_key`.
+  ///
+  /// \param publicKey wallet's public key.
+  /// \param workchain TON workchain to which the wallet belongs. Usually, base chain is used (0).
+  /// \param walletId wallet's ID allows to create multiple wallets for the same private key.
+  /// \return Pointer to a base64 encoded Bag Of Cells (BoC) StateInit. Null if invalid public key provided.
+  ffi.Pointer<TWString1> TWTONWalletBuildV4R2StateInit(
+    ffi.Pointer<TWPublicKey> publicKey,
+    int workchain,
+    int walletId,
+  ) {
+    return _TWTONWalletBuildV4R2StateInit(
+      publicKey,
+      workchain,
+      walletId,
+    );
+  }
+
+  late final _TWTONWalletBuildV4R2StateInitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(ffi.Pointer<TWPublicKey>, ffi.Int32,
+              ffi.Int32)>>('TWTONWalletBuildV4R2StateInit');
+  late final _TWTONWalletBuildV4R2StateInit =
+      _TWTONWalletBuildV4R2StateInitPtr.asFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWPublicKey>, int, int)>();
+
   /// Sign a typed message EIP-712 V4.
   ///
   /// \param privateKey: the private key used for signing
@@ -7226,6 +7253,31 @@ class TrustWalletCoreBindings {
   late final _TWBase58DecodeNoCheck = _TWBase58DecodeNoCheckPtr.asFunction<
       ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>)>();
 
+  /// Signs an arbitrary message to prove ownership of an address for off-chain services.
+  /// https://github.com/ton-foundation/specs/blob/main/specs/wtf-0002.md
+  ///
+  /// \param privateKey: the private key used for signing
+  /// \param message: A custom message which is input to the signing.
+  /// \returns the signature, Hex-encoded. On invalid input null is returned. Returned object needs to be deleted after use.
+  ffi.Pointer<TWString1> TWTONMessageSignerSignMessage(
+    ffi.Pointer<TWPrivateKey> privateKey,
+    ffi.Pointer<TWString1> message,
+  ) {
+    return _TWTONMessageSignerSignMessage(
+      privateKey,
+      message,
+    );
+  }
+
+  late final _TWTONMessageSignerSignMessagePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(ffi.Pointer<TWPrivateKey>,
+              ffi.Pointer<TWString1>)>>('TWTONMessageSignerSignMessage');
+  late final _TWTONMessageSignerSignMessage =
+      _TWTONMessageSignerSignMessagePtr.asFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWPrivateKey>, ffi.Pointer<TWString1>)>();
+
   /// Calculates the minimum ADA amount needed for a UTXO.
   ///
   /// \deprecated consider using `TWCardanoOutputMinAdaAmount` instead.
@@ -7621,6 +7673,7 @@ class TrustWalletCoreBindings {
   /// \param address raw or user-friendly address to be converted.
   /// \param bounceable whether the result address should be bounceable.
   /// \param testnet whether the result address should be testnet.
+  /// \return user-friendly address str.
   ffi.Pointer<TWString> TWTONAddressConverterToUserFriendly(
     ffi.Pointer<TWString> address,
     bool bounceable,
@@ -7879,6 +7932,196 @@ class TrustWalletCoreBindings {
   late final _TWFilecoinAddressConverterConvertFromEthereum =
       _TWFilecoinAddressConverterConvertFromEthereumPtr.asFunction<
           ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>();
+
+  /// Determines if the given public key is valid or not.
+  ///
+  /// \param data *non-null* byte array.
+  /// \return true if the public key is valid, false otherwise.
+  bool TWCryptoBoxPublicKeyIsValid(
+    ffi.Pointer<TWData1> data,
+  ) {
+    return _TWCryptoBoxPublicKeyIsValid(
+      data,
+    );
+  }
+
+  late final _TWCryptoBoxPublicKeyIsValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<TWData1>)>>(
+          'TWCryptoBoxPublicKeyIsValid');
+  late final _TWCryptoBoxPublicKeyIsValid = _TWCryptoBoxPublicKeyIsValidPtr
+      .asFunction<bool Function(ffi.Pointer<TWData1>)>();
+
+  /// Create a `crypto_box` public key with the given block of data.
+  ///
+  /// \param data *non-null* byte array. Expected to have 32 bytes.
+  /// \note Should be deleted with \tw_crypto_box_public_key_delete.
+  /// \return Nullable pointer to Public Key.
+  ffi.Pointer<TWCryptoBoxPublicKey> TWCryptoBoxPublicKeyCreateWithData(
+    ffi.Pointer<TWData1> data,
+  ) {
+    return _TWCryptoBoxPublicKeyCreateWithData(
+      data,
+    );
+  }
+
+  late final _TWCryptoBoxPublicKeyCreateWithDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWCryptoBoxPublicKey> Function(
+              ffi.Pointer<TWData1>)>>('TWCryptoBoxPublicKeyCreateWithData');
+  late final _TWCryptoBoxPublicKeyCreateWithData =
+      _TWCryptoBoxPublicKeyCreateWithDataPtr.asFunction<
+          ffi.Pointer<TWCryptoBoxPublicKey> Function(ffi.Pointer<TWData1>)>();
+
+  /// Delete the given public key.
+  ///
+  /// \param publicKey *non-null* pointer to public key.
+  void TWCryptoBoxPublicKeyDelete(
+    ffi.Pointer<TWCryptoBoxPublicKey> publicKey,
+  ) {
+    return _TWCryptoBoxPublicKeyDelete(
+      publicKey,
+    );
+  }
+
+  late final _TWCryptoBoxPublicKeyDeletePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<TWCryptoBoxPublicKey>)>>(
+      'TWCryptoBoxPublicKeyDelete');
+  late final _TWCryptoBoxPublicKeyDelete = _TWCryptoBoxPublicKeyDeletePtr
+      .asFunction<void Function(ffi.Pointer<TWCryptoBoxPublicKey>)>();
+
+  /// Returns the raw data of the given public-key.
+  ///
+  /// \param publicKey *non-null* pointer to a public key.
+  /// \return C-compatible result with a C-compatible byte array.
+  ffi.Pointer<TWData1> TWCryptoBoxPublicKeyData(
+    ffi.Pointer<TWCryptoBoxPublicKey> publicKey,
+  ) {
+    return _TWCryptoBoxPublicKeyData(
+      publicKey,
+    );
+  }
+
+  late final _TWCryptoBoxPublicKeyDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWCryptoBoxPublicKey>)>>('TWCryptoBoxPublicKeyData');
+  late final _TWCryptoBoxPublicKeyData =
+      _TWCryptoBoxPublicKeyDataPtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWCryptoBoxPublicKey>)>();
+
+  /// Determines if the given secret key is valid or not.
+  ///
+  /// \param data *non-null* byte array.
+  /// \return true if the secret key is valid, false otherwise.
+  bool TWCryptoBoxSecretKeyIsValid(
+    ffi.Pointer<TWData1> data,
+  ) {
+    return _TWCryptoBoxSecretKeyIsValid(
+      data,
+    );
+  }
+
+  late final _TWCryptoBoxSecretKeyIsValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<TWData1>)>>(
+          'TWCryptoBoxSecretKeyIsValid');
+  late final _TWCryptoBoxSecretKeyIsValid = _TWCryptoBoxSecretKeyIsValidPtr
+      .asFunction<bool Function(ffi.Pointer<TWData1>)>();
+
+  /// Create a random secret key.
+  ///
+  /// \note Should be deleted with \tw_crypto_box_secret_key_delete.
+  /// \return *non-null* pointer to Secret Key.
+  ffi.Pointer<TWCryptoBoxSecretKey> TWCryptoBoxSecretKeyCreate() {
+    return _TWCryptoBoxSecretKeyCreate();
+  }
+
+  late final _TWCryptoBoxSecretKeyCreatePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<TWCryptoBoxSecretKey> Function()>>(
+          'TWCryptoBoxSecretKeyCreate');
+  late final _TWCryptoBoxSecretKeyCreate = _TWCryptoBoxSecretKeyCreatePtr
+      .asFunction<ffi.Pointer<TWCryptoBoxSecretKey> Function()>();
+
+  /// Create a `crypto_box` secret key with the given block of data.
+  ///
+  /// \param data *non-null* byte array. Expected to have 32 bytes.
+  /// \note Should be deleted with \tw_crypto_box_secret_key_delete.
+  /// \return Nullable pointer to Secret Key.
+  ffi.Pointer<TWCryptoBoxSecretKey> TWCryptoBoxSecretKeyCreateWithData(
+    ffi.Pointer<TWData1> data,
+  ) {
+    return _TWCryptoBoxSecretKeyCreateWithData(
+      data,
+    );
+  }
+
+  late final _TWCryptoBoxSecretKeyCreateWithDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWCryptoBoxSecretKey> Function(
+              ffi.Pointer<TWData1>)>>('TWCryptoBoxSecretKeyCreateWithData');
+  late final _TWCryptoBoxSecretKeyCreateWithData =
+      _TWCryptoBoxSecretKeyCreateWithDataPtr.asFunction<
+          ffi.Pointer<TWCryptoBoxSecretKey> Function(ffi.Pointer<TWData1>)>();
+
+  /// Delete the given secret `key`.
+  ///
+  /// \param key *non-null* pointer to secret key.
+  void TWCryptoBoxSecretKeyDelete(
+    ffi.Pointer<TWCryptoBoxSecretKey> key,
+  ) {
+    return _TWCryptoBoxSecretKeyDelete(
+      key,
+    );
+  }
+
+  late final _TWCryptoBoxSecretKeyDeletePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<TWCryptoBoxSecretKey>)>>(
+      'TWCryptoBoxSecretKeyDelete');
+  late final _TWCryptoBoxSecretKeyDelete = _TWCryptoBoxSecretKeyDeletePtr
+      .asFunction<void Function(ffi.Pointer<TWCryptoBoxSecretKey>)>();
+
+  /// Returns the public key associated with the given `key`.
+  ///
+  /// \param key *non-null* pointer to the private key.
+  /// \return *non-null* pointer to the corresponding public key.
+  ffi.Pointer<TWCryptoBoxPublicKey> TWCryptoBoxSecretKeyGetPublicKey(
+    ffi.Pointer<TWCryptoBoxSecretKey> key,
+  ) {
+    return _TWCryptoBoxSecretKeyGetPublicKey(
+      key,
+    );
+  }
+
+  late final _TWCryptoBoxSecretKeyGetPublicKeyPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWCryptoBoxPublicKey> Function(
+                  ffi.Pointer<TWCryptoBoxSecretKey>)>>(
+      'TWCryptoBoxSecretKeyGetPublicKey');
+  late final _TWCryptoBoxSecretKeyGetPublicKey =
+      _TWCryptoBoxSecretKeyGetPublicKeyPtr.asFunction<
+          ffi.Pointer<TWCryptoBoxPublicKey> Function(
+              ffi.Pointer<TWCryptoBoxSecretKey>)>();
+
+  /// Returns the raw data of the given secret-key.
+  ///
+  /// \param secretKey *non-null* pointer to a secret key.
+  /// \return C-compatible result with a C-compatible byte array.
+  ffi.Pointer<TWData1> TWCryptoBoxSecretKeyData(
+    ffi.Pointer<TWCryptoBoxSecretKey> secretKey,
+  ) {
+    return _TWCryptoBoxSecretKeyData(
+      secretKey,
+    );
+  }
+
+  late final _TWCryptoBoxSecretKeyDataPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWCryptoBoxSecretKey>)>>('TWCryptoBoxSecretKeyData');
+  late final _TWCryptoBoxSecretKeyData =
+      _TWCryptoBoxSecretKeyDataPtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWCryptoBoxSecretKey>)>();
 
   /// Decode a Base32 input with the given alphabet
   ///
@@ -10251,6 +10494,65 @@ class TrustWalletCoreBindings {
   late final _TWGroestlcoinAddressDescription =
       _TWGroestlcoinAddressDescriptionPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWGroestlcoinAddress>)>();
+
+  /// Encrypts message using `my_secret` and `other_pubkey`.
+  /// The output will have a randomly generated nonce prepended to it.
+  /// The output will be Overhead + 24 bytes longer than the original.
+  ///
+  /// \param mySecret *non-null* pointer to my secret key.
+  /// \param otherPubkey *non-null* pointer to other's public key.
+  /// \param message *non-null* pointer to the message to be encrypted.
+  /// \return *nullable* pointer to the encrypted message with randomly generated nonce prepended to it.
+  ffi.Pointer<TWData1> TWCryptoBoxEncryptEasy(
+    ffi.Pointer<TWCryptoBoxSecretKey> mySecret,
+    ffi.Pointer<TWCryptoBoxPublicKey> otherPubkey,
+    ffi.Pointer<TWData1> message,
+  ) {
+    return _TWCryptoBoxEncryptEasy(
+      mySecret,
+      otherPubkey,
+      message,
+    );
+  }
+
+  late final _TWCryptoBoxEncryptEasyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWCryptoBoxSecretKey>,
+              ffi.Pointer<TWCryptoBoxPublicKey>,
+              ffi.Pointer<TWData1>)>>('TWCryptoBoxEncryptEasy');
+  late final _TWCryptoBoxEncryptEasy = _TWCryptoBoxEncryptEasyPtr.asFunction<
+      ffi.Pointer<TWData1> Function(ffi.Pointer<TWCryptoBoxSecretKey>,
+          ffi.Pointer<TWCryptoBoxPublicKey>, ffi.Pointer<TWData1>)>();
+
+  /// Decrypts box produced by `TWCryptoBoxEncryptEasy`.
+  /// We assume a 24-byte nonce is prepended to the encrypted text in box.
+  ///
+  /// \param mySecret *non-null* pointer to my secret key.
+  /// \param otherPubkey *non-null* pointer to other's public key.
+  /// \param encrypted *non-null* pointer to the encrypted message with nonce prepended to it.
+  /// \return *nullable* pointer to the decrypted message.
+  ffi.Pointer<TWData1> TWCryptoBoxDecryptEasy(
+    ffi.Pointer<TWCryptoBoxSecretKey> mySecret,
+    ffi.Pointer<TWCryptoBoxPublicKey> otherPubkey,
+    ffi.Pointer<TWData1> encrypted,
+  ) {
+    return _TWCryptoBoxDecryptEasy(
+      mySecret,
+      otherPubkey,
+      encrypted,
+    );
+  }
+
+  late final _TWCryptoBoxDecryptEasyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWCryptoBoxSecretKey>,
+              ffi.Pointer<TWCryptoBoxPublicKey>,
+              ffi.Pointer<TWData1>)>>('TWCryptoBoxDecryptEasy');
+  late final _TWCryptoBoxDecryptEasy = _TWCryptoBoxDecryptEasyPtr.asFunction<
+      ffi.Pointer<TWData1> Function(ffi.Pointer<TWCryptoBoxSecretKey>,
+          ffi.Pointer<TWCryptoBoxPublicKey>, ffi.Pointer<TWData1>)>();
 
   /// Determines whether a BIP39 English mnemonic phrase is valid.
   ///
@@ -13454,10 +13756,12 @@ abstract class TWCurve {
 abstract class TWDerivation {
   static const int TWDerivationDefault = 0;
   static const int TWDerivationCustom = 1;
-  static const int TWDerivationSegwit = 2;
-  static const int TWDerivationLegacy = 3;
-  static const int TWDerivationTestnet = 4;
-  static const int TWDerivationSolana = 5;
+  static const int TWDerivationBitcoinSegwit = 2;
+  static const int TWDerivationBitcoinLegacy = 3;
+  static const int TWDerivationBitcoinTestnet = 4;
+  static const int TWDerivationLitecoinLegacy = 5;
+  static const int TWDerivationSolanaSolana = 6;
+  static const int TWDerivationStratisSegwit = 7;
 }
 
 /// Registered HD version bytes
@@ -13817,6 +14121,9 @@ final class TWBase64 extends ffi.Opaque {}
 /// Represents a BIP 0173 address.
 final class TWSegwitAddress extends ffi.Opaque {}
 
+/// TON wallet operations.
+final class TWTONWallet extends ffi.Opaque {}
+
 /// Ethereum message signing and verification.
 ///
 /// Ethereum and some other wallets support a message signing & verification format, to create a proof (a signature)
@@ -13855,6 +14162,9 @@ final class TWTHORChainSwap extends ffi.Opaque {}
 /// Base58 encode / decode functions
 final class TWBase58 extends ffi.Opaque {}
 
+/// TON message signing.
+final class TWTONMessageSigner extends ffi.Opaque {}
+
 /// Cardano helper functions
 final class TWCardano extends ffi.Opaque {}
 
@@ -13891,6 +14201,12 @@ final class TWPBKDF2 extends ffi.Opaque {}
 
 /// Filecoin-Ethereum address converter.
 final class TWFilecoinAddressConverter extends ffi.Opaque {}
+
+/// Public key used in `crypto_box` cryptography.
+final class TWCryptoBoxPublicKey extends ffi.Opaque {}
+
+/// Secret key used in `crypto_box` cryptography.
+final class TWCryptoBoxSecretKey extends ffi.Opaque {}
 
 /// Base32 encode / decode functions
 final class TWBase32 extends ffi.Opaque {}
@@ -13949,6 +14265,9 @@ final class TWFIOAccount extends ffi.Opaque {}
 
 /// Represents a legacy Groestlcoin address.
 final class TWGroestlcoinAddress extends ffi.Opaque {}
+
+/// `crypto_box` encryption algorithms.
+final class TWCryptoBox extends ffi.Opaque {}
 
 /// Mnemonic validate / lookup functions
 final class TWMnemonic extends ffi.Opaque {}

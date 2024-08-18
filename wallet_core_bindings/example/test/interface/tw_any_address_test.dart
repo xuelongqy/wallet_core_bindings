@@ -226,7 +226,7 @@ void main() async {
         final addr = TWAnyAddress.createWithPublicKeyDerivation(
           publicKey: pubkeyObj,
           coin: TWCoinType.Bitcoin,
-          derivation: TWDerivation.Legacy,
+          derivation: TWDerivation.BitcoinLegacy,
         );
         expect(addr.description, '1JvRfEQFv5q5qy9uTSAezH7kVQf4hqnHXx');
       }
@@ -235,7 +235,7 @@ void main() async {
         final addr = TWAnyAddress.createWithPublicKeyDerivation(
           publicKey: pubkeyObj,
           coin: TWCoinType.Bitcoin,
-          derivation: TWDerivation.Testnet,
+          derivation: TWDerivation.BitcoinTestnet,
         );
         expect(addr.description, 'tb1qcj2vfjec3c3luf9fx9vddnglhh9gawmnjan4v3');
       }

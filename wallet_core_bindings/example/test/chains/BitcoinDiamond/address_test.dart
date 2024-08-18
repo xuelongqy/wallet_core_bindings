@@ -29,7 +29,7 @@ void main() {
       var addr = wallet.getAddressForCoin(coin);
       expect(addr, '1KaRW9xPPtCTZ9FdaTHduCPck4YvSeEWNn');
 
-      addr = wallet.getAddressDerivation(coin, TWDerivation.Segwit);
+      addr = wallet.getAddressDerivation(coin, TWDerivation.BitcoinSegwit);
       expect(addr, 'bcd1q7jh5qukuy9fc2pjm89xnyvx5dtfyvru9evw30x');
     });
 
@@ -46,7 +46,9 @@ void main() {
           '02485a209514cc896f8ed736e205bc4c35bd5299ef3f9e84054475336b964c02a3',
           TWPublicKeyType.SECP256k1);
       var address = TWAnyAddress.createWithPublicKeyDerivation(
-          publicKey: publicKey, coin: coin, derivation: TWDerivation.Segwit);
+          publicKey: publicKey,
+          coin: coin,
+          derivation: TWDerivation.BitcoinSegwit);
 
       final data =
           TWAnyAddress('1G15VvshDxwFTnahZZECJfFwEkq9fP79o8', coin).data;

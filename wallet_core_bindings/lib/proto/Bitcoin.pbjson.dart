@@ -431,6 +431,14 @@ const PreSigningOutput$json = {
       '10': 'error'
     },
     {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
+    {
+      '1': 'pre_signing_result_v2',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.PreSigningOutput',
+      '10': 'preSigningResultV2'
+    },
   ],
 };
 
@@ -439,4 +447,5 @@ final $typed_data.Uint8List preSigningOutputDescriptor = $convert.base64Decode(
     'ChBQcmVTaWduaW5nT3V0cHV0EkkKEGhhc2hfcHVibGljX2tleXMYASADKAsyHy5UVy5CaXRjb2'
     'luLlByb3RvLkhhc2hQdWJsaWNLZXlSDmhhc2hQdWJsaWNLZXlzEjMKBWVycm9yGAIgASgOMh0u'
     'VFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZRgDIA'
-    'EoCVIMZXJyb3JNZXNzYWdl');
+    'EoCVIMZXJyb3JNZXNzYWdlElcKFXByZV9zaWduaW5nX3Jlc3VsdF92MhgHIAEoCzIkLlRXLkJp'
+    'dGNvaW5WMi5Qcm90by5QcmVTaWduaW5nT3V0cHV0UhJwcmVTaWduaW5nUmVzdWx0VjI=');

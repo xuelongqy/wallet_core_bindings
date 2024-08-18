@@ -78,6 +78,9 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     cardano = TWCardanoImpl(_wasm);
     coinType = TWCoinTypeImpl(_wasm);
     coinTypeConfiguration = TWCoinTypeConfigurationImpl(_wasm);
+    cryptoBox = TWCryptoBoxImpl(_wasm);
+    cryptoBoxPublicKey = TWCryptoBoxPublicKeyImpl(_wasm);
+    cryptoBoxSecretKey = TWCryptoBoxSecretKeyImpl(_wasm);
     data = TWDataImpl(_wasm);
     dataVector = TWDataVectorImpl(_wasm);
     derivationPath = TWDerivationPathImpl(_wasm);
@@ -113,6 +116,8 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     tezosMessageSigner = TWTezosMessageSignerImpl(_wasm);
     thorChainSwap = TWTHORChainSwapImpl(_wasm);
     tonAddressConverter = TWTONAddressConverterImpl(_wasm);
+    tonWallet = TWTONWalletImpl(_wasm);
+    tonMessageSigner = TWTONMessageSignerImpl(_wasm);
     transactionCompiler = TWTransactionCompilerImpl(_wasm);
     transactionDecoder = TWTransactionDecoderImpl(_wasm);
     tronMessageSigner = TWTronMessageSignerImpl(_wasm);

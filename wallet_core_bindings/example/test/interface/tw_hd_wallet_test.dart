@@ -124,8 +124,8 @@ void main() {
       final wallet =
           TWHDWallet.createWithMnemonic(gWords, passphrase: gPassphrase);
       {
-        final key =
-            wallet.getKeyDerivation(TWCoinType.Bitcoin, TWDerivation.Segwit);
+        final key = wallet.getKeyDerivation(
+            TWCoinType.Bitcoin, TWDerivation.BitcoinSegwit);
         expectHex(key.data,
             '1901b5994f075af71397f65bd68a9fff8d3025d65f5a2c731cf90f5e259d6aac');
         final publicKey = key.getPublicKeySecp256k1(true);
@@ -134,8 +134,8 @@ void main() {
             '037ea5dff03f677502c4a1d73c5ac897200e56b155e876774c8fba0cc22f80b941');
       }
       {
-        final key =
-            wallet.getKeyDerivation(TWCoinType.Bitcoin, TWDerivation.Legacy);
+        final key = wallet.getKeyDerivation(
+            TWCoinType.Bitcoin, TWDerivation.BitcoinLegacy);
         expectHex(key.data,
             '28071bf4e2b0340db41b807ed8a5514139e5d6427ff9d58dbd22b7ed187103a4');
         final publicKey = key.getPublicKeySecp256k1(true);
@@ -157,12 +157,12 @@ void main() {
           TWHDWallet.createWithMnemonic(gWords, passphrase: gPassphrase);
       {
         final address = wallet.getAddressDerivation(
-            TWCoinType.Bitcoin, TWDerivation.Segwit);
+            TWCoinType.Bitcoin, TWDerivation.BitcoinSegwit);
         expect(address, 'bc1qumwjg8danv2vm29lp5swdux4r60ezptzz7ce85');
       }
       {
         final address = wallet.getAddressDerivation(
-            TWCoinType.Bitcoin, TWDerivation.Legacy);
+            TWCoinType.Bitcoin, TWDerivation.BitcoinLegacy);
         expect(address, '1PeUvjuxyf31aJKX6kCXuaqxhmG78ZUdL1');
       }
     });
@@ -433,7 +433,7 @@ void main() {
       final zprv0 = wallet.getExtendedPrivateKeyAccount(
         purpose: TWPurpose.BIP84,
         coin: TWCoinType.Bitcoin,
-        derivation: TWDerivation.Segwit,
+        derivation: TWDerivation.BitcoinSegwit,
         version: TWHDVersion.ZPRV,
         account: 0,
       );
@@ -442,7 +442,7 @@ void main() {
       final zprv1 = wallet.getExtendedPrivateKeyAccount(
         purpose: TWPurpose.BIP84,
         coin: TWCoinType.Bitcoin,
-        derivation: TWDerivation.Segwit,
+        derivation: TWDerivation.BitcoinSegwit,
         version: TWHDVersion.ZPRV,
         account: 1,
       );
@@ -452,7 +452,7 @@ void main() {
       final zpub0 = wallet.getExtendedPublicKeyAccount(
         purpose: TWPurpose.BIP84,
         coin: TWCoinType.Bitcoin,
-        derivation: TWDerivation.Segwit,
+        derivation: TWDerivation.BitcoinSegwit,
         version: TWHDVersion.ZPUB,
         account: 0,
       );
@@ -461,7 +461,7 @@ void main() {
       final zpub1 = wallet.getExtendedPublicKeyAccount(
         purpose: TWPurpose.BIP84,
         coin: TWCoinType.Bitcoin,
-        derivation: TWDerivation.Segwit,
+        derivation: TWDerivation.BitcoinSegwit,
         version: TWHDVersion.ZPUB,
         account: 1,
       );

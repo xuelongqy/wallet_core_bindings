@@ -13,6 +13,20 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use tokenProgramIdDescriptor instead')
+const TokenProgramId$json = {
+  '1': 'TokenProgramId',
+  '2': [
+    {'1': 'TokenProgram', '2': 0},
+    {'1': 'Token2022Program', '2': 1},
+  ],
+};
+
+/// Descriptor for `TokenProgramId`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List tokenProgramIdDescriptor = $convert.base64Decode(
+    'Cg5Ub2tlblByb2dyYW1JZBIQCgxUb2tlblByb2dyYW0QABIUChBUb2tlbjIwMjJQcm9ncmFtEA'
+    'E=');
+
 @$core.Deprecated('Use encodingDescriptor instead')
 const Encoding$json = {
   '1': 'Encoding',
@@ -145,6 +159,14 @@ const CreateTokenAccount$json = {
       '10': 'tokenMintAddress'
     },
     {'1': 'token_address', '3': 3, '4': 1, '5': 9, '10': 'tokenAddress'},
+    {
+      '1': 'token_program_id',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.TokenProgramId',
+      '10': 'tokenProgramId'
+    },
   ],
 };
 
@@ -152,7 +174,8 @@ const CreateTokenAccount$json = {
 final $typed_data.Uint8List createTokenAccountDescriptor = $convert.base64Decode(
     'ChJDcmVhdGVUb2tlbkFjY291bnQSIQoMbWFpbl9hZGRyZXNzGAEgASgJUgttYWluQWRkcmVzcx'
     'IsChJ0b2tlbl9taW50X2FkZHJlc3MYAiABKAlSEHRva2VuTWludEFkZHJlc3MSIwoNdG9rZW5f'
-    'YWRkcmVzcxgDIAEoCVIMdG9rZW5BZGRyZXNz');
+    'YWRkcmVzcxgDIAEoCVIMdG9rZW5BZGRyZXNzEkkKEHRva2VuX3Byb2dyYW1faWQYBCABKA4yHy'
+    '5UVy5Tb2xhbmEuUHJvdG8uVG9rZW5Qcm9ncmFtSWRSDnRva2VuUHJvZ3JhbUlk');
 
 @$core.Deprecated('Use tokenTransferDescriptor instead')
 const TokenTransfer$json = {
@@ -183,6 +206,14 @@ const TokenTransfer$json = {
     {'1': 'decimals', '3': 5, '4': 1, '5': 13, '10': 'decimals'},
     {'1': 'memo', '3': 6, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'references', '3': 7, '4': 3, '5': 9, '10': 'references'},
+    {
+      '1': 'token_program_id',
+      '3': 8,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.TokenProgramId',
+      '10': 'tokenProgramId'
+    },
   ],
 };
 
@@ -192,7 +223,9 @@ final $typed_data.Uint8List tokenTransferDescriptor = $convert.base64Decode(
     'RkcmVzcxIwChRzZW5kZXJfdG9rZW5fYWRkcmVzcxgCIAEoCVISc2VuZGVyVG9rZW5BZGRyZXNz'
     'EjYKF3JlY2lwaWVudF90b2tlbl9hZGRyZXNzGAMgASgJUhVyZWNpcGllbnRUb2tlbkFkZHJlc3'
     'MSFgoGYW1vdW50GAQgASgEUgZhbW91bnQSGgoIZGVjaW1hbHMYBSABKA1SCGRlY2ltYWxzEhIK'
-    'BG1lbW8YBiABKAlSBG1lbW8SHgoKcmVmZXJlbmNlcxgHIAMoCVIKcmVmZXJlbmNlcw==');
+    'BG1lbW8YBiABKAlSBG1lbW8SHgoKcmVmZXJlbmNlcxgHIAMoCVIKcmVmZXJlbmNlcxJJChB0b2'
+    'tlbl9wcm9ncmFtX2lkGAggASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3JhbUlkUg50'
+    'b2tlblByb2dyYW1JZA==');
 
 @$core.Deprecated('Use createAndTransferTokenDescriptor instead')
 const CreateAndTransferToken$json = {
@@ -230,6 +263,14 @@ const CreateAndTransferToken$json = {
     {'1': 'decimals', '3': 6, '4': 1, '5': 13, '10': 'decimals'},
     {'1': 'memo', '3': 7, '4': 1, '5': 9, '10': 'memo'},
     {'1': 'references', '3': 8, '4': 3, '5': 9, '10': 'references'},
+    {
+      '1': 'token_program_id',
+      '3': 9,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.TokenProgramId',
+      '10': 'tokenProgramId'
+    },
   ],
 };
 
@@ -241,7 +282,8 @@ final $typed_data.Uint8List createAndTransferTokenDescriptor = $convert.base64De
     '50VG9rZW5BZGRyZXNzEjAKFHNlbmRlcl90b2tlbl9hZGRyZXNzGAQgASgJUhJzZW5kZXJUb2tl'
     'bkFkZHJlc3MSFgoGYW1vdW50GAUgASgEUgZhbW91bnQSGgoIZGVjaW1hbHMYBiABKA1SCGRlY2'
     'ltYWxzEhIKBG1lbW8YByABKAlSBG1lbW8SHgoKcmVmZXJlbmNlcxgIIAMoCVIKcmVmZXJlbmNl'
-    'cw==');
+    'cxJJChB0b2tlbl9wcm9ncmFtX2lkGAkgASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3'
+    'JhbUlkUg50b2tlblByb2dyYW1JZA==');
 
 @$core.Deprecated('Use createNonceAccountDescriptor instead')
 const CreateNonceAccount$json = {

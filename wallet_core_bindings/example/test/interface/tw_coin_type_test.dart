@@ -507,14 +507,14 @@ void main() {
     });
 
     test('TWCoinTypeDerivationPathWithDerivation', () {
-      final res =
-          TWCoinType.Bitcoin.derivationPathWithDerivation(TWDerivation.Legacy);
+      final res = TWCoinType.Bitcoin.derivationPathWithDerivation(
+          TWDerivation.BitcoinLegacy);
       expect(res, "m/44'/0'/0'/0/0");
     });
 
     test('TWCoinTypeDerivationPathWithDerivation Solana', () {
-      final res =
-          TWCoinType.Solana.derivationPathWithDerivation(TWDerivation.Solana);
+      final res = TWCoinType.Solana.derivationPathWithDerivation(
+          TWDerivation.SolanaSolana);
       expect(res, "m/44'/501'/0'/0'");
     });
   });
