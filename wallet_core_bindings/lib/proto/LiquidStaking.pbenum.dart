@@ -15,14 +15,14 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 /// Enum for supported coins for liquid staking
 class Coin extends $pb.ProtobufEnum {
-  static const Coin MATIC = Coin._(0, _omitEnumNames ? '' : 'MATIC');
+  static const Coin POL = Coin._(0, _omitEnumNames ? '' : 'POL');
   static const Coin ATOM = Coin._(1, _omitEnumNames ? '' : 'ATOM');
   static const Coin BNB = Coin._(2, _omitEnumNames ? '' : 'BNB');
   static const Coin APT = Coin._(3, _omitEnumNames ? '' : 'APT');
   static const Coin ETH = Coin._(4, _omitEnumNames ? '' : 'ETH');
 
   static const $core.List<Coin> values = <Coin>[
-    MATIC,
+    POL,
     ATOM,
     BNB,
     APT,

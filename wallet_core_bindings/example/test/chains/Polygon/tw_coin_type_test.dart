@@ -19,7 +19,7 @@ void main() {
 
       expect(id, 'polygon');
       expect(name, 'Polygon');
-      expect(symbol, 'MATIC');
+      expect(symbol, 'POL');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);
       expect(coin.p2shPrefix, 0x0);

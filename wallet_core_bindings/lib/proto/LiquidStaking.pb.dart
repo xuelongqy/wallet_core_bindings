@@ -140,7 +140,7 @@ class Asset extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'TW.LiquidStaking.Proto'),
       createEmptyInstance: create)
     ..e<Coin>(1, _omitFieldNames ? '' : 'stakingToken', $pb.PbFieldType.OE,
-        defaultOrMaker: Coin.MATIC,
+        defaultOrMaker: Coin.POL,
         valueOf: Coin.valueOf,
         enumValues: Coin.values)
     ..aOS(2, _omitFieldNames ? '' : 'liquidToken')

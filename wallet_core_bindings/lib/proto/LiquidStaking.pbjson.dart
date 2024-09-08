@@ -17,7 +17,7 @@ import 'dart:typed_data' as $typed_data;
 const Coin$json = {
   '1': 'Coin',
   '2': [
-    {'1': 'MATIC', '2': 0},
+    {'1': 'POL', '2': 0},
     {'1': 'ATOM', '2': 1},
     {'1': 'BNB', '2': 2},
     {'1': 'APT', '2': 3},
@@ -27,7 +27,7 @@ const Coin$json = {
 
 /// Descriptor for `Coin`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List coinDescriptor = $convert.base64Decode(
-    'CgRDb2luEgkKBU1BVElDEAASCAoEQVRPTRABEgcKA0JOQhACEgcKA0FQVBADEgcKA0VUSBAE');
+    'CgRDb2luEgcKA1BPTBAAEggKBEFUT00QARIHCgNCTkIQAhIHCgNBUFQQAxIHCgNFVEgQBA==');
 
 @$core.Deprecated('Use blockchainDescriptor instead')
 const Blockchain$json = {

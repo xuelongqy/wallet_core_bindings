@@ -23,7 +23,6 @@ enum Transfer_Payload { jettonTransfer, customPayload, notSet }
 
 class Transfer extends $pb.GeneratedMessage {
   factory Transfer({
-    WalletVersion? walletVersion,
     $core.String? dest,
     $fixnum.Int64? amount,
     $core.int? mode,
@@ -33,9 +32,6 @@ class Transfer extends $pb.GeneratedMessage {
     CustomPayload? customPayload,
   }) {
     final $result = create();
-    if (walletVersion != null) {
-      $result.walletVersion = walletVersion;
-    }
     if (dest != null) {
       $result.dest = dest;
     }
@@ -68,8 +64,8 @@ class Transfer extends $pb.GeneratedMessage {
       create()..mergeFromJson(i, r);
 
   static const $core.Map<$core.int, Transfer_Payload> _Transfer_PayloadByTag = {
-    7: Transfer_Payload.jettonTransfer,
-    8: Transfer_Payload.customPayload,
+    6: Transfer_Payload.jettonTransfer,
+    7: Transfer_Payload.customPayload,
     0: Transfer_Payload.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -77,21 +73,16 @@ class Transfer extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [7, 8])
-    ..e<WalletVersion>(
-        1, _omitFieldNames ? '' : 'walletVersion', $pb.PbFieldType.OE,
-        defaultOrMaker: WalletVersion.WALLET_V3_R1,
-        valueOf: WalletVersion.valueOf,
-        enumValues: WalletVersion.values)
-    ..aOS(2, _omitFieldNames ? '' : 'dest')
-    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+    ..oo(0, [6, 7])
+    ..aOS(1, _omitFieldNames ? '' : 'dest')
+    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'mode', $pb.PbFieldType.OU3)
-    ..aOS(5, _omitFieldNames ? '' : 'comment')
-    ..aOB(6, _omitFieldNames ? '' : 'bounceable')
-    ..aOM<JettonTransfer>(7, _omitFieldNames ? '' : 'jettonTransfer',
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'mode', $pb.PbFieldType.OU3)
+    ..aOS(4, _omitFieldNames ? '' : 'comment')
+    ..aOB(5, _omitFieldNames ? '' : 'bounceable')
+    ..aOM<JettonTransfer>(6, _omitFieldNames ? '' : 'jettonTransfer',
         subBuilder: JettonTransfer.create)
-    ..aOM<CustomPayload>(8, _omitFieldNames ? '' : 'customPayload',
+    ..aOM<CustomPayload>(7, _omitFieldNames ? '' : 'customPayload',
         subBuilder: CustomPayload.create)
     ..hasRequiredFields = false;
 
@@ -119,115 +110,102 @@ class Transfer extends $pb.GeneratedMessage {
   Transfer_Payload whichPayload() => _Transfer_PayloadByTag[$_whichOneof(0)]!;
   void clearPayload() => clearField($_whichOneof(0));
 
-  /// Wallet version
-  @$pb.TagNumber(1)
-  WalletVersion get walletVersion => $_getN(0);
-  @$pb.TagNumber(1)
-  set walletVersion(WalletVersion v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasWalletVersion() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearWalletVersion() => clearField(1);
-
   /// Recipient address
-  @$pb.TagNumber(2)
-  $core.String get dest => $_getSZ(1);
-  @$pb.TagNumber(2)
+  @$pb.TagNumber(1)
+  $core.String get dest => $_getSZ(0);
+  @$pb.TagNumber(1)
   set dest($core.String v) {
-    $_setString(1, v);
+    $_setString(0, v);
   }
 
-  @$pb.TagNumber(2)
-  $core.bool hasDest() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearDest() => clearField(2);
+  @$pb.TagNumber(1)
+  $core.bool hasDest() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDest() => clearField(1);
 
   /// Amount to send in nanotons
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get amount => $_getI64(2);
-  @$pb.TagNumber(3)
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get amount => $_getI64(1);
+  @$pb.TagNumber(2)
   set amount($fixnum.Int64 v) {
-    $_setInt64(2, v);
+    $_setInt64(1, v);
   }
 
-  @$pb.TagNumber(3)
-  $core.bool hasAmount() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearAmount() => clearField(3);
+  @$pb.TagNumber(2)
+  $core.bool hasAmount() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAmount() => clearField(2);
 
   /// Send mode (optional, 0 by default)
   /// Learn more: https://ton.org/docs/develop/func/stdlib#send_raw_message
-  @$pb.TagNumber(4)
-  $core.int get mode => $_getIZ(3);
-  @$pb.TagNumber(4)
+  @$pb.TagNumber(3)
+  $core.int get mode => $_getIZ(2);
+  @$pb.TagNumber(3)
   set mode($core.int v) {
-    $_setUnsignedInt32(3, v);
+    $_setUnsignedInt32(2, v);
   }
 
-  @$pb.TagNumber(4)
-  $core.bool hasMode() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearMode() => clearField(4);
+  @$pb.TagNumber(3)
+  $core.bool hasMode() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMode() => clearField(3);
 
   /// Transfer comment message (optional, empty by default)
   /// Ignored if `custom_payload` is specified
-  @$pb.TagNumber(5)
-  $core.String get comment => $_getSZ(4);
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(4)
+  $core.String get comment => $_getSZ(3);
+  @$pb.TagNumber(4)
   set comment($core.String v) {
-    $_setString(4, v);
+    $_setString(3, v);
   }
 
-  @$pb.TagNumber(5)
-  $core.bool hasComment() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearComment() => clearField(5);
+  @$pb.TagNumber(4)
+  $core.bool hasComment() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearComment() => clearField(4);
 
   /// If the address is bounceable
-  @$pb.TagNumber(6)
-  $core.bool get bounceable => $_getBF(5);
-  @$pb.TagNumber(6)
+  @$pb.TagNumber(5)
+  $core.bool get bounceable => $_getBF(4);
+  @$pb.TagNumber(5)
   set bounceable($core.bool v) {
-    $_setBool(5, v);
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasBounceable() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearBounceable() => clearField(5);
+
+  /// Jetton transfer payload.
+  @$pb.TagNumber(6)
+  JettonTransfer get jettonTransfer => $_getN(5);
+  @$pb.TagNumber(6)
+  set jettonTransfer(JettonTransfer v) {
+    setField(6, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasBounceable() => $_has(5);
+  $core.bool hasJettonTransfer() => $_has(5);
   @$pb.TagNumber(6)
-  void clearBounceable() => clearField(6);
+  void clearJettonTransfer() => clearField(6);
+  @$pb.TagNumber(6)
+  JettonTransfer ensureJettonTransfer() => $_ensure(5);
 
-  /// Jetton transfer payload.
+  /// TON transfer with custom stateInit and payload (contract call).
   @$pb.TagNumber(7)
-  JettonTransfer get jettonTransfer => $_getN(6);
+  CustomPayload get customPayload => $_getN(6);
   @$pb.TagNumber(7)
-  set jettonTransfer(JettonTransfer v) {
+  set customPayload(CustomPayload v) {
     setField(7, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasJettonTransfer() => $_has(6);
+  $core.bool hasCustomPayload() => $_has(6);
   @$pb.TagNumber(7)
-  void clearJettonTransfer() => clearField(7);
+  void clearCustomPayload() => clearField(7);
   @$pb.TagNumber(7)
-  JettonTransfer ensureJettonTransfer() => $_ensure(6);
-
-  /// TON transfer with custom stateInit and payload (contract call).
-  @$pb.TagNumber(8)
-  CustomPayload get customPayload => $_getN(7);
-  @$pb.TagNumber(8)
-  set customPayload(CustomPayload v) {
-    setField(8, v);
-  }
-
-  @$pb.TagNumber(8)
-  $core.bool hasCustomPayload() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearCustomPayload() => clearField(8);
-  @$pb.TagNumber(8)
-  CustomPayload ensureCustomPayload() => $_ensure(7);
+  CustomPayload ensureCustomPayload() => $_ensure(6);
 }
 
 class JettonTransfer extends $pb.GeneratedMessage {
@@ -459,6 +437,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.Iterable<Transfer>? messages,
     $core.int? sequenceNumber,
     $core.int? expireAt,
+    WalletVersion? walletVersion,
   }) {
     final $result = create();
     if (privateKey != null) {
@@ -475,6 +454,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (expireAt != null) {
       $result.expireAt = expireAt;
+    }
+    if (walletVersion != null) {
+      $result.walletVersion = walletVersion;
     }
     return $result;
   }
@@ -500,6 +482,11 @@ class SigningInput extends $pb.GeneratedMessage {
     ..a<$core.int>(
         4, _omitFieldNames ? '' : 'sequenceNumber', $pb.PbFieldType.OU3)
     ..a<$core.int>(5, _omitFieldNames ? '' : 'expireAt', $pb.PbFieldType.OU3)
+    ..e<WalletVersion>(
+        6, _omitFieldNames ? '' : 'walletVersion', $pb.PbFieldType.OE,
+        defaultOrMaker: WalletVersion.WALLET_V3_R1,
+        valueOf: WalletVersion.valueOf,
+        enumValues: WalletVersion.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -582,6 +569,19 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.bool hasExpireAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearExpireAt() => clearField(5);
+
+  /// Wallet version
+  @$pb.TagNumber(6)
+  WalletVersion get walletVersion => $_getN(5);
+  @$pb.TagNumber(6)
+  set walletVersion(WalletVersion v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasWalletVersion() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearWalletVersion() => clearField(6);
 }
 
 /// Transaction signing output.
