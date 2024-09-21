@@ -101,7 +101,7 @@ enum TWCoinType {
   Moonriver(10001285),
   Moonbeam(10001284),
   KavaEvm(10002222),
-  Klaytn(10008217),
+  Kaia(10008217),
   Meter(18000),
   OKXChain(996),
   Stratis(105105),

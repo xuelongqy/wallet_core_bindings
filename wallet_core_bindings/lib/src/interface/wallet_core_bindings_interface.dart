@@ -176,6 +176,9 @@ abstract class WalletCoreBindingsInterface {
   /// [TWTransactionDecoder] interface.
   late TWTransactionDecoderInterface transactionDecoder;
 
+  /// [TWTransactionUtil] interface.
+  late TWTransactionUtilInterface transactionUtil;
+
   /// [TWTronMessageSigner] interface.
   late TWTronMessageSignerInterface tronMessageSigner;
 
@@ -439,6 +442,10 @@ TWTransactionCompilerInterface get _transactionCompilerImpl =>
 /// [TWTransactionDecoder] implement.
 TWTransactionDecoderInterface get _transactionDecoderImpl =>
     WalletCoreBindingsInterface.instance.transactionDecoder;
+
+/// [TWTransactionUtil] implement.
+TWTransactionUtilInterface get _transactionUtilImpl =>
+    WalletCoreBindingsInterface.instance.transactionUtil;
 
 /// [TWTronMessageSigner] implement.
 TWTronMessageSignerInterface get _tronMessageSignerImpl =>

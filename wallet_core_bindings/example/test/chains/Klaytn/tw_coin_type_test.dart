@@ -7,7 +7,7 @@ void main() {
   initTest();
   group('TWKlaytnCoinType', () {
     test('TWCoinType', () {
-      const coin = TWCoinType.Klaytn;
+      const coin = TWCoinType.Kaia;
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
@@ -18,8 +18,8 @@ void main() {
       const accId = '0x2ad9656bf5b82caf10847b431012e28e301e83ba';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
 
-      expect(id, 'klaytn');
-      expect(name, 'Klaytn');
+      expect(id, 'kaia');
+      expect(name, 'Kaia');
       expect(symbol, 'KLAY');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);
@@ -27,9 +27,9 @@ void main() {
       expect(coin.staticPrefix, 0x0);
       expect(chainId, '8217');
       expect(txUrl,
-          'https://scope.klaytn.com/tx/0x93ea92687845fe7bb6cacd69c76a16a2a3c2bbb85a8a93ff0e032d0098d583d7');
+          'https://kaiascan.io/tx/0x93ea92687845fe7bb6cacd69c76a16a2a3c2bbb85a8a93ff0e032d0098d583d7');
       expect(accUrl,
-          'https://scope.klaytn.com/account/0x2ad9656bf5b82caf10847b431012e28e301e83ba');
+          'https://kaiascan.io/account/0x2ad9656bf5b82caf10847b431012e28e301e83ba');
     });
   });
 }

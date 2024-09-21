@@ -11,7 +11,7 @@ Dart bindings for [Trust Wallet Core](https://github.com/trustwallet/wallet-core
 
 ## Generate
 
-We need to extract the files from [wallet-core](https://dart.dev/guides/libraries/create-library-packages) and generate the corresponding Dart code so that Dart can communicate with TrustWalletCore.
+We need to extract the files from [wallet-core](https://github.com/trustwallet/wallet-core/tree/master/include/TrustWalletCore) and generate the corresponding Dart code so that Dart can communicate with TrustWalletCore.
 
 ### C Bindings
 

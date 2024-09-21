@@ -70,6 +70,7 @@ part 'src/tw_ton_message_signer_impl.dart';
 part 'src/tw_ton_wallet_impl.dart';
 part 'src/tw_transaction_compiler_impl.dart';
 part 'src/tw_transaction_decoder_impl.dart';
+part 'src/tw_transaction_util_impl.dart';
 part 'src/tw_tron_message_signer_impl.dart';
 part 'src/tw_wallet_connect_request_impl.dart';
 part 'src/tw_web_authn_impl.dart';

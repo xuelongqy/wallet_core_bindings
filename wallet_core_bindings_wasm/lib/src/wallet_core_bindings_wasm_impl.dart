@@ -120,6 +120,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     tonMessageSigner = TWTONMessageSignerImpl(_wasm);
     transactionCompiler = TWTransactionCompilerImpl(_wasm);
     transactionDecoder = TWTransactionDecoderImpl(_wasm);
+    transactionUtil = TWTransactionUtilImpl(_wasm);
     tronMessageSigner = TWTronMessageSignerImpl(_wasm);
     walletConnectRequest = TWWalletConnectRequestImpl(_wasm);
     webAuthn = TWWebAuthnImpl(_wasm);
