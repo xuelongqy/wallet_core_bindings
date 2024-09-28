@@ -363,41 +363,43 @@ void main() {
           .toList());
 
       final input = BitcoinV2.SigningInput(
-        // Step 1: Prepare transaction input (protobuf)
-        inputs: [
-          BitcoinV2.Input(
-            outPoint: BitcoinV2.OutPoint(
-              hash: txid0,
-              vout: 0,
-            ),
-            value: $fixnum.Int64(ONE_BTC * 50),
-            sighashType: TWBitcoinSigHashType.All.type,
-            // Set the Alice public key as the owner of the P2PKH input.
-            scriptBuilder: BitcoinV2.Input_InputBuilder(
-              p2pkh: BitcoinV2.PublicKeyOrHash(
-                pubkey: alicePublicKey.data,
-              ),
-            ),
-          ),
-        ],
-        outputs: [
-          BitcoinV2.Output(
-            value: $fixnum.Int64(ONE_BTC * 50 - 1000000),
-            // Set the Bob public key as the receiver of the P2PKH output.
-            builder: BitcoinV2.Output_OutputBuilder(
-              p2pkh: BitcoinV2.PublicKeyOrHash(
-                pubkey: bobPublicKey,
-              ),
-            ),
-          ),
-        ],
-        version: BitcoinV2.TransactionVersion.V2,
-        publicKeys: [alicePublicKey.data],
         chainInfo: BitcoinV2.ChainInfo(
           p2pkhPrefix: 0,
           p2shPrefix: 5,
         ),
-        fixedDustThreshold: $fixnum.Int64(546),
+        publicKeys: [alicePublicKey.data],
+        builder: BitcoinV2.TransactionBuilder(
+          inputs: [
+            BitcoinV2.Input(
+              outPoint: BitcoinV2.OutPoint(
+                hash: txid0,
+                vout: 0,
+              ),
+              value: $fixnum.Int64(ONE_BTC * 50),
+              sighashType: TWBitcoinSigHashType.All.type,
+              // Set the Alice public key as the owner of the P2PKH input.
+              scriptBuilder: BitcoinV2.Input_InputBuilder(
+                p2pkh: BitcoinV2.PublicKeyOrHash(
+                  pubkey: alicePublicKey.data,
+                ),
+              ),
+            ),
+          ],
+          outputs: [
+            BitcoinV2.Output(
+              value: $fixnum.Int64(ONE_BTC * 50 - 1000000),
+              // Set the Bob public key as the receiver of the P2PKH output.
+              builder: BitcoinV2.Output_OutputBuilder(
+                p2pkh: BitcoinV2.PublicKeyOrHash(
+                  pubkey: bobPublicKey,
+                ),
+              ),
+            ),
+          ],
+          version: BitcoinV2.TransactionVersion.V2,
+          inputSelector: BitcoinV2.InputSelector.UseAll,
+          fixedDustThreshold: $fixnum.Int64(546),
+        ),
       );
       final inputLegacy = Bitcoin.SigningInput(
         signingV2: input,

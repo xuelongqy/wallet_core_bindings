@@ -19,6 +19,12 @@ class TWSolanaAddressImpl extends TWSolanaAddressInterface {
   }
 
   @override
+  int token2022Address(int pointer, int tokenMintAddress) {
+    final func = wasm.getFunction('TWSolanaAddressToken2022Address')!;
+    return func([pointer, tokenMintAddress]).first as int;
+  }
+
+  @override
   void delete(int pointer) {
     final func = wasm.getFunction('TWSolanaAddressDelete')!;
     func([pointer]);

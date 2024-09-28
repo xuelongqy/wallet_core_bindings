@@ -6,6 +6,8 @@ abstract class TWSolanaAddressInterface {
 
   int defaultTokenAddress(int pointer, int tokenMintAddress);
 
+  int token2022Address(int pointer, int tokenMintAddress);
+
   int description(int pointer);
 
   void delete(int pointer);

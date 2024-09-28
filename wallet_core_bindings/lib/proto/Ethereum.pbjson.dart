@@ -277,6 +277,20 @@ final $typed_data.Uint8List userOperationDescriptor = $convert.base64Decode(
     '5fZ2FzX2xpbWl0GAUgASgMUhR2ZXJpZmljYXRpb25HYXNMaW1pdBIsChJwYXltYXN0ZXJfYW5k'
     'X2RhdGEYBiABKAxSEHBheW1hc3RlckFuZERhdGE=');
 
+@$core.Deprecated('Use accessDescriptor instead')
+const Access$json = {
+  '1': 'Access',
+  '2': [
+    {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    {'1': 'stored_keys', '3': 2, '4': 3, '5': 12, '10': 'storedKeys'},
+  ],
+};
+
+/// Descriptor for `Access`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List accessDescriptor = $convert.base64Decode(
+    'CgZBY2Nlc3MSGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIfCgtzdG9yZWRfa2V5cxgCIAMoDF'
+    'IKc3RvcmVkS2V5cw==');
+
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
   '1': 'SigningInput',
@@ -319,6 +333,14 @@ const SigningInput$json = {
       '6': '.TW.Ethereum.Proto.UserOperation',
       '10': 'userOperation'
     },
+    {
+      '1': 'access_list',
+      '3': 12,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Access',
+      '10': 'accessList'
+    },
   ],
 };
 
@@ -332,7 +354,8 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'FzEh0KCnRvX2FkZHJlc3MYCCABKAlSCXRvQWRkcmVzcxIfCgtwcml2YXRlX2tleRgJIAEoDFIK'
     'cHJpdmF0ZUtleRJACgt0cmFuc2FjdGlvbhgKIAEoCzIeLlRXLkV0aGVyZXVtLlByb3RvLlRyYW'
     '5zYWN0aW9uUgt0cmFuc2FjdGlvbhJHCg51c2VyX29wZXJhdGlvbhgLIAEoCzIgLlRXLkV0aGVy'
-    'ZXVtLlByb3RvLlVzZXJPcGVyYXRpb25SDXVzZXJPcGVyYXRpb24=');
+    'ZXVtLlByb3RvLlVzZXJPcGVyYXRpb25SDXVzZXJPcGVyYXRpb24SOgoLYWNjZXNzX2xpc3QYDC'
+    'ADKAsyGS5UVy5FdGhlcmV1bS5Qcm90by5BY2Nlc3NSCmFjY2Vzc0xpc3Q=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

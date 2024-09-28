@@ -403,17 +403,18 @@ const ChainInfo$json = {
   '2': [
     {'1': 'p2pkh_prefix', '3': 1, '4': 1, '5': 13, '10': 'p2pkhPrefix'},
     {'1': 'p2sh_prefix', '3': 2, '4': 1, '5': 13, '10': 'p2shPrefix'},
+    {'1': 'hrp', '3': 3, '4': 1, '5': 9, '10': 'hrp'},
   ],
 };
 
 /// Descriptor for `ChainInfo`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List chainInfoDescriptor = $convert.base64Decode(
     'CglDaGFpbkluZm8SIQoMcDJwa2hfcHJlZml4GAEgASgNUgtwMnBraFByZWZpeBIfCgtwMnNoX3'
-    'ByZWZpeBgCIAEoDVIKcDJzaFByZWZpeA==');
+    'ByZWZpeBgCIAEoDVIKcDJzaFByZWZpeBIQCgNocnAYAyABKAlSA2hycA==');
 
-@$core.Deprecated('Use signingInputDescriptor instead')
-const SigningInput$json = {
-  '1': 'SigningInput',
+@$core.Deprecated('Use transactionBuilderDescriptor instead')
+const TransactionBuilder$json = {
+  '1': 'TransactionBuilder',
   '2': [
     {
       '1': 'version',
@@ -423,12 +424,10 @@ const SigningInput$json = {
       '6': '.TW.BitcoinV2.Proto.TransactionVersion',
       '10': 'version'
     },
-    {'1': 'private_keys', '3': 2, '4': 3, '5': 12, '10': 'privateKeys'},
-    {'1': 'public_keys', '3': 3, '4': 3, '5': 12, '10': 'publicKeys'},
-    {'1': 'lock_time', '3': 4, '4': 1, '5': 13, '10': 'lockTime'},
+    {'1': 'lock_time', '3': 2, '4': 1, '5': 13, '10': 'lockTime'},
     {
       '1': 'inputs',
-      '3': 5,
+      '3': 3,
       '4': 3,
       '5': 11,
       '6': '.TW.BitcoinV2.Proto.Input',
@@ -436,7 +435,7 @@ const SigningInput$json = {
     },
     {
       '1': 'outputs',
-      '3': 6,
+      '3': 4,
       '4': 3,
       '5': 11,
       '6': '.TW.BitcoinV2.Proto.Output',
@@ -444,16 +443,16 @@ const SigningInput$json = {
     },
     {
       '1': 'input_selector',
-      '3': 7,
+      '3': 5,
       '4': 1,
       '5': 14,
       '6': '.TW.BitcoinV2.Proto.InputSelector',
       '10': 'inputSelector'
     },
-    {'1': 'fee_per_vb', '3': 8, '4': 1, '5': 3, '10': 'feePerVb'},
+    {'1': 'fee_per_vb', '3': 6, '4': 1, '5': 3, '10': 'feePerVb'},
     {
       '1': 'change_output',
-      '3': 9,
+      '3': 7,
       '4': 1,
       '5': 11,
       '6': '.TW.BitcoinV2.Proto.Output',
@@ -461,19 +460,11 @@ const SigningInput$json = {
     },
     {
       '1': 'max_amount_output',
-      '3': 10,
+      '3': 8,
       '4': 1,
       '5': 11,
       '6': '.TW.BitcoinV2.Proto.Output',
       '10': 'maxAmountOutput'
-    },
-    {
-      '1': 'chain_info',
-      '3': 13,
-      '4': 1,
-      '5': 11,
-      '6': '.TW.BitcoinV2.Proto.ChainInfo',
-      '10': 'chainInfo'
     },
     {
       '1': 'fixed_dust_threshold',
@@ -483,35 +474,91 @@ const SigningInput$json = {
       '9': 0,
       '10': 'fixedDustThreshold'
     },
-    {
-      '1': 'dangerous_use_fixed_schnorr_rng',
-      '3': 20,
-      '4': 1,
-      '5': 8,
-      '10': 'dangerousUseFixedSchnorrRng'
-    },
   ],
   '8': [
     {'1': 'dust_policy'},
   ],
 };
 
+/// Descriptor for `TransactionBuilder`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List transactionBuilderDescriptor = $convert.base64Decode(
+    'ChJUcmFuc2FjdGlvbkJ1aWxkZXISQAoHdmVyc2lvbhgBIAEoDjImLlRXLkJpdGNvaW5WMi5Qcm'
+    '90by5UcmFuc2FjdGlvblZlcnNpb25SB3ZlcnNpb24SGwoJbG9ja190aW1lGAIgASgNUghsb2Nr'
+    'VGltZRIxCgZpbnB1dHMYAyADKAsyGS5UVy5CaXRjb2luVjIuUHJvdG8uSW5wdXRSBmlucHV0cx'
+    'I0CgdvdXRwdXRzGAQgAygLMhouVFcuQml0Y29pblYyLlByb3RvLk91dHB1dFIHb3V0cHV0cxJI'
+    'Cg5pbnB1dF9zZWxlY3RvchgFIAEoDjIhLlRXLkJpdGNvaW5WMi5Qcm90by5JbnB1dFNlbGVjdG'
+    '9yUg1pbnB1dFNlbGVjdG9yEhwKCmZlZV9wZXJfdmIYBiABKANSCGZlZVBlclZiEj8KDWNoYW5n'
+    'ZV9vdXRwdXQYByABKAsyGi5UVy5CaXRjb2luVjIuUHJvdG8uT3V0cHV0UgxjaGFuZ2VPdXRwdX'
+    'QSRgoRbWF4X2Ftb3VudF9vdXRwdXQYCCABKAsyGi5UVy5CaXRjb2luVjIuUHJvdG8uT3V0cHV0'
+    'Ug9tYXhBbW91bnRPdXRwdXQSMgoUZml4ZWRfZHVzdF90aHJlc2hvbGQYDiABKANIAFISZml4ZW'
+    'REdXN0VGhyZXNob2xkQg0KC2R1c3RfcG9saWN5');
+
+@$core.Deprecated('Use psbtDescriptor instead')
+const Psbt$json = {
+  '1': 'Psbt',
+  '2': [
+    {'1': 'psbt', '3': 1, '4': 1, '5': 12, '10': 'psbt'},
+  ],
+};
+
+/// Descriptor for `Psbt`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List psbtDescriptor =
+    $convert.base64Decode('CgRQc2J0EhIKBHBzYnQYASABKAxSBHBzYnQ=');
+
+@$core.Deprecated('Use signingInputDescriptor instead')
+const SigningInput$json = {
+  '1': 'SigningInput',
+  '2': [
+    {'1': 'private_keys', '3': 1, '4': 3, '5': 12, '10': 'privateKeys'},
+    {'1': 'public_keys', '3': 2, '4': 3, '5': 12, '10': 'publicKeys'},
+    {
+      '1': 'chain_info',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.ChainInfo',
+      '10': 'chainInfo'
+    },
+    {
+      '1': 'dangerous_use_fixed_schnorr_rng',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'dangerousUseFixedSchnorrRng'
+    },
+    {
+      '1': 'builder',
+      '3': 10,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.TransactionBuilder',
+      '9': 0,
+      '10': 'builder'
+    },
+    {
+      '1': 'psbt',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Psbt',
+      '9': 0,
+      '10': 'psbt'
+    },
+  ],
+  '8': [
+    {'1': 'transaction'},
+  ],
+};
+
 /// Descriptor for `SigningInput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
-    'CgxTaWduaW5nSW5wdXQSQAoHdmVyc2lvbhgBIAEoDjImLlRXLkJpdGNvaW5WMi5Qcm90by5Ucm'
-    'Fuc2FjdGlvblZlcnNpb25SB3ZlcnNpb24SIQoMcHJpdmF0ZV9rZXlzGAIgAygMUgtwcml2YXRl'
-    'S2V5cxIfCgtwdWJsaWNfa2V5cxgDIAMoDFIKcHVibGljS2V5cxIbCglsb2NrX3RpbWUYBCABKA'
-    '1SCGxvY2tUaW1lEjEKBmlucHV0cxgFIAMoCzIZLlRXLkJpdGNvaW5WMi5Qcm90by5JbnB1dFIG'
-    'aW5wdXRzEjQKB291dHB1dHMYBiADKAsyGi5UVy5CaXRjb2luVjIuUHJvdG8uT3V0cHV0UgdvdX'
-    'RwdXRzEkgKDmlucHV0X3NlbGVjdG9yGAcgASgOMiEuVFcuQml0Y29pblYyLlByb3RvLklucHV0'
-    'U2VsZWN0b3JSDWlucHV0U2VsZWN0b3ISHAoKZmVlX3Blcl92YhgIIAEoA1IIZmVlUGVyVmISPw'
-    'oNY2hhbmdlX291dHB1dBgJIAEoCzIaLlRXLkJpdGNvaW5WMi5Qcm90by5PdXRwdXRSDGNoYW5n'
-    'ZU91dHB1dBJGChFtYXhfYW1vdW50X291dHB1dBgKIAEoCzIaLlRXLkJpdGNvaW5WMi5Qcm90by'
-    '5PdXRwdXRSD21heEFtb3VudE91dHB1dBI8CgpjaGFpbl9pbmZvGA0gASgLMh0uVFcuQml0Y29p'
-    'blYyLlByb3RvLkNoYWluSW5mb1IJY2hhaW5JbmZvEjIKFGZpeGVkX2R1c3RfdGhyZXNob2xkGA'
-    '4gASgDSABSEmZpeGVkRHVzdFRocmVzaG9sZBJECh9kYW5nZXJvdXNfdXNlX2ZpeGVkX3NjaG5v'
-    'cnJfcm5nGBQgASgIUhtkYW5nZXJvdXNVc2VGaXhlZFNjaG5vcnJSbmdCDQoLZHVzdF9wb2xpY3'
-    'k=');
+    'CgxTaWduaW5nSW5wdXQSIQoMcHJpdmF0ZV9rZXlzGAEgAygMUgtwcml2YXRlS2V5cxIfCgtwdW'
+    'JsaWNfa2V5cxgCIAMoDFIKcHVibGljS2V5cxI8CgpjaGFpbl9pbmZvGAMgASgLMh0uVFcuQml0'
+    'Y29pblYyLlByb3RvLkNoYWluSW5mb1IJY2hhaW5JbmZvEkQKH2Rhbmdlcm91c191c2VfZml4ZW'
+    'Rfc2Nobm9ycl9ybmcYBCABKAhSG2Rhbmdlcm91c1VzZUZpeGVkU2Nobm9yclJuZxJCCgdidWls'
+    'ZGVyGAogASgLMiYuVFcuQml0Y29pblYyLlByb3RvLlRyYW5zYWN0aW9uQnVpbGRlckgAUgdidW'
+    'lsZGVyEi4KBHBzYnQYCyABKAsyGC5UVy5CaXRjb2luVjIuUHJvdG8uUHNidEgAUgRwc2J0Qg0K'
+    'C3RyYW5zYWN0aW9u');
 
 @$core.Deprecated('Use transactionDescriptor instead')
 const Transaction$json = {
@@ -733,6 +780,14 @@ const SigningOutput$json = {
     {'1': 'vsize', '3': 6, '4': 1, '5': 4, '10': 'vsize'},
     {'1': 'weight', '3': 7, '4': 1, '5': 4, '10': 'weight'},
     {'1': 'fee', '3': 8, '4': 1, '5': 3, '10': 'fee'},
+    {
+      '1': 'psbt',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.Psbt',
+      '10': 'psbt'
+    },
   ],
 };
 
@@ -743,4 +798,4 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'YW5zYWN0aW9uGAMgASgLMh8uVFcuQml0Y29pblYyLlByb3RvLlRyYW5zYWN0aW9uUgt0cmFuc2'
     'FjdGlvbhIYCgdlbmNvZGVkGAQgASgMUgdlbmNvZGVkEhIKBHR4aWQYBSABKAxSBHR4aWQSFAoF'
     'dnNpemUYBiABKARSBXZzaXplEhYKBndlaWdodBgHIAEoBFIGd2VpZ2h0EhAKA2ZlZRgIIAEoA1'
-    'IDZmVl');
+    'IDZmVlEiwKBHBzYnQYCSABKAsyGC5UVy5CaXRjb2luVjIuUHJvdG8uUHNidFIEcHNidA==');

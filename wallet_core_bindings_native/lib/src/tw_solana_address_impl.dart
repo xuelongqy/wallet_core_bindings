@@ -22,6 +22,14 @@ class TWSolanaAddressImpl extends TWSolanaAddressInterface {
   }
 
   @override
+  int token2022Address(int pointer, int tokenMintAddress) {
+    return bindings.TWSolanaAddressToken2022Address(
+      Pointer.fromAddress(pointer),
+      Pointer.fromAddress(tokenMintAddress),
+    ).address;
+  }
+
+  @override
   void delete(int pointer) {
     return bindings.TWSolanaAddressDelete(
       Pointer.fromAddress(pointer),

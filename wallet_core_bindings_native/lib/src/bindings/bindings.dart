@@ -12429,6 +12429,30 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWString> Function(
               ffi.Pointer<TWSolanaAddress>, ffi.Pointer<TWString>)>();
 
+  /// Derive token 2022 address for token
+  ///
+  /// \param address Non-null pointer to a Solana Address
+  /// \param tokenMintAddress Non-null pointer to a token mint address as a string
+  /// \return Null pointer if the token 2022 address for a token is not found, valid pointer otherwise
+  ffi.Pointer<TWString> TWSolanaAddressToken2022Address(
+    ffi.Pointer<TWSolanaAddress> address,
+    ffi.Pointer<TWString> tokenMintAddress,
+  ) {
+    return _TWSolanaAddressToken2022Address(
+      address,
+      tokenMintAddress,
+    );
+  }
+
+  late final _TWSolanaAddressToken2022AddressPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWSolanaAddress>,
+              ffi.Pointer<TWString>)>>('TWSolanaAddressToken2022Address');
+  late final _TWSolanaAddressToken2022Address =
+      _TWSolanaAddressToken2022AddressPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWSolanaAddress>, ffi.Pointer<TWString>)>();
+
   /// Returns the address string representation.
   ///
   /// \param address Non-null pointer to a Solana Address
@@ -15320,7 +15344,7 @@ const int MAC_OS_VERSION_14_5 = 140500;
 
 const int MAC_OS_VERSION_15_0 = 150000;
 
-const int __MAC_OS_X_VERSION_MIN_REQUIRED = 140000;
+const int __MAC_OS_X_VERSION_MIN_REQUIRED = 150000;
 
 const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150000;
 

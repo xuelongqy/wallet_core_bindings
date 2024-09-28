@@ -40,12 +40,24 @@ class TWSolanaAddress extends TWObjectFinalizable {
   /// \param [address] Non-null pointer to a Solana Address
   /// \param [tokenMintAddress] Non-null pointer to a token mint address as a string
   /// \return Null pointer if the Default token address for a token is not found, valid pointer otherwise
-  String defaultTokenAddress(String tokenMintAddress) => TWString.fromPointer(
+  String? defaultTokenAddress(String tokenMintAddress) => TWString.fromPointer(
         _solanaAddressImpl.defaultTokenAddress(
           _pointer,
           TWString(tokenMintAddress).pointer,
         ),
-      ).value!;
+      ).value;
+
+  /// Derive token 2022 address for token
+  ///
+  /// \param [address] Non-null pointer to a Solana Address
+  /// \param [tokenMintAddress] Non-null pointer to a token mint address as a string
+  /// \return Null pointer if the token 2022 address for a token is not found, valid pointer otherwise
+  String? token2022Address(String tokenMintAddress) => TWString.fromPointer(
+        _solanaAddressImpl.token2022Address(
+          _pointer,
+          TWString(tokenMintAddress).pointer,
+        ),
+      ).value;
 
   /// Returns the address string representation.
   String get description => TWString.fromPointer(

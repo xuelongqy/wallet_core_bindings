@@ -614,50 +614,52 @@ void main() {
       final pubKey = key.getPublicKeyByType(TWPublicKeyType.SECP256k1);
 
       final signing = BitcoinV2.SigningInput(
-        version: BitcoinV2.TransactionVersion.V2,
         privateKeys: [privateKey],
-        inputSelector: BitcoinV2.InputSelector.UseAll,
         dangerousUseFixedSchnorrRng: true,
-        fixedDustThreshold: $fixnum.Int64(546),
         chainInfo: BitcoinV2.ChainInfo(
           p2pkhPrefix: 0,
           p2shPrefix: 5,
         ),
-        inputs: [
-          BitcoinV2.Input(
-            outPoint: BitcoinV2.OutPoint(
-              hash: txId,
-              vout: 1,
+        builder: BitcoinV2.TransactionBuilder(
+          version: BitcoinV2.TransactionVersion.V2,
+          inputSelector: BitcoinV2.InputSelector.UseAll,
+          fixedDustThreshold: $fixnum.Int64(546),
+          inputs: [
+            BitcoinV2.Input(
+              outPoint: BitcoinV2.OutPoint(
+                hash: txId,
+                vout: 1,
+              ),
+              value: $fixnum.Int64(fullAmount),
+              scriptBuilder: BitcoinV2.Input_InputBuilder(
+                p2wpkh: BitcoinV2.PublicKeyOrHash(
+                  pubkey: pubKey.data,
+                ),
+              ),
+              sighashType: TWBitcoinSigHashType.All.type,
             ),
-            value: $fixnum.Int64(fullAmount),
-            scriptBuilder: BitcoinV2.Input_InputBuilder(
-              p2wpkh: BitcoinV2.PublicKeyOrHash(
-                pubkey: pubKey.data,
+          ],
+          outputs: [
+            BitcoinV2.Output(
+              value: $fixnum.Int64(brcInscribeAmount),
+              builder: BitcoinV2.Output_OutputBuilder(
+                brc20Inscribe: BitcoinV2.Output_OutputBrc20Inscription(
+                  ticker: 'oadf',
+                  transferAmount: '20',
+                  inscribeTo: pubKey.data,
+                ),
               ),
             ),
-            sighashType: TWBitcoinSigHashType.All.type,
-          ),
-        ],
-        outputs: [
-          BitcoinV2.Output(
-            value: $fixnum.Int64(brcInscribeAmount),
-            builder: BitcoinV2.Output_OutputBuilder(
-              brc20Inscribe: BitcoinV2.Output_OutputBrc20Inscription(
-                ticker: 'oadf',
-                transferAmount: '20',
-                inscribeTo: pubKey.data,
+            BitcoinV2.Output(
+              value: $fixnum.Int64(forFeeAmount),
+              builder: BitcoinV2.Output_OutputBuilder(
+                p2wpkh: BitcoinV2.PublicKeyOrHash(
+                  pubkey: pubKey.data,
+                ),
               ),
             ),
-          ),
-          BitcoinV2.Output(
-            value: $fixnum.Int64(forFeeAmount),
-            builder: BitcoinV2.Output_OutputBuilder(
-              p2wpkh: BitcoinV2.PublicKeyOrHash(
-                pubkey: pubKey.data,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       );
 
       final legacy = Bitcoin.SigningInput(

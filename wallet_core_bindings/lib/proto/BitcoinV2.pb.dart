@@ -1531,6 +1531,7 @@ class ChainInfo extends $pb.GeneratedMessage {
   factory ChainInfo({
     $core.int? p2pkhPrefix,
     $core.int? p2shPrefix,
+    $core.String? hrp,
   }) {
     final $result = create();
     if (p2pkhPrefix != null) {
@@ -1538,6 +1539,9 @@ class ChainInfo extends $pb.GeneratedMessage {
     }
     if (p2shPrefix != null) {
       $result.p2shPrefix = p2shPrefix;
+    }
+    if (hrp != null) {
+      $result.hrp = hrp;
     }
     return $result;
   }
@@ -1556,6 +1560,7 @@ class ChainInfo extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'p2pkhPrefix', $pb.PbFieldType.OU3)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'p2shPrefix', $pb.PbFieldType.OU3)
+    ..aOS(3, _omitFieldNames ? '' : 'hrp')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1592,7 +1597,7 @@ class ChainInfo extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearP2pkhPrefix() => clearField(1);
 
-  /// P2SH prefix for this coin type
+  /// P2SH prefix for this coin type.
   @$pb.TagNumber(2)
   $core.int get p2shPrefix => $_getIZ(1);
   @$pb.TagNumber(2)
@@ -1604,15 +1609,27 @@ class ChainInfo extends $pb.GeneratedMessage {
   $core.bool hasP2shPrefix() => $_has(1);
   @$pb.TagNumber(2)
   void clearP2shPrefix() => clearField(2);
+
+  /// HRP for this coin type if applicable.
+  @$pb.TagNumber(3)
+  $core.String get hrp => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set hrp($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasHrp() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearHrp() => clearField(3);
 }
 
-enum SigningInput_DustPolicy { fixedDustThreshold, notSet }
+enum TransactionBuilder_DustPolicy { fixedDustThreshold, notSet }
 
-class SigningInput extends $pb.GeneratedMessage {
-  factory SigningInput({
+/// Transaction builder used in `SigningInput`.
+class TransactionBuilder extends $pb.GeneratedMessage {
+  factory TransactionBuilder({
     TransactionVersion? version,
-    $core.Iterable<$core.List<$core.int>>? privateKeys,
-    $core.Iterable<$core.List<$core.int>>? publicKeys,
     $core.int? lockTime,
     $core.Iterable<Input>? inputs,
     $core.Iterable<Output>? outputs,
@@ -1620,19 +1637,11 @@ class SigningInput extends $pb.GeneratedMessage {
     $fixnum.Int64? feePerVb,
     Output? changeOutput,
     Output? maxAmountOutput,
-    ChainInfo? chainInfo,
     $fixnum.Int64? fixedDustThreshold,
-    $core.bool? dangerousUseFixedSchnorrRng,
   }) {
     final $result = create();
     if (version != null) {
       $result.version = version;
-    }
-    if (privateKeys != null) {
-      $result.privateKeys.addAll(privateKeys);
-    }
-    if (publicKeys != null) {
-      $result.publicKeys.addAll(publicKeys);
     }
     if (lockTime != null) {
       $result.lockTime = lockTime;
@@ -1655,14 +1664,284 @@ class SigningInput extends $pb.GeneratedMessage {
     if (maxAmountOutput != null) {
       $result.maxAmountOutput = maxAmountOutput;
     }
-    if (chainInfo != null) {
-      $result.chainInfo = chainInfo;
-    }
     if (fixedDustThreshold != null) {
       $result.fixedDustThreshold = fixedDustThreshold;
     }
+    return $result;
+  }
+  TransactionBuilder._() : super();
+  factory TransactionBuilder.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory TransactionBuilder.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static const $core.Map<$core.int, TransactionBuilder_DustPolicy>
+      _TransactionBuilder_DustPolicyByTag = {
+    14: TransactionBuilder_DustPolicy.fixedDustThreshold,
+    0: TransactionBuilder_DustPolicy.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TransactionBuilder',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
+      createEmptyInstance: create)
+    ..oo(0, [14])
+    ..e<TransactionVersion>(
+        1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.OE,
+        defaultOrMaker: TransactionVersion.UseDefault,
+        valueOf: TransactionVersion.valueOf,
+        enumValues: TransactionVersion.values)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'lockTime', $pb.PbFieldType.OU3)
+    ..pc<Input>(3, _omitFieldNames ? '' : 'inputs', $pb.PbFieldType.PM,
+        subBuilder: Input.create)
+    ..pc<Output>(4, _omitFieldNames ? '' : 'outputs', $pb.PbFieldType.PM,
+        subBuilder: Output.create)
+    ..e<InputSelector>(
+        5, _omitFieldNames ? '' : 'inputSelector', $pb.PbFieldType.OE,
+        defaultOrMaker: InputSelector.SelectAscending,
+        valueOf: InputSelector.valueOf,
+        enumValues: InputSelector.values)
+    ..aInt64(6, _omitFieldNames ? '' : 'feePerVb')
+    ..aOM<Output>(7, _omitFieldNames ? '' : 'changeOutput',
+        subBuilder: Output.create)
+    ..aOM<Output>(8, _omitFieldNames ? '' : 'maxAmountOutput',
+        subBuilder: Output.create)
+    ..aInt64(14, _omitFieldNames ? '' : 'fixedDustThreshold')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  TransactionBuilder clone() => TransactionBuilder()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  TransactionBuilder copyWith(void Function(TransactionBuilder) updates) =>
+      super.copyWith((message) => updates(message as TransactionBuilder))
+          as TransactionBuilder;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static TransactionBuilder create() => TransactionBuilder._();
+  TransactionBuilder createEmptyInstance() => create();
+  static $pb.PbList<TransactionBuilder> createRepeated() =>
+      $pb.PbList<TransactionBuilder>();
+  @$core.pragma('dart2js:noInline')
+  static TransactionBuilder getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TransactionBuilder>(create);
+  static TransactionBuilder? _defaultInstance;
+
+  TransactionBuilder_DustPolicy whichDustPolicy() =>
+      _TransactionBuilder_DustPolicyByTag[$_whichOneof(0)]!;
+  void clearDustPolicy() => clearField($_whichOneof(0));
+
+  /// Transaction version.
+  @$pb.TagNumber(1)
+  TransactionVersion get version => $_getN(0);
+  @$pb.TagNumber(1)
+  set version(TransactionVersion v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasVersion() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearVersion() => clearField(1);
+
+  /// (optional) Block height or timestamp indicating at what point transactions can be included in a block.
+  /// Zero by default.
+  @$pb.TagNumber(2)
+  $core.int get lockTime => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set lockTime($core.int v) {
+    $_setUnsignedInt32(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasLockTime() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLockTime() => clearField(2);
+
+  /// The inputs to spend.
+  @$pb.TagNumber(3)
+  $core.List<Input> get inputs => $_getList(2);
+
+  /// The output of the transaction. Note that the change output is specified
+  /// in the `change_output` field.
+  @$pb.TagNumber(4)
+  $core.List<Output> get outputs => $_getList(3);
+
+  /// How the inputs should be selected.
+  @$pb.TagNumber(5)
+  InputSelector get inputSelector => $_getN(4);
+  @$pb.TagNumber(5)
+  set inputSelector(InputSelector v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasInputSelector() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearInputSelector() => clearField(5);
+
+  /// The amount of satoshis per vbyte ("satVb"), used for fee calculation.
+  /// Can be satoshis per byte ("satB") **ONLY** when transaction does not contain segwit UTXOs.
+  @$pb.TagNumber(6)
+  $fixnum.Int64 get feePerVb => $_getI64(5);
+  @$pb.TagNumber(6)
+  set feePerVb($fixnum.Int64 v) {
+    $_setInt64(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasFeePerVb() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearFeePerVb() => clearField(6);
+
+  /// (optional) The change output to be added (return to sender) at the end of the outputs list.
+  /// The `Output.value` will be overwritten, leave default.
+  /// Note there can be no change output if the change amount is less than dust threshold.
+  /// Leave empty to explicitly disable change output creation.
+  @$pb.TagNumber(7)
+  Output get changeOutput => $_getN(6);
+  @$pb.TagNumber(7)
+  set changeOutput(Output v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasChangeOutput() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearChangeOutput() => clearField(7);
+  @$pb.TagNumber(7)
+  Output ensureChangeOutput() => $_ensure(6);
+
+  /// The only output with a max available amount to be send.
+  /// If set, `SigningInput.outputs` and `SigningInput.change` will be ignored.
+  /// The `Output.value` will be overwritten, leave default.
+  @$pb.TagNumber(8)
+  Output get maxAmountOutput => $_getN(7);
+  @$pb.TagNumber(8)
+  set maxAmountOutput(Output v) {
+    setField(8, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasMaxAmountOutput() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearMaxAmountOutput() => clearField(8);
+  @$pb.TagNumber(8)
+  Output ensureMaxAmountOutput() => $_ensure(7);
+
+  /// Use a constant "Dust" threshold.
+  @$pb.TagNumber(14)
+  $fixnum.Int64 get fixedDustThreshold => $_getI64(8);
+  @$pb.TagNumber(14)
+  set fixedDustThreshold($fixnum.Int64 v) {
+    $_setInt64(8, v);
+  }
+
+  @$pb.TagNumber(14)
+  $core.bool hasFixedDustThreshold() => $_has(8);
+  @$pb.TagNumber(14)
+  void clearFixedDustThreshold() => clearField(14);
+}
+
+/// Partially Signed Bitcoin Transaction.
+class Psbt extends $pb.GeneratedMessage {
+  factory Psbt({
+    $core.List<$core.int>? psbt,
+  }) {
+    final $result = create();
+    if (psbt != null) {
+      $result.psbt = psbt;
+    }
+    return $result;
+  }
+  Psbt._() : super();
+  factory Psbt.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Psbt.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Psbt',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'psbt', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Psbt clone() => Psbt()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Psbt copyWith(void Function(Psbt) updates) =>
+      super.copyWith((message) => updates(message as Psbt)) as Psbt;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Psbt create() => Psbt._();
+  Psbt createEmptyInstance() => create();
+  static $pb.PbList<Psbt> createRepeated() => $pb.PbList<Psbt>();
+  @$core.pragma('dart2js:noInline')
+  static Psbt getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Psbt>(create);
+  static Psbt? _defaultInstance;
+
+  /// Partially Signed Bitcoin Transaction binary encoded.
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get psbt => $_getN(0);
+  @$pb.TagNumber(1)
+  set psbt($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPsbt() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPsbt() => clearField(1);
+}
+
+enum SigningInput_Transaction { builder, psbt, notSet }
+
+class SigningInput extends $pb.GeneratedMessage {
+  factory SigningInput({
+    $core.Iterable<$core.List<$core.int>>? privateKeys,
+    $core.Iterable<$core.List<$core.int>>? publicKeys,
+    ChainInfo? chainInfo,
+    $core.bool? dangerousUseFixedSchnorrRng,
+    TransactionBuilder? builder,
+    Psbt? psbt,
+  }) {
+    final $result = create();
+    if (privateKeys != null) {
+      $result.privateKeys.addAll(privateKeys);
+    }
+    if (publicKeys != null) {
+      $result.publicKeys.addAll(publicKeys);
+    }
+    if (chainInfo != null) {
+      $result.chainInfo = chainInfo;
+    }
     if (dangerousUseFixedSchnorrRng != null) {
       $result.dangerousUseFixedSchnorrRng = dangerousUseFixedSchnorrRng;
+    }
+    if (builder != null) {
+      $result.builder = builder;
+    }
+    if (psbt != null) {
+      $result.psbt = psbt;
     }
     return $result;
   }
@@ -1674,45 +1953,28 @@ class SigningInput extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, SigningInput_DustPolicy>
-      _SigningInput_DustPolicyByTag = {
-    14: SigningInput_DustPolicy.fixedDustThreshold,
-    0: SigningInput_DustPolicy.notSet
+  static const $core.Map<$core.int, SigningInput_Transaction>
+      _SigningInput_TransactionByTag = {
+    10: SigningInput_Transaction.builder,
+    11: SigningInput_Transaction.psbt,
+    0: SigningInput_Transaction.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'SigningInput',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [14])
-    ..e<TransactionVersion>(
-        1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.OE,
-        defaultOrMaker: TransactionVersion.UseDefault,
-        valueOf: TransactionVersion.valueOf,
-        enumValues: TransactionVersion.values)
+    ..oo(0, [10, 11])
     ..p<$core.List<$core.int>>(
-        2, _omitFieldNames ? '' : 'privateKeys', $pb.PbFieldType.PY)
+        1, _omitFieldNames ? '' : 'privateKeys', $pb.PbFieldType.PY)
     ..p<$core.List<$core.int>>(
-        3, _omitFieldNames ? '' : 'publicKeys', $pb.PbFieldType.PY)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'lockTime', $pb.PbFieldType.OU3)
-    ..pc<Input>(5, _omitFieldNames ? '' : 'inputs', $pb.PbFieldType.PM,
-        subBuilder: Input.create)
-    ..pc<Output>(6, _omitFieldNames ? '' : 'outputs', $pb.PbFieldType.PM,
-        subBuilder: Output.create)
-    ..e<InputSelector>(
-        7, _omitFieldNames ? '' : 'inputSelector', $pb.PbFieldType.OE,
-        defaultOrMaker: InputSelector.SelectAscending,
-        valueOf: InputSelector.valueOf,
-        enumValues: InputSelector.values)
-    ..aInt64(8, _omitFieldNames ? '' : 'feePerVb')
-    ..aOM<Output>(9, _omitFieldNames ? '' : 'changeOutput',
-        subBuilder: Output.create)
-    ..aOM<Output>(10, _omitFieldNames ? '' : 'maxAmountOutput',
-        subBuilder: Output.create)
-    ..aOM<ChainInfo>(13, _omitFieldNames ? '' : 'chainInfo',
+        2, _omitFieldNames ? '' : 'publicKeys', $pb.PbFieldType.PY)
+    ..aOM<ChainInfo>(3, _omitFieldNames ? '' : 'chainInfo',
         subBuilder: ChainInfo.create)
-    ..aInt64(14, _omitFieldNames ? '' : 'fixedDustThreshold')
-    ..aOB(20, _omitFieldNames ? '' : 'dangerousUseFixedSchnorrRng')
+    ..aOB(4, _omitFieldNames ? '' : 'dangerousUseFixedSchnorrRng')
+    ..aOM<TransactionBuilder>(10, _omitFieldNames ? '' : 'builder',
+        subBuilder: TransactionBuilder.create)
+    ..aOM<Psbt>(11, _omitFieldNames ? '' : 'psbt', subBuilder: Psbt.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1738,160 +2000,79 @@ class SigningInput extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
 
-  SigningInput_DustPolicy whichDustPolicy() =>
-      _SigningInput_DustPolicyByTag[$_whichOneof(0)]!;
-  void clearDustPolicy() => clearField($_whichOneof(0));
-
-  /// Transaction version.
-  @$pb.TagNumber(1)
-  TransactionVersion get version => $_getN(0);
-  @$pb.TagNumber(1)
-  set version(TransactionVersion v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasVersion() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearVersion() => clearField(1);
+  SigningInput_Transaction whichTransaction() =>
+      _SigningInput_TransactionByTag[$_whichOneof(0)]!;
+  void clearTransaction() => clearField($_whichOneof(0));
 
   /// User private keys.
   /// Only required if the `sign` method is called.
-  @$pb.TagNumber(2)
-  $core.List<$core.List<$core.int>> get privateKeys => $_getList(1);
+  @$pb.TagNumber(1)
+  $core.List<$core.List<$core.int>> get privateKeys => $_getList(0);
 
   /// User public keys.
   /// Only required if the `plan`, `preImageHash` methods are called.
+  @$pb.TagNumber(2)
+  $core.List<$core.List<$core.int>> get publicKeys => $_getList(1);
+
+  /// Chain info includes p2pkh, p2sh address prefixes.
+  /// The parameter needs to be set if an input/output has a receiver address pattern.
   @$pb.TagNumber(3)
-  $core.List<$core.List<$core.int>> get publicKeys => $_getList(2);
+  ChainInfo get chainInfo => $_getN(2);
+  @$pb.TagNumber(3)
+  set chainInfo(ChainInfo v) {
+    setField(3, v);
+  }
 
-  /// (optional) Block height or timestamp indicating at what point transactions can be included in a block.
-  /// Zero by default.
+  @$pb.TagNumber(3)
+  $core.bool hasChainInfo() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearChainInfo() => clearField(3);
+  @$pb.TagNumber(3)
+  ChainInfo ensureChainInfo() => $_ensure(2);
+
+  /// Whether disable auxiliary random data when signing.
+  /// Use for testing **ONLY**.
   @$pb.TagNumber(4)
-  $core.int get lockTime => $_getIZ(3);
+  $core.bool get dangerousUseFixedSchnorrRng => $_getBF(3);
   @$pb.TagNumber(4)
-  set lockTime($core.int v) {
-    $_setUnsignedInt32(3, v);
+  set dangerousUseFixedSchnorrRng($core.bool v) {
+    $_setBool(3, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasLockTime() => $_has(3);
+  $core.bool hasDangerousUseFixedSchnorrRng() => $_has(3);
   @$pb.TagNumber(4)
-  void clearLockTime() => clearField(4);
+  void clearDangerousUseFixedSchnorrRng() => clearField(4);
 
-  /// The inputs to spend.
-  @$pb.TagNumber(5)
-  $core.List<Input> get inputs => $_getList(4);
-
-  /// The output of the transaction. Note that the change output is specified
-  /// in the `change_output` field.
-  @$pb.TagNumber(6)
-  $core.List<Output> get outputs => $_getList(5);
-
-  /// How the inputs should be selected.
-  @$pb.TagNumber(7)
-  InputSelector get inputSelector => $_getN(6);
-  @$pb.TagNumber(7)
-  set inputSelector(InputSelector v) {
-    setField(7, v);
-  }
-
-  @$pb.TagNumber(7)
-  $core.bool hasInputSelector() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearInputSelector() => clearField(7);
-
-  /// The amount of satoshis per vbyte ("satVb"), used for fee calculation.
-  /// Can be satoshis per byte ("satB") **ONLY** when transaction does not contain segwit UTXOs.
-  @$pb.TagNumber(8)
-  $fixnum.Int64 get feePerVb => $_getI64(7);
-  @$pb.TagNumber(8)
-  set feePerVb($fixnum.Int64 v) {
-    $_setInt64(7, v);
-  }
-
-  @$pb.TagNumber(8)
-  $core.bool hasFeePerVb() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearFeePerVb() => clearField(8);
-
-  /// (optional) The change output to be added (return to sender) at the end of the outputs list.
-  /// The `Output.value` will be overwritten, leave default.
-  /// Note there can be no change output if the change amount is less than dust threshold.
-  /// Leave empty to explicitly disable change output creation.
-  @$pb.TagNumber(9)
-  Output get changeOutput => $_getN(8);
-  @$pb.TagNumber(9)
-  set changeOutput(Output v) {
-    setField(9, v);
-  }
-
-  @$pb.TagNumber(9)
-  $core.bool hasChangeOutput() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearChangeOutput() => clearField(9);
-  @$pb.TagNumber(9)
-  Output ensureChangeOutput() => $_ensure(8);
-
-  /// The only output with a max available amount to be send.
-  /// If set, `SigningInput.outputs` and `SigningInput.change` will be ignored.
-  /// The `Output.value` will be overwritten, leave default.
+  /// Build a transaction to be signed.
   @$pb.TagNumber(10)
-  Output get maxAmountOutput => $_getN(9);
+  TransactionBuilder get builder => $_getN(4);
   @$pb.TagNumber(10)
-  set maxAmountOutput(Output v) {
+  set builder(TransactionBuilder v) {
     setField(10, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasMaxAmountOutput() => $_has(9);
+  $core.bool hasBuilder() => $_has(4);
   @$pb.TagNumber(10)
-  void clearMaxAmountOutput() => clearField(10);
+  void clearBuilder() => clearField(10);
   @$pb.TagNumber(10)
-  Output ensureMaxAmountOutput() => $_ensure(9);
+  TransactionBuilder ensureBuilder() => $_ensure(4);
 
-  /// Chain info includes p2pkh, p2sh address prefixes.
-  /// The parameter needs to be set if an input/output has a receiver address pattern.
-  @$pb.TagNumber(13)
-  ChainInfo get chainInfo => $_getN(10);
-  @$pb.TagNumber(13)
-  set chainInfo(ChainInfo v) {
-    setField(13, v);
+  /// Finalize a Partially Signed Bitcoin Transaction by signing the rest of UTXOs.
+  @$pb.TagNumber(11)
+  Psbt get psbt => $_getN(5);
+  @$pb.TagNumber(11)
+  set psbt(Psbt v) {
+    setField(11, v);
   }
 
-  @$pb.TagNumber(13)
-  $core.bool hasChainInfo() => $_has(10);
-  @$pb.TagNumber(13)
-  void clearChainInfo() => clearField(13);
-  @$pb.TagNumber(13)
-  ChainInfo ensureChainInfo() => $_ensure(10);
-
-  /// Use a constant "Dust" threshold.
-  @$pb.TagNumber(14)
-  $fixnum.Int64 get fixedDustThreshold => $_getI64(11);
-  @$pb.TagNumber(14)
-  set fixedDustThreshold($fixnum.Int64 v) {
-    $_setInt64(11, v);
-  }
-
-  @$pb.TagNumber(14)
-  $core.bool hasFixedDustThreshold() => $_has(11);
-  @$pb.TagNumber(14)
-  void clearFixedDustThreshold() => clearField(14);
-
-  /// Whether disable auxiliary random data when signing.
-  /// Use for testing **ONLY**.
-  @$pb.TagNumber(20)
-  $core.bool get dangerousUseFixedSchnorrRng => $_getBF(12);
-  @$pb.TagNumber(20)
-  set dangerousUseFixedSchnorrRng($core.bool v) {
-    $_setBool(12, v);
-  }
-
-  @$pb.TagNumber(20)
-  $core.bool hasDangerousUseFixedSchnorrRng() => $_has(12);
-  @$pb.TagNumber(20)
-  void clearDangerousUseFixedSchnorrRng() => clearField(20);
+  @$pb.TagNumber(11)
+  $core.bool hasPsbt() => $_has(5);
+  @$pb.TagNumber(11)
+  void clearPsbt() => clearField(11);
+  @$pb.TagNumber(11)
+  Psbt ensurePsbt() => $_ensure(5);
 }
 
 class Transaction_TransactionInput extends $pb.GeneratedMessage {
@@ -2309,7 +2490,7 @@ class TransactionPlan extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearError() => clearField(1);
 
-  /// / Error description.
+  /// Error description.
   @$pb.TagNumber(2)
   $core.String get errorMessage => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2690,7 +2871,7 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearErrorMessage() => clearField(2);
 
-  /// / The sighashes to be signed; ECDSA for legacy and Segwit, Schnorr for Taproot.
+  /// The sighashes to be signed; ECDSA for legacy and Segwit, Schnorr for Taproot.
   @$pb.TagNumber(4)
   $core.List<PreSigningOutput_Sighash> get sighashes => $_getList(2);
 }
@@ -2705,6 +2886,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     $fixnum.Int64? vsize,
     $fixnum.Int64? weight,
     $fixnum.Int64? fee,
+    Psbt? psbt,
   }) {
     final $result = create();
     if (error != null) {
@@ -2730,6 +2912,9 @@ class SigningOutput extends $pb.GeneratedMessage {
     }
     if (fee != null) {
       $result.fee = fee;
+    }
+    if (psbt != null) {
+      $result.psbt = psbt;
     }
     return $result;
   }
@@ -2762,6 +2947,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'weight', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aInt64(8, _omitFieldNames ? '' : 'fee')
+    ..aOM<Psbt>(9, _omitFieldNames ? '' : 'psbt', subBuilder: Psbt.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2828,7 +3014,7 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   Transaction ensureTransaction() => $_ensure(2);
 
-  /// The encoded transaction that submitted to the network.
+  /// The encoded transaction that can be submitted to the network.
   @$pb.TagNumber(4)
   $core.List<$core.int> get encoded => $_getN(3);
   @$pb.TagNumber(4)
@@ -2895,6 +3081,22 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasFee() => $_has(7);
   @$pb.TagNumber(8)
   void clearFee() => clearField(8);
+
+  /// Optional. Signed transaction serialized as PSBT.
+  /// Set if `SigningInput.psbt` is used.
+  @$pb.TagNumber(9)
+  Psbt get psbt => $_getN(8);
+  @$pb.TagNumber(9)
+  set psbt(Psbt v) {
+    setField(9, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasPsbt() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearPsbt() => clearField(9);
+  @$pb.TagNumber(9)
+  Psbt ensurePsbt() => $_ensure(8);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
