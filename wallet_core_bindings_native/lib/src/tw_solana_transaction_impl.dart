@@ -15,4 +15,34 @@ class TWSolanaTransactionImpl extends TWSolanaTransactionInterface {
       Pointer.fromAddress(privateKeys),
     ).address;
   }
+
+  @override
+  int getComputeUnitPrice(int encodedTx) {
+    return bindings.TWSolanaTransactionGetComputeUnitPrice(
+      Pointer.fromAddress(encodedTx),
+    ).address;
+  }
+
+  @override
+  int setComputeUnitLimit(int encodedTx, int limit) {
+    return bindings.TWSolanaTransactionSetComputeUnitLimit(
+      Pointer.fromAddress(encodedTx),
+      Pointer.fromAddress(limit),
+    ).address;
+  }
+
+  @override
+  int setComputeUnitPrice(int encodedTx, int price) {
+    return bindings.TWSolanaTransactionSetComputeUnitPrice(
+      Pointer.fromAddress(encodedTx),
+      Pointer.fromAddress(price),
+    ).address;
+  }
+
+  @override
+  int getComputeUnitLimit(int encodedTx) {
+    return bindings.TWSolanaTransactionGetComputeUnitLimit(
+      Pointer.fromAddress(encodedTx),
+    ).address;
+  }
 }

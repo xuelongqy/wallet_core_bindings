@@ -12,4 +12,28 @@ class TWSolanaTransactionImpl extends TWSolanaTransactionInterface {
     final func = wasm.getFunction('TWSolanaTransactionUpdateBlockhashAndSign')!;
     return func([encodedTx, recentBlockhash, privateKeys]).first as int;
   }
+
+  @override
+  int getComputeUnitPrice(int encodedTx) {
+    final func = wasm.getFunction('TWSolanaTransactionGetComputeUnitPrice')!;
+    return func([encodedTx]).first as int;
+  }
+
+  @override
+  int setComputeUnitLimit(int encodedTx, int limit) {
+    final func = wasm.getFunction('TWSolanaTransactionSetComputeUnitLimit')!;
+    return func([encodedTx, limit]).first as int;
+  }
+
+  @override
+  int setComputeUnitPrice(int encodedTx, int price) {
+    final func = wasm.getFunction('TWSolanaTransactionSetComputeUnitPrice')!;
+    return func([encodedTx, price]).first as int;
+  }
+
+  @override
+  int getComputeUnitLimit(int encodedTx) {
+    final func = wasm.getFunction('TWSolanaTransactionGetComputeUnitLimit')!;
+    return func([encodedTx]).first as int;
+  }
 }

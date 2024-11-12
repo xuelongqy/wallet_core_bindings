@@ -9,6 +9,7 @@ enum TWPurpose {
   BIP44(44),
   BIP49(49),
   BIP84(84),
+  BIP86(86),
   BIP1852(1852);
 
   final int purpose;

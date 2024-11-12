@@ -21,7 +21,7 @@ void main() {
       expect(name, 'eCash');
       expect(symbol, 'XEC');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 2);
-      expect(coin.blockchain, TWBlockchain.Bitcoin);
+      expect(coin.blockchain, TWBlockchain.BitcoinCash);
       expect(coin.p2shPrefix, 0x5);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,

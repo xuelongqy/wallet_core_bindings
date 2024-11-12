@@ -55,7 +55,8 @@ enum TWBlockchain {
   Greenfield(51),
   InternetComputer(52),
   NativeEvmos(53),
-  NativeInjective(54);
+  NativeInjective(54),
+  BitcoinCash(55);
 
   final int blockchain;
 

@@ -28,8 +28,9 @@ class Transfer extends $pb.GeneratedMessage {
     $core.int? mode,
     $core.String? comment,
     $core.bool? bounceable,
+    $core.String? stateInit,
     JettonTransfer? jettonTransfer,
-    CustomPayload? customPayload,
+    $core.String? customPayload,
   }) {
     final $result = create();
     if (dest != null) {
@@ -46,6 +47,9 @@ class Transfer extends $pb.GeneratedMessage {
     }
     if (bounceable != null) {
       $result.bounceable = bounceable;
+    }
+    if (stateInit != null) {
+      $result.stateInit = stateInit;
     }
     if (jettonTransfer != null) {
       $result.jettonTransfer = jettonTransfer;
@@ -64,8 +68,8 @@ class Transfer extends $pb.GeneratedMessage {
       create()..mergeFromJson(i, r);
 
   static const $core.Map<$core.int, Transfer_Payload> _Transfer_PayloadByTag = {
-    6: Transfer_Payload.jettonTransfer,
-    7: Transfer_Payload.customPayload,
+    7: Transfer_Payload.jettonTransfer,
+    8: Transfer_Payload.customPayload,
     0: Transfer_Payload.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -73,17 +77,17 @@ class Transfer extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [6, 7])
+    ..oo(0, [7, 8])
     ..aOS(1, _omitFieldNames ? '' : 'dest')
     ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'mode', $pb.PbFieldType.OU3)
     ..aOS(4, _omitFieldNames ? '' : 'comment')
     ..aOB(5, _omitFieldNames ? '' : 'bounceable')
-    ..aOM<JettonTransfer>(6, _omitFieldNames ? '' : 'jettonTransfer',
+    ..aOS(6, _omitFieldNames ? '' : 'stateInit')
+    ..aOM<JettonTransfer>(7, _omitFieldNames ? '' : 'jettonTransfer',
         subBuilder: JettonTransfer.create)
-    ..aOM<CustomPayload>(7, _omitFieldNames ? '' : 'customPayload',
-        subBuilder: CustomPayload.create)
+    ..aOS(8, _omitFieldNames ? '' : 'customPayload')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -177,35 +181,47 @@ class Transfer extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearBounceable() => clearField(5);
 
-  /// Jetton transfer payload.
+  /// Optional raw one-cell BoC encoded in Base64.
+  /// Can be used to deploy a smart contract.
   @$pb.TagNumber(6)
-  JettonTransfer get jettonTransfer => $_getN(5);
+  $core.String get stateInit => $_getSZ(5);
   @$pb.TagNumber(6)
-  set jettonTransfer(JettonTransfer v) {
-    setField(6, v);
+  set stateInit($core.String v) {
+    $_setString(5, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasJettonTransfer() => $_has(5);
+  $core.bool hasStateInit() => $_has(5);
   @$pb.TagNumber(6)
-  void clearJettonTransfer() => clearField(6);
-  @$pb.TagNumber(6)
-  JettonTransfer ensureJettonTransfer() => $_ensure(5);
+  void clearStateInit() => clearField(6);
 
-  /// TON transfer with custom stateInit and payload (contract call).
+  /// Jetton transfer payload.
   @$pb.TagNumber(7)
-  CustomPayload get customPayload => $_getN(6);
+  JettonTransfer get jettonTransfer => $_getN(6);
   @$pb.TagNumber(7)
-  set customPayload(CustomPayload v) {
+  set jettonTransfer(JettonTransfer v) {
     setField(7, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasCustomPayload() => $_has(6);
+  $core.bool hasJettonTransfer() => $_has(6);
   @$pb.TagNumber(7)
-  void clearCustomPayload() => clearField(7);
+  void clearJettonTransfer() => clearField(7);
   @$pb.TagNumber(7)
-  CustomPayload ensureCustomPayload() => $_ensure(6);
+  JettonTransfer ensureJettonTransfer() => $_ensure(6);
+
+  /// TON transfer with custom payload (contract call). Raw one-cell BoC encoded in Base64.
+  @$pb.TagNumber(8)
+  $core.String get customPayload => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set customPayload($core.String v) {
+    $_setString(7, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasCustomPayload() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearCustomPayload() => clearField(8);
 }
 
 class JettonTransfer extends $pb.GeneratedMessage {
@@ -215,6 +231,7 @@ class JettonTransfer extends $pb.GeneratedMessage {
     $core.String? toOwner,
     $core.String? responseAddress,
     $fixnum.Int64? forwardAmount,
+    $core.String? customPayload,
   }) {
     final $result = create();
     if (queryId != null) {
@@ -231,6 +248,9 @@ class JettonTransfer extends $pb.GeneratedMessage {
     }
     if (forwardAmount != null) {
       $result.forwardAmount = forwardAmount;
+    }
+    if (customPayload != null) {
+      $result.customPayload = customPayload;
     }
     return $result;
   }
@@ -257,6 +277,7 @@ class JettonTransfer extends $pb.GeneratedMessage {
     ..a<$fixnum.Int64>(
         5, _omitFieldNames ? '' : 'forwardAmount', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(6, _omitFieldNames ? '' : 'customPayload')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -346,88 +367,20 @@ class JettonTransfer extends $pb.GeneratedMessage {
   $core.bool hasForwardAmount() => $_has(4);
   @$pb.TagNumber(5)
   void clearForwardAmount() => clearField(5);
-}
 
-class CustomPayload extends $pb.GeneratedMessage {
-  factory CustomPayload({
-    $core.String? stateInit,
-    $core.String? payload,
-  }) {
-    final $result = create();
-    if (stateInit != null) {
-      $result.stateInit = stateInit;
-    }
-    if (payload != null) {
-      $result.payload = payload;
-    }
-    return $result;
-  }
-  CustomPayload._() : super();
-  factory CustomPayload.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory CustomPayload.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CustomPayload',
-      package: const $pb.PackageName(
-          _omitMessageNames ? '' : 'TW.TheOpenNetwork.Proto'),
-      createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'stateInit')
-    ..aOS(2, _omitFieldNames ? '' : 'payload')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  CustomPayload clone() => CustomPayload()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  CustomPayload copyWith(void Function(CustomPayload) updates) =>
-      super.copyWith((message) => updates(message as CustomPayload))
-          as CustomPayload;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static CustomPayload create() => CustomPayload._();
-  CustomPayload createEmptyInstance() => create();
-  static $pb.PbList<CustomPayload> createRepeated() =>
-      $pb.PbList<CustomPayload>();
-  @$core.pragma('dart2js:noInline')
-  static CustomPayload getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CustomPayload>(create);
-  static CustomPayload? _defaultInstance;
-
-  /// (string base64, optional): raw one-cell BoC encoded in Base64.
-  /// Can be used to deploy a smart contract.
-  @$pb.TagNumber(1)
-  $core.String get stateInit => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set stateInit($core.String v) {
-    $_setString(0, v);
+  /// Optional raw one-cell BoC encoded in Base64.
+  /// Can be used in the case of mintless jetton transfers.
+  @$pb.TagNumber(6)
+  $core.String get customPayload => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set customPayload($core.String v) {
+    $_setString(5, v);
   }
 
-  @$pb.TagNumber(1)
-  $core.bool hasStateInit() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearStateInit() => clearField(1);
-
-  /// (string base64, optional): raw one-cell BoC encoded in Base64.
-  @$pb.TagNumber(2)
-  $core.String get payload => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set payload($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasPayload() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearPayload() => clearField(2);
+  @$pb.TagNumber(6)
+  $core.bool hasCustomPayload() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearCustomPayload() => clearField(6);
 }
 
 class SigningInput extends $pb.GeneratedMessage {

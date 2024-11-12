@@ -58,9 +58,10 @@ const Transfer$json = {
     {'1': 'mode', '3': 3, '4': 1, '5': 13, '10': 'mode'},
     {'1': 'comment', '3': 4, '4': 1, '5': 9, '10': 'comment'},
     {'1': 'bounceable', '3': 5, '4': 1, '5': 8, '10': 'bounceable'},
+    {'1': 'state_init', '3': 6, '4': 1, '5': 9, '10': 'stateInit'},
     {
       '1': 'jetton_transfer',
-      '3': 6,
+      '3': 7,
       '4': 1,
       '5': 11,
       '6': '.TW.TheOpenNetwork.Proto.JettonTransfer',
@@ -69,10 +70,9 @@ const Transfer$json = {
     },
     {
       '1': 'custom_payload',
-      '3': 7,
+      '3': 8,
       '4': 1,
-      '5': 11,
-      '6': '.TW.TheOpenNetwork.Proto.CustomPayload',
+      '5': 9,
       '9': 0,
       '10': 'customPayload'
     },
@@ -86,10 +86,10 @@ const Transfer$json = {
 final $typed_data.Uint8List transferDescriptor = $convert.base64Decode(
     'CghUcmFuc2ZlchISCgRkZXN0GAEgASgJUgRkZXN0EhYKBmFtb3VudBgCIAEoBFIGYW1vdW50Eh'
     'IKBG1vZGUYAyABKA1SBG1vZGUSGAoHY29tbWVudBgEIAEoCVIHY29tbWVudBIeCgpib3VuY2Vh'
-    'YmxlGAUgASgIUgpib3VuY2VhYmxlElIKD2pldHRvbl90cmFuc2ZlchgGIAEoCzInLlRXLlRoZU'
-    '9wZW5OZXR3b3JrLlByb3RvLkpldHRvblRyYW5zZmVySABSDmpldHRvblRyYW5zZmVyEk8KDmN1'
-    'c3RvbV9wYXlsb2FkGAcgASgLMiYuVFcuVGhlT3Blbk5ldHdvcmsuUHJvdG8uQ3VzdG9tUGF5bG'
-    '9hZEgAUg1jdXN0b21QYXlsb2FkQgkKB3BheWxvYWQ=');
+    'YmxlGAUgASgIUgpib3VuY2VhYmxlEh0KCnN0YXRlX2luaXQYBiABKAlSCXN0YXRlSW5pdBJSCg'
+    '9qZXR0b25fdHJhbnNmZXIYByABKAsyJy5UVy5UaGVPcGVuTmV0d29yay5Qcm90by5KZXR0b25U'
+    'cmFuc2ZlckgAUg5qZXR0b25UcmFuc2ZlchInCg5jdXN0b21fcGF5bG9hZBgIIAEoCUgAUg1jdX'
+    'N0b21QYXlsb2FkQgkKB3BheWxvYWQ=');
 
 @$core.Deprecated('Use jettonTransferDescriptor instead')
 const JettonTransfer$json = {
@@ -100,6 +100,7 @@ const JettonTransfer$json = {
     {'1': 'to_owner', '3': 3, '4': 1, '5': 9, '10': 'toOwner'},
     {'1': 'response_address', '3': 4, '4': 1, '5': 9, '10': 'responseAddress'},
     {'1': 'forward_amount', '3': 5, '4': 1, '5': 4, '10': 'forwardAmount'},
+    {'1': 'custom_payload', '3': 6, '4': 1, '5': 9, '10': 'customPayload'},
   ],
 };
 
@@ -108,21 +109,8 @@ final $typed_data.Uint8List jettonTransferDescriptor = $convert.base64Decode(
     'Cg5KZXR0b25UcmFuc2ZlchIZCghxdWVyeV9pZBgBIAEoBFIHcXVlcnlJZBIjCg1qZXR0b25fYW'
     '1vdW50GAIgASgEUgxqZXR0b25BbW91bnQSGQoIdG9fb3duZXIYAyABKAlSB3RvT3duZXISKQoQ'
     'cmVzcG9uc2VfYWRkcmVzcxgEIAEoCVIPcmVzcG9uc2VBZGRyZXNzEiUKDmZvcndhcmRfYW1vdW'
-    '50GAUgASgEUg1mb3J3YXJkQW1vdW50');
-
-@$core.Deprecated('Use customPayloadDescriptor instead')
-const CustomPayload$json = {
-  '1': 'CustomPayload',
-  '2': [
-    {'1': 'state_init', '3': 1, '4': 1, '5': 9, '10': 'stateInit'},
-    {'1': 'payload', '3': 2, '4': 1, '5': 9, '10': 'payload'},
-  ],
-};
-
-/// Descriptor for `CustomPayload`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List customPayloadDescriptor = $convert.base64Decode(
-    'Cg1DdXN0b21QYXlsb2FkEh0KCnN0YXRlX2luaXQYASABKAlSCXN0YXRlSW5pdBIYCgdwYXlsb2'
-    'FkGAIgASgJUgdwYXlsb2Fk');
+    '50GAUgASgEUg1mb3J3YXJkQW1vdW50EiUKDmN1c3RvbV9wYXlsb2FkGAYgASgJUg1jdXN0b21Q'
+    'YXlsb2Fk');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {

@@ -257,6 +257,15 @@ void main() {
       expect(accountAddress2, '1NyRyFewhZcWMa9XCj3bBxSXPXyoSg8dKz');
 
       expect(key.accountCount, 2);
+
+      final accountCoin3 = key.accountForCoinDerivation(
+        coin: coin,
+        derivation: TWDerivation.BitcoinTaproot,
+        wallet: wallet,
+      );
+      final accountAddress3 = accountCoin3.address;
+      expect(accountAddress3,
+          "bc1pyqkqf20fmmwmcxf98tv6k63e2sgnjy4zne6d0r32vxwm3au0hnksq6ec57");
     });
 
     test('exportJSON', () {

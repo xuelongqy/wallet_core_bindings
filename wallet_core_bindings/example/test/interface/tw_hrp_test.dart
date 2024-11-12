@@ -32,6 +32,7 @@ void main() {
       expect(TWHRP.CryptoOrg.string, "cro");
       expect(TWHRP.Osmosis.string, "osmo");
       expect(TWHRP.Secret.string, "secret");
+      expect(TWHRP.Secret.string, "secret");
     });
 
     test('HRPForString', () {

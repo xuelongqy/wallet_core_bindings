@@ -143,6 +143,17 @@ void main() {
         expectHex(publicKeyData,
             '0240ebf906b948281289405317a5eb9a98045af8a8ab5311b2e3060cfb66c507a1');
       }
+
+      {
+        final key = wallet.getKeyDerivation(
+            TWCoinType.Bitcoin, TWDerivation.BitcoinTaproot);
+        expectHex(key.data,
+            "a2c4d6df786f118f20330affd65d248ffdc0750ae9cbc729d27c640302afd030");
+        final publicKey = key.getPublicKeySecp256k1(true);
+        final publicKeyData = publicKey.data;
+        expectHex(publicKeyData,
+            "026acc6c37789625ecd5ad4ebb7631249dfb9ebc3f82386f187325f54881557b9f");
+      }
     });
 
     test('DeriveAddressBitcoin', () {

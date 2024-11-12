@@ -99,6 +99,43 @@ void main() {
           'ede769f6df28aefe6a846be169958c155e23e7e5c9621d2e8dce1719b4d952b63e8a8bf9f00e41204ac1bf69b1a663dacdf764367e48e4a5afcd6b055a747fb200');
     });
 
+    test('SignTransferWithMemo', () {
+      // Successfully broadcasted https://tronscan.org/#/transaction/20321755964d6ec5bcfc9ebfb15faeb043787ae599fff44442962e12e1c357f1
+      final input = Tron.SigningInput(
+        transaction: Tron.Transaction(
+          transfer: Tron.TransferContract(
+            ownerAddress: 'TFnYQCt892UNjn67pjAULTSTkB7YvqsnPp',
+            toAddress: 'TBUCzgc29vykkvFaEG2mgRtxKvaKe6skwX',
+            amount: $fixnum.Int64(100000),
+          ),
+          timestamp: $fixnum.Int64(1730827017000),
+          expiration: $fixnum.Int64(1730827017000 + 10 * 60 * 60 * 1000),
+          memo: 'Test memo',
+          blockHeader: Tron.BlockHeader(
+            timestamp: $fixnum.Int64(1730827017000),
+            txTrieRoot: parse_hex(
+                "a94f115089893f37336baf32dbf6cb7d06adc13cf6bf046d9bc22748bd72e7a6"),
+            parentHash: parse_hex(
+                "0000000003fa27db7d67f93920f64733532412ab6a71eb4089dc48c8ff5e182c"),
+            number: $fixnum.Int64(66725852),
+            witnessAddress:
+                parse_hex("4167e39013be3cdd3814bed152d7439fb5b6791409"),
+            version: 30,
+          ),
+        ),
+        privateKey: parse_hex(
+            "7c2108a30f6f69f8dce72a7df897eabadfe9810eee6976b43bdf8c0b0d35337d"),
+      );
+
+      final output = Tron.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+
+      expect(hex(output.id),
+          '20321755964d6ec5bcfc9ebfb15faeb043787ae599fff44442962e12e1c357f1');
+      expect(hex(output.signature),
+          '6fcee79c61f660ec689299f77924f32b5020b4c41593056052ef07d640cc799325103fab130c8691e8a224c96cd0704a698ac356ff789a543c284605668bf38000');
+    });
+
     test('SignFreezeBalanceV2', () {
       // Successfully broadcasted https://nile.tronscan.org/#/transaction/3a46321487ce1fd115da38b3431006ea529f65ef2507f19233f5a23c05abd01d
       final input = Tron.SigningInput(

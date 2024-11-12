@@ -20,7 +20,7 @@ void main() {
       final publicKey = privateKey.getPublicKeyEd25519();
       final address = TWAnyAddress.createWithPublicKey(publicKey, coin);
       final addressStr = address.description;
-      
+
       expect(addressStr, '2bUBiBNZyD29gP1oV6de7nxowMLoDBtopMMTGgMvjG5m');
     });
 
@@ -31,7 +31,7 @@ void main() {
       final solanaAddress = TWSolanaAddress(solAddress);
       final description = solanaAddress.description;
       final tokenAddress = solanaAddress.defaultTokenAddress(serumToken);
-      
+
       expect(tokenAddress, 'EDNd1ycsydWYwVmrYZvqYazFqwk1QjBgAUKFjBoz1jKP');
       expect(description, 'B1iGmDJdvmxyUiYM8UEo2Uw2D58EmUrw4KyLYMmrhf8V');
     });

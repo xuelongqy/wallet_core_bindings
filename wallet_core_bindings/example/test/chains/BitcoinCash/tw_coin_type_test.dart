@@ -20,7 +20,7 @@ void main() {
       expect(name, 'Bitcoin Cash');
       expect(symbol, 'BCH');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
-      expect(coin.blockchain, TWBlockchain.Bitcoin);
+      expect(coin.blockchain, TWBlockchain.BitcoinCash);
       expect(coin.p2shPrefix, 0x5);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl, 'https://blockchair.com/bitcoin-cash/transaction/t123');

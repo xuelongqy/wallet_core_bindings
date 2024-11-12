@@ -12034,6 +12034,100 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
               ffi.Pointer<TWString1>, ffi.Pointer<TWDataVector>)>();
 
+  /// Try to find a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction in the given transaction,
+  /// and returns the specified Unit Price.
+  ///
+  /// \param encodedTx base64 encoded Solana transaction.
+  /// \return nullable Unit Price as a decimal string. Null if no instruction found.
+  ffi.Pointer<TWString1> TWSolanaTransactionGetComputeUnitPrice(
+    ffi.Pointer<TWString1> encodedTx,
+  ) {
+    return _TWSolanaTransactionGetComputeUnitPrice(
+      encodedTx,
+    );
+  }
+
+  late final _TWSolanaTransactionGetComputeUnitPricePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>>(
+      'TWSolanaTransactionGetComputeUnitPrice');
+  late final _TWSolanaTransactionGetComputeUnitPrice =
+      _TWSolanaTransactionGetComputeUnitPricePtr.asFunction<
+          ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>();
+
+  /// Try to find a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction in the given transaction,
+  /// and returns the specified Unit Limit.
+  ///
+  /// \param encodedTx base64 encoded Solana transaction.
+  /// \return nullable Unit Limit as a decimal string. Null if no instruction found.
+  ffi.Pointer<TWString1> TWSolanaTransactionGetComputeUnitLimit(
+    ffi.Pointer<TWString1> encodedTx,
+  ) {
+    return _TWSolanaTransactionGetComputeUnitLimit(
+      encodedTx,
+    );
+  }
+
+  late final _TWSolanaTransactionGetComputeUnitLimitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>>(
+      'TWSolanaTransactionGetComputeUnitLimit');
+  late final _TWSolanaTransactionGetComputeUnitLimit =
+      _TWSolanaTransactionGetComputeUnitLimitPtr.asFunction<
+          ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>();
+
+  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction of the given transaction,
+  /// and returns the updated transaction.
+  ///
+  /// \param encodedTx base64 encoded Solana transaction.
+  /// \price Unit Price as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString1> TWSolanaTransactionSetComputeUnitPrice(
+    ffi.Pointer<TWString1> encodedTx,
+    ffi.Pointer<TWString1> price,
+  ) {
+    return _TWSolanaTransactionSetComputeUnitPrice(
+      encodedTx,
+      price,
+    );
+  }
+
+  late final _TWSolanaTransactionSetComputeUnitPricePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString1> Function(
+                  ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>>(
+      'TWSolanaTransactionSetComputeUnitPrice');
+  late final _TWSolanaTransactionSetComputeUnitPrice =
+      _TWSolanaTransactionSetComputeUnitPricePtr.asFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
+
+  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
+  /// and returns the updated transaction.
+  ///
+  /// \param encodedTx base64 encoded Solana transaction.
+  /// \limit Unit Limit as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString1> TWSolanaTransactionSetComputeUnitLimit(
+    ffi.Pointer<TWString1> encodedTx,
+    ffi.Pointer<TWString1> limit,
+  ) {
+    return _TWSolanaTransactionSetComputeUnitLimit(
+      encodedTx,
+      limit,
+    );
+  }
+
+  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString1> Function(
+                  ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>>(
+      'TWSolanaTransactionSetComputeUnitLimit');
+  late final _TWSolanaTransactionSetComputeUnitLimit =
+      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
+
   /// Create a NEAR Account
   ///
   /// \param string Account name
@@ -13746,6 +13840,7 @@ abstract class TWPurpose {
   static const int TWPurposeBIP44 = 44;
   static const int TWPurposeBIP49 = 49;
   static const int TWPurposeBIP84 = 84;
+  static const int TWPurposeBIP86 = 86;
   static const int TWPurposeBIP1852 = 1852;
 }
 
@@ -13811,6 +13906,7 @@ abstract class TWBlockchain {
   static const int TWBlockchainInternetComputer = 52;
   static const int TWBlockchainNativeEvmos = 53;
   static const int TWBlockchainNativeInjective = 54;
+  static const int TWBlockchainBitcoinCash = 55;
 }
 
 /// Elliptic cruves
@@ -13826,6 +13922,8 @@ abstract class TWCurve {
 }
 
 /// Non-default coin address derivation names (default, unnamed derivations are not included).
+/// Note the enum variant must be sync with `TWDerivation` enum in Rust:
+/// https://github.com/trustwallet/wallet-core/blob/master/rust/tw_coin_registry/src/tw_derivation.rs
 abstract class TWDerivation {
   static const int TWDerivationDefault = 0;
   static const int TWDerivationCustom = 1;
@@ -13835,6 +13933,7 @@ abstract class TWDerivation {
   static const int TWDerivationLitecoinLegacy = 5;
   static const int TWDerivationSolanaSolana = 6;
   static const int TWDerivationStratisSegwit = 7;
+  static const int TWDerivationBitcoinTaproot = 8;
 }
 
 /// Registered HD version bytes

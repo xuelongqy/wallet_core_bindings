@@ -1127,6 +1127,101 @@ void main() {
           '620b719338efb419b0e1417bfbe01fc94a62d5669a4b8cbbf4e32ecc1ca3b872');
     });
 
+    test('CardanoSigning', () {
+      const ownAddress =
+          "addr1q83kuum4jhwu3gxdwftdv2vezr0etmt3tp7phw5assltzl6t4afzguegnkcrdzp79vdcqswly775f33jvtpayl280qeqts960l";
+      const privateKey =
+          "009aba22621d98e008c266a8d19c493f5f80a3a4f55048a83168a9c856726852fc240e6e95d7dc4e8ea599d09d64f84fdbe951b2282f5e5ed374252d17be9507643b2d078e607b5327397f212e4f6607ff0b6dfc93bdc9ad2bd0a682887edb9f304a573e99c7c2022c925511f004c7c9b89e8569080d09e2c53dfb1d53726852d4735794e3d32eac2b17d4d7c94742a77b7400b66fa11eaeb6ae38ba2dea84612f0c38fd68b9751ed4cb4ac48fb5e19f985f809fff1cfe5303fbfd29aca43d66";
+      const gensTokenPolicy =
+          "dda5fdb1002f7389b33e036b6afee82a8189becb6cba852e8b79b4fb";
+      // Non UTF-8 assetName according to https://github.com/cardano-foundation/CIPs/tree/master/CIP-0067
+      const gensTokenNameHex = "0014df1047454e53";
+      const currentSlot = 138888357;
+
+      final input = Cardano.SigningInput(
+        utxos: [
+          Cardano.TxInput(
+            outPoint: Cardano.OutPoint(
+              txHash: parse_hex(
+                  '7b377e0cf7b83d67bb6919008c38e1a63be86c4831a93ad0cb45778b9f2f7e28'),
+              outputIndex: $fixnum.Int64(4),
+            ),
+            address: ownAddress,
+            amount: $fixnum.Int64(1700000),
+            // GENS token (asset1266q2ewhgul7jh3xqpvjzqarrepfjuler20akr).
+            tokenAmount: [
+              Cardano.TokenAmount(
+                policyId: gensTokenPolicy,
+                assetNameHex: gensTokenNameHex,
+                amount: intToBytes(44660987),
+              ),
+            ],
+          ),
+        ],
+        privateKey: [parse_hex(privateKey)],
+        transferMessage: Cardano.Transfer(
+          toAddress:
+              'addr1q875r037fjeqveg6xv5wke922ff897eyrnshlj3ryp4mypzt4afzguegnkcrdzp79vdcqswly775f33jvtpayl280qeq7zgptp',
+          changeAddress: ownAddress,
+          amount: $fixnum.Int64(666),
+          tokenAmount: Cardano.TokenBundle(
+            token: [
+              Cardano.TokenAmount(
+                policyId: gensTokenPolicy,
+                assetNameHex: gensTokenNameHex,
+                amount: intToBytes(666),
+              )
+            ],
+          ),
+          useMaxAmount: true,
+        ),
+        ttl: $fixnum.Int64(currentSlot + 7200),
+      );
+
+      final plan = Cardano.TransactionPlan.fromBuffer(
+        TWAnySigner.plan(input.writeToBuffer(), coin),
+      );
+
+      expect(plan.error, Common.SigningError.OK);
+      {
+        expect(plan.availableAmount, $fixnum.Int64(1700000));
+        expect(plan.amount, $fixnum.Int64(1700000 - 167818));
+        expect(plan.fee, $fixnum.Int64(167818));
+        expect(plan.change, $fixnum.Int64(0));
+        expect(plan.utxos.length, 1);
+        expect(plan.availableTokens.length, 1);
+
+        expect(plan.availableTokens[0].amount, intToBytes(44660987));
+        // `assetName` must be empty as it's not a UTF-8 string.
+        expect(plan.availableTokens[0].assetName, '');
+        expect(plan.availableTokens[0].assetNameHex, gensTokenNameHex);
+
+        expect(plan.outputTokens.length, 1);
+        expect(plan.outputTokens[0].amount, intToBytes(44660987));
+        // `assetName` must be empty as it's not a UTF-8 string.
+        expect(plan.outputTokens[0].assetName, '');
+        expect(plan.outputTokens[0].assetNameHex, gensTokenNameHex);
+        expect(plan.changeTokens.length, 0);
+      }
+
+      // set plan with specific fee, to match the real transaction
+      input.plan = plan;
+
+      final output = Cardano.SigningOutput.fromBuffer(
+        TWAnySigner.sign(input.writeToBuffer(), coin),
+      );
+
+      // https://cardanoscan.io/transaction/df89e81fbaec7485ba65ac3a2ffe4121a888f4937d085f3ad4f7e8e5192dea74
+      // curl -d '{"txHash":"620b71..b872","txBody":"83a400..08f6"}' -H "Content-Type: application/json" https://<cardano-node>/api/txs/submit
+      expect(output.error, Common.SigningError.OK);
+      final encoded = output.encoded;
+      expectHex(encoded,
+          '83a400818258207b377e0cf7b83d67bb6919008c38e1a63be86c4831a93ad0cb45778b9f2f7e2804018182583901fd41be3e4cb206651a3328eb64aa525272fb241ce17fca23206bb2044baf522473289db036883e2b1b8041df27bd44c63262c3d27d477832821a00176116a1581cdda5fdb1002f7389b33e036b6afee82a8189becb6cba852e8b79b4fba1480014df1047454e531a02a978fb021a00028f8a031a084760c5a10081825820748022805ee71f9fa31d06e60f14f0715a37c278c0690b565f26e1e1e83f930e5840386c5d05fb5cfdb11f1296e909a80314616cdd2779e5be5ea583e1a938ee8409f58b585c90248e1c0633638cc0f4517c03fdb59f17434267c2955e0fbbb3b609f6');
+      final txid = output.txId;
+      expectHex(txid,
+          'df89e81fbaec7485ba65ac3a2ffe4121a888f4937d085f3ad4f7e8e5192dea74');
+    });
+
     test('SignTransferTwoTokens', () {
       final input = createSampleInput(7000000);
       input.transferMessage.amount = $fixnum.Int64(1500000);

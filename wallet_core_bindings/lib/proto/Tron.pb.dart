@@ -1863,6 +1863,7 @@ class Transaction extends $pb.GeneratedMessage {
     $fixnum.Int64? expiration,
     BlockHeader? blockHeader,
     $fixnum.Int64? feeLimit,
+    $core.String? memo,
     TransferContract? transfer,
     TransferAssetContract? transferAsset,
     FreezeBalanceContract? freezeBalance,
@@ -1891,6 +1892,9 @@ class Transaction extends $pb.GeneratedMessage {
     }
     if (feeLimit != null) {
       $result.feeLimit = feeLimit;
+    }
+    if (memo != null) {
+      $result.memo = memo;
     }
     if (transfer != null) {
       $result.transfer = transfer;
@@ -1976,6 +1980,7 @@ class Transaction extends $pb.GeneratedMessage {
     ..aOM<BlockHeader>(3, _omitFieldNames ? '' : 'blockHeader',
         subBuilder: BlockHeader.create)
     ..aInt64(4, _omitFieldNames ? '' : 'feeLimit')
+    ..aOS(5, _omitFieldNames ? '' : 'memo')
     ..aOM<TransferContract>(10, _omitFieldNames ? '' : 'transfer',
         subBuilder: TransferContract.create)
     ..aOM<TransferAssetContract>(11, _omitFieldNames ? '' : 'transferAsset',
@@ -2081,7 +2086,7 @@ class Transaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   BlockHeader ensureBlockHeader() => $_ensure(2);
 
-  /// Transaction fee limit
+  /// Transaction fee limit.
   @$pb.TagNumber(4)
   $fixnum.Int64 get feeLimit => $_getI64(3);
   @$pb.TagNumber(4)
@@ -2094,215 +2099,228 @@ class Transaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearFeeLimit() => clearField(4);
 
+  /// Transaction memo.
+  @$pb.TagNumber(5)
+  $core.String get memo => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set memo($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasMemo() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMemo() => clearField(5);
+
   @$pb.TagNumber(10)
-  TransferContract get transfer => $_getN(4);
+  TransferContract get transfer => $_getN(5);
   @$pb.TagNumber(10)
   set transfer(TransferContract v) {
     setField(10, v);
   }
 
   @$pb.TagNumber(10)
-  $core.bool hasTransfer() => $_has(4);
+  $core.bool hasTransfer() => $_has(5);
   @$pb.TagNumber(10)
   void clearTransfer() => clearField(10);
   @$pb.TagNumber(10)
-  TransferContract ensureTransfer() => $_ensure(4);
+  TransferContract ensureTransfer() => $_ensure(5);
 
   @$pb.TagNumber(11)
-  TransferAssetContract get transferAsset => $_getN(5);
+  TransferAssetContract get transferAsset => $_getN(6);
   @$pb.TagNumber(11)
   set transferAsset(TransferAssetContract v) {
     setField(11, v);
   }
 
   @$pb.TagNumber(11)
-  $core.bool hasTransferAsset() => $_has(5);
+  $core.bool hasTransferAsset() => $_has(6);
   @$pb.TagNumber(11)
   void clearTransferAsset() => clearField(11);
   @$pb.TagNumber(11)
-  TransferAssetContract ensureTransferAsset() => $_ensure(5);
+  TransferAssetContract ensureTransferAsset() => $_ensure(6);
 
   @$pb.TagNumber(12)
-  FreezeBalanceContract get freezeBalance => $_getN(6);
+  FreezeBalanceContract get freezeBalance => $_getN(7);
   @$pb.TagNumber(12)
   set freezeBalance(FreezeBalanceContract v) {
     setField(12, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasFreezeBalance() => $_has(6);
+  $core.bool hasFreezeBalance() => $_has(7);
   @$pb.TagNumber(12)
   void clearFreezeBalance() => clearField(12);
   @$pb.TagNumber(12)
-  FreezeBalanceContract ensureFreezeBalance() => $_ensure(6);
+  FreezeBalanceContract ensureFreezeBalance() => $_ensure(7);
 
   @$pb.TagNumber(13)
-  UnfreezeBalanceContract get unfreezeBalance => $_getN(7);
+  UnfreezeBalanceContract get unfreezeBalance => $_getN(8);
   @$pb.TagNumber(13)
   set unfreezeBalance(UnfreezeBalanceContract v) {
     setField(13, v);
   }
 
   @$pb.TagNumber(13)
-  $core.bool hasUnfreezeBalance() => $_has(7);
+  $core.bool hasUnfreezeBalance() => $_has(8);
   @$pb.TagNumber(13)
   void clearUnfreezeBalance() => clearField(13);
   @$pb.TagNumber(13)
-  UnfreezeBalanceContract ensureUnfreezeBalance() => $_ensure(7);
+  UnfreezeBalanceContract ensureUnfreezeBalance() => $_ensure(8);
 
   @$pb.TagNumber(14)
-  UnfreezeAssetContract get unfreezeAsset => $_getN(8);
+  UnfreezeAssetContract get unfreezeAsset => $_getN(9);
   @$pb.TagNumber(14)
   set unfreezeAsset(UnfreezeAssetContract v) {
     setField(14, v);
   }
 
   @$pb.TagNumber(14)
-  $core.bool hasUnfreezeAsset() => $_has(8);
+  $core.bool hasUnfreezeAsset() => $_has(9);
   @$pb.TagNumber(14)
   void clearUnfreezeAsset() => clearField(14);
   @$pb.TagNumber(14)
-  UnfreezeAssetContract ensureUnfreezeAsset() => $_ensure(8);
+  UnfreezeAssetContract ensureUnfreezeAsset() => $_ensure(9);
 
   @$pb.TagNumber(15)
-  WithdrawBalanceContract get withdrawBalance => $_getN(9);
+  WithdrawBalanceContract get withdrawBalance => $_getN(10);
   @$pb.TagNumber(15)
   set withdrawBalance(WithdrawBalanceContract v) {
     setField(15, v);
   }
 
   @$pb.TagNumber(15)
-  $core.bool hasWithdrawBalance() => $_has(9);
+  $core.bool hasWithdrawBalance() => $_has(10);
   @$pb.TagNumber(15)
   void clearWithdrawBalance() => clearField(15);
   @$pb.TagNumber(15)
-  WithdrawBalanceContract ensureWithdrawBalance() => $_ensure(9);
+  WithdrawBalanceContract ensureWithdrawBalance() => $_ensure(10);
 
   @$pb.TagNumber(16)
-  VoteAssetContract get voteAsset => $_getN(10);
+  VoteAssetContract get voteAsset => $_getN(11);
   @$pb.TagNumber(16)
   set voteAsset(VoteAssetContract v) {
     setField(16, v);
   }
 
   @$pb.TagNumber(16)
-  $core.bool hasVoteAsset() => $_has(10);
+  $core.bool hasVoteAsset() => $_has(11);
   @$pb.TagNumber(16)
   void clearVoteAsset() => clearField(16);
   @$pb.TagNumber(16)
-  VoteAssetContract ensureVoteAsset() => $_ensure(10);
+  VoteAssetContract ensureVoteAsset() => $_ensure(11);
 
   @$pb.TagNumber(17)
-  VoteWitnessContract get voteWitness => $_getN(11);
+  VoteWitnessContract get voteWitness => $_getN(12);
   @$pb.TagNumber(17)
   set voteWitness(VoteWitnessContract v) {
     setField(17, v);
   }
 
   @$pb.TagNumber(17)
-  $core.bool hasVoteWitness() => $_has(11);
+  $core.bool hasVoteWitness() => $_has(12);
   @$pb.TagNumber(17)
   void clearVoteWitness() => clearField(17);
   @$pb.TagNumber(17)
-  VoteWitnessContract ensureVoteWitness() => $_ensure(11);
+  VoteWitnessContract ensureVoteWitness() => $_ensure(12);
 
   @$pb.TagNumber(18)
-  TriggerSmartContract get triggerSmartContract => $_getN(12);
+  TriggerSmartContract get triggerSmartContract => $_getN(13);
   @$pb.TagNumber(18)
   set triggerSmartContract(TriggerSmartContract v) {
     setField(18, v);
   }
 
   @$pb.TagNumber(18)
-  $core.bool hasTriggerSmartContract() => $_has(12);
+  $core.bool hasTriggerSmartContract() => $_has(13);
   @$pb.TagNumber(18)
   void clearTriggerSmartContract() => clearField(18);
   @$pb.TagNumber(18)
-  TriggerSmartContract ensureTriggerSmartContract() => $_ensure(12);
+  TriggerSmartContract ensureTriggerSmartContract() => $_ensure(13);
 
   @$pb.TagNumber(19)
-  TransferTRC20Contract get transferTrc20Contract => $_getN(13);
+  TransferTRC20Contract get transferTrc20Contract => $_getN(14);
   @$pb.TagNumber(19)
   set transferTrc20Contract(TransferTRC20Contract v) {
     setField(19, v);
   }
 
   @$pb.TagNumber(19)
-  $core.bool hasTransferTrc20Contract() => $_has(13);
+  $core.bool hasTransferTrc20Contract() => $_has(14);
   @$pb.TagNumber(19)
   void clearTransferTrc20Contract() => clearField(19);
   @$pb.TagNumber(19)
-  TransferTRC20Contract ensureTransferTrc20Contract() => $_ensure(13);
+  TransferTRC20Contract ensureTransferTrc20Contract() => $_ensure(14);
 
   @$pb.TagNumber(20)
-  FreezeBalanceV2Contract get freezeBalanceV2 => $_getN(14);
+  FreezeBalanceV2Contract get freezeBalanceV2 => $_getN(15);
   @$pb.TagNumber(20)
   set freezeBalanceV2(FreezeBalanceV2Contract v) {
     setField(20, v);
   }
 
   @$pb.TagNumber(20)
-  $core.bool hasFreezeBalanceV2() => $_has(14);
+  $core.bool hasFreezeBalanceV2() => $_has(15);
   @$pb.TagNumber(20)
   void clearFreezeBalanceV2() => clearField(20);
   @$pb.TagNumber(20)
-  FreezeBalanceV2Contract ensureFreezeBalanceV2() => $_ensure(14);
+  FreezeBalanceV2Contract ensureFreezeBalanceV2() => $_ensure(15);
 
   @$pb.TagNumber(21)
-  UnfreezeBalanceV2Contract get unfreezeBalanceV2 => $_getN(15);
+  UnfreezeBalanceV2Contract get unfreezeBalanceV2 => $_getN(16);
   @$pb.TagNumber(21)
   set unfreezeBalanceV2(UnfreezeBalanceV2Contract v) {
     setField(21, v);
   }
 
   @$pb.TagNumber(21)
-  $core.bool hasUnfreezeBalanceV2() => $_has(15);
+  $core.bool hasUnfreezeBalanceV2() => $_has(16);
   @$pb.TagNumber(21)
   void clearUnfreezeBalanceV2() => clearField(21);
   @$pb.TagNumber(21)
-  UnfreezeBalanceV2Contract ensureUnfreezeBalanceV2() => $_ensure(15);
+  UnfreezeBalanceV2Contract ensureUnfreezeBalanceV2() => $_ensure(16);
 
   @$pb.TagNumber(23)
-  WithdrawExpireUnfreezeContract get withdrawExpireUnfreeze => $_getN(16);
+  WithdrawExpireUnfreezeContract get withdrawExpireUnfreeze => $_getN(17);
   @$pb.TagNumber(23)
   set withdrawExpireUnfreeze(WithdrawExpireUnfreezeContract v) {
     setField(23, v);
   }
 
   @$pb.TagNumber(23)
-  $core.bool hasWithdrawExpireUnfreeze() => $_has(16);
+  $core.bool hasWithdrawExpireUnfreeze() => $_has(17);
   @$pb.TagNumber(23)
   void clearWithdrawExpireUnfreeze() => clearField(23);
   @$pb.TagNumber(23)
-  WithdrawExpireUnfreezeContract ensureWithdrawExpireUnfreeze() => $_ensure(16);
+  WithdrawExpireUnfreezeContract ensureWithdrawExpireUnfreeze() => $_ensure(17);
 
   @$pb.TagNumber(24)
-  DelegateResourceContract get delegateResource => $_getN(17);
+  DelegateResourceContract get delegateResource => $_getN(18);
   @$pb.TagNumber(24)
   set delegateResource(DelegateResourceContract v) {
     setField(24, v);
   }
 
   @$pb.TagNumber(24)
-  $core.bool hasDelegateResource() => $_has(17);
+  $core.bool hasDelegateResource() => $_has(18);
   @$pb.TagNumber(24)
   void clearDelegateResource() => clearField(24);
   @$pb.TagNumber(24)
-  DelegateResourceContract ensureDelegateResource() => $_ensure(17);
+  DelegateResourceContract ensureDelegateResource() => $_ensure(18);
 
   @$pb.TagNumber(25)
-  UnDelegateResourceContract get undelegateResource => $_getN(18);
+  UnDelegateResourceContract get undelegateResource => $_getN(19);
   @$pb.TagNumber(25)
   set undelegateResource(UnDelegateResourceContract v) {
     setField(25, v);
   }
 
   @$pb.TagNumber(25)
-  $core.bool hasUndelegateResource() => $_has(18);
+  $core.bool hasUndelegateResource() => $_has(19);
   @$pb.TagNumber(25)
   void clearUndelegateResource() => clearField(25);
   @$pb.TagNumber(25)
-  UnDelegateResourceContract ensureUndelegateResource() => $_ensure(18);
+  UnDelegateResourceContract ensureUndelegateResource() => $_ensure(19);
 }
 
 /// Input data necessary to create a signed transaction.
