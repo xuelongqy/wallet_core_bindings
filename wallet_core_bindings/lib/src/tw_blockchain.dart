@@ -56,7 +56,8 @@ enum TWBlockchain {
   InternetComputer(52),
   NativeEvmos(53),
   NativeInjective(54),
-  BitcoinCash(55);
+  BitcoinCash(55),
+  Pactus(56);
 
   final int blockchain;
 

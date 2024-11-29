@@ -13,6 +13,21 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use networkIdDescriptor instead')
+const NetworkId$json = {
+  '1': 'NetworkId',
+  '2': [
+    {'1': 'UseDefault', '2': 0},
+    {'1': 'Mainnet', '2': 42},
+    {'1': 'MainnetAlbatross', '2': 24},
+  ],
+};
+
+/// Descriptor for `NetworkId`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List networkIdDescriptor = $convert.base64Decode(
+    'CglOZXR3b3JrSWQSDgoKVXNlRGVmYXVsdBAAEgsKB01haW5uZXQQKhIUChBNYWlubmV0QWxiYX'
+    'Ryb3NzEBg=');
+
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
   '1': 'SigningInput',
@@ -28,6 +43,14 @@ const SigningInput$json = {
       '5': 13,
       '10': 'validityStartHeight'
     },
+    {
+      '1': 'network_id',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Nimiq.Proto.NetworkId',
+      '10': 'networkId'
+    },
   ],
 };
 
@@ -36,7 +59,8 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'CgxTaWduaW5nSW5wdXQSHwoLcHJpdmF0ZV9rZXkYASABKAxSCnByaXZhdGVLZXkSIAoLZGVzdG'
     'luYXRpb24YAiABKAlSC2Rlc3RpbmF0aW9uEhQKBXZhbHVlGAMgASgEUgV2YWx1ZRIQCgNmZWUY'
     'BCABKARSA2ZlZRIyChV2YWxpZGl0eV9zdGFydF9oZWlnaHQYBSABKA1SE3ZhbGlkaXR5U3Rhcn'
-    'RIZWlnaHQ=');
+    'RIZWlnaHQSOAoKbmV0d29ya19pZBgGIAEoDjIZLlRXLk5pbWlxLlByb3RvLk5ldHdvcmtJZFIJ'
+    'bmV0d29ya0lk');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

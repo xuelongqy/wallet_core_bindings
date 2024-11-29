@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
+import 'package:wallet_core_bindings/proto/BitcoinV2.pb.dart' as BitcoinV2;
+import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 
 import '../../utils.dart';
@@ -197,6 +199,108 @@ void main() {
       expect(output.encoded.length, 226);
       expectHex(
         output.encoded,
+        "01000000"
+        "01"
+        "e28c2b955293159898e34c6840d99bf4d390e2ee1c6f606939f18ee1e2000d05"
+        "02000000"
+        "6b483045022100b70d158b43cbcded60e6977e93f9a84966bc0cec6f2dfd1463d1223a90563f0d02207548d081069de570a494d0967ba388ff02641d91cadb060587ead95a98d4e3534121038eab72ec78e639d02758e7860cdec018b49498c307791f785aa3019622f4ea5b"
+        "ffffffff"
+        "02"
+        "5802000000000000"
+        "1976a914769bdff96a02f9135a1d19b749db6a78fe07dc9088ac"
+        "e510000000000000"
+        "1976a9149e089b6889e032d46e3b915a3392edfd616fb1c488ac"
+        "00000000",
+      );
+    });
+
+    test('SignTransaction', () {
+      final privateKey = parse_hex(
+          "7fdafb9db5bc501f2096e7d13d331dc7a75d9594af3d251313ba8b6200f4e384");
+      final txId = parse_hex(
+              "050d00e2e18ef13969606f1ceee290d3f49bd940684ce39898159352952b8ce2")
+          .reversed
+          .toList();
+
+      final signing = BitcoinV2.SigningInput(
+        privateKeys: [privateKey],
+        chainInfo: BitcoinV2.ChainInfo(
+          p2pkhPrefix: 0,
+          p2shPrefix: 5,
+          hrp: 'bitcoincash',
+        ),
+        builder: BitcoinV2.TransactionBuilder(
+          version: BitcoinV2.TransactionVersion.V1,
+          inputSelector: BitcoinV2.InputSelector.UseAll,
+          fixedDustThreshold: $fixnum.Int64(546),
+          inputs: [
+            BitcoinV2.Input(
+              outPoint: BitcoinV2.OutPoint(
+                hash: txId,
+                vout: 2,
+              ),
+              value: $fixnum.Int64(5151),
+              // Cash address without prefix.
+              receiverAddress: 'qzhlrcrcne07x94h99thved2pgzdtv8ccujjy73xya',
+              sighashType: TWBitcoinSigHashType.All.type |
+                  TWBitcoinSigHashType.Fork.type,
+            ),
+          ],
+          outputs: [
+            BitcoinV2.Output(
+              value: $fixnum.Int64(600),
+              // Legacy address.
+              toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
+            ),
+            BitcoinV2.Output(
+              value: $fixnum.Int64(4325),
+              // Cash address with an explicit prefix.
+              toAddress:
+                  'bitcoincash:qz0q3xmg38sr94rw8wg45vujah7kzma3cskxymnw06',
+            ),
+          ],
+        ),
+      );
+
+      final legacy = Bitcoin.SigningInput(
+        signingV2: signing,
+        coinType: TWCoinType.BitcoinCash.coin,
+      );
+
+      final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
+        legacy.writeToBuffer(),
+        TWCoinType.BitcoinCash,
+      ));
+
+      expect(plan.error, Common.SigningError.OK);
+      final planV2 = plan.planningResultV2;
+      expect(
+        planV2.error,
+        Common.SigningError.OK,
+        reason: planV2.errorMessage,
+      );
+
+      expect(planV2.inputs.length, 1);
+      expect(planV2.outputs.length, 2);
+      expect(planV2.vsizeEstimate, $fixnum.Int64(227));
+      expect(planV2.feeEstimate, $fixnum.Int64(226));
+      expect(planV2.change, $fixnum.Int64(0));
+
+      final output = Bitcoin.SigningOutput.fromBuffer(TWAnySigner.sign(
+        legacy.writeToBuffer(),
+        TWCoinType.BitcoinCash,
+      ));
+
+      expect(output.error, Common.SigningError.OK);
+      expect(output.hasSigningResultV2(), true);
+      final outputV2 = output.signingResultV2;
+      expect(
+        outputV2.error,
+        Common.SigningError.OK,
+        reason: outputV2.errorMessage,
+      );
+      expectHex(
+        outputV2.encoded,
         "01000000"
         "01"
         "e28c2b955293159898e34c6840d99bf4d390e2ee1c6f606939f18ee1e2000d05"

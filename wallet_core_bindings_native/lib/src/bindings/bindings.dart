@@ -2602,6 +2602,13 @@ class TrustWalletCoreBindings {
 
   set HRP_QTUM(ffi.Pointer<ffi.Char> value) => _HRP_QTUM.value = value;
 
+  late final ffi.Pointer<ffi.Pointer<ffi.Char>> _HRP_PACTUS =
+      _lookup<ffi.Pointer<ffi.Char>>('HRP_PACTUS');
+
+  ffi.Pointer<ffi.Char> get HRP_PACTUS => _HRP_PACTUS.value;
+
+  set HRP_PACTUS(ffi.Pointer<ffi.Char> value) => _HRP_PACTUS.value = value;
+
   late final ffi.Pointer<ffi.Pointer<ffi.Char>> _HRP_STRATIS =
       _lookup<ffi.Pointer<ffi.Char>>('HRP_STRATIS');
 
@@ -13907,6 +13914,7 @@ abstract class TWBlockchain {
   static const int TWBlockchainNativeEvmos = 53;
   static const int TWBlockchainNativeInjective = 54;
   static const int TWBlockchainBitcoinCash = 55;
+  static const int TWBlockchainPactus = 56;
 }
 
 /// Elliptic cruves
@@ -13998,34 +14006,35 @@ abstract class TWHRP {
   static const int TWHRPHarmony = 28;
   static const int TWHRPCardano = 29;
   static const int TWHRPQtum = 30;
-  static const int TWHRPStratis = 31;
-  static const int TWHRPNativeInjective = 32;
-  static const int TWHRPOsmosis = 33;
-  static const int TWHRPTerraV2 = 34;
-  static const int TWHRPCoreum = 35;
-  static const int TWHRPNativeZetaChain = 36;
-  static const int TWHRPNativeCanto = 37;
-  static const int TWHRPSommelier = 38;
-  static const int TWHRPFetchAI = 39;
-  static const int TWHRPMars = 40;
-  static const int TWHRPUmee = 41;
-  static const int TWHRPQuasar = 42;
-  static const int TWHRPPersistence = 43;
-  static const int TWHRPAkash = 44;
-  static const int TWHRPNoble = 45;
-  static const int TWHRPSei = 46;
-  static const int TWHRPStargaze = 47;
-  static const int TWHRPNativeEvmos = 48;
-  static const int TWHRPTia = 49;
-  static const int TWHRPDydx = 50;
-  static const int TWHRPJuno = 51;
-  static const int TWHRPTBinance = 52;
-  static const int TWHRPStride = 53;
-  static const int TWHRPAxelar = 54;
-  static const int TWHRPCrescent = 55;
-  static const int TWHRPKujira = 56;
-  static const int TWHRPComdex = 57;
-  static const int TWHRPNeutron = 58;
+  static const int TWHRPPactus = 31;
+  static const int TWHRPStratis = 32;
+  static const int TWHRPNativeInjective = 33;
+  static const int TWHRPOsmosis = 34;
+  static const int TWHRPTerraV2 = 35;
+  static const int TWHRPCoreum = 36;
+  static const int TWHRPNativeZetaChain = 37;
+  static const int TWHRPNativeCanto = 38;
+  static const int TWHRPSommelier = 39;
+  static const int TWHRPFetchAI = 40;
+  static const int TWHRPMars = 41;
+  static const int TWHRPUmee = 42;
+  static const int TWHRPQuasar = 43;
+  static const int TWHRPPersistence = 44;
+  static const int TWHRPAkash = 45;
+  static const int TWHRPNoble = 46;
+  static const int TWHRPSei = 47;
+  static const int TWHRPStargaze = 48;
+  static const int TWHRPNativeEvmos = 49;
+  static const int TWHRPTia = 50;
+  static const int TWHRPDydx = 51;
+  static const int TWHRPJuno = 52;
+  static const int TWHRPTBinance = 53;
+  static const int TWHRPStride = 54;
+  static const int TWHRPAxelar = 55;
+  static const int TWHRPCrescent = 56;
+  static const int TWHRPKujira = 57;
+  static const int TWHRPComdex = 58;
+  static const int TWHRPNeutron = 59;
 }
 
 /// Defines a resizable string.
@@ -14219,6 +14228,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeBlast = 81457;
   static const int TWCoinTypeBounceBit = 6001;
   static const int TWCoinTypeZkLinkNova = 810180;
+  static const int TWCoinTypePactus = 21888;
 }
 
 /// CoinTypeConfiguration functions
@@ -14875,6 +14885,8 @@ const int __MAC_14_5 = 140500;
 
 const int __MAC_15_0 = 150000;
 
+const int __MAC_15_1 = 150100;
+
 const int __IPHONE_2_0 = 20000;
 
 const int __IPHONE_2_1 = 20100;
@@ -15035,6 +15047,8 @@ const int __IPHONE_17_5 = 170500;
 
 const int __IPHONE_18_0 = 180000;
 
+const int __IPHONE_18_1 = 180100;
+
 const int __WATCHOS_1_0 = 10000;
 
 const int __WATCHOS_2_0 = 20000;
@@ -15130,6 +15144,8 @@ const int __WATCHOS_10_4 = 100400;
 const int __WATCHOS_10_5 = 100500;
 
 const int __WATCHOS_11_0 = 110000;
+
+const int __WATCHOS_11_1 = 110100;
 
 const int __TVOS_9_0 = 90000;
 
@@ -15229,6 +15245,8 @@ const int __TVOS_17_5 = 170500;
 
 const int __TVOS_18_0 = 180000;
 
+const int __TVOS_18_1 = 180100;
+
 const int __BRIDGEOS_2_0 = 20000;
 
 const int __BRIDGEOS_3_0 = 30000;
@@ -15283,6 +15301,8 @@ const int __BRIDGEOS_8_5 = 80500;
 
 const int __BRIDGEOS_9_0 = 90000;
 
+const int __BRIDGEOS_9_1 = 90100;
+
 const int __DRIVERKIT_19_0 = 190000;
 
 const int __DRIVERKIT_20_0 = 200000;
@@ -15311,6 +15331,8 @@ const int __DRIVERKIT_23_5 = 230500;
 
 const int __DRIVERKIT_24_0 = 240000;
 
+const int __DRIVERKIT_24_1 = 240100;
+
 const int __VISIONOS_1_0 = 10000;
 
 const int __VISIONOS_1_1 = 10100;
@@ -15318,6 +15340,8 @@ const int __VISIONOS_1_1 = 10100;
 const int __VISIONOS_1_2 = 10200;
 
 const int __VISIONOS_2_0 = 20000;
+
+const int __VISIONOS_2_1 = 20100;
 
 const int MAC_OS_X_VERSION_10_0 = 1000;
 
@@ -15443,9 +15467,11 @@ const int MAC_OS_VERSION_14_5 = 140500;
 
 const int MAC_OS_VERSION_15_0 = 150000;
 
+const int MAC_OS_VERSION_15_1 = 150100;
+
 const int __MAC_OS_X_VERSION_MIN_REQUIRED = 150000;
 
-const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150000;
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150100;
 
 const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
 

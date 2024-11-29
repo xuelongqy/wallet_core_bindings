@@ -14,6 +14,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'Nimiq.pbenum.dart';
+
+export 'Nimiq.pbenum.dart';
+
 /// Input data necessary to create a signed transaction.
 class SigningInput extends $pb.GeneratedMessage {
   factory SigningInput({
@@ -22,6 +26,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $fixnum.Int64? value,
     $fixnum.Int64? fee,
     $core.int? validityStartHeight,
+    NetworkId? networkId,
   }) {
     final $result = create();
     if (privateKey != null) {
@@ -38,6 +43,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (validityStartHeight != null) {
       $result.validityStartHeight = validityStartHeight;
+    }
+    if (networkId != null) {
+      $result.networkId = networkId;
     }
     return $result;
   }
@@ -62,6 +70,10 @@ class SigningInput extends $pb.GeneratedMessage {
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$core.int>(
         5, _omitFieldNames ? '' : 'validityStartHeight', $pb.PbFieldType.OU3)
+    ..e<NetworkId>(6, _omitFieldNames ? '' : 'networkId', $pb.PbFieldType.OE,
+        defaultOrMaker: NetworkId.UseDefault,
+        valueOf: NetworkId.valueOf,
+        enumValues: NetworkId.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -151,6 +163,19 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.bool hasValidityStartHeight() => $_has(4);
   @$pb.TagNumber(5)
   void clearValidityStartHeight() => clearField(5);
+
+  /// Network ID.
+  @$pb.TagNumber(6)
+  NetworkId get networkId => $_getN(5);
+  @$pb.TagNumber(6)
+  set networkId(NetworkId v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasNetworkId() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearNetworkId() => clearField(6);
 }
 
 /// Result containing the signed and encoded transaction.

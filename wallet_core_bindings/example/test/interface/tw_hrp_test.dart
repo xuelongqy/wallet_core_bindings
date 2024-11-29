@@ -32,7 +32,7 @@ void main() {
       expect(TWHRP.CryptoOrg.string, "cro");
       expect(TWHRP.Osmosis.string, "osmo");
       expect(TWHRP.Secret.string, "secret");
-      expect(TWHRP.Secret.string, "secret");
+      expect(TWHRP.Pactus.string, "pc");
     });
 
     test('HRPForString', () {
@@ -61,6 +61,7 @@ void main() {
       expect(TWHRP.forString("osmo"), TWHRP.Osmosis);
       expect(TWHRP.forString("ecash"), TWHRP.ECash);
       expect(TWHRP.forString("secret"), TWHRP.Secret);
+      expect(TWHRP.forString("pc"), TWHRP.Pactus);
     });
 
     test('HPRByCoinType', () {
@@ -88,6 +89,7 @@ void main() {
       expect(TWHRP.Osmosis, TWCoinType.Osmosis.hrp);
       expect(TWHRP.ECash, TWCoinType.ECash.hrp);
       expect(TWHRP.Secret, TWCoinType.Secret.hrp);
+      expect(TWHRP.Pactus, TWCoinType.Pactus.hrp);
 
       expect(TWHRP.Unknown, TWCoinType.Aion.hrp);
       expect(TWHRP.Unknown, TWCoinType.Callisto.hrp);

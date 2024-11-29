@@ -1127,7 +1127,7 @@ void main() {
           '620b719338efb419b0e1417bfbe01fc94a62d5669a4b8cbbf4e32ecc1ca3b872');
     });
 
-    test('CardanoSigning', () {
+    test('SignTransferTokenAmountNonUtf8', () {
       const ownAddress =
           "addr1q83kuum4jhwu3gxdwftdv2vezr0etmt3tp7phw5assltzl6t4afzguegnkcrdzp79vdcqswly775f33jvtpayl280qeqts960l";
       const privateKey =
@@ -1164,12 +1164,13 @@ void main() {
               'addr1q875r037fjeqveg6xv5wke922ff897eyrnshlj3ryp4mypzt4afzguegnkcrdzp79vdcqswly775f33jvtpayl280qeq7zgptp',
           changeAddress: ownAddress,
           amount: $fixnum.Int64(666),
+          // doesn't matter, max is used
           tokenAmount: Cardano.TokenBundle(
             token: [
               Cardano.TokenAmount(
                 policyId: gensTokenPolicy,
                 assetNameHex: gensTokenNameHex,
-                amount: intToBytes(666),
+                amount: intToBytes(666), // doesn't matter, max is used
               )
             ],
           ),
