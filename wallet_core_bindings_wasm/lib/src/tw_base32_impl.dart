@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWBase32].
+/// Wasm interface for [TWBase32].
 class TWBase32Impl extends TWBase32Interface {
   final WasmInstance wasm;
 

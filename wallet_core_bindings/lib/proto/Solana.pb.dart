@@ -3051,6 +3051,293 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   void clearErrorMessage() => clearField(4);
 }
 
+class MessageSigningInput extends $pb.GeneratedMessage {
+  factory MessageSigningInput({
+    $core.List<$core.int>? privateKey,
+    $core.String? message,
+  }) {
+    final $result = create();
+    if (privateKey != null) {
+      $result.privateKey = privateKey;
+    }
+    if (message != null) {
+      $result.message = message;
+    }
+    return $result;
+  }
+  MessageSigningInput._() : super();
+  factory MessageSigningInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory MessageSigningInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MessageSigningInput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
+    ..aOS(2, _omitFieldNames ? '' : 'message')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  MessageSigningInput clone() => MessageSigningInput()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  MessageSigningInput copyWith(void Function(MessageSigningInput) updates) =>
+      super.copyWith((message) => updates(message as MessageSigningInput))
+          as MessageSigningInput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningInput create() => MessageSigningInput._();
+  MessageSigningInput createEmptyInstance() => create();
+  static $pb.PbList<MessageSigningInput> createRepeated() =>
+      $pb.PbList<MessageSigningInput>();
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MessageSigningInput>(create);
+  static MessageSigningInput? _defaultInstance;
+
+  /// The secret private key used for signing (32 bytes).
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get privateKey => $_getN(0);
+  @$pb.TagNumber(1)
+  set privateKey($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPrivateKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPrivateKey() => clearField(1);
+
+  /// A UTF-8 regular message to sign.
+  @$pb.TagNumber(2)
+  $core.String get message => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set message($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasMessage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMessage() => clearField(2);
+}
+
+class MessageSigningOutput extends $pb.GeneratedMessage {
+  factory MessageSigningOutput({
+    $core.String? signature,
+    $0.SigningError? error,
+    $core.String? errorMessage,
+  }) {
+    final $result = create();
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    if (error != null) {
+      $result.error = error;
+    }
+    if (errorMessage != null) {
+      $result.errorMessage = errorMessage;
+    }
+    return $result;
+  }
+  MessageSigningOutput._() : super();
+  factory MessageSigningOutput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory MessageSigningOutput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MessageSigningOutput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'signature')
+    ..e<$0.SigningError>(2, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
+        defaultOrMaker: $0.SigningError.OK,
+        valueOf: $0.SigningError.valueOf,
+        enumValues: $0.SigningError.values)
+    ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  MessageSigningOutput clone() =>
+      MessageSigningOutput()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  MessageSigningOutput copyWith(void Function(MessageSigningOutput) updates) =>
+      super.copyWith((message) => updates(message as MessageSigningOutput))
+          as MessageSigningOutput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningOutput create() => MessageSigningOutput._();
+  MessageSigningOutput createEmptyInstance() => create();
+  static $pb.PbList<MessageSigningOutput> createRepeated() =>
+      $pb.PbList<MessageSigningOutput>();
+  @$core.pragma('dart2js:noInline')
+  static MessageSigningOutput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MessageSigningOutput>(create);
+  static MessageSigningOutput? _defaultInstance;
+
+  /// The signature, Base58-encoded.
+  @$pb.TagNumber(1)
+  $core.String get signature => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set signature($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasSignature() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSignature() => clearField(1);
+
+  /// error code, 0 is ok, other codes will be treated as errors
+  @$pb.TagNumber(2)
+  $0.SigningError get error => $_getN(1);
+  @$pb.TagNumber(2)
+  set error($0.SigningError v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasError() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearError() => clearField(2);
+
+  /// error code description
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => clearField(3);
+}
+
+class MessageVerifyingInput extends $pb.GeneratedMessage {
+  factory MessageVerifyingInput({
+    $core.String? message,
+    $core.List<$core.int>? publicKey,
+    $core.String? signature,
+  }) {
+    final $result = create();
+    if (message != null) {
+      $result.message = message;
+    }
+    if (publicKey != null) {
+      $result.publicKey = publicKey;
+    }
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    return $result;
+  }
+  MessageVerifyingInput._() : super();
+  factory MessageVerifyingInput.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory MessageVerifyingInput.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'MessageVerifyingInput',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'message')
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..aOS(3, _omitFieldNames ? '' : 'signature')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  MessageVerifyingInput clone() =>
+      MessageVerifyingInput()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  MessageVerifyingInput copyWith(
+          void Function(MessageVerifyingInput) updates) =>
+      super.copyWith((message) => updates(message as MessageVerifyingInput))
+          as MessageVerifyingInput;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageVerifyingInput create() => MessageVerifyingInput._();
+  MessageVerifyingInput createEmptyInstance() => create();
+  static $pb.PbList<MessageVerifyingInput> createRepeated() =>
+      $pb.PbList<MessageVerifyingInput>();
+  @$core.pragma('dart2js:noInline')
+  static MessageVerifyingInput getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MessageVerifyingInput>(create);
+  static MessageVerifyingInput? _defaultInstance;
+
+  /// The message signed.
+  @$pb.TagNumber(1)
+  $core.String get message => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set message($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasMessage() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMessage() => clearField(1);
+
+  /// Public key that will verify and recover the message from the signature.
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get publicKey => $_getN(1);
+  @$pb.TagNumber(2)
+  set publicKey($core.List<$core.int> v) {
+    $_setBytes(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasPublicKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPublicKey() => clearField(2);
+
+  /// The signature, Base58-encoded.
+  @$pb.TagNumber(3)
+  $core.String get signature => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set signature($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasSignature() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSignature() => clearField(3);
+}
+
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
 const _omitMessageNames =
     $core.bool.fromEnvironment('protobuf.omit_message_names');

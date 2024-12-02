@@ -39,6 +39,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     base32 = TWBase32Impl(_bindings);
     base58 = TWBase58Impl(_bindings);
     base64 = TWBase64Impl(_bindings);
+    bech32 = TWBech32Impl(_bindings);
     bitcoinAddress = TWBitcoinAddressImpl(_bindings);
     bitcoinMessageSigner = TWBitcoinMessageSignerImpl(_bindings);
     bitcoinScript = TWBitcoinScriptImpl(_bindings);
@@ -67,6 +68,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     hdWallet = TWHDWalletImpl(_bindings);
     hrp = TWHRPImpl(_bindings);
     liquidStaking = TWLiquidStakingImpl(_bindings);
+    messageSigner = TWMessageSignerImpl(_bindings);
     mnemonic = TWMnemonicImpl(_bindings);
     nearAccount = TWNEARAccountImpl(_bindings);
     nervosAddress = TWNervosAddressImpl(_bindings);

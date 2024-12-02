@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWBarz].
+/// Wasm interface for [TWBarz].
 class TWBarzImpl extends TWBarzInterface {
   final WasmInstance wasm;
 

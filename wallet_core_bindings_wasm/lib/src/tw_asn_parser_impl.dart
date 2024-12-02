@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWAsnParser].
+/// Wasm interface for [TWAsnParser].
 class TWASNParserImpl extends TWAsnParserInterface {
   final WasmInstance wasm;
 

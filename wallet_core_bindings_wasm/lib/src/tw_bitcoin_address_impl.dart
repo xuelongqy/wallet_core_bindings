@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWBitcoinAddress].
+/// Wasm interface for [TWBitcoinAddress].
 class TWBitcoinAddressImpl extends TWBitcoinAddressInterface {
   final WasmInstance wasm;
 

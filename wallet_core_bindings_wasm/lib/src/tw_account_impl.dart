@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWAccount].
+/// Wasm interface for [TWAccount].
 class TWAccountImpl extends TWAccountInterface {
   final WasmInstance wasm;
 

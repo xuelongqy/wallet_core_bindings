@@ -7275,7 +7275,7 @@ class TrustWalletCoreBindings {
   /// Decodes a Base58 string, checking the checksum. Returns null if the string is not a valid Base58 string.
   ///
   /// \param string The Base58 string to decode.
-  /// \return the decoded data, empty if the string is not a valid Base58 string with checksum.
+  /// \return the decoded data, null if the string is not a valid Base58 string with checksum.
   ffi.Pointer<TWData1> TWBase58Decode(
     ffi.Pointer<TWString1> string,
   ) {
@@ -7294,7 +7294,7 @@ class TrustWalletCoreBindings {
   /// Decodes a Base58 string, w/o checking the checksum. Returns null if the string is not a valid Base58 string.
   ///
   /// \param string The Base58 string to decode.
-  /// \return the decoded data, empty if the string is not a valid Base58 string without checksum.
+  /// \return the decoded data, null if the string is not a valid Base58 string without checksum.
   ffi.Pointer<TWData1> TWBase58DecodeNoCheck(
     ffi.Pointer<TWString1> string,
   ) {
@@ -12417,6 +12417,50 @@ class TrustWalletCoreBindings {
   late final _TWAccountExtendedPublicKey = _TWAccountExtendedPublicKeyPtr
       .asFunction<ffi.Pointer<TWString> Function(ffi.Pointer<TWAccount>)>();
 
+  /// Signs an arbitrary message to prove ownership of an address for off-chain services.
+  ///
+  /// \param coin The given coin type to sign the message for.
+  /// \param input The serialized data of a `MessageSigningInput` proto object, (e.g. `TW.Solana.Proto.MessageSigningInput`).
+  /// \return The serialized data of a `MessageSigningOutput` proto object, (e.g. `TW.Solana.Proto.MessageSigningOutput`).
+  ffi.Pointer<TWData1> TWMessageSignerSign(
+    int coin,
+    ffi.Pointer<TWData1> input,
+  ) {
+    return _TWMessageSignerSign(
+      coin,
+      input,
+    );
+  }
+
+  late final _TWMessageSignerSignPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Int32, ffi.Pointer<TWData1>)>>('TWMessageSignerSign');
+  late final _TWMessageSignerSign = _TWMessageSignerSignPtr.asFunction<
+      ffi.Pointer<TWData1> Function(int, ffi.Pointer<TWData1>)>();
+
+  /// Verifies a signature for a message.
+  ///
+  /// \param coin The given coin type to sign the message for.
+  /// \param input The serialized data of a verifying input (e.g. TW.Ethereum.Proto.MessageVerifyingInput).
+  /// \return whether the signature is valid.
+  bool TWMessageSignerVerify(
+    int coin,
+    ffi.Pointer<TWData1> input,
+  ) {
+    return _TWMessageSignerVerify(
+      coin,
+      input,
+    );
+  }
+
+  late final _TWMessageSignerVerifyPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Bool Function(ffi.Int32, ffi.Pointer<TWData1>)>>(
+      'TWMessageSignerVerify');
+  late final _TWMessageSignerVerify = _TWMessageSignerVerifyPtr.asFunction<
+      bool Function(int, ffi.Pointer<TWData1>)>();
+
   /// Sign a message.
   ///
   /// \param privateKey: the private key used for signing
@@ -12573,6 +12617,90 @@ class TrustWalletCoreBindings {
   late final _TWSolanaAddressDescription =
       _TWSolanaAddressDescriptionPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWSolanaAddress>)>();
+
+  /// Encodes data as a Bech32 string.
+  ///
+  /// \param hrp The human-readable part.
+  /// \param data The data part.
+  /// \return the encoded Bech32 string.
+  ffi.Pointer<TWString1> TWBech32Encode(
+    ffi.Pointer<TWString1> hrp,
+    ffi.Pointer<TWData1> data,
+  ) {
+    return _TWBech32Encode(
+      hrp,
+      data,
+    );
+  }
+
+  late final _TWBech32EncodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>>('TWBech32Encode');
+  late final _TWBech32Encode = _TWBech32EncodePtr.asFunction<
+      ffi.Pointer<TWString1> Function(
+          ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>();
+
+  /// Decodes a Bech32 string. Returns null if the string is not a valid Bech32 string.
+  ///
+  /// \param string The Bech32 string to decode.
+  /// \return the decoded data, null if the string is not a valid Bech32 string. Note that the human-readable part is not returned.
+  ffi.Pointer<TWData1> TWBech32Decode(
+    ffi.Pointer<TWString1> string,
+  ) {
+    return _TWBech32Decode(
+      string,
+    );
+  }
+
+  late final _TWBech32DecodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWString1>)>>('TWBech32Decode');
+  late final _TWBech32Decode = _TWBech32DecodePtr.asFunction<
+      ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>)>();
+
+  /// Encodes data as a Bech32m string.
+  ///
+  /// \param hrp The human-readable part.
+  /// \param data The data part.
+  /// \return the encoded Bech32m string.
+  ffi.Pointer<TWString1> TWBech32EncodeM(
+    ffi.Pointer<TWString1> hrp,
+    ffi.Pointer<TWData1> data,
+  ) {
+    return _TWBech32EncodeM(
+      hrp,
+      data,
+    );
+  }
+
+  late final _TWBech32EncodeMPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>)>>('TWBech32EncodeM');
+  late final _TWBech32EncodeM = _TWBech32EncodeMPtr.asFunction<
+      ffi.Pointer<TWString1> Function(
+          ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>();
+
+  /// Decodes a Bech32m string. Returns null if the string is not a valid Bech32m string.
+  ///
+  /// \param string The Bech32m string to decode.
+  /// \return the decoded data, null if the string is not a valid Bech32m string. Note that the human-readable part is not returned.
+  ffi.Pointer<TWData1> TWBech32DecodeM(
+    ffi.Pointer<TWString1> string,
+  ) {
+    return _TWBech32DecodeM(
+      string,
+    );
+  }
+
+  late final _TWBech32DecodeMPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWString1>)>>('TWBech32DecodeM');
+  late final _TWBech32DecodeM = _TWBech32DecodeMPtr.asFunction<
+      ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>)>();
 
   /// Calculate a counterfactual address for the smart contract wallet
   ///
@@ -14490,6 +14618,9 @@ final class TWNEARAccount extends ffi.Opaque {}
 /// This feature currently works on old legacy addresses only.
 final class TWBitcoinMessageSigner extends ffi.Opaque {}
 
+/// Represents a message signer to sign custom messages for any blockchain.
+final class TWMessageSigner extends ffi.Opaque {}
+
 /// StarkEx message signing and verification.
 ///
 /// StarkEx and some other wallets support a message signing & verification format, to create a proof (a signature)
@@ -14557,6 +14688,9 @@ abstract class TWEthereumChainID {
 
 /// Solana address helper functions
 final class TWSolanaAddress extends ffi.Opaque {}
+
+/// Bech32 encode / decode functions
+final class TWBech32 extends ffi.Opaque {}
 
 /// Barz functions
 final class TWBarz extends ffi.Opaque {}

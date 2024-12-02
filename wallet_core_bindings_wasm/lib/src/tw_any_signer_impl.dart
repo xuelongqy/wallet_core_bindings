@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWAnySigner].
+/// Wasm interface for [TWAnySigner].
 class TWAnySignerImpl extends TWAnySignerInterface {
   final WasmInstance wasm;
 

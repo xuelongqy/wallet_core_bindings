@@ -29,6 +29,9 @@ abstract class WalletCoreBindingsInterface {
   /// [TWBase64] interface.
   late TWBase64Interface base64;
 
+  /// [TWBech32] interface.
+  late TWBech32Interface bech32;
+
   /// [TWBitcoinAddress] interface.
   late TWBitcoinAddressInterface bitcoinAddress;
 
@@ -112,6 +115,9 @@ abstract class WalletCoreBindingsInterface {
 
   /// [TWLiquidStaking] interface.
   late TWLiquidStakingInterface liquidStaking;
+
+  /// [TWMessageSigner] interface.
+  late TWMessageSignerInterface messageSigner;
 
   /// [TWMnemonic] interface.
   late TWMnemonicInterface mnemonic;
@@ -250,6 +256,10 @@ TWBase58Interface get _base58Impl =>
 TWBase64Interface get _base64Impl =>
     WalletCoreBindingsInterface.instance.base64;
 
+/// [TWBech32] implement.
+TWBech32Interface get _bech32Impl =>
+    WalletCoreBindingsInterface.instance.bech32;
+
 /// [TWBitcoinAddress] implement.
 TWBitcoinAddressInterface get _bitcoinAddressImpl =>
     WalletCoreBindingsInterface.instance.bitcoinAddress;
@@ -358,6 +368,10 @@ TWHRPInterface get _hrpImpl => WalletCoreBindingsInterface.instance.hrp;
 /// [TWLiquidStaking] implement.
 TWLiquidStakingInterface get _liquidStakingImpl =>
     WalletCoreBindingsInterface.instance.liquidStaking;
+
+/// [TWMessageSigner] implement.
+TWMessageSignerInterface get _messageSignerImpl =>
+    WalletCoreBindingsInterface.instance.messageSigner;
 
 /// [TWMnemonic] implement.
 TWMnemonicInterface get _mnemonicImpl =>

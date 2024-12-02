@@ -1,6 +1,6 @@
 part of '../wallet_core_bindings_wasm.dart';
 
-/// Native interface for [TWAnyAddress].
+/// Wasm interface for [TWAnyAddress].
 class TWAnyAddressImpl extends TWAnyAddressInterface {
   final WasmInstance wasm;
 
