@@ -983,6 +983,8 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
     RewardDestination? rewardDestination,
     $core.Iterable<$core.String>? nominators,
     CallIndices? callIndices,
+    CallIndices? bondCallIndices,
+    CallIndices? nominateCallIndices,
   }) {
     final $result = create();
     if (controller != null) {
@@ -999,6 +1001,12 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
     }
     if (callIndices != null) {
       $result.callIndices = callIndices;
+    }
+    if (bondCallIndices != null) {
+      $result.bondCallIndices = bondCallIndices;
+    }
+    if (nominateCallIndices != null) {
+      $result.nominateCallIndices = nominateCallIndices;
     }
     return $result;
   }
@@ -1025,6 +1033,10 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
         enumValues: RewardDestination.values)
     ..pPS(4, _omitFieldNames ? '' : 'nominators')
     ..aOM<CallIndices>(5, _omitFieldNames ? '' : 'callIndices',
+        subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(6, _omitFieldNames ? '' : 'bondCallIndices',
+        subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(7, _omitFieldNames ? '' : 'nominateCallIndices',
         subBuilder: CallIndices.create)
     ..hasRequiredFields = false;
 
@@ -1110,6 +1122,36 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
   void clearCallIndices() => clearField(5);
   @$pb.TagNumber(5)
   CallIndices ensureCallIndices() => $_ensure(4);
+
+  /// Staking.Bond call indices
+  @$pb.TagNumber(6)
+  CallIndices get bondCallIndices => $_getN(5);
+  @$pb.TagNumber(6)
+  set bondCallIndices(CallIndices v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasBondCallIndices() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearBondCallIndices() => clearField(6);
+  @$pb.TagNumber(6)
+  CallIndices ensureBondCallIndices() => $_ensure(5);
+
+  /// Staking.Nominate call indices
+  @$pb.TagNumber(7)
+  CallIndices get nominateCallIndices => $_getN(6);
+  @$pb.TagNumber(7)
+  set nominateCallIndices(CallIndices v) {
+    setField(7, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasNominateCallIndices() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearNominateCallIndices() => clearField(7);
+  @$pb.TagNumber(7)
+  CallIndices ensureNominateCallIndices() => $_ensure(6);
 }
 
 /// Bond extra amount
@@ -1538,6 +1580,8 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
   factory Staking_ChillAndUnbond({
     $core.List<$core.int>? value,
     CallIndices? callIndices,
+    CallIndices? chillCallIndices,
+    CallIndices? unbondCallIndices,
   }) {
     final $result = create();
     if (value != null) {
@@ -1545,6 +1589,12 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
     }
     if (callIndices != null) {
       $result.callIndices = callIndices;
+    }
+    if (chillCallIndices != null) {
+      $result.chillCallIndices = chillCallIndices;
+    }
+    if (unbondCallIndices != null) {
+      $result.unbondCallIndices = unbondCallIndices;
     }
     return $result;
   }
@@ -1564,6 +1614,10 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OY)
     ..aOM<CallIndices>(2, _omitFieldNames ? '' : 'callIndices',
+        subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(3, _omitFieldNames ? '' : 'chillCallIndices',
+        subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(4, _omitFieldNames ? '' : 'unbondCallIndices',
         subBuilder: CallIndices.create)
     ..hasRequiredFields = false;
 
@@ -1619,6 +1673,36 @@ class Staking_ChillAndUnbond extends $pb.GeneratedMessage {
   void clearCallIndices() => clearField(2);
   @$pb.TagNumber(2)
   CallIndices ensureCallIndices() => $_ensure(1);
+
+  /// Staking.Chill call indices
+  @$pb.TagNumber(3)
+  CallIndices get chillCallIndices => $_getN(2);
+  @$pb.TagNumber(3)
+  set chillCallIndices(CallIndices v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasChillCallIndices() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearChillCallIndices() => clearField(3);
+  @$pb.TagNumber(3)
+  CallIndices ensureChillCallIndices() => $_ensure(2);
+
+  /// Staking.Unbond call indices
+  @$pb.TagNumber(4)
+  CallIndices get unbondCallIndices => $_getN(3);
+  @$pb.TagNumber(4)
+  set unbondCallIndices(CallIndices v) {
+    setField(4, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasUnbondCallIndices() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUnbondCallIndices() => clearField(4);
+  @$pb.TagNumber(4)
+  CallIndices ensureUnbondCallIndices() => $_ensure(3);
 }
 
 /// Chill

@@ -9,7 +9,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
       : Platform.isMacOS
           ? DynamicLibrary.open('libTrustWalletCore.dylib')
           : Platform.isIOS
-              ? DynamicLibrary.open('WalletCore.xcframework')
+              ? DynamicLibrary.process()
               : DynamicLibrary.open('libTrustWalletCore.so');
 
   /// Default TrustWalletCore bindings.

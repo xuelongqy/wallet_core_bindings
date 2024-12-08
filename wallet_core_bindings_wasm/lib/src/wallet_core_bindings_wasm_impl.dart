@@ -17,7 +17,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
   Future initialize() async {
     var wasmBytes = _wasmBytes;
     wasmBytes ??= (await rootBundle.load(
-            'packages/wallet_core_bindings_wasm/assets/wasm/wallet-core.wasm'))
+            'packages/wallet_core_bindings_wasm_assets/assets/wasm/wallet-core.wasm'))
         .buffer
         .asUint8List();
     final module = await compileWasmModule(

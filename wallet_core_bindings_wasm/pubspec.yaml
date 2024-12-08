@@ -1,6 +1,6 @@
 name: wallet_core_bindings_wasm
 description: "Dart bindings for trust wallet core."
-version: 4.1.20
+version: 4.1.21
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
 
   convert: ^3.1.1
   wasm_run_flutter: ^0.1.0
+  wasm_run: ^0.1.0+2
   wallet_core_bindings:
     path: ../wallet_core_bindings
 
@@ -28,9 +29,10 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   # To add assets to your package, add an assets section, like this:
-  assets:
-    - assets/wasm/
-
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+  #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages
   #

@@ -20,7 +20,7 @@ void main() {
 
       expect(id, 'kaia');
       expect(name, 'Kaia');
-      expect(symbol, 'KLAY');
+      expect(symbol, 'KAIA');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);
       expect(coin.p2shPrefix, 0x0);

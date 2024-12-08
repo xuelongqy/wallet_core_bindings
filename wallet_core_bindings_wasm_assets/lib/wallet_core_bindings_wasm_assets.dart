@@ -1,0 +1,1 @@
+library wallet_core_bindings_wasm_assets;

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
-import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
-import 'package:wasm_run_flutter/wasm_run_flutter.dart';
+import 'package:wallet_core_bindings_native/wallet_core_bindings_native.dart';
+//import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
+//import 'package:wasm_run_flutter/wasm_run_flutter.dart';
 
 void main() async {
-  await WasmRunLibrary.setUp(override: false);
   WidgetsFlutterBinding.ensureInitialized();
-  await WalletCoreBindingsWasmImpl().initialize();
+  // Native
+  await WalletCoreBindingsNativeImpl().initialize();
+  // Wasm
+  //await WasmRunLibrary.setUp(override: false);
+  //await WalletCoreBindingsWasmImpl().initialize();
   runApp(const MyApp());
 }
 
@@ -66,8 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     TWAnyAddress.isValid(
         '0x4E5B2e1dc63F6b91cb6Cd759936495434C7e972F', TWCoinType.Ethereum);
-    // final privateKey = TWPrivateKey();
-    // log(privateKey.data.toString());
+    final privateKey = TWPrivateKey();
+    print(privateKey.data.toString());
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
