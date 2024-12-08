@@ -1,0 +1,22 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - wallet_core_bindings_libs (4.1.20):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - wallet_core_bindings_libs (from `Flutter/ephemeral/.symlinks/plugins/wallet_core_bindings_libs/macos`)
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  wallet_core_bindings_libs:
+    :path: Flutter/ephemeral/.symlinks/plugins/wallet_core_bindings_libs/macos
+
+SPEC CHECKSUMS:
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  wallet_core_bindings_libs: 08085fcaf125c15006d05e6d953b7abce4ba7f6c
+
+PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+
+COCOAPODS: 1.16.2
