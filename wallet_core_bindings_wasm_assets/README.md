@@ -1,39 +1,12 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# wallet_core_bindings_wasm_assets
+[![Pub](https://img.shields.io/pub/v/wallet_core_bindings_wasm_assets)](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_wasm_assets)
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+Wasm file built by wallet core, used with [wallet_core_bindings_wasm](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_wasm).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Building
+Different from the official Wasm of wallet core, we modified it to support universal wasi and run on all platforms.
+* Modified repository [xuelongqy/wallet-core](https://github.com/xuelongqy/wallet-core/tree/STANDALONE_WASM).
+* Build documentation, see [wasm-building](https://developer.trustwallet.com/developer/wallet-core/developing-the-library/building#wasm-building).
 
 ## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
-```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+For comprehensive documentation, see [package repository](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings).

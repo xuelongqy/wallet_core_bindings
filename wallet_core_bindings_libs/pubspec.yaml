@@ -1,5 +1,5 @@
 name: wallet_core_bindings_libs
-description: "A new Flutter project."
+description: "wallet core dynamic library for wallet_core_bindings_native."
 version: 4.1.21
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 

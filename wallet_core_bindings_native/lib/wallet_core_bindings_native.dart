@@ -9,6 +9,8 @@ import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 
 import 'src/bindings/bindings.dart' as native_bindings;
 
+export 'src/bindings/bindings.dart' show TrustWalletCoreBindings;
+
 part 'src/extensions/uint8_list_extension.dart';
 part 'src/wallet_core_bindings_native_impl.dart';
 part 'src/tw_account_impl.dart';

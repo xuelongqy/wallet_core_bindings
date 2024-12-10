@@ -1,5 +1,52 @@
 # wallet_core_bindings_native
+[![License](https://img.shields.io/badge/license-AGPLv3-blue)](https://pub.dev/packages/wallet_core_bindings)
+[![Pub](https://img.shields.io/pub/v/wallet_core_bindings_native)](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_native)
+
 Native implementation of wallet_core_bindings.
+
+## Getting Started
+Usually, it needs to be used with [wallet_core_bindings_wasm_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_wasm_libs).
+
+```yaml
+dependencies:
+  wallet_core_bindings: version
+  wallet_core_bindings_native: version
+  wallet_core_bindings_libs: version
+```
+```dart
+import 'package:wallet_core_bindings/wallet_core_bindings.dart';
+import 'package:wallet_core_bindings_native/wallet_core_bindings_native.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await WalletCoreBindingsNativeImpl().initialize();
+  runApp(const MyApp());
+}
+```
+
+wallet_core_bindings_wasm_libs currently only supports Android and iOS. If you want to support other platforms, you need to import the dynamic library of wallet core into the project. See [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
+
+```yaml
+dependencies:
+  wallet_core_bindings: version
+  wallet_core_bindings_native: version
+```
+```dart
+import 'package:wallet_core_bindings/wallet_core_bindings.dart';
+import 'package:wallet_core_bindings_native/wallet_core_bindings_native.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final bindings = TrustWalletCoreBindings(DynamicLibrary.open('libTrustWalletCore.dylib'));
+  await WalletCoreBindingsNativeImpl(bindings).initialize();
+  runApp(const MyApp());
+}
+```
+
+## Usage
+For comprehensive documentation, see [package repository](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings).
+
+## Generate
 
 ### C Bindings
 

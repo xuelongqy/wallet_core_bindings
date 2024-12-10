@@ -1,4 +1,7 @@
 # wallet_core_bindings
+[![License](https://img.shields.io/badge/license-AGPLv3-blue)](https://pub.dev/packages/wallet_core_bindings)
+[![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings)
+
 Dart bindings for [Trust Wallet Core](https://github.com/trustwallet/wallet-core), used in Flutter and Dart.
 
 ## Features
@@ -8,6 +11,9 @@ Dart bindings for [Trust Wallet Core](https://github.com/trustwallet/wallet-core
 - APIs are repackaged for easier use.
 - Combined with Dart GC, there is no need to control memory.
 - Update the TrustWalletCore version synchronously and keep the APIs consistent.
+
+## Usage
+For comprehensive documentation, see [package repository](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings).
 
 ## Generate
 

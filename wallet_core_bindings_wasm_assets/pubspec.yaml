@@ -1,6 +1,6 @@
 name: wallet_core_bindings_wasm_assets
 description: "Wasm assets for wallet_core_bindings_wasm."
-version: 4.1.20
+version: 4.1.21
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
