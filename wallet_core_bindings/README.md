@@ -1,8 +1,16 @@
 # wallet_core_bindings
 [![License](https://img.shields.io/badge/license-AGPLv3-blue)](https://pub.dev/packages/wallet_core_bindings)
-[![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings)
 
 Dart bindings for [Trust Wallet Core](https://github.com/trustwallet/wallet-core), used in Flutter and Dart.
+
+## Packages
+|             Package              |                                                          Pub                                                           |
+|:--------------------------------:|:----------------------------------------------------------------------------------------------------------------------:|
+|       wallet_core_bindings       |       [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings)       |
+|   wallet_core_bindings_native    |   [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_native)    |
+|    wallet_core_bindings_wasm     |    [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_wasm)     |
+|    wallet_core_bindings_libs     |    [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_libs)     |
+| wallet_core_bindings_wasm_assets | [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_wasm_assets) |
 
 ## Features
 
@@ -68,6 +76,8 @@ void main() async {
 ```
 
 ## Usage
+* [API reference](https://pub.dev/documentation/wallet_core_bindings/latest/wallet_core_bindings/)
+
 wallet_core_bindings provides the complete test cases, you can find usage here. See [tests](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings/example/test). 
 
 ## Generate

@@ -1,11 +1,19 @@
 # wallet_core_bindings_native
 [![License](https://img.shields.io/badge/license-AGPLv3-blue)](https://pub.dev/packages/wallet_core_bindings)
-[![Pub](https://img.shields.io/pub/v/wallet_core_bindings_native)](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_native)
 
 Native implementation of wallet_core_bindings.
 
+## Packages
+|             Package              |                                                          Pub                                                           |
+|:--------------------------------:|:----------------------------------------------------------------------------------------------------------------------:|
+|       wallet_core_bindings       |       [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings)       |
+|   wallet_core_bindings_native    |   [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_native)    |
+|    wallet_core_bindings_wasm     |    [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_wasm)     |
+|    wallet_core_bindings_libs     |    [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_libs)     |
+| wallet_core_bindings_wasm_assets | [![Pub](https://img.shields.io/pub/v/wallet_core_bindings)](https://pub.dev/packages/wallet_core_bindings_wasm_assets) |
+
 ## Getting Started
-Usually, it needs to be used with [wallet_core_bindings_wasm_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_wasm_libs).
+Usually, it needs to be used with [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
 
 ```yaml
 dependencies:
@@ -24,7 +32,7 @@ void main() async {
 }
 ```
 
-wallet_core_bindings_wasm_libs currently only supports Android and iOS. If you want to support other platforms, you need to import the dynamic library of wallet core into the project. See [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
+wallet_core_bindings_libs currently only supports Android and iOS. If you want to support other platforms, you need to import the dynamic library of wallet core into the project. See [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
 
 ```yaml
 dependencies:
