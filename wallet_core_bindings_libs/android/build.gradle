@@ -3,7 +3,7 @@ import java.nio.file.Files
 import java.security.MessageDigest
 
 group = "com.xuelongqy.wallet_core_bindings_libs"
-version = "1.0-SNAPSHOT"
+version = "4.1.21"
 
 buildscript {
     ext.kotlin_version = "1.8.22"
@@ -84,8 +84,6 @@ android {
 }
 
 task downloadDependencies(type: Exec) {
-    def walletCoreVersion = "4.1.21"
-
     // Delete previously created /output subdirectory.
 
     def outputDir = file("$buildDir/output")
@@ -96,7 +94,7 @@ task downloadDependencies(type: Exec) {
 
     // Download all *.jar dependencies & verify their MD5 checksums.
     def filesToDownload = [
-            ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${walletCoreVersion}/wallet-core.aar", "md5": "de6d4a624bf23e295d3ce5faeaa3adaf", "destination": file("$buildDir/wallet-core.aar")]
+            ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "de6d4a624bf23e295d3ce5faeaa3adaf", "destination": file("$buildDir/wallet-core.aar")]
     ]
 
     filesToDownload.each { fileInfo ->

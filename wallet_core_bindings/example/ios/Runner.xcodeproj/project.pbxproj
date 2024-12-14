@@ -15,6 +15,8 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		E3FA26502D0C84BC0015CE5B /* WalletCoreCommon.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FA264F2D0C84BC0015CE5B /* WalletCoreCommon.xcframework */; };
+		E3FA26512D0C84BC0015CE5B /* WalletCoreCommon.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E3FA264F2D0C84BC0015CE5B /* WalletCoreCommon.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EA80EF885407093723C91300 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F2DABB3B252FFD1331C252 /* Pods_RunnerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E3FA26512D0C84BC0015CE5B /* WalletCoreCommon.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +68,7 @@
 		A01DFEB3ED4C517BAC7355A0 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		A3FAF19F912AE368FA321E2B /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		D3ECEF70EFB7586B189B38B1 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		E3FA264F2D0C84BC0015CE5B /* WalletCoreCommon.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WalletCoreCommon.xcframework; path = ../../../wallet_core_bindings_libs/macos/Frameworks/WalletCoreCommon.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3FA26502D0C84BC0015CE5B /* WalletCoreCommon.xcframework in Frameworks */,
 				5D2F9B7A811A211A6932AF65 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,7 +102,6 @@
 				37B85D158957BD8BAB6D906A /* Pods-RunnerTests.release.xcconfig */,
 				D3ECEF70EFB7586B189B38B1 /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -159,6 +163,7 @@
 		F66E7B06E5211E1B25A8C6F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E3FA264F2D0C84BC0015CE5B /* WalletCoreCommon.xcframework */,
 				730525874319F49B2CEB5E3F /* Pods_Runner.framework */,
 				88F2DABB3B252FFD1331C252 /* Pods_RunnerTests.framework */,
 			);

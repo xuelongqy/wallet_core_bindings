@@ -7,7 +7,7 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
   static final _defaultWalletCoreLibrary = Platform.isWindows
       ? DynamicLibrary.open('libTrustWalletCore.dll')
       : Platform.isMacOS
-          ? DynamicLibrary.open('libTrustWalletCore.dylib')
+          ? DynamicLibrary.process()
           : Platform.isIOS
               ? DynamicLibrary.process()
               : DynamicLibrary.open('libTrustWalletCore.so');

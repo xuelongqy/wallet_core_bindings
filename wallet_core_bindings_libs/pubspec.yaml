@@ -39,6 +39,8 @@ flutter:
         pluginClass: WalletCoreBindingsLibsPlugin
       ios:
         pluginClass: WalletCoreBindingsLibsPlugin
+      macos:
+        pluginClass: WalletCoreBindingsLibsPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

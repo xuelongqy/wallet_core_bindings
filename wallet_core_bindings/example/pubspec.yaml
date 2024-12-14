@@ -60,11 +60,15 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
   collection: ^1.18.0
-  wasm_run_flutter: ^0.1.0
-  wallet_core_bindings_wasm:
-    path: ../../wallet_core_bindings_wasm
-  wallet_core_bindings_wasm_assets:
-    path: ../../wallet_core_bindings_wasm_assets
+#  wasm_run_flutter: ^0.1.0
+#  wallet_core_bindings_wasm:
+#    path: ../../wallet_core_bindings_wasm
+#  wallet_core_bindings_wasm_assets:
+#    path: ../../wallet_core_bindings_wasm_assets
+
+dependency_overrides:
+  wallet_core_bindings:
+    path: ../../wallet_core_bindings
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
