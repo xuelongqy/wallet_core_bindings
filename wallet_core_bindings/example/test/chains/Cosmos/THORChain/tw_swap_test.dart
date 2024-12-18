@@ -316,7 +316,7 @@ void main() {
 
       // invoke swap
       final outputTWData = TWTHORChainSwap.buildSwap(inputData_);
-      expect(outputTWData.length, 153);
+      expect(outputTWData.length, 144);
       // parse result in proto
       final outputProto = THORChainSwap.SwapOutput.fromBuffer(outputTWData);
       expect(outputProto.fromChain, THORChainSwap.Chain.THOR);
@@ -331,6 +331,8 @@ void main() {
       txInput.fee = Cosmos.Fee(
         gas: $fixnum.Int64(50000000),
       );
+      // Override the chainId as it has been after a hardfork recently.
+      txInput.chainId = "thorchain-mainnet-v1";
       txInput.accountNumber = $fixnum.Int64(75247);
       txInput.sequence = $fixnum.Int64(8);
 
@@ -378,7 +380,7 @@ void main() {
 
       // invoke swap
       final outputTWData = TWTHORChainSwap.buildSwap(inputData_);
-      expect(outputTWData.length, 156);
+      expect(outputTWData.length, 147);
       // parse result in proto
       final outputProto = THORChainSwap.SwapOutput.fromBuffer(outputTWData);
       expect(outputProto.fromChain, THORChainSwap.Chain.THOR);
@@ -393,6 +395,7 @@ void main() {
       txInput.fee = Cosmos.Fee(
         gas: $fixnum.Int64(50000000),
       );
+      txInput.chainId = "thorchain-mainnet-v1";
       txInput.accountNumber = $fixnum.Int64(76456);
       txInput.sequence = $fixnum.Int64(0);
 

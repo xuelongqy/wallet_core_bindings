@@ -25,9 +25,9 @@ void main() {
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,
-          'https://blockexplorer.boba.network/tx/0x31533707c3feb3b10f7deeea387ff8893f229253e65ca6b14d2400bf95b5d103');
+          'https://eth.bobascan.com/tx/0x31533707c3feb3b10f7deeea387ff8893f229253e65ca6b14d2400bf95b5d103');
       expect(accUrl,
-          'https://blockexplorer.boba.network/address/0x4F96F50eDB37a19216d87693E5dB241e31bD3735');
+          'https://eth.bobascan.com/address/0x4F96F50eDB37a19216d87693E5dB241e31bD3735');
     });
   });
 }

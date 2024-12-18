@@ -8,7 +8,8 @@ abstract class WalletCoreBindingsLibsPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static WalletCoreBindingsLibsPlatform _instance = MethodChannelWalletCoreBindingsLibs();
+  static WalletCoreBindingsLibsPlatform _instance =
+      MethodChannelWalletCoreBindingsLibs();
 
   /// The default instance of [WalletCoreBindingsLibsPlatform] to use.
   ///

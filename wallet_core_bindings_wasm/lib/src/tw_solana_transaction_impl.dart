@@ -36,4 +36,10 @@ class TWSolanaTransactionImpl extends TWSolanaTransactionInterface {
     final func = wasm.getFunction('TWSolanaTransactionGetComputeUnitLimit')!;
     return func([encodedTx]).first as int;
   }
+
+  @override
+  int setFeePayer(int encodedTx, int feePayer) {
+    final func = wasm.getFunction('TWSolanaTransactionSetFeePayer')!;
+    return func([encodedTx, feePayer]).first as int;
+  }
 }

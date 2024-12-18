@@ -1,11 +1,11 @@
 name: wallet_core_bindings_libs
 description: "wallet core dynamic library for wallet_core_bindings_native."
-version: 4.1.21
+version: 4.1.22
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
-  sdk: ^3.5.4
-  flutter: '>=3.3.0'
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:

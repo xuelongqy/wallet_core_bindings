@@ -153,5 +153,70 @@ void main() {
         'AVUye82Mv+/aWeU2G+B6Nes365mUU2m8iqcGZn/8kFJvw4wY6AgKGG+vJHaknHlCDwE1yi1SIMVUUtNCOm3kHg8BAAIEODI+iWe7g68B9iwCy8bFkJKvsIEj350oSOpcv4gNnv/st+6qmqipl9lwMK6toB9TiL7LrJVfij+pKwr+pUKxfwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwZGb+UhFzL/7K26csOb57yM5bvF9xJrLEObOkAAAAAboZ09wD3Y5HNUl7aN8bwpCqowev1hMu7fSgziLswUSgMDAAUCECcAAAICAAEMAgAAAOgDAAAAAAAAAwAJA+gDAAAAAAAA',
       );
     });
+
+    test('SetFeePayer', () {
+      const coin = TWCoinType.Solana;
+
+      // base64 encoded
+      const originalTx =
+          "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQABA2uEKrOPvZNBtdUtSFXcg8+kj4O/Z1Ht/hwvnaqq5s6mTXd3KtwUyJFfRs2PBfeQW8xCEZvNr/5J/Tx8ltbn0pwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo+QRbvXWNKoOfaOL4cSpfYrmn/2TV+dBmct+HsmmwdAQICAAEMAgAAAACcnwYAAAAAAA==";
+
+      // Step 1 - Add fee payer to the transaction.
+      const feePayer = 'Eg5jqooyG6ySaXKbQUu4Lpvu2SqUPZrNkM4zXs9iUDLJ';
+      final updatedTx = TWSolanaTransaction.setFeePayer(originalTx, feePayer)!;
+
+      expect(updatedTx,
+          'AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAQTLKvCJtWpVdze8Fxjgy/Iyz1sC4U7gqnxmdSM/X2+bV2uEKrOPvZNBtdUtSFXcg8+kj4O/Z1Ht/hwvnaqq5s6mTXd3KtwUyJFfRs2PBfeQW8xCEZvNr/5J/Tx8ltbn0pwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo+QRbvXWNKoOfaOL4cSpfYrmn/2TV+dBmct+HsmmwdAQMCAQIMAgAAAACcnwYAAAAAAA==');
+
+      // Step 2 - Decode transaction into a `RawMessage` Protobuf.
+      final decodeOutputData =
+          TWTransactionDecoder.decode(coin, TWBase64.decode(updatedTx)!);
+      final decodeOutput = Solana.DecodingTransactionOutput.fromBuffer(
+        decodeOutputData,
+      );
+      expect(decodeOutput.error, Common.SigningError.OK);
+
+      // Step 3 - Obtain preimage hash.
+      final input = Solana.SigningInput(
+        rawMessage: decodeOutput.transaction,
+        txEncoding: Solana.Encoding.Base64,
+      );
+      final inputData = input.writeToBuffer();
+
+      final preImageHashesData =
+          TWTransactionCompiler.preImageHashes(coin, inputData);
+      final preSigningOutput =
+          Solana.PreSigningOutput.fromBuffer(preImageHashesData);
+      expect(preSigningOutput.signers.length, 2);
+      final preImageHash = preSigningOutput.data;
+      expectHex(
+        preImageHash,
+        '8002000104cb2af089b56a557737bc1718e0cbf232cf5b02e14ee0aa7c6675233f5f6f9b576b842ab38fbd9341b5d52d4855dc83cfa48f83bf6751edfe1c2f9daaaae6cea64d77772adc14c8915f46cd8f05f7905bcc42119bcdaffe49fd3c7c96d6e7d29c00000000000000000000000000000000000000000000000000000000000000002a3e4116ef5d634aa0e7da38be1c4a97d8ae69ffd9357e74199cb7e1ec9a6c1d01030201020c02000000009c9f060000000000',
+      );
+
+      // Step 4 - Compile transaction info.
+      // Simulate signature, normally obtained from signature server.
+      final feePayerSignature = parse_hex(
+          "feb9f15cc345fa156450676100033860edbe80a6f61dab8199e94fdc47678ecfdb95e3bc10ec0a7f863ab8ef5c38edae72db7e5d72855db225fd935fd59b700a");
+      final feePayerPublicKey = parse_hex(
+          "cb2af089b56a557737bc1718e0cbf232cf5b02e14ee0aa7c6675233f5f6f9b57");
+      final solSenderSignature = parse_hex(
+          "936cd6d176e701d1f748031925b2f029f6f1ab4b99aec76e24ccf05649ec269569a08ec0bd80f5fee1cb8d13ecd420bf50c5f64ae74c7afa267458cabb4e5804");
+      final solSenderPublicKey = parse_hex(
+          "6b842ab38fbd9341b5d52d4855dc83cfa48f83bf6751edfe1c2f9daaaae6cea6");
+
+      final outputData = TWTransactionCompiler.compileWithSignatures(
+        coin: coin,
+        txInputData: inputData,
+        signatures: [feePayerSignature, solSenderSignature],
+        publicKeys: [feePayerPublicKey, solSenderPublicKey],
+      );
+      const expectedTx =
+          "Av658VzDRfoVZFBnYQADOGDtvoCm9h2rgZnpT9xHZ47P25XjvBDsCn+GOrjvXDjtrnLbfl1yhV2yJf2TX9WbcAqTbNbRducB0fdIAxklsvAp9vGrS5mux24kzPBWSewmlWmgjsC9gPX+4cuNE+zUIL9QxfZK50x6+iZ0WMq7TlgEgAIAAQTLKvCJtWpVdze8Fxjgy/Iyz1sC4U7gqnxmdSM/X2+bV2uEKrOPvZNBtdUtSFXcg8+kj4O/Z1Ht/hwvnaqq5s6mTXd3KtwUyJFfRs2PBfeQW8xCEZvNr/5J/Tx8ltbn0pwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACo+QRbvXWNKoOfaOL4cSpfYrmn/2TV+dBmct+HsmmwdAQMCAQIMAgAAAACcnwYAAAAAAA==";
+      final output = Solana.SigningOutput.fromBuffer(outputData);
+      expect(output.encoded, expectedTx);
+      // Successfully broadcasted tx:
+      // https://explorer.solana.com/tx/66PAVjxFVGP4ctrkXmyNRhp6BdFT7gDe1k356DZzCRaBDTmJZF1ewGsbujWRjDTrt5utnz8oHZw3mg8qBNyct41w?cluster=devnet
+    });
   });
 }

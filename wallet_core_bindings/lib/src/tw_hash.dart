@@ -1,7 +1,7 @@
 part of '../wallet_core_bindings.dart';
 
 /// Hasher function type.
-typedef Uint8List TWHasher(Uint8List data);
+typedef TWHasher = Uint8List Function(Uint8List data);
 
 /// Hash functions
 class TWHash {

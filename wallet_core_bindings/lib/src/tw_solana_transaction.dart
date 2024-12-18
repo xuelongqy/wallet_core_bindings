@@ -49,7 +49,7 @@ class TWSolanaTransaction {
   /// and returns the updated transaction.
   ///
   /// \param [encodedTx] base64 encoded Solana transaction.
-  /// \price Unit [price] as a decimal string.
+  /// \param [price] Unit Price as a decimal string.
   /// \return base64 encoded Solana transaction. Null if an error occurred.
   static String? setComputeUnitPrice(String encodedTx, String price) =>
       TWString.fromPointer(_solanaTransactionImpl.setComputeUnitPrice(
@@ -60,10 +60,20 @@ class TWSolanaTransaction {
   /// and returns the updated transaction.
   ///
   /// \param [encodedTx] base64 encoded Solana transaction.
-  /// \limit Unit [limit] as a decimal string.
+  /// \param [limit] Unit Limit as a decimal string.
   /// \return base64 encoded Solana transaction. Null if an error occurred.
   static String? setComputeUnitLimit(String encodedTx, String limit) =>
       TWString.fromPointer(_solanaTransactionImpl.setComputeUnitLimit(
               TWString(encodedTx).pointer, TWString(limit).pointer))
+          .value;
+
+  /// Adds fee payer to the given transaction and returns the updated transaction.
+  ///
+  /// \param [encodedTx] base64 encoded Solana transaction.
+  /// \param [feePayer] fee payer account address. Must be a base58 encoded public key. It must NOT be in the account list yet.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  static String? setFeePayer(String encodedTx, String feePayer) =>
+      TWString.fromPointer(_solanaTransactionImpl.setFeePayer(
+              TWString(encodedTx).pointer, TWString(feePayer).pointer))
           .value;
 }

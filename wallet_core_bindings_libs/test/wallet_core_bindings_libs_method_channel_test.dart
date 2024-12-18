@@ -5,11 +5,13 @@ import 'package:wallet_core_bindings_libs/wallet_core_bindings_libs_method_chann
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelWalletCoreBindingsLibs platform = MethodChannelWalletCoreBindingsLibs();
+  MethodChannelWalletCoreBindingsLibs platform =
+      MethodChannelWalletCoreBindingsLibs();
   const MethodChannel channel = MethodChannel('wallet_core_bindings_libs');
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
       channel,
       (MethodCall methodCall) async {
         return '42';
@@ -18,7 +20,8 @@ void main() {
   });
 
   tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('getPlatformVersion', () async {

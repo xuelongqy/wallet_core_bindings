@@ -26,9 +26,9 @@ void main() {
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,
-          'https://www.nanolooker.com/block/C264DB7BF40738F0CEFF19B606746CB925B713E4B8699A055699E0DC8ABBC70F');
+          'https://nanexplorer.com/nano/block/C264DB7BF40738F0CEFF19B606746CB925B713E4B8699A055699E0DC8ABBC70F');
       expect(accUrl,
-          'https://www.nanolooker.com/account/nano_1wpj616kwhe1y38y1mspd8aub8i334cwybqco511iyuxm55zx8d67ptf1tsf');
+          'https://nanexplorer.com/nano/account/nano_1wpj616kwhe1y38y1mspd8aub8i334cwybqco511iyuxm55zx8d67ptf1tsf');
     });
   });
 }

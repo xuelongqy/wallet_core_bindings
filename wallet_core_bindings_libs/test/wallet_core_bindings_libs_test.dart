@@ -7,21 +7,24 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockWalletCoreBindingsLibsPlatform
     with MockPlatformInterfaceMixin
     implements WalletCoreBindingsLibsPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final WalletCoreBindingsLibsPlatform initialPlatform = WalletCoreBindingsLibsPlatform.instance;
+  final WalletCoreBindingsLibsPlatform initialPlatform =
+      WalletCoreBindingsLibsPlatform.instance;
 
   test('$MethodChannelWalletCoreBindingsLibs is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelWalletCoreBindingsLibs>());
+    expect(
+        initialPlatform, isInstanceOf<MethodChannelWalletCoreBindingsLibs>());
   });
 
   test('getPlatformVersion', () async {
-    WalletCoreBindingsLibs walletCoreBindingsLibsPlugin = WalletCoreBindingsLibs();
-    MockWalletCoreBindingsLibsPlatform fakePlatform = MockWalletCoreBindingsLibsPlatform();
+    WalletCoreBindingsLibs walletCoreBindingsLibsPlugin =
+        WalletCoreBindingsLibs();
+    MockWalletCoreBindingsLibsPlatform fakePlatform =
+        MockWalletCoreBindingsLibsPlatform();
     WalletCoreBindingsLibsPlatform.instance = fakePlatform;
 
     expect(await walletCoreBindingsLibsPlugin.getPlatformVersion(), '42');

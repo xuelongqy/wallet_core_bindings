@@ -25,12 +25,12 @@ There are two ways to use wallet_core_bindings, Native and Web Assembly. Please 
 
 | Platform | Native | Web Assembly | wallet_core_bindings_libs |
 |:--------:|:------:|:------------:|:-------------------------:|
-| Android  |   √    |      √       |             √             |
-|   iOS    |   √    |      √       |             √             |
-|  macOS   |   √    |      √       |             x             |
-|  Linux   |   √    |      √       |             x             |
-| Windows  |   x    |      √       |             x             |
-|   Web    |   x    |      √       |             x             |
+| Android  |   ✔️   |      ✔️      |            ✔️             |
+|   iOS    |   ✔️   |      ✔️      |            ✔️             |
+|  macOS   |   ✔️   |      ✔️      |            ✔️             |
+|  Linux   |   ✔️   |      ✔️      |            ❌️             |
+| Windows  |   ❌️   |      ✔️      |            ❌️             |
+|   Web    |   ❌️   |      ✔️      |            ❌️             |
 
 ### Native
 The native features of the platform rely on the dynamic library compiled by [Wallet Core](https://github.com/trustwallet/wallet-core), Binding with [dart:ffi](https://dart.dev/interop/c-interop).

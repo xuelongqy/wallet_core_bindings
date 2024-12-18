@@ -23,8 +23,8 @@ void main() {
       expect(coin.blockchain, TWBlockchain.Ethereum);
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
-      expect(txUrl, 'https://explorer.callisto.network/tx/t123');
-      expect(accUrl, 'https://explorer.callisto.network/addr/a12');
+      expect(txUrl, 'https://explorer.callistodao.org/tx/t123');
+      expect(accUrl, 'https://explorer.callistodao.org/address/a12');
     });
   });
 }

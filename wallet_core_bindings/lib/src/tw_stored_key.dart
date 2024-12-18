@@ -143,7 +143,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \param [password] Non-null block of data, password of the stored key
   /// \param [encryptionLevel] The level of encryption, see \TWStoredKeyEncryptionLevel
   /// TW_DEPRECATED_FOR("3.1.1", "[TWStoredKey.createLevelAndEncryption]")
-  @deprecated
+  @Deprecated('Use TWStoredKey.createLevelAndEncryption')
   TWStoredKey.createLevel({
     required String name,
     required Uint8List password,
