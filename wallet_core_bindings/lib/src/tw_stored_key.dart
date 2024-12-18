@@ -143,7 +143,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \param [password] Non-null block of data, password of the stored key
   /// \param [encryptionLevel] The level of encryption, see \TWStoredKeyEncryptionLevel
   /// TW_DEPRECATED_FOR("3.1.1", "[TWStoredKey.createLevelAndEncryption]")
-  @Deprecated('Use TWStoredKey.createLevelAndEncryption')
+  @Deprecated('Use TWStoredKey.createLevelAndEncryption.')
   TWStoredKey.createLevel({
     required String name,
     required Uint8List password,
@@ -187,7 +187,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \deprecated use [TWStoredKey.createLevel].
   /// \param [name] The name of the key to be stored
   /// \param [password] Non-null block of data, password of the stored key
-  @deprecated
+  @Deprecated('Use TWStoredKey.createLevel.')
   TWStoredKey({
     required String name,
     required Uint8List password,
@@ -209,7 +209,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \param encryption cipher encryption mode
   /// \note Returned object needs to be deleted with \TWStoredKeyDelete
   /// \return The stored key as a non-null pointer
-  @deprecated
+  @Deprecated('Use TWStoredKey.createLevel.')
   TWStoredKey.createEncryption({
     required String name,
     required Uint8List password,
@@ -315,7 +315,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \param [derivationPath] HD bip44 derivation path of the given coin
   /// \param [publicKey] Non-null public key of the given coin/address
   /// \param [extendedPublicKey] Non-null extended public key of the given coin/address
-  @deprecated
+  @Deprecated('Use TWStoredKey.addAccountDerivation.')
   void addAccount({
     required String address,
     required TWCoinType coin,
