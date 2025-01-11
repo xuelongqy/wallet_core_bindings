@@ -11,10 +11,10 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
-      const txId = '5i8fbSL6r8yw2xcKmXxwkzHu3wpiyMLsyf2htCvDH8Ao';
+      const txId = '68wBKsZyYXmCUydDmabQ71kTcFWTfDG7tFmTLk1HgNdN';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId =
-          '0x259ff8074ab425cbb489f236e18e08f03f1a7856bdf7c7a2877bd64f738b5015';
+          '0x54e80d76d790c277f5a44f3ce92f53d26f5894892bf395dee6375988876be6b2';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
 
       expect(id, 'sui');
@@ -25,9 +25,9 @@ void main() {
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,
-          'https://explorer.sui.io//txblock/5i8fbSL6r8yw2xcKmXxwkzHu3wpiyMLsyf2htCvDH8Ao');
+          'https://suiscan.xyz/mainnet/tx/68wBKsZyYXmCUydDmabQ71kTcFWTfDG7tFmTLk1HgNdN');
       expect(accUrl,
-          'https://explorer.sui.io//address/0x259ff8074ab425cbb489f236e18e08f03f1a7856bdf7c7a2877bd64f738b5015');
+          'https://suiscan.xyz/mainnet/account/0x54e80d76d790c277f5a44f3ce92f53d26f5894892bf395dee6375988876be6b2');
     });
   });
 }

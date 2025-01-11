@@ -2427,6 +2427,7 @@ class Message_SignDirect extends $pb.GeneratedMessage {
   static Message_SignDirect? _defaultInstance;
 
   /// The prepared serialized TxBody
+  /// Required
   @$pb.TagNumber(1)
   $core.List<$core.int> get bodyBytes => $_getN(0);
   @$pb.TagNumber(1)
@@ -2440,6 +2441,7 @@ class Message_SignDirect extends $pb.GeneratedMessage {
   void clearBodyBytes() => clearField(1);
 
   /// The prepared serialized AuthInfo
+  /// Optional. If not provided, will be generated from `SigningInput` parameters.
   @$pb.TagNumber(2)
   $core.List<$core.int> get authInfoBytes => $_getN(1);
   @$pb.TagNumber(2)

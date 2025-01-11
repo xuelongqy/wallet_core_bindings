@@ -17,4 +17,6 @@ abstract class TWEthereumAbiInterface {
   int decodeCall(int data, int abi);
 
   int encodeTyped(int messageJson);
+
+  int getFunctionSignature(int abi);
 }

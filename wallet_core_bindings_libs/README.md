@@ -28,9 +28,6 @@ Required modifications
 set(CMAKE_CXX_VISIBILITY_PRESET hidden) -> set(CMAKE_CXX_VISIBILITY_PRESET default)
 ```
 
-### macOS
-After compiling on macOS, you get libTrustWalletCore.dylib, which does not meet the requirements for the current multi-CPU architecture. However, you can still import it into the project and run it on a device with a specified CPU architecture.
-
 ### Linux
 After compiling on Linux, you get libTrustWalletCore.dylib, which does not meet the requirements for the current multi-CPU architecture. However, you can still import it into the project and run it on a device with a specified CPU architecture.
 

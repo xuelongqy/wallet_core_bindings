@@ -120,4 +120,12 @@ class TWEthereumAbi {
   static Uint8List encodeTyped(String messageJson) => TWData.fromPointer(
         _ethereumAbiImpl.encodeTyped(TWString(messageJson).pointer),
       ).bytes()!;
+
+  /// Get function signature from Ethereum ABI json
+  ///
+  /// \param [abi] The function ABI json string, for example: {"inputs":[{"internalType":"bool","name":"arg1","type":"bool"}],"name":"fun1","outputs":[],"stateMutability":"nonpayable","type":"function"}
+  /// \return the function type signature, of the form "baz(int32,uint256)", null if the abi is invalid.
+  static String? getFunctionSignature(String abi) => TWString.fromPointer(
+        _ethereumAbiImpl.getFunctionSignature(TWString(abi).pointer),
+      ).value;
 }

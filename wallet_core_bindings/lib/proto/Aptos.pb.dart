@@ -405,6 +405,109 @@ class TokenTransferCoinsMessage extends $pb.GeneratedMessage {
   StructTag ensureFunction() => $_ensure(2);
 }
 
+class FungibleAssetTransferMessage extends $pb.GeneratedMessage {
+  factory FungibleAssetTransferMessage({
+    $core.String? metadataAddress,
+    $core.String? to,
+    $fixnum.Int64? amount,
+  }) {
+    final $result = create();
+    if (metadataAddress != null) {
+      $result.metadataAddress = metadataAddress;
+    }
+    if (to != null) {
+      $result.to = to;
+    }
+    if (amount != null) {
+      $result.amount = amount;
+    }
+    return $result;
+  }
+  FungibleAssetTransferMessage._() : super();
+  factory FungibleAssetTransferMessage.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory FungibleAssetTransferMessage.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'FungibleAssetTransferMessage',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Aptos.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'metadataAddress')
+    ..aOS(2, _omitFieldNames ? '' : 'to')
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  FungibleAssetTransferMessage clone() =>
+      FungibleAssetTransferMessage()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  FungibleAssetTransferMessage copyWith(
+          void Function(FungibleAssetTransferMessage) updates) =>
+      super.copyWith(
+              (message) => updates(message as FungibleAssetTransferMessage))
+          as FungibleAssetTransferMessage;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static FungibleAssetTransferMessage create() =>
+      FungibleAssetTransferMessage._();
+  FungibleAssetTransferMessage createEmptyInstance() => create();
+  static $pb.PbList<FungibleAssetTransferMessage> createRepeated() =>
+      $pb.PbList<FungibleAssetTransferMessage>();
+  @$core.pragma('dart2js:noInline')
+  static FungibleAssetTransferMessage getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<FungibleAssetTransferMessage>(create);
+  static FungibleAssetTransferMessage? _defaultInstance;
+
+  /// Fungible Asset address (string)
+  @$pb.TagNumber(1)
+  $core.String get metadataAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set metadataAddress($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasMetadataAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMetadataAddress() => clearField(1);
+
+  /// Destination Account address (string)
+  @$pb.TagNumber(2)
+  $core.String get to => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set to($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasTo() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTo() => clearField(2);
+
+  /// Amount to be transferred (uint64)
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get amount => $_getI64(2);
+  @$pb.TagNumber(3)
+  set amount($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasAmount() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAmount() => clearField(3);
+}
+
 /// Necessary fields to process a ManagedTokensRegisterMessage
 class ManagedTokensRegisterMessage extends $pb.GeneratedMessage {
   factory ManagedTokensRegisterMessage({
@@ -1434,6 +1537,7 @@ enum SigningInput_TransactionPayload {
   registerToken,
   liquidStakingMessage,
   tokenTransferCoins,
+  fungibleAssetTransfer,
   notSet
 }
 
@@ -1455,6 +1559,8 @@ class SigningInput extends $pb.GeneratedMessage {
     ManagedTokensRegisterMessage? registerToken,
     LiquidStaking? liquidStakingMessage,
     TokenTransferCoinsMessage? tokenTransferCoins,
+    FungibleAssetTransferMessage? fungibleAssetTransfer,
+    $core.String? abi,
   }) {
     final $result = create();
     if (sender != null) {
@@ -1502,6 +1608,12 @@ class SigningInput extends $pb.GeneratedMessage {
     if (tokenTransferCoins != null) {
       $result.tokenTransferCoins = tokenTransferCoins;
     }
+    if (fungibleAssetTransfer != null) {
+      $result.fungibleAssetTransfer = fungibleAssetTransfer;
+    }
+    if (abi != null) {
+      $result.abi = abi;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -1521,13 +1633,14 @@ class SigningInput extends $pb.GeneratedMessage {
     13: SigningInput_TransactionPayload.registerToken,
     14: SigningInput_TransactionPayload.liquidStakingMessage,
     15: SigningInput_TransactionPayload.tokenTransferCoins,
+    16: SigningInput_TransactionPayload.fungibleAssetTransfer,
     0: SigningInput_TransactionPayload.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'SigningInput',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Aptos.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [9, 10, 11, 12, 13, 14, 15])
+    ..oo(0, [9, 10, 11, 12, 13, 14, 15, 16])
     ..aOS(1, _omitFieldNames ? '' : 'sender')
     ..aInt64(2, _omitFieldNames ? '' : 'sequenceNumber')
     ..a<$fixnum.Int64>(
@@ -1559,6 +1672,10 @@ class SigningInput extends $pb.GeneratedMessage {
     ..aOM<TokenTransferCoinsMessage>(
         15, _omitFieldNames ? '' : 'tokenTransferCoins',
         subBuilder: TokenTransferCoinsMessage.create)
+    ..aOM<FungibleAssetTransferMessage>(
+        16, _omitFieldNames ? '' : 'fungibleAssetTransfer',
+        subBuilder: FungibleAssetTransferMessage.create)
+    ..aOS(21, _omitFieldNames ? '' : 'abi')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1789,6 +1906,32 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearTokenTransferCoins() => clearField(15);
   @$pb.TagNumber(15)
   TokenTransferCoinsMessage ensureTokenTransferCoins() => $_ensure(14);
+
+  @$pb.TagNumber(16)
+  FungibleAssetTransferMessage get fungibleAssetTransfer => $_getN(15);
+  @$pb.TagNumber(16)
+  set fungibleAssetTransfer(FungibleAssetTransferMessage v) {
+    setField(16, v);
+  }
+
+  @$pb.TagNumber(16)
+  $core.bool hasFungibleAssetTransfer() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearFungibleAssetTransfer() => clearField(16);
+  @$pb.TagNumber(16)
+  FungibleAssetTransferMessage ensureFungibleAssetTransfer() => $_ensure(15);
+
+  @$pb.TagNumber(21)
+  $core.String get abi => $_getSZ(16);
+  @$pb.TagNumber(21)
+  set abi($core.String v) {
+    $_setString(16, v);
+  }
+
+  @$pb.TagNumber(21)
+  $core.bool hasAbi() => $_has(16);
+  @$pb.TagNumber(21)
+  void clearAbi() => clearField(21);
 }
 
 /// Information related to the signed transaction

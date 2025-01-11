@@ -67,4 +67,11 @@ class TWEthereumAbiImpl extends TWEthereumAbiInterface {
       Pointer.fromAddress(messageJson),
     ).address;
   }
+
+  @override
+  int getFunctionSignature(int abi) {
+    return bindings.TWEthereumAbiGetFunctionSignature(
+      Pointer.fromAddress(abi),
+    ).address;
+  }
 }

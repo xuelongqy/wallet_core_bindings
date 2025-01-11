@@ -88,6 +88,23 @@ final $typed_data.Uint8List tokenTransferCoinsMessageDescriptor = $convert.base6
     'ABKARSBmFtb3VudBI1CghmdW5jdGlvbhgDIAEoCzIZLlRXLkFwdG9zLlByb3RvLlN0cnVjdFRh'
     'Z1IIZnVuY3Rpb24=');
 
+@$core.Deprecated('Use fungibleAssetTransferMessageDescriptor instead')
+const FungibleAssetTransferMessage$json = {
+  '1': 'FungibleAssetTransferMessage',
+  '2': [
+    {'1': 'metadata_address', '3': 1, '4': 1, '5': 9, '10': 'metadataAddress'},
+    {'1': 'to', '3': 2, '4': 1, '5': 9, '10': 'to'},
+    {'1': 'amount', '3': 3, '4': 1, '5': 4, '10': 'amount'},
+  ],
+};
+
+/// Descriptor for `FungibleAssetTransferMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List fungibleAssetTransferMessageDescriptor =
+    $convert.base64Decode(
+        'ChxGdW5naWJsZUFzc2V0VHJhbnNmZXJNZXNzYWdlEikKEG1ldGFkYXRhX2FkZHJlc3MYASABKA'
+        'lSD21ldGFkYXRhQWRkcmVzcxIOCgJ0bxgCIAEoCVICdG8SFgoGYW1vdW50GAMgASgEUgZhbW91'
+        'bnQ=');
+
 @$core.Deprecated('Use managedTokensRegisterMessageDescriptor instead')
 const ManagedTokensRegisterMessage$json = {
   '1': 'ManagedTokensRegisterMessage',
@@ -394,6 +411,16 @@ const SigningInput$json = {
       '9': 0,
       '10': 'tokenTransferCoins'
     },
+    {
+      '1': 'fungible_asset_transfer',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Aptos.Proto.FungibleAssetTransferMessage',
+      '9': 0,
+      '10': 'fungibleAssetTransfer'
+    },
+    {'1': 'abi', '3': 21, '4': 1, '5': 9, '10': 'abi'},
   ],
   '8': [
     {'1': 'transaction_payload'},
@@ -417,7 +444,10 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'cmVnaXN0ZXJUb2tlbhJVChZsaXF1aWRfc3Rha2luZ19tZXNzYWdlGA4gASgLMh0uVFcuQXB0b3'
     'MuUHJvdG8uTGlxdWlkU3Rha2luZ0gAUhRsaXF1aWRTdGFraW5nTWVzc2FnZRJdChR0b2tlbl90'
     'cmFuc2Zlcl9jb2lucxgPIAEoCzIpLlRXLkFwdG9zLlByb3RvLlRva2VuVHJhbnNmZXJDb2luc0'
-    '1lc3NhZ2VIAFISdG9rZW5UcmFuc2ZlckNvaW5zQhUKE3RyYW5zYWN0aW9uX3BheWxvYWQ=');
+    '1lc3NhZ2VIAFISdG9rZW5UcmFuc2ZlckNvaW5zEmYKF2Z1bmdpYmxlX2Fzc2V0X3RyYW5zZmVy'
+    'GBAgASgLMiwuVFcuQXB0b3MuUHJvdG8uRnVuZ2libGVBc3NldFRyYW5zZmVyTWVzc2FnZUgAUh'
+    'VmdW5naWJsZUFzc2V0VHJhbnNmZXISEAoDYWJpGBUgASgJUgNhYmlCFQoTdHJhbnNhY3Rpb25f'
+    'cGF5bG9hZA==');
 
 @$core.Deprecated('Use transactionAuthenticatorDescriptor instead')
 const TransactionAuthenticator$json = {

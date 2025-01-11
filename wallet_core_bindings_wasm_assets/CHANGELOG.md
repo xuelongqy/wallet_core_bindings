@@ -1,3 +1,6 @@
+## 4.2.1
+* Sync wallet-core [4.1.22...4.2.1](https://github.com/trustwallet/wallet-core/compare/4.1.22...4.2.1).
+
 ## 4.1.22
 * sdk: ">=3.0.0 <4.0.0"
 * flutter: ">=3.10.0"

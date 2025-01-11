@@ -311,5 +311,14 @@ void main() {
       expectHex(hash,
           'a85c2e2b118698e88db68a8105b794a8cc7cec074e89ef991cb4f5f533819cc2');
     });
+
+    test('GetFunctionSignature', () {
+      const abiJsonStr =
+          '{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}';
+
+      final result = TWEthereumAbi.getFunctionSignature(abiJsonStr);
+      const expected = 'transfer(address,uint256)';
+      expect(result, expected);
+    });
   });
 }

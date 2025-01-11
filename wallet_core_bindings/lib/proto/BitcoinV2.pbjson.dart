@@ -60,6 +60,20 @@ final $typed_data.Uint8List publicKeyOrHashDescriptor = $convert.base64Decode(
     'Cg9QdWJsaWNLZXlPckhhc2gSGAoGcHVia2V5GAEgASgMSABSBnB1YmtleRIUCgRoYXNoGAIgAS'
     'gMSABSBGhhc2hCCQoHdmFyaWFudA==');
 
+@$core.Deprecated('Use publicKeySignatureDescriptor instead')
+const PublicKeySignature$json = {
+  '1': 'PublicKeySignature',
+  '2': [
+    {'1': 'public_key', '3': 1, '4': 1, '5': 12, '10': 'publicKey'},
+    {'1': 'signature', '3': 2, '4': 1, '5': 12, '10': 'signature'},
+  ],
+};
+
+/// Descriptor for `PublicKeySignature`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List publicKeySignatureDescriptor = $convert.base64Decode(
+    'ChJQdWJsaWNLZXlTaWduYXR1cmUSHQoKcHVibGljX2tleRgBIAEoDFIJcHVibGljS2V5EhwKCX'
+    'NpZ25hdHVyZRgCIAEoDFIJc2lnbmF0dXJl');
+
 @$core.Deprecated('Use outPointDescriptor instead')
 const OutPoint$json = {
   '1': 'OutPoint',
@@ -173,6 +187,51 @@ const Input_InputBuilder$json = {
       '9': 0,
       '10': 'brc20Inscribe'
     },
+    {
+      '1': 'babylon_staking_timelock_path',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.InputBuilder.StakingTimelockPath',
+      '9': 0,
+      '10': 'babylonStakingTimelockPath'
+    },
+    {
+      '1': 'babylon_staking_unbonding_path',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.InputBuilder.StakingUnbondingPath',
+      '9': 0,
+      '10': 'babylonStakingUnbondingPath'
+    },
+    {
+      '1': 'babylon_staking_slashing_path',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.InputBuilder.StakingSlashingPath',
+      '9': 0,
+      '10': 'babylonStakingSlashingPath'
+    },
+    {
+      '1': 'babylon_unbonding_timelock_path',
+      '3': 18,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.InputBuilder.UnbondingTimelockPath',
+      '9': 0,
+      '10': 'babylonUnbondingTimelockPath'
+    },
+    {
+      '1': 'babylon_unbonding_slashing_path',
+      '3': 19,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.InputBuilder.UnbondingSlashingPath',
+      '9': 0,
+      '10': 'babylonUnbondingSlashingPath'
+    },
   ],
   '8': [
     {'1': 'variant'},
@@ -207,16 +266,28 @@ final $typed_data.Uint8List inputDescriptor = $convert.base64Decode(
     'aW5WMi5Qcm90by5JbnB1dC5JbnB1dEJ1aWxkZXJIAFINc2NyaXB0QnVpbGRlchIhCgtzY3JpcH'
     'RfZGF0YRgGIAEoDEgAUgpzY3JpcHREYXRhEisKEHJlY2VpdmVyX2FkZHJlc3MYByABKAlIAFIP'
     'cmVjZWl2ZXJBZGRyZXNzGiYKCFNlcXVlbmNlEhoKCHNlcXVlbmNlGAEgASgNUghzZXF1ZW5jZR'
-    'qrAgoMSW5wdXRCdWlsZGVyEhQKBHAycGsYAiABKAxIAFIEcDJwaxI7CgVwMnBraBgDIAEoCzIj'
+    'q9BwoMSW5wdXRCdWlsZGVyEhQKBHAycGsYAiABKAxIAFIEcDJwaxI7CgVwMnBraBgDIAEoCzIj'
     'LlRXLkJpdGNvaW5WMi5Qcm90by5QdWJsaWNLZXlPckhhc2hIAFIFcDJwa2gSPQoGcDJ3cGtoGA'
     'UgASgLMiMuVFcuQml0Y29pblYyLlByb3RvLlB1YmxpY0tleU9ySGFzaEgAUgZwMndwa2gSJAoN'
     'cDJ0cl9rZXlfcGF0aBgHIAEoDEgAUgtwMnRyS2V5UGF0aBJYCg5icmMyMF9pbnNjcmliZRgJIA'
     'EoCzIvLlRXLkJpdGNvaW5WMi5Qcm90by5JbnB1dC5JbnB1dEJyYzIwSW5zY3JpcHRpb25IAFIN'
-    'YnJjMjBJbnNjcmliZUIJCgd2YXJpYW50GlcKFklucHV0VGFwcm9vdFNjcmlwdFBhdGgSGAoHcG'
-    'F5bG9hZBgCIAEoDFIHcGF5bG9hZBIjCg1jb250cm9sX2Jsb2NrGAMgASgMUgxjb250cm9sQmxv'
-    'Y2saeQoVSW5wdXRCcmMyMEluc2NyaXB0aW9uEh8KC2luc2NyaWJlX3RvGAIgASgMUgppbnNjcm'
-    'liZVRvEhYKBnRpY2tlchgDIAEoCVIGdGlja2VyEicKD3RyYW5zZmVyX2Ftb3VudBgEIAEoCVIO'
-    'dHJhbnNmZXJBbW91bnRCEQoPY2xhaW1pbmdfc2NyaXB0');
+    'YnJjMjBJbnNjcmliZRJ+Ch1iYWJ5bG9uX3N0YWtpbmdfdGltZWxvY2tfcGF0aBgPIAEoCzI5Ll'
+    'RXLkJhYnlsb25TdGFraW5nLlByb3RvLklucHV0QnVpbGRlci5TdGFraW5nVGltZWxvY2tQYXRo'
+    'SABSGmJhYnlsb25TdGFraW5nVGltZWxvY2tQYXRoEoEBCh5iYWJ5bG9uX3N0YWtpbmdfdW5ib2'
+    '5kaW5nX3BhdGgYECABKAsyOi5UVy5CYWJ5bG9uU3Rha2luZy5Qcm90by5JbnB1dEJ1aWxkZXIu'
+    'U3Rha2luZ1VuYm9uZGluZ1BhdGhIAFIbYmFieWxvblN0YWtpbmdVbmJvbmRpbmdQYXRoEn4KHW'
+    'JhYnlsb25fc3Rha2luZ19zbGFzaGluZ19wYXRoGBEgASgLMjkuVFcuQmFieWxvblN0YWtpbmcu'
+    'UHJvdG8uSW5wdXRCdWlsZGVyLlN0YWtpbmdTbGFzaGluZ1BhdGhIAFIaYmFieWxvblN0YWtpbm'
+    'dTbGFzaGluZ1BhdGgShAEKH2JhYnlsb25fdW5ib25kaW5nX3RpbWVsb2NrX3BhdGgYEiABKAsy'
+    'Oy5UVy5CYWJ5bG9uU3Rha2luZy5Qcm90by5JbnB1dEJ1aWxkZXIuVW5ib25kaW5nVGltZWxvY2'
+    'tQYXRoSABSHGJhYnlsb25VbmJvbmRpbmdUaW1lbG9ja1BhdGgShAEKH2JhYnlsb25fdW5ib25k'
+    'aW5nX3NsYXNoaW5nX3BhdGgYEyABKAsyOy5UVy5CYWJ5bG9uU3Rha2luZy5Qcm90by5JbnB1dE'
+    'J1aWxkZXIuVW5ib25kaW5nU2xhc2hpbmdQYXRoSABSHGJhYnlsb25VbmJvbmRpbmdTbGFzaGlu'
+    'Z1BhdGhCCQoHdmFyaWFudBpXChZJbnB1dFRhcHJvb3RTY3JpcHRQYXRoEhgKB3BheWxvYWQYAi'
+    'ABKAxSB3BheWxvYWQSIwoNY29udHJvbF9ibG9jaxgDIAEoDFIMY29udHJvbEJsb2NrGnkKFUlu'
+    'cHV0QnJjMjBJbnNjcmlwdGlvbhIfCgtpbnNjcmliZV90bxgCIAEoDFIKaW5zY3JpYmVUbxIWCg'
+    'Z0aWNrZXIYAyABKAlSBnRpY2tlchInCg90cmFuc2Zlcl9hbW91bnQYBCABKAlSDnRyYW5zZmVy'
+    'QW1vdW50QhEKD2NsYWltaW5nX3NjcmlwdA==');
 
 @$core.Deprecated('Use outputDescriptor instead')
 const Output$json = {
@@ -329,6 +400,33 @@ const Output_OutputBuilder$json = {
       '10': 'brc20Inscribe'
     },
     {'1': 'op_return', '3': 12, '4': 1, '5': 12, '9': 0, '10': 'opReturn'},
+    {
+      '1': 'babylon_staking',
+      '3': 15,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.OutputBuilder.StakingOutput',
+      '9': 0,
+      '10': 'babylonStaking'
+    },
+    {
+      '1': 'babylon_unbonding',
+      '3': 16,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.OutputBuilder.UnbondingOutput',
+      '9': 0,
+      '10': 'babylonUnbonding'
+    },
+    {
+      '1': 'babylon_staking_op_return',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BabylonStaking.Proto.OutputBuilder.OpReturn',
+      '9': 0,
+      '10': 'babylonStakingOpReturn'
+    },
   ],
   '8': [
     {'1': 'variant'},
@@ -378,7 +476,7 @@ final $typed_data.Uint8List outputDescriptor = $convert.base64Decode(
     'CgZPdXRwdXQSFAoFdmFsdWUYASABKANSBXZhbHVlEkQKB2J1aWxkZXIYAiABKAsyKC5UVy5CaX'
     'Rjb2luVjIuUHJvdG8uT3V0cHV0Lk91dHB1dEJ1aWxkZXJIAFIHYnVpbGRlchIyChRjdXN0b21f'
     'c2NyaXB0X3B1YmtleRgDIAEoDEgAUhJjdXN0b21TY3JpcHRQdWJrZXkSHwoKdG9fYWRkcmVzcx'
-    'gEIAEoCUgAUgl0b0FkZHJlc3Ma/gQKDU91dHB1dEJ1aWxkZXISQwoEcDJzaBgBIAEoCzItLlRX'
+    'gEIAEoCUgAUgl0b0FkZHJlc3MatAcKDU91dHB1dEJ1aWxkZXISQwoEcDJzaBgBIAEoCzItLlRX'
     'LkJpdGNvaW5WMi5Qcm90by5PdXRwdXQuUmVkZWVtU2NyaXB0T3JIYXNoSABSBHAyc2gSFAoEcD'
     'JwaxgCIAEoDEgAUgRwMnBrEjsKBXAycGtoGAMgASgLMiMuVFcuQml0Y29pblYyLlByb3RvLlB1'
     'YmxpY0tleU9ySGFzaEgAUgVwMnBraBJFCgVwMndzaBgEIAEoCzItLlRXLkJpdGNvaW5WMi5Qcm'
@@ -389,13 +487,19 @@ final $typed_data.Uint8List outputDescriptor = $convert.base64Decode(
     'J0clNjcmlwdFBhdGgSQwodcDJ0cl9kYW5nZXJvdXNfYXNzdW1lX3R3ZWFrZWQYCCABKAxIAFIa'
     'cDJ0ckRhbmdlcm91c0Fzc3VtZVR3ZWFrZWQSWgoOYnJjMjBfaW5zY3JpYmUYCSABKAsyMS5UVy'
     '5CaXRjb2luVjIuUHJvdG8uT3V0cHV0Lk91dHB1dEJyYzIwSW5zY3JpcHRpb25IAFINYnJjMjBJ'
-    'bnNjcmliZRIdCglvcF9yZXR1cm4YDCABKAxIAFIIb3BSZXR1cm5CCQoHdmFyaWFudBpcChJSZW'
-    'RlZW1TY3JpcHRPckhhc2gSJQoNcmVkZWVtX3NjcmlwdBgBIAEoDEgAUgxyZWRlZW1TY3JpcHQS'
-    'FAoEaGFzaBgCIAEoDEgAUgRoYXNoQgkKB3ZhcmlhbnQaXQoXT3V0cHV0VGFwcm9vdFNjcmlwdF'
-    'BhdGgSIQoMaW50ZXJuYWxfa2V5GAEgASgMUgtpbnRlcm5hbEtleRIfCgttZXJrbGVfcm9vdBgC'
-    'IAEoDFIKbWVya2xlUm9vdBp6ChZPdXRwdXRCcmMyMEluc2NyaXB0aW9uEh8KC2luc2NyaWJlX3'
-    'RvGAEgASgMUgppbnNjcmliZVRvEhYKBnRpY2tlchgCIAEoCVIGdGlja2VyEicKD3RyYW5zZmVy'
-    'X2Ftb3VudBgDIAEoCVIOdHJhbnNmZXJBbW91bnRCDgoMdG9fcmVjaXBpZW50');
+    'bnNjcmliZRIdCglvcF9yZXR1cm4YDCABKAxIAFIIb3BSZXR1cm4SXwoPYmFieWxvbl9zdGFraW'
+    '5nGA8gASgLMjQuVFcuQmFieWxvblN0YWtpbmcuUHJvdG8uT3V0cHV0QnVpbGRlci5TdGFraW5n'
+    'T3V0cHV0SABSDmJhYnlsb25TdGFraW5nEmUKEWJhYnlsb25fdW5ib25kaW5nGBAgASgLMjYuVF'
+    'cuQmFieWxvblN0YWtpbmcuUHJvdG8uT3V0cHV0QnVpbGRlci5VbmJvbmRpbmdPdXRwdXRIAFIQ'
+    'YmFieWxvblVuYm9uZGluZxJsChliYWJ5bG9uX3N0YWtpbmdfb3BfcmV0dXJuGBEgASgLMi8uVF'
+    'cuQmFieWxvblN0YWtpbmcuUHJvdG8uT3V0cHV0QnVpbGRlci5PcFJldHVybkgAUhZiYWJ5bG9u'
+    'U3Rha2luZ09wUmV0dXJuQgkKB3ZhcmlhbnQaXAoSUmVkZWVtU2NyaXB0T3JIYXNoEiUKDXJlZG'
+    'VlbV9zY3JpcHQYASABKAxIAFIMcmVkZWVtU2NyaXB0EhQKBGhhc2gYAiABKAxIAFIEaGFzaEIJ'
+    'Cgd2YXJpYW50Gl0KF091dHB1dFRhcHJvb3RTY3JpcHRQYXRoEiEKDGludGVybmFsX2tleRgBIA'
+    'EoDFILaW50ZXJuYWxLZXkSHwoLbWVya2xlX3Jvb3QYAiABKAxSCm1lcmtsZVJvb3QaegoWT3V0'
+    'cHV0QnJjMjBJbnNjcmlwdGlvbhIfCgtpbnNjcmliZV90bxgBIAEoDFIKaW5zY3JpYmVUbxIWCg'
+    'Z0aWNrZXIYAiABKAlSBnRpY2tlchInCg90cmFuc2Zlcl9hbW91bnQYAyABKAlSDnRyYW5zZmVy'
+    'QW1vdW50Qg4KDHRvX3JlY2lwaWVudA==');
 
 @$core.Deprecated('Use chainInfoDescriptor instead')
 const ChainInfo$json = {

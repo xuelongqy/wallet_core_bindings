@@ -8478,6 +8478,26 @@ class TrustWalletCoreBindings {
   late final _TWEthereumAbiEncodeTyped = _TWEthereumAbiEncodeTypedPtr
       .asFunction<ffi.Pointer<TWData> Function(ffi.Pointer<TWString>)>();
 
+  /// Get function signature from Ethereum ABI json
+  ///
+  /// \param abi The function ABI json string, for example: {"inputs":[{"internalType":"bool","name":"arg1","type":"bool"}],"name":"fun1","outputs":[],"stateMutability":"nonpayable","type":"function"}
+  /// \return the function type signature, of the form "baz(int32,uint256)", null if the abi is invalid.
+  ffi.Pointer<TWString> TWEthereumAbiGetFunctionSignature(
+    ffi.Pointer<TWString> abi,
+  ) {
+    return _TWEthereumAbiGetFunctionSignature(
+      abi,
+    );
+  }
+
+  late final _TWEthereumAbiGetFunctionSignaturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>)>>('TWEthereumAbiGetFunctionSignature');
+  late final _TWEthereumAbiGetFunctionSignature =
+      _TWEthereumAbiGetFunctionSignaturePtr.asFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>();
+
   /// Implement format input as described in https://tezostaquito.io/docs/signing/
   ///
   /// \param message message to format e.g: Hello, World

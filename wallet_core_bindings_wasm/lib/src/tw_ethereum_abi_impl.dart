@@ -53,4 +53,10 @@ class TWEthereumAbiImpl extends TWEthereumAbiInterface {
     final func = wasm.getFunction('TWEthereumAbiEncodeTyped')!;
     return func([messageJson]).first as int;
   }
+
+  @override
+  int getFunctionSignature(int abi) {
+    final func = wasm.getFunction('TWEthereumAbiGetFunctionSignature')!;
+    return func([abi]).first as int;
+  }
 }

@@ -14,6 +14,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'BabylonStaking.pb.dart' as $1;
 import 'BitcoinV2.pbenum.dart';
 import 'Common.pbenum.dart' as $0;
 
@@ -114,6 +115,90 @@ class PublicKeyOrHash extends $pb.GeneratedMessage {
   $core.bool hasHash() => $_has(1);
   @$pb.TagNumber(2)
   void clearHash() => clearField(2);
+}
+
+/// Public key and corresponding signature.
+class PublicKeySignature extends $pb.GeneratedMessage {
+  factory PublicKeySignature({
+    $core.List<$core.int>? publicKey,
+    $core.List<$core.int>? signature,
+  }) {
+    final $result = create();
+    if (publicKey != null) {
+      $result.publicKey = publicKey;
+    }
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    return $result;
+  }
+  PublicKeySignature._() : super();
+  factory PublicKeySignature.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory PublicKeySignature.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'PublicKeySignature',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'signature', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  PublicKeySignature clone() => PublicKeySignature()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  PublicKeySignature copyWith(void Function(PublicKeySignature) updates) =>
+      super.copyWith((message) => updates(message as PublicKeySignature))
+          as PublicKeySignature;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PublicKeySignature create() => PublicKeySignature._();
+  PublicKeySignature createEmptyInstance() => create();
+  static $pb.PbList<PublicKeySignature> createRepeated() =>
+      $pb.PbList<PublicKeySignature>();
+  @$core.pragma('dart2js:noInline')
+  static PublicKeySignature getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PublicKeySignature>(create);
+  static PublicKeySignature? _defaultInstance;
+
+  /// Public key bytes. Type of the public key depends on the context.
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get publicKey => $_getN(0);
+  @$pb.TagNumber(1)
+  set publicKey($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPublicKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPublicKey() => clearField(1);
+
+  /// Signature 64-length byte array.
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get signature => $_getN(1);
+  @$pb.TagNumber(2)
+  set signature($core.List<$core.int> v) {
+    $_setBytes(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasSignature() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSignature() => clearField(2);
 }
 
 /// Bitcoin transaction out-point reference.
@@ -267,6 +352,11 @@ enum Input_InputBuilder_Variant {
   p2wpkh,
   p2trKeyPath,
   brc20Inscribe,
+  babylonStakingTimelockPath,
+  babylonStakingUnbondingPath,
+  babylonStakingSlashingPath,
+  babylonUnbondingTimelockPath,
+  babylonUnbondingSlashingPath,
   notSet
 }
 
@@ -277,6 +367,11 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
     PublicKeyOrHash? p2wpkh,
     $core.List<$core.int>? p2trKeyPath,
     Input_InputBrc20Inscription? brc20Inscribe,
+    $1.InputBuilder_StakingTimelockPath? babylonStakingTimelockPath,
+    $1.InputBuilder_StakingUnbondingPath? babylonStakingUnbondingPath,
+    $1.InputBuilder_StakingSlashingPath? babylonStakingSlashingPath,
+    $1.InputBuilder_UnbondingTimelockPath? babylonUnbondingTimelockPath,
+    $1.InputBuilder_UnbondingSlashingPath? babylonUnbondingSlashingPath,
   }) {
     final $result = create();
     if (p2pk != null) {
@@ -293,6 +388,21 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
     }
     if (brc20Inscribe != null) {
       $result.brc20Inscribe = brc20Inscribe;
+    }
+    if (babylonStakingTimelockPath != null) {
+      $result.babylonStakingTimelockPath = babylonStakingTimelockPath;
+    }
+    if (babylonStakingUnbondingPath != null) {
+      $result.babylonStakingUnbondingPath = babylonStakingUnbondingPath;
+    }
+    if (babylonStakingSlashingPath != null) {
+      $result.babylonStakingSlashingPath = babylonStakingSlashingPath;
+    }
+    if (babylonUnbondingTimelockPath != null) {
+      $result.babylonUnbondingTimelockPath = babylonUnbondingTimelockPath;
+    }
+    if (babylonUnbondingSlashingPath != null) {
+      $result.babylonUnbondingSlashingPath = babylonUnbondingSlashingPath;
     }
     return $result;
   }
@@ -311,6 +421,11 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
     5: Input_InputBuilder_Variant.p2wpkh,
     7: Input_InputBuilder_Variant.p2trKeyPath,
     9: Input_InputBuilder_Variant.brc20Inscribe,
+    15: Input_InputBuilder_Variant.babylonStakingTimelockPath,
+    16: Input_InputBuilder_Variant.babylonStakingUnbondingPath,
+    17: Input_InputBuilder_Variant.babylonStakingSlashingPath,
+    18: Input_InputBuilder_Variant.babylonUnbondingTimelockPath,
+    19: Input_InputBuilder_Variant.babylonUnbondingSlashingPath,
     0: Input_InputBuilder_Variant.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -318,7 +433,7 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [2, 3, 5, 7, 9])
+    ..oo(0, [2, 3, 5, 7, 9, 15, 16, 17, 18, 19])
     ..a<$core.List<$core.int>>(
         2, _omitFieldNames ? '' : 'p2pk', $pb.PbFieldType.OY)
     ..aOM<PublicKeyOrHash>(3, _omitFieldNames ? '' : 'p2pkh',
@@ -330,6 +445,21 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
     ..aOM<Input_InputBrc20Inscription>(
         9, _omitFieldNames ? '' : 'brc20Inscribe',
         subBuilder: Input_InputBrc20Inscription.create)
+    ..aOM<$1.InputBuilder_StakingTimelockPath>(
+        15, _omitFieldNames ? '' : 'babylonStakingTimelockPath',
+        subBuilder: $1.InputBuilder_StakingTimelockPath.create)
+    ..aOM<$1.InputBuilder_StakingUnbondingPath>(
+        16, _omitFieldNames ? '' : 'babylonStakingUnbondingPath',
+        subBuilder: $1.InputBuilder_StakingUnbondingPath.create)
+    ..aOM<$1.InputBuilder_StakingSlashingPath>(
+        17, _omitFieldNames ? '' : 'babylonStakingSlashingPath',
+        subBuilder: $1.InputBuilder_StakingSlashingPath.create)
+    ..aOM<$1.InputBuilder_UnbondingTimelockPath>(
+        18, _omitFieldNames ? '' : 'babylonUnbondingTimelockPath',
+        subBuilder: $1.InputBuilder_UnbondingTimelockPath.create)
+    ..aOM<$1.InputBuilder_UnbondingSlashingPath>(
+        19, _omitFieldNames ? '' : 'babylonUnbondingSlashingPath',
+        subBuilder: $1.InputBuilder_UnbondingSlashingPath.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -429,6 +559,96 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   void clearBrc20Inscribe() => clearField(9);
   @$pb.TagNumber(9)
   Input_InputBrc20Inscription ensureBrc20Inscribe() => $_ensure(4);
+
+  /// Spend a Staking Output via timelock path (staking time expired).
+  /// In other words, create a Withdraw transaction.
+  @$pb.TagNumber(15)
+  $1.InputBuilder_StakingTimelockPath get babylonStakingTimelockPath =>
+      $_getN(5);
+  @$pb.TagNumber(15)
+  set babylonStakingTimelockPath($1.InputBuilder_StakingTimelockPath v) {
+    setField(15, v);
+  }
+
+  @$pb.TagNumber(15)
+  $core.bool hasBabylonStakingTimelockPath() => $_has(5);
+  @$pb.TagNumber(15)
+  void clearBabylonStakingTimelockPath() => clearField(15);
+  @$pb.TagNumber(15)
+  $1.InputBuilder_StakingTimelockPath ensureBabylonStakingTimelockPath() =>
+      $_ensure(5);
+
+  /// Spend a Staking Output via unbonding path.
+  /// In other words, create an Unbonding transaction.
+  @$pb.TagNumber(16)
+  $1.InputBuilder_StakingUnbondingPath get babylonStakingUnbondingPath =>
+      $_getN(6);
+  @$pb.TagNumber(16)
+  set babylonStakingUnbondingPath($1.InputBuilder_StakingUnbondingPath v) {
+    setField(16, v);
+  }
+
+  @$pb.TagNumber(16)
+  $core.bool hasBabylonStakingUnbondingPath() => $_has(6);
+  @$pb.TagNumber(16)
+  void clearBabylonStakingUnbondingPath() => clearField(16);
+  @$pb.TagNumber(16)
+  $1.InputBuilder_StakingUnbondingPath ensureBabylonStakingUnbondingPath() =>
+      $_ensure(6);
+
+  /// Spend a Staking Output via slashing path.
+  /// In other words, generate an unsigned slashing transaction, pre-sign the staker's signature only and share to Babylon PoS chain.
+  @$pb.TagNumber(17)
+  $1.InputBuilder_StakingSlashingPath get babylonStakingSlashingPath =>
+      $_getN(7);
+  @$pb.TagNumber(17)
+  set babylonStakingSlashingPath($1.InputBuilder_StakingSlashingPath v) {
+    setField(17, v);
+  }
+
+  @$pb.TagNumber(17)
+  $core.bool hasBabylonStakingSlashingPath() => $_has(7);
+  @$pb.TagNumber(17)
+  void clearBabylonStakingSlashingPath() => clearField(17);
+  @$pb.TagNumber(17)
+  $1.InputBuilder_StakingSlashingPath ensureBabylonStakingSlashingPath() =>
+      $_ensure(7);
+
+  /// Spend an Unbonding Output via timelock path (unbonding time expired).
+  /// In other words, create a Withdraw transaction spending an Unbonding transaction.
+  @$pb.TagNumber(18)
+  $1.InputBuilder_UnbondingTimelockPath get babylonUnbondingTimelockPath =>
+      $_getN(8);
+  @$pb.TagNumber(18)
+  set babylonUnbondingTimelockPath($1.InputBuilder_UnbondingTimelockPath v) {
+    setField(18, v);
+  }
+
+  @$pb.TagNumber(18)
+  $core.bool hasBabylonUnbondingTimelockPath() => $_has(8);
+  @$pb.TagNumber(18)
+  void clearBabylonUnbondingTimelockPath() => clearField(18);
+  @$pb.TagNumber(18)
+  $1.InputBuilder_UnbondingTimelockPath ensureBabylonUnbondingTimelockPath() =>
+      $_ensure(8);
+
+  /// Spend an Unbonding Output via slashing path.
+  /// In other words, generate an unsigned Slashing transaction, pre-sign the staker's signature only and share to Babylon PoS chain.
+  @$pb.TagNumber(19)
+  $1.InputBuilder_UnbondingSlashingPath get babylonUnbondingSlashingPath =>
+      $_getN(9);
+  @$pb.TagNumber(19)
+  set babylonUnbondingSlashingPath($1.InputBuilder_UnbondingSlashingPath v) {
+    setField(19, v);
+  }
+
+  @$pb.TagNumber(19)
+  $core.bool hasBabylonUnbondingSlashingPath() => $_has(9);
+  @$pb.TagNumber(19)
+  void clearBabylonUnbondingSlashingPath() => clearField(19);
+  @$pb.TagNumber(19)
+  $1.InputBuilder_UnbondingSlashingPath ensureBabylonUnbondingSlashingPath() =>
+      $_ensure(9);
 }
 
 class Input_InputTaprootScriptPath extends $pb.GeneratedMessage {
@@ -834,6 +1054,9 @@ enum Output_OutputBuilder_Variant {
   p2trDangerousAssumeTweaked,
   brc20Inscribe,
   opReturn,
+  babylonStaking,
+  babylonUnbonding,
+  babylonStakingOpReturn,
   notSet
 }
 
@@ -849,6 +1072,9 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
     $core.List<$core.int>? p2trDangerousAssumeTweaked,
     Output_OutputBrc20Inscription? brc20Inscribe,
     $core.List<$core.int>? opReturn,
+    $1.OutputBuilder_StakingOutput? babylonStaking,
+    $1.OutputBuilder_UnbondingOutput? babylonUnbonding,
+    $1.OutputBuilder_OpReturn? babylonStakingOpReturn,
   }) {
     final $result = create();
     if (p2sh != null) {
@@ -881,6 +1107,15 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
     if (opReturn != null) {
       $result.opReturn = opReturn;
     }
+    if (babylonStaking != null) {
+      $result.babylonStaking = babylonStaking;
+    }
+    if (babylonUnbonding != null) {
+      $result.babylonUnbonding = babylonUnbonding;
+    }
+    if (babylonStakingOpReturn != null) {
+      $result.babylonStakingOpReturn = babylonStakingOpReturn;
+    }
     return $result;
   }
   Output_OutputBuilder._() : super();
@@ -903,6 +1138,9 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
     8: Output_OutputBuilder_Variant.p2trDangerousAssumeTweaked,
     9: Output_OutputBuilder_Variant.brc20Inscribe,
     12: Output_OutputBuilder_Variant.opReturn,
+    15: Output_OutputBuilder_Variant.babylonStaking,
+    16: Output_OutputBuilder_Variant.babylonUnbonding,
+    17: Output_OutputBuilder_Variant.babylonStakingOpReturn,
     0: Output_OutputBuilder_Variant.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -910,7 +1148,7 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 12])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 15, 16, 17])
     ..aOM<Output_RedeemScriptOrHash>(1, _omitFieldNames ? '' : 'p2sh',
         subBuilder: Output_RedeemScriptOrHash.create)
     ..a<$core.List<$core.int>>(
@@ -933,6 +1171,15 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
         subBuilder: Output_OutputBrc20Inscription.create)
     ..a<$core.List<$core.int>>(
         12, _omitFieldNames ? '' : 'opReturn', $pb.PbFieldType.OY)
+    ..aOM<$1.OutputBuilder_StakingOutput>(
+        15, _omitFieldNames ? '' : 'babylonStaking',
+        subBuilder: $1.OutputBuilder_StakingOutput.create)
+    ..aOM<$1.OutputBuilder_UnbondingOutput>(
+        16, _omitFieldNames ? '' : 'babylonUnbonding',
+        subBuilder: $1.OutputBuilder_UnbondingOutput.create)
+    ..aOM<$1.OutputBuilder_OpReturn>(
+        17, _omitFieldNames ? '' : 'babylonStakingOpReturn',
+        subBuilder: $1.OutputBuilder_OpReturn.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1102,6 +1349,51 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
   $core.bool hasOpReturn() => $_has(9);
   @$pb.TagNumber(12)
   void clearOpReturn() => clearField(12);
+
+  /// Create a Babylon `Staking` output.
+  @$pb.TagNumber(15)
+  $1.OutputBuilder_StakingOutput get babylonStaking => $_getN(10);
+  @$pb.TagNumber(15)
+  set babylonStaking($1.OutputBuilder_StakingOutput v) {
+    setField(15, v);
+  }
+
+  @$pb.TagNumber(15)
+  $core.bool hasBabylonStaking() => $_has(10);
+  @$pb.TagNumber(15)
+  void clearBabylonStaking() => clearField(15);
+  @$pb.TagNumber(15)
+  $1.OutputBuilder_StakingOutput ensureBabylonStaking() => $_ensure(10);
+
+  /// Create a Babylon `Unbonding` output.
+  @$pb.TagNumber(16)
+  $1.OutputBuilder_UnbondingOutput get babylonUnbonding => $_getN(11);
+  @$pb.TagNumber(16)
+  set babylonUnbonding($1.OutputBuilder_UnbondingOutput v) {
+    setField(16, v);
+  }
+
+  @$pb.TagNumber(16)
+  $core.bool hasBabylonUnbonding() => $_has(11);
+  @$pb.TagNumber(16)
+  void clearBabylonUnbonding() => clearField(16);
+  @$pb.TagNumber(16)
+  $1.OutputBuilder_UnbondingOutput ensureBabylonUnbonding() => $_ensure(11);
+
+  /// Create a Babylon `Staking` OP_RETURN output.
+  @$pb.TagNumber(17)
+  $1.OutputBuilder_OpReturn get babylonStakingOpReturn => $_getN(12);
+  @$pb.TagNumber(17)
+  set babylonStakingOpReturn($1.OutputBuilder_OpReturn v) {
+    setField(17, v);
+  }
+
+  @$pb.TagNumber(17)
+  $core.bool hasBabylonStakingOpReturn() => $_has(12);
+  @$pb.TagNumber(17)
+  void clearBabylonStakingOpReturn() => clearField(17);
+  @$pb.TagNumber(17)
+  $1.OutputBuilder_OpReturn ensureBabylonStakingOpReturn() => $_ensure(12);
 }
 
 enum Output_RedeemScriptOrHash_Variant { redeemScript, hash, notSet }

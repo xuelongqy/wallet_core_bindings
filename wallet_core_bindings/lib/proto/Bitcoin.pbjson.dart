@@ -239,6 +239,7 @@ const SigningInput$json = {
       '10': 'disableDustFilter'
     },
     {'1': 'time', '3': 17, '4': 1, '5': 13, '10': 'time'},
+    {'1': 'zip_0317', '3': 18, '4': 1, '5': 8, '10': 'zip0317'},
     {
       '1': 'signing_v2',
       '3': 21,
@@ -287,11 +288,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'Vy5CaXRjb2luLlByb3RvLk91dHB1dEluZGV4UhNvdXRwdXRPcFJldHVybkluZGV4EkQKDWV4dH'
     'JhX291dHB1dHMYDiADKAsyHy5UVy5CaXRjb2luLlByb3RvLk91dHB1dEFkZHJlc3NSDGV4dHJh'
     'T3V0cHV0cxIgCgx1c2VfbWF4X3V0eG8YDyABKAhSCnVzZU1heFV0eG8SLgoTZGlzYWJsZV9kdX'
-    'N0X2ZpbHRlchgQIAEoCFIRZGlzYWJsZUR1c3RGaWx0ZXISEgoEdGltZRgRIAEoDVIEdGltZRI/'
-    'CgpzaWduaW5nX3YyGBUgASgLMiAuVFcuQml0Y29pblYyLlByb3RvLlNpZ25pbmdJbnB1dFIJc2'
-    'lnbmluZ1YyEjIKFGZpeGVkX2R1c3RfdGhyZXNob2xkGBggASgDSABSEmZpeGVkRHVzdFRocmVz'
-    'aG9sZBo6CgxTY3JpcHRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAxSBX'
-    'ZhbHVlOgI4AUINCgtkdXN0X3BvbGljeQ==');
+    'N0X2ZpbHRlchgQIAEoCFIRZGlzYWJsZUR1c3RGaWx0ZXISEgoEdGltZRgRIAEoDVIEdGltZRIZ'
+    'Cgh6aXBfMDMxNxgSIAEoCFIHemlwMDMxNxI/CgpzaWduaW5nX3YyGBUgASgLMiAuVFcuQml0Y2'
+    '9pblYyLlByb3RvLlNpZ25pbmdJbnB1dFIJc2lnbmluZ1YyEjIKFGZpeGVkX2R1c3RfdGhyZXNo'
+    'b2xkGBggASgDSABSEmZpeGVkRHVzdFRocmVzaG9sZBo6CgxTY3JpcHRzRW50cnkSEAoDa2V5GA'
+    'EgASgJUgNrZXkSFAoFdmFsdWUYAiABKAxSBXZhbHVlOgI4AUINCgtkdXN0X3BvbGljeQ==');
 
 @$core.Deprecated('Use transactionPlanDescriptor instead')
 const TransactionPlan$json = {
