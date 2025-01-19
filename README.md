@@ -28,7 +28,7 @@ There are two ways to use wallet_core_bindings, Native and Web Assembly. Please 
 | Android  |   ✔️   |      ✔️      |            ✔️             |
 |   iOS    |   ✔️   |      ✔️      |            ✔️             |
 |  macOS   |   ✔️   |      ✔️      |            ✔️             |
-|  Linux   |   ✔️   |      ✔️      |            ❌️             |
+|  Linux   |   ✔️   |      ✔️      |            ✔️             |
 | Windows  |   ❌️   |      ✔️      |            ❌️             |
 |   Web    |   ❌️   |      ✔️      |            ❌️             |
 

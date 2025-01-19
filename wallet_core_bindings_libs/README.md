@@ -15,6 +15,8 @@ Dynamic library built by wallet core, used with [wallet_core_bindings_native](ht
 Currently supported platforms, other platforms will be added if suitable methods are found in the future.
 - Android
 - iOS
+- macOS
+- Linux
 
 ## Building
 By default, wallet core does not expose interface methods. You need to make a small change and compile it before using it.
@@ -27,9 +29,6 @@ Required modifications
 # File: /cmake/StandardSettings.cmake
 set(CMAKE_CXX_VISIBILITY_PRESET hidden) -> set(CMAKE_CXX_VISIBILITY_PRESET default)
 ```
-
-### Linux
-After compiling on Linux, you get libTrustWalletCore.dylib, which does not meet the requirements for the current multi-CPU architecture. However, you can still import it into the project and run it on a device with a specified CPU architecture.
 
 ### Windows
 Windows is not supported at present.
