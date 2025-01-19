@@ -12,7 +12,7 @@ dependencies:
 
   wasm_run_flutter: ^0.1.0
   wasm_run: ^0.1.0+2
-  wallet_core_bindings: ^4.2.1
+  wallet_core_bindings: ^4.2.2
 #  wallet_core_bindings:
 #    path: ../wallet_core_bindings
 

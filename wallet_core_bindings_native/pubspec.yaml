@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   ffi: ^2.1.0
-  wallet_core_bindings: ^4.2.1
+  wallet_core_bindings: ^4.2.2
 #  wallet_core_bindings:
 #    path: ../wallet_core_bindings
 
