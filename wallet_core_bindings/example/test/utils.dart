@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -30,7 +31,14 @@ Future initWalletCoreImpl() async {
 
 Future initWalletCoreNativeImpl() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await WalletCoreBindingsNativeImpl().initialize();
+  await WalletCoreBindingsNativeImpl(TrustWalletCoreBindings(Platform.isWindows
+          ? DynamicLibrary.open('libTrustWalletCore.dll')
+          : Platform.isMacOS
+              ? DynamicLibrary.open('libTrustWalletCore.dylib')
+              : Platform.isIOS
+                  ? DynamicLibrary.process()
+                  : DynamicLibrary.open('libTrustWalletCore.so')))
+      .initialize();
 }
 
 Future initWalletCoreWasmImpl() async {

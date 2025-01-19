@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'wallet_core_bindings_libs'
-  s.version          = '4.2.1'
+  s.version          = '4.2.2'
   s.summary          = 'Trust Wallet core iOS libs for wallet_core_bindings'
   s.description      = <<-DESC
 Trust Wallet core iOS libs for wallet_core_bindings.
@@ -16,7 +16,7 @@ Trust Wallet core iOS libs for wallet_core_bindings.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
-  s.dependency 'TrustWalletCore' ,'4.2.1'
+  s.dependency 'TrustWalletCore' ,'4.2.2'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
