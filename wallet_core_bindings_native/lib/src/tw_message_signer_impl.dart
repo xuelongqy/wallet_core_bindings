@@ -21,4 +21,12 @@ class TWMessageSignerImpl extends TWMessageSignerInterface {
       Pointer.fromAddress(input),
     );
   }
+
+  @override
+  int preImageHashes(int coin, int input) {
+    return bindings.TWMessageSignerPreImageHashes(
+      coin,
+      Pointer.fromAddress(input),
+    ).address;
+  }
 }

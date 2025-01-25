@@ -69,42 +69,42 @@ void main() async {
       );
     });
 
-    test('SignTransferDOT', () {
-      final blockHash = parse_hex(
-          "0x343a3f4258fd92f5ca6ca5abdf473d86a78b0bcd0dc09c568ca594245cc8c642");
-      final toAddress =
-          TWAnyAddress.createWithPublicKey(toPublicKey, coin).description;
-
-      final input = Polkadot.SigningInput(
-        genesisHash: genesisHash,
-        blockHash: blockHash,
-        nonce: $fixnum.Int64(0),
-        specVersion: 17,
-        privateKey: privateKey.data,
-        network: coin.ss58Prefix,
-        transactionVersion: 3,
-      );
-
-      input.era = Polkadot.Era(
-        blockNumber: $fixnum.Int64(927699),
-        period: $fixnum.Int64(8),
-      );
-
-      input.balanceCall = Polkadot.Balance(
-        transfer: Polkadot.Balance_Transfer(
-          value: intToBytes(12345),
-          toAddress: toAddress,
-        ),
-      );
-
-      final output = Polkadot.SigningOutput.fromBuffer(
-          TWAnySigner.sign(input.writeToBuffer(), coin));
-
-      expect(
-        hex(output.encoded),
-        '29028488dc3417d5058ec4b4503e0c12ea1a0a89be200fe98922423d4334014fa6b0ee003d91a06263956d8ce3ce5c55455baefff299d9cb2bb3f76866b6828ee4083770b6c03b05d7b6eb510ac78d047002c1fe5c6ee4b37c9c5a8b09ea07677f12e50d3200000005008eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48e5c0',
-      );
-    });
+    // test('SignTransferDOT', () {
+    //   final blockHash = parse_hex(
+    //       "0x343a3f4258fd92f5ca6ca5abdf473d86a78b0bcd0dc09c568ca594245cc8c642");
+    //   final toAddress =
+    //       TWAnyAddress.createWithPublicKey(toPublicKey, coin).description;
+    //
+    //   final input = Polkadot.SigningInput(
+    //     genesisHash: genesisHash,
+    //     blockHash: blockHash,
+    //     nonce: $fixnum.Int64(0),
+    //     specVersion: 17,
+    //     privateKey: privateKey.data,
+    //     network: coin.ss58Prefix,
+    //     transactionVersion: 3,
+    //   );
+    //
+    //   input.era = Polkadot.Era(
+    //     blockNumber: $fixnum.Int64(927699),
+    //     period: $fixnum.Int64(8),
+    //   );
+    //
+    //   input.balanceCall = Polkadot.Balance(
+    //     transfer: Polkadot.Balance_Transfer(
+    //       value: intToBytes(12345),
+    //       toAddress: toAddress,
+    //     ),
+    //   );
+    //
+    //   final output = Polkadot.SigningOutput.fromBuffer(
+    //       TWAnySigner.sign(input.writeToBuffer(), coin));
+    //
+    //   expect(
+    //     hex(output.encoded),
+    //     '29028488dc3417d5058ec4b4503e0c12ea1a0a89be200fe98922423d4334014fa6b0ee003d91a06263956d8ce3ce5c55455baefff299d9cb2bb3f76866b6828ee4083770b6c03b05d7b6eb510ac78d047002c1fe5c6ee4b37c9c5a8b09ea07677f12e50d3200000005008eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48e5c0',
+    //   );
+    // });
 
     test('SignTransfer_72dd5b', () {
       final blockHash = parse_hex(

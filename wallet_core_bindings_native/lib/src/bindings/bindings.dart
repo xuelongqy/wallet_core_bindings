@@ -12461,6 +12461,28 @@ class TrustWalletCoreBindings {
   late final _TWAccountExtendedPublicKey = _TWAccountExtendedPublicKeyPtr
       .asFunction<ffi.Pointer<TWString> Function(ffi.Pointer<TWAccount>)>();
 
+  /// Computes preimage hashes of a message, needed for external signing.
+  ///
+  /// \param coin The given coin type to sign the message for.
+  /// \param input The serialized data of a `MessageSigningInput` proto object, (e.g. `TW.Solana.Proto.MessageSigningInput`).
+  /// \return The serialized data of a `PreSigningOutput` proto object, (e.g. `TxCompiler::Proto::PreSigningOutput`).
+  ffi.Pointer<TWData1> TWMessageSignerPreImageHashes(
+    int coin,
+    ffi.Pointer<TWData1> input,
+  ) {
+    return _TWMessageSignerPreImageHashes(
+      coin,
+      input,
+    );
+  }
+
+  late final _TWMessageSignerPreImageHashesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Int32,
+              ffi.Pointer<TWData1>)>>('TWMessageSignerPreImageHashes');
+  late final _TWMessageSignerPreImageHashes = _TWMessageSignerPreImageHashesPtr
+      .asFunction<ffi.Pointer<TWData1> Function(int, ffi.Pointer<TWData1>)>();
+
   /// Signs an arbitrary message to prove ownership of an address for off-chain services.
   ///
   /// \param coin The given coin type to sign the message for.

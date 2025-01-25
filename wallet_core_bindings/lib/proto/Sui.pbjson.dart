@@ -347,3 +347,55 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     '5hdHVyZRgCIAEoCVIJc2lnbmF0dXJlEjMKBWVycm9yGAMgASgOMh0uVFcuQ29tbW9uLlByb3Rv'
     'LlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZRgEIAEoCVIMZXJyb3JNZXNzYW'
     'dl');
+
+@$core.Deprecated('Use messageSigningInputDescriptor instead')
+const MessageSigningInput$json = {
+  '1': 'MessageSigningInput',
+  '2': [
+    {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
+    {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+
+/// Descriptor for `MessageSigningInput`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageSigningInputDescriptor = $convert.base64Decode(
+    'ChNNZXNzYWdlU2lnbmluZ0lucHV0Eh8KC3ByaXZhdGVfa2V5GAEgASgMUgpwcml2YXRlS2V5Eh'
+    'gKB21lc3NhZ2UYAiABKAlSB21lc3NhZ2U=');
+
+@$core.Deprecated('Use messageSigningOutputDescriptor instead')
+const MessageSigningOutput$json = {
+  '1': 'MessageSigningOutput',
+  '2': [
+    {'1': 'signature', '3': 1, '4': 1, '5': 9, '10': 'signature'},
+    {
+      '1': 'error',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
+    {'1': 'error_message', '3': 3, '4': 1, '5': 9, '10': 'errorMessage'},
+  ],
+};
+
+/// Descriptor for `MessageSigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageSigningOutputDescriptor = $convert.base64Decode(
+    'ChRNZXNzYWdlU2lnbmluZ091dHB1dBIcCglzaWduYXR1cmUYASABKAlSCXNpZ25hdHVyZRIzCg'
+    'VlcnJvchgCIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JSBWVycm9yEiMKDWVy'
+    'cm9yX21lc3NhZ2UYAyABKAlSDGVycm9yTWVzc2FnZQ==');
+
+@$core.Deprecated('Use messageVerifyingInputDescriptor instead')
+const MessageVerifyingInput$json = {
+  '1': 'MessageVerifyingInput',
+  '2': [
+    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+    {'1': 'public_key', '3': 2, '4': 1, '5': 12, '10': 'publicKey'},
+    {'1': 'signature', '3': 3, '4': 1, '5': 9, '10': 'signature'},
+  ],
+};
+
+/// Descriptor for `MessageVerifyingInput`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageVerifyingInputDescriptor = $convert.base64Decode(
+    'ChVNZXNzYWdlVmVyaWZ5aW5nSW5wdXQSGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZRIdCgpwdW'
+    'JsaWNfa2V5GAIgASgMUglwdWJsaWNLZXkSHAoJc2lnbmF0dXJlGAMgASgJUglzaWduYXR1cmU=');

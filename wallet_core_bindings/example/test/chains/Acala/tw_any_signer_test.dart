@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Polkadot.pb.dart' as Polkadot;
+import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:wallet_core_bindings/proto/TransactionCompiler.pb.dart'
     as TransactionCompiler;
@@ -13,6 +14,8 @@ void main() {
   initTest();
   group('TWAnySignerAcala', () {
     test('Sign', () {
+      // Successfully broadcasted: https://acala.subscan.io/extrinsic/3893620-3
+      const coin = TWCoinType.Polkadot;
       final secret = TWData.createWithHexString(
               '9066aa168c379a403becb235c15e7129c133c244e56a757ab07bc369288bcab0')
           .bytes()!;
@@ -30,7 +33,7 @@ void main() {
         nonce: $fixnum.Int64(0),
         specVersion: 2270,
         privateKey: secret,
-        network: 10,
+        network: 10, // Acala
         transactionVersion: 2,
         multiAddress: true,
         era: Polkadot.Era(
@@ -51,10 +54,14 @@ void main() {
         ),
       );
 
+      final txInputData = input.writeToBuffer();
+
       final preImageHashes = TWTransactionCompiler.preImageHashes(
-          TWCoinType.Acala, input.writeToBuffer());
+          coin, txInputData);
       final preSigningOutput =
           TransactionCompiler.PreSigningOutput.fromBuffer(preImageHashes);
+      expect(preSigningOutput.error, Common.SigningError.OK);
+
       final preImageHashData = Uint8List.fromList(preSigningOutput.dataHash);
       expectHex(
         preImageHashData,
@@ -62,7 +69,7 @@ void main() {
       );
 
       final output = Polkadot.SigningOutput.fromBuffer(
-          TWAnySigner.sign(input.writeToBuffer(), TWCoinType.Acala));
+          TWAnySigner.sign(input.writeToBuffer(), coin));
 
       expectHex(
         output.encoded,

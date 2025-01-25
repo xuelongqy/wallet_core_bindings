@@ -17,4 +17,10 @@ class TWMessageSignerImpl extends TWMessageSignerInterface {
     final func = wasm.getFunction('TWMessageSignerVerify')!;
     return (func([coin, input]).first as int) != 0;
   }
+
+  @override
+  int preImageHashes(int coin, int input) {
+    final func = wasm.getFunction('TWMessageSignerPreImageHashes')!;
+    return (func([coin, input]).first as int);
+  }
 }

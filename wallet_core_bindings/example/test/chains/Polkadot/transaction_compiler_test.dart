@@ -109,7 +109,7 @@ void main() {
         );
         final output = Polkadot.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.isEmpty, true);
-        expect(output.error, Common.SigningError.Error_invalid_params);
+        expect(output.error, Common.SigningError.Error_signatures_count);
       }
     });
   });

@@ -1,6 +1,6 @@
 name: wallet_core_bindings_wasm_assets
 description: "WASI wasi_snapshot_preview1 assets for wallet_core_bindings_wasm."
-version: 4.2.2
+version: 4.2.3
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
