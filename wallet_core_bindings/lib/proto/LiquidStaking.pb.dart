@@ -13,9 +13,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Aptos.pb.dart' as $6;
-import 'Cosmos.pb.dart' as $5;
-import 'Ethereum.pb.dart' as $4;
+import 'Aptos.pb.dart' as $8;
+import 'Cosmos.pb.dart' as $7;
+import 'Ethereum.pb.dart' as $6;
 import 'LiquidStaking.pbenum.dart';
 
 export 'LiquidStaking.pbenum.dart';
@@ -697,9 +697,9 @@ enum Output_SigningInputOneof { ethereum, cosmos, aptos, notSet }
 class Output extends $pb.GeneratedMessage {
   factory Output({
     Status? status,
-    $4.SigningInput? ethereum,
-    $5.SigningInput? cosmos,
-    $6.SigningInput? aptos,
+    $6.SigningInput? ethereum,
+    $7.SigningInput? cosmos,
+    $8.SigningInput? aptos,
   }) {
     final $result = create();
     if (status != null) {
@@ -738,12 +738,12 @@ class Output extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..oo(0, [2, 3, 4])
     ..aOM<Status>(1, _omitFieldNames ? '' : 'status', subBuilder: Status.create)
-    ..aOM<$4.SigningInput>(2, _omitFieldNames ? '' : 'ethereum',
-        subBuilder: $4.SigningInput.create)
-    ..aOM<$5.SigningInput>(3, _omitFieldNames ? '' : 'cosmos',
-        subBuilder: $5.SigningInput.create)
-    ..aOM<$6.SigningInput>(4, _omitFieldNames ? '' : 'aptos',
+    ..aOM<$6.SigningInput>(2, _omitFieldNames ? '' : 'ethereum',
         subBuilder: $6.SigningInput.create)
+    ..aOM<$7.SigningInput>(3, _omitFieldNames ? '' : 'cosmos',
+        subBuilder: $7.SigningInput.create)
+    ..aOM<$8.SigningInput>(4, _omitFieldNames ? '' : 'aptos',
+        subBuilder: $8.SigningInput.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -787,9 +787,9 @@ class Output extends $pb.GeneratedMessage {
   Status ensureStatus() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $4.SigningInput get ethereum => $_getN(1);
+  $6.SigningInput get ethereum => $_getN(1);
   @$pb.TagNumber(2)
-  set ethereum($4.SigningInput v) {
+  set ethereum($6.SigningInput v) {
     setField(2, v);
   }
 
@@ -798,12 +798,12 @@ class Output extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearEthereum() => clearField(2);
   @$pb.TagNumber(2)
-  $4.SigningInput ensureEthereum() => $_ensure(1);
+  $6.SigningInput ensureEthereum() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $5.SigningInput get cosmos => $_getN(2);
+  $7.SigningInput get cosmos => $_getN(2);
   @$pb.TagNumber(3)
-  set cosmos($5.SigningInput v) {
+  set cosmos($7.SigningInput v) {
     setField(3, v);
   }
 
@@ -812,12 +812,12 @@ class Output extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearCosmos() => clearField(3);
   @$pb.TagNumber(3)
-  $5.SigningInput ensureCosmos() => $_ensure(2);
+  $7.SigningInput ensureCosmos() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $6.SigningInput get aptos => $_getN(3);
+  $8.SigningInput get aptos => $_getN(3);
   @$pb.TagNumber(4)
-  set aptos($6.SigningInput v) {
+  set aptos($8.SigningInput v) {
     setField(4, v);
   }
 
@@ -826,7 +826,7 @@ class Output extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearAptos() => clearField(4);
   @$pb.TagNumber(4)
-  $6.SigningInput ensureAptos() => $_ensure(3);
+  $8.SigningInput ensureAptos() => $_ensure(3);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

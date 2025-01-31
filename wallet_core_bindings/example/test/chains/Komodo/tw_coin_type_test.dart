@@ -21,7 +21,7 @@ void main() {
       expect(name, 'Komodo');
       expect(symbol, 'KMD');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
-      expect(coin.blockchain, TWBlockchain.Zcash);
+      expect(coin.blockchain, TWBlockchain.Komodo);
       expect(coin.p2shPrefix, 0x55);
       expect(coin.staticPrefix, 0x0);
       expect(txUrl,

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
 import 'package:wallet_core_bindings/proto/BitcoinV2.pb.dart' as BitcoinV2;
+import 'package:wallet_core_bindings/proto/Utxo.pb.dart' as Utxo;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 
@@ -626,7 +627,7 @@ void main() {
           fixedDustThreshold: $fixnum.Int64(546),
           inputs: [
             BitcoinV2.Input(
-              outPoint: BitcoinV2.OutPoint(
+              outPoint: Utxo.OutPoint(
                 hash: txId,
                 vout: 1,
               ),

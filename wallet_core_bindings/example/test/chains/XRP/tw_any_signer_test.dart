@@ -101,6 +101,35 @@ void main() {
       );
     });
 
+    test('SignTrustSetPaymentNonStandardCurrencyCode', () {
+      // https://livenet.xrpl.org/transactions/31ABD41ECAD459BCD008DBA4377047413AEE7A965517DB240016B66A3F4A97E1
+      final key = parse_hex(
+          "574e99f7946cfa2a6ca9368ca72fd37e42583cddb9ecc746aa4cb194ef4b2480");
+
+      final input = Ripple.SigningInput(
+        opTrustSet: Ripple.OperationTrustSet(
+          limitAmount: Ripple.CurrencyAmount(
+            currency: '524C555344000000000000000000000000000000',
+            value: '1000000000',
+            issuer: 'rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De',
+          ),
+        ),
+        fee: $fixnum.Int64(500),
+        sequence: 93674950,
+        lastLedgerSequence: 187349950,
+        account: 'rDgEGKXWkHHr1HYq2ETnNAs9MdV4R8Gyt',
+        privateKey: key,
+      );
+
+      final output = Ripple.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+
+      expectHex(
+        output.encoded,
+        '12001422000000002405955dc6201b0b2abbbe63d6c38d7ea4c68000524c555344000000000000000000000000000000e5e961c6a025c9404aa7b662dd1df975be75d13e6840000000000001f47321039c77e9329017ced5f8673ebafcd29687a1fff181140c030062fa77865688fc5d74473045022100aa5f7ffc2e11008a3fe98173c66360937cd3a72cb0951aa1b46ba32675c36b2d02206bc02de3a609e5c4b9e1510a6431a7d7efc0fba4ab9586d6595b86047e46bac281140265c09d122fab2a261a80ee59f1f4cd8fba8cf8',
+      );
+    });
+
     test('SignTokenPayment0', () {
       // https://testnet.xrpl.org/transactions/8F7820892294598B58CFA2E1101D15ED98C179B25A2BA6DAEB4F5B727CB00D4E
       final key = parse_hex(
@@ -158,6 +187,35 @@ void main() {
       expect(
         hex(output.encoded),
         '12000022000000002401ec61e0201b01ec61f561d48a68d1c931200000000000000000000000000055534400000000004b4e9c06f24296074f7bc48f92a97916c6dc5ea968400000000000000a73210348c331ab218ba964150490c83875b06ccad2100b1f5707f296764712738cf1ca74473045022100a938783258d33e2e3e6099d1ab68fd85c3fd21adfa00e136a67bed8fddec6c9a02206cc6784c1f212f19dc939207643d361ceaa8334eb366722cf33b24dc7669dd7a81143a2f2f189d05abb8519cc9dee0e2dbc6fa53924183148132e4e20aecf29090ac428a9c43f230a829220d',
+      );
+    });
+
+    test('SignTokenPaymentNonStandardCurrencyCode', () {
+      // https://livenet.xrpl.org/transactions/6A1229450BB795E450C4AFAA7B72B58962621C0B8760372634796B3941718BFB
+      final key = parse_hex(
+          "574e99f7946cfa2a6ca9368ca72fd37e42583cddb9ecc746aa4cb194ef4b2480");
+
+      final input = Ripple.SigningInput(
+        opPayment: Ripple.OperationPayment(
+          currencyAmount: Ripple.CurrencyAmount(
+            currency: '524C555344000000000000000000000000000000',
+            value: '1',
+            issuer: 'rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De',
+          ),
+          destination: 'r4oPb529jpRA1tVTDARmBuZPYB2CJjKFac',
+        ),
+        fee: $fixnum.Int64(12),
+        sequence: 93674951,
+        lastLedgerSequence: 187349950,
+        account: 'rDgEGKXWkHHr1HYq2ETnNAs9MdV4R8Gyt',
+        privateKey: key,
+      );
+
+      final output = Ripple.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+      expectHex(
+        output.encoded,
+        '12000022000000002405955dc7201b0b2abbbe61d4838d7ea4c68000524c555344000000000000000000000000000000e5e961c6a025c9404aa7b662dd1df975be75d13e68400000000000000c7321039c77e9329017ced5f8673ebafcd29687a1fff181140c030062fa77865688fc5d744630440220552e90f417c2cabe39368bb45cf7495ba6ebe395f259a6509c9f3a7296e76a0d02201b37dae0c4c77fa70a451cd4a61c10575c8b052c282c082a32c229e7624a05e381140265c09d122fab2a261a80ee59f1f4cd8fba8cf88314ef20a3d93b00cc729eec11a3058d3d1feb4465e0',
       );
     });
 

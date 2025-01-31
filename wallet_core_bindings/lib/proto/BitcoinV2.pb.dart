@@ -14,9 +14,11 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'BabylonStaking.pb.dart' as $1;
+import 'BabylonStaking.pb.dart' as $2;
 import 'BitcoinV2.pbenum.dart';
 import 'Common.pbenum.dart' as $0;
+import 'Utxo.pb.dart' as $1;
+import 'Zcash.pb.dart' as $3;
 
 export 'BitcoinV2.pbenum.dart';
 
@@ -201,88 +203,6 @@ class PublicKeySignature extends $pb.GeneratedMessage {
   void clearSignature() => clearField(2);
 }
 
-/// Bitcoin transaction out-point reference.
-class OutPoint extends $pb.GeneratedMessage {
-  factory OutPoint({
-    $core.List<$core.int>? hash,
-    $core.int? vout,
-  }) {
-    final $result = create();
-    if (hash != null) {
-      $result.hash = hash;
-    }
-    if (vout != null) {
-      $result.vout = vout;
-    }
-    return $result;
-  }
-  OutPoint._() : super();
-  factory OutPoint.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory OutPoint.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'OutPoint',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'hash', $pb.PbFieldType.OY)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'vout', $pb.PbFieldType.OU3)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  OutPoint clone() => OutPoint()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  OutPoint copyWith(void Function(OutPoint) updates) =>
-      super.copyWith((message) => updates(message as OutPoint)) as OutPoint;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static OutPoint create() => OutPoint._();
-  OutPoint createEmptyInstance() => create();
-  static $pb.PbList<OutPoint> createRepeated() => $pb.PbList<OutPoint>();
-  @$core.pragma('dart2js:noInline')
-  static OutPoint getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OutPoint>(create);
-  static OutPoint? _defaultInstance;
-
-  /// The hash of the referenced transaction (network byte order, usually needs to be reversed).
-  /// The referenced transaction ID in REVERSED order.
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get hash => $_getN(0);
-  @$pb.TagNumber(1)
-  set hash($core.List<$core.int> v) {
-    $_setBytes(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasHash() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearHash() => clearField(1);
-
-  /// The position in the previous transactions output that this input references.
-  @$pb.TagNumber(2)
-  $core.int get vout => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set vout($core.int v) {
-    $_setUnsignedInt32(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasVout() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearVout() => clearField(2);
-}
-
 /// Optional sequence number, used for timelocks, replace-by-fee, etc.
 class Input_Sequence extends $pb.GeneratedMessage {
   factory Input_Sequence({
@@ -367,11 +287,11 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
     PublicKeyOrHash? p2wpkh,
     $core.List<$core.int>? p2trKeyPath,
     Input_InputBrc20Inscription? brc20Inscribe,
-    $1.InputBuilder_StakingTimelockPath? babylonStakingTimelockPath,
-    $1.InputBuilder_StakingUnbondingPath? babylonStakingUnbondingPath,
-    $1.InputBuilder_StakingSlashingPath? babylonStakingSlashingPath,
-    $1.InputBuilder_UnbondingTimelockPath? babylonUnbondingTimelockPath,
-    $1.InputBuilder_UnbondingSlashingPath? babylonUnbondingSlashingPath,
+    $2.InputBuilder_StakingTimelockPath? babylonStakingTimelockPath,
+    $2.InputBuilder_StakingUnbondingPath? babylonStakingUnbondingPath,
+    $2.InputBuilder_StakingSlashingPath? babylonStakingSlashingPath,
+    $2.InputBuilder_UnbondingTimelockPath? babylonUnbondingTimelockPath,
+    $2.InputBuilder_UnbondingSlashingPath? babylonUnbondingSlashingPath,
   }) {
     final $result = create();
     if (p2pk != null) {
@@ -445,21 +365,21 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
     ..aOM<Input_InputBrc20Inscription>(
         9, _omitFieldNames ? '' : 'brc20Inscribe',
         subBuilder: Input_InputBrc20Inscription.create)
-    ..aOM<$1.InputBuilder_StakingTimelockPath>(
+    ..aOM<$2.InputBuilder_StakingTimelockPath>(
         15, _omitFieldNames ? '' : 'babylonStakingTimelockPath',
-        subBuilder: $1.InputBuilder_StakingTimelockPath.create)
-    ..aOM<$1.InputBuilder_StakingUnbondingPath>(
+        subBuilder: $2.InputBuilder_StakingTimelockPath.create)
+    ..aOM<$2.InputBuilder_StakingUnbondingPath>(
         16, _omitFieldNames ? '' : 'babylonStakingUnbondingPath',
-        subBuilder: $1.InputBuilder_StakingUnbondingPath.create)
-    ..aOM<$1.InputBuilder_StakingSlashingPath>(
+        subBuilder: $2.InputBuilder_StakingUnbondingPath.create)
+    ..aOM<$2.InputBuilder_StakingSlashingPath>(
         17, _omitFieldNames ? '' : 'babylonStakingSlashingPath',
-        subBuilder: $1.InputBuilder_StakingSlashingPath.create)
-    ..aOM<$1.InputBuilder_UnbondingTimelockPath>(
+        subBuilder: $2.InputBuilder_StakingSlashingPath.create)
+    ..aOM<$2.InputBuilder_UnbondingTimelockPath>(
         18, _omitFieldNames ? '' : 'babylonUnbondingTimelockPath',
-        subBuilder: $1.InputBuilder_UnbondingTimelockPath.create)
-    ..aOM<$1.InputBuilder_UnbondingSlashingPath>(
+        subBuilder: $2.InputBuilder_UnbondingTimelockPath.create)
+    ..aOM<$2.InputBuilder_UnbondingSlashingPath>(
         19, _omitFieldNames ? '' : 'babylonUnbondingSlashingPath',
-        subBuilder: $1.InputBuilder_UnbondingSlashingPath.create)
+        subBuilder: $2.InputBuilder_UnbondingSlashingPath.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -563,10 +483,10 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   /// Spend a Staking Output via timelock path (staking time expired).
   /// In other words, create a Withdraw transaction.
   @$pb.TagNumber(15)
-  $1.InputBuilder_StakingTimelockPath get babylonStakingTimelockPath =>
+  $2.InputBuilder_StakingTimelockPath get babylonStakingTimelockPath =>
       $_getN(5);
   @$pb.TagNumber(15)
-  set babylonStakingTimelockPath($1.InputBuilder_StakingTimelockPath v) {
+  set babylonStakingTimelockPath($2.InputBuilder_StakingTimelockPath v) {
     setField(15, v);
   }
 
@@ -575,16 +495,16 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(15)
   void clearBabylonStakingTimelockPath() => clearField(15);
   @$pb.TagNumber(15)
-  $1.InputBuilder_StakingTimelockPath ensureBabylonStakingTimelockPath() =>
+  $2.InputBuilder_StakingTimelockPath ensureBabylonStakingTimelockPath() =>
       $_ensure(5);
 
   /// Spend a Staking Output via unbonding path.
   /// In other words, create an Unbonding transaction.
   @$pb.TagNumber(16)
-  $1.InputBuilder_StakingUnbondingPath get babylonStakingUnbondingPath =>
+  $2.InputBuilder_StakingUnbondingPath get babylonStakingUnbondingPath =>
       $_getN(6);
   @$pb.TagNumber(16)
-  set babylonStakingUnbondingPath($1.InputBuilder_StakingUnbondingPath v) {
+  set babylonStakingUnbondingPath($2.InputBuilder_StakingUnbondingPath v) {
     setField(16, v);
   }
 
@@ -593,16 +513,16 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(16)
   void clearBabylonStakingUnbondingPath() => clearField(16);
   @$pb.TagNumber(16)
-  $1.InputBuilder_StakingUnbondingPath ensureBabylonStakingUnbondingPath() =>
+  $2.InputBuilder_StakingUnbondingPath ensureBabylonStakingUnbondingPath() =>
       $_ensure(6);
 
   /// Spend a Staking Output via slashing path.
   /// In other words, generate an unsigned slashing transaction, pre-sign the staker's signature only and share to Babylon PoS chain.
   @$pb.TagNumber(17)
-  $1.InputBuilder_StakingSlashingPath get babylonStakingSlashingPath =>
+  $2.InputBuilder_StakingSlashingPath get babylonStakingSlashingPath =>
       $_getN(7);
   @$pb.TagNumber(17)
-  set babylonStakingSlashingPath($1.InputBuilder_StakingSlashingPath v) {
+  set babylonStakingSlashingPath($2.InputBuilder_StakingSlashingPath v) {
     setField(17, v);
   }
 
@@ -611,16 +531,16 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(17)
   void clearBabylonStakingSlashingPath() => clearField(17);
   @$pb.TagNumber(17)
-  $1.InputBuilder_StakingSlashingPath ensureBabylonStakingSlashingPath() =>
+  $2.InputBuilder_StakingSlashingPath ensureBabylonStakingSlashingPath() =>
       $_ensure(7);
 
   /// Spend an Unbonding Output via timelock path (unbonding time expired).
   /// In other words, create a Withdraw transaction spending an Unbonding transaction.
   @$pb.TagNumber(18)
-  $1.InputBuilder_UnbondingTimelockPath get babylonUnbondingTimelockPath =>
+  $2.InputBuilder_UnbondingTimelockPath get babylonUnbondingTimelockPath =>
       $_getN(8);
   @$pb.TagNumber(18)
-  set babylonUnbondingTimelockPath($1.InputBuilder_UnbondingTimelockPath v) {
+  set babylonUnbondingTimelockPath($2.InputBuilder_UnbondingTimelockPath v) {
     setField(18, v);
   }
 
@@ -629,16 +549,16 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(18)
   void clearBabylonUnbondingTimelockPath() => clearField(18);
   @$pb.TagNumber(18)
-  $1.InputBuilder_UnbondingTimelockPath ensureBabylonUnbondingTimelockPath() =>
+  $2.InputBuilder_UnbondingTimelockPath ensureBabylonUnbondingTimelockPath() =>
       $_ensure(8);
 
   /// Spend an Unbonding Output via slashing path.
   /// In other words, generate an unsigned Slashing transaction, pre-sign the staker's signature only and share to Babylon PoS chain.
   @$pb.TagNumber(19)
-  $1.InputBuilder_UnbondingSlashingPath get babylonUnbondingSlashingPath =>
+  $2.InputBuilder_UnbondingSlashingPath get babylonUnbondingSlashingPath =>
       $_getN(9);
   @$pb.TagNumber(19)
-  set babylonUnbondingSlashingPath($1.InputBuilder_UnbondingSlashingPath v) {
+  set babylonUnbondingSlashingPath($2.InputBuilder_UnbondingSlashingPath v) {
     setField(19, v);
   }
 
@@ -647,7 +567,7 @@ class Input_InputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(19)
   void clearBabylonUnbondingSlashingPath() => clearField(19);
   @$pb.TagNumber(19)
-  $1.InputBuilder_UnbondingSlashingPath ensureBabylonUnbondingSlashingPath() =>
+  $2.InputBuilder_UnbondingSlashingPath ensureBabylonUnbondingSlashingPath() =>
       $_ensure(9);
 }
 
@@ -846,7 +766,7 @@ enum Input_ClaimingScript { scriptBuilder, scriptData, receiverAddress, notSet }
 
 class Input extends $pb.GeneratedMessage {
   factory Input({
-    OutPoint? outPoint,
+    $1.OutPoint? outPoint,
     $fixnum.Int64? value,
     $core.int? sighashType,
     Input_Sequence? sequence,
@@ -899,8 +819,8 @@ class Input extends $pb.GeneratedMessage {
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
     ..oo(0, [5, 6, 7])
-    ..aOM<OutPoint>(1, _omitFieldNames ? '' : 'outPoint',
-        subBuilder: OutPoint.create)
+    ..aOM<$1.OutPoint>(1, _omitFieldNames ? '' : 'outPoint',
+        subBuilder: $1.OutPoint.create)
     ..aInt64(2, _omitFieldNames ? '' : 'value')
     ..a<$core.int>(3, _omitFieldNames ? '' : 'sighashType', $pb.PbFieldType.OU3)
     ..aOM<Input_Sequence>(4, _omitFieldNames ? '' : 'sequence',
@@ -939,9 +859,9 @@ class Input extends $pb.GeneratedMessage {
 
   /// Reference to the previous transaction's output.
   @$pb.TagNumber(1)
-  OutPoint get outPoint => $_getN(0);
+  $1.OutPoint get outPoint => $_getN(0);
   @$pb.TagNumber(1)
-  set outPoint(OutPoint v) {
+  set outPoint($1.OutPoint v) {
     setField(1, v);
   }
 
@@ -950,7 +870,7 @@ class Input extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearOutPoint() => clearField(1);
   @$pb.TagNumber(1)
-  OutPoint ensureOutPoint() => $_ensure(0);
+  $1.OutPoint ensureOutPoint() => $_ensure(0);
 
   /// The amount of satoshis of this input.
   @$pb.TagNumber(2)
@@ -1072,9 +992,9 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
     $core.List<$core.int>? p2trDangerousAssumeTweaked,
     Output_OutputBrc20Inscription? brc20Inscribe,
     $core.List<$core.int>? opReturn,
-    $1.OutputBuilder_StakingOutput? babylonStaking,
-    $1.OutputBuilder_UnbondingOutput? babylonUnbonding,
-    $1.OutputBuilder_OpReturn? babylonStakingOpReturn,
+    $2.OutputBuilder_StakingOutput? babylonStaking,
+    $2.OutputBuilder_UnbondingOutput? babylonUnbonding,
+    $2.OutputBuilder_OpReturn? babylonStakingOpReturn,
   }) {
     final $result = create();
     if (p2sh != null) {
@@ -1171,15 +1091,15 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
         subBuilder: Output_OutputBrc20Inscription.create)
     ..a<$core.List<$core.int>>(
         12, _omitFieldNames ? '' : 'opReturn', $pb.PbFieldType.OY)
-    ..aOM<$1.OutputBuilder_StakingOutput>(
+    ..aOM<$2.OutputBuilder_StakingOutput>(
         15, _omitFieldNames ? '' : 'babylonStaking',
-        subBuilder: $1.OutputBuilder_StakingOutput.create)
-    ..aOM<$1.OutputBuilder_UnbondingOutput>(
+        subBuilder: $2.OutputBuilder_StakingOutput.create)
+    ..aOM<$2.OutputBuilder_UnbondingOutput>(
         16, _omitFieldNames ? '' : 'babylonUnbonding',
-        subBuilder: $1.OutputBuilder_UnbondingOutput.create)
-    ..aOM<$1.OutputBuilder_OpReturn>(
+        subBuilder: $2.OutputBuilder_UnbondingOutput.create)
+    ..aOM<$2.OutputBuilder_OpReturn>(
         17, _omitFieldNames ? '' : 'babylonStakingOpReturn',
-        subBuilder: $1.OutputBuilder_OpReturn.create)
+        subBuilder: $2.OutputBuilder_OpReturn.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1352,9 +1272,9 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
 
   /// Create a Babylon `Staking` output.
   @$pb.TagNumber(15)
-  $1.OutputBuilder_StakingOutput get babylonStaking => $_getN(10);
+  $2.OutputBuilder_StakingOutput get babylonStaking => $_getN(10);
   @$pb.TagNumber(15)
-  set babylonStaking($1.OutputBuilder_StakingOutput v) {
+  set babylonStaking($2.OutputBuilder_StakingOutput v) {
     setField(15, v);
   }
 
@@ -1363,13 +1283,13 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(15)
   void clearBabylonStaking() => clearField(15);
   @$pb.TagNumber(15)
-  $1.OutputBuilder_StakingOutput ensureBabylonStaking() => $_ensure(10);
+  $2.OutputBuilder_StakingOutput ensureBabylonStaking() => $_ensure(10);
 
   /// Create a Babylon `Unbonding` output.
   @$pb.TagNumber(16)
-  $1.OutputBuilder_UnbondingOutput get babylonUnbonding => $_getN(11);
+  $2.OutputBuilder_UnbondingOutput get babylonUnbonding => $_getN(11);
   @$pb.TagNumber(16)
-  set babylonUnbonding($1.OutputBuilder_UnbondingOutput v) {
+  set babylonUnbonding($2.OutputBuilder_UnbondingOutput v) {
     setField(16, v);
   }
 
@@ -1378,13 +1298,13 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(16)
   void clearBabylonUnbonding() => clearField(16);
   @$pb.TagNumber(16)
-  $1.OutputBuilder_UnbondingOutput ensureBabylonUnbonding() => $_ensure(11);
+  $2.OutputBuilder_UnbondingOutput ensureBabylonUnbonding() => $_ensure(11);
 
   /// Create a Babylon `Staking` OP_RETURN output.
   @$pb.TagNumber(17)
-  $1.OutputBuilder_OpReturn get babylonStakingOpReturn => $_getN(12);
+  $2.OutputBuilder_OpReturn get babylonStakingOpReturn => $_getN(12);
   @$pb.TagNumber(17)
-  set babylonStakingOpReturn($1.OutputBuilder_OpReturn v) {
+  set babylonStakingOpReturn($2.OutputBuilder_OpReturn v) {
     setField(17, v);
   }
 
@@ -1393,7 +1313,7 @@ class Output_OutputBuilder extends $pb.GeneratedMessage {
   @$pb.TagNumber(17)
   void clearBabylonStakingOpReturn() => clearField(17);
   @$pb.TagNumber(17)
-  $1.OutputBuilder_OpReturn ensureBabylonStakingOpReturn() => $_ensure(12);
+  $2.OutputBuilder_OpReturn ensureBabylonStakingOpReturn() => $_ensure(12);
 }
 
 enum Output_RedeemScriptOrHash_Variant { redeemScript, hash, notSet }
@@ -1918,6 +1838,8 @@ class ChainInfo extends $pb.GeneratedMessage {
 
 enum TransactionBuilder_DustPolicy { fixedDustThreshold, notSet }
 
+enum TransactionBuilder_ChainSpecific { zcashExtraData, notSet }
+
 /// Transaction builder used in `SigningInput`.
 class TransactionBuilder extends $pb.GeneratedMessage {
   factory TransactionBuilder({
@@ -1930,6 +1852,7 @@ class TransactionBuilder extends $pb.GeneratedMessage {
     Output? changeOutput,
     Output? maxAmountOutput,
     $fixnum.Int64? fixedDustThreshold,
+    $3.TransactionBuilderExtraData? zcashExtraData,
   }) {
     final $result = create();
     if (version != null) {
@@ -1959,6 +1882,9 @@ class TransactionBuilder extends $pb.GeneratedMessage {
     if (fixedDustThreshold != null) {
       $result.fixedDustThreshold = fixedDustThreshold;
     }
+    if (zcashExtraData != null) {
+      $result.zcashExtraData = zcashExtraData;
+    }
     return $result;
   }
   TransactionBuilder._() : super();
@@ -1971,15 +1897,21 @@ class TransactionBuilder extends $pb.GeneratedMessage {
 
   static const $core.Map<$core.int, TransactionBuilder_DustPolicy>
       _TransactionBuilder_DustPolicyByTag = {
-    14: TransactionBuilder_DustPolicy.fixedDustThreshold,
+    10: TransactionBuilder_DustPolicy.fixedDustThreshold,
     0: TransactionBuilder_DustPolicy.notSet
+  };
+  static const $core.Map<$core.int, TransactionBuilder_ChainSpecific>
+      _TransactionBuilder_ChainSpecificByTag = {
+    20: TransactionBuilder_ChainSpecific.zcashExtraData,
+    0: TransactionBuilder_ChainSpecific.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'TransactionBuilder',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [14])
+    ..oo(0, [10])
+    ..oo(1, [20])
     ..e<TransactionVersion>(
         1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.OE,
         defaultOrMaker: TransactionVersion.UseDefault,
@@ -2000,7 +1932,10 @@ class TransactionBuilder extends $pb.GeneratedMessage {
         subBuilder: Output.create)
     ..aOM<Output>(8, _omitFieldNames ? '' : 'maxAmountOutput',
         subBuilder: Output.create)
-    ..aInt64(14, _omitFieldNames ? '' : 'fixedDustThreshold')
+    ..aInt64(10, _omitFieldNames ? '' : 'fixedDustThreshold')
+    ..aOM<$3.TransactionBuilderExtraData>(
+        20, _omitFieldNames ? '' : 'zcashExtraData',
+        subBuilder: $3.TransactionBuilderExtraData.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2029,6 +1964,10 @@ class TransactionBuilder extends $pb.GeneratedMessage {
   TransactionBuilder_DustPolicy whichDustPolicy() =>
       _TransactionBuilder_DustPolicyByTag[$_whichOneof(0)]!;
   void clearDustPolicy() => clearField($_whichOneof(0));
+
+  TransactionBuilder_ChainSpecific whichChainSpecific() =>
+      _TransactionBuilder_ChainSpecificByTag[$_whichOneof(1)]!;
+  void clearChainSpecific() => clearField($_whichOneof(1));
 
   /// Transaction version.
   @$pb.TagNumber(1)
@@ -2129,17 +2068,32 @@ class TransactionBuilder extends $pb.GeneratedMessage {
   Output ensureMaxAmountOutput() => $_ensure(7);
 
   /// Use a constant "Dust" threshold.
-  @$pb.TagNumber(14)
+  @$pb.TagNumber(10)
   $fixnum.Int64 get fixedDustThreshold => $_getI64(8);
-  @$pb.TagNumber(14)
+  @$pb.TagNumber(10)
   set fixedDustThreshold($fixnum.Int64 v) {
     $_setInt64(8, v);
   }
 
-  @$pb.TagNumber(14)
+  @$pb.TagNumber(10)
   $core.bool hasFixedDustThreshold() => $_has(8);
-  @$pb.TagNumber(14)
-  void clearFixedDustThreshold() => clearField(14);
+  @$pb.TagNumber(10)
+  void clearFixedDustThreshold() => clearField(10);
+
+  /// ZCash specific transaction data.
+  @$pb.TagNumber(20)
+  $3.TransactionBuilderExtraData get zcashExtraData => $_getN(9);
+  @$pb.TagNumber(20)
+  set zcashExtraData($3.TransactionBuilderExtraData v) {
+    setField(20, v);
+  }
+
+  @$pb.TagNumber(20)
+  $core.bool hasZcashExtraData() => $_has(9);
+  @$pb.TagNumber(20)
+  void clearZcashExtraData() => clearField(20);
+  @$pb.TagNumber(20)
+  $3.TransactionBuilderExtraData ensureZcashExtraData() => $_ensure(9);
 }
 
 /// Partially Signed Bitcoin Transaction.
@@ -2365,312 +2319,6 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearPsbt() => clearField(11);
   @$pb.TagNumber(11)
   Psbt ensurePsbt() => $_ensure(5);
-}
-
-class Transaction_TransactionInput extends $pb.GeneratedMessage {
-  factory Transaction_TransactionInput({
-    OutPoint? outPoint,
-    $core.int? sequence,
-    $core.List<$core.int>? scriptSig,
-    $core.Iterable<$core.List<$core.int>>? witnessItems,
-  }) {
-    final $result = create();
-    if (outPoint != null) {
-      $result.outPoint = outPoint;
-    }
-    if (sequence != null) {
-      $result.sequence = sequence;
-    }
-    if (scriptSig != null) {
-      $result.scriptSig = scriptSig;
-    }
-    if (witnessItems != null) {
-      $result.witnessItems.addAll(witnessItems);
-    }
-    return $result;
-  }
-  Transaction_TransactionInput._() : super();
-  factory Transaction_TransactionInput.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Transaction_TransactionInput.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Transaction.TransactionInput',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
-      createEmptyInstance: create)
-    ..aOM<OutPoint>(1, _omitFieldNames ? '' : 'outPoint',
-        subBuilder: OutPoint.create)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.OU3)
-    ..a<$core.List<$core.int>>(
-        3, _omitFieldNames ? '' : 'scriptSig', $pb.PbFieldType.OY)
-    ..p<$core.List<$core.int>>(
-        4, _omitFieldNames ? '' : 'witnessItems', $pb.PbFieldType.PY)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  Transaction_TransactionInput clone() =>
-      Transaction_TransactionInput()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Transaction_TransactionInput copyWith(
-          void Function(Transaction_TransactionInput) updates) =>
-      super.copyWith(
-              (message) => updates(message as Transaction_TransactionInput))
-          as Transaction_TransactionInput;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Transaction_TransactionInput create() =>
-      Transaction_TransactionInput._();
-  Transaction_TransactionInput createEmptyInstance() => create();
-  static $pb.PbList<Transaction_TransactionInput> createRepeated() =>
-      $pb.PbList<Transaction_TransactionInput>();
-  @$core.pragma('dart2js:noInline')
-  static Transaction_TransactionInput getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<Transaction_TransactionInput>(create);
-  static Transaction_TransactionInput? _defaultInstance;
-
-  /// Reference to the previous transaction's output.
-  @$pb.TagNumber(1)
-  OutPoint get outPoint => $_getN(0);
-  @$pb.TagNumber(1)
-  set outPoint(OutPoint v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasOutPoint() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearOutPoint() => clearField(1);
-  @$pb.TagNumber(1)
-  OutPoint ensureOutPoint() => $_ensure(0);
-
-  /// The sequence number, used for timelocks, replace-by-fee, etc.
-  @$pb.TagNumber(2)
-  $core.int get sequence => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set sequence($core.int v) {
-    $_setUnsignedInt32(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasSequence() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSequence() => clearField(2);
-
-  /// The script for claiming the input (non-Segwit/non-Taproot).
-  @$pb.TagNumber(3)
-  $core.List<$core.int> get scriptSig => $_getN(2);
-  @$pb.TagNumber(3)
-  set scriptSig($core.List<$core.int> v) {
-    $_setBytes(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasScriptSig() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearScriptSig() => clearField(3);
-
-  /// The script for claiming the input (Segit/Taproot).
-  @$pb.TagNumber(4)
-  $core.List<$core.List<$core.int>> get witnessItems => $_getList(3);
-}
-
-class Transaction_TransactionOutput extends $pb.GeneratedMessage {
-  factory Transaction_TransactionOutput({
-    $core.List<$core.int>? scriptPubkey,
-    $fixnum.Int64? value,
-  }) {
-    final $result = create();
-    if (scriptPubkey != null) {
-      $result.scriptPubkey = scriptPubkey;
-    }
-    if (value != null) {
-      $result.value = value;
-    }
-    return $result;
-  }
-  Transaction_TransactionOutput._() : super();
-  factory Transaction_TransactionOutput.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Transaction_TransactionOutput.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Transaction.TransactionOutput',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'scriptPubkey', $pb.PbFieldType.OY)
-    ..aInt64(2, _omitFieldNames ? '' : 'value')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  Transaction_TransactionOutput clone() =>
-      Transaction_TransactionOutput()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Transaction_TransactionOutput copyWith(
-          void Function(Transaction_TransactionOutput) updates) =>
-      super.copyWith(
-              (message) => updates(message as Transaction_TransactionOutput))
-          as Transaction_TransactionOutput;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Transaction_TransactionOutput create() =>
-      Transaction_TransactionOutput._();
-  Transaction_TransactionOutput createEmptyInstance() => create();
-  static $pb.PbList<Transaction_TransactionOutput> createRepeated() =>
-      $pb.PbList<Transaction_TransactionOutput>();
-  @$core.pragma('dart2js:noInline')
-  static Transaction_TransactionOutput getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<Transaction_TransactionOutput>(create);
-  static Transaction_TransactionOutput? _defaultInstance;
-
-  /// The condition for claiming the output.
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get scriptPubkey => $_getN(0);
-  @$pb.TagNumber(1)
-  set scriptPubkey($core.List<$core.int> v) {
-    $_setBytes(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasScriptPubkey() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearScriptPubkey() => clearField(1);
-
-  /// The amount of satoshis to spend.
-  @$pb.TagNumber(2)
-  $fixnum.Int64 get value => $_getI64(1);
-  @$pb.TagNumber(2)
-  set value($fixnum.Int64 v) {
-    $_setInt64(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasValue() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearValue() => clearField(2);
-}
-
-class Transaction extends $pb.GeneratedMessage {
-  factory Transaction({
-    $core.int? version,
-    $core.int? lockTime,
-    $core.Iterable<Transaction_TransactionInput>? inputs,
-    $core.Iterable<Transaction_TransactionOutput>? outputs,
-  }) {
-    final $result = create();
-    if (version != null) {
-      $result.version = version;
-    }
-    if (lockTime != null) {
-      $result.lockTime = lockTime;
-    }
-    if (inputs != null) {
-      $result.inputs.addAll(inputs);
-    }
-    if (outputs != null) {
-      $result.outputs.addAll(outputs);
-    }
-    return $result;
-  }
-  Transaction._() : super();
-  factory Transaction.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory Transaction.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Transaction',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'lockTime', $pb.PbFieldType.OU3)
-    ..pc<Transaction_TransactionInput>(
-        3, _omitFieldNames ? '' : 'inputs', $pb.PbFieldType.PM,
-        subBuilder: Transaction_TransactionInput.create)
-    ..pc<Transaction_TransactionOutput>(
-        4, _omitFieldNames ? '' : 'outputs', $pb.PbFieldType.PM,
-        subBuilder: Transaction_TransactionOutput.create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  Transaction clone() => Transaction()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  Transaction copyWith(void Function(Transaction) updates) =>
-      super.copyWith((message) => updates(message as Transaction))
-          as Transaction;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Transaction create() => Transaction._();
-  Transaction createEmptyInstance() => create();
-  static $pb.PbList<Transaction> createRepeated() => $pb.PbList<Transaction>();
-  @$core.pragma('dart2js:noInline')
-  static Transaction getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<Transaction>(create);
-  static Transaction? _defaultInstance;
-
-  /// The protocol version, is currently expected to be 1 or 2 (BIP68).
-  @$pb.TagNumber(1)
-  $core.int get version => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set version($core.int v) {
-    $_setSignedInt32(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasVersion() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearVersion() => clearField(1);
-
-  /// Block height or timestamp indicating at what point transactions can be included in a block.
-  /// Zero by default.
-  @$pb.TagNumber(2)
-  $core.int get lockTime => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set lockTime($core.int v) {
-    $_setUnsignedInt32(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasLockTime() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearLockTime() => clearField(2);
-
-  /// The transaction inputs.
-  @$pb.TagNumber(3)
-  $core.List<Transaction_TransactionInput> get inputs => $_getList(2);
-
-  /// The transaction outputs.
-  @$pb.TagNumber(4)
-  $core.List<Transaction_TransactionOutput> get outputs => $_getList(3);
 }
 
 class TransactionPlan extends $pb.GeneratedMessage {
@@ -3168,17 +2816,20 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   $core.List<PreSigningOutput_Sighash> get sighashes => $_getList(2);
 }
 
+enum SigningOutput_Transaction { bitcoin, zcash, notSet }
+
 class SigningOutput extends $pb.GeneratedMessage {
   factory SigningOutput({
     $0.SigningError? error,
     $core.String? errorMessage,
-    Transaction? transaction,
     $core.List<$core.int>? encoded,
     $core.List<$core.int>? txid,
     $fixnum.Int64? vsize,
     $fixnum.Int64? weight,
     $fixnum.Int64? fee,
     Psbt? psbt,
+    $1.Transaction? bitcoin,
+    $3.Transaction? zcash,
   }) {
     final $result = create();
     if (error != null) {
@@ -3186,9 +2837,6 @@ class SigningOutput extends $pb.GeneratedMessage {
     }
     if (errorMessage != null) {
       $result.errorMessage = errorMessage;
-    }
-    if (transaction != null) {
-      $result.transaction = transaction;
     }
     if (encoded != null) {
       $result.encoded = encoded;
@@ -3208,6 +2856,12 @@ class SigningOutput extends $pb.GeneratedMessage {
     if (psbt != null) {
       $result.psbt = psbt;
     }
+    if (bitcoin != null) {
+      $result.bitcoin = bitcoin;
+    }
+    if (zcash != null) {
+      $result.zcash = zcash;
+    }
     return $result;
   }
   SigningOutput._() : super();
@@ -3218,18 +2872,23 @@ class SigningOutput extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, SigningOutput_Transaction>
+      _SigningOutput_TransactionByTag = {
+    15: SigningOutput_Transaction.bitcoin,
+    16: SigningOutput_Transaction.zcash,
+    0: SigningOutput_Transaction.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'SigningOutput',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
+    ..oo(0, [15, 16])
     ..e<$0.SigningError>(1, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
         defaultOrMaker: $0.SigningError.OK,
         valueOf: $0.SigningError.valueOf,
         enumValues: $0.SigningError.values)
     ..aOS(2, _omitFieldNames ? '' : 'errorMessage')
-    ..aOM<Transaction>(3, _omitFieldNames ? '' : 'transaction',
-        subBuilder: Transaction.create)
     ..a<$core.List<$core.int>>(
         4, _omitFieldNames ? '' : 'encoded', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(
@@ -3240,6 +2899,10 @@ class SigningOutput extends $pb.GeneratedMessage {
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aInt64(8, _omitFieldNames ? '' : 'fee')
     ..aOM<Psbt>(9, _omitFieldNames ? '' : 'psbt', subBuilder: Psbt.create)
+    ..aOM<$1.Transaction>(15, _omitFieldNames ? '' : 'bitcoin',
+        subBuilder: $1.Transaction.create)
+    ..aOM<$3.Transaction>(16, _omitFieldNames ? '' : 'zcash',
+        subBuilder: $3.Transaction.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -3264,6 +2927,10 @@ class SigningOutput extends $pb.GeneratedMessage {
   static SigningOutput getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SigningOutput>(create);
   static SigningOutput? _defaultInstance;
+
+  SigningOutput_Transaction whichTransaction() =>
+      _SigningOutput_TransactionByTag[$_whichOneof(0)]!;
+  void clearTransaction() => clearField($_whichOneof(0));
 
   /// A possible error, `OK` if none.
   @$pb.TagNumber(1)
@@ -3291,44 +2958,29 @@ class SigningOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearErrorMessage() => clearField(2);
 
-  /// Resulting transaction.
-  @$pb.TagNumber(3)
-  Transaction get transaction => $_getN(2);
-  @$pb.TagNumber(3)
-  set transaction(Transaction v) {
-    setField(3, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasTransaction() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearTransaction() => clearField(3);
-  @$pb.TagNumber(3)
-  Transaction ensureTransaction() => $_ensure(2);
-
   /// The encoded transaction that can be submitted to the network.
   @$pb.TagNumber(4)
-  $core.List<$core.int> get encoded => $_getN(3);
+  $core.List<$core.int> get encoded => $_getN(2);
   @$pb.TagNumber(4)
   set encoded($core.List<$core.int> v) {
-    $_setBytes(3, v);
+    $_setBytes(2, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasEncoded() => $_has(3);
+  $core.bool hasEncoded() => $_has(2);
   @$pb.TagNumber(4)
   void clearEncoded() => clearField(4);
 
   /// The transaction ID (hash).
   @$pb.TagNumber(5)
-  $core.List<$core.int> get txid => $_getN(4);
+  $core.List<$core.int> get txid => $_getN(3);
   @$pb.TagNumber(5)
   set txid($core.List<$core.int> v) {
-    $_setBytes(4, v);
+    $_setBytes(3, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasTxid() => $_has(4);
+  $core.bool hasTxid() => $_has(3);
   @$pb.TagNumber(5)
   void clearTxid() => clearField(5);
 
@@ -3336,59 +2988,89 @@ class SigningOutput extends $pb.GeneratedMessage {
   /// It is used to compare how much blockweight needs to be allocated to confirm a transaction.
   /// For non-segwit transactions, `vsize` = `size`.
   @$pb.TagNumber(6)
-  $fixnum.Int64 get vsize => $_getI64(5);
+  $fixnum.Int64 get vsize => $_getI64(4);
   @$pb.TagNumber(6)
   set vsize($fixnum.Int64 v) {
-    $_setInt64(5, v);
+    $_setInt64(4, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasVsize() => $_has(5);
+  $core.bool hasVsize() => $_has(4);
   @$pb.TagNumber(6)
   void clearVsize() => clearField(6);
 
   /// Transaction weight is defined as Base transaction size * 3 + Total transaction size
   /// (ie. the same method as calculating Block weight from Base size and Total size).
   @$pb.TagNumber(7)
-  $fixnum.Int64 get weight => $_getI64(6);
+  $fixnum.Int64 get weight => $_getI64(5);
   @$pb.TagNumber(7)
   set weight($fixnum.Int64 v) {
-    $_setInt64(6, v);
+    $_setInt64(5, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasWeight() => $_has(6);
+  $core.bool hasWeight() => $_has(5);
   @$pb.TagNumber(7)
   void clearWeight() => clearField(7);
 
   /// The total and final fee of the transaction in satoshis.
   @$pb.TagNumber(8)
-  $fixnum.Int64 get fee => $_getI64(7);
+  $fixnum.Int64 get fee => $_getI64(6);
   @$pb.TagNumber(8)
   set fee($fixnum.Int64 v) {
-    $_setInt64(7, v);
+    $_setInt64(6, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasFee() => $_has(7);
+  $core.bool hasFee() => $_has(6);
   @$pb.TagNumber(8)
   void clearFee() => clearField(8);
 
   /// Optional. Signed transaction serialized as PSBT.
   /// Set if `SigningInput.psbt` is used.
   @$pb.TagNumber(9)
-  Psbt get psbt => $_getN(8);
+  Psbt get psbt => $_getN(7);
   @$pb.TagNumber(9)
   set psbt(Psbt v) {
     setField(9, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasPsbt() => $_has(8);
+  $core.bool hasPsbt() => $_has(7);
   @$pb.TagNumber(9)
   void clearPsbt() => clearField(9);
   @$pb.TagNumber(9)
-  Psbt ensurePsbt() => $_ensure(8);
+  Psbt ensurePsbt() => $_ensure(7);
+
+  /// Standard Bitcoin transaction.
+  @$pb.TagNumber(15)
+  $1.Transaction get bitcoin => $_getN(8);
+  @$pb.TagNumber(15)
+  set bitcoin($1.Transaction v) {
+    setField(15, v);
+  }
+
+  @$pb.TagNumber(15)
+  $core.bool hasBitcoin() => $_has(8);
+  @$pb.TagNumber(15)
+  void clearBitcoin() => clearField(15);
+  @$pb.TagNumber(15)
+  $1.Transaction ensureBitcoin() => $_ensure(8);
+
+  /// ZCash transaction.
+  @$pb.TagNumber(16)
+  $3.Transaction get zcash => $_getN(9);
+  @$pb.TagNumber(16)
+  set zcash($3.Transaction v) {
+    setField(16, v);
+  }
+
+  @$pb.TagNumber(16)
+  $core.bool hasZcash() => $_has(9);
+  @$pb.TagNumber(16)
+  void clearZcash() => clearField(16);
+  @$pb.TagNumber(16)
+  $3.Transaction ensureZcash() => $_ensure(9);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

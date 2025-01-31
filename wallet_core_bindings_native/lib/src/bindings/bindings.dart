@@ -14109,6 +14109,7 @@ abstract class TWBlockchain {
   static const int TWBlockchainNativeInjective = 54;
   static const int TWBlockchainBitcoinCash = 55;
   static const int TWBlockchainPactus = 56;
+  static const int TWBlockchainKomodo = 57;
 }
 
 /// Elliptic cruves
@@ -14336,7 +14337,6 @@ abstract class TWCoinType {
   static const int TWCoinTypeOptimism = 10000070;
   static const int TWCoinTypeZksync = 10000324;
   static const int TWCoinTypeArbitrum = 10042221;
-  static const int TWCoinTypeECOChain = 10000553;
   static const int TWCoinTypeAvalancheCChain = 10009000;
   static const int TWCoinTypeXDai = 10000100;
   static const int TWCoinTypeFantom = 10000250;
@@ -14423,6 +14423,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeBounceBit = 6001;
   static const int TWCoinTypeZkLinkNova = 810180;
   static const int TWCoinTypePactus = 21888;
+  static const int TWCoinTypeSonic = 10000146;
 }
 
 /// CoinTypeConfiguration functions
@@ -14560,7 +14561,6 @@ final class TWRippleXAddress extends ffi.Opaque {}
 /// THORChain swap functions
 final class TWLiquidStaking extends ffi.Opaque {}
 
-/// TON address operations.
 final class TWTONAddressConverter extends ffi.Opaque {}
 
 /// Represents a WalletConnect signing request.
@@ -14728,11 +14728,11 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDOptimism = 10;
   static const int TWEthereumChainIDXdai = 100;
   static const int TWEthereumChainIDSmartbch = 10000;
+  static const int TWEthereumChainIDSonic = 146;
   static const int TWEthereumChainIDFantom = 250;
   static const int TWEthereumChainIDBoba = 288;
   static const int TWEthereumChainIDKcc = 321;
   static const int TWEthereumChainIDZksync = 324;
-  static const int TWEthereumChainIDHeco = 128;
   static const int TWEthereumChainIDAcalaevm = 787;
   static const int TWEthereumChainIDMetis = 1088;
   static const int TWEthereumChainIDPolygonzkevm = 1101;

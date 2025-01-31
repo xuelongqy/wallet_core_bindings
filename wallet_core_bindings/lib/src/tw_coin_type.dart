@@ -162,7 +162,8 @@ enum TWCoinType {
   Blast(81457),
   BounceBit(6001),
   ZkLinkNova(810180),
-  Pactus(21888);
+  Pactus(21888),
+  Sonic(10000146);
 
   final int coin;
 
