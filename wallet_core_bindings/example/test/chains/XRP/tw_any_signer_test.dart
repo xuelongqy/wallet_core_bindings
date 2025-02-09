@@ -2,7 +2,6 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Ripple.pb.dart' as Ripple;
-import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 
 import '../../utils.dart';
 
@@ -28,22 +27,13 @@ void main() {
         privateKey: key,
       );
 
-      var output = Ripple.SigningOutput.fromBuffer(
+      final output = Ripple.SigningOutput.fromBuffer(
           TWAnySigner.sign(input.writeToBuffer(), coin));
 
       expect(
         hex(output.encoded),
         '12000022000000002401ec5fd8201b01ec5fed61400000000000000a68400000000000000a732103d13e1152965a51a4a9fd9a8b4ea3dd82a4eba6b25fcad5f460a2342bb650333f74463044022037d32835c9394f39b2cfd4eaf5b0a80e0db397ace06630fa2b099ff73e425dbc02205288f780330b7a88a1980fa83c647b5908502ad7de9a44500c08f0750b0d9e8481144c55f5a78067206507580be7bb2686c8460adff983148132e4e20aecf29090ac428a9c43f230a829220d',
       );
-
-      // invalid tag
-      input.opPayment.destinationTag = $fixnum.Int64(641505641505);
-
-      output = Ripple.SigningOutput.fromBuffer(
-          TWAnySigner.sign(input.writeToBuffer(), coin));
-
-      expect(output.error, Common.SigningError.Error_invalid_memo);
-      expect(output.encoded.isEmpty, true);
     });
 
     test('SignXrpPaymentMain', () {
@@ -229,9 +219,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(21300),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: $fixnum.Int64(67),
-          cancelAfter: $fixnum.Int64(755015907),
-          finishAfter: $fixnum.Int64(755015897),
+          destinationTag: 67,
+          cancelAfter: 755015907,
+          finishAfter: 755015897,
           condition: '',
         ),
         fee: $fixnum.Int64(12),
@@ -260,9 +250,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(345941506),
           destination: 'rNS1tYfynXoKC3eX52gvVnSyU9mqWXvCgh',
-          destinationTag: $fixnum.Int64(2467),
-          cancelAfter: $fixnum.Int64(0),
-          finishAfter: $fixnum.Int64(750095491),
+          destinationTag: 2467,
+          cancelAfter: 0,
+          finishAfter: 750095491,
           condition: '',
         ),
         fee: $fixnum.Int64(12),
@@ -291,9 +281,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(88941506),
           destination: 'rfC73DuBhDqF3Zw1K3uxaQNCkwT8pPKyf5',
-          destinationTag: $fixnum.Int64(0),
-          cancelAfter: $fixnum.Int64(2147483648),
-          finishAfter: $fixnum.Int64(750097108),
+          destinationTag: 0,
+          cancelAfter: 2147483648,
+          finishAfter: 750097108,
           condition: '',
         ),
         fee: $fixnum.Int64(12),
@@ -322,9 +312,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(37000),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: $fixnum.Int64(0),
-          cancelAfter: $fixnum.Int64(755014300),
-          finishAfter: $fixnum.Int64(0),
+          destinationTag: 0,
+          cancelAfter: 755014300,
+          finishAfter: 0,
           condition:
               'a0258020c26add2db64dd6d5700a5e2721c1e908d599901627b8dc82f25b3e035ec4004b810120', // PREIMAGE-SHA-256 crypto-condition of secret 5d729ac237c4c7976403817b6409be7190efbfad49af2cf974b9582a854e8794
         ),
@@ -354,9 +344,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(30941506),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: $fixnum.Int64(0),
-          cancelAfter: $fixnum.Int64(750090371),
-          finishAfter: $fixnum.Int64(0),
+          destinationTag: 0,
+          cancelAfter: 750090371,
+          finishAfter: 0,
           condition:
               'a0258020b3dda5c580919ce0fd6acdf013c337461951946e54b41446467961568cdd9e7b810120', // PREIMAGE-SHA-256 crypto-condition of secret 5d729ac237c4c7976403817b6409be7190efbfad49af2cf974b9582a854e8794
         ),
@@ -386,9 +376,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(30941506),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: $fixnum.Int64(0),
-          cancelAfter: $fixnum.Int64(750090371),
-          finishAfter: $fixnum.Int64(0),
+          destinationTag: 0,
+          cancelAfter: 750090371,
+          finishAfter: 0,
           condition:
               'a0258020b3dda5c580919ce0fd6acdf013c337461951946e54b41446467961568cdd9e7b810120', // PREIMAGE-SHA-256 crypto-condition of secret 5d729ac237c4c7976403817b6409be7190efbfad49af2cf974b9582a854e8794
         ),
@@ -418,9 +408,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(28941506),
           destination: 'r9YD31TAtbS8EPwEt2gzGDjsaMDyV1s5QE',
-          destinationTag: $fixnum.Int64(2467),
-          cancelAfter: $fixnum.Int64(750094604),
-          finishAfter: $fixnum.Int64(0),
+          destinationTag: 2467,
+          cancelAfter: 750094604,
+          finishAfter: 0,
           condition:
               'a0258020ffecf1ae6182f10efebe0c0896cd6b044df7b27d33b05030033ef63d47e2b250810120', // PREIMAGE-SHA-256 crypto-condition of secret ffecf1ae6182f10efebe0c0896cd6b044df7b27d33b05030033ef63d47e2b250
         ),
@@ -612,8 +602,7 @@ void main() {
       final input = Ripple.SigningInput(
         opNftokenBurn: Ripple.OperationNFTokenBurn(
           nftokenId:
-              '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65'
-                  .codeUnits,
+              '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65',
         ),
         fee: $fixnum.Int64(10),
         sequence: 22858395,
@@ -639,8 +628,7 @@ void main() {
       final input = Ripple.SigningInput(
         opNftokenCreateOffer: Ripple.OperationNFTokenCreateOffer(
           nftokenId:
-              '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65'
-                  .codeUnits,
+              '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65',
           destination: 'rDxTa8vhigDUCq9nmZY8jAkFne5XrcYbxG',
         ),
         fee: $fixnum.Int64(10),
@@ -648,6 +636,8 @@ void main() {
         lastLedgerSequence: 22857543,
         account: 'rJdxtrVoL3Tak74EzN8SdMxFF6RP9smjJJ',
         privateKey: key,
+        // Set `SELL_NFTOKEN_FLAG` flag.
+        flags: 1,
       );
 
       var output = Ripple.SigningOutput.fromBuffer(
@@ -667,8 +657,7 @@ void main() {
       final input = Ripple.SigningInput(
         opNftokenAcceptOffer: Ripple.OperationNFTokenAcceptOffer(
           sellOffer:
-              '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65'
-                  .codeUnits,
+              '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65',
         ),
         fee: $fixnum.Int64(10),
         sequence: 22857743,
@@ -694,8 +683,7 @@ void main() {
       final input = Ripple.SigningInput(
         opNftokenCancelOffer: Ripple.OperationNFTokenCancelOffer(
           tokenOffers: [
-            '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65'
-                .codeUnits,
+            '000b013a95f14b0044f78a264e41713c64b5f89242540ee208c3098e00000d65',
           ],
         ),
         fee: $fixnum.Int64(10),

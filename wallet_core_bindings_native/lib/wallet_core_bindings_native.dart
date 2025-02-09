@@ -58,7 +58,6 @@ part 'src/tw_nervos_address_impl.dart';
 part 'src/tw_pbkdf2_impl.dart';
 part 'src/tw_private_key_impl.dart';
 part 'src/tw_public_key_impl.dart';
-part 'src/tw_ripple_x_address_impl.dart';
 part 'src/tw_segwit_address_impl.dart';
 part 'src/tw_solana_address_impl.dart';
 part 'src/tw_solana_transaction_impl.dart';

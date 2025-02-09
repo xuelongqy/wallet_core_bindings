@@ -795,6 +795,7 @@ enum SigningInput_TransactionPayload {
   requestAddStake,
   requestWithdrawStake,
   transferObject,
+  rawJson,
   notSet
 }
 
@@ -810,6 +811,7 @@ class SigningInput extends $pb.GeneratedMessage {
     RequestAddStake? requestAddStake,
     RequestWithdrawStake? requestWithdrawStake,
     TransferObject? transferObject,
+    $core.String? rawJson,
     $fixnum.Int64? gasBudget,
     $fixnum.Int64? referenceGasPrice,
   }) {
@@ -841,6 +843,9 @@ class SigningInput extends $pb.GeneratedMessage {
     if (transferObject != null) {
       $result.transferObject = transferObject;
     }
+    if (rawJson != null) {
+      $result.rawJson = rawJson;
+    }
     if (gasBudget != null) {
       $result.gasBudget = gasBudget;
     }
@@ -866,13 +871,14 @@ class SigningInput extends $pb.GeneratedMessage {
     7: SigningInput_TransactionPayload.requestAddStake,
     8: SigningInput_TransactionPayload.requestWithdrawStake,
     9: SigningInput_TransactionPayload.transferObject,
+    10: SigningInput_TransactionPayload.rawJson,
     0: SigningInput_TransactionPayload.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'SigningInput',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Sui.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [3, 4, 5, 6, 7, 8, 9])
+    ..oo(0, [3, 4, 5, 6, 7, 8, 9, 10])
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
     ..aOS(2, _omitFieldNames ? '' : 'signer')
@@ -889,6 +895,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: RequestWithdrawStake.create)
     ..aOM<TransferObject>(9, _omitFieldNames ? '' : 'transferObject',
         subBuilder: TransferObject.create)
+    ..aOS(10, _omitFieldNames ? '' : 'rawJson')
     ..a<$fixnum.Int64>(
         12, _omitFieldNames ? '' : 'gasBudget', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
@@ -1049,29 +1056,41 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(9)
   TransferObject ensureTransferObject() => $_ensure(8);
 
+  @$pb.TagNumber(10)
+  $core.String get rawJson => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set rawJson($core.String v) {
+    $_setString(9, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasRawJson() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearRawJson() => clearField(10);
+
   /// The gas budget, the transaction will fail if the gas cost exceed the budget.
   @$pb.TagNumber(12)
-  $fixnum.Int64 get gasBudget => $_getI64(9);
+  $fixnum.Int64 get gasBudget => $_getI64(10);
   @$pb.TagNumber(12)
   set gasBudget($fixnum.Int64 v) {
-    $_setInt64(9, v);
+    $_setInt64(10, v);
   }
 
   @$pb.TagNumber(12)
-  $core.bool hasGasBudget() => $_has(9);
+  $core.bool hasGasBudget() => $_has(10);
   @$pb.TagNumber(12)
   void clearGasBudget() => clearField(12);
 
   /// Reference gas price.
   @$pb.TagNumber(13)
-  $fixnum.Int64 get referenceGasPrice => $_getI64(10);
+  $fixnum.Int64 get referenceGasPrice => $_getI64(11);
   @$pb.TagNumber(13)
   set referenceGasPrice($fixnum.Int64 v) {
-    $_setInt64(10, v);
+    $_setInt64(11, v);
   }
 
   @$pb.TagNumber(13)
-  $core.bool hasReferenceGasPrice() => $_has(10);
+  $core.bool hasReferenceGasPrice() => $_has(11);
   @$pb.TagNumber(13)
   void clearReferenceGasPrice() => clearField(13);
 }

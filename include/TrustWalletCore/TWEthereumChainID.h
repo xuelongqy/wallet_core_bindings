@@ -52,6 +52,7 @@ enum TWEthereumChainID {
     TWEthereumChainIDBoba = 288,
     TWEthereumChainIDKcc = 321,
     TWEthereumChainIDZksync = 324,
+    TWEthereumChainIDHeco = 128,
     TWEthereumChainIDAcalaevm = 787,
     TWEthereumChainIDMetis = 1088,
     TWEthereumChainIDPolygonzkevm = 1101,

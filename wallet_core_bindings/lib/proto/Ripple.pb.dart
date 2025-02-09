@@ -193,7 +193,7 @@ class OperationPayment extends $pb.GeneratedMessage {
     $fixnum.Int64? amount,
     CurrencyAmount? currencyAmount,
     $core.String? destination,
-    $fixnum.Int64? destinationTag,
+    $core.int? destinationTag,
   }) {
     final $result = create();
     if (amount != null) {
@@ -234,7 +234,8 @@ class OperationPayment extends $pb.GeneratedMessage {
     ..aOM<CurrencyAmount>(2, _omitFieldNames ? '' : 'currencyAmount',
         subBuilder: CurrencyAmount.create)
     ..aOS(3, _omitFieldNames ? '' : 'destination')
-    ..aInt64(4, _omitFieldNames ? '' : 'destinationTag')
+    ..a<$core.int>(
+        4, _omitFieldNames ? '' : 'destinationTag', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -305,10 +306,10 @@ class OperationPayment extends $pb.GeneratedMessage {
 
   /// A Destination Tag
   @$pb.TagNumber(4)
-  $fixnum.Int64 get destinationTag => $_getI64(3);
+  $core.int get destinationTag => $_getIZ(3);
   @$pb.TagNumber(4)
-  set destinationTag($fixnum.Int64 v) {
-    $_setInt64(3, v);
+  set destinationTag($core.int v) {
+    $_setUnsignedInt32(3, v);
   }
 
   @$pb.TagNumber(4)
@@ -322,9 +323,9 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
   factory OperationEscrowCreate({
     $fixnum.Int64? amount,
     $core.String? destination,
-    $fixnum.Int64? destinationTag,
-    $fixnum.Int64? cancelAfter,
-    $fixnum.Int64? finishAfter,
+    $core.int? destinationTag,
+    $core.int? cancelAfter,
+    $core.int? finishAfter,
     $core.String? condition,
   }) {
     final $result = create();
@@ -363,9 +364,10 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'amount')
     ..aOS(2, _omitFieldNames ? '' : 'destination')
-    ..aInt64(3, _omitFieldNames ? '' : 'destinationTag')
-    ..aInt64(4, _omitFieldNames ? '' : 'cancelAfter')
-    ..aInt64(5, _omitFieldNames ? '' : 'finishAfter')
+    ..a<$core.int>(
+        3, _omitFieldNames ? '' : 'destinationTag', $pb.PbFieldType.OU3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'cancelAfter', $pb.PbFieldType.OU3)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'finishAfter', $pb.PbFieldType.OU3)
     ..aOS(6, _omitFieldNames ? '' : 'condition')
     ..hasRequiredFields = false;
 
@@ -422,10 +424,10 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
 
   /// Destination Tag
   @$pb.TagNumber(3)
-  $fixnum.Int64 get destinationTag => $_getI64(2);
+  $core.int get destinationTag => $_getIZ(2);
   @$pb.TagNumber(3)
-  set destinationTag($fixnum.Int64 v) {
-    $_setInt64(2, v);
+  set destinationTag($core.int v) {
+    $_setUnsignedInt32(2, v);
   }
 
   @$pb.TagNumber(3)
@@ -435,10 +437,10 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
 
   /// Escrow expire time
   @$pb.TagNumber(4)
-  $fixnum.Int64 get cancelAfter => $_getI64(3);
+  $core.int get cancelAfter => $_getIZ(3);
   @$pb.TagNumber(4)
-  set cancelAfter($fixnum.Int64 v) {
-    $_setInt64(3, v);
+  set cancelAfter($core.int v) {
+    $_setUnsignedInt32(3, v);
   }
 
   @$pb.TagNumber(4)
@@ -448,10 +450,10 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
 
   /// Escrow release time
   @$pb.TagNumber(5)
-  $fixnum.Int64 get finishAfter => $_getI64(4);
+  $core.int get finishAfter => $_getIZ(4);
   @$pb.TagNumber(5)
-  set finishAfter($fixnum.Int64 v) {
-    $_setInt64(4, v);
+  set finishAfter($core.int v) {
+    $_setUnsignedInt32(4, v);
   }
 
   @$pb.TagNumber(5)
@@ -459,7 +461,7 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearFinishAfter() => clearField(5);
 
-  /// Crypto condition
+  /// Hex-encoded crypto condition
   /// https://datatracker.ietf.org/doc/html/draft-thomas-crypto-conditions-02#section-8.1
   @$pb.TagNumber(6)
   $core.String get condition => $_getSZ(5);
@@ -504,7 +506,7 @@ class OperationEscrowCancel extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'owner')
     ..a<$core.int>(
-        2, _omitFieldNames ? '' : 'offerSequence', $pb.PbFieldType.O3)
+        2, _omitFieldNames ? '' : 'offerSequence', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -550,7 +552,7 @@ class OperationEscrowCancel extends $pb.GeneratedMessage {
   $core.int get offerSequence => $_getIZ(1);
   @$pb.TagNumber(2)
   set offerSequence($core.int v) {
-    $_setSignedInt32(1, v);
+    $_setUnsignedInt32(1, v);
   }
 
   @$pb.TagNumber(2)
@@ -597,7 +599,7 @@ class OperationEscrowFinish extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'owner')
     ..a<$core.int>(
-        2, _omitFieldNames ? '' : 'offerSequence', $pb.PbFieldType.O3)
+        2, _omitFieldNames ? '' : 'offerSequence', $pb.PbFieldType.OU3)
     ..aOS(3, _omitFieldNames ? '' : 'condition')
     ..aOS(4, _omitFieldNames ? '' : 'fulfillment')
     ..hasRequiredFields = false;
@@ -645,7 +647,7 @@ class OperationEscrowFinish extends $pb.GeneratedMessage {
   $core.int get offerSequence => $_getIZ(1);
   @$pb.TagNumber(2)
   set offerSequence($core.int v) {
-    $_setSignedInt32(1, v);
+    $_setUnsignedInt32(1, v);
   }
 
   @$pb.TagNumber(2)
@@ -653,7 +655,7 @@ class OperationEscrowFinish extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearOfferSequence() => clearField(2);
 
-  /// Crypto condition
+  /// Hex-encoded crypto condition
   @$pb.TagNumber(3)
   $core.String get condition => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -666,7 +668,7 @@ class OperationEscrowFinish extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearCondition() => clearField(3);
 
-  /// Fulfillment matching condition
+  /// Hex-encoded fulfillment matching condition
   @$pb.TagNumber(4)
   $core.String get fulfillment => $_getSZ(3);
   @$pb.TagNumber(4)
@@ -683,7 +685,7 @@ class OperationEscrowFinish extends $pb.GeneratedMessage {
 /// https://xrpl.org/nftokenburn.html
 class OperationNFTokenBurn extends $pb.GeneratedMessage {
   factory OperationNFTokenBurn({
-    $core.List<$core.int>? nftokenId,
+    $core.String? nftokenId,
   }) {
     final $result = create();
     if (nftokenId != null) {
@@ -704,8 +706,7 @@ class OperationNFTokenBurn extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ripple.Proto'),
       createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'nftokenId', $pb.PbFieldType.OY)
+    ..aOS(1, _omitFieldNames ? '' : 'nftokenId')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -732,12 +733,12 @@ class OperationNFTokenBurn extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<OperationNFTokenBurn>(create);
   static OperationNFTokenBurn? _defaultInstance;
 
-  /// Hash256 NFTokenId
+  /// Hex-encoded H256 NFTokenId
   @$pb.TagNumber(1)
-  $core.List<$core.int> get nftokenId => $_getN(0);
+  $core.String get nftokenId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set nftokenId($core.List<$core.int> v) {
-    $_setBytes(0, v);
+  set nftokenId($core.String v) {
+    $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
@@ -749,7 +750,7 @@ class OperationNFTokenBurn extends $pb.GeneratedMessage {
 /// https://xrpl.org/nftokencreateoffer.html
 class OperationNFTokenCreateOffer extends $pb.GeneratedMessage {
   factory OperationNFTokenCreateOffer({
-    $core.List<$core.int>? nftokenId,
+    $core.String? nftokenId,
     $core.String? destination,
   }) {
     final $result = create();
@@ -774,8 +775,7 @@ class OperationNFTokenCreateOffer extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ripple.Proto'),
       createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'nftokenId', $pb.PbFieldType.OY)
+    ..aOS(1, _omitFieldNames ? '' : 'nftokenId')
     ..aOS(2, _omitFieldNames ? '' : 'destination')
     ..hasRequiredFields = false;
 
@@ -806,12 +806,12 @@ class OperationNFTokenCreateOffer extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<OperationNFTokenCreateOffer>(create);
   static OperationNFTokenCreateOffer? _defaultInstance;
 
-  /// Hash256 NFTokenId
+  /// Hex-encoded Hash256 NFTokenId
   @$pb.TagNumber(1)
-  $core.List<$core.int> get nftokenId => $_getN(0);
+  $core.String get nftokenId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set nftokenId($core.List<$core.int> v) {
-    $_setBytes(0, v);
+  set nftokenId($core.String v) {
+    $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
@@ -836,7 +836,7 @@ class OperationNFTokenCreateOffer extends $pb.GeneratedMessage {
 /// https://xrpl.org/nftokenacceptoffer.html
 class OperationNFTokenAcceptOffer extends $pb.GeneratedMessage {
   factory OperationNFTokenAcceptOffer({
-    $core.List<$core.int>? sellOffer,
+    $core.String? sellOffer,
   }) {
     final $result = create();
     if (sellOffer != null) {
@@ -857,8 +857,7 @@ class OperationNFTokenAcceptOffer extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ripple.Proto'),
       createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'sellOffer', $pb.PbFieldType.OY)
+    ..aOS(1, _omitFieldNames ? '' : 'sellOffer')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -888,12 +887,12 @@ class OperationNFTokenAcceptOffer extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<OperationNFTokenAcceptOffer>(create);
   static OperationNFTokenAcceptOffer? _defaultInstance;
 
-  /// Hash256 NFTokenOffer
+  /// Hex-encoded Hash256 NFTokenOffer
   @$pb.TagNumber(1)
-  $core.List<$core.int> get sellOffer => $_getN(0);
+  $core.String get sellOffer => $_getSZ(0);
   @$pb.TagNumber(1)
-  set sellOffer($core.List<$core.int> v) {
-    $_setBytes(0, v);
+  set sellOffer($core.String v) {
+    $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
@@ -905,7 +904,7 @@ class OperationNFTokenAcceptOffer extends $pb.GeneratedMessage {
 /// https://xrpl.org/nftokencanceloffer.html
 class OperationNFTokenCancelOffer extends $pb.GeneratedMessage {
   factory OperationNFTokenCancelOffer({
-    $core.Iterable<$core.List<$core.int>>? tokenOffers,
+    $core.Iterable<$core.String>? tokenOffers,
   }) {
     final $result = create();
     if (tokenOffers != null) {
@@ -926,8 +925,7 @@ class OperationNFTokenCancelOffer extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ripple.Proto'),
       createEmptyInstance: create)
-    ..p<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'tokenOffers', $pb.PbFieldType.PY)
+    ..pPS(1, _omitFieldNames ? '' : 'tokenOffers')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -957,9 +955,9 @@ class OperationNFTokenCancelOffer extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<OperationNFTokenCancelOffer>(create);
   static OperationNFTokenCancelOffer? _defaultInstance;
 
-  /// Vector256 NFTokenOffers
+  /// Hex-encoded Vector256 NFTokenOffers
   @$pb.TagNumber(1)
-  $core.List<$core.List<$core.int>> get tokenOffers => $_getList(0);
+  $core.List<$core.String> get tokenOffers => $_getList(0);
 }
 
 enum SigningInput_OperationOneof {
@@ -982,7 +980,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.int? sequence,
     $core.int? lastLedgerSequence,
     $core.String? account,
-    $fixnum.Int64? flags,
+    $core.int? flags,
     $core.List<$core.int>? privateKey,
     OperationTrustSet? opTrustSet,
     OperationPayment? opPayment,
@@ -994,6 +992,7 @@ class SigningInput extends $pb.GeneratedMessage {
     OperationEscrowCreate? opEscrowCreate,
     OperationEscrowCancel? opEscrowCancel,
     OperationEscrowFinish? opEscrowFinish,
+    $core.int? sourceTag,
   }) {
     final $result = create();
     if (fee != null) {
@@ -1044,6 +1043,9 @@ class SigningInput extends $pb.GeneratedMessage {
     if (opEscrowFinish != null) {
       $result.opEscrowFinish = opEscrowFinish;
     }
+    if (sourceTag != null) {
+      $result.sourceTag = sourceTag;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -1074,11 +1076,11 @@ class SigningInput extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..oo(0, [7, 8, 9, 10, 11, 12, 16, 17, 18])
     ..aInt64(1, _omitFieldNames ? '' : 'fee')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.OU3)
     ..a<$core.int>(
-        3, _omitFieldNames ? '' : 'lastLedgerSequence', $pb.PbFieldType.O3)
+        3, _omitFieldNames ? '' : 'lastLedgerSequence', $pb.PbFieldType.OU3)
     ..aOS(4, _omitFieldNames ? '' : 'account')
-    ..aInt64(5, _omitFieldNames ? '' : 'flags')
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'flags', $pb.PbFieldType.OU3)
     ..a<$core.List<$core.int>>(
         6, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
     ..aOM<OperationTrustSet>(7, _omitFieldNames ? '' : 'opTrustSet',
@@ -1104,6 +1106,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: OperationEscrowCancel.create)
     ..aOM<OperationEscrowFinish>(18, _omitFieldNames ? '' : 'opEscrowFinish',
         subBuilder: OperationEscrowFinish.create)
+    ..a<$core.int>(25, _omitFieldNames ? '' : 'sourceTag', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1151,7 +1154,7 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.int get sequence => $_getIZ(1);
   @$pb.TagNumber(2)
   set sequence($core.int v) {
-    $_setSignedInt32(1, v);
+    $_setUnsignedInt32(1, v);
   }
 
   @$pb.TagNumber(2)
@@ -1164,7 +1167,7 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.int get lastLedgerSequence => $_getIZ(2);
   @$pb.TagNumber(3)
   set lastLedgerSequence($core.int v) {
-    $_setSignedInt32(2, v);
+    $_setUnsignedInt32(2, v);
   }
 
   @$pb.TagNumber(3)
@@ -1187,10 +1190,10 @@ class SigningInput extends $pb.GeneratedMessage {
 
   /// Transaction flags, optional
   @$pb.TagNumber(5)
-  $fixnum.Int64 get flags => $_getI64(4);
+  $core.int get flags => $_getIZ(4);
   @$pb.TagNumber(5)
-  set flags($fixnum.Int64 v) {
-    $_setInt64(4, v);
+  set flags($core.int v) {
+    $_setUnsignedInt32(4, v);
   }
 
   @$pb.TagNumber(5)
@@ -1349,6 +1352,20 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearOpEscrowFinish() => clearField(18);
   @$pb.TagNumber(18)
   OperationEscrowFinish ensureOpEscrowFinish() => $_ensure(15);
+
+  /// Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made.
+  /// Conventionally, a refund should specify the initial payment's SourceTag as the refund payment's DestinationTag.
+  @$pb.TagNumber(25)
+  $core.int get sourceTag => $_getIZ(16);
+  @$pb.TagNumber(25)
+  set sourceTag($core.int v) {
+    $_setUnsignedInt32(16, v);
+  }
+
+  @$pb.TagNumber(25)
+  $core.bool hasSourceTag() => $_has(16);
+  @$pb.TagNumber(25)
+  void clearSourceTag() => clearField(25);
 }
 
 /// Result containing the signed and encoded transaction.

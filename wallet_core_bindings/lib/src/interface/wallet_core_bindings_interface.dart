@@ -137,9 +137,6 @@ abstract class WalletCoreBindingsInterface {
   /// [TWPublicKey] interface.
   late TWPublicKeyInterface publicKey;
 
-  /// [TWRippleXAddress] interface.
-  late TWRippleXAddressInterface rippleXAddress;
-
   /// [TWSegwitAddress] interface.
   late TWSegwitAddressInterface segwitAddress;
 
@@ -396,10 +393,6 @@ TWPrivateKeyInterface get _privateKeyImpl =>
 /// [TWPublicKey] implement.
 TWPublicKeyInterface get _publicKeyImpl =>
     WalletCoreBindingsInterface.instance.publicKey;
-
-/// [TWRippleXAddress] implement.
-TWRippleXAddressInterface get _rippleXAddressImpl =>
-    WalletCoreBindingsInterface.instance.rippleXAddress;
 
 /// [TWSegwitAddress] implement.
 TWSegwitAddressInterface get _segwitAddressImpl =>

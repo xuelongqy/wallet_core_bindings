@@ -294,6 +294,7 @@ const SigningInput$json = {
       '9': 0,
       '10': 'transferObject'
     },
+    {'1': 'raw_json', '3': 10, '4': 1, '5': 9, '9': 0, '10': 'rawJson'},
     {'1': 'gas_budget', '3': 12, '4': 1, '5': 4, '10': 'gasBudget'},
     {
       '1': 'reference_gas_price',
@@ -319,9 +320,10 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'b3RvLlJlcXVlc3RBZGRTdGFrZUgAUg9yZXF1ZXN0QWRkU3Rha2USWgoWcmVxdWVzdF93aXRoZH'
     'Jhd19zdGFrZRgIIAEoCzIiLlRXLlN1aS5Qcm90by5SZXF1ZXN0V2l0aGRyYXdTdGFrZUgAUhRy'
     'ZXF1ZXN0V2l0aGRyYXdTdGFrZRJHCg90cmFuc2Zlcl9vYmplY3QYCSABKAsyHC5UVy5TdWkuUH'
-    'JvdG8uVHJhbnNmZXJPYmplY3RIAFIOdHJhbnNmZXJPYmplY3QSHQoKZ2FzX2J1ZGdldBgMIAEo'
-    'BFIJZ2FzQnVkZ2V0Ei4KE3JlZmVyZW5jZV9nYXNfcHJpY2UYDSABKARSEXJlZmVyZW5jZUdhc1'
-    'ByaWNlQhUKE3RyYW5zYWN0aW9uX3BheWxvYWQ=');
+    'JvdG8uVHJhbnNmZXJPYmplY3RIAFIOdHJhbnNmZXJPYmplY3QSGwoIcmF3X2pzb24YCiABKAlI'
+    'AFIHcmF3SnNvbhIdCgpnYXNfYnVkZ2V0GAwgASgEUglnYXNCdWRnZXQSLgoTcmVmZXJlbmNlX2'
+    'dhc19wcmljZRgNIAEoBFIRcmVmZXJlbmNlR2FzUHJpY2VCFQoTdHJhbnNhY3Rpb25fcGF5bG9h'
+    'ZA==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

@@ -130,6 +130,7 @@ const Accounts$json = {
       '10': 'receiverUsername'
     },
     {'1': 'guardian', '3': 6, '4': 1, '5': 9, '10': 'guardian'},
+    {'1': 'relayer', '3': 7, '4': 1, '5': 9, '10': 'relayer'},
   ],
 };
 
@@ -138,7 +139,8 @@ final $typed_data.Uint8List accountsDescriptor = $convert.base64Decode(
     'CghBY2NvdW50cxIhCgxzZW5kZXJfbm9uY2UYASABKARSC3NlbmRlck5vbmNlEhYKBnNlbmRlch'
     'gCIAEoCVIGc2VuZGVyEicKD3NlbmRlcl91c2VybmFtZRgDIAEoCVIOc2VuZGVyVXNlcm5hbWUS'
     'GgoIcmVjZWl2ZXIYBCABKAlSCHJlY2VpdmVyEisKEXJlY2VpdmVyX3VzZXJuYW1lGAUgASgJUh'
-    'ByZWNlaXZlclVzZXJuYW1lEhoKCGd1YXJkaWFuGAYgASgJUghndWFyZGlhbg==');
+    'ByZWNlaXZlclVzZXJuYW1lEhoKCGd1YXJkaWFuGAYgASgJUghndWFyZGlhbhIYCgdyZWxheWVy'
+    'GAcgASgJUgdyZWxheWVy');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {

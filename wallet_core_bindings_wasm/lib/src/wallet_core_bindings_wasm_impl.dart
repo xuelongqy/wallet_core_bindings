@@ -107,7 +107,6 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     pbkdf2 = TWPBKDF2Impl(_wasm);
     privateKey = TWPrivateKeyImpl(_wasm);
     publicKey = TWPublicKeyImpl(_wasm);
-    rippleXAddress = TWRippleXAddressImpl(_wasm);
     segwitAddress = TWSegwitAddressImpl(_wasm);
     solanaAddress = TWSolanaAddressImpl(_wasm);
     solanaTransaction = TWSolanaTransactionImpl(_wasm);

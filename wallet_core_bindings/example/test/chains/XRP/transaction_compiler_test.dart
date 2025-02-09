@@ -49,10 +49,13 @@ void main() {
       expect(hex(preImageHash),
           '86ef78df7a4aad29e6b3730f7965c1bd5ccd2439426cb738d7c494a64cfaf4af');
       // Simulate signature, normally obtained from signature server
-      final signature = privateKey.signAsDER(Uint8List.fromList(preImageHash));
+      final signature = privateKey.sign(
+        Uint8List.fromList(preImageHash),
+        TWCurve.SECP256k1,
+      );
       // Verify signature (pubkey & hash & signature)
       expect(
-        publicKey.verifyAsDER(signature, Uint8List.fromList(preImageHash)),
+        publicKey.verify(signature, Uint8List.fromList(preImageHash)),
         true,
       );
 
@@ -107,7 +110,7 @@ void main() {
         );
         final output = Ripple.SigningOutput.fromBuffer(outputData);
         expect(output.encoded.isEmpty, true);
-        expect(output.error, Common.SigningError.Error_invalid_params);
+        expect(output.error, Common.SigningError.Error_signatures_count);
       }
     });
   });

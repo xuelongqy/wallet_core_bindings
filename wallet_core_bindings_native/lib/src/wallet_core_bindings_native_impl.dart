@@ -73,7 +73,6 @@ class WalletCoreBindingsNativeImpl extends WalletCoreBindingsInterface {
     pbkdf2 = TWPBKDF2Impl(_bindings);
     privateKey = TWPrivateKeyImpl(_bindings);
     publicKey = TWPublicKeyImpl(_bindings);
-    rippleXAddress = TWRippleXAddressImpl(_bindings);
     segwitAddress = TWSegwitAddressImpl(_bindings);
     solanaAddress = TWSolanaAddressImpl(_bindings);
     solanaTransaction = TWSolanaTransactionImpl(_bindings);

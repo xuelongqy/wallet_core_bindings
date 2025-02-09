@@ -63,7 +63,7 @@ const OperationPayment$json = {
       '10': 'currencyAmount'
     },
     {'1': 'destination', '3': 3, '4': 1, '5': 9, '10': 'destination'},
-    {'1': 'destination_tag', '3': 4, '4': 1, '5': 3, '10': 'destinationTag'},
+    {'1': 'destination_tag', '3': 4, '4': 1, '5': 13, '10': 'destinationTag'},
   ],
   '8': [
     {'1': 'amount_oneof'},
@@ -75,7 +75,7 @@ final $typed_data.Uint8List operationPaymentDescriptor = $convert.base64Decode(
     'ChBPcGVyYXRpb25QYXltZW50EhgKBmFtb3VudBgBIAEoA0gAUgZhbW91bnQSSgoPY3VycmVuY3'
     'lfYW1vdW50GAIgASgLMh8uVFcuUmlwcGxlLlByb3RvLkN1cnJlbmN5QW1vdW50SABSDmN1cnJl'
     'bmN5QW1vdW50EiAKC2Rlc3RpbmF0aW9uGAMgASgJUgtkZXN0aW5hdGlvbhInCg9kZXN0aW5hdG'
-    'lvbl90YWcYBCABKANSDmRlc3RpbmF0aW9uVGFnQg4KDGFtb3VudF9vbmVvZg==');
+    'lvbl90YWcYBCABKA1SDmRlc3RpbmF0aW9uVGFnQg4KDGFtb3VudF9vbmVvZg==');
 
 @$core.Deprecated('Use operationEscrowCreateDescriptor instead')
 const OperationEscrowCreate$json = {
@@ -83,9 +83,9 @@ const OperationEscrowCreate$json = {
   '2': [
     {'1': 'amount', '3': 1, '4': 1, '5': 3, '10': 'amount'},
     {'1': 'destination', '3': 2, '4': 1, '5': 9, '10': 'destination'},
-    {'1': 'destination_tag', '3': 3, '4': 1, '5': 3, '10': 'destinationTag'},
-    {'1': 'cancel_after', '3': 4, '4': 1, '5': 3, '10': 'cancelAfter'},
-    {'1': 'finish_after', '3': 5, '4': 1, '5': 3, '10': 'finishAfter'},
+    {'1': 'destination_tag', '3': 3, '4': 1, '5': 13, '10': 'destinationTag'},
+    {'1': 'cancel_after', '3': 4, '4': 1, '5': 13, '10': 'cancelAfter'},
+    {'1': 'finish_after', '3': 5, '4': 1, '5': 13, '10': 'finishAfter'},
     {'1': 'condition', '3': 6, '4': 1, '5': 9, '10': 'condition'},
   ],
 };
@@ -93,30 +93,30 @@ const OperationEscrowCreate$json = {
 /// Descriptor for `OperationEscrowCreate`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationEscrowCreateDescriptor = $convert.base64Decode(
     'ChVPcGVyYXRpb25Fc2Nyb3dDcmVhdGUSFgoGYW1vdW50GAEgASgDUgZhbW91bnQSIAoLZGVzdG'
-    'luYXRpb24YAiABKAlSC2Rlc3RpbmF0aW9uEicKD2Rlc3RpbmF0aW9uX3RhZxgDIAEoA1IOZGVz'
-    'dGluYXRpb25UYWcSIQoMY2FuY2VsX2FmdGVyGAQgASgDUgtjYW5jZWxBZnRlchIhCgxmaW5pc2'
-    'hfYWZ0ZXIYBSABKANSC2ZpbmlzaEFmdGVyEhwKCWNvbmRpdGlvbhgGIAEoCVIJY29uZGl0aW9u');
+    'luYXRpb24YAiABKAlSC2Rlc3RpbmF0aW9uEicKD2Rlc3RpbmF0aW9uX3RhZxgDIAEoDVIOZGVz'
+    'dGluYXRpb25UYWcSIQoMY2FuY2VsX2FmdGVyGAQgASgNUgtjYW5jZWxBZnRlchIhCgxmaW5pc2'
+    'hfYWZ0ZXIYBSABKA1SC2ZpbmlzaEFmdGVyEhwKCWNvbmRpdGlvbhgGIAEoCVIJY29uZGl0aW9u');
 
 @$core.Deprecated('Use operationEscrowCancelDescriptor instead')
 const OperationEscrowCancel$json = {
   '1': 'OperationEscrowCancel',
   '2': [
     {'1': 'owner', '3': 1, '4': 1, '5': 9, '10': 'owner'},
-    {'1': 'offer_sequence', '3': 2, '4': 1, '5': 5, '10': 'offerSequence'},
+    {'1': 'offer_sequence', '3': 2, '4': 1, '5': 13, '10': 'offerSequence'},
   ],
 };
 
 /// Descriptor for `OperationEscrowCancel`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationEscrowCancelDescriptor = $convert.base64Decode(
     'ChVPcGVyYXRpb25Fc2Nyb3dDYW5jZWwSFAoFb3duZXIYASABKAlSBW93bmVyEiUKDm9mZmVyX3'
-    'NlcXVlbmNlGAIgASgFUg1vZmZlclNlcXVlbmNl');
+    'NlcXVlbmNlGAIgASgNUg1vZmZlclNlcXVlbmNl');
 
 @$core.Deprecated('Use operationEscrowFinishDescriptor instead')
 const OperationEscrowFinish$json = {
   '1': 'OperationEscrowFinish',
   '2': [
     {'1': 'owner', '3': 1, '4': 1, '5': 9, '10': 'owner'},
-    {'1': 'offer_sequence', '3': 2, '4': 1, '5': 5, '10': 'offerSequence'},
+    {'1': 'offer_sequence', '3': 2, '4': 1, '5': 13, '10': 'offerSequence'},
     {'1': 'condition', '3': 3, '4': 1, '5': 9, '10': 'condition'},
     {'1': 'fulfillment', '3': 4, '4': 1, '5': 9, '10': 'fulfillment'},
   ],
@@ -125,26 +125,26 @@ const OperationEscrowFinish$json = {
 /// Descriptor for `OperationEscrowFinish`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationEscrowFinishDescriptor = $convert.base64Decode(
     'ChVPcGVyYXRpb25Fc2Nyb3dGaW5pc2gSFAoFb3duZXIYASABKAlSBW93bmVyEiUKDm9mZmVyX3'
-    'NlcXVlbmNlGAIgASgFUg1vZmZlclNlcXVlbmNlEhwKCWNvbmRpdGlvbhgDIAEoCVIJY29uZGl0'
+    'NlcXVlbmNlGAIgASgNUg1vZmZlclNlcXVlbmNlEhwKCWNvbmRpdGlvbhgDIAEoCVIJY29uZGl0'
     'aW9uEiAKC2Z1bGZpbGxtZW50GAQgASgJUgtmdWxmaWxsbWVudA==');
 
 @$core.Deprecated('Use operationNFTokenBurnDescriptor instead')
 const OperationNFTokenBurn$json = {
   '1': 'OperationNFTokenBurn',
   '2': [
-    {'1': 'nftoken_id', '3': 1, '4': 1, '5': 12, '10': 'nftokenId'},
+    {'1': 'nftoken_id', '3': 1, '4': 1, '5': 9, '10': 'nftokenId'},
   ],
 };
 
 /// Descriptor for `OperationNFTokenBurn`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationNFTokenBurnDescriptor = $convert.base64Decode(
-    'ChRPcGVyYXRpb25ORlRva2VuQnVybhIdCgpuZnRva2VuX2lkGAEgASgMUgluZnRva2VuSWQ=');
+    'ChRPcGVyYXRpb25ORlRva2VuQnVybhIdCgpuZnRva2VuX2lkGAEgASgJUgluZnRva2VuSWQ=');
 
 @$core.Deprecated('Use operationNFTokenCreateOfferDescriptor instead')
 const OperationNFTokenCreateOffer$json = {
   '1': 'OperationNFTokenCreateOffer',
   '2': [
-    {'1': 'nftoken_id', '3': 1, '4': 1, '5': 12, '10': 'nftokenId'},
+    {'1': 'nftoken_id', '3': 1, '4': 1, '5': 9, '10': 'nftokenId'},
     {'1': 'destination', '3': 2, '4': 1, '5': 9, '10': 'destination'},
   ],
 };
@@ -152,35 +152,35 @@ const OperationNFTokenCreateOffer$json = {
 /// Descriptor for `OperationNFTokenCreateOffer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationNFTokenCreateOfferDescriptor =
     $convert.base64Decode(
-        'ChtPcGVyYXRpb25ORlRva2VuQ3JlYXRlT2ZmZXISHQoKbmZ0b2tlbl9pZBgBIAEoDFIJbmZ0b2'
+        'ChtPcGVyYXRpb25ORlRva2VuQ3JlYXRlT2ZmZXISHQoKbmZ0b2tlbl9pZBgBIAEoCVIJbmZ0b2'
         'tlbklkEiAKC2Rlc3RpbmF0aW9uGAIgASgJUgtkZXN0aW5hdGlvbg==');
 
 @$core.Deprecated('Use operationNFTokenAcceptOfferDescriptor instead')
 const OperationNFTokenAcceptOffer$json = {
   '1': 'OperationNFTokenAcceptOffer',
   '2': [
-    {'1': 'sell_offer', '3': 1, '4': 1, '5': 12, '10': 'sellOffer'},
+    {'1': 'sell_offer', '3': 1, '4': 1, '5': 9, '10': 'sellOffer'},
   ],
 };
 
 /// Descriptor for `OperationNFTokenAcceptOffer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationNFTokenAcceptOfferDescriptor =
     $convert.base64Decode(
-        'ChtPcGVyYXRpb25ORlRva2VuQWNjZXB0T2ZmZXISHQoKc2VsbF9vZmZlchgBIAEoDFIJc2VsbE'
+        'ChtPcGVyYXRpb25ORlRva2VuQWNjZXB0T2ZmZXISHQoKc2VsbF9vZmZlchgBIAEoCVIJc2VsbE'
         '9mZmVy');
 
 @$core.Deprecated('Use operationNFTokenCancelOfferDescriptor instead')
 const OperationNFTokenCancelOffer$json = {
   '1': 'OperationNFTokenCancelOffer',
   '2': [
-    {'1': 'token_offers', '3': 1, '4': 3, '5': 12, '10': 'tokenOffers'},
+    {'1': 'token_offers', '3': 1, '4': 3, '5': 9, '10': 'tokenOffers'},
   ],
 };
 
 /// Descriptor for `OperationNFTokenCancelOffer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationNFTokenCancelOfferDescriptor =
     $convert.base64Decode(
-        'ChtPcGVyYXRpb25ORlRva2VuQ2FuY2VsT2ZmZXISIQoMdG9rZW5fb2ZmZXJzGAEgAygMUgt0b2'
+        'ChtPcGVyYXRpb25ORlRva2VuQ2FuY2VsT2ZmZXISIQoMdG9rZW5fb2ZmZXJzGAEgAygJUgt0b2'
         'tlbk9mZmVycw==');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
@@ -188,16 +188,16 @@ const SigningInput$json = {
   '1': 'SigningInput',
   '2': [
     {'1': 'fee', '3': 1, '4': 1, '5': 3, '10': 'fee'},
-    {'1': 'sequence', '3': 2, '4': 1, '5': 5, '10': 'sequence'},
+    {'1': 'sequence', '3': 2, '4': 1, '5': 13, '10': 'sequence'},
     {
       '1': 'last_ledger_sequence',
       '3': 3,
       '4': 1,
-      '5': 5,
+      '5': 13,
       '10': 'lastLedgerSequence'
     },
     {'1': 'account', '3': 4, '4': 1, '5': 9, '10': 'account'},
-    {'1': 'flags', '3': 5, '4': 1, '5': 3, '10': 'flags'},
+    {'1': 'flags', '3': 5, '4': 1, '5': 13, '10': 'flags'},
     {'1': 'private_key', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
     {
       '1': 'op_trust_set',
@@ -281,6 +281,7 @@ const SigningInput$json = {
       '10': 'opEscrowFinish'
     },
     {'1': 'public_key', '3': 15, '4': 1, '5': 12, '10': 'publicKey'},
+    {'1': 'source_tag', '3': 25, '4': 1, '5': 13, '10': 'sourceTag'},
   ],
   '8': [
     {'1': 'operation_oneof'},
@@ -289,9 +290,9 @@ const SigningInput$json = {
 
 /// Descriptor for `SigningInput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
-    'CgxTaWduaW5nSW5wdXQSEAoDZmVlGAEgASgDUgNmZWUSGgoIc2VxdWVuY2UYAiABKAVSCHNlcX'
-    'VlbmNlEjAKFGxhc3RfbGVkZ2VyX3NlcXVlbmNlGAMgASgFUhJsYXN0TGVkZ2VyU2VxdWVuY2US'
-    'GAoHYWNjb3VudBgEIAEoCVIHYWNjb3VudBIUCgVmbGFncxgFIAEoA1IFZmxhZ3MSHwoLcHJpdm'
+    'CgxTaWduaW5nSW5wdXQSEAoDZmVlGAEgASgDUgNmZWUSGgoIc2VxdWVuY2UYAiABKA1SCHNlcX'
+    'VlbmNlEjAKFGxhc3RfbGVkZ2VyX3NlcXVlbmNlGAMgASgNUhJsYXN0TGVkZ2VyU2VxdWVuY2US'
+    'GAoHYWNjb3VudBgEIAEoCVIHYWNjb3VudBIUCgVmbGFncxgFIAEoDVIFZmxhZ3MSHwoLcHJpdm'
     'F0ZV9rZXkYBiABKAxSCnByaXZhdGVLZXkSRgoMb3BfdHJ1c3Rfc2V0GAcgASgLMiIuVFcuUmlw'
     'cGxlLlByb3RvLk9wZXJhdGlvblRydXN0U2V0SABSCm9wVHJ1c3RTZXQSQgoKb3BfcGF5bWVudB'
     'gIIAEoCzIhLlRXLlJpcHBsZS5Qcm90by5PcGVyYXRpb25QYXltZW50SABSCW9wUGF5bWVudBJP'
@@ -307,7 +308,8 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'YuVFcuUmlwcGxlLlByb3RvLk9wZXJhdGlvbkVzY3Jvd0NhbmNlbEgAUg5vcEVzY3Jvd0NhbmNl'
     'bBJSChBvcF9lc2Nyb3dfZmluaXNoGBIgASgLMiYuVFcuUmlwcGxlLlByb3RvLk9wZXJhdGlvbk'
     'VzY3Jvd0ZpbmlzaEgAUg5vcEVzY3Jvd0ZpbmlzaBIdCgpwdWJsaWNfa2V5GA8gASgMUglwdWJs'
-    'aWNLZXlCEQoPb3BlcmF0aW9uX29uZW9m');
+    'aWNLZXkSHQoKc291cmNlX3RhZxgZIAEoDVIJc291cmNlVGFnQhEKD29wZXJhdGlvbl9vbmVvZg'
+    '==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

@@ -40,6 +40,7 @@ enum TWEthereumChainID {
   Boba(288),
   Kcc(321),
   Zksync(324),
+  Heco(128),
   Acalaevm(787),
   Metis(1088),
   Polygonzkevm(1101),

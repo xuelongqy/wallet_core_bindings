@@ -546,6 +546,7 @@ class Accounts extends $pb.GeneratedMessage {
     $core.String? receiver,
     $core.String? receiverUsername,
     $core.String? guardian,
+    $core.String? relayer,
   }) {
     final $result = create();
     if (senderNonce != null) {
@@ -565,6 +566,9 @@ class Accounts extends $pb.GeneratedMessage {
     }
     if (guardian != null) {
       $result.guardian = guardian;
+    }
+    if (relayer != null) {
+      $result.relayer = relayer;
     }
     return $result;
   }
@@ -589,6 +593,7 @@ class Accounts extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'receiver')
     ..aOS(5, _omitFieldNames ? '' : 'receiverUsername')
     ..aOS(6, _omitFieldNames ? '' : 'guardian')
+    ..aOS(7, _omitFieldNames ? '' : 'relayer')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -689,6 +694,19 @@ class Accounts extends $pb.GeneratedMessage {
   $core.bool hasGuardian() => $_has(5);
   @$pb.TagNumber(6)
   void clearGuardian() => clearField(6);
+
+  /// Relayer address
+  @$pb.TagNumber(7)
+  $core.String get relayer => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set relayer($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasRelayer() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearRelayer() => clearField(7);
 }
 
 enum SigningInput_MessageOneof {

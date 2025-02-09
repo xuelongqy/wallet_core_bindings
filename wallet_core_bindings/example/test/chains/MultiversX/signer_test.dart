@@ -1,7 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/MultiversX.pb.dart' as MultiversX;
+import 'package:wallet_core_bindings/proto/TransactionCompiler.pb.dart'
+    as TransactionCompiler;
 
 import '../../utils.dart';
 import 'address_test.dart';
@@ -708,6 +712,191 @@ void main() {
       ''';
       expectJson(expected, encoded);
       expect(expectedSignature, signature);
+    });
+
+    test('SignGenericActionWithRelayer', () {
+      final privateKey = TWPrivateKey.createWithHexString(ALICE_SEED_HEX);
+      final input = MultiversX.SigningInput(
+        privateKey: privateKey.data,
+        genericAction: MultiversX.GenericAction(
+          accounts: MultiversX.Accounts(
+            senderNonce: $fixnum.Int64(42),
+            sender: ALICE_BECH32,
+            receiver: BOB_BECH32,
+            relayer: CAROL_BECH32,
+          ),
+          value: '1000000000000000000',
+          data: '',
+          version: 2,
+        ),
+        gasPrice: $fixnum.Int64(1000000000),
+        gasLimit: $fixnum.Int64(100000),
+        chainId: '1',
+      );
+
+      final output = MultiversX.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+      final signature = output.signature;
+      final encoded = output.encoded;
+      const expectedSignature =
+          "f0137ce0303a33814691975598dab3b82bb91b017aa251640a48827edc48048aa0f916dd3e7915dd3be27db3304fc238a719123b6ae2285731ab24b794665003";
+      const expected = '''
+        {
+         "chainID":"1",
+         "gasLimit":100000,
+         "gasPrice":1000000000,
+         "relayer":"erd1k2s324ww2g0yj38qn2ch2jwctdy8mnfxep94q9arncc6xecg3xaq6mjse8",
+         "nonce":42,
+         "receiver":"erd1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqzu66jx",
+         "sender":"erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th",
+         "signature":"f0137ce0303a33814691975598dab3b82bb91b017aa251640a48827edc48048aa0f916dd3e7915dd3be27db3304fc238a719123b6ae2285731ab24b794665003",
+         "value":"1000000000000000000",
+         "version":2
+        }
+      ''';
+      expect(expectedSignature, signature);
+      expectJson(expected, encoded);
+    });
+
+    test('SignEGLDTransferWithRelayer', () {
+      final privateKey = TWPrivateKey.createWithHexString(ALICE_SEED_HEX);
+      final input = MultiversX.SigningInput(
+        privateKey: privateKey.data,
+        egldTransfer: MultiversX.EGLDTransfer(
+          accounts: MultiversX.Accounts(
+            senderNonce: $fixnum.Int64(7),
+            sender: ALICE_BECH32,
+            receiver: BOB_BECH32,
+            relayer: CAROL_BECH32,
+          ),
+          amount: '1000000000000000000',
+        ),
+      );
+
+      final output = MultiversX.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+      final signature = output.signature;
+      final encoded = output.encoded;
+      const expectedSignature =
+          "c86491a51d553889df9fb7ff75880843e2b21aec97ae3e4004b70801a5494a8958af8daf56906f9720b0af6a25ad2ab82b3af05940fb6dfe0dea529f1bf8d90f";
+      const expected = '''
+        {
+          "chainID":"1",
+          "gasLimit":100000,
+          "gasPrice":1000000000,
+          "relayer":"erd1k2s324ww2g0yj38qn2ch2jwctdy8mnfxep94q9arncc6xecg3xaq6mjse8",
+          "nonce":7,
+          "receiver":"erd1spyavw0956vq68xj8y4tenjpq2wd5a9p2c6j8gsz7ztyrnpxrruqzu66jx",
+          "sender":"erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th",
+          "signature":"c86491a51d553889df9fb7ff75880843e2b21aec97ae3e4004b70801a5494a8958af8daf56906f9720b0af6a25ad2ab82b3af05940fb6dfe0dea529f1bf8d90f",
+          "value":"1000000000000000000",
+          "version":2
+        }
+      ''';
+      expect(expectedSignature, signature);
+      expectJson(expected, encoded);
+    });
+
+    test('buildUnsignedTxBytes', () {
+      final input = MultiversX.SigningInput(
+        genericAction: MultiversX.GenericAction(
+          accounts: MultiversX.Accounts(
+            senderNonce: $fixnum.Int64(7),
+            sender: ALICE_BECH32,
+            receiver: BOB_BECH32,
+          ),
+          value: '0',
+          data: 'foo',
+          version: 1,
+        ),
+        gasPrice: $fixnum.Int64(1000000000),
+        gasLimit: $fixnum.Int64(50000),
+        chainId: '1',
+      );
+
+      final txInputData = input.writeToBuffer();
+      final preImageHashes = TWTransactionCompiler.preImageHashes(
+        coin,
+        txInputData,
+      );
+      final preSigningOutput =
+          TransactionCompiler.PreSigningOutput.fromBuffer(preImageHashes);
+      final unsignedTxBytes = preSigningOutput.data;
+      const expectedData = '''
+      {
+        "nonce": 7,
+        "value": "0",
+        "receiver": "$BOB_BECH32",
+        "sender": "$ALICE_BECH32",
+        "gasPrice": 1000000000,
+        "gasLimit": 50000,
+        "data": "Zm9v",
+        "chainID": "1",
+        "version": 1
+      }
+      ''';
+
+      expectJson(expectedData, String.fromCharCodes(unsignedTxBytes));
+    });
+
+    test('buildSigningOutput', () {
+      final privateKey = TWPrivateKey.createWithHexString(ALICE_SEED_HEX);
+      final input = MultiversX.SigningInput(
+        privateKey: privateKey.data,
+        genericAction: MultiversX.GenericAction(
+          accounts: MultiversX.Accounts(
+            senderNonce: $fixnum.Int64(7),
+            sender: ALICE_BECH32,
+            receiver: BOB_BECH32,
+          ),
+          value: '0',
+          data: 'foo',
+          version: 1,
+        ),
+        gasPrice: $fixnum.Int64(1000000000),
+        gasLimit: $fixnum.Int64(50000),
+        chainId: '1',
+      );
+
+      final txInputData = input.writeToBuffer();
+      final preImageHashes = TWTransactionCompiler.preImageHashes(
+        coin,
+        txInputData,
+      );
+      final preSigningOutput =
+          TransactionCompiler.PreSigningOutput.fromBuffer(preImageHashes);
+      final unsignedTxBytes = preSigningOutput.data;
+      final signature = privateKey.sign(
+        Uint8List.fromList(unsignedTxBytes),
+        TWCurve.ED25519,
+      );
+
+      final output = MultiversX.SigningOutput.fromBuffer(
+          TWTransactionCompiler.compileWithSignatures(
+        coin: coin,
+        txInputData: txInputData,
+        signatures: [signature],
+        publicKeys: [privateKey.getPublicKeyEd25519().data],
+      ));
+      const expectedSignatureHex =
+          "e8647dae8b16e034d518a1a860c6a6c38d16192d0f1362833e62424f424e5da660770dff45f4b951d9cc58bfb9d14559c977d443449bfc4b8783ff9c84065700";
+      expect(expectedSignatureHex, hex(signature));
+      const expectedEncoded = '''
+      {
+        "nonce": 7,
+        "value": "0",
+        "receiver": "$BOB_BECH32",
+        "sender": "$ALICE_BECH32",
+        "gasPrice": 1000000000,
+        "gasLimit": 50000,
+        "data": "Zm9v",
+        "chainID": "1",
+        "version": 1,
+        "signature": "$expectedSignatureHex"
+      }
+      ''';
+      expect(output.signature, expectedSignatureHex);
+      expectJson(output.encoded, expectedEncoded);
     });
   });
 }

@@ -7521,149 +7521,6 @@ class TrustWalletCoreBindings {
       _TWDerivationPathIndexDescriptionPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWDerivationPathIndex>)>();
 
-  /// Compares two addresses for equality.
-  ///
-  /// \param lhs left non-null pointer to a Ripple Address
-  /// \param rhs right non-null pointer to a Ripple Address
-  /// \return true if both address are equal, false otherwise
-  bool TWRippleXAddressEqual(
-    ffi.Pointer<TWRippleXAddress> lhs,
-    ffi.Pointer<TWRippleXAddress> rhs,
-  ) {
-    return _TWRippleXAddressEqual(
-      lhs,
-      rhs,
-    );
-  }
-
-  late final _TWRippleXAddressEqualPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Bool Function(ffi.Pointer<TWRippleXAddress>,
-              ffi.Pointer<TWRippleXAddress>)>>('TWRippleXAddressEqual');
-  late final _TWRippleXAddressEqual = _TWRippleXAddressEqualPtr.asFunction<
-      bool Function(
-          ffi.Pointer<TWRippleXAddress>, ffi.Pointer<TWRippleXAddress>)>();
-
-  /// Determines if the string is a valid Ripple address.
-  ///
-  /// \param string Non-null pointer to a string that represent the Ripple Address to be checked
-  /// \return true if the given address is a valid Ripple address, false otherwise
-  bool TWRippleXAddressIsValidString(
-    ffi.Pointer<TWString> string,
-  ) {
-    return _TWRippleXAddressIsValidString(
-      string,
-    );
-  }
-
-  late final _TWRippleXAddressIsValidStringPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<TWString>)>>(
-          'TWRippleXAddressIsValidString');
-  late final _TWRippleXAddressIsValidString = _TWRippleXAddressIsValidStringPtr
-      .asFunction<bool Function(ffi.Pointer<TWString>)>();
-
-  /// Creates an address from a string representation.
-  ///
-  /// \param string Non-null pointer to a string that should be a valid ripple address
-  /// \note Should be deleted with \TWRippleXAddressDelete
-  /// \return Null pointer if the given string is an invalid ripple address, pointer to a Ripple address otherwise
-  ffi.Pointer<TWRippleXAddress> TWRippleXAddressCreateWithString(
-    ffi.Pointer<TWString> string,
-  ) {
-    return _TWRippleXAddressCreateWithString(
-      string,
-    );
-  }
-
-  late final _TWRippleXAddressCreateWithStringPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWRippleXAddress> Function(
-              ffi.Pointer<TWString>)>>('TWRippleXAddressCreateWithString');
-  late final _TWRippleXAddressCreateWithString =
-      _TWRippleXAddressCreateWithStringPtr.asFunction<
-          ffi.Pointer<TWRippleXAddress> Function(ffi.Pointer<TWString>)>();
-
-  /// Creates an address from a public key and destination tag.
-  ///
-  /// \param publicKey Non-null pointer to a public key
-  /// \param tag valid ripple destination tag (1-10)
-  /// \note Should be deleted with \TWRippleXAddressDelete
-  /// \return Non-null pointer to a Ripple Address
-  ffi.Pointer<TWRippleXAddress> TWRippleXAddressCreateWithPublicKey(
-    ffi.Pointer<TWPublicKey> publicKey,
-    int tag,
-  ) {
-    return _TWRippleXAddressCreateWithPublicKey(
-      publicKey,
-      tag,
-    );
-  }
-
-  late final _TWRippleXAddressCreateWithPublicKeyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWRippleXAddress> Function(ffi.Pointer<TWPublicKey>,
-              ffi.Uint32)>>('TWRippleXAddressCreateWithPublicKey');
-  late final _TWRippleXAddressCreateWithPublicKey =
-      _TWRippleXAddressCreateWithPublicKeyPtr.asFunction<
-          ffi.Pointer<TWRippleXAddress> Function(
-              ffi.Pointer<TWPublicKey>, int)>();
-
-  /// Delete the given ripple address
-  ///
-  /// \param address Non-null pointer to a Ripple Address
-  void TWRippleXAddressDelete(
-    ffi.Pointer<TWRippleXAddress> address,
-  ) {
-    return _TWRippleXAddressDelete(
-      address,
-    );
-  }
-
-  late final _TWRippleXAddressDeletePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<TWRippleXAddress>)>>(
-      'TWRippleXAddressDelete');
-  late final _TWRippleXAddressDelete = _TWRippleXAddressDeletePtr.asFunction<
-      void Function(ffi.Pointer<TWRippleXAddress>)>();
-
-  /// Returns the address string representation.
-  ///
-  /// \param address Non-null pointer to a Ripple Address
-  /// \return Non-null pointer to the ripple address string representation
-  ffi.Pointer<TWString> TWRippleXAddressDescription(
-    ffi.Pointer<TWRippleXAddress> address,
-  ) {
-    return _TWRippleXAddressDescription(
-      address,
-    );
-  }
-
-  late final _TWRippleXAddressDescriptionPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWString> Function(
-              ffi.Pointer<TWRippleXAddress>)>>('TWRippleXAddressDescription');
-  late final _TWRippleXAddressDescription =
-      _TWRippleXAddressDescriptionPtr.asFunction<
-          ffi.Pointer<TWString> Function(ffi.Pointer<TWRippleXAddress>)>();
-
-  /// Returns the destination tag.
-  ///
-  /// \param address Non-null pointer to a Ripple Address
-  /// \return The destination tag of the given Ripple Address (1-10)
-  int TWRippleXAddressTag(
-    ffi.Pointer<TWRippleXAddress> address,
-  ) {
-    return _TWRippleXAddressTag(
-      address,
-    );
-  }
-
-  late final _TWRippleXAddressTagPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Uint32 Function(ffi.Pointer<TWRippleXAddress>)>>(
-      'TWRippleXAddressTag');
-  late final _TWRippleXAddressTag = _TWRippleXAddressTagPtr.asFunction<
-      int Function(ffi.Pointer<TWRippleXAddress>)>();
-
   /// Builds a LiquidStaking transaction input.
   ///
   /// \param input The serialized data of LiquidStakingInput.
@@ -14337,6 +14194,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeOptimism = 10000070;
   static const int TWCoinTypeZksync = 10000324;
   static const int TWCoinTypeArbitrum = 10042221;
+  static const int TWCoinTypeECOChain = 10000553;
   static const int TWCoinTypeAvalancheCChain = 10009000;
   static const int TWCoinTypeXDai = 10000100;
   static const int TWCoinTypeFantom = 10000250;
@@ -14555,9 +14413,6 @@ abstract class TWSS58AddressType {
   static const int TWSS58AddressTypeKusama = 2;
 }
 
-/// Represents a Ripple X-address.
-final class TWRippleXAddress extends ffi.Opaque {}
-
 /// THORChain swap functions
 final class TWLiquidStaking extends ffi.Opaque {}
 
@@ -14733,6 +14588,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDBoba = 288;
   static const int TWEthereumChainIDKcc = 321;
   static const int TWEthereumChainIDZksync = 324;
+  static const int TWEthereumChainIDHeco = 128;
   static const int TWEthereumChainIDAcalaevm = 787;
   static const int TWEthereumChainIDMetis = 1088;
   static const int TWEthereumChainIDPolygonzkevm = 1101;
