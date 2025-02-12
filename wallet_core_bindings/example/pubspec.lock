@@ -270,21 +270,21 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.2.9"
+    version: "4.2.10"
   wallet_core_bindings_libs:
     dependency: "direct main"
     description:
       path: "../../wallet_core_bindings_libs"
       relative: true
     source: path
-    version: "4.2.9"
+    version: "4.2.10"
   wallet_core_bindings_native:
     dependency: "direct main"
     description:
       path: "../../wallet_core_bindings_native"
       relative: true
     source: path
-    version: "4.2.9"
+    version: "4.2.10"
 sdks:
   dart: ">=3.4.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"
