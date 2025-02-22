@@ -1,3 +1,7 @@
+## 4.2.11
+* Sync wallet-core [4.2.11](https://github.com/trustwallet/wallet-core/releases/tag/4.2.11).
+* Add extensions for blockchains.
+
 ## 4.2.10
 * Sync wallet-core [4.2.10](https://github.com/trustwallet/wallet-core/releases/tag/4.2.10).
 

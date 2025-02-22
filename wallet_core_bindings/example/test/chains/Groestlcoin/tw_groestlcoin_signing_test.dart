@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Bitcoin.pb.dart' as Bitcoin;
+import 'package:wallet_core_bindings/proto/BitcoinV2.pb.dart' as BitcoinV2;
+import 'package:wallet_core_bindings/proto/Utxo.pb.dart' as Utxo;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 
@@ -230,6 +232,86 @@ void main() {
 
       expect(verifyPlan(plan, [4774], 2500, 145), true);
       expectHex(plan.branchId, '');
+    });
+
+    // Tests the BitcoinV2 API through the legacy `SigningInput`.
+    // Successfully broadcasted: https://blockbook.groestlcoin.org/tx/40b539c578934c9863a93c966e278fbeb3e67b0da4eb9e3030092c1b717e7a64
+    test('SignV2P2WPKH', () {
+      final privateKey = parse_hex(
+          "dc334e7347f2f9f72fce789b11832bdf78adf0158bc6617e6d2d2a530a0d4bc6");
+      final txId = parse_hex(
+              "8f4ecc7844e19aa1d3183e47eee89d795f9e7c875a55ec0203946d6c9eb06895")
+          .reversed
+          .toList();
+      const inAmount = 4774;
+      const outAmount = 2500;
+      const changeAmount = 2048;
+      const senderAddress = "grs1qw4teyraux2s77nhjdwh9ar8rl9dt7zww8r6lne";
+      const toAddress = "31inaRqambLsd9D7Ke4USZmGEVd3PHkh7P";
+      const changeAddress = "Fj62rBJi8LvbmWu2jzkaUX1NFXLEqDLoZM";
+
+      // TX outputs
+      final signing = BitcoinV2.SigningInput(
+        privateKeys: [privateKey],
+        chainInfo: BitcoinV2.ChainInfo(
+          p2pkhPrefix: 36,
+          p2shPrefix: 5,
+        ),
+        builder: BitcoinV2.TransactionBuilder(
+          version: BitcoinV2.TransactionVersion.UseDefault,
+          inputSelector: BitcoinV2.InputSelector.UseAll,
+          fixedDustThreshold: 546.toInt64(),
+          inputs: [
+            BitcoinV2.Input(
+              outPoint: Utxo.OutPoint(
+                hash: txId,
+                vout: 1,
+              ),
+              value: inAmount.toInt64(),
+              receiverAddress: senderAddress,
+              sighashType: TWBitcoinSigHashType.All.type,
+            ),
+          ],
+          outputs: [
+            BitcoinV2.Output(
+              value: outAmount.toInt64(),
+              toAddress: toAddress,
+            ),
+            BitcoinV2.Output(
+              value: changeAmount.toInt64(),
+              toAddress: changeAddress,
+            ),
+          ],
+        ),
+      );
+
+      final legacy = Bitcoin.SigningInput(
+        coinType: TWCoinType.Groestlcoin.coin,
+        signingV2: signing,
+      );
+
+      final plan = Bitcoin.TransactionPlan.fromBuffer(
+          TWAnySigner.plan(legacy.writeToBuffer(), coin));
+
+      expect(plan.error, Common.SigningError.OK);
+      expect(plan.hasPlanningResultV2(), true);
+      expect(plan.planningResultV2.error, Common.SigningError.OK);
+      expect(plan.planningResultV2.vsizeEstimate.toInt(), 145);
+
+      final output = Bitcoin.SigningOutput.fromBuffer(
+          TWAnySigner.sign(legacy.writeToBuffer(), coin));
+
+      expect(output.error, Common.SigningError.OK);
+      expect(output.hasSigningResultV2(), true);
+      expect(output.signingResultV2.error, Common.SigningError.OK);
+      expectHex(
+        output.signingResultV2.encoded,
+        '010000000001019568b09e6c6d940302ec555a877c9e5f799de8ee473e18d3a19ae14478cc4e8f0100000000ffffffff02c40900000000000017a9140055b0c94df477ee6b9f75185dfc9aa8ce2e52e48700080000000000001976a91498af0aaca388a7e1024f505c033626d908e3b54a88ac024830450221009bbd0228dcb7343828633ded99d216555d587b74db40c4a46f560187eca222dd022032364cf6dbf9c0213076beb6b4a20935d4e9c827a551c3f6f8cbb22d8b464467012102e9c9b9b76e982ad8fa9a7f48470eafbeeba9bf6d287579318c517db5157d936e00000000',
+      );
+      expectHex(
+        output.signingResultV2.txid,
+        '40b539c578934c9863a93c966e278fbeb3e67b0da4eb9e3030092c1b717e7a64',
+      );
     });
   });
 }

@@ -7,6 +7,6 @@ abstract class TWTransactionCompilerInterface {
   int compileWithSignatures(
       int coin, int txInputData, int signatures, int publicKeys);
 
-  int compilerCompileWithSignaturesAndPubKeyType(int coin, int txInputData,
+  int compileWithSignaturesAndPubKeyType(int coin, int txInputData,
       int signatures, int publicKeys, int pubKeyType);
 }

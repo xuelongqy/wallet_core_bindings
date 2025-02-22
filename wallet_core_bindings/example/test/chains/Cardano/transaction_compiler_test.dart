@@ -96,8 +96,7 @@ void main() {
           "f28215fe2d008d615f94796e098a97f1aa43d986ac3cb94658401096ddcfb2ad21a4c0d861ef3fab"
           "e18841e8de88105b0d8e36430d7992c588634ead4100c32b2800b31b65e014d54a8238bdda63118d"
           "829bf0bcf1b631e86f0ef6";
-      final outData =
-          TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
+      final outData = TWTransactionCompiler.compileWithSignaturesAndPubKeyType(
         coin: coin,
         txInputData: inputData,
         signatures: [sig],
@@ -112,7 +111,7 @@ void main() {
       {
         // Negative: inconsistent signatures & publicKeys
         final outputData =
-            TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
+            TWTransactionCompiler.compileWithSignaturesAndPubKeyType(
           coin: coin,
           txInputData: inputData,
           signatures: [sig, sig],
@@ -126,7 +125,7 @@ void main() {
       {
         // Negative: empty signatures
         final outputData =
-            TWTransactionCompiler.compilerCompileWithSignaturesAndPubKeyType(
+            TWTransactionCompiler.compileWithSignaturesAndPubKeyType(
           coin: coin,
           txInputData: inputData,
           signatures: [],

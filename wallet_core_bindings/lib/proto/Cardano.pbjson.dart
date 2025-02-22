@@ -175,6 +175,42 @@ final $typed_data.Uint8List deregisterStakingKeyDescriptor = $convert.base64Deco
     'ChREZXJlZ2lzdGVyU3Rha2luZ0tleRInCg9zdGFraW5nX2FkZHJlc3MYASABKAlSDnN0YWtpbm'
     'dBZGRyZXNzEikKEHVuZGVwb3NpdF9hbW91bnQYAiABKARSD3VuZGVwb3NpdEFtb3VudA==');
 
+@$core.Deprecated('Use voteDelegationDescriptor instead')
+const VoteDelegation$json = {
+  '1': 'VoteDelegation',
+  '2': [
+    {'1': 'staking_address', '3': 1, '4': 1, '5': 9, '10': 'stakingAddress'},
+    {
+      '1': 'drep_type',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Cardano.Proto.VoteDelegation.DRepType',
+      '10': 'drepType'
+    },
+    {'1': 'drep_id', '3': 3, '4': 1, '5': 9, '10': 'drepId'},
+  ],
+  '4': [VoteDelegation_DRepType$json],
+};
+
+@$core.Deprecated('Use voteDelegationDescriptor instead')
+const VoteDelegation_DRepType$json = {
+  '1': 'DRepType',
+  '2': [
+    {'1': 'DREP_ID', '2': 0},
+    {'1': 'DREP_ALWAYS_ABSTAIN', '2': 2},
+    {'1': 'DREP_NO_CONFIDENCE', '2': 3},
+  ],
+};
+
+/// Descriptor for `VoteDelegation`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List voteDelegationDescriptor = $convert.base64Decode(
+    'Cg5Wb3RlRGVsZWdhdGlvbhInCg9zdGFraW5nX2FkZHJlc3MYASABKAlSDnN0YWtpbmdBZGRyZX'
+    'NzEkYKCWRyZXBfdHlwZRgCIAEoDjIpLlRXLkNhcmRhbm8uUHJvdG8uVm90ZURlbGVnYXRpb24u'
+    'RFJlcFR5cGVSCGRyZXBUeXBlEhcKB2RyZXBfaWQYAyABKAlSBmRyZXBJZCJICghEUmVwVHlwZR'
+    'ILCgdEUkVQX0lEEAASFwoTRFJFUF9BTFdBWVNfQUJTVEFJThACEhYKEkRSRVBfTk9fQ09ORklE'
+    'RU5DRRAD');
+
 @$core.Deprecated('Use delegateDescriptor instead')
 const Delegate$json = {
   '1': 'Delegate',
@@ -333,6 +369,14 @@ const SigningInput$json = {
       '6': '.TW.Cardano.Proto.DeregisterStakingKey',
       '10': 'deregisterStakingKey'
     },
+    {
+      '1': 'vote_delegation',
+      '3': 11,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Cardano.Proto.VoteDelegation',
+      '10': 'voteDelegation'
+    },
     {'1': 'ttl', '3': 4, '4': 1, '5': 4, '10': 'ttl'},
     {
       '1': 'plan',
@@ -363,9 +407,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'cuQ2FyZGFuby5Qcm90by5EZWxlZ2F0ZVIIZGVsZWdhdGUSNgoId2l0aGRyYXcYCCABKAsyGi5U'
     'Vy5DYXJkYW5vLlByb3RvLldpdGhkcmF3Ugh3aXRoZHJhdxJcChZkZXJlZ2lzdGVyX3N0YWtpbm'
     'dfa2V5GAkgASgLMiYuVFcuQ2FyZGFuby5Qcm90by5EZXJlZ2lzdGVyU3Rha2luZ0tleVIUZGVy'
-    'ZWdpc3RlclN0YWtpbmdLZXkSEAoDdHRsGAQgASgEUgN0dGwSNQoEcGxhbhgFIAEoCzIhLlRXLk'
-    'NhcmRhbm8uUHJvdG8uVHJhbnNhY3Rpb25QbGFuUgRwbGFuEj8KDWV4dHJhX291dHB1dHMYCiAD'
-    'KAsyGi5UVy5DYXJkYW5vLlByb3RvLlR4T3V0cHV0UgxleHRyYU91dHB1dHM=');
+    'ZWdpc3RlclN0YWtpbmdLZXkSSQoPdm90ZV9kZWxlZ2F0aW9uGAsgASgLMiAuVFcuQ2FyZGFuby'
+    '5Qcm90by5Wb3RlRGVsZWdhdGlvblIOdm90ZURlbGVnYXRpb24SEAoDdHRsGAQgASgEUgN0dGwS'
+    'NQoEcGxhbhgFIAEoCzIhLlRXLkNhcmRhbm8uUHJvdG8uVHJhbnNhY3Rpb25QbGFuUgRwbGFuEj'
+    '8KDWV4dHJhX291dHB1dHMYCiADKAsyGi5UVy5DYXJkYW5vLlByb3RvLlR4T3V0cHV0UgxleHRy'
+    'YU91dHB1dHM=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

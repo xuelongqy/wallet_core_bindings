@@ -281,6 +281,7 @@ const SigningInput$json = {
       '10': 'opEscrowFinish'
     },
     {'1': 'public_key', '3': 15, '4': 1, '5': 12, '10': 'publicKey'},
+    {'1': 'raw_json', '3': 20, '4': 1, '5': 9, '10': 'rawJson'},
     {'1': 'source_tag', '3': 25, '4': 1, '5': 13, '10': 'sourceTag'},
   ],
   '8': [
@@ -308,8 +309,8 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'YuVFcuUmlwcGxlLlByb3RvLk9wZXJhdGlvbkVzY3Jvd0NhbmNlbEgAUg5vcEVzY3Jvd0NhbmNl'
     'bBJSChBvcF9lc2Nyb3dfZmluaXNoGBIgASgLMiYuVFcuUmlwcGxlLlByb3RvLk9wZXJhdGlvbk'
     'VzY3Jvd0ZpbmlzaEgAUg5vcEVzY3Jvd0ZpbmlzaBIdCgpwdWJsaWNfa2V5GA8gASgMUglwdWJs'
-    'aWNLZXkSHQoKc291cmNlX3RhZxgZIAEoDVIJc291cmNlVGFnQhEKD29wZXJhdGlvbl9vbmVvZg'
-    '==');
+    'aWNLZXkSGQoIcmF3X2pzb24YFCABKAlSB3Jhd0pzb24SHQoKc291cmNlX3RhZxgZIAEoDVIJc2'
+    '91cmNlVGFnQhEKD29wZXJhdGlvbl9vbmVvZg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

@@ -15,7 +15,7 @@ class TWTransactionCompilerImpl extends TWTransactionCompilerInterface {
   }
 
   @override
-  int compilerCompileWithSignaturesAndPubKeyType(int coin, int txInputData,
+  int compileWithSignaturesAndPubKeyType(int coin, int txInputData,
       int signatures, int publicKeys, int pubKeyType) {
     final func = wasm.getFunction(
         'TWTransactionCompilerCompileWithSignaturesAndPubKeyType')!;

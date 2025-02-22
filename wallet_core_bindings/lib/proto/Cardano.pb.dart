@@ -14,7 +14,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'Cardano.pbenum.dart';
 import 'Common.pbenum.dart' as $0;
+
+export 'Cardano.pbenum.dart';
 
 /// A transaction output that can be used as input
 class OutPoint extends $pb.GeneratedMessage {
@@ -807,6 +810,110 @@ class DeregisterStakingKey extends $pb.GeneratedMessage {
   void clearUndepositAmount() => clearField(2);
 }
 
+/// Vote delegation to a specific DRep or always abstain or no confidence
+class VoteDelegation extends $pb.GeneratedMessage {
+  factory VoteDelegation({
+    $core.String? stakingAddress,
+    VoteDelegation_DRepType? drepType,
+    $core.String? drepId,
+  }) {
+    final $result = create();
+    if (stakingAddress != null) {
+      $result.stakingAddress = stakingAddress;
+    }
+    if (drepType != null) {
+      $result.drepType = drepType;
+    }
+    if (drepId != null) {
+      $result.drepId = drepId;
+    }
+    return $result;
+  }
+  VoteDelegation._() : super();
+  factory VoteDelegation.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory VoteDelegation.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'VoteDelegation',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Cardano.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'stakingAddress')
+    ..e<VoteDelegation_DRepType>(
+        2, _omitFieldNames ? '' : 'drepType', $pb.PbFieldType.OE,
+        defaultOrMaker: VoteDelegation_DRepType.DREP_ID,
+        valueOf: VoteDelegation_DRepType.valueOf,
+        enumValues: VoteDelegation_DRepType.values)
+    ..aOS(3, _omitFieldNames ? '' : 'drepId')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  VoteDelegation clone() => VoteDelegation()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  VoteDelegation copyWith(void Function(VoteDelegation) updates) =>
+      super.copyWith((message) => updates(message as VoteDelegation))
+          as VoteDelegation;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static VoteDelegation create() => VoteDelegation._();
+  VoteDelegation createEmptyInstance() => create();
+  static $pb.PbList<VoteDelegation> createRepeated() =>
+      $pb.PbList<VoteDelegation>();
+  @$core.pragma('dart2js:noInline')
+  static VoteDelegation getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<VoteDelegation>(create);
+  static VoteDelegation? _defaultInstance;
+
+  /// Staking address (as string)
+  @$pb.TagNumber(1)
+  $core.String get stakingAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set stakingAddress($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasStakingAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearStakingAddress() => clearField(1);
+
+  /// DRep type
+  @$pb.TagNumber(2)
+  VoteDelegation_DRepType get drepType => $_getN(1);
+  @$pb.TagNumber(2)
+  set drepType(VoteDelegation_DRepType v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDrepType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDrepType() => clearField(2);
+
+  /// DRep ID (only used when drep_type is DREP_ID)
+  @$pb.TagNumber(3)
+  $core.String get drepId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set drepId($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDrepId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDrepId() => clearField(3);
+}
+
 /// Delegate funds in this account to a specified staking pool.
 class Delegate extends $pb.GeneratedMessage {
   factory Delegate({
@@ -1241,6 +1348,7 @@ class SigningInput extends $pb.GeneratedMessage {
     Withdraw? withdraw,
     DeregisterStakingKey? deregisterStakingKey,
     $core.Iterable<TxOutput>? extraOutputs,
+    VoteDelegation? voteDelegation,
   }) {
     final $result = create();
     if (utxos != null) {
@@ -1272,6 +1380,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (extraOutputs != null) {
       $result.extraOutputs.addAll(extraOutputs);
+    }
+    if (voteDelegation != null) {
+      $result.voteDelegation = voteDelegation;
     }
     return $result;
   }
@@ -1310,6 +1421,8 @@ class SigningInput extends $pb.GeneratedMessage {
     ..pc<TxOutput>(
         10, _omitFieldNames ? '' : 'extraOutputs', $pb.PbFieldType.PM,
         subBuilder: TxOutput.create)
+    ..aOM<VoteDelegation>(11, _omitFieldNames ? '' : 'voteDelegation',
+        subBuilder: VoteDelegation.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1450,6 +1563,21 @@ class SigningInput extends $pb.GeneratedMessage {
   /// extra output UTXOs
   @$pb.TagNumber(10)
   $core.List<TxOutput> get extraOutputs => $_getList(9);
+
+  /// Optional, used for vote delegation
+  @$pb.TagNumber(11)
+  VoteDelegation get voteDelegation => $_getN(10);
+  @$pb.TagNumber(11)
+  set voteDelegation(VoteDelegation v) {
+    setField(11, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasVoteDelegation() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearVoteDelegation() => clearField(11);
+  @$pb.TagNumber(11)
+  VoteDelegation ensureVoteDelegation() => $_ensure(10);
 }
 
 /// Result containing the signed and encoded transaction.

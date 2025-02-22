@@ -49,8 +49,9 @@ class TWTransactionCompiler {
   /// \param [txInputData] The serialized data of a signing input.
   /// \param [signatures] signatures to compile.
   /// \param [publicKeys] public keys for signers to match private keys.
+  /// \param [pubKeyType] public key type.
   /// \return serialized data of a proto object `SigningOutput`.
-  static Uint8List compilerCompileWithSignaturesAndPubKeyType({
+  static Uint8List compileWithSignaturesAndPubKeyType({
     required TWCoinType coin,
     required Uint8List txInputData,
     required List<Uint8List> signatures,
@@ -58,7 +59,7 @@ class TWTransactionCompiler {
     required TWPublicKeyType pubKeyType,
   }) =>
       TWData.fromPointer(
-          _transactionCompilerImpl.compilerCompileWithSignaturesAndPubKeyType(
+          _transactionCompilerImpl.compileWithSignaturesAndPubKeyType(
         coin.coin,
         TWData(txInputData).pointer,
         TWDataVector.createWithDataList(signatures).pointer,

@@ -992,6 +992,7 @@ class SigningInput extends $pb.GeneratedMessage {
     OperationEscrowCreate? opEscrowCreate,
     OperationEscrowCancel? opEscrowCancel,
     OperationEscrowFinish? opEscrowFinish,
+    $core.String? rawJson,
     $core.int? sourceTag,
   }) {
     final $result = create();
@@ -1042,6 +1043,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (opEscrowFinish != null) {
       $result.opEscrowFinish = opEscrowFinish;
+    }
+    if (rawJson != null) {
+      $result.rawJson = rawJson;
     }
     if (sourceTag != null) {
       $result.sourceTag = sourceTag;
@@ -1106,6 +1110,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: OperationEscrowCancel.create)
     ..aOM<OperationEscrowFinish>(18, _omitFieldNames ? '' : 'opEscrowFinish',
         subBuilder: OperationEscrowFinish.create)
+    ..aOS(20, _omitFieldNames ? '' : 'rawJson')
     ..a<$core.int>(25, _omitFieldNames ? '' : 'sourceTag', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false;
 
@@ -1353,17 +1358,36 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(18)
   OperationEscrowFinish ensureOpEscrowFinish() => $_ensure(15);
 
+  /// Generate a transaction from its JSON representation.
+  /// The following parameters can be replaced from the `SigningInput` Protobuf:
+  /// * Account
+  /// * SigningPubKey
+  /// * Fee
+  /// * Sequence
+  /// * LastLedgerSequence
+  @$pb.TagNumber(20)
+  $core.String get rawJson => $_getSZ(16);
+  @$pb.TagNumber(20)
+  set rawJson($core.String v) {
+    $_setString(16, v);
+  }
+
+  @$pb.TagNumber(20)
+  $core.bool hasRawJson() => $_has(16);
+  @$pb.TagNumber(20)
+  void clearRawJson() => clearField(20);
+
   /// Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made.
   /// Conventionally, a refund should specify the initial payment's SourceTag as the refund payment's DestinationTag.
   @$pb.TagNumber(25)
-  $core.int get sourceTag => $_getIZ(16);
+  $core.int get sourceTag => $_getIZ(17);
   @$pb.TagNumber(25)
   set sourceTag($core.int v) {
-    $_setUnsignedInt32(16, v);
+    $_setUnsignedInt32(17, v);
   }
 
   @$pb.TagNumber(25)
-  $core.bool hasSourceTag() => $_has(16);
+  $core.bool hasSourceTag() => $_has(17);
   @$pb.TagNumber(25)
   void clearSourceTag() => clearField(25);
 }
