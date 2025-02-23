@@ -1,3 +1,6 @@
+## 4.2.11+1
+* Fix Android: Failed to lookup symbol [issues#3](https://github.com/xuelongqy/wallet_core_bindings/issues/3).
+
 ## 4.2.11
 * Sync wallet-core [4.2.11](https://github.com/trustwallet/wallet-core/releases/tag/4.2.11).
 
