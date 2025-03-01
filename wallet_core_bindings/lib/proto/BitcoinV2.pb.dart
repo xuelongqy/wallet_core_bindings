@@ -17,6 +17,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'BabylonStaking.pb.dart' as $2;
 import 'BitcoinV2.pbenum.dart';
 import 'Common.pbenum.dart' as $0;
+import 'DecredV2.pb.dart' as $4;
 import 'Utxo.pb.dart' as $1;
 import 'Zcash.pb.dart' as $3;
 
@@ -2816,7 +2817,7 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   $core.List<PreSigningOutput_Sighash> get sighashes => $_getList(2);
 }
 
-enum SigningOutput_Transaction { bitcoin, zcash, notSet }
+enum SigningOutput_Transaction { bitcoin, zcash, decred, notSet }
 
 class SigningOutput extends $pb.GeneratedMessage {
   factory SigningOutput({
@@ -2830,6 +2831,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     Psbt? psbt,
     $1.Transaction? bitcoin,
     $3.Transaction? zcash,
+    $4.Transaction? decred,
   }) {
     final $result = create();
     if (error != null) {
@@ -2862,6 +2864,9 @@ class SigningOutput extends $pb.GeneratedMessage {
     if (zcash != null) {
       $result.zcash = zcash;
     }
+    if (decred != null) {
+      $result.decred = decred;
+    }
     return $result;
   }
   SigningOutput._() : super();
@@ -2876,6 +2881,7 @@ class SigningOutput extends $pb.GeneratedMessage {
       _SigningOutput_TransactionByTag = {
     15: SigningOutput_Transaction.bitcoin,
     16: SigningOutput_Transaction.zcash,
+    17: SigningOutput_Transaction.decred,
     0: SigningOutput_Transaction.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -2883,7 +2889,7 @@ class SigningOutput extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [15, 16])
+    ..oo(0, [15, 16, 17])
     ..e<$0.SigningError>(1, _omitFieldNames ? '' : 'error', $pb.PbFieldType.OE,
         defaultOrMaker: $0.SigningError.OK,
         valueOf: $0.SigningError.valueOf,
@@ -2903,6 +2909,8 @@ class SigningOutput extends $pb.GeneratedMessage {
         subBuilder: $1.Transaction.create)
     ..aOM<$3.Transaction>(16, _omitFieldNames ? '' : 'zcash',
         subBuilder: $3.Transaction.create)
+    ..aOM<$4.Transaction>(17, _omitFieldNames ? '' : 'decred',
+        subBuilder: $4.Transaction.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -3071,6 +3079,21 @@ class SigningOutput extends $pb.GeneratedMessage {
   void clearZcash() => clearField(16);
   @$pb.TagNumber(16)
   $3.Transaction ensureZcash() => $_ensure(9);
+
+  /// Decred transaction.
+  @$pb.TagNumber(17)
+  $4.Transaction get decred => $_getN(10);
+  @$pb.TagNumber(17)
+  set decred($4.Transaction v) {
+    setField(17, v);
+  }
+
+  @$pb.TagNumber(17)
+  $core.bool hasDecred() => $_has(10);
+  @$pb.TagNumber(17)
+  void clearDecred() => clearField(17);
+  @$pb.TagNumber(17)
+  $4.Transaction ensureDecred() => $_ensure(10);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

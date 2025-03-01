@@ -56,8 +56,6 @@ void main() {
       final publicKey = parse_hex(
           "ee6d61a89fc8f9909585a996bb0d2b2ac69ae23b5acf39a19f32631239ba06f9");
       const message = "Hello world";
-      const signature =
-          "ABUNBl59ILPhyGpdgWpXJIQtEIMidR27As1771Hn7j9wVR/5IetQslRPMBrUC2THM+yGHw7h2N/Mr/0DMOpXLQ7ubWGon8j5kJWFqZa7DSsqxpriO1rPOaGfMmMSOboG+Q==";
 
       final input = Sui.MessageSigningInput(
         privateKey: parse_hex(

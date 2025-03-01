@@ -34,7 +34,7 @@ final $typed_data.Uint8List transactionBuilderExtraDataDescriptor =
 const Transaction$json = {
   '1': 'Transaction',
   '2': [
-    {'1': 'version', '3': 1, '4': 1, '5': 5, '10': 'version'},
+    {'1': 'version', '3': 1, '4': 1, '5': 13, '10': 'version'},
     {'1': 'version_group_id', '3': 2, '4': 1, '5': 13, '10': 'versionGroupId'},
     {
       '1': 'inputs',
@@ -67,7 +67,7 @@ const Transaction$json = {
 
 /// Descriptor for `Transaction`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
-    'CgtUcmFuc2FjdGlvbhIYCgd2ZXJzaW9uGAEgASgFUgd2ZXJzaW9uEigKEHZlcnNpb25fZ3JvdX'
+    'CgtUcmFuc2FjdGlvbhIYCgd2ZXJzaW9uGAEgASgNUgd2ZXJzaW9uEigKEHZlcnNpb25fZ3JvdX'
     'BfaWQYAiABKA1SDnZlcnNpb25Hcm91cElkEjcKBmlucHV0cxgDIAMoCzIfLlRXLlV0eG8uUHJv'
     'dG8uVHJhbnNhY3Rpb25JbnB1dFIGaW5wdXRzEjoKB291dHB1dHMYBCADKAsyIC5UVy5VdHhvLl'
     'Byb3RvLlRyYW5zYWN0aW9uT3V0cHV0UgdvdXRwdXRzEhsKCWxvY2tfdGltZRgFIAEoDVIIbG9j'

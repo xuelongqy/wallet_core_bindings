@@ -14,10 +14,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Binance.pb.dart' as $9;
-import 'Bitcoin.pb.dart' as $5;
-import 'Cosmos.pb.dart' as $7;
-import 'Ethereum.pb.dart' as $6;
+import 'Binance.pb.dart' as $10;
+import 'Bitcoin.pb.dart' as $6;
+import 'Cosmos.pb.dart' as $8;
+import 'Ethereum.pb.dart' as $7;
 import 'THORChainSwap.pbenum.dart';
 
 export 'THORChainSwap.pbenum.dart';
@@ -587,10 +587,10 @@ class SwapOutput extends $pb.GeneratedMessage {
     Chain? fromChain,
     Chain? toChain,
     Error? error,
-    $5.SigningInput? bitcoin,
-    $6.SigningInput? ethereum,
-    $9.SigningInput? binance,
-    $7.SigningInput? cosmos,
+    $6.SigningInput? bitcoin,
+    $7.SigningInput? ethereum,
+    $10.SigningInput? binance,
+    $8.SigningInput? cosmos,
   }) {
     final $result = create();
     if (fromChain != null) {
@@ -647,14 +647,14 @@ class SwapOutput extends $pb.GeneratedMessage {
         valueOf: Chain.valueOf,
         enumValues: Chain.values)
     ..aOM<Error>(3, _omitFieldNames ? '' : 'error', subBuilder: Error.create)
-    ..aOM<$5.SigningInput>(4, _omitFieldNames ? '' : 'bitcoin',
-        subBuilder: $5.SigningInput.create)
-    ..aOM<$6.SigningInput>(5, _omitFieldNames ? '' : 'ethereum',
+    ..aOM<$6.SigningInput>(4, _omitFieldNames ? '' : 'bitcoin',
         subBuilder: $6.SigningInput.create)
-    ..aOM<$9.SigningInput>(6, _omitFieldNames ? '' : 'binance',
-        subBuilder: $9.SigningInput.create)
-    ..aOM<$7.SigningInput>(7, _omitFieldNames ? '' : 'cosmos',
+    ..aOM<$7.SigningInput>(5, _omitFieldNames ? '' : 'ethereum',
         subBuilder: $7.SigningInput.create)
+    ..aOM<$10.SigningInput>(6, _omitFieldNames ? '' : 'binance',
+        subBuilder: $10.SigningInput.create)
+    ..aOM<$8.SigningInput>(7, _omitFieldNames ? '' : 'cosmos',
+        subBuilder: $8.SigningInput.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -724,9 +724,9 @@ class SwapOutput extends $pb.GeneratedMessage {
   Error ensureError() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $5.SigningInput get bitcoin => $_getN(3);
+  $6.SigningInput get bitcoin => $_getN(3);
   @$pb.TagNumber(4)
-  set bitcoin($5.SigningInput v) {
+  set bitcoin($6.SigningInput v) {
     setField(4, v);
   }
 
@@ -735,12 +735,12 @@ class SwapOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearBitcoin() => clearField(4);
   @$pb.TagNumber(4)
-  $5.SigningInput ensureBitcoin() => $_ensure(3);
+  $6.SigningInput ensureBitcoin() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $6.SigningInput get ethereum => $_getN(4);
+  $7.SigningInput get ethereum => $_getN(4);
   @$pb.TagNumber(5)
-  set ethereum($6.SigningInput v) {
+  set ethereum($7.SigningInput v) {
     setField(5, v);
   }
 
@@ -749,12 +749,12 @@ class SwapOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearEthereum() => clearField(5);
   @$pb.TagNumber(5)
-  $6.SigningInput ensureEthereum() => $_ensure(4);
+  $7.SigningInput ensureEthereum() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $9.SigningInput get binance => $_getN(5);
+  $10.SigningInput get binance => $_getN(5);
   @$pb.TagNumber(6)
-  set binance($9.SigningInput v) {
+  set binance($10.SigningInput v) {
     setField(6, v);
   }
 
@@ -763,12 +763,12 @@ class SwapOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearBinance() => clearField(6);
   @$pb.TagNumber(6)
-  $9.SigningInput ensureBinance() => $_ensure(5);
+  $10.SigningInput ensureBinance() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $7.SigningInput get cosmos => $_getN(6);
+  $8.SigningInput get cosmos => $_getN(6);
   @$pb.TagNumber(7)
-  set cosmos($7.SigningInput v) {
+  set cosmos($8.SigningInput v) {
     setField(7, v);
   }
 
@@ -777,7 +777,7 @@ class SwapOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   void clearCosmos() => clearField(7);
   @$pb.TagNumber(7)
-  $7.SigningInput ensureCosmos() => $_ensure(6);
+  $8.SigningInput ensureCosmos() => $_ensure(6);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

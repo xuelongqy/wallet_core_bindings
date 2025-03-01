@@ -836,6 +836,15 @@ const SigningOutput$json = {
       '9': 0,
       '10': 'zcash'
     },
+    {
+      '1': 'decred',
+      '3': 17,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.DecredV2.Proto.Transaction',
+      '9': 0,
+      '10': 'decred'
+    },
   ],
   '8': [
     {'1': 'transaction'},
@@ -850,4 +859,5 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'IFdnNpemUSFgoGd2VpZ2h0GAcgASgEUgZ3ZWlnaHQSEAoDZmVlGAggASgDUgNmZWUSLAoEcHNi'
     'dBgJIAEoCzIYLlRXLkJpdGNvaW5WMi5Qcm90by5Qc2J0UgRwc2J0EjYKB2JpdGNvaW4YDyABKA'
     'syGi5UVy5VdHhvLlByb3RvLlRyYW5zYWN0aW9uSABSB2JpdGNvaW4SMwoFemNhc2gYECABKAsy'
-    'Gy5UVy5aY2FzaC5Qcm90by5UcmFuc2FjdGlvbkgAUgV6Y2FzaEINCgt0cmFuc2FjdGlvbg==');
+    'Gy5UVy5aY2FzaC5Qcm90by5UcmFuc2FjdGlvbkgAUgV6Y2FzaBI4CgZkZWNyZWQYESABKAsyHi'
+    '5UVy5EZWNyZWRWMi5Qcm90by5UcmFuc2FjdGlvbkgAUgZkZWNyZWRCDQoLdHJhbnNhY3Rpb24=');

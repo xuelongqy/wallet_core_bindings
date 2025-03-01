@@ -172,7 +172,7 @@ class Transaction extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'Transaction',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Zcash.Proto'),
       createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.O3)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'version', $pb.PbFieldType.OU3)
     ..a<$core.int>(
         2, _omitFieldNames ? '' : 'versionGroupId', $pb.PbFieldType.OU3)
     ..pc<$1.TransactionInput>(
@@ -217,7 +217,7 @@ class Transaction extends $pb.GeneratedMessage {
   $core.int get version => $_getIZ(0);
   @$pb.TagNumber(1)
   set version($core.int v) {
-    $_setSignedInt32(0, v);
+    $_setUnsignedInt32(0, v);
   }
 
   @$pb.TagNumber(1)

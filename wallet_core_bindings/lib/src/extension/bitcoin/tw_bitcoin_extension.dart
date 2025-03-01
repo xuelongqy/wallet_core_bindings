@@ -14,7 +14,7 @@ extension TWBitcoinExtension on $bitcoin.SigningInput {
   /// Plan
   /// \param [coin] coin type
   /// \return [output] Bitcoin `TransactionPlan` proto object.
-  $bitcoin.TransactionPlan plan([
+  $bitcoin.TransactionPlan toPlan([
     TWCoinType coin = TWCoinType.Bitcoin,
   ]) {
     return anyPlanToOutput(coin, $bitcoin.TransactionPlan());

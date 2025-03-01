@@ -14,7 +14,8 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Bitcoin.pb.dart' as $5;
+import 'Bitcoin.pb.dart' as $6;
+import 'BitcoinV2.pb.dart' as $5;
 import 'Common.pbenum.dart' as $0;
 
 /// A transfer transaction
@@ -162,7 +163,7 @@ class Transaction extends $pb.GeneratedMessage {
 /// Decred transaction input.
 class TransactionInput extends $pb.GeneratedMessage {
   factory TransactionInput({
-    $5.OutPoint? previousOutput,
+    $6.OutPoint? previousOutput,
     $core.int? sequence,
     $fixnum.Int64? valueIn,
     $core.int? blockHeight,
@@ -203,8 +204,8 @@ class TransactionInput extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Decred.Proto'),
       createEmptyInstance: create)
-    ..aOM<$5.OutPoint>(1, _omitFieldNames ? '' : 'previousOutput',
-        protoName: 'previousOutput', subBuilder: $5.OutPoint.create)
+    ..aOM<$6.OutPoint>(1, _omitFieldNames ? '' : 'previousOutput',
+        protoName: 'previousOutput', subBuilder: $6.OutPoint.create)
     ..a<$core.int>(2, _omitFieldNames ? '' : 'sequence', $pb.PbFieldType.OU3)
     ..aInt64(3, _omitFieldNames ? '' : 'valueIn', protoName: 'valueIn')
     ..a<$core.int>(4, _omitFieldNames ? '' : 'blockHeight', $pb.PbFieldType.OU3,
@@ -240,9 +241,9 @@ class TransactionInput extends $pb.GeneratedMessage {
 
   /// Reference to the previous transaction's output.
   @$pb.TagNumber(1)
-  $5.OutPoint get previousOutput => $_getN(0);
+  $6.OutPoint get previousOutput => $_getN(0);
   @$pb.TagNumber(1)
-  set previousOutput($5.OutPoint v) {
+  set previousOutput($6.OutPoint v) {
     setField(1, v);
   }
 
@@ -251,7 +252,7 @@ class TransactionInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearPreviousOutput() => clearField(1);
   @$pb.TagNumber(1)
-  $5.OutPoint ensurePreviousOutput() => $_ensure(0);
+  $6.OutPoint ensurePreviousOutput() => $_ensure(0);
 
   /// Transaction version as defined by the sender.
   @$pb.TagNumber(2)
@@ -428,6 +429,7 @@ class SigningOutput extends $pb.GeneratedMessage {
     $core.String? transactionId,
     $0.SigningError? error,
     $core.String? errorMessage,
+    $5.SigningOutput? signingResultV2,
   }) {
     final $result = create();
     if (transaction != null) {
@@ -444,6 +446,9 @@ class SigningOutput extends $pb.GeneratedMessage {
     }
     if (errorMessage != null) {
       $result.errorMessage = errorMessage;
+    }
+    if (signingResultV2 != null) {
+      $result.signingResultV2 = signingResultV2;
     }
     return $result;
   }
@@ -470,6 +475,8 @@ class SigningOutput extends $pb.GeneratedMessage {
         valueOf: $0.SigningError.valueOf,
         enumValues: $0.SigningError.values)
     ..aOS(5, _omitFieldNames ? '' : 'errorMessage')
+    ..aOM<$5.SigningOutput>(6, _omitFieldNames ? '' : 'signingResultV2',
+        subBuilder: $5.SigningOutput.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -560,6 +567,22 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasErrorMessage() => $_has(4);
   @$pb.TagNumber(5)
   void clearErrorMessage() => clearField(5);
+
+  /// Result of a transaction signing using the Bitcoin 2.0 protocol.
+  /// Set if `Bitcoin.Proto.SigningInput.signing_v2` used.
+  @$pb.TagNumber(6)
+  $5.SigningOutput get signingResultV2 => $_getN(5);
+  @$pb.TagNumber(6)
+  set signingResultV2($5.SigningOutput v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasSigningResultV2() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSigningResultV2() => clearField(6);
+  @$pb.TagNumber(6)
+  $5.SigningOutput ensureSigningResultV2() => $_ensure(5);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

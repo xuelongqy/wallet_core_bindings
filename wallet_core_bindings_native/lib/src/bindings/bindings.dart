@@ -6399,9 +6399,9 @@ class TrustWalletCoreBindings {
 
   /// Constructs a TON Wallet V4R2 stateInit encoded as BoC (BagOfCells) for the given `public_key`.
   ///
-  /// \param publicKey wallet's public key.
+  /// \param public_key wallet's public key.
   /// \param workchain TON workchain to which the wallet belongs. Usually, base chain is used (0).
-  /// \param walletId wallet's ID allows to create multiple wallets for the same private key.
+  /// \param wallet_id wallet's ID allows to create multiple wallets for the same private key.
   /// \return Pointer to a base64 encoded Bag Of Cells (BoC) StateInit. Null if invalid public key provided.
   ffi.Pointer<TWString1> TWTONWalletBuildV4R2StateInit(
     ffi.Pointer<TWPublicKey> publicKey,
@@ -6421,6 +6421,31 @@ class TrustWalletCoreBindings {
               ffi.Int32)>>('TWTONWalletBuildV4R2StateInit');
   late final _TWTONWalletBuildV4R2StateInit =
       _TWTONWalletBuildV4R2StateInitPtr.asFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWPublicKey>, int, int)>();
+
+  /// \param public_key wallet's public key.
+  /// \param workchain TON workchain to which the wallet belongs. Usually, base chain is used (0).
+  /// \param wallet_id wallet's ID allows to create multiple wallets for the same private key.
+  /// \return Pointer to a base64 encoded Bag Of Cells (BoC) StateInit. Null if invalid public key provided.
+  ffi.Pointer<TWString1> TWTONWalletBuildV5R1StateInit(
+    ffi.Pointer<TWPublicKey> publicKey,
+    int workchain,
+    int walletId,
+  ) {
+    return _TWTONWalletBuildV5R1StateInit(
+      publicKey,
+      workchain,
+      walletId,
+    );
+  }
+
+  late final _TWTONWalletBuildV5R1StateInitPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(ffi.Pointer<TWPublicKey>, ffi.Int32,
+              ffi.Int32)>>('TWTONWalletBuildV5R1StateInit');
+  late final _TWTONWalletBuildV5R1StateInit =
+      _TWTONWalletBuildV5R1StateInitPtr.asFunction<
           ffi.Pointer<TWString1> Function(
               ffi.Pointer<TWPublicKey>, int, int)>();
 
@@ -7313,7 +7338,7 @@ class TrustWalletCoreBindings {
   /// Signs an arbitrary message to prove ownership of an address for off-chain services.
   /// https://github.com/ton-foundation/specs/blob/main/specs/wtf-0002.md
   ///
-  /// \param privateKey: the private key used for signing
+  /// \param private_key: the private key used for signing
   /// \param message: A custom message which is input to the signing.
   /// \returns the signature, Hex-encoded. On invalid input null is returned. Returned object needs to be deleted after use.
   ffi.Pointer<TWString1> TWTONMessageSignerSignMessage(
@@ -11885,6 +11910,56 @@ class TrustWalletCoreBindings {
       ffi.Pointer<TWData1> Function(
           ffi.Pointer<TWData1>, ffi.Pointer<TWData1>, ffi.Pointer<TWData1>)>();
 
+  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
+  /// and returns the updated transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \limit Unit Limit as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionSetComputeUnitLimit(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> limit,
+  ) {
+    return _TWSolanaTransactionSetComputeUnitLimit(
+      encodedTx,
+      limit,
+    );
+  }
+
+  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString> Function(
+                  ffi.Pointer<TWString>, ffi.Pointer<TWString>)>>(
+      'TWSolanaTransactionSetComputeUnitLimit');
+  late final _TWSolanaTransactionSetComputeUnitLimit =
+      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
+  /// Adds fee payer to the given transaction, and returns the updated transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \param fee_payer fee payer account address. Must be a base58 encoded public key. It must NOT be in the account list yet.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionSetFeePayer(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> feePayer,
+  ) {
+    return _TWSolanaTransactionSetFeePayer(
+      encodedTx,
+      feePayer,
+    );
+  }
+
+  late final _TWSolanaTransactionSetFeePayerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>)>>('TWSolanaTransactionSetFeePayer');
+  late final _TWSolanaTransactionSetFeePayer =
+      _TWSolanaTransactionSetFeePayerPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
   /// Decode Solana transaction, update the recent blockhash and re-sign the transaction.
   ///
   /// # Warning
@@ -11892,13 +11967,13 @@ class TrustWalletCoreBindings {
   /// This is a temporary solution. It will be removed when `Solana.proto` supports
   /// direct transaction signing.
   ///
-  /// \param encodedTx base64 encoded Solana transaction.
-  /// \param recentBlockhash base58 encoded recent blockhash.
-  /// \param privateKeys list of private keys that should be used to re-sign the transaction.
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \param recent_blockhash base58 encoded recent blockhash.
+  /// \param private_keys list of private keys that should be used to re-sign the transaction.
   /// \return serialized `Solana::Proto::SigningOutput`.
-  ffi.Pointer<TWData1> TWSolanaTransactionUpdateBlockhashAndSign(
-    ffi.Pointer<TWString1> encodedTx,
-    ffi.Pointer<TWString1> recentBlockhash,
+  ffi.Pointer<TWData> TWSolanaTransactionUpdateBlockhashAndSign(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> recentBlockhash,
     ffi.Pointer<TWDataVector> privateKeys,
   ) {
     return _TWSolanaTransactionUpdateBlockhashAndSign(
@@ -11910,21 +11985,21 @@ class TrustWalletCoreBindings {
 
   late final _TWSolanaTransactionUpdateBlockhashAndSignPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
-                  ffi.Pointer<TWString1>, ffi.Pointer<TWDataVector>)>>(
+              ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
+                  ffi.Pointer<TWString>, ffi.Pointer<TWDataVector>)>>(
       'TWSolanaTransactionUpdateBlockhashAndSign');
   late final _TWSolanaTransactionUpdateBlockhashAndSign =
       _TWSolanaTransactionUpdateBlockhashAndSignPtr.asFunction<
-          ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>, ffi.Pointer<TWDataVector>)>();
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>, ffi.Pointer<TWDataVector>)>();
 
   /// Try to find a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction in the given transaction,
   /// and returns the specified Unit Price.
   ///
-  /// \param encodedTx base64 encoded Solana transaction.
+  /// \param encoded_tx base64 encoded Solana transaction.
   /// \return nullable Unit Price as a decimal string. Null if no instruction found.
-  ffi.Pointer<TWString1> TWSolanaTransactionGetComputeUnitPrice(
-    ffi.Pointer<TWString1> encodedTx,
+  ffi.Pointer<TWString> TWSolanaTransactionGetComputeUnitPrice(
+    ffi.Pointer<TWString> encodedTx,
   ) {
     return _TWSolanaTransactionGetComputeUnitPrice(
       encodedTx,
@@ -11933,19 +12008,19 @@ class TrustWalletCoreBindings {
 
   late final _TWSolanaTransactionGetComputeUnitPricePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>>(
+              ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>>(
       'TWSolanaTransactionGetComputeUnitPrice');
   late final _TWSolanaTransactionGetComputeUnitPrice =
       _TWSolanaTransactionGetComputeUnitPricePtr.asFunction<
-          ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>();
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>();
 
   /// Try to find a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction in the given transaction,
   /// and returns the specified Unit Limit.
   ///
-  /// \param encodedTx base64 encoded Solana transaction.
+  /// \param encoded_tx base64 encoded Solana transaction.
   /// \return nullable Unit Limit as a decimal string. Null if no instruction found.
-  ffi.Pointer<TWString1> TWSolanaTransactionGetComputeUnitLimit(
-    ffi.Pointer<TWString1> encodedTx,
+  ffi.Pointer<TWString> TWSolanaTransactionGetComputeUnitLimit(
+    ffi.Pointer<TWString> encodedTx,
   ) {
     return _TWSolanaTransactionGetComputeUnitLimit(
       encodedTx,
@@ -11954,21 +12029,21 @@ class TrustWalletCoreBindings {
 
   late final _TWSolanaTransactionGetComputeUnitLimitPtr = _lookup<
           ffi.NativeFunction<
-              ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>>(
+              ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>>(
       'TWSolanaTransactionGetComputeUnitLimit');
   late final _TWSolanaTransactionGetComputeUnitLimit =
       _TWSolanaTransactionGetComputeUnitLimitPtr.asFunction<
-          ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>)>();
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>();
 
   /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction of the given transaction,
   /// and returns the updated transaction.
   ///
-  /// \param encodedTx base64 encoded Solana transaction.
-  /// \param price Unit Price as a decimal string.
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \price Unit Price as a decimal string.
   /// \return base64 encoded Solana transaction. Null if an error occurred.
-  ffi.Pointer<TWString1> TWSolanaTransactionSetComputeUnitPrice(
-    ffi.Pointer<TWString1> encodedTx,
-    ffi.Pointer<TWString1> price,
+  ffi.Pointer<TWString> TWSolanaTransactionSetComputeUnitPrice(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> price,
   ) {
     return _TWSolanaTransactionSetComputeUnitPrice(
       encodedTx,
@@ -11978,63 +12053,13 @@ class TrustWalletCoreBindings {
 
   late final _TWSolanaTransactionSetComputeUnitPricePtr = _lookup<
           ffi.NativeFunction<
-              ffi.Pointer<TWString1> Function(
-                  ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>>(
+              ffi.Pointer<TWString> Function(
+                  ffi.Pointer<TWString>, ffi.Pointer<TWString>)>>(
       'TWSolanaTransactionSetComputeUnitPrice');
   late final _TWSolanaTransactionSetComputeUnitPrice =
       _TWSolanaTransactionSetComputeUnitPricePtr.asFunction<
-          ffi.Pointer<TWString1> Function(
-              ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
-
-  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
-  /// and returns the updated transaction.
-  ///
-  /// \param encodedTx base64 encoded Solana transaction.
-  /// \param limit Unit Limit as a decimal string.
-  /// \return base64 encoded Solana transaction. Null if an error occurred.
-  ffi.Pointer<TWString1> TWSolanaTransactionSetComputeUnitLimit(
-    ffi.Pointer<TWString1> encodedTx,
-    ffi.Pointer<TWString1> limit,
-  ) {
-    return _TWSolanaTransactionSetComputeUnitLimit(
-      encodedTx,
-      limit,
-    );
-  }
-
-  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<TWString1> Function(
-                  ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>>(
-      'TWSolanaTransactionSetComputeUnitLimit');
-  late final _TWSolanaTransactionSetComputeUnitLimit =
-      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
-          ffi.Pointer<TWString1> Function(
-              ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
-
-  /// Adds fee payer to the given transaction and returns the updated transaction.
-  ///
-  /// \param encodedTx base64 encoded Solana transaction.
-  /// \param feePayer fee payer account address. Must be a base58 encoded public key. It must NOT be in the account list yet.
-  /// \return base64 encoded Solana transaction. Null if an error occurred.
-  ffi.Pointer<TWString1> TWSolanaTransactionSetFeePayer(
-    ffi.Pointer<TWString1> encodedTx,
-    ffi.Pointer<TWString1> feePayer,
-  ) {
-    return _TWSolanaTransactionSetFeePayer(
-      encodedTx,
-      feePayer,
-    );
-  }
-
-  late final _TWSolanaTransactionSetFeePayerPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWString1> Function(ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>)>>('TWSolanaTransactionSetFeePayer');
-  late final _TWSolanaTransactionSetFeePayer =
-      _TWSolanaTransactionSetFeePayerPtr.asFunction<
-          ffi.Pointer<TWString1> Function(
-              ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
 
   /// Create a NEAR Account
   ///
@@ -12318,36 +12343,14 @@ class TrustWalletCoreBindings {
   late final _TWAccountExtendedPublicKey = _TWAccountExtendedPublicKeyPtr
       .asFunction<ffi.Pointer<TWString> Function(ffi.Pointer<TWAccount>)>();
 
-  /// Computes preimage hashes of a message, needed for external signing.
-  ///
-  /// \param coin The given coin type to sign the message for.
-  /// \param input The serialized data of a `MessageSigningInput` proto object, (e.g. `TW.Solana.Proto.MessageSigningInput`).
-  /// \return The serialized data of a `PreSigningOutput` proto object, (e.g. `TxCompiler::Proto::PreSigningOutput`).
-  ffi.Pointer<TWData1> TWMessageSignerPreImageHashes(
-    int coin,
-    ffi.Pointer<TWData1> input,
-  ) {
-    return _TWMessageSignerPreImageHashes(
-      coin,
-      input,
-    );
-  }
-
-  late final _TWMessageSignerPreImageHashesPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(ffi.Int32,
-              ffi.Pointer<TWData1>)>>('TWMessageSignerPreImageHashes');
-  late final _TWMessageSignerPreImageHashes = _TWMessageSignerPreImageHashesPtr
-      .asFunction<ffi.Pointer<TWData1> Function(int, ffi.Pointer<TWData1>)>();
-
   /// Signs an arbitrary message to prove ownership of an address for off-chain services.
   ///
   /// \param coin The given coin type to sign the message for.
-  /// \param input The serialized data of a `MessageSigningInput` proto object, (e.g. `TW.Solana.Proto.MessageSigningInput`).
-  /// \return The serialized data of a `MessageSigningOutput` proto object, (e.g. `TW.Solana.Proto.MessageSigningOutput`).
-  ffi.Pointer<TWData1> TWMessageSignerSign(
+  /// \param input The serialized data of a signing input (e.g. TW.Ethereum.Proto.MessageSigningInput).
+  /// \return The serialized data of a `SigningOutput` proto object. (e.g. TW.Ethereum.Proto.MessageSigningOutput).
+  ffi.Pointer<TWData> TWMessageSignerSign(
     int coin,
-    ffi.Pointer<TWData1> input,
+    ffi.Pointer<TWData> input,
   ) {
     return _TWMessageSignerSign(
       coin,
@@ -12357,10 +12360,10 @@ class TrustWalletCoreBindings {
 
   late final _TWMessageSignerSignPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Int32, ffi.Pointer<TWData1>)>>('TWMessageSignerSign');
+          ffi.Pointer<TWData> Function(
+              ffi.Int32, ffi.Pointer<TWData>)>>('TWMessageSignerSign');
   late final _TWMessageSignerSign = _TWMessageSignerSignPtr.asFunction<
-      ffi.Pointer<TWData1> Function(int, ffi.Pointer<TWData1>)>();
+      ffi.Pointer<TWData> Function(int, ffi.Pointer<TWData>)>();
 
   /// Verifies a signature for a message.
   ///
@@ -12369,7 +12372,7 @@ class TrustWalletCoreBindings {
   /// \return whether the signature is valid.
   bool TWMessageSignerVerify(
     int coin,
-    ffi.Pointer<TWData1> input,
+    ffi.Pointer<TWData> input,
   ) {
     return _TWMessageSignerVerify(
       coin,
@@ -12379,10 +12382,32 @@ class TrustWalletCoreBindings {
 
   late final _TWMessageSignerVerifyPtr = _lookup<
           ffi
-          .NativeFunction<ffi.Bool Function(ffi.Int32, ffi.Pointer<TWData1>)>>(
+          .NativeFunction<ffi.Bool Function(ffi.Int32, ffi.Pointer<TWData>)>>(
       'TWMessageSignerVerify');
   late final _TWMessageSignerVerify = _TWMessageSignerVerifyPtr.asFunction<
-      bool Function(int, ffi.Pointer<TWData1>)>();
+      bool Function(int, ffi.Pointer<TWData>)>();
+
+  /// Computes preimage hashes of a message.
+  ///
+  /// \param coin The given coin type to sign the message for.
+  /// \param input The serialized data of a signing input (e.g. TW.Ethereum.Proto.MessageSigningInput).
+  /// \return The serialized data of TW.TxCompiler.PreSigningOutput.
+  ffi.Pointer<TWData> TWMessageSignerPreImageHashes(
+    int coin,
+    ffi.Pointer<TWData> input,
+  ) {
+    return _TWMessageSignerPreImageHashes(
+      coin,
+      input,
+    );
+  }
+
+  late final _TWMessageSignerPreImageHashesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(ffi.Int32,
+              ffi.Pointer<TWData>)>>('TWMessageSignerPreImageHashes');
+  late final _TWMessageSignerPreImageHashes = _TWMessageSignerPreImageHashesPtr
+      .asFunction<ffi.Pointer<TWData> Function(int, ffi.Pointer<TWData>)>();
 
   /// Sign a message.
   ///
@@ -14358,7 +14383,6 @@ final class TWBase64 extends ffi.Opaque {}
 /// Represents a BIP 0173 address.
 final class TWSegwitAddress extends ffi.Opaque {}
 
-/// TON wallet operations.
 final class TWTONWallet extends ffi.Opaque {}
 
 /// Ethereum message signing and verification.
@@ -14399,7 +14423,6 @@ final class TWTHORChainSwap extends ffi.Opaque {}
 /// Base58 encode / decode functions
 final class TWBase58 extends ffi.Opaque {}
 
-/// TON message signing.
 final class TWTONMessageSigner extends ffi.Opaque {}
 
 /// Cardano helper functions
@@ -14418,7 +14441,6 @@ final class TWLiquidStaking extends ffi.Opaque {}
 
 final class TWTONAddressConverter extends ffi.Opaque {}
 
-/// Represents a WalletConnect signing request.
 final class TWWalletConnectRequest extends ffi.Opaque {}
 
 /// Tron message signing and verification.
@@ -14539,7 +14561,6 @@ final class TWNEARAccount extends ffi.Opaque {}
 /// This feature currently works on old legacy addresses only.
 final class TWBitcoinMessageSigner extends ffi.Opaque {}
 
-/// Represents a message signer to sign custom messages for any blockchain.
 final class TWMessageSigner extends ffi.Opaque {}
 
 /// StarkEx message signing and verification.

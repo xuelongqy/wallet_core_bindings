@@ -69,7 +69,7 @@ final $typed_data.Uint8List transactionOutputDescriptor = $convert.base64Decode(
 const Transaction$json = {
   '1': 'Transaction',
   '2': [
-    {'1': 'version', '3': 1, '4': 1, '5': 5, '10': 'version'},
+    {'1': 'version', '3': 1, '4': 1, '5': 13, '10': 'version'},
     {'1': 'lock_time', '3': 2, '4': 1, '5': 13, '10': 'lockTime'},
     {
       '1': 'inputs',
@@ -92,7 +92,7 @@ const Transaction$json = {
 
 /// Descriptor for `Transaction`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
-    'CgtUcmFuc2FjdGlvbhIYCgd2ZXJzaW9uGAEgASgFUgd2ZXJzaW9uEhsKCWxvY2tfdGltZRgCIA'
+    'CgtUcmFuc2FjdGlvbhIYCgd2ZXJzaW9uGAEgASgNUgd2ZXJzaW9uEhsKCWxvY2tfdGltZRgCIA'
     'EoDVIIbG9ja1RpbWUSNwoGaW5wdXRzGAMgAygLMh8uVFcuVXR4by5Qcm90by5UcmFuc2FjdGlv'
     'bklucHV0UgZpbnB1dHMSOgoHb3V0cHV0cxgEIAMoCzIgLlRXLlV0eG8uUHJvdG8uVHJhbnNhY3'
     'Rpb25PdXRwdXRSB291dHB1dHM=');

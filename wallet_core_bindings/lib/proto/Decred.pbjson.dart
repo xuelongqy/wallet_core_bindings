@@ -114,6 +114,14 @@ const SigningOutput$json = {
       '10': 'error'
     },
     {'1': 'error_message', '3': 5, '4': 1, '5': 9, '10': 'errorMessage'},
+    {
+      '1': 'signing_result_v2',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.BitcoinV2.Proto.SigningOutput',
+      '10': 'signingResultV2'
+    },
   ],
 };
 
@@ -123,4 +131,5 @@ final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'RyYW5zYWN0aW9uUgt0cmFuc2FjdGlvbhIYCgdlbmNvZGVkGAIgASgMUgdlbmNvZGVkEiUKDnRy'
     'YW5zYWN0aW9uX2lkGAMgASgJUg10cmFuc2FjdGlvbklkEjMKBWVycm9yGAQgASgOMh0uVFcuQ2'
     '9tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZRgFIAEoCVIM'
-    'ZXJyb3JNZXNzYWdl');
+    'ZXJyb3JNZXNzYWdlEk0KEXNpZ25pbmdfcmVzdWx0X3YyGAYgASgLMiEuVFcuQml0Y29pblYyLl'
+    'Byb3RvLlNpZ25pbmdPdXRwdXRSD3NpZ25pbmdSZXN1bHRWMg==');
