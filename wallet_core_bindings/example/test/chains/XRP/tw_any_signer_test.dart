@@ -219,9 +219,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(21300),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: 67,
-          cancelAfter: 755015907,
-          finishAfter: 755015897,
+          destinationTag: 67.toInt64(),
+          cancelAfter: 755015907.toInt64(),
+          finishAfter: 755015897.toInt64(),
           condition: '',
         ),
         fee: $fixnum.Int64(12),
@@ -250,9 +250,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(345941506),
           destination: 'rNS1tYfynXoKC3eX52gvVnSyU9mqWXvCgh',
-          destinationTag: 2467,
-          cancelAfter: 0,
-          finishAfter: 750095491,
+          destinationTag: 2467.toInt64(),
+          cancelAfter: 0.toInt64(),
+          finishAfter: 750095491.toInt64(),
           condition: '',
         ),
         fee: $fixnum.Int64(12),
@@ -281,9 +281,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(88941506),
           destination: 'rfC73DuBhDqF3Zw1K3uxaQNCkwT8pPKyf5',
-          destinationTag: 0,
-          cancelAfter: 2147483648,
-          finishAfter: 750097108,
+          destinationTag: 0.toInt64(),
+          cancelAfter: 2147483648.toInt64(),
+          finishAfter: 750097108.toInt64(),
           condition: '',
         ),
         fee: $fixnum.Int64(12),
@@ -312,9 +312,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(37000),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: 0,
-          cancelAfter: 755014300,
-          finishAfter: 0,
+          destinationTag: 0.toInt64(),
+          cancelAfter: 755014300.toInt64(),
+          finishAfter: 0.toInt64(),
           condition:
               'a0258020c26add2db64dd6d5700a5e2721c1e908d599901627b8dc82f25b3e035ec4004b810120', // PREIMAGE-SHA-256 crypto-condition of secret 5d729ac237c4c7976403817b6409be7190efbfad49af2cf974b9582a854e8794
         ),
@@ -344,9 +344,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(30941506),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: 0,
-          cancelAfter: 750090371,
-          finishAfter: 0,
+          destinationTag: 0.toInt64(),
+          cancelAfter: 750090371.toInt64(),
+          finishAfter: 0.toInt64(),
           condition:
               'a0258020b3dda5c580919ce0fd6acdf013c337461951946e54b41446467961568cdd9e7b810120', // PREIMAGE-SHA-256 crypto-condition of secret 5d729ac237c4c7976403817b6409be7190efbfad49af2cf974b9582a854e8794
         ),
@@ -376,9 +376,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(30941506),
           destination: 'rEeSXUWEYyEADhDHvi3mtahkFVn7dYNH2G',
-          destinationTag: 0,
-          cancelAfter: 750090371,
-          finishAfter: 0,
+          destinationTag: 0.toInt64(),
+          cancelAfter: 750090371.toInt64(),
+          finishAfter: 0.toInt64(),
           condition:
               'a0258020b3dda5c580919ce0fd6acdf013c337461951946e54b41446467961568cdd9e7b810120', // PREIMAGE-SHA-256 crypto-condition of secret 5d729ac237c4c7976403817b6409be7190efbfad49af2cf974b9582a854e8794
         ),
@@ -408,9 +408,9 @@ void main() {
         opEscrowCreate: Ripple.OperationEscrowCreate(
           amount: $fixnum.Int64(28941506),
           destination: 'r9YD31TAtbS8EPwEt2gzGDjsaMDyV1s5QE',
-          destinationTag: 2467,
-          cancelAfter: 750094604,
-          finishAfter: 0,
+          destinationTag: 2467.toInt64(),
+          cancelAfter: 750094604.toInt64(),
+          finishAfter: 0.toInt64(),
           condition:
               'a0258020ffecf1ae6182f10efebe0c0896cd6b044df7b27d33b05030033ef63d47e2b250810120', // PREIMAGE-SHA-256 crypto-condition of secret ffecf1ae6182f10efebe0c0896cd6b044df7b27d33b05030033ef63d47e2b250
         ),
@@ -637,7 +637,7 @@ void main() {
         account: 'rJdxtrVoL3Tak74EzN8SdMxFF6RP9smjJJ',
         privateKey: key,
         // Set `SELL_NFTOKEN_FLAG` flag.
-        flags: 1,
+        flags: 1.toInt64(),
       );
 
       var output = Ripple.SigningOutput.fromBuffer(

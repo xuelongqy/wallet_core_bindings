@@ -58,7 +58,8 @@ enum TWBlockchain {
   NativeInjective(54),
   BitcoinCash(55),
   Pactus(56),
-  Komodo(57);
+  Komodo(57),
+  Polymesh(58);
 
   final int blockchain;
 

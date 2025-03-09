@@ -14,7 +14,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'Binance.pb.dart' as $10;
+import 'Binance.pb.dart' as $11;
 import 'Bitcoin.pb.dart' as $6;
 import 'Cosmos.pb.dart' as $8;
 import 'Ethereum.pb.dart' as $7;
@@ -589,7 +589,7 @@ class SwapOutput extends $pb.GeneratedMessage {
     Error? error,
     $6.SigningInput? bitcoin,
     $7.SigningInput? ethereum,
-    $10.SigningInput? binance,
+    $11.SigningInput? binance,
     $8.SigningInput? cosmos,
   }) {
     final $result = create();
@@ -651,8 +651,8 @@ class SwapOutput extends $pb.GeneratedMessage {
         subBuilder: $6.SigningInput.create)
     ..aOM<$7.SigningInput>(5, _omitFieldNames ? '' : 'ethereum',
         subBuilder: $7.SigningInput.create)
-    ..aOM<$10.SigningInput>(6, _omitFieldNames ? '' : 'binance',
-        subBuilder: $10.SigningInput.create)
+    ..aOM<$11.SigningInput>(6, _omitFieldNames ? '' : 'binance',
+        subBuilder: $11.SigningInput.create)
     ..aOM<$8.SigningInput>(7, _omitFieldNames ? '' : 'cosmos',
         subBuilder: $8.SigningInput.create)
     ..hasRequiredFields = false;
@@ -752,9 +752,9 @@ class SwapOutput extends $pb.GeneratedMessage {
   $7.SigningInput ensureEthereum() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $10.SigningInput get binance => $_getN(5);
+  $11.SigningInput get binance => $_getN(5);
   @$pb.TagNumber(6)
-  set binance($10.SigningInput v) {
+  set binance($11.SigningInput v) {
     setField(6, v);
   }
 
@@ -763,7 +763,7 @@ class SwapOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearBinance() => clearField(6);
   @$pb.TagNumber(6)
-  $10.SigningInput ensureBinance() => $_ensure(5);
+  $11.SigningInput ensureBinance() => $_ensure(5);
 
   @$pb.TagNumber(7)
   $8.SigningInput get cosmos => $_getN(6);

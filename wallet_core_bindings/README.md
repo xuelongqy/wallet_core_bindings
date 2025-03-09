@@ -34,7 +34,7 @@ There are two ways to use wallet_core_bindings, Native and Web Assembly. Please 
 
 ### Native
 The native features of the platform rely on the dynamic library compiled by [Wallet Core](https://github.com/trustwallet/wallet-core), Binding with [dart:ffi](https://dart.dev/interop/c-interop).
-* wallet_core_bindings_libs contains native dynamic libraries. Currently, only Android and iOS are supported. Due to the diversity of CPU architectures, Linux and macOS can be compiled and added to the project by themselves. It is possible that subsequent versions will find suitable ways to support them. Windows is not supported at present.
+* wallet_core_bindings_libs contains native dynamic libraries. Windows is not supported at present.
 * For more information, see [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
 ```yaml
 dependencies:

@@ -32,7 +32,7 @@ void main() async {
 }
 ```
 
-wallet_core_bindings_libs currently only supports Android and iOS. If you want to support other platforms, you need to import the dynamic library of wallet core into the project. See [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
+wallet_core_bindings_libs currently only supports Android, iOS, Linux and macOS. If you want to support other platforms, you need to import the dynamic library of wallet core into the project. See [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
 
 ```yaml
 dependencies:

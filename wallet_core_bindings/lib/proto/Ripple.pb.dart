@@ -193,7 +193,7 @@ class OperationPayment extends $pb.GeneratedMessage {
     $fixnum.Int64? amount,
     CurrencyAmount? currencyAmount,
     $core.String? destination,
-    $core.int? destinationTag,
+    $fixnum.Int64? destinationTag,
   }) {
     final $result = create();
     if (amount != null) {
@@ -234,8 +234,9 @@ class OperationPayment extends $pb.GeneratedMessage {
     ..aOM<CurrencyAmount>(2, _omitFieldNames ? '' : 'currencyAmount',
         subBuilder: CurrencyAmount.create)
     ..aOS(3, _omitFieldNames ? '' : 'destination')
-    ..a<$core.int>(
-        4, _omitFieldNames ? '' : 'destinationTag', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(
+        4, _omitFieldNames ? '' : 'destinationTag', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -305,11 +306,12 @@ class OperationPayment extends $pb.GeneratedMessage {
   void clearDestination() => clearField(3);
 
   /// A Destination Tag
+  /// It must fit uint32
   @$pb.TagNumber(4)
-  $core.int get destinationTag => $_getIZ(3);
+  $fixnum.Int64 get destinationTag => $_getI64(3);
   @$pb.TagNumber(4)
-  set destinationTag($core.int v) {
-    $_setUnsignedInt32(3, v);
+  set destinationTag($fixnum.Int64 v) {
+    $_setInt64(3, v);
   }
 
   @$pb.TagNumber(4)
@@ -323,9 +325,9 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
   factory OperationEscrowCreate({
     $fixnum.Int64? amount,
     $core.String? destination,
-    $core.int? destinationTag,
-    $core.int? cancelAfter,
-    $core.int? finishAfter,
+    $fixnum.Int64? destinationTag,
+    $fixnum.Int64? cancelAfter,
+    $fixnum.Int64? finishAfter,
     $core.String? condition,
   }) {
     final $result = create();
@@ -364,10 +366,15 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'amount')
     ..aOS(2, _omitFieldNames ? '' : 'destination')
-    ..a<$core.int>(
-        3, _omitFieldNames ? '' : 'destinationTag', $pb.PbFieldType.OU3)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'cancelAfter', $pb.PbFieldType.OU3)
-    ..a<$core.int>(5, _omitFieldNames ? '' : 'finishAfter', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(
+        3, _omitFieldNames ? '' : 'destinationTag', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        4, _omitFieldNames ? '' : 'cancelAfter', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        5, _omitFieldNames ? '' : 'finishAfter', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(6, _omitFieldNames ? '' : 'condition')
     ..hasRequiredFields = false;
 
@@ -423,11 +430,12 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
   void clearDestination() => clearField(2);
 
   /// Destination Tag
+  /// It must fit uint32
   @$pb.TagNumber(3)
-  $core.int get destinationTag => $_getIZ(2);
+  $fixnum.Int64 get destinationTag => $_getI64(2);
   @$pb.TagNumber(3)
-  set destinationTag($core.int v) {
-    $_setUnsignedInt32(2, v);
+  set destinationTag($fixnum.Int64 v) {
+    $_setInt64(2, v);
   }
 
   @$pb.TagNumber(3)
@@ -436,11 +444,12 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
   void clearDestinationTag() => clearField(3);
 
   /// Escrow expire time
+  /// It must fit uint32
   @$pb.TagNumber(4)
-  $core.int get cancelAfter => $_getIZ(3);
+  $fixnum.Int64 get cancelAfter => $_getI64(3);
   @$pb.TagNumber(4)
-  set cancelAfter($core.int v) {
-    $_setUnsignedInt32(3, v);
+  set cancelAfter($fixnum.Int64 v) {
+    $_setInt64(3, v);
   }
 
   @$pb.TagNumber(4)
@@ -449,11 +458,12 @@ class OperationEscrowCreate extends $pb.GeneratedMessage {
   void clearCancelAfter() => clearField(4);
 
   /// Escrow release time
+  /// It must fit uint32
   @$pb.TagNumber(5)
-  $core.int get finishAfter => $_getIZ(4);
+  $fixnum.Int64 get finishAfter => $_getI64(4);
   @$pb.TagNumber(5)
-  set finishAfter($core.int v) {
-    $_setUnsignedInt32(4, v);
+  set finishAfter($fixnum.Int64 v) {
+    $_setInt64(4, v);
   }
 
   @$pb.TagNumber(5)
@@ -980,7 +990,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.int? sequence,
     $core.int? lastLedgerSequence,
     $core.String? account,
-    $core.int? flags,
+    $fixnum.Int64? flags,
     $core.List<$core.int>? privateKey,
     OperationTrustSet? opTrustSet,
     OperationPayment? opPayment,
@@ -993,7 +1003,7 @@ class SigningInput extends $pb.GeneratedMessage {
     OperationEscrowCancel? opEscrowCancel,
     OperationEscrowFinish? opEscrowFinish,
     $core.String? rawJson,
-    $core.int? sourceTag,
+    $fixnum.Int64? sourceTag,
   }) {
     final $result = create();
     if (fee != null) {
@@ -1084,7 +1094,8 @@ class SigningInput extends $pb.GeneratedMessage {
     ..a<$core.int>(
         3, _omitFieldNames ? '' : 'lastLedgerSequence', $pb.PbFieldType.OU3)
     ..aOS(4, _omitFieldNames ? '' : 'account')
-    ..a<$core.int>(5, _omitFieldNames ? '' : 'flags', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'flags', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$core.List<$core.int>>(
         6, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
     ..aOM<OperationTrustSet>(7, _omitFieldNames ? '' : 'opTrustSet',
@@ -1111,7 +1122,9 @@ class SigningInput extends $pb.GeneratedMessage {
     ..aOM<OperationEscrowFinish>(18, _omitFieldNames ? '' : 'opEscrowFinish',
         subBuilder: OperationEscrowFinish.create)
     ..aOS(20, _omitFieldNames ? '' : 'rawJson')
-    ..a<$core.int>(25, _omitFieldNames ? '' : 'sourceTag', $pb.PbFieldType.OU3)
+    ..a<$fixnum.Int64>(
+        25, _omitFieldNames ? '' : 'sourceTag', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1194,11 +1207,12 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearAccount() => clearField(4);
 
   /// Transaction flags, optional
+  /// It must fit uint32
   @$pb.TagNumber(5)
-  $core.int get flags => $_getIZ(4);
+  $fixnum.Int64 get flags => $_getI64(4);
   @$pb.TagNumber(5)
-  set flags($core.int v) {
-    $_setUnsignedInt32(4, v);
+  set flags($fixnum.Int64 v) {
+    $_setInt64(4, v);
   }
 
   @$pb.TagNumber(5)
@@ -1379,11 +1393,12 @@ class SigningInput extends $pb.GeneratedMessage {
 
   /// Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made.
   /// Conventionally, a refund should specify the initial payment's SourceTag as the refund payment's DestinationTag.
+  /// It must fit uint32.
   @$pb.TagNumber(25)
-  $core.int get sourceTag => $_getIZ(17);
+  $fixnum.Int64 get sourceTag => $_getI64(17);
   @$pb.TagNumber(25)
-  set sourceTag($core.int v) {
-    $_setUnsignedInt32(17, v);
+  set sourceTag($fixnum.Int64 v) {
+    $_setInt64(17, v);
   }
 
   @$pb.TagNumber(25)

@@ -7911,27 +7911,9 @@ class TrustWalletCoreBindings {
       _TWCryptoBoxPublicKeyCreateWithDataPtr.asFunction<
           ffi.Pointer<TWCryptoBoxPublicKey> Function(ffi.Pointer<TWData1>)>();
 
-  /// Delete the given public key.
+  /// Returns the raw data of a given public-key.
   ///
-  /// \param publicKey *non-null* pointer to public key.
-  void TWCryptoBoxPublicKeyDelete(
-    ffi.Pointer<TWCryptoBoxPublicKey> publicKey,
-  ) {
-    return _TWCryptoBoxPublicKeyDelete(
-      publicKey,
-    );
-  }
-
-  late final _TWCryptoBoxPublicKeyDeletePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Pointer<TWCryptoBoxPublicKey>)>>(
-      'TWCryptoBoxPublicKeyDelete');
-  late final _TWCryptoBoxPublicKeyDelete = _TWCryptoBoxPublicKeyDeletePtr
-      .asFunction<void Function(ffi.Pointer<TWCryptoBoxPublicKey>)>();
-
-  /// Returns the raw data of the given public-key.
-  ///
-  /// \param publicKey *non-null* pointer to a public key.
+  /// \param public_key *non-null* pointer to a public key.
   /// \return C-compatible result with a C-compatible byte array.
   ffi.Pointer<TWData1> TWCryptoBoxPublicKeyData(
     ffi.Pointer<TWCryptoBoxPublicKey> publicKey,
@@ -7948,6 +7930,24 @@ class TrustWalletCoreBindings {
   late final _TWCryptoBoxPublicKeyData =
       _TWCryptoBoxPublicKeyDataPtr.asFunction<
           ffi.Pointer<TWData1> Function(ffi.Pointer<TWCryptoBoxPublicKey>)>();
+
+  /// Delete the given public key.
+  ///
+  /// \param public_key *non-null* pointer to public key.
+  void TWCryptoBoxPublicKeyDelete(
+    ffi.Pointer<TWCryptoBoxPublicKey> publicKey,
+  ) {
+    return _TWCryptoBoxPublicKeyDelete(
+      publicKey,
+    );
+  }
+
+  late final _TWCryptoBoxPublicKeyDeletePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<TWCryptoBoxPublicKey>)>>(
+      'TWCryptoBoxPublicKeyDelete');
+  late final _TWCryptoBoxPublicKeyDelete = _TWCryptoBoxPublicKeyDeletePtr
+      .asFunction<void Function(ffi.Pointer<TWCryptoBoxPublicKey>)>();
 
   /// Determines if the given secret key is valid or not.
   ///
@@ -7970,7 +7970,7 @@ class TrustWalletCoreBindings {
   /// Create a random secret key.
   ///
   /// \note Should be deleted with \tw_crypto_box_secret_key_delete.
-  /// \return *non-null* pointer to Secret Key.
+  /// \return Nullable pointer to Private Key.
   ffi.Pointer<TWCryptoBoxSecretKey> TWCryptoBoxSecretKeyCreate() {
     return _TWCryptoBoxSecretKeyCreate();
   }
@@ -8002,24 +8002,6 @@ class TrustWalletCoreBindings {
       _TWCryptoBoxSecretKeyCreateWithDataPtr.asFunction<
           ffi.Pointer<TWCryptoBoxSecretKey> Function(ffi.Pointer<TWData1>)>();
 
-  /// Delete the given secret `key`.
-  ///
-  /// \param key *non-null* pointer to secret key.
-  void TWCryptoBoxSecretKeyDelete(
-    ffi.Pointer<TWCryptoBoxSecretKey> key,
-  ) {
-    return _TWCryptoBoxSecretKeyDelete(
-      key,
-    );
-  }
-
-  late final _TWCryptoBoxSecretKeyDeletePtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Pointer<TWCryptoBoxSecretKey>)>>(
-      'TWCryptoBoxSecretKeyDelete');
-  late final _TWCryptoBoxSecretKeyDelete = _TWCryptoBoxSecretKeyDeletePtr
-      .asFunction<void Function(ffi.Pointer<TWCryptoBoxSecretKey>)>();
-
   /// Returns the public key associated with the given `key`.
   ///
   /// \param key *non-null* pointer to the private key.
@@ -8042,9 +8024,9 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWCryptoBoxPublicKey> Function(
               ffi.Pointer<TWCryptoBoxSecretKey>)>();
 
-  /// Returns the raw data of the given secret-key.
+  /// Returns the raw data of a given secret-key.
   ///
-  /// \param secretKey *non-null* pointer to a secret key.
+  /// \param secret_key *non-null* pointer to a secret key.
   /// \return C-compatible result with a C-compatible byte array.
   ffi.Pointer<TWData1> TWCryptoBoxSecretKeyData(
     ffi.Pointer<TWCryptoBoxSecretKey> secretKey,
@@ -8061,6 +8043,24 @@ class TrustWalletCoreBindings {
   late final _TWCryptoBoxSecretKeyData =
       _TWCryptoBoxSecretKeyDataPtr.asFunction<
           ffi.Pointer<TWData1> Function(ffi.Pointer<TWCryptoBoxSecretKey>)>();
+
+  /// Delete the given secret `key`.
+  ///
+  /// \param key *non-null* pointer to secret key.
+  void TWCryptoBoxSecretKeyDelete(
+    ffi.Pointer<TWCryptoBoxSecretKey> key,
+  ) {
+    return _TWCryptoBoxSecretKeyDelete(
+      key,
+    );
+  }
+
+  late final _TWCryptoBoxSecretKeyDeletePtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(ffi.Pointer<TWCryptoBoxSecretKey>)>>(
+      'TWCryptoBoxSecretKeyDelete');
+  late final _TWCryptoBoxSecretKeyDelete = _TWCryptoBoxSecretKeyDeletePtr
+      .asFunction<void Function(ffi.Pointer<TWCryptoBoxSecretKey>)>();
 
   /// Decode a Base32 input with the given alphabet
   ///
@@ -11910,56 +11910,6 @@ class TrustWalletCoreBindings {
       ffi.Pointer<TWData1> Function(
           ffi.Pointer<TWData1>, ffi.Pointer<TWData1>, ffi.Pointer<TWData1>)>();
 
-  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
-  /// and returns the updated transaction.
-  ///
-  /// \param encoded_tx base64 encoded Solana transaction.
-  /// \limit Unit Limit as a decimal string.
-  /// \return base64 encoded Solana transaction. Null if an error occurred.
-  ffi.Pointer<TWString> TWSolanaTransactionSetComputeUnitLimit(
-    ffi.Pointer<TWString> encodedTx,
-    ffi.Pointer<TWString> limit,
-  ) {
-    return _TWSolanaTransactionSetComputeUnitLimit(
-      encodedTx,
-      limit,
-    );
-  }
-
-  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<TWString> Function(
-                  ffi.Pointer<TWString>, ffi.Pointer<TWString>)>>(
-      'TWSolanaTransactionSetComputeUnitLimit');
-  late final _TWSolanaTransactionSetComputeUnitLimit =
-      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
-          ffi.Pointer<TWString> Function(
-              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
-
-  /// Adds fee payer to the given transaction, and returns the updated transaction.
-  ///
-  /// \param encoded_tx base64 encoded Solana transaction.
-  /// \param fee_payer fee payer account address. Must be a base58 encoded public key. It must NOT be in the account list yet.
-  /// \return base64 encoded Solana transaction. Null if an error occurred.
-  ffi.Pointer<TWString> TWSolanaTransactionSetFeePayer(
-    ffi.Pointer<TWString> encodedTx,
-    ffi.Pointer<TWString> feePayer,
-  ) {
-    return _TWSolanaTransactionSetFeePayer(
-      encodedTx,
-      feePayer,
-    );
-  }
-
-  late final _TWSolanaTransactionSetFeePayerPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>,
-              ffi.Pointer<TWString>)>>('TWSolanaTransactionSetFeePayer');
-  late final _TWSolanaTransactionSetFeePayer =
-      _TWSolanaTransactionSetFeePayerPtr.asFunction<
-          ffi.Pointer<TWString> Function(
-              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
-
   /// Decode Solana transaction, update the recent blockhash and re-sign the transaction.
   ///
   /// # Warning
@@ -12035,6 +11985,32 @@ class TrustWalletCoreBindings {
       _TWSolanaTransactionGetComputeUnitLimitPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>();
 
+  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
+  /// and returns the updated transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \limit Unit Limit as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionSetComputeUnitLimit(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> limit,
+  ) {
+    return _TWSolanaTransactionSetComputeUnitLimit(
+      encodedTx,
+      limit,
+    );
+  }
+
+  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString> Function(
+                  ffi.Pointer<TWString>, ffi.Pointer<TWString>)>>(
+      'TWSolanaTransactionSetComputeUnitLimit');
+  late final _TWSolanaTransactionSetComputeUnitLimit =
+      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
   /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction of the given transaction,
   /// and returns the updated transaction.
   ///
@@ -12058,6 +12034,30 @@ class TrustWalletCoreBindings {
       'TWSolanaTransactionSetComputeUnitPrice');
   late final _TWSolanaTransactionSetComputeUnitPrice =
       _TWSolanaTransactionSetComputeUnitPricePtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
+  /// Adds fee payer to the given transaction, and returns the updated transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \param fee_payer fee payer account address. Must be a base58 encoded public key. It must NOT be in the account list yet.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionSetFeePayer(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> feePayer,
+  ) {
+    return _TWSolanaTransactionSetFeePayer(
+      encodedTx,
+      feePayer,
+    );
+  }
+
+  late final _TWSolanaTransactionSetFeePayerPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>)>>('TWSolanaTransactionSetFeePayer');
+  late final _TWSolanaTransactionSetFeePayer =
+      _TWSolanaTransactionSetFeePayerPtr.asFunction<
           ffi.Pointer<TWString> Function(
               ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
 
@@ -13992,6 +13992,7 @@ abstract class TWBlockchain {
   static const int TWBlockchainBitcoinCash = 55;
   static const int TWBlockchainPactus = 56;
   static const int TWBlockchainKomodo = 57;
+  static const int TWBlockchainPolymesh = 58;
 }
 
 /// Elliptic cruves
@@ -14307,6 +14308,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeZkLinkNova = 810180;
   static const int TWCoinTypePactus = 21888;
   static const int TWCoinTypeSonic = 10000146;
+  static const int TWCoinTypePolymesh = 595;
 }
 
 /// CoinTypeConfiguration functions
@@ -14457,10 +14459,8 @@ final class TWPBKDF2 extends ffi.Opaque {}
 /// Filecoin-Ethereum address converter.
 final class TWFilecoinAddressConverter extends ffi.Opaque {}
 
-/// Public key used in `crypto_box` cryptography.
 final class TWCryptoBoxPublicKey extends ffi.Opaque {}
 
-/// Secret key used in `crypto_box` cryptography.
 final class TWCryptoBoxSecretKey extends ffi.Opaque {}
 
 /// Base32 encode / decode functions

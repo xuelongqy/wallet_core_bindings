@@ -47,6 +47,7 @@ import 'proto/Greenfield.pb.dart' as $greenfield;
 import 'proto/InternetComputer.pb.dart' as $internet_computer;
 import 'proto/Pactus.pb.dart' as $pactus;
 import 'proto/TransactionCompiler.pb.dart' as $transaction_compiler;
+import 'package:wallet_core_bindings/proto/Polymesh.pb.dart' as $polymesh;
 
 import 'ffi/finalizable.dart' if (dart.library.io) 'dart:ffi';
 import 'dart:typed_data';
@@ -245,3 +246,4 @@ part 'src/extension/sui/tw_sui_extension.dart';
 part 'src/extension/greenfield/tw_greenfield_extension.dart';
 part 'src/extension/internet_computer/tw_internet_computer_extension.dart';
 part 'src/extension/pactus/tw_pactus_extension.dart';
+part 'src/extension/polymesh/tw_polymesh_extension.dart';

@@ -443,35 +443,35 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.2.10"
+    version: "4.2.14"
   wallet_core_bindings_libs:
     dependency: "direct main"
     description:
       path: "../../wallet_core_bindings_libs"
       relative: true
     source: path
-    version: "4.2.10"
+    version: "4.2.12"
   wallet_core_bindings_native:
     dependency: "direct main"
     description:
       path: "../../wallet_core_bindings_native"
       relative: true
     source: path
-    version: "4.2.10"
+    version: "4.2.12"
   wallet_core_bindings_wasm:
     dependency: "direct dev"
     description:
       path: "../../wallet_core_bindings_wasm"
       relative: true
     source: path
-    version: "4.2.10"
+    version: "4.2.12"
   wallet_core_bindings_wasm_assets:
     dependency: "direct dev"
     description:
       path: "../../wallet_core_bindings_wasm_assets"
       relative: true
     source: path
-    version: "4.2.10"
+    version: "4.2.12"
   wasm_interop:
     dependency: transitive
     description:

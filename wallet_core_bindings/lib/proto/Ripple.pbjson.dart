@@ -63,7 +63,7 @@ const OperationPayment$json = {
       '10': 'currencyAmount'
     },
     {'1': 'destination', '3': 3, '4': 1, '5': 9, '10': 'destination'},
-    {'1': 'destination_tag', '3': 4, '4': 1, '5': 13, '10': 'destinationTag'},
+    {'1': 'destination_tag', '3': 4, '4': 1, '5': 4, '10': 'destinationTag'},
   ],
   '8': [
     {'1': 'amount_oneof'},
@@ -75,7 +75,7 @@ final $typed_data.Uint8List operationPaymentDescriptor = $convert.base64Decode(
     'ChBPcGVyYXRpb25QYXltZW50EhgKBmFtb3VudBgBIAEoA0gAUgZhbW91bnQSSgoPY3VycmVuY3'
     'lfYW1vdW50GAIgASgLMh8uVFcuUmlwcGxlLlByb3RvLkN1cnJlbmN5QW1vdW50SABSDmN1cnJl'
     'bmN5QW1vdW50EiAKC2Rlc3RpbmF0aW9uGAMgASgJUgtkZXN0aW5hdGlvbhInCg9kZXN0aW5hdG'
-    'lvbl90YWcYBCABKA1SDmRlc3RpbmF0aW9uVGFnQg4KDGFtb3VudF9vbmVvZg==');
+    'lvbl90YWcYBCABKARSDmRlc3RpbmF0aW9uVGFnQg4KDGFtb3VudF9vbmVvZg==');
 
 @$core.Deprecated('Use operationEscrowCreateDescriptor instead')
 const OperationEscrowCreate$json = {
@@ -83,9 +83,9 @@ const OperationEscrowCreate$json = {
   '2': [
     {'1': 'amount', '3': 1, '4': 1, '5': 3, '10': 'amount'},
     {'1': 'destination', '3': 2, '4': 1, '5': 9, '10': 'destination'},
-    {'1': 'destination_tag', '3': 3, '4': 1, '5': 13, '10': 'destinationTag'},
-    {'1': 'cancel_after', '3': 4, '4': 1, '5': 13, '10': 'cancelAfter'},
-    {'1': 'finish_after', '3': 5, '4': 1, '5': 13, '10': 'finishAfter'},
+    {'1': 'destination_tag', '3': 3, '4': 1, '5': 4, '10': 'destinationTag'},
+    {'1': 'cancel_after', '3': 4, '4': 1, '5': 4, '10': 'cancelAfter'},
+    {'1': 'finish_after', '3': 5, '4': 1, '5': 4, '10': 'finishAfter'},
     {'1': 'condition', '3': 6, '4': 1, '5': 9, '10': 'condition'},
   ],
 };
@@ -93,9 +93,9 @@ const OperationEscrowCreate$json = {
 /// Descriptor for `OperationEscrowCreate`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List operationEscrowCreateDescriptor = $convert.base64Decode(
     'ChVPcGVyYXRpb25Fc2Nyb3dDcmVhdGUSFgoGYW1vdW50GAEgASgDUgZhbW91bnQSIAoLZGVzdG'
-    'luYXRpb24YAiABKAlSC2Rlc3RpbmF0aW9uEicKD2Rlc3RpbmF0aW9uX3RhZxgDIAEoDVIOZGVz'
-    'dGluYXRpb25UYWcSIQoMY2FuY2VsX2FmdGVyGAQgASgNUgtjYW5jZWxBZnRlchIhCgxmaW5pc2'
-    'hfYWZ0ZXIYBSABKA1SC2ZpbmlzaEFmdGVyEhwKCWNvbmRpdGlvbhgGIAEoCVIJY29uZGl0aW9u');
+    'luYXRpb24YAiABKAlSC2Rlc3RpbmF0aW9uEicKD2Rlc3RpbmF0aW9uX3RhZxgDIAEoBFIOZGVz'
+    'dGluYXRpb25UYWcSIQoMY2FuY2VsX2FmdGVyGAQgASgEUgtjYW5jZWxBZnRlchIhCgxmaW5pc2'
+    'hfYWZ0ZXIYBSABKARSC2ZpbmlzaEFmdGVyEhwKCWNvbmRpdGlvbhgGIAEoCVIJY29uZGl0aW9u');
 
 @$core.Deprecated('Use operationEscrowCancelDescriptor instead')
 const OperationEscrowCancel$json = {
@@ -197,7 +197,7 @@ const SigningInput$json = {
       '10': 'lastLedgerSequence'
     },
     {'1': 'account', '3': 4, '4': 1, '5': 9, '10': 'account'},
-    {'1': 'flags', '3': 5, '4': 1, '5': 13, '10': 'flags'},
+    {'1': 'flags', '3': 5, '4': 1, '5': 4, '10': 'flags'},
     {'1': 'private_key', '3': 6, '4': 1, '5': 12, '10': 'privateKey'},
     {
       '1': 'op_trust_set',
@@ -282,7 +282,7 @@ const SigningInput$json = {
     },
     {'1': 'public_key', '3': 15, '4': 1, '5': 12, '10': 'publicKey'},
     {'1': 'raw_json', '3': 20, '4': 1, '5': 9, '10': 'rawJson'},
-    {'1': 'source_tag', '3': 25, '4': 1, '5': 13, '10': 'sourceTag'},
+    {'1': 'source_tag', '3': 25, '4': 1, '5': 4, '10': 'sourceTag'},
   ],
   '8': [
     {'1': 'operation_oneof'},
@@ -293,7 +293,7 @@ const SigningInput$json = {
 final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'CgxTaWduaW5nSW5wdXQSEAoDZmVlGAEgASgDUgNmZWUSGgoIc2VxdWVuY2UYAiABKA1SCHNlcX'
     'VlbmNlEjAKFGxhc3RfbGVkZ2VyX3NlcXVlbmNlGAMgASgNUhJsYXN0TGVkZ2VyU2VxdWVuY2US'
-    'GAoHYWNjb3VudBgEIAEoCVIHYWNjb3VudBIUCgVmbGFncxgFIAEoDVIFZmxhZ3MSHwoLcHJpdm'
+    'GAoHYWNjb3VudBgEIAEoCVIHYWNjb3VudBIUCgVmbGFncxgFIAEoBFIFZmxhZ3MSHwoLcHJpdm'
     'F0ZV9rZXkYBiABKAxSCnByaXZhdGVLZXkSRgoMb3BfdHJ1c3Rfc2V0GAcgASgLMiIuVFcuUmlw'
     'cGxlLlByb3RvLk9wZXJhdGlvblRydXN0U2V0SABSCm9wVHJ1c3RTZXQSQgoKb3BfcGF5bWVudB'
     'gIIAEoCzIhLlRXLlJpcHBsZS5Qcm90by5PcGVyYXRpb25QYXltZW50SABSCW9wUGF5bWVudBJP'
@@ -309,7 +309,7 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'YuVFcuUmlwcGxlLlByb3RvLk9wZXJhdGlvbkVzY3Jvd0NhbmNlbEgAUg5vcEVzY3Jvd0NhbmNl'
     'bBJSChBvcF9lc2Nyb3dfZmluaXNoGBIgASgLMiYuVFcuUmlwcGxlLlByb3RvLk9wZXJhdGlvbk'
     'VzY3Jvd0ZpbmlzaEgAUg5vcEVzY3Jvd0ZpbmlzaBIdCgpwdWJsaWNfa2V5GA8gASgMUglwdWJs'
-    'aWNLZXkSGQoIcmF3X2pzb24YFCABKAlSB3Jhd0pzb24SHQoKc291cmNlX3RhZxgZIAEoDVIJc2'
+    'aWNLZXkSGQoIcmF3X2pzb24YFCABKAlSB3Jhd0pzb24SHQoKc291cmNlX3RhZxgZIAEoBFIJc2'
     '91cmNlVGFnQhEKD29wZXJhdGlvbl9vbmVvZg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
