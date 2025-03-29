@@ -21,11 +21,14 @@ class TransactionMode extends $pb.ProtobufEnum {
       TransactionMode._(1, _omitEnumNames ? '' : 'Enveloped');
   static const TransactionMode UserOp =
       TransactionMode._(2, _omitEnumNames ? '' : 'UserOp');
+  static const TransactionMode SetCode =
+      TransactionMode._(4, _omitEnumNames ? '' : 'SetCode');
 
   static const $core.List<TransactionMode> values = <TransactionMode>[
     Legacy,
     Enveloped,
     UserOp,
+    SetCode,
   ];
 
   static final $core.Map<$core.int, TransactionMode> _byValue =
@@ -33,6 +36,28 @@ class TransactionMode extends $pb.ProtobufEnum {
   static TransactionMode? valueOf($core.int value) => _byValue[value];
 
   const TransactionMode._($core.int v, $core.String n) : super(v, n);
+}
+
+/// Smart Contract account type.
+class SCAccountType extends $pb.ProtobufEnum {
+  static const SCAccountType SimpleAccount =
+      SCAccountType._(0, _omitEnumNames ? '' : 'SimpleAccount');
+  static const SCAccountType Biz4337 =
+      SCAccountType._(1, _omitEnumNames ? '' : 'Biz4337');
+  static const SCAccountType Biz =
+      SCAccountType._(2, _omitEnumNames ? '' : 'Biz');
+
+  static const $core.List<SCAccountType> values = <SCAccountType>[
+    SimpleAccount,
+    Biz4337,
+    Biz,
+  ];
+
+  static final $core.Map<$core.int, SCAccountType> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static SCAccountType? valueOf($core.int value) => _byValue[value];
+
+  const SCAccountType._($core.int v, $core.String n) : super(v, n);
 }
 
 class MessageType extends $pb.ProtobufEnum {

@@ -37,4 +37,28 @@ class TWBarzImpl extends TWBarzInterface {
     final func = wasm.getFunction('TWBarzGetPrefixedMsgHash')!;
     return func([msgHash, barzAddress, chainId]).first as int;
   }
+
+  @override
+  int getAuthorizationHash(int chainId, int contractAddress, int nonce) {
+    final func = wasm.getFunction('TWBarzGetAuthorizationHash')!;
+    return func([chainId, contractAddress, nonce]).first as int;
+  }
+
+  @override
+  int getEncodedHash(int chainId, int wallet, int version, int typeHash, int domainSeparatorHash, int hash) {
+    final func = wasm.getFunction('TWBarzGetEncodedHash')!;
+    return func([chainId, wallet, version, typeHash, domainSeparatorHash, hash]).first as int;
+  }
+
+  @override
+  int getSignedHash(int hash, int privateKey) {
+    final func = wasm.getFunction('TWBarzGetSignedHash')!;
+    return func([hash, privateKey]).first as int;
+  }
+
+  @override
+  int signAuthorization(int chainId, int contractAddress, int nonce, int privateKey) {
+    final func = wasm.getFunction('TWBarzSignAuthorization')!;
+    return func([chainId, contractAddress, nonce, privateKey]).first as int;
+  }
 }

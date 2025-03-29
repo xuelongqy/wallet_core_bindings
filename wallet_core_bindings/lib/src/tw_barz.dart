@@ -80,4 +80,90 @@ class TWBarz {
   static Uint8List getDiamondCutCode(Uint8List input) =>
       TWData.fromPointer(_barzImpl.getDiamondCutCode(TWData(input).pointer))
           .bytes()!;
+
+  /// Computes an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702)
+  /// `keccak256('0x05' || rlp([chain_id, address, nonce]))`.
+  ///
+  /// \param [chainId] The chainId of the network
+  /// \param [contractAddress] The address of the contract to be authorized
+  /// \param [nonce] The nonce of the transaction
+  /// \return The authorization hash
+  static Uint8List? getAuthorizationHash({
+    required Uint8List chainId,
+    required String contractAddress,
+    required Uint8List nonce,
+  }) =>
+      TWData.fromPointer(
+        _barzImpl.getAuthorizationHash(
+          TWData(chainId).pointer,
+          TWString(contractAddress).pointer,
+          TWData(nonce).pointer,
+        ),
+      ).bytes();
+
+  /// Returns the signed authorization hash
+  ///
+  /// \param [chainId] The chainId of the network
+  /// \param [contractAddress] The address of the contract to be authorized
+  /// \param [nonce] The nonce of the transaction
+  /// \param [privateKey] The private key
+  /// \return A json string of the signed authorization
+  static String? signAuthorization({
+    required Uint8List chainId,
+    required String contractAddress,
+    required Uint8List nonce,
+    required String privateKey,
+  }) =>
+      TWString.fromPointer(
+        _barzImpl.signAuthorization(
+          TWData(chainId).pointer,
+          TWString(contractAddress).pointer,
+          TWData(nonce).pointer,
+          TWString(privateKey).pointer,
+        ),
+      ).value;
+
+  /// Returns the encoded hash of the user operation
+  ///
+  /// \param [chainId] The chainId of the network
+  /// \param [wallet] The address of the wallet
+  /// \param [version] The version of the wallet
+  /// \param [typeHash] The type hash of the transaction
+  /// \param [domainSeparatorHash] The domain separator hash of the wallet
+  /// \param [hash] The hash of the user operation
+  /// \return The encoded hash of the user operation
+  static Uint8List? getEncodedHash({
+    required Uint8List chainId,
+    required String wallet,
+    required String version,
+    required String typeHash,
+    required String domainSeparatorHash,
+    required String hash,
+  }) =>
+      TWData.fromPointer(
+        _barzImpl.getEncodedHash(
+          TWData(chainId).pointer,
+          TWString(wallet).pointer,
+          TWString(version).pointer,
+          TWString(typeHash).pointer,
+          TWString(domainSeparatorHash).pointer,
+          TWString(hash).pointer,
+        ),
+      ).bytes();
+
+  /// Signs a message using the private key
+  ///
+  /// \param [hash] The hash to sign
+  /// \param [privateKey] The private key
+  /// \return The signature
+  static Uint8List? getSignedHash({
+    required String hash,
+    required String privateKey,
+  }) =>
+      TWData.fromPointer(
+        _barzImpl.getSignedHash(
+          TWString(hash).pointer,
+          TWString(privateKey).pointer,
+        ),
+      ).bytes();
 }

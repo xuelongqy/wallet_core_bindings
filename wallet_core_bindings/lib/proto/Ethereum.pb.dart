@@ -1142,6 +1142,240 @@ class UserOperation extends $pb.GeneratedMessage {
   void clearPaymasterAndData() => clearField(6);
 }
 
+/// EIP-7702 compatible ERC-4337 structure that describes a transaction to be sent on behalf of a user
+class UserOperationV0_7 extends $pb.GeneratedMessage {
+  factory UserOperationV0_7({
+    $core.String? entryPoint,
+    $core.String? factory,
+    $core.List<$core.int>? factoryData,
+    $core.String? sender,
+    $core.List<$core.int>? preVerificationGas,
+    $core.List<$core.int>? verificationGasLimit,
+    $core.String? paymaster,
+    $core.List<$core.int>? paymasterVerificationGasLimit,
+    $core.List<$core.int>? paymasterPostOpGasLimit,
+    $core.List<$core.int>? paymasterData,
+  }) {
+    final $result = create();
+    if (entryPoint != null) {
+      $result.entryPoint = entryPoint;
+    }
+    if (factory != null) {
+      $result.factory = factory;
+    }
+    if (factoryData != null) {
+      $result.factoryData = factoryData;
+    }
+    if (sender != null) {
+      $result.sender = sender;
+    }
+    if (preVerificationGas != null) {
+      $result.preVerificationGas = preVerificationGas;
+    }
+    if (verificationGasLimit != null) {
+      $result.verificationGasLimit = verificationGasLimit;
+    }
+    if (paymaster != null) {
+      $result.paymaster = paymaster;
+    }
+    if (paymasterVerificationGasLimit != null) {
+      $result.paymasterVerificationGasLimit = paymasterVerificationGasLimit;
+    }
+    if (paymasterPostOpGasLimit != null) {
+      $result.paymasterPostOpGasLimit = paymasterPostOpGasLimit;
+    }
+    if (paymasterData != null) {
+      $result.paymasterData = paymasterData;
+    }
+    return $result;
+  }
+  UserOperationV0_7._() : super();
+  factory UserOperationV0_7.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory UserOperationV0_7.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'UserOperationV0_7',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'entryPoint')
+    ..aOS(2, _omitFieldNames ? '' : 'factory')
+    ..a<$core.List<$core.int>>(
+        3, _omitFieldNames ? '' : 'factoryData', $pb.PbFieldType.OY)
+    ..aOS(4, _omitFieldNames ? '' : 'sender')
+    ..a<$core.List<$core.int>>(
+        5, _omitFieldNames ? '' : 'preVerificationGas', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        6, _omitFieldNames ? '' : 'verificationGasLimit', $pb.PbFieldType.OY)
+    ..aOS(7, _omitFieldNames ? '' : 'paymaster')
+    ..a<$core.List<$core.int>>(
+        8,
+        _omitFieldNames ? '' : 'paymasterVerificationGasLimit',
+        $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        9, _omitFieldNames ? '' : 'paymasterPostOpGasLimit', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        10, _omitFieldNames ? '' : 'paymasterData', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  UserOperationV0_7 clone() => UserOperationV0_7()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  UserOperationV0_7 copyWith(void Function(UserOperationV0_7) updates) =>
+      super.copyWith((message) => updates(message as UserOperationV0_7))
+          as UserOperationV0_7;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UserOperationV0_7 create() => UserOperationV0_7._();
+  UserOperationV0_7 createEmptyInstance() => create();
+  static $pb.PbList<UserOperationV0_7> createRepeated() =>
+      $pb.PbList<UserOperationV0_7>();
+  @$core.pragma('dart2js:noInline')
+  static UserOperationV0_7 getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UserOperationV0_7>(create);
+  static UserOperationV0_7? _defaultInstance;
+
+  /// Entry point contract address
+  @$pb.TagNumber(1)
+  $core.String get entryPoint => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set entryPoint($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEntryPoint() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEntryPoint() => clearField(1);
+
+  /// Account factory contract address
+  @$pb.TagNumber(2)
+  $core.String get factory => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set factory($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasFactory() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFactory() => clearField(2);
+
+  /// Account factory data
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get factoryData => $_getN(2);
+  @$pb.TagNumber(3)
+  set factoryData($core.List<$core.int> v) {
+    $_setBytes(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasFactoryData() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFactoryData() => clearField(3);
+
+  /// Account logic contract address
+  @$pb.TagNumber(4)
+  $core.String get sender => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set sender($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasSender() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSender() => clearField(4);
+
+  /// The amount of gas to pay for to compensate the bundler for pre-verification execution and calldata
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get preVerificationGas => $_getN(4);
+  @$pb.TagNumber(5)
+  set preVerificationGas($core.List<$core.int> v) {
+    $_setBytes(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasPreVerificationGas() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPreVerificationGas() => clearField(5);
+
+  /// The amount of gas to allocate for the verification step
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get verificationGasLimit => $_getN(5);
+  @$pb.TagNumber(6)
+  set verificationGasLimit($core.List<$core.int> v) {
+    $_setBytes(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasVerificationGasLimit() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearVerificationGasLimit() => clearField(6);
+
+  /// Address of paymaster
+  @$pb.TagNumber(7)
+  $core.String get paymaster => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set paymaster($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasPaymaster() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearPaymaster() => clearField(7);
+
+  /// The amount of gas to allocate for the paymaster verification step
+  @$pb.TagNumber(8)
+  $core.List<$core.int> get paymasterVerificationGasLimit => $_getN(7);
+  @$pb.TagNumber(8)
+  set paymasterVerificationGasLimit($core.List<$core.int> v) {
+    $_setBytes(7, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasPaymasterVerificationGasLimit() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearPaymasterVerificationGasLimit() => clearField(8);
+
+  /// The amount of gas to allocate for paymaster post ops
+  @$pb.TagNumber(9)
+  $core.List<$core.int> get paymasterPostOpGasLimit => $_getN(8);
+  @$pb.TagNumber(9)
+  set paymasterPostOpGasLimit($core.List<$core.int> v) {
+    $_setBytes(8, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasPaymasterPostOpGasLimit() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearPaymasterPostOpGasLimit() => clearField(9);
+
+  /// Paymaster data
+  @$pb.TagNumber(10)
+  $core.List<$core.int> get paymasterData => $_getN(9);
+  @$pb.TagNumber(10)
+  set paymasterData($core.List<$core.int> v) {
+    $_setBytes(9, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasPaymasterData() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearPaymasterData() => clearField(10);
+}
+
 /// An item of the [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) access list.
 class Access extends $pb.GeneratedMessage {
   factory Access({
@@ -1214,6 +1448,70 @@ class Access extends $pb.GeneratedMessage {
   $core.List<$core.List<$core.int>> get storedKeys => $_getList(1);
 }
 
+/// [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) authority.
+class Authority extends $pb.GeneratedMessage {
+  factory Authority({
+    $core.String? address,
+  }) {
+    final $result = create();
+    if (address != null) {
+      $result.address = address;
+    }
+    return $result;
+  }
+  Authority._() : super();
+  factory Authority.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Authority.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Authority',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
+      createEmptyInstance: create)
+    ..aOS(2, _omitFieldNames ? '' : 'address')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Authority clone() => Authority()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Authority copyWith(void Function(Authority) updates) =>
+      super.copyWith((message) => updates(message as Authority)) as Authority;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Authority create() => Authority._();
+  Authority createEmptyInstance() => create();
+  static $pb.PbList<Authority> createRepeated() => $pb.PbList<Authority>();
+  @$core.pragma('dart2js:noInline')
+  static Authority getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Authority>(create);
+  static Authority? _defaultInstance;
+
+  /// Address to be authorized, a smart contract address.
+  @$pb.TagNumber(2)
+  $core.String get address => $_getSZ(0);
+  @$pb.TagNumber(2)
+  set address($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasAddress() => $_has(0);
+  @$pb.TagNumber(2)
+  void clearAddress() => clearField(2);
+}
+
+enum SigningInput_UserOperationOneof { userOperation, userOperationV07, notSet }
+
 /// Input data necessary to create a signed transaction.
 /// Legacy and EIP2718/EIP1559 transactions supported, see TransactionMode.
 class SigningInput extends $pb.GeneratedMessage {
@@ -1230,6 +1528,9 @@ class SigningInput extends $pb.GeneratedMessage {
     Transaction? transaction,
     UserOperation? userOperation,
     $core.Iterable<Access>? accessList,
+    UserOperationV0_7? userOperationV07,
+    SCAccountType? userOperationMode,
+    Authority? eip7702Authority,
   }) {
     final $result = create();
     if (chainId != null) {
@@ -1268,6 +1569,15 @@ class SigningInput extends $pb.GeneratedMessage {
     if (accessList != null) {
       $result.accessList.addAll(accessList);
     }
+    if (userOperationV07 != null) {
+      $result.userOperationV07 = userOperationV07;
+    }
+    if (userOperationMode != null) {
+      $result.userOperationMode = userOperationMode;
+    }
+    if (eip7702Authority != null) {
+      $result.eip7702Authority = eip7702Authority;
+    }
     return $result;
   }
   SigningInput._() : super();
@@ -1278,11 +1588,18 @@ class SigningInput extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, SigningInput_UserOperationOneof>
+      _SigningInput_UserOperationOneofByTag = {
+    11: SigningInput_UserOperationOneof.userOperation,
+    13: SigningInput_UserOperationOneof.userOperationV07,
+    0: SigningInput_UserOperationOneof.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'SigningInput',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
       createEmptyInstance: create)
+    ..oo(0, [11, 13])
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'chainId', $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(
@@ -1308,6 +1625,15 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: UserOperation.create)
     ..pc<Access>(12, _omitFieldNames ? '' : 'accessList', $pb.PbFieldType.PM,
         subBuilder: Access.create)
+    ..aOM<UserOperationV0_7>(13, _omitFieldNames ? '' : 'userOperationV07',
+        protoName: 'user_operation_v0_7', subBuilder: UserOperationV0_7.create)
+    ..e<SCAccountType>(
+        14, _omitFieldNames ? '' : 'userOperationMode', $pb.PbFieldType.OE,
+        defaultOrMaker: SCAccountType.SimpleAccount,
+        valueOf: SCAccountType.valueOf,
+        enumValues: SCAccountType.values)
+    ..aOM<Authority>(15, _omitFieldNames ? '' : 'eip7702Authority',
+        subBuilder: Authority.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1332,6 +1658,10 @@ class SigningInput extends $pb.GeneratedMessage {
   static SigningInput getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<SigningInput>(create);
   static SigningInput? _defaultInstance;
+
+  SigningInput_UserOperationOneof whichUserOperationOneof() =>
+      _SigningInput_UserOperationOneofByTag[$_whichOneof(0)]!;
+  void clearUserOperationOneof() => clearField($_whichOneof(0));
 
   /// Chain identifier (uint256, serialized big endian)
   @$pb.TagNumber(1)
@@ -1469,7 +1799,6 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   Transaction ensureTransaction() => $_ensure(9);
 
-  /// UserOperation for ERC-4337 wallets
   @$pb.TagNumber(11)
   UserOperation get userOperation => $_getN(10);
   @$pb.TagNumber(11)
@@ -1488,6 +1817,50 @@ class SigningInput extends $pb.GeneratedMessage {
   /// Used in `TransactionMode::Enveloped` only.
   @$pb.TagNumber(12)
   $core.List<Access> get accessList => $_getList(11);
+
+  /// EIP-7702 compatible
+  @$pb.TagNumber(13)
+  UserOperationV0_7 get userOperationV07 => $_getN(12);
+  @$pb.TagNumber(13)
+  set userOperationV07(UserOperationV0_7 v) {
+    setField(13, v);
+  }
+
+  @$pb.TagNumber(13)
+  $core.bool hasUserOperationV07() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearUserOperationV07() => clearField(13);
+  @$pb.TagNumber(13)
+  UserOperationV0_7 ensureUserOperationV07() => $_ensure(12);
+
+  /// Smart contract account type. Used in `TransactionMode::UserOp` only.
+  @$pb.TagNumber(14)
+  SCAccountType get userOperationMode => $_getN(13);
+  @$pb.TagNumber(14)
+  set userOperationMode(SCAccountType v) {
+    setField(14, v);
+  }
+
+  @$pb.TagNumber(14)
+  $core.bool hasUserOperationMode() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearUserOperationMode() => clearField(14);
+
+  /// A smart contract to which we’re delegating to.
+  /// Currently, we support delegation to only one authority at a time.
+  @$pb.TagNumber(15)
+  Authority get eip7702Authority => $_getN(14);
+  @$pb.TagNumber(15)
+  set eip7702Authority(Authority v) {
+    setField(15, v);
+  }
+
+  @$pb.TagNumber(15)
+  $core.bool hasEip7702Authority() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearEip7702Authority() => clearField(15);
+  @$pb.TagNumber(15)
+  Authority ensureEip7702Authority() => $_ensure(14);
 }
 
 /// Result containing the signed and encoded transaction.

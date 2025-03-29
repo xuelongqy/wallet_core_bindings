@@ -41,14 +41,6 @@ TW_EXPORT_STATIC_METHOD TWString *_Nullable TWSolanaTransactionGetComputeUnitPri
 /// \return nullable Unit Limit as a decimal string. Null if no instruction found.
 TW_EXPORT_STATIC_METHOD TWString *_Nullable TWSolanaTransactionGetComputeUnitLimit(TWString *_Nonnull encodedTx);
 
-/// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
-/// and returns the updated transaction.
-/// 
-/// \param encoded_tx base64 encoded Solana transaction.
-/// \limit Unit Limit as a decimal string.
-/// \return base64 encoded Solana transaction. Null if an error occurred.
-TW_EXPORT_STATIC_METHOD TWString *_Nullable TWSolanaTransactionSetComputeUnitLimit(TWString *_Nonnull encodedTx, TWString *_Nonnull limit);
-
 /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction of the given transaction,
 /// and returns the updated transaction.
 /// 
@@ -56,6 +48,14 @@ TW_EXPORT_STATIC_METHOD TWString *_Nullable TWSolanaTransactionSetComputeUnitLim
 /// \price Unit Price as a decimal string.
 /// \return base64 encoded Solana transaction. Null if an error occurred.
 TW_EXPORT_STATIC_METHOD TWString *_Nullable TWSolanaTransactionSetComputeUnitPrice(TWString *_Nonnull encodedTx, TWString *_Nonnull price);
+
+/// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
+/// and returns the updated transaction.
+/// 
+/// \param encoded_tx base64 encoded Solana transaction.
+/// \limit Unit Limit as a decimal string.
+/// \return base64 encoded Solana transaction. Null if an error occurred.
+TW_EXPORT_STATIC_METHOD TWString *_Nullable TWSolanaTransactionSetComputeUnitLimit(TWString *_Nonnull encodedTx, TWString *_Nonnull limit);
 
 /// Adds fee payer to the given transaction, and returns the updated transaction.
 /// 

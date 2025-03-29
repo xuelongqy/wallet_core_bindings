@@ -12,4 +12,14 @@ abstract class TWBarzInterface {
   int getPrefixedMsgHash(int msgHash, int barzAddress, int chainId);
 
   int getDiamondCutCode(int input);
+
+  int getAuthorizationHash(int chainId, int contractAddress, int nonce);
+
+  int signAuthorization(
+      int chainId, int contractAddress, int nonce, int privateKey);
+
+  int getEncodedHash(int chainId, int wallet, int version, int typeHash,
+      int domainSeparatorHash, int hash);
+
+  int getSignedHash(int hash, int privateKey);
 }

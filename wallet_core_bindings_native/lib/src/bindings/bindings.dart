@@ -11985,32 +11985,6 @@ class TrustWalletCoreBindings {
       _TWSolanaTransactionGetComputeUnitLimitPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>();
 
-  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
-  /// and returns the updated transaction.
-  ///
-  /// \param encoded_tx base64 encoded Solana transaction.
-  /// \limit Unit Limit as a decimal string.
-  /// \return base64 encoded Solana transaction. Null if an error occurred.
-  ffi.Pointer<TWString> TWSolanaTransactionSetComputeUnitLimit(
-    ffi.Pointer<TWString> encodedTx,
-    ffi.Pointer<TWString> limit,
-  ) {
-    return _TWSolanaTransactionSetComputeUnitLimit(
-      encodedTx,
-      limit,
-    );
-  }
-
-  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<TWString> Function(
-                  ffi.Pointer<TWString>, ffi.Pointer<TWString>)>>(
-      'TWSolanaTransactionSetComputeUnitLimit');
-  late final _TWSolanaTransactionSetComputeUnitLimit =
-      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
-          ffi.Pointer<TWString> Function(
-              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
-
   /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitPrice` instruction of the given transaction,
   /// and returns the updated transaction.
   ///
@@ -12034,6 +12008,32 @@ class TrustWalletCoreBindings {
       'TWSolanaTransactionSetComputeUnitPrice');
   late final _TWSolanaTransactionSetComputeUnitPrice =
       _TWSolanaTransactionSetComputeUnitPricePtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
+  /// Adds or updates a `ComputeBudgetInstruction::SetComputeUnitLimit` instruction of the given transaction,
+  /// and returns the updated transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \limit Unit Limit as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionSetComputeUnitLimit(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> limit,
+  ) {
+    return _TWSolanaTransactionSetComputeUnitLimit(
+      encodedTx,
+      limit,
+    );
+  }
+
+  late final _TWSolanaTransactionSetComputeUnitLimitPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString> Function(
+                  ffi.Pointer<TWString>, ffi.Pointer<TWString>)>>(
+      'TWSolanaTransactionSetComputeUnitLimit');
+  late final _TWSolanaTransactionSetComputeUnitLimit =
+      _TWSolanaTransactionSetComputeUnitLimitPtr.asFunction<
           ffi.Pointer<TWString> Function(
               ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
 
@@ -12782,6 +12782,139 @@ class TrustWalletCoreBindings {
       'TWBarzGetDiamondCutCode');
   late final _TWBarzGetDiamondCutCode = _TWBarzGetDiamondCutCodePtr.asFunction<
       ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>();
+
+  /// Computes an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702)
+  /// `keccak256('0x05' || rlp([chain_id, address, nonce]))`.
+  ///
+  /// \param chainId The chainId of the network
+  /// \param contractAddress The address of the contract to be authorized
+  /// \param nonce The nonce of the transaction
+  /// \return The authorization hash
+  ffi.Pointer<TWData1> TWBarzGetAuthorizationHash(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> contractAddress,
+    ffi.Pointer<TWData1> nonce,
+  ) {
+    return _TWBarzGetAuthorizationHash(
+      chainId,
+      contractAddress,
+      nonce,
+    );
+  }
+
+  late final _TWBarzGetAuthorizationHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>)>>('TWBarzGetAuthorizationHash');
+  late final _TWBarzGetAuthorizationHash =
+      _TWBarzGetAuthorizationHashPtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>();
+
+  /// Returns the signed authorization hash
+  ///
+  /// \param chainId The chainId of the network
+  /// \param contractAddress The address of the contract to be authorized
+  /// \param nonce The nonce of the transaction
+  /// \param privateKey The private key
+  /// \return A json string of the signed authorization
+  ffi.Pointer<TWString1> TWBarzSignAuthorization(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> contractAddress,
+    ffi.Pointer<TWData1> nonce,
+    ffi.Pointer<TWString1> privateKey,
+  ) {
+    return _TWBarzSignAuthorization(
+      chainId,
+      contractAddress,
+      nonce,
+      privateKey,
+    );
+  }
+
+  late final _TWBarzSignAuthorizationPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>)>>('TWBarzSignAuthorization');
+  late final _TWBarzSignAuthorization = _TWBarzSignAuthorizationPtr.asFunction<
+      ffi.Pointer<TWString1> Function(
+          ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>)>();
+
+  /// Returns the encoded hash of the user operation
+  ///
+  /// \param chainId The chainId of the network
+  /// \param wallet The address of the wallet
+  /// \param version The version of the wallet
+  /// \param typeHash The type hash of the transaction
+  /// \param domainSeparatorHash The domain separator hash of the wallet
+  /// \param hash The hash of the user operation
+  /// \return The encoded hash of the user operation
+  ffi.Pointer<TWData1> TWBarzGetEncodedHash(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> wallet,
+    ffi.Pointer<TWString1> version,
+    ffi.Pointer<TWString1> typeHash,
+    ffi.Pointer<TWString1> domainSeparatorHash,
+    ffi.Pointer<TWString1> hash,
+  ) {
+    return _TWBarzGetEncodedHash(
+      chainId,
+      wallet,
+      version,
+      typeHash,
+      domainSeparatorHash,
+      hash,
+    );
+  }
+
+  late final _TWBarzGetEncodedHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>)>>('TWBarzGetEncodedHash');
+  late final _TWBarzGetEncodedHash = _TWBarzGetEncodedHashPtr.asFunction<
+      ffi.Pointer<TWData1> Function(
+          ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>)>();
+
+  /// Signs a message using the private key
+  ///
+  /// \param hash The hash to sign
+  /// \param privateKey The private key
+  /// \return The signature
+  ffi.Pointer<TWData1> TWBarzGetSignedHash(
+    ffi.Pointer<TWString1> hash,
+    ffi.Pointer<TWString1> privateKey,
+  ) {
+    return _TWBarzGetSignedHash(
+      hash,
+      privateKey,
+    );
+  }
+
+  late final _TWBarzGetSignedHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>)>>('TWBarzGetSignedHash');
+  late final _TWBarzGetSignedHash = _TWBarzGetSignedHashPtr.asFunction<
+      ffi.Pointer<TWData1> Function(
+          ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
 }
 
 final class __mbstate_t extends ffi.Union {
