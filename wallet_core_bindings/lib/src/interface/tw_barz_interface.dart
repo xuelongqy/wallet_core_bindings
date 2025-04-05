@@ -18,8 +18,15 @@ abstract class TWBarzInterface {
   int signAuthorization(
       int chainId, int contractAddress, int nonce, int privateKey);
 
-  int getEncodedHash(int chainId, int wallet, int version, int typeHash,
-      int domainSeparatorHash, int hash);
+  int getEncodedHash(
+      int chainId,
+      int codeAddress,
+      int codeName,
+      int codeVersion,
+      int typeHash,
+      int domainSeparatorHash,
+      int sender,
+      int userOpHash);
 
   int getSignedHash(int hash, int privateKey);
 }

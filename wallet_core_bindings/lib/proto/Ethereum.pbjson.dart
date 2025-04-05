@@ -29,9 +29,9 @@ final $typed_data.Uint8List transactionModeDescriptor = $convert.base64Decode(
     'Cg9UcmFuc2FjdGlvbk1vZGUSCgoGTGVnYWN5EAASDQoJRW52ZWxvcGVkEAESCgoGVXNlck9wEA'
     'ISCwoHU2V0Q29kZRAE');
 
-@$core.Deprecated('Use sCAccountTypeDescriptor instead')
-const SCAccountType$json = {
-  '1': 'SCAccountType',
+@$core.Deprecated('Use sCWalletTypeDescriptor instead')
+const SCWalletType$json = {
+  '1': 'SCWalletType',
   '2': [
     {'1': 'SimpleAccount', '2': 0},
     {'1': 'Biz4337', '2': 1},
@@ -39,10 +39,10 @@ const SCAccountType$json = {
   ],
 };
 
-/// Descriptor for `SCAccountType`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List sCAccountTypeDescriptor = $convert.base64Decode(
-    'Cg1TQ0FjY291bnRUeXBlEhEKDVNpbXBsZUFjY291bnQQABILCgdCaXo0MzM3EAESBwoDQml6EA'
-    'I=');
+/// Descriptor for `SCWalletType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List sCWalletTypeDescriptor = $convert.base64Decode(
+    'CgxTQ1dhbGxldFR5cGUSEQoNU2ltcGxlQWNjb3VudBAAEgsKB0JpejQzMzcQARIHCgNCaXoQAg'
+    '==');
 
 @$core.Deprecated('Use messageTypeDescriptor instead')
 const MessageType$json = {
@@ -121,13 +121,22 @@ const Transaction$json = {
       '10': 'contractGeneric'
     },
     {
-      '1': 'batch',
+      '1': 'scw_batch',
       '3': 7,
       '4': 1,
       '5': 11,
-      '6': '.TW.Ethereum.Proto.Transaction.Batch',
+      '6': '.TW.Ethereum.Proto.Transaction.SCWalletBatch',
       '9': 0,
-      '10': 'batch'
+      '10': 'scwBatch'
+    },
+    {
+      '1': 'scw_execute',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction.SCWalletExecute',
+      '9': 0,
+      '10': 'scwExecute'
     },
   ],
   '3': [
@@ -137,7 +146,8 @@ const Transaction$json = {
     Transaction_ERC721Transfer$json,
     Transaction_ERC1155Transfer$json,
     Transaction_ContractGeneric$json,
-    Transaction_Batch$json
+    Transaction_SCWalletBatch$json,
+    Transaction_SCWalletExecute$json
   ],
   '8': [
     {'1': 'transaction_oneof'},
@@ -203,28 +213,59 @@ const Transaction_ContractGeneric$json = {
 };
 
 @$core.Deprecated('Use transactionDescriptor instead')
-const Transaction_Batch$json = {
-  '1': 'Batch',
+const Transaction_SCWalletBatch$json = {
+  '1': 'SCWalletBatch',
   '2': [
     {
       '1': 'calls',
       '3': 1,
       '4': 3,
       '5': 11,
-      '6': '.TW.Ethereum.Proto.Transaction.Batch.BatchedCall',
+      '6': '.TW.Ethereum.Proto.Transaction.SCWalletBatch.BatchedCall',
       '10': 'calls'
     },
+    {
+      '1': 'wallet_type',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Ethereum.Proto.SCWalletType',
+      '10': 'walletType'
+    },
   ],
-  '3': [Transaction_Batch_BatchedCall$json],
+  '3': [Transaction_SCWalletBatch_BatchedCall$json],
 };
 
 @$core.Deprecated('Use transactionDescriptor instead')
-const Transaction_Batch_BatchedCall$json = {
+const Transaction_SCWalletBatch_BatchedCall$json = {
   '1': 'BatchedCall',
   '2': [
     {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
     {'1': 'amount', '3': 2, '4': 1, '5': 12, '10': 'amount'},
     {'1': 'payload', '3': 3, '4': 1, '5': 12, '10': 'payload'},
+  ],
+};
+
+@$core.Deprecated('Use transactionDescriptor instead')
+const Transaction_SCWalletExecute$json = {
+  '1': 'SCWalletExecute',
+  '2': [
+    {
+      '1': 'transaction',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.Transaction',
+      '10': 'transaction'
+    },
+    {
+      '1': 'wallet_type',
+      '3': 2,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Ethereum.Proto.SCWalletType',
+      '10': 'walletType'
+    },
   ],
 };
 
@@ -239,20 +280,26 @@ final $typed_data.Uint8List transactionDescriptor = $convert.base64Decode(
     'YzcyMVRyYW5zZmVyElsKEGVyYzExNTVfdHJhbnNmZXIYBSABKAsyLi5UVy5FdGhlcmV1bS5Qcm'
     '90by5UcmFuc2FjdGlvbi5FUkMxMTU1VHJhbnNmZXJIAFIPZXJjMTE1NVRyYW5zZmVyElsKEGNv'
     'bnRyYWN0X2dlbmVyaWMYBiABKAsyLi5UVy5FdGhlcmV1bS5Qcm90by5UcmFuc2FjdGlvbi5Db2'
-    '50cmFjdEdlbmVyaWNIAFIPY29udHJhY3RHZW5lcmljEjwKBWJhdGNoGAcgASgLMiQuVFcuRXRo'
-    'ZXJldW0uUHJvdG8uVHJhbnNhY3Rpb24uQmF0Y2hIAFIFYmF0Y2gaNgoIVHJhbnNmZXISFgoGYW'
-    '1vdW50GAEgASgMUgZhbW91bnQSEgoEZGF0YRgCIAEoDFIEZGF0YRo3Cg1FUkMyMFRyYW5zZmVy'
-    'Eg4KAnRvGAEgASgJUgJ0bxIWCgZhbW91bnQYAiABKAxSBmFtb3VudBpACgxFUkMyMEFwcHJvdm'
-    'USGAoHc3BlbmRlchgBIAEoCVIHc3BlbmRlchIWCgZhbW91bnQYAiABKAxSBmFtb3VudBpPCg5F'
-    'UkM3MjFUcmFuc2ZlchISCgRmcm9tGAEgASgJUgRmcm9tEg4KAnRvGAIgASgJUgJ0bxIZCgh0b2'
-    'tlbl9pZBgDIAEoDFIHdG9rZW5JZBp6Cg9FUkMxMTU1VHJhbnNmZXISEgoEZnJvbRgBIAEoCVIE'
-    'ZnJvbRIOCgJ0bxgCIAEoCVICdG8SGQoIdG9rZW5faWQYAyABKAxSB3Rva2VuSWQSFAoFdmFsdW'
-    'UYBCABKAxSBXZhbHVlEhIKBGRhdGEYBSABKAxSBGRhdGEaPQoPQ29udHJhY3RHZW5lcmljEhYK'
-    'BmFtb3VudBgBIAEoDFIGYW1vdW50EhIKBGRhdGEYAiABKAxSBGRhdGEaqgEKBUJhdGNoEkYKBW'
-    'NhbGxzGAEgAygLMjAuVFcuRXRoZXJldW0uUHJvdG8uVHJhbnNhY3Rpb24uQmF0Y2guQmF0Y2hl'
-    'ZENhbGxSBWNhbGxzGlkKC0JhdGNoZWRDYWxsEhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3MSFg'
-    'oGYW1vdW50GAIgASgMUgZhbW91bnQSGAoHcGF5bG9hZBgDIAEoDFIHcGF5bG9hZEITChF0cmFu'
-    'c2FjdGlvbl9vbmVvZg==');
+    '50cmFjdEdlbmVyaWNIAFIPY29udHJhY3RHZW5lcmljEksKCXNjd19iYXRjaBgHIAEoCzIsLlRX'
+    'LkV0aGVyZXVtLlByb3RvLlRyYW5zYWN0aW9uLlNDV2FsbGV0QmF0Y2hIAFIIc2N3QmF0Y2gSUQ'
+    'oLc2N3X2V4ZWN1dGUYCCABKAsyLi5UVy5FdGhlcmV1bS5Qcm90by5UcmFuc2FjdGlvbi5TQ1dh'
+    'bGxldEV4ZWN1dGVIAFIKc2N3RXhlY3V0ZRo2CghUcmFuc2ZlchIWCgZhbW91bnQYASABKAxSBm'
+    'Ftb3VudBISCgRkYXRhGAIgASgMUgRkYXRhGjcKDUVSQzIwVHJhbnNmZXISDgoCdG8YASABKAlS'
+    'AnRvEhYKBmFtb3VudBgCIAEoDFIGYW1vdW50GkAKDEVSQzIwQXBwcm92ZRIYCgdzcGVuZGVyGA'
+    'EgASgJUgdzcGVuZGVyEhYKBmFtb3VudBgCIAEoDFIGYW1vdW50Gk8KDkVSQzcyMVRyYW5zZmVy'
+    'EhIKBGZyb20YASABKAlSBGZyb20SDgoCdG8YAiABKAlSAnRvEhkKCHRva2VuX2lkGAMgASgMUg'
+    'd0b2tlbklkGnoKD0VSQzExNTVUcmFuc2ZlchISCgRmcm9tGAEgASgJUgRmcm9tEg4KAnRvGAIg'
+    'ASgJUgJ0bxIZCgh0b2tlbl9pZBgDIAEoDFIHdG9rZW5JZBIUCgV2YWx1ZRgEIAEoDFIFdmFsdW'
+    'USEgoEZGF0YRgFIAEoDFIEZGF0YRo9Cg9Db250cmFjdEdlbmVyaWMSFgoGYW1vdW50GAEgASgM'
+    'UgZhbW91bnQSEgoEZGF0YRgCIAEoDFIEZGF0YRr8AQoNU0NXYWxsZXRCYXRjaBJOCgVjYWxscx'
+    'gBIAMoCzI4LlRXLkV0aGVyZXVtLlByb3RvLlRyYW5zYWN0aW9uLlNDV2FsbGV0QmF0Y2guQmF0'
+    'Y2hlZENhbGxSBWNhbGxzEkAKC3dhbGxldF90eXBlGAIgASgOMh8uVFcuRXRoZXJldW0uUHJvdG'
+    '8uU0NXYWxsZXRUeXBlUgp3YWxsZXRUeXBlGlkKC0JhdGNoZWRDYWxsEhgKB2FkZHJlc3MYASAB'
+    'KAlSB2FkZHJlc3MSFgoGYW1vdW50GAIgASgMUgZhbW91bnQSGAoHcGF5bG9hZBgDIAEoDFIHcG'
+    'F5bG9hZBqVAQoPU0NXYWxsZXRFeGVjdXRlEkAKC3RyYW5zYWN0aW9uGAEgASgLMh4uVFcuRXRo'
+    'ZXJldW0uUHJvdG8uVHJhbnNhY3Rpb25SC3RyYW5zYWN0aW9uEkAKC3dhbGxldF90eXBlGAIgAS'
+    'gOMh8uVFcuRXRoZXJldW0uUHJvdG8uU0NXYWxsZXRUeXBlUgp3YWxsZXRUeXBlQhMKEXRyYW5z'
+    'YWN0aW9uX29uZW9m');
 
 @$core.Deprecated('Use userOperationDescriptor instead')
 const UserOperation$json = {
@@ -433,14 +480,6 @@ const SigningInput$json = {
       '10': 'accessList'
     },
     {
-      '1': 'user_operation_mode',
-      '3': 14,
-      '4': 1,
-      '5': 14,
-      '6': '.TW.Ethereum.Proto.SCAccountType',
-      '10': 'userOperationMode'
-    },
-    {
       '1': 'eip7702_authority',
       '3': 15,
       '4': 1,
@@ -467,10 +506,9 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'ZXVtLlByb3RvLlVzZXJPcGVyYXRpb25IAFINdXNlck9wZXJhdGlvbhJVChN1c2VyX29wZXJhdG'
     'lvbl92MF83GA0gASgLMiQuVFcuRXRoZXJldW0uUHJvdG8uVXNlck9wZXJhdGlvblYwXzdIAFIQ'
     'dXNlck9wZXJhdGlvblYwNxI6CgthY2Nlc3NfbGlzdBgMIAMoCzIZLlRXLkV0aGVyZXVtLlByb3'
-    'RvLkFjY2Vzc1IKYWNjZXNzTGlzdBJQChN1c2VyX29wZXJhdGlvbl9tb2RlGA4gASgOMiAuVFcu'
-    'RXRoZXJldW0uUHJvdG8uU0NBY2NvdW50VHlwZVIRdXNlck9wZXJhdGlvbk1vZGUSSQoRZWlwNz'
-    'cwMl9hdXRob3JpdHkYDyABKAsyHC5UVy5FdGhlcmV1bS5Qcm90by5BdXRob3JpdHlSEGVpcDc3'
-    'MDJBdXRob3JpdHlCFgoUdXNlcl9vcGVyYXRpb25fb25lb2Y=');
+    'RvLkFjY2Vzc1IKYWNjZXNzTGlzdBJJChFlaXA3NzAyX2F1dGhvcml0eRgPIAEoCzIcLlRXLkV0'
+    'aGVyZXVtLlByb3RvLkF1dGhvcml0eVIQZWlwNzcwMkF1dGhvcml0eUIWChR1c2VyX29wZXJhdG'
+    'lvbl9vbmVvZg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

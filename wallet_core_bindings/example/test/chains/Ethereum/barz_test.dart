@@ -137,8 +137,12 @@ void main() async {
         ),
         privateKey: key,
         transaction: Ethereum.Transaction(
-          transfer: Ethereum.Transaction_Transfer(
-            amount: bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
+          scwExecute: Ethereum.Transaction_SCWalletExecute(
+            transaction: Ethereum.Transaction(
+              transfer: Ethereum.Transaction_Transfer(
+                amount: bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
+              ),
+            ),
           ),
         ),
       );
@@ -189,8 +193,12 @@ void main() async {
         ),
         privateKey: key,
         transaction: Ethereum.Transaction(
-          transfer: Ethereum.Transaction_Transfer(
-            amount: bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
+          scwExecute: Ethereum.Transaction_SCWalletExecute(
+            transaction: Ethereum.Transaction(
+              transfer: Ethereum.Transaction_Transfer(
+                amount: bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
+              ),
+            ),
           ),
         ),
       );
@@ -268,14 +276,14 @@ void main() async {
           'a9059cbb0000000000000000000000005ff137d4b0fdcd49dca30c7cf57e578a026d27890000000000000000000000000000000000000000000000008ac7230489e80000');
 
       input.transaction = Ethereum.Transaction(
-        batch: Ethereum.Transaction_Batch(
+        scwBatch: Ethereum.Transaction_SCWalletBatch(
           calls: [
-            Ethereum.Transaction_Batch_BatchedCall(
+            Ethereum.Transaction_SCWalletBatch_BatchedCall(
               address: to,
               amount: amount,
               payload: approveCall,
             ),
-            Ethereum.Transaction_Batch_BatchedCall(
+            Ethereum.Transaction_SCWalletBatch_BatchedCall(
               address: to,
               amount: amount,
               payload: transferCall,
@@ -448,32 +456,36 @@ void main() async {
 
     test('GetEncodedHash', () {
       final chainId = intToBytes(31337);
-      const wallet = "0x174a240e5147D02dE4d7724D5D3E1c1bF11cE029";
-      const version = "v0.1.0";
+      const codeAddress = "0x2e234DAe75C793f67A35089C9d99245E1C58470b";
+      const codeName = "Biz";
+      const codeVersion = "v1.0.0";
       const typeHash =
           "0x4f51e7a567f083a31264743067875fc6a7ae45c32c5bd71f6a998c4625b13867";
       const domainSeparatorHash =
-          "0x293ce8821a350a49f08b53d14e10112c36c7fbf3b8eb7078497893f3ea477f6b";
-      const hash =
+          "0xd87cd6ef79d4e2b95e15ce8abf732db51ec771f1ca2edccf22a46c729ac56472";
+      const sender = "0x174a240e5147D02dE4d7724D5D3E1c1bF11cE029";
+      const userOpHash =
           "0xf177858c1c500e51f38ffe937bed7e4d3a8678725900be4682d3ce04d97071eb";
 
       final encodedHash = TWBarz.getEncodedHash(
         chainId: chainId,
-        wallet: wallet,
-        version: version,
+        codeAddress: codeAddress,
+        codeName: codeName,
+        codeVersion: codeVersion,
         typeHash: typeHash,
         domainSeparatorHash: domainSeparatorHash,
-        hash: hash,
+        sender: sender,
+        userOpHash: userOpHash,
       );
       expect(
         hex(encodedHash!),
-        '59ebb8c4e48c115eeaf2ea7d3a0802754462761c5019df8d2a38effb226191d5',
+        'c63891abc38f7a991f89ad7cb6d7e53543627b0536c3f5e545b736756c971635',
       );
     });
 
     test('GetSignedHash', () {
       const hash =
-          "0x59ebb8c4e48c115eeaf2ea7d3a0802754462761c5019df8d2a38effb226191d5";
+          "0xc63891abc38f7a991f89ad7cb6d7e53543627b0536c3f5e545b736756c971635";
       const privateKey =
           "0x947dd69af402e7f48da1b845dfc1df6be593d01a0d8274bd03ec56712e7164e8";
       final signedHash = TWBarz.getSignedHash(
@@ -482,7 +494,7 @@ void main() async {
       );
       expect(
         hex(signedHash!),
-        '34a7792a140f52358925a57bca8ea936d70133b285396040ac0507597ed5c70a3148964ba1e0b32b8f59fbd9c098a4ec2b9ae5e5739ce4aeccae0f73279d50da1b',
+        'a29e460720e4b539f593d1a407827d9608cccc2c18b7af7b3689094dca8a016755bca072ffe39bc62285b65aff8f271f20798a421acf18bb2a7be8dbe0eb05f81c',
       );
     });
   });

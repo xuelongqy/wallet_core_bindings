@@ -608,8 +608,8 @@ class Transaction_ContractGeneric extends $pb.GeneratedMessage {
   void clearData() => clearField(2);
 }
 
-class Transaction_Batch_BatchedCall extends $pb.GeneratedMessage {
-  factory Transaction_Batch_BatchedCall({
+class Transaction_SCWalletBatch_BatchedCall extends $pb.GeneratedMessage {
+  factory Transaction_SCWalletBatch_BatchedCall({
     $core.String? address,
     $core.List<$core.int>? amount,
     $core.List<$core.int>? payload,
@@ -626,16 +626,17 @@ class Transaction_Batch_BatchedCall extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  Transaction_Batch_BatchedCall._() : super();
-  factory Transaction_Batch_BatchedCall.fromBuffer($core.List<$core.int> i,
+  Transaction_SCWalletBatch_BatchedCall._() : super();
+  factory Transaction_SCWalletBatch_BatchedCall.fromBuffer(
+          $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Transaction_Batch_BatchedCall.fromJson($core.String i,
+  factory Transaction_SCWalletBatch_BatchedCall.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Transaction.Batch.BatchedCall',
+      _omitMessageNames ? '' : 'Transaction.SCWalletBatch.BatchedCall',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
       createEmptyInstance: create)
@@ -649,29 +650,30 @@ class Transaction_Batch_BatchedCall extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  Transaction_Batch_BatchedCall clone() =>
-      Transaction_Batch_BatchedCall()..mergeFromMessage(this);
+  Transaction_SCWalletBatch_BatchedCall clone() =>
+      Transaction_SCWalletBatch_BatchedCall()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  Transaction_Batch_BatchedCall copyWith(
-          void Function(Transaction_Batch_BatchedCall) updates) =>
-      super.copyWith(
-              (message) => updates(message as Transaction_Batch_BatchedCall))
-          as Transaction_Batch_BatchedCall;
+  Transaction_SCWalletBatch_BatchedCall copyWith(
+          void Function(Transaction_SCWalletBatch_BatchedCall) updates) =>
+      super.copyWith((message) =>
+              updates(message as Transaction_SCWalletBatch_BatchedCall))
+          as Transaction_SCWalletBatch_BatchedCall;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Transaction_Batch_BatchedCall create() =>
-      Transaction_Batch_BatchedCall._();
-  Transaction_Batch_BatchedCall createEmptyInstance() => create();
-  static $pb.PbList<Transaction_Batch_BatchedCall> createRepeated() =>
-      $pb.PbList<Transaction_Batch_BatchedCall>();
+  static Transaction_SCWalletBatch_BatchedCall create() =>
+      Transaction_SCWalletBatch_BatchedCall._();
+  Transaction_SCWalletBatch_BatchedCall createEmptyInstance() => create();
+  static $pb.PbList<Transaction_SCWalletBatch_BatchedCall> createRepeated() =>
+      $pb.PbList<Transaction_SCWalletBatch_BatchedCall>();
   @$core.pragma('dart2js:noInline')
-  static Transaction_Batch_BatchedCall getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<Transaction_Batch_BatchedCall>(create);
-  static Transaction_Batch_BatchedCall? _defaultInstance;
+  static Transaction_SCWalletBatch_BatchedCall getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          Transaction_SCWalletBatch_BatchedCall>(create);
+  static Transaction_SCWalletBatch_BatchedCall? _defaultInstance;
 
   /// Recipient addresses.
   @$pb.TagNumber(1)
@@ -713,60 +715,179 @@ class Transaction_Batch_BatchedCall extends $pb.GeneratedMessage {
   void clearPayload() => clearField(3);
 }
 
-/// Batched transaction for ERC-4337 wallets
-class Transaction_Batch extends $pb.GeneratedMessage {
-  factory Transaction_Batch({
-    $core.Iterable<Transaction_Batch_BatchedCall>? calls,
+/// Batch transaction to a Smart Contract Wallet (ERC-4337 and ERC-7702).
+class Transaction_SCWalletBatch extends $pb.GeneratedMessage {
+  factory Transaction_SCWalletBatch({
+    $core.Iterable<Transaction_SCWalletBatch_BatchedCall>? calls,
+    SCWalletType? walletType,
   }) {
     final $result = create();
     if (calls != null) {
       $result.calls.addAll(calls);
     }
+    if (walletType != null) {
+      $result.walletType = walletType;
+    }
     return $result;
   }
-  Transaction_Batch._() : super();
-  factory Transaction_Batch.fromBuffer($core.List<$core.int> i,
+  Transaction_SCWalletBatch._() : super();
+  factory Transaction_SCWalletBatch.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Transaction_Batch.fromJson($core.String i,
+  factory Transaction_SCWalletBatch.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Transaction.Batch',
+      _omitMessageNames ? '' : 'Transaction.SCWalletBatch',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
       createEmptyInstance: create)
-    ..pc<Transaction_Batch_BatchedCall>(
+    ..pc<Transaction_SCWalletBatch_BatchedCall>(
         1, _omitFieldNames ? '' : 'calls', $pb.PbFieldType.PM,
-        subBuilder: Transaction_Batch_BatchedCall.create)
+        subBuilder: Transaction_SCWalletBatch_BatchedCall.create)
+    ..e<SCWalletType>(
+        2, _omitFieldNames ? '' : 'walletType', $pb.PbFieldType.OE,
+        defaultOrMaker: SCWalletType.SimpleAccount,
+        valueOf: SCWalletType.valueOf,
+        enumValues: SCWalletType.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  Transaction_Batch clone() => Transaction_Batch()..mergeFromMessage(this);
+  Transaction_SCWalletBatch clone() =>
+      Transaction_SCWalletBatch()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  Transaction_Batch copyWith(void Function(Transaction_Batch) updates) =>
-      super.copyWith((message) => updates(message as Transaction_Batch))
-          as Transaction_Batch;
+  Transaction_SCWalletBatch copyWith(
+          void Function(Transaction_SCWalletBatch) updates) =>
+      super.copyWith((message) => updates(message as Transaction_SCWalletBatch))
+          as Transaction_SCWalletBatch;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Transaction_Batch create() => Transaction_Batch._();
-  Transaction_Batch createEmptyInstance() => create();
-  static $pb.PbList<Transaction_Batch> createRepeated() =>
-      $pb.PbList<Transaction_Batch>();
+  static Transaction_SCWalletBatch create() => Transaction_SCWalletBatch._();
+  Transaction_SCWalletBatch createEmptyInstance() => create();
+  static $pb.PbList<Transaction_SCWalletBatch> createRepeated() =>
+      $pb.PbList<Transaction_SCWalletBatch>();
   @$core.pragma('dart2js:noInline')
-  static Transaction_Batch getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<Transaction_Batch>(create);
-  static Transaction_Batch? _defaultInstance;
+  static Transaction_SCWalletBatch getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Transaction_SCWalletBatch>(create);
+  static Transaction_SCWalletBatch? _defaultInstance;
+
+  /// Batched calls to be executed on the smart contract wallet.
+  @$pb.TagNumber(1)
+  $core.List<Transaction_SCWalletBatch_BatchedCall> get calls => $_getList(0);
+
+  /// Smart contract wallet type.
+  @$pb.TagNumber(2)
+  SCWalletType get walletType => $_getN(1);
+  @$pb.TagNumber(2)
+  set walletType(SCWalletType v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasWalletType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWalletType() => clearField(2);
+}
+
+/// Execute transaction to a Smart Contract Wallet (ERC-4337 and ERC-7702).
+class Transaction_SCWalletExecute extends $pb.GeneratedMessage {
+  factory Transaction_SCWalletExecute({
+    Transaction? transaction,
+    SCWalletType? walletType,
+  }) {
+    final $result = create();
+    if (transaction != null) {
+      $result.transaction = transaction;
+    }
+    if (walletType != null) {
+      $result.walletType = walletType;
+    }
+    return $result;
+  }
+  Transaction_SCWalletExecute._() : super();
+  factory Transaction_SCWalletExecute.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Transaction_SCWalletExecute.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Transaction.SCWalletExecute',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
+      createEmptyInstance: create)
+    ..aOM<Transaction>(1, _omitFieldNames ? '' : 'transaction',
+        subBuilder: Transaction.create)
+    ..e<SCWalletType>(
+        2, _omitFieldNames ? '' : 'walletType', $pb.PbFieldType.OE,
+        defaultOrMaker: SCWalletType.SimpleAccount,
+        valueOf: SCWalletType.valueOf,
+        enumValues: SCWalletType.values)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Transaction_SCWalletExecute clone() =>
+      Transaction_SCWalletExecute()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Transaction_SCWalletExecute copyWith(
+          void Function(Transaction_SCWalletExecute) updates) =>
+      super.copyWith(
+              (message) => updates(message as Transaction_SCWalletExecute))
+          as Transaction_SCWalletExecute;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Transaction_SCWalletExecute create() =>
+      Transaction_SCWalletExecute._();
+  Transaction_SCWalletExecute createEmptyInstance() => create();
+  static $pb.PbList<Transaction_SCWalletExecute> createRepeated() =>
+      $pb.PbList<Transaction_SCWalletExecute>();
+  @$core.pragma('dart2js:noInline')
+  static Transaction_SCWalletExecute getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Transaction_SCWalletExecute>(create);
+  static Transaction_SCWalletExecute? _defaultInstance;
+
+  /// Transaction to be executed on the smart contract wallet.
+  /// TODO currently, smart contract wallet address is specified in `SigningInput.toAddress`, but it will be refactored soon.
+  @$pb.TagNumber(1)
+  Transaction get transaction => $_getN(0);
+  @$pb.TagNumber(1)
+  set transaction(Transaction v) {
+    setField(1, v);
+  }
 
   @$pb.TagNumber(1)
-  $core.List<Transaction_Batch_BatchedCall> get calls => $_getList(0);
+  $core.bool hasTransaction() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTransaction() => clearField(1);
+  @$pb.TagNumber(1)
+  Transaction ensureTransaction() => $_ensure(0);
+
+  /// Smart contract wallet type.
+  @$pb.TagNumber(2)
+  SCWalletType get walletType => $_getN(1);
+  @$pb.TagNumber(2)
+  set walletType(SCWalletType v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasWalletType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWalletType() => clearField(2);
 }
 
 enum Transaction_TransactionOneof {
@@ -776,7 +897,8 @@ enum Transaction_TransactionOneof {
   erc721Transfer,
   erc1155Transfer,
   contractGeneric,
-  batch,
+  scwBatch,
+  scwExecute,
   notSet
 }
 
@@ -789,7 +911,8 @@ class Transaction extends $pb.GeneratedMessage {
     Transaction_ERC721Transfer? erc721Transfer,
     Transaction_ERC1155Transfer? erc1155Transfer,
     Transaction_ContractGeneric? contractGeneric,
-    Transaction_Batch? batch,
+    Transaction_SCWalletBatch? scwBatch,
+    Transaction_SCWalletExecute? scwExecute,
   }) {
     final $result = create();
     if (transfer != null) {
@@ -810,8 +933,11 @@ class Transaction extends $pb.GeneratedMessage {
     if (contractGeneric != null) {
       $result.contractGeneric = contractGeneric;
     }
-    if (batch != null) {
-      $result.batch = batch;
+    if (scwBatch != null) {
+      $result.scwBatch = scwBatch;
+    }
+    if (scwExecute != null) {
+      $result.scwExecute = scwExecute;
     }
     return $result;
   }
@@ -831,7 +957,8 @@ class Transaction extends $pb.GeneratedMessage {
     4: Transaction_TransactionOneof.erc721Transfer,
     5: Transaction_TransactionOneof.erc1155Transfer,
     6: Transaction_TransactionOneof.contractGeneric,
-    7: Transaction_TransactionOneof.batch,
+    7: Transaction_TransactionOneof.scwBatch,
+    8: Transaction_TransactionOneof.scwExecute,
     0: Transaction_TransactionOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -839,7 +966,7 @@ class Transaction extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8])
     ..aOM<Transaction_Transfer>(1, _omitFieldNames ? '' : 'transfer',
         subBuilder: Transaction_Transfer.create)
     ..aOM<Transaction_ERC20Transfer>(2, _omitFieldNames ? '' : 'erc20Transfer',
@@ -855,8 +982,10 @@ class Transaction extends $pb.GeneratedMessage {
     ..aOM<Transaction_ContractGeneric>(
         6, _omitFieldNames ? '' : 'contractGeneric',
         subBuilder: Transaction_ContractGeneric.create)
-    ..aOM<Transaction_Batch>(7, _omitFieldNames ? '' : 'batch',
-        subBuilder: Transaction_Batch.create)
+    ..aOM<Transaction_SCWalletBatch>(7, _omitFieldNames ? '' : 'scwBatch',
+        subBuilder: Transaction_SCWalletBatch.create)
+    ..aOM<Transaction_SCWalletExecute>(8, _omitFieldNames ? '' : 'scwExecute',
+        subBuilder: Transaction_SCWalletExecute.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -969,19 +1098,35 @@ class Transaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   Transaction_ContractGeneric ensureContractGeneric() => $_ensure(5);
 
+  /// Batch transaction to a Smart Contract Wallet (ERC-4337 and ERC-7702).
   @$pb.TagNumber(7)
-  Transaction_Batch get batch => $_getN(6);
+  Transaction_SCWalletBatch get scwBatch => $_getN(6);
   @$pb.TagNumber(7)
-  set batch(Transaction_Batch v) {
+  set scwBatch(Transaction_SCWalletBatch v) {
     setField(7, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasBatch() => $_has(6);
+  $core.bool hasScwBatch() => $_has(6);
   @$pb.TagNumber(7)
-  void clearBatch() => clearField(7);
+  void clearScwBatch() => clearField(7);
   @$pb.TagNumber(7)
-  Transaction_Batch ensureBatch() => $_ensure(6);
+  Transaction_SCWalletBatch ensureScwBatch() => $_ensure(6);
+
+  /// Execute transaction to a Smart Contract Wallet (ERC-4337 and ERC-7702).
+  @$pb.TagNumber(8)
+  Transaction_SCWalletExecute get scwExecute => $_getN(7);
+  @$pb.TagNumber(8)
+  set scwExecute(Transaction_SCWalletExecute v) {
+    setField(8, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasScwExecute() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearScwExecute() => clearField(8);
+  @$pb.TagNumber(8)
+  Transaction_SCWalletExecute ensureScwExecute() => $_ensure(7);
 }
 
 /// ERC-4337 structure that describes a transaction to be sent on behalf of a user
@@ -1529,7 +1674,6 @@ class SigningInput extends $pb.GeneratedMessage {
     UserOperation? userOperation,
     $core.Iterable<Access>? accessList,
     UserOperationV0_7? userOperationV07,
-    SCAccountType? userOperationMode,
     Authority? eip7702Authority,
   }) {
     final $result = create();
@@ -1571,9 +1715,6 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (userOperationV07 != null) {
       $result.userOperationV07 = userOperationV07;
-    }
-    if (userOperationMode != null) {
-      $result.userOperationMode = userOperationMode;
     }
     if (eip7702Authority != null) {
       $result.eip7702Authority = eip7702Authority;
@@ -1627,11 +1768,6 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: Access.create)
     ..aOM<UserOperationV0_7>(13, _omitFieldNames ? '' : 'userOperationV07',
         protoName: 'user_operation_v0_7', subBuilder: UserOperationV0_7.create)
-    ..e<SCAccountType>(
-        14, _omitFieldNames ? '' : 'userOperationMode', $pb.PbFieldType.OE,
-        defaultOrMaker: SCAccountType.SimpleAccount,
-        valueOf: SCAccountType.valueOf,
-        enumValues: SCAccountType.values)
     ..aOM<Authority>(15, _omitFieldNames ? '' : 'eip7702Authority',
         subBuilder: Authority.create)
     ..hasRequiredFields = false;
@@ -1759,6 +1895,7 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearMaxFeePerGas() => clearField(7);
 
   /// Recipient's address.
+  /// TODO currently, will be moved to each `Transaction` oneof soon.
   @$pb.TagNumber(8)
   $core.String get toAddress => $_getSZ(7);
   @$pb.TagNumber(8)
@@ -1833,34 +1970,22 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   UserOperationV0_7 ensureUserOperationV07() => $_ensure(12);
 
-  /// Smart contract account type. Used in `TransactionMode::UserOp` only.
-  @$pb.TagNumber(14)
-  SCAccountType get userOperationMode => $_getN(13);
-  @$pb.TagNumber(14)
-  set userOperationMode(SCAccountType v) {
-    setField(14, v);
-  }
-
-  @$pb.TagNumber(14)
-  $core.bool hasUserOperationMode() => $_has(13);
-  @$pb.TagNumber(14)
-  void clearUserOperationMode() => clearField(14);
-
   /// A smart contract to which we’re delegating to.
+  /// Used in `TransactionMode::SetOp` only.
   /// Currently, we support delegation to only one authority at a time.
   @$pb.TagNumber(15)
-  Authority get eip7702Authority => $_getN(14);
+  Authority get eip7702Authority => $_getN(13);
   @$pb.TagNumber(15)
   set eip7702Authority(Authority v) {
     setField(15, v);
   }
 
   @$pb.TagNumber(15)
-  $core.bool hasEip7702Authority() => $_has(14);
+  $core.bool hasEip7702Authority() => $_has(13);
   @$pb.TagNumber(15)
   void clearEip7702Authority() => clearField(15);
   @$pb.TagNumber(15)
-  Authority ensureEip7702Authority() => $_ensure(14);
+  Authority ensureEip7702Authority() => $_ensure(13);
 }
 
 /// Result containing the signed and encoded transaction.

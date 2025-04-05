@@ -249,10 +249,10 @@ class TrustWalletCoreBindings {
       int Function(int, ffi.Pointer<ffi.Int>, int, ffi.Pointer<rusage>)>();
 
   ffi.Pointer<ffi.Void> alloca(
-    int arg0,
+    int __size,
   ) {
     return _alloca(
-      arg0,
+      __size,
     );
   }
 
@@ -912,12 +912,12 @@ class TrustWalletCoreBindings {
   int mbstowcs(
     ffi.Pointer<ffi.WChar> arg0,
     ffi.Pointer<ffi.Char> arg1,
-    int arg2,
+    int __n,
   ) {
     return _mbstowcs(
       arg0,
       arg1,
-      arg2,
+      __n,
     );
   }
 
@@ -931,12 +931,12 @@ class TrustWalletCoreBindings {
   int mbtowc(
     ffi.Pointer<ffi.WChar> arg0,
     ffi.Pointer<ffi.Char> arg1,
-    int arg2,
+    int __n,
   ) {
     return _mbtowc(
       arg0,
       arg1,
-      arg2,
+      __n,
     );
   }
 
@@ -1148,12 +1148,12 @@ class TrustWalletCoreBindings {
   int wcstombs(
     ffi.Pointer<ffi.Char> arg0,
     ffi.Pointer<ffi.WChar> arg1,
-    int arg2,
+    int __n,
   ) {
     return _wcstombs(
       arg0,
       arg1,
-      arg2,
+      __n,
     );
   }
 
@@ -1329,12 +1329,12 @@ class TrustWalletCoreBindings {
   ffi.Pointer<ffi.Char> initstate(
     int arg0,
     ffi.Pointer<ffi.Char> arg1,
-    int arg2,
+    int __size,
   ) {
     return _initstate(
       arg0,
       arg1,
-      arg2,
+      __size,
     );
   }
 
@@ -1667,11 +1667,11 @@ class TrustWalletCoreBindings {
 
   void arc4random_addrandom(
     ffi.Pointer<ffi.UnsignedChar> arg0,
-    int arg1,
+    int __datlen,
   ) {
     return _arc4random_addrandom(
       arg0,
-      arg1,
+      __datlen,
     );
   }
 
@@ -1970,11 +1970,11 @@ class TrustWalletCoreBindings {
 
   int getloadavg(
     ffi.Pointer<ffi.Double> arg0,
-    int arg1,
+    int __nelem,
   ) {
     return _getloadavg(
       arg0,
-      arg1,
+      __nelem,
     );
   }
 
@@ -12850,28 +12850,34 @@ class TrustWalletCoreBindings {
 
   /// Returns the encoded hash of the user operation
   ///
-  /// \param chainId The chainId of the network
-  /// \param wallet The address of the wallet
-  /// \param version The version of the wallet
-  /// \param typeHash The type hash of the transaction
-  /// \param domainSeparatorHash The domain separator hash of the wallet
-  /// \param hash The hash of the user operation
+  /// \param chainId The chainId of the network.
+  /// \param codeAddress The address of the Biz Smart Contract.
+  /// \param codeName The name of the Biz Smart Contract.
+  /// \param codeVersion The version of the Biz Smart Contract.
+  /// \param typeHash The type hash of the transaction.
+  /// \param domainSeparatorHash The domain separator hash of the wallet.
+  /// \param sender The address of the UserOperation sender.
+  /// \param userOpHash The hash of the user operation.
   /// \return The encoded hash of the user operation
   ffi.Pointer<TWData1> TWBarzGetEncodedHash(
     ffi.Pointer<TWData1> chainId,
-    ffi.Pointer<TWString1> wallet,
-    ffi.Pointer<TWString1> version,
+    ffi.Pointer<TWString1> codeAddress,
+    ffi.Pointer<TWString1> codeName,
+    ffi.Pointer<TWString1> codeVersion,
     ffi.Pointer<TWString1> typeHash,
     ffi.Pointer<TWString1> domainSeparatorHash,
-    ffi.Pointer<TWString1> hash,
+    ffi.Pointer<TWString1> sender,
+    ffi.Pointer<TWString1> userOpHash,
   ) {
     return _TWBarzGetEncodedHash(
       chainId,
-      wallet,
-      version,
+      codeAddress,
+      codeName,
+      codeVersion,
       typeHash,
       domainSeparatorHash,
-      hash,
+      sender,
+      userOpHash,
     );
   }
 
@@ -12883,10 +12889,14 @@ class TrustWalletCoreBindings {
               ffi.Pointer<TWString1>,
               ffi.Pointer<TWString1>,
               ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
               ffi.Pointer<TWString1>)>>('TWBarzGetEncodedHash');
   late final _TWBarzGetEncodedHash = _TWBarzGetEncodedHashPtr.asFunction<
       ffi.Pointer<TWData1> Function(
           ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
           ffi.Pointer<TWString1>,
           ffi.Pointer<TWString1>,
           ffi.Pointer<TWString1>,
@@ -13106,6 +13116,40 @@ final class __darwin_arm_neon_state extends ffi.Opaque {}
 final class __arm_pagein_state extends ffi.Struct {
   @ffi.Int()
   external int __pagein_error;
+}
+
+final class __darwin_arm_sme_state extends ffi.Struct {
+  @__uint64_t()
+  external int __svcr;
+
+  @__uint64_t()
+  external int __tpidr2_el0;
+
+  @__uint16_t()
+  external int __svl_b;
+}
+
+typedef __uint16_t = ffi.UnsignedShort;
+typedef Dart__uint16_t = int;
+
+final class __darwin_arm_sve_z_state extends ffi.Struct {
+  @ffi.Array.multi([16, 256])
+  external ffi.Array<ffi.Array<ffi.Char>> __z;
+}
+
+final class __darwin_arm_sve_p_state extends ffi.Struct {
+  @ffi.Array.multi([16, 32])
+  external ffi.Array<ffi.Array<ffi.Char>> __p;
+}
+
+final class __darwin_arm_sme_za_state extends ffi.Struct {
+  @ffi.Array.multi([4096])
+  external ffi.Array<ffi.Char> __za;
+}
+
+final class __darwin_arm_sme2_state extends ffi.Struct {
+  @ffi.Array.multi([64])
+  external ffi.Array<ffi.Char> __zt0;
 }
 
 final class __arm_legacy_debug_state extends ffi.Struct {
@@ -14044,8 +14088,6 @@ typedef dev_t = __darwin_dev_t;
 typedef __darwin_dev_t = __int32_t;
 typedef mode_t = __darwin_mode_t;
 typedef __darwin_mode_t = __uint16_t;
-typedef __uint16_t = ffi.UnsignedShort;
-typedef Dart__uint16_t = int;
 
 /// HD wallet purpose
 ///
@@ -14817,6 +14859,8 @@ const int _DARWIN_FEATURE_UNIX_CONFORMANCE = 3;
 
 const int __has_ptrcheck = 0;
 
+const int __has_bounds_safety_attributes = 0;
+
 const int __DARWIN_NULL = 0;
 
 const int __PTHREAD_SIZE__ = 8176;
@@ -14959,17 +15003,31 @@ const int __API_TO_BE_DEPRECATED = 100000;
 
 const int __API_TO_BE_DEPRECATED_MACOS = 100000;
 
+const int __API_TO_BE_DEPRECATED_MACOSAPPLICATIONEXTENSION = 100000;
+
 const int __API_TO_BE_DEPRECATED_IOS = 100000;
+
+const int __API_TO_BE_DEPRECATED_IOSAPPLICATIONEXTENSION = 100000;
 
 const int __API_TO_BE_DEPRECATED_MACCATALYST = 100000;
 
+const int __API_TO_BE_DEPRECATED_MACCATALYSTAPPLICATIONEXTENSION = 100000;
+
 const int __API_TO_BE_DEPRECATED_WATCHOS = 100000;
 
+const int __API_TO_BE_DEPRECATED_WATCHOSAPPLICATIONEXTENSION = 100000;
+
 const int __API_TO_BE_DEPRECATED_TVOS = 100000;
+
+const int __API_TO_BE_DEPRECATED_TVOSAPPLICATIONEXTENSION = 100000;
 
 const int __API_TO_BE_DEPRECATED_DRIVERKIT = 100000;
 
 const int __API_TO_BE_DEPRECATED_VISIONOS = 100000;
+
+const int __API_TO_BE_DEPRECATED_VISIONOSAPPLICATIONEXTENSION = 100000;
+
+const int __API_TO_BE_DEPRECATED_KERNELKIT = 100000;
 
 const int __MAC_10_0 = 1000;
 
@@ -15081,6 +15139,8 @@ const int __MAC_13_5 = 130500;
 
 const int __MAC_13_6 = 130600;
 
+const int __MAC_13_7 = 130700;
+
 const int __MAC_14_0 = 140000;
 
 const int __MAC_14_1 = 140100;
@@ -15093,11 +15153,19 @@ const int __MAC_14_4 = 140400;
 
 const int __MAC_14_5 = 140500;
 
+const int __MAC_14_6 = 140600;
+
+const int __MAC_14_7 = 140700;
+
 const int __MAC_15_0 = 150000;
 
 const int __MAC_15_1 = 150100;
 
 const int __MAC_15_2 = 150200;
+
+const int __MAC_15_3 = 150300;
+
+const int __MAC_15_4 = 150400;
 
 const int __IPHONE_2_0 = 20000;
 
@@ -15257,11 +15325,19 @@ const int __IPHONE_17_4 = 170400;
 
 const int __IPHONE_17_5 = 170500;
 
+const int __IPHONE_17_6 = 170600;
+
+const int __IPHONE_17_7 = 170700;
+
 const int __IPHONE_18_0 = 180000;
 
 const int __IPHONE_18_1 = 180100;
 
 const int __IPHONE_18_2 = 180200;
+
+const int __IPHONE_18_3 = 180300;
+
+const int __IPHONE_18_4 = 180400;
 
 const int __WATCHOS_1_0 = 10000;
 
@@ -15357,11 +15433,19 @@ const int __WATCHOS_10_4 = 100400;
 
 const int __WATCHOS_10_5 = 100500;
 
+const int __WATCHOS_10_6 = 100600;
+
+const int __WATCHOS_10_7 = 100700;
+
 const int __WATCHOS_11_0 = 110000;
 
 const int __WATCHOS_11_1 = 110100;
 
 const int __WATCHOS_11_2 = 110200;
+
+const int __WATCHOS_11_3 = 110300;
+
+const int __WATCHOS_11_4 = 110400;
 
 const int __TVOS_9_0 = 90000;
 
@@ -15459,11 +15543,17 @@ const int __TVOS_17_4 = 170400;
 
 const int __TVOS_17_5 = 170500;
 
+const int __TVOS_17_6 = 170600;
+
 const int __TVOS_18_0 = 180000;
 
 const int __TVOS_18_1 = 180100;
 
 const int __TVOS_18_2 = 180200;
+
+const int __TVOS_18_3 = 180300;
+
+const int __TVOS_18_4 = 180400;
 
 const int __BRIDGEOS_2_0 = 20000;
 
@@ -15517,11 +15607,17 @@ const int __BRIDGEOS_8_4 = 80400;
 
 const int __BRIDGEOS_8_5 = 80500;
 
+const int __BRIDGEOS_8_6 = 80600;
+
 const int __BRIDGEOS_9_0 = 90000;
 
 const int __BRIDGEOS_9_1 = 90100;
 
 const int __BRIDGEOS_9_2 = 90200;
+
+const int __BRIDGEOS_9_3 = 90300;
+
+const int __BRIDGEOS_9_4 = 90400;
 
 const int __DRIVERKIT_19_0 = 190000;
 
@@ -15549,11 +15645,17 @@ const int __DRIVERKIT_23_4 = 230400;
 
 const int __DRIVERKIT_23_5 = 230500;
 
+const int __DRIVERKIT_23_6 = 230600;
+
 const int __DRIVERKIT_24_0 = 240000;
 
 const int __DRIVERKIT_24_1 = 240100;
 
 const int __DRIVERKIT_24_2 = 240200;
+
+const int __DRIVERKIT_24_3 = 240300;
+
+const int __DRIVERKIT_24_4 = 240400;
 
 const int __VISIONOS_1_0 = 10000;
 
@@ -15561,11 +15663,17 @@ const int __VISIONOS_1_1 = 10100;
 
 const int __VISIONOS_1_2 = 10200;
 
+const int __VISIONOS_1_3 = 10300;
+
 const int __VISIONOS_2_0 = 20000;
 
 const int __VISIONOS_2_1 = 20100;
 
 const int __VISIONOS_2_2 = 20200;
+
+const int __VISIONOS_2_3 = 20300;
+
+const int __VISIONOS_2_4 = 20400;
 
 const int MAC_OS_X_VERSION_10_0 = 1000;
 
@@ -15677,6 +15785,8 @@ const int MAC_OS_VERSION_13_5 = 130500;
 
 const int MAC_OS_VERSION_13_6 = 130600;
 
+const int MAC_OS_VERSION_13_7 = 130700;
+
 const int MAC_OS_VERSION_14_0 = 140000;
 
 const int MAC_OS_VERSION_14_1 = 140100;
@@ -15689,15 +15799,29 @@ const int MAC_OS_VERSION_14_4 = 140400;
 
 const int MAC_OS_VERSION_14_5 = 140500;
 
+const int MAC_OS_VERSION_14_6 = 140600;
+
+const int MAC_OS_VERSION_14_7 = 140700;
+
 const int MAC_OS_VERSION_15_0 = 150000;
 
 const int MAC_OS_VERSION_15_1 = 150100;
 
 const int MAC_OS_VERSION_15_2 = 150200;
 
+const int MAC_OS_VERSION_15_3 = 150300;
+
+const int MAC_OS_VERSION_15_4 = 150400;
+
+const int __AVAILABILITY_VERSIONS_VERSION_HASH = 93585900;
+
+const String __AVAILABILITY_VERSIONS_VERSION_STRING = 'Local';
+
+const String __AVAILABILITY_FILE = 'AvailabilityVersions.h';
+
 const int __MAC_OS_X_VERSION_MIN_REQUIRED = 150000;
 
-const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150200;
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150400;
 
 const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
 
@@ -16078,6 +16202,8 @@ const int IOPOL_VFS_IGNORE_PERMISSIONS_ON = 1;
 const int IOPOL_VFS_SKIP_MTIME_UPDATE_OFF = 0;
 
 const int IOPOL_VFS_SKIP_MTIME_UPDATE_ON = 1;
+
+const int IOPOL_VFS_SKIP_MTIME_UPDATE_IGNORE = 2;
 
 const int IOPOL_VFS_ALLOW_LOW_SPACE_WRITES_OFF = 0;
 

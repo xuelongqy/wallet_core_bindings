@@ -60,19 +60,6 @@ class TWBarzImpl extends TWBarzInterface {
   }
 
   @override
-  int getEncodedHash(int chainId, int wallet, int version, int typeHash,
-      int domainSeparatorHash, int hash) {
-    return bindings.TWBarzGetEncodedHash(
-      Pointer.fromAddress(chainId),
-      Pointer.fromAddress(wallet),
-      Pointer.fromAddress(version),
-      Pointer.fromAddress(typeHash),
-      Pointer.fromAddress(domainSeparatorHash),
-      Pointer.fromAddress(hash),
-    ).address;
-  }
-
-  @override
   int getSignedHash(int hash, int privateKey) {
     return bindings.TWBarzGetSignedHash(
       Pointer.fromAddress(hash),
@@ -88,6 +75,28 @@ class TWBarzImpl extends TWBarzInterface {
       Pointer.fromAddress(contractAddress),
       Pointer.fromAddress(nonce),
       Pointer.fromAddress(privateKey),
+    ).address;
+  }
+
+  @override
+  int getEncodedHash(
+      int chainId,
+      int codeAddress,
+      int codeName,
+      int codeVersion,
+      int typeHash,
+      int domainSeparatorHash,
+      int sender,
+      int userOpHash) {
+    return bindings.TWBarzGetEncodedHash(
+      Pointer.fromAddress(chainId),
+      Pointer.fromAddress(codeAddress),
+      Pointer.fromAddress(codeName),
+      Pointer.fromAddress(codeVersion),
+      Pointer.fromAddress(typeHash),
+      Pointer.fromAddress(domainSeparatorHash),
+      Pointer.fromAddress(sender),
+      Pointer.fromAddress(userOpHash),
     ).address;
   }
 }

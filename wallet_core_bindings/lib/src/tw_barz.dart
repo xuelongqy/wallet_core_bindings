@@ -125,29 +125,35 @@ class TWBarz {
 
   /// Returns the encoded hash of the user operation
   ///
-  /// \param [chainId] The chainId of the network
-  /// \param [wallet] The address of the wallet
-  /// \param [version] The version of the wallet
-  /// \param [typeHash] The type hash of the transaction
-  /// \param [domainSeparatorHash] The domain separator hash of the wallet
-  /// \param [hash] The hash of the user operation
+  /// \param [chainId] The chainId of the network.
+  /// \param [codeAddress] The address of the Biz Smart Contract.
+  /// \param [codeName] The name of the Biz Smart Contract.
+  /// \param [codeVersion] The version of the Biz Smart Contract.
+  /// \param [typeHash] The type hash of the transaction.
+  /// \param [domainSeparatorHash] The domain separator hash of the wallet.
+  /// \param [sender] The address of the UserOperation sender.
+  /// \param [userOpHash] The hash of the user operation.
   /// \return The encoded hash of the user operation
   static Uint8List? getEncodedHash({
     required Uint8List chainId,
-    required String wallet,
-    required String version,
+    required String codeAddress,
+    required String codeName,
+    required String codeVersion,
     required String typeHash,
     required String domainSeparatorHash,
-    required String hash,
+    required String sender,
+    required String userOpHash,
   }) =>
       TWData.fromPointer(
         _barzImpl.getEncodedHash(
           TWData(chainId).pointer,
-          TWString(wallet).pointer,
-          TWString(version).pointer,
+          TWString(codeAddress).pointer,
+          TWString(codeName).pointer,
+          TWString(codeVersion).pointer,
           TWString(typeHash).pointer,
           TWString(domainSeparatorHash).pointer,
-          TWString(hash).pointer,
+          TWString(sender).pointer,
+          TWString(userOpHash).pointer,
         ),
       ).bytes();
 
