@@ -228,4 +228,31 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
     final func = wasm.getFunction('TWStoredKeyUpdateAddress')!;
     return func([pointer, coin]).first as int != 0;
   }
+
+  @override
+  int decryptPrivateKeyEncoded(int key, int password) {
+    final func = wasm.getFunction('TWStoredKeyDecryptPrivateKeyEncoded')!;
+    return func([key, password]).first as int;
+  }
+
+  @override
+  bool hasPrivateKeyEncoded(int key) {
+    final func = wasm.getFunction('TWStoredKeyHasPrivateKeyEncoded')!;
+    return func([key]).first as int != 0;
+  }
+
+  @override
+  int importPrivateKeyEncoded(
+      int privateKey, int name, int password, int coin) {
+    final func = wasm.getFunction('TWStoredKeyImportPrivateKeyEncoded')!;
+    return func([privateKey, name, password, coin]).first as int;
+  }
+
+  @override
+  int importPrivateKeyEncodedWithEncryption(
+      int privateKey, int name, int password, int coin, int encryption) {
+    final func =
+        wasm.getFunction('TWStoredKeyImportPrivateKeyEncodedWithEncryption')!;
+    return func([privateKey, name, password, coin, encryption]).first as int;
+  }
 }

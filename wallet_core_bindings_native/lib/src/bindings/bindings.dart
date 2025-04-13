@@ -8965,6 +8965,77 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWData>,
               ffi.Pointer<TWString>, ffi.Pointer<TWData>, int, int)>();
 
+  /// Imports an encoded private key.
+  ///
+  /// \param privateKey Non-null encoded private key
+  /// \param password Non-null block of data, password of the stored key
+  /// \param coin the coin type
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  ffi.Pointer<TWStoredKey> TWStoredKeyImportPrivateKeyEncoded(
+    ffi.Pointer<TWString> privateKey,
+    ffi.Pointer<TWString> name,
+    ffi.Pointer<TWData> password,
+    int coin,
+  ) {
+    return _TWStoredKeyImportPrivateKeyEncoded(
+      privateKey,
+      name,
+      password,
+      coin,
+    );
+  }
+
+  late final _TWStoredKeyImportPrivateKeyEncodedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWStoredKey> Function(
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>,
+              ffi.Int32)>>('TWStoredKeyImportPrivateKeyEncoded');
+  late final _TWStoredKeyImportPrivateKeyEncoded =
+      _TWStoredKeyImportPrivateKeyEncodedPtr.asFunction<
+          ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>, ffi.Pointer<TWData>, int)>();
+
+  /// Imports an encoded private key.
+  ///
+  /// \param privateKey Non-null encoded private key
+  /// \param name The name of the stored key to import as a non-null string
+  /// \param password Non-null block of data, password of the stored key
+  /// \param coin the coin type
+  /// \param encryption cipher encryption mode
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  ffi.Pointer<TWStoredKey> TWStoredKeyImportPrivateKeyEncodedWithEncryption(
+    ffi.Pointer<TWString> privateKey,
+    ffi.Pointer<TWString> name,
+    ffi.Pointer<TWData> password,
+    int coin,
+    int encryption,
+  ) {
+    return _TWStoredKeyImportPrivateKeyEncodedWithEncryption(
+      privateKey,
+      name,
+      password,
+      coin,
+      encryption,
+    );
+  }
+
+  late final _TWStoredKeyImportPrivateKeyEncodedWithEncryptionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWStoredKey> Function(
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>,
+              ffi.Int32,
+              ffi.Int32)>>('TWStoredKeyImportPrivateKeyEncodedWithEncryption');
+  late final _TWStoredKeyImportPrivateKeyEncodedWithEncryption =
+      _TWStoredKeyImportPrivateKeyEncodedWithEncryptionPtr.asFunction<
+          ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>, ffi.Pointer<TWData>, int, int)>();
+
   /// Imports an HD wallet.
   ///
   /// \param mnemonic Non-null bip39 mnemonic
@@ -9565,6 +9636,49 @@ class TrustWalletCoreBindings {
       _TWStoredKeyDecryptPrivateKeyPtr.asFunction<
           ffi.Pointer<TWData> Function(
               ffi.Pointer<TWStoredKey>, ffi.Pointer<TWData>)>();
+
+  /// Decrypts the encoded private key.
+  ///
+  /// \param key Non-null pointer to a stored key
+  /// \param password Non-null block of data, password of the stored key
+  /// \return Decrypted encoded private key as a string if success, null pointer otherwise
+  ffi.Pointer<TWString> TWStoredKeyDecryptPrivateKeyEncoded(
+    ffi.Pointer<TWStoredKey> key,
+    ffi.Pointer<TWData> password,
+  ) {
+    return _TWStoredKeyDecryptPrivateKeyEncoded(
+      key,
+      password,
+    );
+  }
+
+  late final _TWStoredKeyDecryptPrivateKeyEncodedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWStoredKey>,
+              ffi.Pointer<TWData>)>>('TWStoredKeyDecryptPrivateKeyEncoded');
+  late final _TWStoredKeyDecryptPrivateKeyEncoded =
+      _TWStoredKeyDecryptPrivateKeyEncodedPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWStoredKey>, ffi.Pointer<TWData>)>();
+
+  /// Whether the private key is encoded.
+  ///
+  /// \param key Non-null pointer to a stored key
+  /// \return true if the private key is encoded, false otherwise
+  bool TWStoredKeyHasPrivateKeyEncoded(
+    ffi.Pointer<TWStoredKey> key,
+  ) {
+    return _TWStoredKeyHasPrivateKeyEncoded(
+      key,
+    );
+  }
+
+  late final _TWStoredKeyHasPrivateKeyEncodedPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<TWStoredKey>)>>(
+          'TWStoredKeyHasPrivateKeyEncoded');
+  late final _TWStoredKeyHasPrivateKeyEncoded =
+      _TWStoredKeyHasPrivateKeyEncodedPtr.asFunction<
+          bool Function(ffi.Pointer<TWStoredKey>)>();
 
   /// Decrypts the mnemonic phrase.
   ///
@@ -14195,6 +14309,8 @@ abstract class TWDerivation {
   static const int TWDerivationSolanaSolana = 6;
   static const int TWDerivationStratisSegwit = 7;
   static const int TWDerivationBitcoinTaproot = 8;
+  static const int TWDerivationPactusMainnet = 9;
+  static const int TWDerivationPactusTestnet = 10;
 }
 
 /// Registered HD version bytes

@@ -206,7 +206,7 @@ void main() async {
       expect(addr.description, 'bc1qcj2vfjec3c3luf9fx9vddnglhh9gawmncmgxhz');
     });
 
-    test('createFromPubKeyDerivation', () {
+    test('createFromPubKeyDerivationBitcoin', () {
       const pubkey =
           '02753f5c275e1847ba4d2fd3df36ad00af2e165650b35fe3991e9c9c46f68b12bc';
       final pubkeyData = TWData.createWithHexString(pubkey);
@@ -238,6 +238,42 @@ void main() async {
           derivation: TWDerivation.BitcoinTestnet,
         );
         expect(addr.description, 'tb1qcj2vfjec3c3luf9fx9vddnglhh9gawmnjan4v3');
+      }
+    });
+
+    test('createFromPubKeyDerivationPactus', () {
+      const pubkey =
+          "95794161374b22c696dabb98e93f6ca9300b22f3b904921fbf560bb72145f4fa";
+      final pubkey_obj = TWPublicKey.createWithHexString(
+        pubkey,
+        TWPublicKeyType.ED25519,
+      );
+
+      {
+        final addr = TWAnyAddress.createWithPublicKeyDerivation(
+          publicKey: pubkey_obj,
+          coin: TWCoinType.Pactus,
+          derivation: TWDerivation.Default,
+        );
+        expect(addr.description, 'pc1rwzvr8rstdqypr80ag3t6hqrtnss9nwymcxy3lr');
+      }
+
+      {
+        final addr = TWAnyAddress.createWithPublicKeyDerivation(
+          publicKey: pubkey_obj,
+          coin: TWCoinType.Pactus,
+          derivation: TWDerivation.PactusMainnet,
+        );
+        expect(addr.description, 'pc1rwzvr8rstdqypr80ag3t6hqrtnss9nwymcxy3lr');
+      }
+
+      {
+        final addr = TWAnyAddress.createWithPublicKeyDerivation(
+          publicKey: pubkey_obj,
+          coin: TWCoinType.Pactus,
+          derivation: TWDerivation.PactusTestnet,
+        );
+        expect(addr.description, 'tpc1rwzvr8rstdqypr80ag3t6hqrtnss9nwymzqkcrg');
       }
     });
 

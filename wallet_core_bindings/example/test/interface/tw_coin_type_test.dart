@@ -512,10 +512,27 @@ void main() {
       expect(res, "m/44'/0'/0'/0/0");
     });
 
-    test('TWCoinTypeDerivationPathWithDerivation Solana', () {
+    test('TWCoinTypeDerivationPathWithDerivationSolana', () {
       final res = TWCoinType.Solana.derivationPathWithDerivation(
           TWDerivation.SolanaSolana);
       expect(res, "m/44'/501'/0'/0'");
+    });
+
+    test('TWCoinTypeDerivationPathPactus', () {
+      final res = TWCoinType.Pactus.derivationPath;
+      expect(res, "m/44'/21888'/3'/0'");
+    });
+
+    test('TWCoinTypeDerivationPathWithDerivationPactusMainnet', () {
+      final res = TWCoinType.Pactus.derivationPathWithDerivation(
+          TWDerivation.PactusMainnet);
+      expect(res, "m/44'/21888'/3'/0'");
+    });
+
+    test('TWCoinTypeDerivationPathWithDerivationPactusTestnet', () {
+      final res = TWCoinType.Pactus.derivationPathWithDerivation(
+          TWDerivation.PactusTestnet);
+      expect(res, "m/44'/21777'/3'/0'");
     });
   });
 }

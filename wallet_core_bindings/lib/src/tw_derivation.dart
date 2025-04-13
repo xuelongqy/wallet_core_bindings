@@ -10,7 +10,9 @@ enum TWDerivation {
   LitecoinLegacy(5),
   SolanaSolana(6),
   StratisSegwit(7),
-  BitcoinTaproot(8);
+  BitcoinTaproot(8),
+  PactusMainnet(9),
+  PactusTestnet(10);
 
   final int derivation;
 

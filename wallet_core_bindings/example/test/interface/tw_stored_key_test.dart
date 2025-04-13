@@ -113,6 +113,160 @@ void main() {
       privateKey3.delete();
     });
 
+    test('importPrivateKeyHexButDecryptEncoded', () {
+      const privateKeyHex =
+          "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266";
+      final privateKey = TWData.createWithHexString(privateKeyHex).bytes()!;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      const coin = TWCoinType.Bitcoin;
+      final key = TWStoredKey.importPrivateKey(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expect(hex(privateKey2), privateKeyHex);
+      expect(key.hasPrivateKeyEncoded, false);
+      final privateKey2Encoded = key.decryptPrivateKeyEncoded(password);
+      expect(privateKey2Encoded, privateKeyHex);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expect(hex(pkData3), privateKeyHex);
+    });
+
+    test('importPrivateKeyEncodedHex', () {
+      const privateKeyHex =
+          "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266";
+      final privateKey =
+          TWString.createWithHexBytes(parse_hex(privateKeyHex)).value!;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      const coin = TWCoinType.Bitcoin;
+      final key = TWStoredKey.importPrivateKeyEncoded(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expect(hex(privateKey2), privateKeyHex);
+      expect(key.hasPrivateKeyEncoded, true);
+      final privateKey2Encoded = key.decryptPrivateKeyEncoded(password);
+      expect(privateKey2Encoded, privateKeyHex);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expect(hex(pkData3), privateKeyHex);
+    });
+
+    test('importPrivateKeyEncodedStellar', () {
+      const privateKeyEncoded =
+          "SAV76USXIJOBMEQXPANUOQM6F5LIOTLPDIDVRJBFFE2MDJXG24TAPUU7";
+      const decodedPrivateKeyHex =
+          "2bff5257425c161217781b47419e2f56874d6f1a0758a4252934c1a6e6d72607";
+      const privateKey = privateKeyEncoded;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      const coin = TWCoinType.Stellar;
+      final key = TWStoredKey.importPrivateKeyEncoded(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expect(hex(privateKey2), decodedPrivateKeyHex);
+      expect(key.hasPrivateKeyEncoded, true);
+      final privateKey2Encoded = key.decryptPrivateKeyEncoded(password);
+      expect(privateKey2Encoded, privateKeyEncoded);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expect(hex(pkData3), decodedPrivateKeyHex);
+    });
+
+    test('importPrivateKeyEncodedSolana', () {
+      const solanaPrivateKey = "A7psj2GW7ZMdY4E5hJq14KMeYg7HFjULSsWSrTXZLvYr";
+      const decodedSolanaPrivateKeyHex =
+          "8778cc93c6596387e751d2dc693bbd93e434bd233bc5b68a826c56131821cb63";
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      final solanaKey = TWStoredKey.importPrivateKeyEncoded(
+        privateKey: solanaPrivateKey,
+        name: name,
+        password: password,
+        coin: TWCoinType.Solana,
+      );
+      final solanaPrivateKey2 = solanaKey.decryptPrivateKey(password);
+      expect(hex(solanaPrivateKey2), decodedSolanaPrivateKeyHex);
+      expect(solanaKey.hasPrivateKeyEncoded, true);
+      final solanaPrivateKey2Encoded =
+          solanaKey.decryptPrivateKeyEncoded(password);
+      expect(solanaPrivateKey2Encoded, solanaPrivateKey);
+
+      final solanaPrivateKey3 =
+          solanaKey.privateKey(TWCoinType.Solana, password);
+      final solanaPkData3 = solanaPrivateKey3.data;
+      expect(hex(solanaPkData3), decodedSolanaPrivateKeyHex);
+    });
+
+    test('importPrivateKeyHexEncodedSolana', () {
+      const solanaPrivateKey =
+          "8778cc93c6596387e751d2dc693bbd93e434bd233bc5b68a826c56131821cb63";
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      final solanaKey = TWStoredKey.importPrivateKeyEncoded(
+        privateKey: solanaPrivateKey,
+        name: name,
+        password: password,
+        coin: TWCoinType.Solana,
+      );
+      final solanaPrivateKey2 = solanaKey.decryptPrivateKey(password);
+      expect(hex(solanaPrivateKey2), solanaPrivateKey);
+      expect(solanaKey.hasPrivateKeyEncoded, true);
+      final solanaPrivateKey2Encoded =
+          solanaKey.decryptPrivateKeyEncoded(password);
+      expect(solanaPrivateKey2Encoded, solanaPrivateKey);
+
+      final solanaPrivateKey3 =
+          solanaKey.privateKey(TWCoinType.Solana, password);
+      final solanaPkData3 = solanaPrivateKey3.data;
+      expect(hex(solanaPkData3), solanaPrivateKey);
+    });
+
+    test('importPrivateKeyEncodedAes256', () {
+      const privateKeyEncoded =
+          "SAV76USXIJOBMEQXPANUOQM6F5LIOTLPDIDVRJBFFE2MDJXG24TAPUU7";
+      const decodedPrivateKeyHex =
+          "2bff5257425c161217781b47419e2f56874d6f1a0758a4252934c1a6e6d72607";
+      const privateKey = privateKeyEncoded;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      const coin = TWCoinType.Stellar;
+      final key = TWStoredKey.importPrivateKeyEncodedWithEncryption(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+        encryption: TWStoredKeyEncryption.Aes256Ctr,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expect(hex(privateKey2), decodedPrivateKeyHex);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expect(hex(pkData3), decodedPrivateKeyHex);
+    });
+
     test('importHDWallet', () {
       const mnemonic =
           'team engine square letter hero song dizzy scrub tornado fabric divert saddle';

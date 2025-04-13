@@ -140,7 +140,8 @@ void main() async {
           scwExecute: Ethereum.Transaction_SCWalletExecute(
             transaction: Ethereum.Transaction(
               transfer: Ethereum.Transaction_Transfer(
-                amount: bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
+                amount:
+                    bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
               ),
             ),
           ),
@@ -196,7 +197,8 @@ void main() async {
           scwExecute: Ethereum.Transaction_SCWalletExecute(
             transaction: Ethereum.Transaction(
               transfer: Ethereum.Transaction_Transfer(
-                amount: bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
+                amount:
+                    bigIntToBytes(BigInt.parse('2386f26fc10000', radix: 16)),
               ),
             ),
           ),

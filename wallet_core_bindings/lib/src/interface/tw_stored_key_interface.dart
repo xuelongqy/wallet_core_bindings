@@ -9,6 +9,11 @@ abstract class TWStoredKeyInterface {
   int importPrivateKeyWithEncryption(
       int privateKey, int name, int password, int coin, int encryption);
 
+  int importPrivateKeyEncoded(int privateKey, int name, int password, int coin);
+
+  int importPrivateKeyEncodedWithEncryption(
+      int privateKey, int name, int password, int coin, int encryption);
+
   int importHDWallet(int mnemonic, int name, int password, int coin);
 
   int importHDWalletWithEncryption(
@@ -56,6 +61,10 @@ abstract class TWStoredKeyInterface {
   bool store(int pointer, int path);
 
   int decryptPrivateKey(int pointer, int password);
+
+  int decryptPrivateKeyEncoded(int key, int password);
+
+  bool hasPrivateKeyEncoded(int key);
 
   int decryptMnemonic(int pointer, int password);
 

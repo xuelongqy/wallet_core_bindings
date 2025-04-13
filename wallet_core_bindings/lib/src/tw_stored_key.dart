@@ -75,6 +75,58 @@ class TWStoredKey extends TWObjectFinalizable {
           finalizer: _twStoredKeyFinalizer,
         );
 
+  /// Imports an encoded private key.
+  ///
+  /// \param [privateKey] Non-null encoded private key
+  /// \param [password] Non-null block of data, password of the stored key
+  /// \param [coin] the coin type
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  TWStoredKey.importPrivateKeyEncoded({
+    required String privateKey,
+    required String name,
+    required Uint8List password,
+    required TWCoinType coin,
+    bool attach = true,
+  }) : super(
+          _storedKeyImpl.importPrivateKeyEncoded(
+            TWString(privateKey).pointer,
+            TWString(name).pointer,
+            TWData(password).pointer,
+            coin.coin,
+          ),
+          attach: attach,
+          finalizer: _twStoredKeyFinalizer,
+        );
+
+  /// Imports an encoded private key.
+  ///
+  /// \param [privateKey] Non-null encoded private key
+  /// \param [name] The name of the stored key to import as a non-null string
+  /// \param [password] Non-null block of data, password of the stored key
+  /// \param [coin] the coin type
+  /// \param [encryption] cipher encryption mode
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  TWStoredKey.importPrivateKeyEncodedWithEncryption({
+    required String privateKey,
+    required String name,
+    required Uint8List password,
+    required TWCoinType coin,
+    required TWStoredKeyEncryption encryption,
+    bool attach = true,
+  }) : super(
+          _storedKeyImpl.importPrivateKeyEncodedWithEncryption(
+            TWString(privateKey).pointer,
+            TWString(name).pointer,
+            TWData(password).pointer,
+            coin.coin,
+            encryption.encryption,
+          ),
+          attach: attach,
+          finalizer: _twStoredKeyFinalizer,
+        );
+
   /// Imports an HD wallet.
   ///
   /// \param [mnemonic] Non-null bip39 mnemonic
@@ -382,6 +434,25 @@ class TWStoredKey extends TWObjectFinalizable {
           TWData(password).pointer,
         ),
       ).bytes()!;
+
+  /// Decrypts the encoded private key.
+  ///
+  /// \param [key] Non-null pointer to a stored key
+  /// \param [password] Non-null block of data, password of the stored key
+  /// \return Decrypted encoded private key as a string if success, null pointer otherwise
+  String? decryptPrivateKeyEncoded(Uint8List password) => TWString.fromPointer(
+        _storedKeyImpl.decryptPrivateKeyEncoded(
+          _pointer,
+          TWData(password).pointer,
+        ),
+      ).value;
+
+  /// Whether the private key is encoded.
+  ///
+  /// \param [key] Non-null pointer to a stored key
+  /// \return true if the private key is encoded, false otherwise
+  bool get hasPrivateKeyEncoded =>
+      _storedKeyImpl.hasPrivateKeyEncoded(_pointer);
 
   /// Decrypts the mnemonic phrase.
   ///

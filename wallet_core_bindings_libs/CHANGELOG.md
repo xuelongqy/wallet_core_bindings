@@ -1,3 +1,6 @@
+## 4.3.0
+* Sync wallet-core [4.3.0](https://github.com/trustwallet/wallet-core/releases/tag/4.3.0).
+
 ## 4.2.21
 * Sync wallet-core [4.2.18...4.2.21](https://github.com/trustwallet/wallet-core/compare/4.2.18...4.2.21).
 
