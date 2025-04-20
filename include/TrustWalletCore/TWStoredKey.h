@@ -71,7 +71,7 @@ struct TWStoredKey* _Nullable TWStoredKeyImportPrivateKeyEncoded(TWString* _Nonn
 /// \note Returned object needs to be deleted with \TWStoredKeyDelete
 /// \return Nullptr if the key can't be imported, the stored key otherwise
 TW_EXPORT_STATIC_METHOD
-    struct TWStoredKey* _Nullable TWStoredKeyImportPrivateKeyEncodedWithEncryption(TWString* _Nonnull privateKey, TWString* _Nonnull name, TWData* _Nonnull password, enum TWCoinType coin, enum TWStoredKeyEncryption encryption);
+struct TWStoredKey* _Nullable TWStoredKeyImportPrivateKeyEncodedWithEncryption(TWString* _Nonnull privateKey, TWString* _Nonnull name, TWData* _Nonnull password, enum TWCoinType coin, enum TWStoredKeyEncryption encryption);
 
 /// Imports an HD wallet.
 ///

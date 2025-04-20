@@ -14721,14 +14721,6 @@ final class TWTONMessageSigner extends ffi.Opaque {}
 /// Cardano helper functions
 final class TWCardano extends ffi.Opaque {}
 
-/// Substrate based chains Address Type
-///
-/// \see https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58)#address-type
-abstract class TWSS58AddressType {
-  static const int TWSS58AddressTypePolkadot = 0;
-  static const int TWSS58AddressTypeKusama = 2;
-}
-
 /// THORChain swap functions
 final class TWLiquidStaking extends ffi.Opaque {}
 
