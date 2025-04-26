@@ -407,17 +407,43 @@ final $typed_data.Uint8List accessDescriptor = $convert.base64Decode(
     'CgZBY2Nlc3MSGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIfCgtzdG9yZWRfa2V5cxgCIAMoDF'
     'IKc3RvcmVkS2V5cw==');
 
-@$core.Deprecated('Use authorityDescriptor instead')
-const Authority$json = {
-  '1': 'Authority',
+@$core.Deprecated('Use authorizationDescriptor instead')
+const Authorization$json = {
+  '1': 'Authorization',
   '2': [
     {'1': 'address', '3': 2, '4': 1, '5': 9, '10': 'address'},
+    {
+      '1': 'custom_signature',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Ethereum.Proto.AuthorizationCustomSignature',
+      '10': 'customSignature'
+    },
   ],
 };
 
-/// Descriptor for `Authority`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorityDescriptor = $convert
-    .base64Decode('CglBdXRob3JpdHkSGAoHYWRkcmVzcxgCIAEoCVIHYWRkcmVzcw==');
+/// Descriptor for `Authorization`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizationDescriptor = $convert.base64Decode(
+    'Cg1BdXRob3JpemF0aW9uEhgKB2FkZHJlc3MYAiABKAlSB2FkZHJlc3MSWgoQY3VzdG9tX3NpZ2'
+    '5hdHVyZRgDIAEoCzIvLlRXLkV0aGVyZXVtLlByb3RvLkF1dGhvcml6YXRpb25DdXN0b21TaWdu'
+    'YXR1cmVSD2N1c3RvbVNpZ25hdHVyZQ==');
+
+@$core.Deprecated('Use authorizationCustomSignatureDescriptor instead')
+const AuthorizationCustomSignature$json = {
+  '1': 'AuthorizationCustomSignature',
+  '2': [
+    {'1': 'chain_id', '3': 1, '4': 1, '5': 12, '10': 'chainId'},
+    {'1': 'nonce', '3': 2, '4': 1, '5': 12, '10': 'nonce'},
+    {'1': 'signature', '3': 3, '4': 1, '5': 9, '10': 'signature'},
+  ],
+};
+
+/// Descriptor for `AuthorizationCustomSignature`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizationCustomSignatureDescriptor =
+    $convert.base64Decode(
+        'ChxBdXRob3JpemF0aW9uQ3VzdG9tU2lnbmF0dXJlEhkKCGNoYWluX2lkGAEgASgMUgdjaGFpbk'
+        'lkEhQKBW5vbmNlGAIgASgMUgVub25jZRIcCglzaWduYXR1cmUYAyABKAlSCXNpZ25hdHVyZQ==');
 
 @$core.Deprecated('Use signingInputDescriptor instead')
 const SigningInput$json = {
@@ -480,12 +506,12 @@ const SigningInput$json = {
       '10': 'accessList'
     },
     {
-      '1': 'eip7702_authority',
+      '1': 'eip7702_authorization',
       '3': 15,
       '4': 1,
       '5': 11,
-      '6': '.TW.Ethereum.Proto.Authority',
-      '10': 'eip7702Authority'
+      '6': '.TW.Ethereum.Proto.Authorization',
+      '10': 'eip7702Authorization'
     },
   ],
   '8': [
@@ -506,9 +532,9 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'ZXVtLlByb3RvLlVzZXJPcGVyYXRpb25IAFINdXNlck9wZXJhdGlvbhJVChN1c2VyX29wZXJhdG'
     'lvbl92MF83GA0gASgLMiQuVFcuRXRoZXJldW0uUHJvdG8uVXNlck9wZXJhdGlvblYwXzdIAFIQ'
     'dXNlck9wZXJhdGlvblYwNxI6CgthY2Nlc3NfbGlzdBgMIAMoCzIZLlRXLkV0aGVyZXVtLlByb3'
-    'RvLkFjY2Vzc1IKYWNjZXNzTGlzdBJJChFlaXA3NzAyX2F1dGhvcml0eRgPIAEoCzIcLlRXLkV0'
-    'aGVyZXVtLlByb3RvLkF1dGhvcml0eVIQZWlwNzcwMkF1dGhvcml0eUIWChR1c2VyX29wZXJhdG'
-    'lvbl9vbmVvZg==');
+    'RvLkFjY2Vzc1IKYWNjZXNzTGlzdBJVChVlaXA3NzAyX2F1dGhvcml6YXRpb24YDyABKAsyIC5U'
+    'Vy5FdGhlcmV1bS5Qcm90by5BdXRob3JpemF0aW9uUhRlaXA3NzAyQXV0aG9yaXphdGlvbkIWCh'
+    'R1c2VyX29wZXJhdGlvbl9vbmVvZg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

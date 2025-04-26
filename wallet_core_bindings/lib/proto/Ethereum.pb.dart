@@ -1593,53 +1593,62 @@ class Access extends $pb.GeneratedMessage {
   $core.List<$core.List<$core.int>> get storedKeys => $_getList(1);
 }
 
-/// [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) authority.
-class Authority extends $pb.GeneratedMessage {
-  factory Authority({
+/// [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) authorization.
+class Authorization extends $pb.GeneratedMessage {
+  factory Authorization({
     $core.String? address,
+    AuthorizationCustomSignature? customSignature,
   }) {
     final $result = create();
     if (address != null) {
       $result.address = address;
     }
+    if (customSignature != null) {
+      $result.customSignature = customSignature;
+    }
     return $result;
   }
-  Authority._() : super();
-  factory Authority.fromBuffer($core.List<$core.int> i,
+  Authorization._() : super();
+  factory Authorization.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Authority.fromJson($core.String i,
+  factory Authorization.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Authority',
+      _omitMessageNames ? '' : 'Authorization',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
       createEmptyInstance: create)
     ..aOS(2, _omitFieldNames ? '' : 'address')
+    ..aOM<AuthorizationCustomSignature>(
+        3, _omitFieldNames ? '' : 'customSignature',
+        subBuilder: AuthorizationCustomSignature.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  Authority clone() => Authority()..mergeFromMessage(this);
+  Authorization clone() => Authorization()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  Authority copyWith(void Function(Authority) updates) =>
-      super.copyWith((message) => updates(message as Authority)) as Authority;
+  Authorization copyWith(void Function(Authorization) updates) =>
+      super.copyWith((message) => updates(message as Authorization))
+          as Authorization;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Authority create() => Authority._();
-  Authority createEmptyInstance() => create();
-  static $pb.PbList<Authority> createRepeated() => $pb.PbList<Authority>();
+  static Authorization create() => Authorization._();
+  Authorization createEmptyInstance() => create();
+  static $pb.PbList<Authorization> createRepeated() =>
+      $pb.PbList<Authorization>();
   @$core.pragma('dart2js:noInline')
-  static Authority getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Authority>(create);
-  static Authority? _defaultInstance;
+  static Authorization getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Authorization>(create);
+  static Authorization? _defaultInstance;
 
   /// Address to be authorized, a smart contract address.
   @$pb.TagNumber(2)
@@ -1653,6 +1662,127 @@ class Authority extends $pb.GeneratedMessage {
   $core.bool hasAddress() => $_has(0);
   @$pb.TagNumber(2)
   void clearAddress() => clearField(2);
+
+  /// If custom_signature isn't provided, the authorization will be signed with the provided private key, nonce and chainId
+  @$pb.TagNumber(3)
+  AuthorizationCustomSignature get customSignature => $_getN(1);
+  @$pb.TagNumber(3)
+  set customSignature(AuthorizationCustomSignature v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasCustomSignature() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearCustomSignature() => clearField(3);
+  @$pb.TagNumber(3)
+  AuthorizationCustomSignature ensureCustomSignature() => $_ensure(1);
+}
+
+/// [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) authorization.
+class AuthorizationCustomSignature extends $pb.GeneratedMessage {
+  factory AuthorizationCustomSignature({
+    $core.List<$core.int>? chainId,
+    $core.List<$core.int>? nonce,
+    $core.String? signature,
+  }) {
+    final $result = create();
+    if (chainId != null) {
+      $result.chainId = chainId;
+    }
+    if (nonce != null) {
+      $result.nonce = nonce;
+    }
+    if (signature != null) {
+      $result.signature = signature;
+    }
+    return $result;
+  }
+  AuthorizationCustomSignature._() : super();
+  factory AuthorizationCustomSignature.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AuthorizationCustomSignature.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'AuthorizationCustomSignature',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Ethereum.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'chainId', $pb.PbFieldType.OY)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'nonce', $pb.PbFieldType.OY)
+    ..aOS(3, _omitFieldNames ? '' : 'signature')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AuthorizationCustomSignature clone() =>
+      AuthorizationCustomSignature()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AuthorizationCustomSignature copyWith(
+          void Function(AuthorizationCustomSignature) updates) =>
+      super.copyWith(
+              (message) => updates(message as AuthorizationCustomSignature))
+          as AuthorizationCustomSignature;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static AuthorizationCustomSignature create() =>
+      AuthorizationCustomSignature._();
+  AuthorizationCustomSignature createEmptyInstance() => create();
+  static $pb.PbList<AuthorizationCustomSignature> createRepeated() =>
+      $pb.PbList<AuthorizationCustomSignature>();
+  @$core.pragma('dart2js:noInline')
+  static AuthorizationCustomSignature getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AuthorizationCustomSignature>(create);
+  static AuthorizationCustomSignature? _defaultInstance;
+
+  /// Chain id (uint256, serialized big endian).
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get chainId => $_getN(0);
+  @$pb.TagNumber(1)
+  set chainId($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasChainId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChainId() => clearField(1);
+
+  /// Nonce, the nonce of authority.
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get nonce => $_getN(1);
+  @$pb.TagNumber(2)
+  set nonce($core.List<$core.int> v) {
+    $_setBytes(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasNonce() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearNonce() => clearField(2);
+
+  /// The signature, Hex-encoded.
+  @$pb.TagNumber(3)
+  $core.String get signature => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set signature($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasSignature() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSignature() => clearField(3);
 }
 
 enum SigningInput_UserOperationOneof { userOperation, userOperationV07, notSet }
@@ -1674,7 +1804,7 @@ class SigningInput extends $pb.GeneratedMessage {
     UserOperation? userOperation,
     $core.Iterable<Access>? accessList,
     UserOperationV0_7? userOperationV07,
-    Authority? eip7702Authority,
+    Authorization? eip7702Authorization,
   }) {
     final $result = create();
     if (chainId != null) {
@@ -1716,8 +1846,8 @@ class SigningInput extends $pb.GeneratedMessage {
     if (userOperationV07 != null) {
       $result.userOperationV07 = userOperationV07;
     }
-    if (eip7702Authority != null) {
-      $result.eip7702Authority = eip7702Authority;
+    if (eip7702Authorization != null) {
+      $result.eip7702Authorization = eip7702Authorization;
     }
     return $result;
   }
@@ -1768,8 +1898,8 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: Access.create)
     ..aOM<UserOperationV0_7>(13, _omitFieldNames ? '' : 'userOperationV07',
         protoName: 'user_operation_v0_7', subBuilder: UserOperationV0_7.create)
-    ..aOM<Authority>(15, _omitFieldNames ? '' : 'eip7702Authority',
-        subBuilder: Authority.create)
+    ..aOM<Authorization>(15, _omitFieldNames ? '' : 'eip7702Authorization',
+        subBuilder: Authorization.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1970,22 +2100,22 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   UserOperationV0_7 ensureUserOperationV07() => $_ensure(12);
 
-  /// A smart contract to which we’re delegating to.
+  /// EIP7702 authorization.
   /// Used in `TransactionMode::SetOp` only.
   /// Currently, we support delegation to only one authority at a time.
   @$pb.TagNumber(15)
-  Authority get eip7702Authority => $_getN(13);
+  Authorization get eip7702Authorization => $_getN(13);
   @$pb.TagNumber(15)
-  set eip7702Authority(Authority v) {
+  set eip7702Authorization(Authorization v) {
     setField(15, v);
   }
 
   @$pb.TagNumber(15)
-  $core.bool hasEip7702Authority() => $_has(13);
+  $core.bool hasEip7702Authorization() => $_has(13);
   @$pb.TagNumber(15)
-  void clearEip7702Authority() => clearField(15);
+  void clearEip7702Authorization() => clearField(15);
   @$pb.TagNumber(15)
-  Authority ensureEip7702Authority() => $_ensure(13);
+  Authorization ensureEip7702Authorization() => $_ensure(13);
 }
 
 /// Result containing the signed and encoded transaction.

@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
 #   system("make")
 
   s.name             = 'wallet_core_bindings_libs'
-  s.version          = '4.3.1'
+  s.version          = '4.3.2'
   s.summary          = 'Trust Wallet core macOS libs for wallet_core_bindings.'
   s.description      = <<-DESC
 Trust Wallet core macOS libs for wallet_core_bindings.
@@ -22,5 +22,5 @@ Trust Wallet core macOS libs for wallet_core_bindings.
   s.platform = :osx, '10.11'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   s.swift_version = '5.0'
-  s.dependency 'TrustWalletCore' ,'4.3.1'
+  s.dependency 'TrustWalletCore' ,'4.3.2'
 end

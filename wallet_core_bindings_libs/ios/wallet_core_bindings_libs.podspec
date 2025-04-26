@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
 # Run `pod lib lint wallet_core_bindings_libs.podspec` to validate before publishing.
 #
-# wallet_core_version = '4.3.1'
+# wallet_core_version = '4.3.2'
 #
 # # We cannot distribute the XCFramework alongside the library directly,
 # # so we have to fetch the correct version here.
@@ -38,7 +38,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'wallet_core_bindings_libs'
-  s.version          = '4.3.1'
+  s.version          = '4.3.2'
   s.summary          = 'Trust Wallet core iOS libs for wallet_core_bindings'
   s.description      = <<-DESC
 Trust Wallet core iOS libs for wallet_core_bindings.
@@ -51,7 +51,7 @@ Trust Wallet core iOS libs for wallet_core_bindings.
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
   #s.vendored_frameworks = 'Frameworks/*.xcframework'
-  s.dependency 'TrustWalletCore' ,'4.3.1'
+  s.dependency 'TrustWalletCore' ,'4.3.2'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
