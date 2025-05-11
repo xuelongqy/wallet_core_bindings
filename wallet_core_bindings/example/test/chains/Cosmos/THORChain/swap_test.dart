@@ -191,7 +191,7 @@ void main() {
       expect(tx.changeAddress, fromAddressDoge);
       expect(String.fromCharCodes(tx.outputOpReturn),
           '=:BNB.BUSD-BD1:bnb1s4kallxngpyspzm6nrezkml9rgyw6kxpw4fhr2:789627468:t:0');
-      expect(tx.coinType, TWCoinType.Dogecoin.coin);
+      expect(tx.coinType, TWCoinType.Dogecoin.value);
       expect(tx.privateKey.length, 0);
       expect(tx.hasPlan(), false);
 
@@ -264,7 +264,7 @@ void main() {
       expect(tx.changeAddress, fromAddressLTC);
       expect(String.fromCharCodes(tx.outputOpReturn),
           '=:BNB.BUSD-BD1:bnb1s4kallxngpyspzm6nrezkml9rgyw6kxpw4fhr2:977240514:t:0');
-      expect(tx.coinType, TWCoinType.Litecoin.coin);
+      expect(tx.coinType, TWCoinType.Litecoin.value);
       expect(tx.privateKey.length, 0);
       expect(tx.hasPlan(), false);
 
@@ -336,7 +336,7 @@ void main() {
       expect(tx.changeAddress, fromAddressBCH);
       expect(String.fromCharCodes(tx.outputOpReturn),
           '=:BNB.BUSD-BD1:bnb1s4kallxngpyspzm6nrezkml9rgyw6kxpw4fhr2:977240514:t:0');
-      expect(tx.coinType, TWCoinType.BitcoinCash.coin);
+      expect(tx.coinType, TWCoinType.BitcoinCash.value);
       expect(tx.privateKey.length, 0);
       expect(tx.hasPlan(), false);
 

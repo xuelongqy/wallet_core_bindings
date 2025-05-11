@@ -19,8 +19,8 @@ void main() {
           "dc334e7347f2f9f72fce789b11832bdf78adf0158bc6617e6d2d2a530a0d4bc6");
 
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Groestlcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(2500),
         byteFee: $fixnum.Int64(1),
         toAddress: '31inaRqambLsd9D7Ke4USZmGEVd3PHkh7P',
@@ -71,8 +71,8 @@ void main() {
           "3c3385ddc6fd95ba7282051aeb440bc75820b8c10db5c83c052d7586e3e98e84");
 
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Groestlcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(2500),
         byteFee: $fixnum.Int64(1),
         toAddress: 'grs1qw4teyraux2s77nhjdwh9ar8rl9dt7zww8r6lne',
@@ -120,8 +120,8 @@ void main() {
 
     test('SignWithError', () {
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Groestlcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(2500),
         byteFee: $fixnum.Int64(1),
         toAddress: 'grs1qw4teyraux2s77nhjdwh9ar8rl9dt7zww8r6lne',
@@ -147,8 +147,8 @@ void main() {
 
       // TX outputs
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Groestlcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(5000),
         byteFee: $fixnum.Int64(1),
         toAddress: 'Fj62rBJi8LvbmWu2jzkaUX1NFXLEqDLoZM',
@@ -205,8 +205,8 @@ void main() {
 
       // TX outputs
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Groestlcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(2500),
         byteFee: $fixnum.Int64(1),
         toAddress: '31inaRqambLsd9D7Ke4USZmGEVd3PHkh7P',
@@ -269,7 +269,7 @@ void main() {
               ),
               value: inAmount.toInt64(),
               receiverAddress: senderAddress,
-              sighashType: TWBitcoinSigHashType.All.type,
+              sighashType: TWBitcoinSigHashType.All.value,
             ),
           ],
           outputs: [
@@ -286,7 +286,7 @@ void main() {
       );
 
       final legacy = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
+        coinType: TWCoinType.Groestlcoin.value,
         signingV2: signing,
       );
 

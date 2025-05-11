@@ -87,8 +87,8 @@ void main() {
 
       // Setup input for Plan
       final signingInput = Bitcoin.SigningInput(
-        coinType: coin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: coin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(1200000),
         useMaxAmount: false,
         byteFee: $fixnum.Int64(1),
@@ -377,7 +377,7 @@ void main() {
                 vout: 0,
               ),
               value: $fixnum.Int64(ONE_BTC * 50),
-              sighashType: TWBitcoinSigHashType.All.type,
+              sighashType: TWBitcoinSigHashType.All.value,
               // Set the Alice public key as the owner of the P2PKH input.
               scriptBuilder: BitcoinV2.Input_InputBuilder(
                 p2pkh: BitcoinV2.PublicKeyOrHash(

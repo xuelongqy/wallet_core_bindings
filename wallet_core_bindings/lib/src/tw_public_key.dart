@@ -24,7 +24,7 @@ class TWPublicKey extends TWObjectFinalizable {
     TWPublicKeyType type, {
     bool attach = true,
   }) : super(
-          _publicKeyImpl.createWithData(TWData(data).pointer, type.type),
+          _publicKeyImpl.createWithData(TWData(data).pointer, type.value),
           attach: attach,
           finalizer: _twPublicKeyFinalizer,
         );
@@ -38,7 +38,7 @@ class TWPublicKey extends TWObjectFinalizable {
     TWPublicKeyType type, {
     bool attach = true,
   }) : super(
-          _publicKeyImpl.createWithData(TWData(data).pointer, type.type),
+          _publicKeyImpl.createWithData(TWData(data).pointer, type.value),
           attach: attach,
           finalizer: _twPublicKeyFinalizer,
         );
@@ -54,7 +54,7 @@ class TWPublicKey extends TWObjectFinalizable {
   }) : super(
           _publicKeyImpl.createWithData(
             TWData.createWithHexString(hex).pointer,
-            type.type,
+            type.value,
           ),
           attach: attach,
           finalizer: _twPublicKeyFinalizer,
@@ -94,14 +94,14 @@ class TWPublicKey extends TWObjectFinalizable {
   /// \param [type] type of the public key
   /// \return true if the block of data is a valid public key, false otherwise
   static bool isValid(Uint8List data, TWPublicKeyType type) =>
-      _publicKeyImpl.isValid(TWData(data).pointer, type.type);
+      _publicKeyImpl.isValid(TWData(data).pointer, type.value);
 
   /// Determines if the given public key is valid or not
   ///
   /// \param [type] type of the public key
   /// \return true if the block of data is a valid public key, false otherwise
   bool valid(TWPublicKeyType type) =>
-      _publicKeyImpl.isValid(TWData(data).pointer, type.type);
+      _publicKeyImpl.isValid(TWData(data).pointer, type.value);
 
   /// Determines if the given public key is compressed or not
   bool get isCompressed => _publicKeyImpl.isCompressed(_pointer);

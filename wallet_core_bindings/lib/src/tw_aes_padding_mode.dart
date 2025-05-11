@@ -5,12 +5,12 @@ enum TWAESPaddingMode {
   Zero(0),
   PKCS7(1);
 
-  final int mode;
+  final int value;
 
-  const TWAESPaddingMode(this.mode);
+  const TWAESPaddingMode(this.value);
 
   /// Find a padding mode enum by its value.
-  static TWAESPaddingMode find(int mode) {
-    return values.firstWhere((element) => element.mode == mode);
+  static TWAESPaddingMode find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

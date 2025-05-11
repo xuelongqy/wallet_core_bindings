@@ -681,7 +681,7 @@ void main() {
           'SWAP:THOR.RUNE:thor1tpercamkkxec0q0jk6ltdnlqvsw29guap8wmcl:');
 
       final signingInput = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(toAmount),
         byteFee: $fixnum.Int64(byteFee),
         toAddress: toAddress,

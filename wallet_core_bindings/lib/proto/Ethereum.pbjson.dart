@@ -53,6 +53,7 @@ const MessageType$json = {
     {'1': 'MessageType_typed', '2': 2},
     {'1': 'MessageType_typed_eip155', '2': 3},
     {'1': 'MessageType_immutable_x', '2': 4},
+    {'1': 'MessageType_eip7702_authorization', '2': 5},
   ],
 };
 
@@ -60,7 +61,8 @@ const MessageType$json = {
 final $typed_data.Uint8List messageTypeDescriptor = $convert.base64Decode(
     'CgtNZXNzYWdlVHlwZRIWChJNZXNzYWdlVHlwZV9sZWdhY3kQABIWChJNZXNzYWdlVHlwZV9laX'
     'AxNTUQARIVChFNZXNzYWdlVHlwZV90eXBlZBACEhwKGE1lc3NhZ2VUeXBlX3R5cGVkX2VpcDE1'
-    'NRADEhsKF01lc3NhZ2VUeXBlX2ltbXV0YWJsZV94EAQ=');
+    'NRADEhsKF01lc3NhZ2VUeXBlX2ltbXV0YWJsZV94EAQSJQohTWVzc2FnZVR5cGVfZWlwNzcwMl'
+    '9hdXRob3JpemF0aW9uEAU=');
 
 @$core.Deprecated('Use transactionDescriptor instead')
 const Transaction$json = {

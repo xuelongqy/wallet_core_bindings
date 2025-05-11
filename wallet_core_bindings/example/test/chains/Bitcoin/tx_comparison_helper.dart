@@ -38,7 +38,7 @@ Bitcoin.SigningInput buildSigningInput(
     amount: $fixnum.Int64(amount),
     byteFee: $fixnum.Int64(byteFee),
     useMaxAmount: useMaxAmount,
-    coinType: coin.coin,
+    coinType: coin.value,
   );
   if (!omitPrivateKey) {
     final utxoKey = TWPrivateKey.createWithData(TWData.createWithHexString(

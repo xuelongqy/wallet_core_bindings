@@ -12,12 +12,12 @@ enum TWPurpose {
   BIP86(86),
   BIP1852(1852);
 
-  final int purpose;
+  final int value;
 
-  const TWPurpose(this.purpose);
+  const TWPurpose(this.value);
 
   /// Find a purpose enum by its value.
-  static TWPurpose find(int purpose) {
-    return values.firstWhere((element) => element.purpose == purpose);
+  static TWPurpose find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

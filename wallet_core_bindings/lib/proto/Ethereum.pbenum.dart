@@ -71,6 +71,8 @@ class MessageType extends $pb.ProtobufEnum {
       MessageType._(3, _omitEnumNames ? '' : 'MessageType_typed_eip155');
   static const MessageType MessageType_immutable_x =
       MessageType._(4, _omitEnumNames ? '' : 'MessageType_immutable_x');
+  static const MessageType MessageType_eip7702_authorization = MessageType._(
+      5, _omitEnumNames ? '' : 'MessageType_eip7702_authorization');
 
   static const $core.List<MessageType> values = <MessageType>[
     MessageType_legacy,
@@ -78,6 +80,7 @@ class MessageType extends $pb.ProtobufEnum {
     MessageType_typed,
     MessageType_typed_eip155,
     MessageType_immutable_x,
+    MessageType_eip7702_authorization,
   ];
 
   static final $core.Map<$core.int, MessageType> _byValue =

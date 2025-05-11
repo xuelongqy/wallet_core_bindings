@@ -26,12 +26,12 @@ void main() {
       const fee = 2000000;
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'RNoSGCX8SPFscj8epDaJjqEpuZa2B5in88',
         changeAddress: 'RHoCwPc2FCQqwToYnSiAb3SrCET4zEHsbS',
-        coinType: coin.coin,
+        coinType: coin.value,
       );
 
       final hash0 = parse_hex(

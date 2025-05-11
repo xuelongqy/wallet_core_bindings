@@ -26,12 +26,12 @@ void main() {
           'e076a9146fa0b49c4fe011eeeeba6abb9ea6832d15acda1488ac');
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'EXXWKhUtcaFKVW1NeRFuqPq33zAJMtQJwR4y',
-        coinType: coin.coin,
+        coinType: coin.value,
         lockTime: 824147,
       );
 

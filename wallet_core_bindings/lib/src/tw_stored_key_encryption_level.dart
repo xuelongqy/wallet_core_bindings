@@ -14,12 +14,12 @@ enum TWStoredKeyEncryptionLevel {
   /// Standard level of encryption strength (scrypt 262k)
   Standard(3);
 
-  final int level;
+  final int value;
 
-  const TWStoredKeyEncryptionLevel(this.level);
+  const TWStoredKeyEncryptionLevel(this.value);
 
   /// Find a stored key encryption level enum by its value.
-  static TWStoredKeyEncryptionLevel find(int level) {
-    return values.firstWhere((element) => element.level == level);
+  static TWStoredKeyEncryptionLevel find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

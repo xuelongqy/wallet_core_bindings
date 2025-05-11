@@ -14,12 +14,12 @@ enum TWDerivation {
   PactusMainnet(9),
   PactusTestnet(10);
 
-  final int derivation;
+  final int value;
 
-  const TWDerivation(this.derivation);
+  const TWDerivation(this.value);
 
   /// Find a derivation enum by its value.
-  static TWDerivation find(int derivation) {
-    return values.firstWhere((element) => element.derivation == derivation);
+  static TWDerivation find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

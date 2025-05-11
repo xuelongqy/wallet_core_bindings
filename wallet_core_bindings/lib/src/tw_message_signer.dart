@@ -12,7 +12,7 @@ class TWMessageSigner {
   static Uint8List preImageHashes(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(
         _messageSignerImpl.preImageHashes(
-          coin.coin,
+          coin.value,
           TWData(input).pointer,
         ),
       ).bytes()!;
@@ -24,7 +24,7 @@ class TWMessageSigner {
   /// \return The serialized data of a `MessageSigningOutput` proto object, (e.g. `TW.Solana.Proto.MessageSigningOutput`).
   static Uint8List sign(TWCoinType coin, Uint8List input) => TWData.fromPointer(
         _messageSignerImpl.sign(
-          coin.coin,
+          coin.value,
           TWData(input).pointer,
         ),
       ).bytes()!;
@@ -36,7 +36,7 @@ class TWMessageSigner {
   /// \return whether the signature is valid.
   static bool verify(TWCoinType coin, Uint8List input) =>
       _messageSignerImpl.verify(
-        coin.coin,
+        coin.value,
         TWData(input).pointer,
       );
 }

@@ -21,12 +21,12 @@ void main() {
           toScript.data, '76a914b6adfbbf15c8f6fa53f1edb37054dce5c7c145c688ac');
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(
@@ -91,12 +91,12 @@ void main() {
           toScript.data, '76a914b6adfbbf15c8f6fa53f1edb37054dce5c7c145c688ac');
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(
@@ -163,13 +163,13 @@ void main() {
           toScript.data, '76a914b6adfbbf15c8f6fa53f1edb37054dce5c7c145c688ac');
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.AnyoneCanPay.type |
-            TWBitcoinSigHashType.Single.type,
+        hashType: TWBitcoinSigHashType.AnyoneCanPay.value |
+            TWBitcoinSigHashType.Single.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(
@@ -235,12 +235,12 @@ void main() {
           toScript.data, '76a914b6adfbbf15c8f6fa53f1edb37054dce5c7c145c688ac');
 
       final intput = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: '1G15VvshDxwFTnahZZECJfFwEkq9fP79o8',
-        coinType: coin.coin,
+        coinType: coin.value,
       );
 
       final inputData = intput.writeToBuffer();

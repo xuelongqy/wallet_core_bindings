@@ -21,12 +21,12 @@ void main() {
           "ba005cd605d8a02e3d5dfd04234cef3a3ee4f76bfbad2722d1fb5af8e12e6764");
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'Dsesp1V6DZDEtcq2behmBVKdYqKMdkh96hL',
         changeAddress: 'DsUoWCAxprdGNtKQqambFbTcSBgH1SHn9Gp',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             amount: $fixnum.Int64(utxoValue),
@@ -122,12 +122,12 @@ void main() {
       const amount = 1000000;
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'Dcur2mcGjmENx4DhNqDctW5wJCVyT3Qeqkx',
         changeAddress: 'DskhnpQqQVgoSuKeyM6Unn2CEbfaenbcJBT',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             amount: $fixnum.Int64(utxoValue),

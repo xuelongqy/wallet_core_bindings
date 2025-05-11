@@ -166,7 +166,7 @@ void main() {
       for (var td in valid_address) {
         final dec = TWSegwitAddress(td.address);
         expect(dec.witnessProgram.isNotEmpty, true);
-        expect(dec.hrp.hrp > -1, true);
+        expect(dec.hrp.value > -1, true);
 
         // recode
         final recode = dec.description;

@@ -257,27 +257,27 @@ void main() {
     test('HashTypeForCoin', () {
       expect(
         TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
-        TWBitcoinSigHashType.All.type,
+        TWBitcoinSigHashType.All.value,
       );
       expect(
         TWBitcoinScript.hashTypeForCoin(TWCoinType.Litecoin),
-        TWBitcoinSigHashType.All.type,
+        TWBitcoinSigHashType.All.value,
       );
       expect(
         TWBitcoinScript.hashTypeForCoin(TWCoinType.Zcash),
-        TWBitcoinSigHashType.All.type,
+        TWBitcoinSigHashType.All.value,
       );
       expect(
         TWBitcoinScript.hashTypeForCoin(TWCoinType.BitcoinCash),
-        TWBitcoinSigHashType.All.type | TWBitcoinSigHashType.Fork.type,
+        TWBitcoinSigHashType.All.value | TWBitcoinSigHashType.Fork.value,
       );
       expect(
         TWBitcoinScript.hashTypeForCoin(TWCoinType.ECash),
-        TWBitcoinSigHashType.All.type | TWBitcoinSigHashType.Fork.type,
+        TWBitcoinSigHashType.All.value | TWBitcoinSigHashType.Fork.value,
       );
       expect(
         TWBitcoinScript.hashTypeForCoin(TWCoinType.BitcoinGold),
-        TWBitcoinSigHashType.All.type | TWBitcoinSigHashType.ForkBTG.type,
+        TWBitcoinSigHashType.All.value | TWBitcoinSigHashType.ForkBTG.value,
       );
     });
 

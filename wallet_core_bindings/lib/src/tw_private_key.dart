@@ -74,14 +74,14 @@ class TWPrivateKey extends TWObjectFinalizable {
   /// \param [curve] Eliptic curve of the private key
   /// \return true if the private key is valid, false otherwise
   static bool isValid(Uint8List data, TWCurve curve) =>
-      _privateKeyImpl.isValid(TWData(data).pointer, curve.curve);
+      _privateKeyImpl.isValid(TWData(data).pointer, curve.value);
 
   /// Determines if the given private key is valid or not.
   ///
   /// \param [curve] Eliptic curve of the private key
   /// \return true if the private key is valid, false otherwise
   bool valid(TWCurve curve) =>
-      _privateKeyImpl.isValid(TWData(data).pointer, curve.curve);
+      _privateKeyImpl.isValid(TWData(data).pointer, curve.value);
 
   /// Convert the given private key to raw-bytes block of data
   ///
@@ -94,7 +94,7 @@ class TWPrivateKey extends TWObjectFinalizable {
   /// \param [coinType] coinType of the given private key
   /// \return Non-null pointer to the corresponding public key
   TWPublicKey getPublicKey(TWCoinType coinType) => TWPublicKey.fromPointer(
-      _privateKeyImpl.getPublicKey(_pointer, coinType.coin));
+      _privateKeyImpl.getPublicKey(_pointer, coinType.value));
 
   /// Returns the public key associated with the given pubkeyType and privateKey
   ///
@@ -102,7 +102,7 @@ class TWPrivateKey extends TWObjectFinalizable {
   /// \return Non-null pointer to the corresponding public key
   TWPublicKey getPublicKeyByType(TWPublicKeyType pubkeyType) =>
       TWPublicKey.fromPointer(
-          _privateKeyImpl.getPublicKeyByType(_pointer, pubkeyType.type));
+          _privateKeyImpl.getPublicKeyByType(_pointer, pubkeyType.value));
 
   /// Returns the Secp256k1 public key associated with the given private key
   ///
@@ -147,7 +147,7 @@ class TWPrivateKey extends TWObjectFinalizable {
   /// \param [curve] Eliptic curve
   /// \return Signature as a Non-null block of data
   Uint8List sign(Uint8List digest, TWCurve curve) => TWData.fromPointer(
-          _privateKeyImpl.sign(_pointer, TWData(digest).pointer, curve.curve))
+          _privateKeyImpl.sign(_pointer, TWData(digest).pointer, curve.value))
       .bytes()!;
 
   /// Signs a digest using ECDSA. The result is encoded with DER.

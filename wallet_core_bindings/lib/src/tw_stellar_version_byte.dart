@@ -7,12 +7,12 @@ enum TWStellarVersionByte {
   PreAuthTX(200),
   SHA256Hash(280);
 
-  final int byte;
+  final int value;
 
-  const TWStellarVersionByte(this.byte);
+  const TWStellarVersionByte(this.value);
 
   /// Find a Stellar version byte enum by its value.
-  static TWStellarVersionByte find(int byte) {
-    return values.firstWhere((element) => element.byte == byte);
+  static TWStellarVersionByte find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

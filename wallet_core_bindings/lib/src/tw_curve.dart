@@ -11,12 +11,12 @@ enum TWCurve {
   Starkex(6),
   None(7);
 
-  final int curve;
+  final int value;
 
-  const TWCurve(this.curve);
+  const TWCurve(this.value);
 
   /// Find a curve enum by its value.
   static TWCurve find(int value) {
-    return values.firstWhere((element) => element.curve == value);
+    return values.firstWhere((element) => element.value == value);
   }
 }

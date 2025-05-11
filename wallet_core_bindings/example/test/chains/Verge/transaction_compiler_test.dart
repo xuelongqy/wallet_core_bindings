@@ -21,12 +21,12 @@ void main() {
       const toAddress = "DQZboqURLgrBzBz4Kfbs3yV6fZ3DrNFRjQ";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'DCUWt5ctZcPdPMYPV2o1xK1kqv7jNwxu4h',
-        coinType: coin.coin,
+        coinType: coin.value,
         time: 1584059579,
         utxo: [
           Bitcoin.UnspentTransaction(

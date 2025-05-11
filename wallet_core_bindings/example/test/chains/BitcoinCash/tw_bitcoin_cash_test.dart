@@ -243,8 +243,8 @@ void main() {
               value: $fixnum.Int64(5151),
               // Cash address without prefix.
               receiverAddress: 'qzhlrcrcne07x94h99thved2pgzdtv8ccujjy73xya',
-              sighashType: TWBitcoinSigHashType.All.type |
-                  TWBitcoinSigHashType.Fork.type,
+              sighashType: TWBitcoinSigHashType.All.value |
+                  TWBitcoinSigHashType.Fork.value,
             ),
           ],
           outputs: [
@@ -265,7 +265,7 @@ void main() {
 
       final legacy = Bitcoin.SigningInput(
         signingV2: signing,
-        coinType: TWCoinType.BitcoinCash.coin,
+        coinType: TWCoinType.BitcoinCash.value,
       );
 
       final plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(

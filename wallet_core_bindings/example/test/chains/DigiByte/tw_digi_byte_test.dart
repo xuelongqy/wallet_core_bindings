@@ -28,8 +28,8 @@ void main() {
           'b00420bab8b663f0870ee8e46435743ba9588eb88d8d31410ed54afa67602e8d');
 
       final input = Bitcoin.SigningInput(
-        coinType: coin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: coin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'D9Gv7jWSVsS9Y5q98C79WyfEj6P2iM5Nzs',
@@ -97,8 +97,8 @@ void main() {
           'b42f799279ef32df2d8e14314025a05b0c86622aaae66fc1d8ed77a20ec3d2c5');
 
       final input = Bitcoin.SigningInput(
-        coinType: coin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: coin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'dgb1qtjgmerfqwdffyf8ghcrkgy52cghsqptynmyswu',

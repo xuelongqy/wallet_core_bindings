@@ -13,7 +13,7 @@ class TWTransactionCompiler {
   /// \return serialized data of a proto object `PreSigningOutput` includes hash.
   static Uint8List preImageHashes(TWCoinType coin, Uint8List txInputData) =>
       TWData.fromPointer(_transactionCompilerImpl.preImageHashes(
-        coin.coin,
+        coin.value,
         TWData(txInputData).pointer,
       )).bytes()!;
 
@@ -34,7 +34,7 @@ class TWTransactionCompiler {
     required List<Uint8List> publicKeys,
   }) =>
       TWData.fromPointer(_transactionCompilerImpl.compileWithSignatures(
-        coin.coin,
+        coin.value,
         TWData(txInputData).pointer,
         TWDataVector.createWithDataList(signatures).pointer,
         TWDataVector.createWithDataList(publicKeys).pointer,
@@ -60,10 +60,10 @@ class TWTransactionCompiler {
   }) =>
       TWData.fromPointer(
           _transactionCompilerImpl.compileWithSignaturesAndPubKeyType(
-        coin.coin,
+        coin.value,
         TWData(txInputData).pointer,
         TWDataVector.createWithDataList(signatures).pointer,
         TWDataVector.createWithDataList(publicKeys).pointer,
-        pubKeyType.type,
+        pubKeyType.value,
       )).bytes()!;
 }

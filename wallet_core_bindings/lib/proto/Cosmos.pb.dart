@@ -2290,6 +2290,153 @@ class Message_WasmExecuteContractGeneric extends $pb.GeneratedMessage {
   $core.List<Amount> get coins => $_getList(3);
 }
 
+/// MsgInstantiateContract defines a message for instantiating a new CosmWasm contract.
+class Message_WasmInstantiateContract extends $pb.GeneratedMessage {
+  factory Message_WasmInstantiateContract({
+    $core.String? sender,
+    $core.String? admin,
+    $fixnum.Int64? codeId,
+    $core.String? label,
+    $core.List<$core.int>? msg,
+    $core.Iterable<Amount>? initFunds,
+  }) {
+    final $result = create();
+    if (sender != null) {
+      $result.sender = sender;
+    }
+    if (admin != null) {
+      $result.admin = admin;
+    }
+    if (codeId != null) {
+      $result.codeId = codeId;
+    }
+    if (label != null) {
+      $result.label = label;
+    }
+    if (msg != null) {
+      $result.msg = msg;
+    }
+    if (initFunds != null) {
+      $result.initFunds.addAll(initFunds);
+    }
+    return $result;
+  }
+  Message_WasmInstantiateContract._() : super();
+  factory Message_WasmInstantiateContract.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Message_WasmInstantiateContract.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Message.WasmInstantiateContract',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Cosmos.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'sender')
+    ..aOS(2, _omitFieldNames ? '' : 'admin')
+    ..a<$fixnum.Int64>(3, _omitFieldNames ? '' : 'codeId', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(4, _omitFieldNames ? '' : 'label')
+    ..a<$core.List<$core.int>>(
+        5, _omitFieldNames ? '' : 'msg', $pb.PbFieldType.OY)
+    ..pc<Amount>(6, _omitFieldNames ? '' : 'initFunds', $pb.PbFieldType.PM,
+        subBuilder: Amount.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Message_WasmInstantiateContract clone() =>
+      Message_WasmInstantiateContract()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Message_WasmInstantiateContract copyWith(
+          void Function(Message_WasmInstantiateContract) updates) =>
+      super.copyWith(
+              (message) => updates(message as Message_WasmInstantiateContract))
+          as Message_WasmInstantiateContract;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Message_WasmInstantiateContract create() =>
+      Message_WasmInstantiateContract._();
+  Message_WasmInstantiateContract createEmptyInstance() => create();
+  static $pb.PbList<Message_WasmInstantiateContract> createRepeated() =>
+      $pb.PbList<Message_WasmInstantiateContract>();
+  @$core.pragma('dart2js:noInline')
+  static Message_WasmInstantiateContract getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Message_WasmInstantiateContract>(
+          create);
+  static Message_WasmInstantiateContract? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get sender => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set sender($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasSender() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSender() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get admin => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set admin($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasAdmin() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAdmin() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get codeId => $_getI64(2);
+  @$pb.TagNumber(3)
+  set codeId($fixnum.Int64 v) {
+    $_setInt64(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasCodeId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCodeId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get label => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set label($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasLabel() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLabel() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get msg => $_getN(4);
+  @$pb.TagNumber(5)
+  set msg($core.List<$core.int> v) {
+    $_setBytes(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasMsg() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMsg() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<Amount> get initFunds => $_getList(5);
+}
+
 class Message_RawJSON extends $pb.GeneratedMessage {
   factory Message_RawJSON({
     $core.String? type,
@@ -3241,6 +3388,7 @@ enum Message_MessageOneof {
   msgStrideLiquidStakingStake,
   msgStrideLiquidStakingRedeem,
   thorchainDepositMessage,
+  wasmInstantiateContractMessage,
   notSet
 }
 
@@ -3270,6 +3418,7 @@ class Message extends $pb.GeneratedMessage {
     Message_MsgStrideLiquidStakingStake? msgStrideLiquidStakingStake,
     Message_MsgStrideLiquidStakingRedeem? msgStrideLiquidStakingRedeem,
     Message_THORChainDeposit? thorchainDepositMessage,
+    Message_WasmInstantiateContract? wasmInstantiateContractMessage,
   }) {
     final $result = create();
     if (sendCoinsMessage != null) {
@@ -3341,6 +3490,9 @@ class Message extends $pb.GeneratedMessage {
     if (thorchainDepositMessage != null) {
       $result.thorchainDepositMessage = thorchainDepositMessage;
     }
+    if (wasmInstantiateContractMessage != null) {
+      $result.wasmInstantiateContractMessage = wasmInstantiateContractMessage;
+    }
     return $result;
   }
   Message._() : super();
@@ -3375,6 +3527,7 @@ class Message extends $pb.GeneratedMessage {
     21: Message_MessageOneof.msgStrideLiquidStakingStake,
     22: Message_MessageOneof.msgStrideLiquidStakingRedeem,
     23: Message_MessageOneof.thorchainDepositMessage,
+    24: Message_MessageOneof.wasmInstantiateContractMessage,
     0: Message_MessageOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -3404,7 +3557,8 @@ class Message extends $pb.GeneratedMessage {
       20,
       21,
       22,
-      23
+      23,
+      24
     ])
     ..aOM<Message_Send>(1, _omitFieldNames ? '' : 'sendCoinsMessage',
         subBuilder: Message_Send.create)
@@ -3462,6 +3616,9 @@ class Message extends $pb.GeneratedMessage {
     ..aOM<Message_THORChainDeposit>(
         23, _omitFieldNames ? '' : 'thorchainDepositMessage',
         subBuilder: Message_THORChainDeposit.create)
+    ..aOM<Message_WasmInstantiateContract>(
+        24, _omitFieldNames ? '' : 'wasmInstantiateContractMessage',
+        subBuilder: Message_WasmInstantiateContract.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -3817,6 +3974,22 @@ class Message extends $pb.GeneratedMessage {
   void clearThorchainDepositMessage() => clearField(23);
   @$pb.TagNumber(23)
   Message_THORChainDeposit ensureThorchainDepositMessage() => $_ensure(21);
+
+  @$pb.TagNumber(24)
+  Message_WasmInstantiateContract get wasmInstantiateContractMessage =>
+      $_getN(22);
+  @$pb.TagNumber(24)
+  set wasmInstantiateContractMessage(Message_WasmInstantiateContract v) {
+    setField(24, v);
+  }
+
+  @$pb.TagNumber(24)
+  $core.bool hasWasmInstantiateContractMessage() => $_has(22);
+  @$pb.TagNumber(24)
+  void clearWasmInstantiateContractMessage() => clearField(24);
+  @$pb.TagNumber(24)
+  Message_WasmInstantiateContract ensureWasmInstantiateContractMessage() =>
+      $_ensure(22);
 }
 
 /// Custom Signer info required to sign a transaction and generate a broadcast JSON message.

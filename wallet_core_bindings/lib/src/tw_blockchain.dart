@@ -61,13 +61,12 @@ enum TWBlockchain {
   Komodo(57),
   Polymesh(58);
 
-  final int blockchain;
+  final int value;
 
-  const TWBlockchain(this.blockchain);
+  const TWBlockchain(this.value);
 
   /// Find a blockchain by its value.
-  static TWBlockchain find(int blockchain) {
-    return TWBlockchain.values
-        .firstWhere((element) => element.blockchain == blockchain);
+  static TWBlockchain find(int value) {
+    return TWBlockchain.values.firstWhere((element) => element.value == value);
   }
 }

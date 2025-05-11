@@ -12,11 +12,12 @@ enum TWPublicKeyType {
   ED25519Cardano(7),
   Starkex(8);
 
-  final int type;
+  final int value;
 
-  const TWPublicKeyType(this.type);
+  const TWPublicKeyType(this.value);
 
-  static TWPublicKeyType find(int type) {
-    return values.firstWhere((element) => element.type == type);
+  /// Find a public key type enum by its value.
+  static TWPublicKeyType find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

@@ -11,7 +11,7 @@ class TWEthereumAbi {
   /// \return The serialized data of a `TW.EthereumAbi.Proto.ContractCallDecodingOutput` proto object.
   static Uint8List decodeContractCall(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(_ethereumAbiImpl.decodeContractCall(
-        coin.coin,
+        coin.value,
         TWData(input).pointer,
       )).bytes()!;
 
@@ -23,7 +23,7 @@ class TWEthereumAbi {
   static Uint8List decodeParams(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(
         _ethereumAbiImpl.decodeParams(
-          coin.coin,
+          coin.value,
           TWData(input).pointer,
         ),
       ).bytes()!;
@@ -36,7 +36,7 @@ class TWEthereumAbi {
   static Uint8List decodeValue(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(
         _ethereumAbiImpl.decodeValue(
-          coin.coin,
+          coin.value,
           TWData(input).pointer,
         ),
       ).bytes()!;
@@ -49,7 +49,7 @@ class TWEthereumAbi {
   static Uint8List encodeFunction(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(
         _ethereumAbiImpl.encodeFunction(
-          coin.coin,
+          coin.value,
           TWData(input).pointer,
         ),
       ).bytes()!;

@@ -59,12 +59,12 @@ enum TWEthereumChainID {
   Neon(245022934),
   Aurora(1313161554);
 
-  final int id;
+  final int value;
 
-  const TWEthereumChainID(this.id);
+  const TWEthereumChainID(this.value);
 
   /// Find a chain ID by its value.
-  static TWEthereumChainID find(int id) {
-    return values.firstWhere((element) => element.id == id);
+  static TWEthereumChainID find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }

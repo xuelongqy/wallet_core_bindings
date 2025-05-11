@@ -21,7 +21,7 @@ class TWAES {
       TWData(key).pointer,
       TWData(data).pointer,
       TWData(iv).pointer,
-      mode.mode,
+      mode.value,
     )).bytes();
   }
 
@@ -42,7 +42,7 @@ class TWAES {
       TWData(key).pointer,
       TWData(data).pointer,
       TWData(iv).pointer,
-      mode.mode,
+      mode.value,
     )).bytes();
   }
 

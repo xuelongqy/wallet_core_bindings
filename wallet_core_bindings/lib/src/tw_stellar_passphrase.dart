@@ -5,13 +5,13 @@ enum TWStellarPassphrase {
   Stellar(0),
   Kin(1);
 
-  final int passphrase;
+  final int value;
 
-  const TWStellarPassphrase(this.passphrase);
+  const TWStellarPassphrase(this.value);
 
   /// Find a Stellar passphrase enum by its value.
-  static TWStellarPassphrase find(int passphrase) {
-    return values.firstWhere((element) => element.passphrase == passphrase);
+  static TWStellarPassphrase find(int value) {
+    return values.firstWhere((element) => element.value == value);
   }
 }
 

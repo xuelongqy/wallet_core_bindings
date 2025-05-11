@@ -118,7 +118,7 @@ class TWBitcoinScript extends TWObjectFinalizable {
   }) : super(
           _bitcoinScriptImpl.lockScriptForAddress(
             TWString(address).pointer,
-            coin.coin,
+            coin.value,
           ),
           attach: attach,
           finalizer: _twTWBitcoinScriptFinalizer,
@@ -134,7 +134,7 @@ class TWBitcoinScript extends TWObjectFinalizable {
   }) : super(
           _bitcoinScriptImpl.lockScriptForAddressReplay(
             TWString(address).pointer,
-            coin.coin,
+            coin.value,
             TWData(blockHash).pointer,
             blockHeight,
           ),
@@ -217,7 +217,7 @@ class TWBitcoinScript extends TWObjectFinalizable {
   /// \param [coinType] coin type
   /// \return default HashType for the given coin
   static int hashTypeForCoin(TWCoinType coinType) =>
-      _bitcoinScriptImpl.hashTypeForCoin(coinType.coin);
+      _bitcoinScriptImpl.hashTypeForCoin(coinType.value);
 
   @override
   int get hashCode => _pointer.hashCode;

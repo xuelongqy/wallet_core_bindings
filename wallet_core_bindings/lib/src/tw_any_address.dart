@@ -21,7 +21,8 @@ class TWAnyAddress extends TWObjectFinalizable {
     TWCoinType coin, {
     bool attach = true,
   }) : super(
-          _anyAddressImpl.createWithString(TWString(string).pointer, coin.coin),
+          _anyAddressImpl.createWithString(
+              TWString(string).pointer, coin.value),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -38,7 +39,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createBech32(
-              TWString(string).pointer, coin.coin, TWString(hrp).pointer),
+              TWString(string).pointer, coin.value, TWString(hrp).pointer),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -55,7 +56,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createSS58(
-              TWString(string).pointer, coin.coin, ss58Prefix),
+              TWString(string).pointer, coin.value, ss58Prefix),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -69,7 +70,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     TWCoinType coin, {
     bool attach = true,
   }) : super(
-          _anyAddressImpl.createWithPublicKey(publicKey.pointer, coin.coin),
+          _anyAddressImpl.createWithPublicKey(publicKey.pointer, coin.value),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -86,7 +87,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createWithPublicKeyDerivation(
-              publicKey.pointer, coin.coin, derivation.derivation),
+              publicKey.pointer, coin.value, derivation.value),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -103,7 +104,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createBech32WithPublicKey(
-              publicKey.pointer, coin.coin, TWString(hrp).pointer),
+              publicKey.pointer, coin.value, TWString(hrp).pointer),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -120,7 +121,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createSS58WithPublicKey(
-              publicKey.pointer, coin.coin, ss58Prefix),
+              publicKey.pointer, coin.value, ss58Prefix),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -135,7 +136,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createWithPublicKeyFilecoinAddressType(
-              publicKey.pointer, filecoinAddressType.type),
+              publicKey.pointer, filecoinAddressType.value),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -151,7 +152,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _anyAddressImpl.createWithPublicKeyFiroAddressType(
-              publicKey.pointer, firoAddressType.type),
+              publicKey.pointer, firoAddressType.value),
           attach: attach,
           finalizer: _twAnyAddressFinalizer,
         );
@@ -191,7 +192,7 @@ class TWAnyAddress extends TWObjectFinalizable {
   /// \param [coin] coin type of the address.
   /// \return bool indicating if the address is valid.
   static bool isValid(String string, TWCoinType coin) =>
-      _anyAddressImpl.isValid(TWString(string).pointer, coin.coin);
+      _anyAddressImpl.isValid(TWString(string).pointer, coin.value);
 
   /// Determines if the string is a valid Any address with the given hrp.
   ///
@@ -205,7 +206,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     required String hrp,
   }) =>
       _anyAddressImpl.isValidBech32(
-          TWString(string).pointer, coin.coin, TWString(hrp).pointer);
+          TWString(string).pointer, coin.value, TWString(hrp).pointer);
 
   /// Determines if the string is a valid Any address with the given SS58 network prefix.
   ///
@@ -219,7 +220,7 @@ class TWAnyAddress extends TWObjectFinalizable {
     required int ss58Prefix,
   }) =>
       _anyAddressImpl.isValidSS58(
-          TWString(string).pointer, coin.coin, ss58Prefix);
+          TWString(string).pointer, coin.value, ss58Prefix);
 
   @override
   int get hashCode => _pointer.hashCode;

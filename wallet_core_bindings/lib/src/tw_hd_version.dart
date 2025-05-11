@@ -26,22 +26,22 @@ enum TWHDVersion {
   DGUB(49990397),
   DGPV(49988504);
 
-  final int version;
+  final int value;
 
-  const TWHDVersion(this.version);
+  const TWHDVersion(this.value);
 
   /// Find a HD version enum by its value.
   static TWHDVersion find(int value) {
-    return values.firstWhere((element) => element.version == value);
+    return values.firstWhere((element) => element.value == value);
   }
 
   /// Determine if the HD Version is public
   ///
   /// \return true if the version is public, false otherwise
-  bool get isPublic => _hdVersionImpl.isPublic(version);
+  bool get isPublic => _hdVersionImpl.isPublic(value);
 
   /// Determine if the HD Version is private
   ///
   /// \return true if the version is private, false otherwise
-  bool get isPrivate => _hdVersionImpl.isPrivate(version);
+  bool get isPrivate => _hdVersionImpl.isPrivate(value);
 }

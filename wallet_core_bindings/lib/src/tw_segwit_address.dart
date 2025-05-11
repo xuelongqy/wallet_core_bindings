@@ -39,7 +39,7 @@ class TWSegwitAddress extends TWObjectFinalizable {
     bool attach = true,
   }) : super(
           _segwitAddressImpl.createWithPublicKey(
-            hrp.hrp,
+            hrp.value,
             publicKey.pointer,
           ),
           attach: attach,

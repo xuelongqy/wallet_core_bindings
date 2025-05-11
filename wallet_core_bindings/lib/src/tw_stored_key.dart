@@ -43,7 +43,7 @@ class TWStoredKey extends TWObjectFinalizable {
             TWData(privateKey).pointer,
             TWString(name).pointer,
             TWData(password).pointer,
-            coin.coin,
+            coin.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -68,8 +68,8 @@ class TWStoredKey extends TWObjectFinalizable {
             TWData(privateKey).pointer,
             TWString(name).pointer,
             TWData(password).pointer,
-            coin.coin,
-            encryption.encryption,
+            coin.value,
+            encryption.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -93,7 +93,7 @@ class TWStoredKey extends TWObjectFinalizable {
             TWString(privateKey).pointer,
             TWString(name).pointer,
             TWData(password).pointer,
-            coin.coin,
+            coin.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -120,8 +120,8 @@ class TWStoredKey extends TWObjectFinalizable {
             TWString(privateKey).pointer,
             TWString(name).pointer,
             TWData(password).pointer,
-            coin.coin,
-            encryption.encryption,
+            coin.value,
+            encryption.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -144,7 +144,7 @@ class TWStoredKey extends TWObjectFinalizable {
             TWString(mnemonic).pointer,
             TWString(name).pointer,
             TWData(password).pointer,
-            coin.coin,
+            coin.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -169,8 +169,8 @@ class TWStoredKey extends TWObjectFinalizable {
             TWString(mnemonic).pointer,
             TWString(name).pointer,
             TWData(password).pointer,
-            coin.coin,
-            encryption.encryption,
+            coin.value,
+            encryption.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -205,7 +205,7 @@ class TWStoredKey extends TWObjectFinalizable {
           _storedKeyImpl.createLevel(
             TWString(name).pointer,
             TWData(password).pointer,
-            encryptionLevel.level,
+            encryptionLevel.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -227,8 +227,8 @@ class TWStoredKey extends TWObjectFinalizable {
           _storedKeyImpl.createLevelAndEncryption(
             TWString(name).pointer,
             TWData(password).pointer,
-            encryptionLevel.level,
-            encryption.encryption,
+            encryptionLevel.value,
+            encryption.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -271,7 +271,7 @@ class TWStoredKey extends TWObjectFinalizable {
           _storedKeyImpl.createEncryption(
             TWString(name).pointer,
             TWData(password).pointer,
-            encryption.encryption,
+            encryption.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,
@@ -312,7 +312,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \return Null pointer if the associated account is not found/not created, pointer to the account otherwise.
   TWAccount accountForCoin(TWCoinType coin, TWHDWallet wallet) =>
       TWAccount.fromPointer(
-          _storedKeyImpl.accountForCoin(_pointer, coin.coin, wallet.pointer));
+          _storedKeyImpl.accountForCoin(_pointer, coin.value, wallet.pointer));
 
   /// Returns the account for a specific coin + derivation, creating it if necessary.
   ///
@@ -327,8 +327,8 @@ class TWStoredKey extends TWObjectFinalizable {
   }) =>
       TWAccount.fromPointer(_storedKeyImpl.accountForCoinDerivation(
         _pointer,
-        coin.coin,
-        derivation.derivation,
+        coin.value,
+        derivation.value,
         wallet.pointer,
       ));
 
@@ -352,8 +352,8 @@ class TWStoredKey extends TWObjectFinalizable {
       _storedKeyImpl.addAccountDerivation(
         _pointer,
         TWString(address).pointer,
-        coin.coin,
-        derivation.derivation,
+        coin.value,
+        derivation.value,
         TWString(derivationPath).pointer,
         TWString(publicKey).pointer,
         TWString(extendedPublicKey).pointer,
@@ -378,7 +378,7 @@ class TWStoredKey extends TWObjectFinalizable {
       _storedKeyImpl.addAccount(
         _pointer,
         TWString(address).pointer,
-        coin.coin,
+        coin.value,
         TWString(derivationPath).pointer,
         TWString(publicKey).pointer,
         TWString(extendedPublicKey).pointer,
@@ -390,7 +390,7 @@ class TWStoredKey extends TWObjectFinalizable {
   void removeAccountForCoin(TWCoinType coin) =>
       _storedKeyImpl.removeAccountForCoin(
         _pointer,
-        coin.coin,
+        coin.value,
       );
 
   /// Remove the account for a specific coin with the given derivation.
@@ -401,8 +401,8 @@ class TWStoredKey extends TWObjectFinalizable {
           TWCoinType coin, TWDerivation derivation) =>
       _storedKeyImpl.removeAccountForCoinDerivation(
         _pointer,
-        coin.coin,
-        derivation.derivation,
+        coin.value,
+        derivation.value,
       );
 
   /// Remove the account for a specific coin with the given derivation path.
@@ -413,7 +413,7 @@ class TWStoredKey extends TWObjectFinalizable {
           TWCoinType coin, String derivationPath) =>
       _storedKeyImpl.removeAccountForCoinDerivationPath(
         _pointer,
-        coin.coin,
+        coin.value,
         TWString(derivationPath).pointer,
       );
 
@@ -474,7 +474,7 @@ class TWStoredKey extends TWObjectFinalizable {
       TWPrivateKey.fromPointer(
         _storedKeyImpl.privateKey(
           _pointer,
-          coin.coin,
+          coin.value,
           TWData(password).pointer,
         ),
       );
@@ -517,7 +517,7 @@ class TWStoredKey extends TWObjectFinalizable {
   /// \param [coin] Account(s) coin type to be updated
   /// \return `false` if there are no accounts associated with the given coin, true otherwise
   bool updateAddress(TWCoinType coin) =>
-      _storedKeyImpl.updateAddress(_pointer, coin.coin);
+      _storedKeyImpl.updateAddress(_pointer, coin.value);
 
   /// Retrieve stored key encoding parameters, as JSON string.
   ///

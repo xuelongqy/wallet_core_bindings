@@ -65,19 +65,19 @@ enum TWHRP {
   Comdex,
   Neutron;
 
-  int get hrp => values.indexOf(this);
+  int get value => values.indexOf(this);
 
   /// Find a hrp enum by its value.
-  static TWHRP find(int hrp) {
-    if (values.length <= hrp) {
+  static TWHRP find(int value) {
+    if (values.length <= value) {
       return TWHRP.Unknown;
     }
-    return values[hrp];
+    return values[value];
   }
 
   static TWHRP forString(String string) {
     return find(_hrpImpl.hrpForString(string));
   }
 
-  String? get string => _hrpImpl.stringForHRP(hrp);
+  String? get string => _hrpImpl.stringForHRP(value);
 }

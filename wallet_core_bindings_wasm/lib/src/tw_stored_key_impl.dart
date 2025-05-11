@@ -165,7 +165,8 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
     if (!file.existsSync()) {
       return 0;
     }
-    return importJSON(TWString(file.readAsStringSync()).pointer);
+    final json = file.readAsStringSync();
+    return importJSON(TWData(Uint8List.fromList(json.codeUnits)).pointer);
     // final func = wasm.getFunction('TWStoredKeyLoad')!;
     // return func([path]).first as int;
   }

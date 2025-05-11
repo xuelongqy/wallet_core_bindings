@@ -10,7 +10,7 @@ class TWEthereumRlp {
   /// \return serialized `EthereumRlp::Proto::EncodingOutput`.
   static Uint8List encode(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(_ethereumRlpImpl.encode(
-        coin.coin,
+        coin.value,
         TWData(input).pointer,
       )).bytes()!;
 }

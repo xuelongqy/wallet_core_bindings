@@ -17,8 +17,8 @@ void main() {
           "3c3385ddc6fd95ba7282051aeb440bc75820b8c10db5c83c052d7586e3e98e84");
 
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Groestlcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Groestlcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(2500),
         byteFee: $fixnum.Int64(1),
         toAddress: 'grs1qw4teyraux2s77nhjdwh9ar8rl9dt7zww8r6lne',

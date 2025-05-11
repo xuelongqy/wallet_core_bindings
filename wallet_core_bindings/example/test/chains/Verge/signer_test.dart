@@ -17,12 +17,12 @@ void main() {
       const toAddress = "DQYMMpqPrnWYZaikKGTQqk5ydUaQw8nkdD";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'DAkEo5pNELZav7MRwBfEwHRG1aChgSUw6c',
-        coinType: coin.coin,
+        coinType: coin.value,
         time: 1656474580,
         utxo: [
           Bitcoin.UnspentTransaction(
@@ -72,13 +72,13 @@ void main() {
       const toAddress = "DQYMMpqPrnWYZaikKGTQqk5ydUaQw8nkdD";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.AnyoneCanPay.type |
-            TWBitcoinSigHashType.Single.type,
+        hashType: TWBitcoinSigHashType.AnyoneCanPay.value |
+            TWBitcoinSigHashType.Single.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'DAkEo5pNELZav7MRwBfEwHRG1aChgSUw6c',
-        coinType: coin.coin,
+        coinType: coin.value,
         time: 1656474580,
         utxo: [
           Bitcoin.UnspentTransaction(
@@ -144,12 +144,12 @@ void main() {
       const toAddress = "DQYMMpqPrnWYZaikKGTQqk5ydUaQw8nkdD";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'DAkEo5pNELZav7MRwBfEwHRG1aChgSUw6c',
-        coinType: coin.coin,
+        coinType: coin.value,
         time: 1656474580,
         utxo: [
           Bitcoin.UnspentTransaction(
@@ -197,12 +197,12 @@ void main() {
       const toAddress = "DQYMMpqPrnWYZaikKGTQqk5ydUaQw8nkdD";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'DAkEo5pNELZav7MRwBfEwHRG1aChgSUw6c',
-        coinType: coin.coin,
+        coinType: coin.value,
         time: 1656474580,
       );
 

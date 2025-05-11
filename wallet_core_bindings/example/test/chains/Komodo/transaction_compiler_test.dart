@@ -24,11 +24,11 @@ void main() {
       );
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(

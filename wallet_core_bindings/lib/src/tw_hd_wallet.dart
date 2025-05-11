@@ -118,7 +118,7 @@ class TWHDWallet extends TWObjectFinalizable {
   ///
   /// \param [curve]  a curve
   TWPrivateKey getMasterKey(TWCurve curve) => TWPrivateKey.fromPointer(
-      _hdWalletImpl.getMasterKey(_pointer, curve.curve));
+      _hdWalletImpl.getMasterKey(_pointer, curve.value));
 
   /// Generates the default private key for the specified coin, using default derivation.
   ///
@@ -127,16 +127,16 @@ class TWHDWallet extends TWObjectFinalizable {
   /// \param [coin] a coin type
   /// \return return the default private key for the specified coin
   TWPrivateKey getKeyForCoin(TWCoinType coin) => TWPrivateKey.fromPointer(
-      _hdWalletImpl.getKeyForCoin(_pointer, coin.coin));
+      _hdWalletImpl.getKeyForCoin(_pointer, coin.value));
 
   /// Generates the default address for the specified coin (without exposing intermediary private key), default derivation.
   ///
   /// \see TWHDWalletGetAddressDerivation
   /// \param [coin] a coin type
   /// \return return the default address for the specified coin as a non-null TWString
-  String getAddressForCoin(TWCoinType coin) =>
-      TWString.fromPointer(_hdWalletImpl.getAddressForCoin(_pointer, coin.coin))
-          .value!;
+  String getAddressForCoin(TWCoinType coin) => TWString.fromPointer(
+          _hdWalletImpl.getAddressForCoin(_pointer, coin.value))
+      .value!;
 
   /// Generates the default address for the specified coin and derivation (without exposing intermediary private key).
   ///
@@ -146,7 +146,7 @@ class TWHDWallet extends TWObjectFinalizable {
   /// \return return the default address for the specified coin as a non-null TWString
   String getAddressDerivation(TWCoinType coin, TWDerivation derivation) =>
       TWString.fromPointer(_hdWalletImpl.getAddressDerivation(
-              _pointer, coin.coin, derivation.derivation))
+              _pointer, coin.value, derivation.value))
           .value!;
 
   /// Generates the private key for the specified derivation path.
@@ -159,7 +159,7 @@ class TWHDWallet extends TWObjectFinalizable {
   TWPrivateKey getKey(TWCoinType coin, String derivationPath) =>
       TWPrivateKey.fromPointer(_hdWalletImpl.getKey(
         _pointer,
-        coin.coin,
+        coin.value,
         TWString(derivationPath).pointer,
       ));
 
@@ -173,8 +173,8 @@ class TWHDWallet extends TWObjectFinalizable {
   TWPrivateKey getKeyDerivation(TWCoinType coin, TWDerivation derivation) =>
       TWPrivateKey.fromPointer(_hdWalletImpl.getKeyDerivation(
         _pointer,
-        coin.coin,
-        derivation.derivation,
+        coin.value,
+        derivation.value,
       ));
 
   /// Generates the private key for the specified derivation path and curve.
@@ -185,7 +185,7 @@ class TWHDWallet extends TWObjectFinalizable {
   TWPrivateKey getKeyByCurve(TWCurve curve, String derivationPath) =>
       TWPrivateKey.fromPointer(_hdWalletImpl.getKeyByCurve(
         _pointer,
-        curve.curve,
+        curve.value,
         TWString(derivationPath).pointer,
       ));
 
@@ -206,7 +206,7 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWPrivateKey.fromPointer(_hdWalletImpl.getDerivedKey(
         _pointer,
-        coin.coin,
+        coin.value,
         account,
         change,
         address,
@@ -225,9 +225,9 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWString.fromPointer(_hdWalletImpl.getExtendedPrivateKey(
         _pointer,
-        purpose.purpose,
-        coin.coin,
-        version.version,
+        purpose.value,
+        coin.value,
+        version.value,
       )).value!;
 
   /// Returns the extended public key (for default 0 account).
@@ -243,9 +243,9 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWString.fromPointer(_hdWalletImpl.getExtendedPublicKey(
         _pointer,
-        purpose.purpose,
-        coin.coin,
-        version.version,
+        purpose.value,
+        coin.value,
+        version.value,
       )).value!;
 
   /// Returns the extended private key, for custom account.
@@ -265,10 +265,10 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWString.fromPointer(_hdWalletImpl.getExtendedPrivateKeyAccount(
         _pointer,
-        purpose.purpose,
-        coin.coin,
-        derivation.derivation,
-        version.version,
+        purpose.value,
+        coin.value,
+        derivation.value,
+        version.value,
         account,
       )).value!;
 
@@ -289,10 +289,10 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWString.fromPointer(_hdWalletImpl.getExtendedPublicKeyAccount(
         _pointer,
-        purpose.purpose,
-        coin.coin,
-        derivation.derivation,
-        version.version,
+        purpose.value,
+        coin.value,
+        derivation.value,
+        version.value,
         account,
       )).value!;
 
@@ -311,10 +311,10 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWString.fromPointer(_hdWalletImpl.getExtendedPrivateKeyDerivation(
         _pointer,
-        purpose.purpose,
-        coin.coin,
-        derivation.derivation,
-        version.version,
+        purpose.value,
+        coin.value,
+        derivation.value,
+        version.value,
       )).value!;
 
   /// Returns the extended public key (for default 0 account with derivation).
@@ -332,10 +332,10 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWString.fromPointer(_hdWalletImpl.getExtendedPublicKeyDerivation(
         _pointer,
-        purpose.purpose,
-        coin.coin,
-        derivation.derivation,
-        version.version,
+        purpose.value,
+        coin.value,
+        derivation.value,
+        version.value,
       )).value!;
 
   /// Computes the public key from an extended public key representation.
@@ -351,7 +351,7 @@ class TWHDWallet extends TWObjectFinalizable {
   }) =>
       TWPublicKey.fromPointer(_hdWalletImpl.getPublicKeyFromExtended(
         TWString(extended).pointer,
-        coin.coin,
+        coin.value,
         TWString(derivationPath).pointer,
       ));
 }

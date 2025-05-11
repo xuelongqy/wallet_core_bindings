@@ -14,12 +14,12 @@ Bitcoin.SigningInput createInput() {
   const amount = 10000000;
 
   return Bitcoin.SigningInput(
-    hashType: TWBitcoinSigHashType.All.type,
+    hashType: TWBitcoinSigHashType.All.value,
     amount: $fixnum.Int64(amount),
     byteFee: $fixnum.Int64(1),
     toAddress: 'Dsesp1V6DZDEtcq2behmBVKdYqKMdkh96hL',
     changeAddress: 'DsUoWCAxprdGNtKQqambFbTcSBgH1SHn9Gp',
-    coinType: TWCoinType.Decred.coin,
+    coinType: TWCoinType.Decred.value,
     utxo: [
       Bitcoin.UnspentTransaction(
         amount: $fixnum.Int64(utxoValue),
@@ -143,7 +143,7 @@ void main() {
               ),
               value: inAmount.toInt64(),
               receiverAddress: senderAddress,
-              sighashType: TWBitcoinSigHashType.All.type,
+              sighashType: TWBitcoinSigHashType.All.value,
             ),
           ],
           outputs: [
@@ -165,7 +165,7 @@ void main() {
       );
 
       final legcy = Bitcoin.SigningInput(
-        coinType: TWCoinType.Decred.coin,
+        coinType: TWCoinType.Decred.value,
         signingV2: signing,
       );
 

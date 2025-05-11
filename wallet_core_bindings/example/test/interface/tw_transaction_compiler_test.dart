@@ -314,8 +314,8 @@ void main() {
 
       // Setup input for Plan
       final signingInput = Bitcoin.SigningInput(
-        coinType: coin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: coin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(1200000),
         useMaxAmount: false,
         byteFee: $fixnum.Int64(1),

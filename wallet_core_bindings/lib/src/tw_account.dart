@@ -32,8 +32,8 @@ class TWAccount extends TWObjectFinalizable {
   }) : super(
           _accountImpl.create(
             TWString(address).pointer,
-            coin.coin,
-            derivation.derivation,
+            coin.value,
+            derivation.value,
             TWString(derivationPath).pointer,
             TWString(publicKey).pointer,
             TWString(extendedPublicKey).pointer,

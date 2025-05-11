@@ -66,7 +66,7 @@ Bitcoin.SigningInput buildInputP2PKH([bool omitKey = false]) {
     byteFee: $fixnum.Int64(1),
     toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
     changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
-    coinType: TWCoinType.Bitcoin.coin,
+    coinType: TWCoinType.Bitcoin.value,
     privateKey: omitKey ? null : [utxoKey0.data, utxoKey1.data],
     utxo: [utxo0, utxo1],
   );
@@ -84,13 +84,13 @@ Bitcoin.SigningInput buildInputP2WPKH(
 
   // Setup input
   final input = Bitcoin.SigningInput(
-    hashType: hashType.type,
+    hashType: hashType.value,
     amount: $fixnum.Int64(amount),
     useMaxAmount: useMaxAmount,
     byteFee: $fixnum.Int64(1),
     toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
     changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
-    coinType: TWCoinType.Bitcoin.coin,
+    coinType: TWCoinType.Bitcoin.value,
   );
 
   final utxoKey0 = TWPrivateKey.createWithData(TWData.createWithHexString(
@@ -204,7 +204,7 @@ Bitcoin.SigningInput buildInputP2SH_P2WPKH(
     byteFee: $fixnum.Int64(1),
     toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
     changeAddress: '1FQc5LdgGHMHEN9nwkjmz6tWkxhPpxBvBU',
-    coinType: TWCoinType.Bitcoin.coin,
+    coinType: TWCoinType.Bitcoin.value,
   );
 
   final utxoKey0 = TWPrivateKey.createWithHexString(
@@ -278,7 +278,7 @@ void main() {
         byteFee: $fixnum.Int64(27),
         toAddress: 'bc1qvrt7ukvhvmdny0a3j9k8l8jasx92lrqm30t2u2',
         changeAddress: 'bc1qvrt7ukvhvmdny0a3j9k8l8jasx92lrqm30t2u2',
-        coinType: TWCoinType.Bitcoin.coin,
+        coinType: TWCoinType.Bitcoin.value,
         fixedDustThreshold: $fixnum.Int64(segwitDustAmount),
         privateKey: [myPrivateKey.data],
         scripts: {
@@ -342,7 +342,7 @@ void main() {
 
       // Setup input
       final signingInput = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(toAmount),
         byteFee: $fixnum.Int64(byteFee),
         toAddress: toAddress,
@@ -406,7 +406,7 @@ void main() {
       const byteFee = 6;
 
       final signingInput = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(toAmount),
         byteFee: $fixnum.Int64(byteFee),
         toAddress: toAddress,
@@ -463,7 +463,7 @@ void main() {
       const byteFee = 6;
 
       final signingInput = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(toAmount),
         byteFee: $fixnum.Int64(byteFee),
         toAddress: toAddress,
@@ -557,8 +557,8 @@ void main() {
       const change = 0;
 
       final signingInput = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Bitcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(initialAmount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'bc1q2dsdlq3343vk29runkgv4yc292hmq53jedfjmp',
@@ -637,7 +637,7 @@ void main() {
                   pubkey: pubKey.data,
                 ),
               ),
-              sighashType: TWBitcoinSigHashType.All.type,
+              sighashType: TWBitcoinSigHashType.All.value,
             ),
           ],
           outputs: [
@@ -699,8 +699,8 @@ void main() {
       const availableAmount = 10189534;
 
       final signingInput = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Bitcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(sendAmount),
         byteFee: $fixnum.Int64(1),
         toAddress: 'bc1q2dsdlq3343vk29runkgv4yc292hmq53jedfjmp',
@@ -774,8 +774,8 @@ void main() {
       const sendAmount = 28235 - dustChange;
 
       final signingInput = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Bitcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         byteFee: $fixnum.Int64(33),
         amount: $fixnum.Int64(sendAmount),
         toAddress: 'bc1q2dsdlq3343vk29runkgv4yc292hmq53jedfjmp',
@@ -866,8 +866,8 @@ void main() {
       const sendAmount = 25620;
 
       final signingInput = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Bitcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         byteFee: $fixnum.Int64(33),
         amount: $fixnum.Int64(sendAmount),
         toAddress: 'bc1q2dsdlq3343vk29runkgv4yc292hmq53jedfjmp',
@@ -940,8 +940,8 @@ void main() {
       const dustAmount = 546;
 
       final signingInput = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: TWCoinType.Bitcoin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         byteFee: $fixnum.Int64(15),
         amount: $fixnum.Int64(sendAmount),
         toAddress: zetaTssAddress,
@@ -1066,7 +1066,7 @@ void main() {
       // https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki#native-p2wpkh
       const amount = 112340000;
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         // 0x06B22C20
         byteFee: $fixnum.Int64(20),
@@ -1436,7 +1436,7 @@ void main() {
 
     test('SignP2WSH_HashNone', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.None.type);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.None.value);
 
       {
         // test plan (but do not reuse plan result)
@@ -1484,7 +1484,7 @@ void main() {
 
     test('SignP2WSH_HashSingle', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.Single.type);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.Single.value);
 
       {
         // test plan (but do not reuse plan result)
@@ -1532,7 +1532,7 @@ void main() {
 
     test('SignP2WSH_HashAnyoneCanPay', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.AnyoneCanPay.type);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.AnyoneCanPay.value);
 
       {
         // test plan (but do not reuse plan result)
@@ -1580,7 +1580,7 @@ void main() {
 
     test('SignP2WSH_NegativeMissingScript', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type, true);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.value, true);
 
       {
         // test plan (but do not reuse plan result)
@@ -1601,7 +1601,8 @@ void main() {
 
     test('SignP2WSH_NegativeMissingKeys', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type, false, true);
+      final input =
+          buildInputP2WSH(TWBitcoinSigHashType.All.value, false, true);
 
       {
         // test plan (but do not reuse plan result)
@@ -1622,7 +1623,7 @@ void main() {
 
     test('SignP2WSH_NegativePlanWithError', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.value);
       input.plan = Bitcoin.TransactionPlan.fromBuffer(TWAnySigner.plan(
         input.writeToBuffer(),
         TWCoinType.Bitcoin,
@@ -1639,7 +1640,7 @@ void main() {
 
     test('SignP2WSH_NegativeNoUTXOs', () {
       // Setup input
-      final input = buildInputP2WSH(TWBitcoinSigHashType.All.type);
+      final input = buildInputP2WSH(TWBitcoinSigHashType.All.value);
       input.utxo.clear();
       expect(input.utxo.length, 0);
 
@@ -1904,7 +1905,7 @@ void main() {
 
       // Setup input
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(335790000),
         byteFee: $fixnum.Int64(1),
         toAddress: '1Bp9U1ogV3A14FMvKbRJms7ctyso4Z4Tcx',
@@ -1950,7 +1951,7 @@ void main() {
 
       // Setup input
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(335790000),
         byteFee: $fixnum.Int64(1),
         toAddress: 'THIS-IS-NOT-A-BITCOIN-ADDRESS',
@@ -2049,7 +2050,7 @@ void main() {
         input.utxo.add(utxo);
       }
 
-      input.coinType = TWCoinType.Bitcoin.coin;
+      input.coinType = TWCoinType.Bitcoin.value;
       input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin);
       input.useMaxAmount = true;
       input.amount = $fixnum.Int64(2000000);
@@ -2105,7 +2106,7 @@ void main() {
 
       // Setup input
       final input = Bitcoin.SigningInput(
-        coinType: coin.coin,
+        coinType: coin.value,
         hashType: TWBitcoinScript.hashTypeForCoin(coin),
         amount: $fixnum.Int64(3899774),
         useMaxAmount: true,
@@ -2189,7 +2190,7 @@ void main() {
 
       // Setup input for Plan
       final input = Bitcoin.SigningInput(
-        coinType: coin.coin,
+        coinType: coin.value,
         hashType: TWBitcoinScript.hashTypeForCoin(coin),
         amount: $fixnum.Int64(1200000),
         useMaxAmount: false,
@@ -2303,7 +2304,7 @@ void main() {
       }
       expect(utxoSum, 1202000);
 
-      input.coinType = TWCoinType.Bitcoin.coin;
+      input.coinType = TWCoinType.Bitcoin.value;
       input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin);
       input.useMaxAmount = false;
       input.amount = $fixnum.Int64(300000);
@@ -2380,7 +2381,7 @@ void main() {
       }
       expect(utxoSum, 22010000);
 
-      input.coinType = TWCoinType.Bitcoin.coin;
+      input.coinType = TWCoinType.Bitcoin.value;
       input.hashType = TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin);
       input.useMaxAmount = false;
       input.amount = $fixnum.Int64(2000000);
@@ -2437,7 +2438,7 @@ void main() {
 
       // Setup input for Plan
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
+        coinType: TWCoinType.Bitcoin.value,
         hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
         amount: $fixnum.Int64(26972),
         useMaxAmount: true,
@@ -2503,7 +2504,7 @@ void main() {
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: ownAddress,
-        coinType: coin.coin,
+        coinType: coin.value,
       );
 
       final utxoKey0 = TWPrivateKey.createWithHexString(privateKey);
@@ -2605,7 +2606,7 @@ void main() {
           'SWAP:THOR.RUNE:thor1tpercamkkxec0q0jk6ltdnlqvsw29guap8wmcl:');
 
       final input = Bitcoin.SigningInput(
-        coinType: TWCoinType.Bitcoin.coin,
+        coinType: TWCoinType.Bitcoin.value,
         hashType: TWBitcoinScript.hashTypeForCoin(TWCoinType.Bitcoin),
         amount: $fixnum.Int64(toAmount),
         byteFee: $fixnum.Int64(byteFee),

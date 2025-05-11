@@ -11,7 +11,7 @@ class TWTransactionDecoder {
   /// \return serialized protobuf message specific for the given coin.
   static Uint8List decode(TWCoinType coinType, Uint8List encodedTx) {
     return TWData.fromPointer(_transactionDecoderImpl.decode(
-      coinType.coin,
+      coinType.value,
       TWData(encodedTx).pointer,
     )).bytes()!;
   }

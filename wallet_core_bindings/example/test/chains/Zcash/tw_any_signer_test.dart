@@ -51,7 +51,7 @@ void main() {
               ),
               value: $fixnum.Int64(inAmount),
               receiverAddress: senderAddress,
-              sighashType: TWBitcoinSigHashType.All.type,
+              sighashType: TWBitcoinSigHashType.All.value,
             ),
           ],
           outputs: [
@@ -64,7 +64,7 @@ void main() {
       );
 
       final legacy = Bitcoin.SigningInput(
-        coinType: coin.coin,
+        coinType: coin.value,
         signingV2: signing,
       );
 

@@ -12,7 +12,7 @@ class TWWalletConnectRequest {
   static Uint8List parse(TWCoinType coin, Uint8List input) =>
       TWData.fromPointer(
         _walletConnectRequestImpl.parse(
-          coin.coin,
+          coin.value,
           TWData(input).pointer,
         ),
       ).bytes()!;

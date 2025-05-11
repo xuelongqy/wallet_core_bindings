@@ -30,12 +30,12 @@ void main() {
       const sblockHeight = 1163438;
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: 'zncug4MEDrunR5WgdWfGB1t9Bjp8RCpKxA6',
-        coinType: coin.coin,
+        coinType: coin.value,
         lockTime: 1163772,
         utxo: [
           Bitcoin.UnspentTransaction(

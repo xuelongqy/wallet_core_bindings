@@ -13,7 +13,7 @@ void main() {
       final path = TWDerivationPath.createWithString(derivationPath);
 
       expect(5, path.indicesCount);
-      expect(TWPurpose.BIP84.purpose, path.purpose);
+      expect(TWPurpose.BIP84.value, path.purpose);
       expect(1, path.coin);
       expect(2, path.account);
       expect(3, path.change);
@@ -24,7 +24,7 @@ void main() {
       final index3 = path.indexAt(3);
 
       expect(0, path.indexAt(10).pointer);
-      expect(TWPurpose.BIP84.purpose, index0.value);
+      expect(TWPurpose.BIP84.value, index0.value);
       expect(index0.hardened, true);
 
       expect(3, index3.value);
@@ -34,7 +34,7 @@ void main() {
       final path2 = TWDerivationPath.createWithString("m/44'/501'");
 
       expect(2, path2.indicesCount);
-      expect(TWPurpose.BIP44.purpose, path2.purpose);
+      expect(TWPurpose.BIP44.value, path2.purpose);
       expect(501, path2.coin);
       expect(0, path2.account);
       expect(0, path2.change);
@@ -43,7 +43,7 @@ void main() {
 
     test('CreateWithCoin', () {
       final path = TWDerivationPath(
-        purpose: TWPurpose.BIP44.purpose,
+        purpose: TWPurpose.BIP44.value,
         coin: 60,
         account: 0,
         change: 0,
@@ -51,7 +51,7 @@ void main() {
       );
 
       expect(5, path.indicesCount);
-      expect(TWPurpose.BIP44.purpose, path.purpose);
+      expect(TWPurpose.BIP44.value, path.purpose);
       expect(60, path.coin);
       expect(0, path.account);
       expect(0, path.change);

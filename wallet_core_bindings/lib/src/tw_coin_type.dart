@@ -166,55 +166,55 @@ enum TWCoinType {
   Sonic(10000146),
   Polymesh(595);
 
-  final int coin;
+  final int value;
 
-  const TWCoinType(this.coin);
+  const TWCoinType(this.value);
 
   /// Find a coin type by its value.
-  static TWCoinType find(int coin) {
-    return TWCoinType.values.firstWhere((element) => element.coin == coin);
+  static TWCoinType find(int value) {
+    return TWCoinType.values.firstWhere((element) => element.value == value);
   }
 
   /// Returns the blockchain for a coin type.
   ///
   /// \return blockchain associated to the given coin type
   TWBlockchain get blockchain =>
-      TWBlockchain.find(_coinTypeImpl.blockchain(coin));
+      TWBlockchain.find(_coinTypeImpl.blockchain(value));
 
   /// Returns the purpose for a coin type.
   ///
   /// \return purpose associated to the given coin type
-  TWPurpose get purpose => TWPurpose.find(_coinTypeImpl.purpose(coin));
+  TWPurpose get purpose => TWPurpose.find(_coinTypeImpl.purpose(value));
 
   /// Returns the curve that should be used for a coin type.
   ///
   /// \return curve that should be used for the given coin type
-  TWCurve get curve => TWCurve.find(_coinTypeImpl.curve(coin));
+  TWCurve get curve => TWCurve.find(_coinTypeImpl.curve(value));
 
   /// Returns the xpub HD version that should be used for a coin type.
   ///
   /// \return xpub HD version that should be used for the given coin type
   TWHDVersion get xpubVersion =>
-      TWHDVersion.find(_coinTypeImpl.xpubVersion(coin));
+      TWHDVersion.find(_coinTypeImpl.xpubVersion(value));
 
   /// Returns the xprv HD version that should be used for a coin type.
   ///
   /// \return the xprv HD version that should be used for the given coin type.
   TWHDVersion get xprvVersion =>
-      TWHDVersion.find(_coinTypeImpl.xprvVersion(coin));
+      TWHDVersion.find(_coinTypeImpl.xprvVersion(value));
 
   /// Validates an address string.
   ///
   /// \param [address] A public address
   /// \return true if the address is a valid public address of the given coin, false otherwise.
   bool validate(String address) =>
-      _coinTypeImpl.validate(coin, TWString(address).pointer);
+      _coinTypeImpl.validate(value, TWString(address).pointer);
 
   /// Returns the default derivation path for a particular coin.
   ///
   /// \return the default derivation path for the given coin type.
   String get derivationPath =>
-      TWString.fromPointer(_coinTypeImpl.derivationPath(coin)).value!;
+      TWString.fromPointer(_coinTypeImpl.derivationPath(value)).value!;
 
   /// Returns the derivation path for a particular coin with the explicit given derivation.
   ///
@@ -222,7 +222,7 @@ enum TWCoinType {
   /// \return the derivation path for the given coin with the explicit given derivation
   String derivationPathWithDerivation(TWDerivation derivation) =>
       TWString.fromPointer(_coinTypeImpl.derivationPathWithDerivation(
-              coin, derivation.derivation))
+              value, derivation.value))
           .value!;
 
   /// Derives the address for a particular coin from the private key.
@@ -230,7 +230,7 @@ enum TWCoinType {
   /// \param [privateKey] A valid private key
   /// \return Derived address for the given coin from the private key.
   String deriveAddress(TWPrivateKey privateKey) => TWString.fromPointer(
-          _coinTypeImpl.deriveAddress(coin, privateKey.pointer))
+          _coinTypeImpl.deriveAddress(value, privateKey.pointer))
       .value!;
 
   /// Derives the address for a particular coin from the public key.
@@ -238,8 +238,8 @@ enum TWCoinType {
   /// \param [publicKey] A valid public key
   /// \return Derived address for the given coin from the public key.
   String deriveAddressFromPublicKey(TWPublicKey publicKey) =>
-      TWString.fromPointer(
-              _coinTypeImpl.deriveAddressFromPublicKey(coin, publicKey.pointer))
+      TWString.fromPointer(_coinTypeImpl.deriveAddressFromPublicKey(
+              value, publicKey.pointer))
           .value!;
 
   /// Derives the address for a particular coin from the public key with the derivation.
@@ -247,53 +247,53 @@ enum TWCoinType {
           TWPublicKey publicKey, TWDerivation derivation) =>
       TWString.fromPointer(
           _coinTypeImpl.deriveAddressFromPublicKeyAndDerivation(
-        coin,
+        value,
         publicKey.pointer,
-        derivation.derivation,
+        derivation.value,
       )).value!;
 
   /// HRP for this coin type
   ///
   /// \return HRP of the given coin type.
-  TWHRP get hrp => TWHRP.find(_coinTypeImpl.hrp(coin));
+  TWHRP get hrp => TWHRP.find(_coinTypeImpl.hrp(value));
 
   /// P2PKH prefix for this coin type
   ///
   /// \return P2PKH prefix for the given coin type
-  int get p2pkhPrefix => _coinTypeImpl.p2pkhPrefix(coin);
+  int get p2pkhPrefix => _coinTypeImpl.p2pkhPrefix(value);
 
   /// P2SH prefix for this coin type
   ///
   /// \return P2SH prefix for the given coin type
-  int get p2shPrefix => _coinTypeImpl.p2shPrefix(coin);
+  int get p2shPrefix => _coinTypeImpl.p2shPrefix(value);
 
   /// Static prefix for this coin type
   ///
   /// \return Static prefix for the given coin type
-  int get staticPrefix => _coinTypeImpl.staticPrefix(coin);
+  int get staticPrefix => _coinTypeImpl.staticPrefix(value);
 
   /// ChainID for this coin type.
   ///
   /// \return ChainID for the given coin type.
   /// \note Caller must free returned object.
   String get chainId =>
-      TWString.fromPointer(_coinTypeImpl.chainId(coin)).value!;
+      TWString.fromPointer(_coinTypeImpl.chainId(value)).value!;
 
   /// SLIP-0044 id for this coin type
   ///
   /// \return SLIP-0044 id for the given coin type
-  int get slip44Id => _coinTypeImpl.slip44Id(coin);
+  int get slip44Id => _coinTypeImpl.slip44Id(value);
 
   /// SS58Prefix for this coin type
   ///
-  /// \param [coin] A coin type
+  /// \param [value] A coin type
   /// \return SS58Prefix for the given coin type
-  int get ss58Prefix => _coinTypeImpl.ss58Prefix(coin);
+  int get ss58Prefix => _coinTypeImpl.ss58Prefix(value);
 
   /// public key type for this coin type
   ///
-  /// \param [coin] A coin type
+  /// \param [value] A coin type
   /// \return public key type for the given coin type
   TWPublicKeyType get publicKeyType =>
-      TWPublicKeyType.find(_coinTypeImpl.publicKeyType(coin));
+      TWPublicKeyType.find(_coinTypeImpl.publicKeyType(value));
 }

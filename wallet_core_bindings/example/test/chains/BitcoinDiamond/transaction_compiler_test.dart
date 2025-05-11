@@ -26,12 +26,12 @@ void main() {
           toScript.data, 'a914589133651fd11901381ecb4d3beef58bc28ba2e787');
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
         changeAddress: '15ehpdrZqfZ5rj2e4T4hZKMi3kA8qdSyQu',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(

@@ -18,11 +18,11 @@ void main() {
       const fee = 6000;
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: 't1QahNjDdibyE4EdYkawUSKBBcVTSqv64CS',
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(
@@ -91,11 +91,11 @@ void main() {
       const toAddress = "t1biXYN8wJahR76SqZTe1LBzTLf3JAsmT93";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
-        coinType: coin.coin,
+        coinType: coin.value,
         utxo: [
           Bitcoin.UnspentTransaction(
             outPoint: Bitcoin.OutPoint(
@@ -153,8 +153,8 @@ void main() {
           "5313c6cb5767fac88a303dab4f5d96ee55b547ec99da0db7a20694ac9e395668");
 
       final input = Bitcoin.SigningInput(
-        coinType: coin.coin,
-        hashType: TWBitcoinSigHashType.All.type,
+        coinType: coin.value,
+        hashType: TWBitcoinSigHashType.All.value,
         zip0317: true,
         toAddress: 't1S3JTzDWR7FzANsn3erXRPms2BfWVQgH9T',
         useMaxAmount: true,
@@ -217,11 +217,11 @@ void main() {
       const toAddress = "t1biXYN8wJahR76SqZTe1LBzTLf3JAsmT93";
 
       final input = Bitcoin.SigningInput(
-        hashType: TWBitcoinSigHashType.All.type,
+        hashType: TWBitcoinSigHashType.All.value,
         amount: $fixnum.Int64(amount),
         byteFee: $fixnum.Int64(1),
         toAddress: toAddress,
-        coinType: coin.coin,
+        coinType: coin.value,
       );
 
       // Sign
