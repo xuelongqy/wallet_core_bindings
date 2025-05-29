@@ -3,177 +3,186 @@ part of '../wallet_core_bindings.dart';
 /// Coin type for Level 2 of BIP44.
 ///
 /// \see https://github.com/satoshilabs/slips/blob/master/slip-0044.md
-enum TWCoinType {
-  Aeternity(457),
-  Aion(425),
-  Binance(714),
-  Bitcoin(0),
-  BitcoinCash(145),
-  BitcoinGold(156),
-  Callisto(820),
-  Cardano(1815),
-  Cosmos(118),
-  Pivx(119),
-  Dash(5),
-  Decred(42),
-  DigiByte(20),
-  Dogecoin(3),
-  EOS(194),
-  WAX(14001),
-  Ethereum(60),
-  EthereumClassic(61),
-  FIO(235),
-  GoChain(6060),
-  Groestlcoin(17),
-  ICON(74),
-  IoTeX(304),
-  Kava(459),
-  Kin(2017),
-  Litecoin(2),
-  Monacoin(22),
-  Nebulas(2718),
-  NULS(8964),
-  Nano(165),
-  NEAR(397),
-  Nimiq(242),
-  Ontology(1024),
-  POANetwork(178),
-  Qtum(2301),
-  XRP(144),
-  Solana(501),
-  Stellar(148),
-  Tezos(1729),
-  Theta(500),
-  ThunderCore(1001),
-  NEO(888),
-  Viction(889),
-  Tron(195),
-  VeChain(818),
-  Viacoin(14),
-  Wanchain(5718350),
-  Zcash(133),
-  Firo(136),
-  Zilliqa(313),
-  Zelcash(19167),
-  Ravencoin(175),
-  Waves(5741564),
-  Terra(330),
-  TerraV2(10000330),
-  Harmony(1023),
-  Algorand(283),
-  Kusama(434),
-  Polkadot(354),
-  Filecoin(461),
-  MultiversX(508),
-  BandChain(494),
-  SmartChainLegacy(10000714),
-  SmartChain(20000714),
-  TBinance(30000714),
-  Oasis(474),
-  Polygon(966),
-  THORChain(931),
-  Bluzelle(483),
-  Optimism(10000070),
-  Zksync(10000324),
-  Arbitrum(10042221),
-  ECOChain(10000553),
-  AvalancheCChain(10009000),
-  XDai(10000100),
-  Fantom(10000250),
-  CryptoOrg(394),
-  Celo(52752),
-  Ronin(10002020),
-  Osmosis(10000118),
-  ECash(899),
-  IOST(291),
-  CronosChain(10000025),
-  SmartBitcoinCash(10000145),
-  KuCoinCommunityChain(10000321),
-  BitcoinDiamond(999),
-  Boba(10000288),
-  Syscoin(57),
-  Verge(77),
-  Zen(121),
-  Metis(10001088),
-  Aurora(1323161554),
-  Evmos(10009001),
-  NativeEvmos(20009001),
-  Moonriver(10001285),
-  Moonbeam(10001284),
-  KavaEvm(10002222),
-  Kaia(10008217),
-  Meter(18000),
-  OKXChain(996),
-  Stratis(105105),
-  Komodo(141),
-  Nervos(309),
-  Everscale(396),
-  Aptos(637),
-  Nebl(146),
-  Hedera(3030),
-  Secret(529),
-  NativeInjective(10000060),
-  Agoric(564),
-  TON(607),
-  Sui(784),
-  Stargaze(20000118),
-  PolygonzkEVM(10001101),
-  Juno(30000118),
-  Stride(40000118),
-  Axelar(50000118),
-  Crescent(60000118),
-  Kujira(70000118),
-  IoTeXEVM(10004689),
-  NativeCanto(10007700),
-  Comdex(80000118),
-  Neutron(90000118),
-  Sommelier(11000118),
-  FetchAI(12000118),
-  Mars(13000118),
-  Umee(14000118),
-  Coreum(10000990),
-  Quasar(15000118),
-  Persistence(16000118),
-  Akash(17000118),
-  Noble(18000118),
-  Scroll(534352),
-  Rootstock(137),
-  ThetaFuel(361),
-  ConfluxeSpace(1030),
-  Acala(787),
-  AcalaEVM(10000787),
-  OpBNB(204),
-  Neon(245022934),
-  Base(8453),
-  Sei(19000118),
-  ArbitrumNova(10042170),
-  Linea(59144),
-  Greenfield(5600),
-  Mantle(5000),
-  ZenEON(7332),
-  InternetComputer(223),
-  Tia(21000118),
-  MantaPacific(169),
-  NativeZetaChain(10007000),
-  ZetaEVM(20007000),
-  Dydx(22000118),
-  Merlin(4200),
-  Lightlink(1890),
-  Blast(81457),
-  BounceBit(6001),
-  ZkLinkNova(810180),
-  Pactus(21888),
-  Sonic(10000146),
-  Polymesh(595);
-
+class TWCoinType {
   final int value;
 
   const TWCoinType(this.value);
 
-  /// Find a coin type by its value.
-  static TWCoinType find(int value) {
-    return TWCoinType.values.firstWhere((element) => element.value == value);
+  /// Coin types
+  static const TWCoinType Aeternity = TWCoinType(457);
+  static const TWCoinType Aion = TWCoinType(425);
+  static const TWCoinType Binance = TWCoinType(714);
+  static const TWCoinType Bitcoin = TWCoinType(0);
+  static const TWCoinType BitcoinCash = TWCoinType(145);
+  static const TWCoinType BitcoinGold = TWCoinType(156);
+  static const TWCoinType Callisto = TWCoinType(820);
+  static const TWCoinType Cardano = TWCoinType(1815);
+  static const TWCoinType Cosmos = TWCoinType(118);
+  static const TWCoinType Pivx = TWCoinType(119);
+  static const TWCoinType Dash = TWCoinType(5);
+  static const TWCoinType Decred = TWCoinType(42);
+  static const TWCoinType DigiByte = TWCoinType(20);
+  static const TWCoinType Dogecoin = TWCoinType(3);
+  static const TWCoinType EOS = TWCoinType(194);
+  static const TWCoinType WAX = TWCoinType(14001);
+  static const TWCoinType Ethereum = TWCoinType(60);
+  static const TWCoinType EthereumClassic = TWCoinType(61);
+  static const TWCoinType FIO = TWCoinType(235);
+  static const TWCoinType GoChain = TWCoinType(6060);
+  static const TWCoinType Groestlcoin = TWCoinType(17);
+  static const TWCoinType ICON = TWCoinType(74);
+  static const TWCoinType IoTeX = TWCoinType(304);
+  static const TWCoinType Kava = TWCoinType(459);
+  static const TWCoinType Kin = TWCoinType(2017);
+  static const TWCoinType Litecoin = TWCoinType(2);
+  static const TWCoinType Monacoin = TWCoinType(22);
+  static const TWCoinType Nebulas = TWCoinType(2718);
+  static const TWCoinType NULS = TWCoinType(8964);
+  static const TWCoinType Nano = TWCoinType(165);
+  static const TWCoinType NEAR = TWCoinType(397);
+  static const TWCoinType Nimiq = TWCoinType(242);
+  static const TWCoinType Ontology = TWCoinType(1024);
+  static const TWCoinType POANetwork = TWCoinType(178);
+  static const TWCoinType Qtum = TWCoinType(2301);
+  static const TWCoinType XRP = TWCoinType(144);
+  static const TWCoinType Solana = TWCoinType(501);
+  static const TWCoinType Stellar = TWCoinType(148);
+  static const TWCoinType Tezos = TWCoinType(1729);
+  static const TWCoinType Theta = TWCoinType(500);
+  static const TWCoinType ThunderCore = TWCoinType(1001);
+  static const TWCoinType NEO = TWCoinType(888);
+  static const TWCoinType Viction = TWCoinType(889);
+  static const TWCoinType Tron = TWCoinType(195);
+  static const TWCoinType VeChain = TWCoinType(818);
+  static const TWCoinType Viacoin = TWCoinType(14);
+  static const TWCoinType Wanchain = TWCoinType(5718350);
+  static const TWCoinType Zcash = TWCoinType(133);
+  static const TWCoinType Firo = TWCoinType(136);
+  static const TWCoinType Zilliqa = TWCoinType(313);
+  static const TWCoinType Zelcash = TWCoinType(19167);
+  static const TWCoinType Ravencoin = TWCoinType(175);
+  static const TWCoinType Waves = TWCoinType(5741564);
+  static const TWCoinType Terra = TWCoinType(330);
+  static const TWCoinType TerraV2 = TWCoinType(10000330);
+  static const TWCoinType Harmony = TWCoinType(1023);
+  static const TWCoinType Algorand = TWCoinType(283);
+  static const TWCoinType Kusama = TWCoinType(434);
+  static const TWCoinType Polkadot = TWCoinType(354);
+  static const TWCoinType Filecoin = TWCoinType(461);
+  static const TWCoinType MultiversX = TWCoinType(508);
+  static const TWCoinType BandChain = TWCoinType(494);
+  static const TWCoinType SmartChainLegacy = TWCoinType(10000714);
+  static const TWCoinType SmartChain = TWCoinType(20000714);
+  static const TWCoinType TBinance = TWCoinType(30000714);
+  static const TWCoinType Oasis = TWCoinType(474);
+  static const TWCoinType Polygon = TWCoinType(966);
+  static const TWCoinType THORChain = TWCoinType(931);
+  static const TWCoinType Bluzelle = TWCoinType(483);
+  static const TWCoinType Optimism = TWCoinType(10000070);
+  static const TWCoinType Zksync = TWCoinType(10000324);
+  static const TWCoinType Arbitrum = TWCoinType(10042221);
+  static const TWCoinType ECOChain = TWCoinType(10000553);
+  static const TWCoinType AvalancheCChain = TWCoinType(10009000);
+  static const TWCoinType XDai = TWCoinType(10000100);
+  static const TWCoinType Fantom = TWCoinType(10000250);
+  static const TWCoinType CryptoOrg = TWCoinType(394);
+  static const TWCoinType Celo = TWCoinType(52752);
+  static const TWCoinType Ronin = TWCoinType(10002020);
+  static const TWCoinType Osmosis = TWCoinType(10000118);
+  static const TWCoinType ECash = TWCoinType(899);
+  static const TWCoinType IOST = TWCoinType(291);
+  static const TWCoinType CronosChain = TWCoinType(10000025);
+  static const TWCoinType SmartBitcoinCash = TWCoinType(10000145);
+  static const TWCoinType KuCoinCommunityChain = TWCoinType(10000321);
+  static const TWCoinType BitcoinDiamond = TWCoinType(999);
+  static const TWCoinType Boba = TWCoinType(10000288);
+  static const TWCoinType Syscoin = TWCoinType(57);
+  static const TWCoinType Verge = TWCoinType(77);
+  static const TWCoinType Zen = TWCoinType(121);
+  static const TWCoinType Metis = TWCoinType(10001088);
+  static const TWCoinType Aurora = TWCoinType(1323161554);
+  static const TWCoinType Evmos = TWCoinType(10009001);
+  static const TWCoinType NativeEvmos = TWCoinType(20009001);
+  static const TWCoinType Moonriver = TWCoinType(10001285);
+  static const TWCoinType Moonbeam = TWCoinType(10001284);
+  static const TWCoinType KavaEvm = TWCoinType(10002222);
+  static const TWCoinType Kaia = TWCoinType(10008217);
+  static const TWCoinType Meter = TWCoinType(18000);
+  static const TWCoinType OKXChain = TWCoinType(996);
+  static const TWCoinType Stratis = TWCoinType(105105);
+  static const TWCoinType Komodo = TWCoinType(141);
+  static const TWCoinType Nervos = TWCoinType(309);
+  static const TWCoinType Everscale = TWCoinType(396);
+  static const TWCoinType Aptos = TWCoinType(637);
+  static const TWCoinType Nebl = TWCoinType(146);
+  static const TWCoinType Hedera = TWCoinType(3030);
+  static const TWCoinType Secret = TWCoinType(529);
+  static const TWCoinType NativeInjective = TWCoinType(10000060);
+  static const TWCoinType Agoric = TWCoinType(564);
+  static const TWCoinType TON = TWCoinType(607);
+  static const TWCoinType Sui = TWCoinType(784);
+  static const TWCoinType Stargaze = TWCoinType(20000118);
+  static const TWCoinType PolygonzkEVM = TWCoinType(10001101);
+  static const TWCoinType Juno = TWCoinType(30000118);
+  static const TWCoinType Stride = TWCoinType(40000118);
+  static const TWCoinType Axelar = TWCoinType(50000118);
+  static const TWCoinType Crescent = TWCoinType(60000118);
+  static const TWCoinType Kujira = TWCoinType(70000118);
+  static const TWCoinType IoTeXEVM = TWCoinType(10004689);
+  static const TWCoinType NativeCanto = TWCoinType(10007700);
+  static const TWCoinType Comdex = TWCoinType(80000118);
+  static const TWCoinType Neutron = TWCoinType(90000118);
+  static const TWCoinType Sommelier = TWCoinType(11000118);
+  static const TWCoinType FetchAI = TWCoinType(12000118);
+  static const TWCoinType Mars = TWCoinType(13000118);
+  static const TWCoinType Umee = TWCoinType(14000118);
+  static const TWCoinType Coreum = TWCoinType(10000990);
+  static const TWCoinType Quasar = TWCoinType(15000118);
+  static const TWCoinType Persistence = TWCoinType(16000118);
+  static const TWCoinType Akash = TWCoinType(17000118);
+  static const TWCoinType Noble = TWCoinType(18000118);
+  static const TWCoinType Scroll = TWCoinType(534352);
+  static const TWCoinType Rootstock = TWCoinType(137);
+  static const TWCoinType ThetaFuel = TWCoinType(361);
+  static const TWCoinType ConfluxeSpace = TWCoinType(1030);
+  static const TWCoinType Acala = TWCoinType(787);
+  static const TWCoinType AcalaEVM = TWCoinType(10000787);
+  static const TWCoinType OpBNB = TWCoinType(204);
+  static const TWCoinType Neon = TWCoinType(245022934);
+  static const TWCoinType Base = TWCoinType(8453);
+  static const TWCoinType Sei = TWCoinType(19000118);
+  static const TWCoinType ArbitrumNova = TWCoinType(10042170);
+  static const TWCoinType Linea = TWCoinType(59144);
+  static const TWCoinType Greenfield = TWCoinType(5600);
+  static const TWCoinType Mantle = TWCoinType(5000);
+  static const TWCoinType ZenEON = TWCoinType(7332);
+  static const TWCoinType InternetComputer = TWCoinType(223);
+  static const TWCoinType Tia = TWCoinType(21000118);
+  static const TWCoinType MantaPacific = TWCoinType(169);
+  static const TWCoinType NativeZetaChain = TWCoinType(10007000);
+  static const TWCoinType ZetaEVM = TWCoinType(20007000);
+  static const TWCoinType Dydx = TWCoinType(22000118);
+  static const TWCoinType Merlin = TWCoinType(4200);
+  static const TWCoinType Lightlink = TWCoinType(1890);
+  static const TWCoinType Blast = TWCoinType(81457);
+  static const TWCoinType BounceBit = TWCoinType(6001);
+  static const TWCoinType ZkLinkNova = TWCoinType(810180);
+  static const TWCoinType Pactus = TWCoinType(21888);
+  static const TWCoinType Sonic = TWCoinType(10000146);
+  static const TWCoinType Polymesh = TWCoinType(595);
+
+  @override
+  int get hashCode => value.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! TWCoinType) return false;
+    return value == other.value;
   }
+
+  /// Find a coin type by its value.
+  static TWCoinType find(int value) => TWCoinType(value);
 
   /// Returns the blockchain for a coin type.
   ///
