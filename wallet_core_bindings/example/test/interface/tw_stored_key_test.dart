@@ -113,6 +113,64 @@ void main() {
       privateKey3.delete();
     });
 
+    test('importPrivateKeyAes256Legacy', () {
+      const privateKeyHex =
+          '28071bf4e2b0340db41b807ed8a5514139e5d6427ff9d58dbd22b7ed187103a4';
+      final privateKey = TWData.createWithHexString(privateKeyHex).bytes()!;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = TWData.createWithString(passwordString).bytes()!;
+      const coin = TWCoinType.Bitcoin;
+      final key = TWStoredKey.importPrivateKeyWithEncryptionAndDerivation(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+        encryption: TWStoredKeyEncryption.Aes256Ctr,
+        derivation: TWDerivation.BitcoinLegacy,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expectHex(privateKey2, privateKeyHex);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expectHex(pkData3, privateKeyHex);
+      privateKey3.delete();
+
+      final accountCoin = key.account(0);
+      final accountAddress = accountCoin.address;
+      expect(accountAddress, '1PeUvjuxyf31aJKX6kCXuaqxhmG78ZUdL1');
+    });
+
+    test('importPrivateKeyAes256Taproot', () {
+      const privateKeyHex =
+          '28071bf4e2b0340db41b807ed8a5514139e5d6427ff9d58dbd22b7ed187103a4';
+      final privateKey = TWData.createWithHexString(privateKeyHex).bytes()!;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = TWData.createWithString(passwordString).bytes()!;
+      const coin = TWCoinType.Bitcoin;
+      final key = TWStoredKey.importPrivateKeyWithEncryptionAndDerivation(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+        encryption: TWStoredKeyEncryption.Aes256Ctr,
+        derivation: TWDerivation.BitcoinSegwit,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expectHex(privateKey2, privateKeyHex);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expectHex(pkData3, privateKeyHex);
+      privateKey3.delete();
+
+      final accountCoin = key.account(0);
+      final accountAddress = accountCoin.address;
+      expect(accountAddress, 'bc1qlp5hssx3qstf3m0mt7fd6tzlh90ssm32u2llf4');
+    });
+
     test('importPrivateKeyHexButDecryptEncoded', () {
       const privateKeyHex =
           "3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266";
@@ -136,6 +194,39 @@ void main() {
       final privateKey3 = key.privateKey(coin, password);
       final pkData3 = privateKey3.data;
       expect(hex(pkData3), privateKeyHex);
+    });
+
+    test('importPrivateKeyEncodedHexLegacy', () {
+      const privateKeyHex =
+          '28071bf4e2b0340db41b807ed8a5514139e5d6427ff9d58dbd22b7ed187103a4';
+      const privateKey = privateKeyHex;
+      const name = 'name';
+      const passwordString = 'password';
+      final password = Uint8List.fromList(passwordString.codeUnits);
+      const coin = TWCoinType.Bitcoin;
+      final key =
+          TWStoredKey.importPrivateKeyEncodedWithEncryptionAndDerivation(
+        privateKey: privateKey,
+        name: name,
+        password: password,
+        coin: coin,
+        encryption: TWStoredKeyEncryption.Aes128Ctr,
+        derivation: TWDerivation.BitcoinLegacy,
+      );
+      final privateKey2 = key.decryptPrivateKey(password);
+      expect(hex(privateKey2), privateKeyHex);
+      expect(key.hasPrivateKeyEncoded, true);
+      final privateKey2Encoded = key.decryptPrivateKeyEncoded(password);
+      expect(privateKey2Encoded, privateKeyHex);
+
+      final privateKey3 = key.privateKey(coin, password);
+      final pkData3 = privateKey3.data;
+      expect(hex(pkData3), privateKeyHex);
+      privateKey3.delete();
+
+      final accountCoin = key.account(0);
+      final accountAddress = accountCoin.address;
+      expect(accountAddress, '1PeUvjuxyf31aJKX6kCXuaqxhmG78ZUdL1');
     });
 
     test('importPrivateKeyEncodedHex', () {

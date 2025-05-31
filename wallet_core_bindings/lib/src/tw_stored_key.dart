@@ -75,6 +75,37 @@ class TWStoredKey extends TWObjectFinalizable {
           finalizer: _twStoredKeyFinalizer,
         );
 
+  /// Imports a private key.
+  ///
+  /// \param [privateKey] Non-null Block of data private key
+  /// \param [name] The name of the stored key to import as a non-null string
+  /// \param [password] Non-null block of data, password of the stored key
+  /// \param [coin] the coin type
+  /// \param [encryption] cipher encryption mode
+  /// \param [derivation] derivation of the given coin type
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  TWStoredKey.importPrivateKeyWithEncryptionAndDerivation({
+    required Uint8List privateKey,
+    required String name,
+    required Uint8List password,
+    required TWCoinType coin,
+    required TWStoredKeyEncryption encryption,
+    required TWDerivation derivation,
+    bool attach = true,
+  }) : super(
+          _storedKeyImpl.importPrivateKeyWithEncryptionAndDerivation(
+            TWData(privateKey).pointer,
+            TWString(name).pointer,
+            TWData(password).pointer,
+            coin.value,
+            encryption.value,
+            derivation.value,
+          ),
+          attach: attach,
+          finalizer: _twStoredKeyFinalizer,
+        );
+
   /// Imports an encoded private key.
   ///
   /// \param [privateKey] Non-null encoded private key
@@ -122,6 +153,37 @@ class TWStoredKey extends TWObjectFinalizable {
             TWData(password).pointer,
             coin.value,
             encryption.value,
+          ),
+          attach: attach,
+          finalizer: _twStoredKeyFinalizer,
+        );
+
+  /// Imports an encoded private key.
+  ///
+  /// \param [privateKey] Non-null encoded private key
+  /// \param [name] The name of the stored key to import as a non-null string
+  /// \param [password] Non-null block of data, password of the stored key
+  /// \param [coin] the coin type
+  /// \param [encryption] cipher encryption mode
+  /// \param [derivation] derivation of the given coin type
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  TWStoredKey.importPrivateKeyEncodedWithEncryptionAndDerivation({
+    required String privateKey,
+    required String name,
+    required Uint8List password,
+    required TWCoinType coin,
+    required TWStoredKeyEncryption encryption,
+    required TWDerivation derivation,
+    bool attach = true,
+  }) : super(
+          _storedKeyImpl.importPrivateKeyEncodedWithEncryptionAndDerivation(
+            TWString(privateKey).pointer,
+            TWString(name).pointer,
+            TWData(password).pointer,
+            coin.value,
+            encryption.value,
+            derivation.value,
           ),
           attach: attach,
           finalizer: _twStoredKeyFinalizer,

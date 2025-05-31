@@ -326,4 +326,31 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
       encryption,
     ).address;
   }
+
+  @override
+  int importPrivateKeyEncodedWithEncryptionAndDerivation(int privateKey,
+      int name, int password, int coin, int encryption, int derivation) {
+    return bindings
+        .TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivation(
+      Pointer.fromAddress(privateKey),
+      Pointer.fromAddress(name),
+      Pointer.fromAddress(password),
+      coin,
+      encryption,
+      derivation,
+    ).address;
+  }
+
+  @override
+  int importPrivateKeyWithEncryptionAndDerivation(int privateKey, int name,
+      int password, int coin, int encryption, int derivation) {
+    return bindings.TWStoredKeyImportPrivateKeyWithEncryptionAndDerivation(
+      Pointer.fromAddress(privateKey),
+      Pointer.fromAddress(name),
+      Pointer.fromAddress(password),
+      coin,
+      encryption,
+      derivation,
+    ).address;
+  }
 }

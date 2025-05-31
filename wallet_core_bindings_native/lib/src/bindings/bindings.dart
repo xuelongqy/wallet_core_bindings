@@ -8965,6 +8965,49 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWData>,
               ffi.Pointer<TWString>, ffi.Pointer<TWData>, int, int)>();
 
+  /// Imports a private key.
+  ///
+  /// \param privateKey Non-null Block of data private key
+  /// \param name The name of the stored key to import as a non-null string
+  /// \param password Non-null block of data, password of the stored key
+  /// \param coin the coin type
+  /// \param encryption cipher encryption mode
+  /// \param derivation derivation of the given coin type
+  ffi.Pointer<TWStoredKey>
+      TWStoredKeyImportPrivateKeyWithEncryptionAndDerivation(
+    ffi.Pointer<TWData> privateKey,
+    ffi.Pointer<TWString> name,
+    ffi.Pointer<TWData> password,
+    int coin,
+    int encryption,
+    int derivation,
+  ) {
+    return _TWStoredKeyImportPrivateKeyWithEncryptionAndDerivation(
+      privateKey,
+      name,
+      password,
+      coin,
+      encryption,
+      derivation,
+    );
+  }
+
+  late final _TWStoredKeyImportPrivateKeyWithEncryptionAndDerivationPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<TWStoredKey> Function(
+                      ffi.Pointer<TWData>,
+                      ffi.Pointer<TWString>,
+                      ffi.Pointer<TWData>,
+                      ffi.Int32,
+                      ffi.Int32,
+                      ffi.Int32)>>(
+          'TWStoredKeyImportPrivateKeyWithEncryptionAndDerivation');
+  late final _TWStoredKeyImportPrivateKeyWithEncryptionAndDerivation =
+      _TWStoredKeyImportPrivateKeyWithEncryptionAndDerivationPtr.asFunction<
+          ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWData>,
+              ffi.Pointer<TWString>, ffi.Pointer<TWData>, int, int, int)>();
+
   /// Imports an encoded private key.
   ///
   /// \param privateKey Non-null encoded private key
@@ -9035,6 +9078,52 @@ class TrustWalletCoreBindings {
       _TWStoredKeyImportPrivateKeyEncodedWithEncryptionPtr.asFunction<
           ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWString>,
               ffi.Pointer<TWString>, ffi.Pointer<TWData>, int, int)>();
+
+  /// Imports an encoded private key.
+  ///
+  /// \param privateKey Non-null encoded private key
+  /// \param name The name of the stored key to import as a non-null string
+  /// \param password Non-null block of data, password of the stored key
+  /// \param coin the coin type
+  /// \param encryption cipher encryption mode
+  /// \param derivation derivation of the given coin type
+  /// \note Returned object needs to be deleted with \TWStoredKeyDelete
+  /// \return Nullptr if the key can't be imported, the stored key otherwise
+  ffi.Pointer<TWStoredKey>
+      TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivation(
+    ffi.Pointer<TWString> privateKey,
+    ffi.Pointer<TWString> name,
+    ffi.Pointer<TWData> password,
+    int coin,
+    int encryption,
+    int derivation,
+  ) {
+    return _TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivation(
+      privateKey,
+      name,
+      password,
+      coin,
+      encryption,
+      derivation,
+    );
+  }
+
+  late final _TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivationPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Pointer<TWStoredKey> Function(
+                      ffi.Pointer<TWString>,
+                      ffi.Pointer<TWString>,
+                      ffi.Pointer<TWData>,
+                      ffi.Int32,
+                      ffi.Int32,
+                      ffi.Int32)>>(
+          'TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivation');
+  late final _TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivation =
+      _TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivationPtr
+          .asFunction<
+              ffi.Pointer<TWStoredKey> Function(ffi.Pointer<TWString>,
+                  ffi.Pointer<TWString>, ffi.Pointer<TWData>, int, int, int)>();
 
   /// Imports an HD wallet.
   ///
@@ -12175,6 +12264,30 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWString> Function(
               ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
 
+  /// Adds an instruction to the given transaction, and returns the updated transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \param instruction json encoded instruction. Here is an example: {"programId":"11111111111111111111111111111111","accounts":[{"pubkey":"YUz1AupPEy1vttBeDS7sXYZFhQJppcXMzjDiDx18Srf","isSigner":true,"isWritable":true},{"pubkey":"d8DiHEeHKdXkM2ZupT86mrvavhmJwUZjHPCzMiB5Lqb","isSigner":false,"isWritable":true}],"data":"3Bxs4Z6oyhaczjLK"}
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionAddInstruction(
+    ffi.Pointer<TWString> encodedTx,
+    ffi.Pointer<TWString> instruction,
+  ) {
+    return _TWSolanaTransactionAddInstruction(
+      encodedTx,
+      instruction,
+    );
+  }
+
+  late final _TWSolanaTransactionAddInstructionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>)>>('TWSolanaTransactionAddInstruction');
+  late final _TWSolanaTransactionAddInstruction =
+      _TWSolanaTransactionAddInstructionPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
   /// Create a NEAR Account
   ///
   /// \param string Account name
@@ -15275,6 +15388,8 @@ const int __MAC_15_3 = 150300;
 
 const int __MAC_15_4 = 150400;
 
+const int __MAC_15_5 = 150500;
+
 const int __IPHONE_2_0 = 20000;
 
 const int __IPHONE_2_1 = 20100;
@@ -15447,6 +15562,8 @@ const int __IPHONE_18_3 = 180300;
 
 const int __IPHONE_18_4 = 180400;
 
+const int __IPHONE_18_5 = 180500;
+
 const int __WATCHOS_1_0 = 10000;
 
 const int __WATCHOS_2_0 = 20000;
@@ -15554,6 +15671,8 @@ const int __WATCHOS_11_2 = 110200;
 const int __WATCHOS_11_3 = 110300;
 
 const int __WATCHOS_11_4 = 110400;
+
+const int __WATCHOS_11_5 = 110500;
 
 const int __TVOS_9_0 = 90000;
 
@@ -15663,6 +15782,8 @@ const int __TVOS_18_3 = 180300;
 
 const int __TVOS_18_4 = 180400;
 
+const int __TVOS_18_5 = 180500;
+
 const int __BRIDGEOS_2_0 = 20000;
 
 const int __BRIDGEOS_3_0 = 30000;
@@ -15727,6 +15848,8 @@ const int __BRIDGEOS_9_3 = 90300;
 
 const int __BRIDGEOS_9_4 = 90400;
 
+const int __BRIDGEOS_9_5 = 90500;
+
 const int __DRIVERKIT_19_0 = 190000;
 
 const int __DRIVERKIT_20_0 = 200000;
@@ -15765,6 +15888,8 @@ const int __DRIVERKIT_24_3 = 240300;
 
 const int __DRIVERKIT_24_4 = 240400;
 
+const int __DRIVERKIT_24_5 = 240500;
+
 const int __VISIONOS_1_0 = 10000;
 
 const int __VISIONOS_1_1 = 10100;
@@ -15782,6 +15907,8 @@ const int __VISIONOS_2_2 = 20200;
 const int __VISIONOS_2_3 = 20300;
 
 const int __VISIONOS_2_4 = 20400;
+
+const int __VISIONOS_2_5 = 20500;
 
 const int MAC_OS_X_VERSION_10_0 = 1000;
 
@@ -15921,6 +16048,8 @@ const int MAC_OS_VERSION_15_3 = 150300;
 
 const int MAC_OS_VERSION_15_4 = 150400;
 
+const int MAC_OS_VERSION_15_5 = 150500;
+
 const int __AVAILABILITY_VERSIONS_VERSION_HASH = 93585900;
 
 const String __AVAILABILITY_VERSIONS_VERSION_STRING = 'Local';
@@ -15929,7 +16058,7 @@ const String __AVAILABILITY_FILE = 'AvailabilityVersions.h';
 
 const int __MAC_OS_X_VERSION_MIN_REQUIRED = 150000;
 
-const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150400;
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150500;
 
 const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
 

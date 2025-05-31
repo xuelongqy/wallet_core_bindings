@@ -9,10 +9,16 @@ abstract class TWStoredKeyInterface {
   int importPrivateKeyWithEncryption(
       int privateKey, int name, int password, int coin, int encryption);
 
+  int importPrivateKeyWithEncryptionAndDerivation(int privateKey, int name,
+      int password, int coin, int encryption, int derivation);
+
   int importPrivateKeyEncoded(int privateKey, int name, int password, int coin);
 
   int importPrivateKeyEncodedWithEncryption(
       int privateKey, int name, int password, int coin, int encryption);
+
+  int importPrivateKeyEncodedWithEncryptionAndDerivation(int privateKey,
+      int name, int password, int coin, int encryption, int derivation);
 
   int importHDWallet(int mnemonic, int name, int password, int coin);
 

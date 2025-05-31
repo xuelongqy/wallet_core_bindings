@@ -14,4 +14,6 @@ abstract class TWSolanaTransactionInterface {
   int setComputeUnitLimit(int encodedTx, int limit);
 
   int setFeePayer(int encodedTx, int feePayer);
+
+  int addInstruction(int encodedTx, int instruction);
 }

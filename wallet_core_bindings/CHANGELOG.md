@@ -1,3 +1,6 @@
+## 4.3.4
+* Sync wallet-core [4.3.4](https://github.com/trustwallet/wallet-core/releases/tag/4.3.4).
+
 ## 4.3.3+1
 * TWCoinType enum to class.
 

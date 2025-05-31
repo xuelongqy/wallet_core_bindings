@@ -256,4 +256,22 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
         wasm.getFunction('TWStoredKeyImportPrivateKeyEncodedWithEncryption')!;
     return func([privateKey, name, password, coin, encryption]).first as int;
   }
+
+  @override
+  int importPrivateKeyEncodedWithEncryptionAndDerivation(int privateKey,
+      int name, int password, int coin, int encryption, int derivation) {
+    final func = wasm.getFunction(
+        'TWStoredKeyImportPrivateKeyEncodedWithEncryptionAndDerivation')!;
+    return func([privateKey, name, password, coin, encryption, derivation])
+        .first as int;
+  }
+
+  @override
+  int importPrivateKeyWithEncryptionAndDerivation(int privateKey, int name,
+      int password, int coin, int encryption, int derivation) {
+    final func = wasm
+        .getFunction('TWStoredKeyImportPrivateKeyWithEncryptionAndDerivation')!;
+    return func([privateKey, name, password, coin, encryption, derivation])
+        .first as int;
+  }
 }

@@ -53,4 +53,12 @@ class TWSolanaTransactionImpl extends TWSolanaTransactionInterface {
       Pointer.fromAddress(feePayer),
     ).address;
   }
+
+  @override
+  int addInstruction(int encodedTx, int instruction) {
+    return bindings.TWSolanaTransactionAddInstruction(
+      Pointer.fromAddress(encodedTx),
+      Pointer.fromAddress(instruction),
+    ).address;
+  }
 }

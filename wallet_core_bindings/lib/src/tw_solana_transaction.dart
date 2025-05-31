@@ -76,4 +76,14 @@ class TWSolanaTransaction {
       TWString.fromPointer(_solanaTransactionImpl.setFeePayer(
               TWString(encodedTx).pointer, TWString(feePayer).pointer))
           .value;
+
+  /// Adds an instruction to the given transaction, and returns the updated transaction.
+  ///
+  /// \param [encoded_tx] base64 encoded Solana transaction.
+  /// \param [instruction] json encoded instruction. Here is an example: {"programId":"11111111111111111111111111111111","accounts":[{"pubkey":"YUz1AupPEy1vttBeDS7sXYZFhQJppcXMzjDiDx18Srf","isSigner":true,"isWritable":true},{"pubkey":"d8DiHEeHKdXkM2ZupT86mrvavhmJwUZjHPCzMiB5Lqb","isSigner":false,"isWritable":true}],"data":"3Bxs4Z6oyhaczjLK"}
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  static String? addInstruction(String encodedTx, String instruction) =>
+      TWString.fromPointer(_solanaTransactionImpl.addInstruction(
+              TWString(encodedTx).pointer, TWString(instruction).pointer))
+          .value;
 }
