@@ -2101,7 +2101,7 @@ class SigningInput extends $pb.GeneratedMessage {
   UserOperationV0_7 ensureUserOperationV07() => $_ensure(12);
 
   /// EIP7702 authorization.
-  /// Used in `TransactionMode::SetOp` only.
+  /// Used in `TransactionMode::SetOp` or `TransactionMode::UserOp`.
   /// Currently, we support delegation to only one authority at a time.
   @$pb.TagNumber(15)
   Authorization get eip7702Authorization => $_getN(13);

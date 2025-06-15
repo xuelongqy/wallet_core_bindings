@@ -54,7 +54,7 @@ const Transfer$json = {
   '1': 'Transfer',
   '2': [
     {'1': 'dest', '3': 1, '4': 1, '5': 9, '10': 'dest'},
-    {'1': 'amount', '3': 2, '4': 1, '5': 4, '10': 'amount'},
+    {'1': 'amount', '3': 2, '4': 1, '5': 12, '10': 'amount'},
     {'1': 'mode', '3': 3, '4': 1, '5': 13, '10': 'mode'},
     {'1': 'comment', '3': 4, '4': 1, '5': 9, '10': 'comment'},
     {'1': 'bounceable', '3': 5, '4': 1, '5': 8, '10': 'bounceable'},
@@ -84,7 +84,7 @@ const Transfer$json = {
 
 /// Descriptor for `Transfer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List transferDescriptor = $convert.base64Decode(
-    'CghUcmFuc2ZlchISCgRkZXN0GAEgASgJUgRkZXN0EhYKBmFtb3VudBgCIAEoBFIGYW1vdW50Eh'
+    'CghUcmFuc2ZlchISCgRkZXN0GAEgASgJUgRkZXN0EhYKBmFtb3VudBgCIAEoDFIGYW1vdW50Eh'
     'IKBG1vZGUYAyABKA1SBG1vZGUSGAoHY29tbWVudBgEIAEoCVIHY29tbWVudBIeCgpib3VuY2Vh'
     'YmxlGAUgASgIUgpib3VuY2VhYmxlEh0KCnN0YXRlX2luaXQYBiABKAlSCXN0YXRlSW5pdBJSCg'
     '9qZXR0b25fdHJhbnNmZXIYByABKAsyJy5UVy5UaGVPcGVuTmV0d29yay5Qcm90by5KZXR0b25U'
@@ -96,10 +96,10 @@ const JettonTransfer$json = {
   '1': 'JettonTransfer',
   '2': [
     {'1': 'query_id', '3': 1, '4': 1, '5': 4, '10': 'queryId'},
-    {'1': 'jetton_amount', '3': 2, '4': 1, '5': 4, '10': 'jettonAmount'},
+    {'1': 'jetton_amount', '3': 2, '4': 1, '5': 12, '10': 'jettonAmount'},
     {'1': 'to_owner', '3': 3, '4': 1, '5': 9, '10': 'toOwner'},
     {'1': 'response_address', '3': 4, '4': 1, '5': 9, '10': 'responseAddress'},
-    {'1': 'forward_amount', '3': 5, '4': 1, '5': 4, '10': 'forwardAmount'},
+    {'1': 'forward_amount', '3': 5, '4': 1, '5': 12, '10': 'forwardAmount'},
     {'1': 'custom_payload', '3': 6, '4': 1, '5': 9, '10': 'customPayload'},
   ],
 };
@@ -107,9 +107,9 @@ const JettonTransfer$json = {
 /// Descriptor for `JettonTransfer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List jettonTransferDescriptor = $convert.base64Decode(
     'Cg5KZXR0b25UcmFuc2ZlchIZCghxdWVyeV9pZBgBIAEoBFIHcXVlcnlJZBIjCg1qZXR0b25fYW'
-    '1vdW50GAIgASgEUgxqZXR0b25BbW91bnQSGQoIdG9fb3duZXIYAyABKAlSB3RvT3duZXISKQoQ'
+    '1vdW50GAIgASgMUgxqZXR0b25BbW91bnQSGQoIdG9fb3duZXIYAyABKAlSB3RvT3duZXISKQoQ'
     'cmVzcG9uc2VfYWRkcmVzcxgEIAEoCVIPcmVzcG9uc2VBZGRyZXNzEiUKDmZvcndhcmRfYW1vdW'
-    '50GAUgASgEUg1mb3J3YXJkQW1vdW50EiUKDmN1c3RvbV9wYXlsb2FkGAYgASgJUg1jdXN0b21Q'
+    '50GAUgASgMUg1mb3J3YXJkQW1vdW50EiUKDmN1c3RvbV9wYXlsb2FkGAYgASgJUg1jdXN0b21Q'
     'YXlsb2Fk');
 
 @$core.Deprecated('Use signingInputDescriptor instead')

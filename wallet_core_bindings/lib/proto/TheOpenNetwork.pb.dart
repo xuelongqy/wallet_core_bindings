@@ -24,7 +24,7 @@ enum Transfer_Payload { jettonTransfer, customPayload, notSet }
 class Transfer extends $pb.GeneratedMessage {
   factory Transfer({
     $core.String? dest,
-    $fixnum.Int64? amount,
+    $core.List<$core.int>? amount,
     $core.int? mode,
     $core.String? comment,
     $core.bool? bounceable,
@@ -79,8 +79,8 @@ class Transfer extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..oo(0, [7, 8])
     ..aOS(1, _omitFieldNames ? '' : 'dest')
-    ..a<$fixnum.Int64>(2, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OY)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'mode', $pb.PbFieldType.OU3)
     ..aOS(4, _omitFieldNames ? '' : 'comment')
     ..aOB(5, _omitFieldNames ? '' : 'bounceable')
@@ -128,11 +128,12 @@ class Transfer extends $pb.GeneratedMessage {
   void clearDest() => clearField(1);
 
   /// Amount to send in nanotons
+  /// uint128 / big endian byte order
   @$pb.TagNumber(2)
-  $fixnum.Int64 get amount => $_getI64(1);
+  $core.List<$core.int> get amount => $_getN(1);
   @$pb.TagNumber(2)
-  set amount($fixnum.Int64 v) {
-    $_setInt64(1, v);
+  set amount($core.List<$core.int> v) {
+    $_setBytes(1, v);
   }
 
   @$pb.TagNumber(2)
@@ -227,10 +228,10 @@ class Transfer extends $pb.GeneratedMessage {
 class JettonTransfer extends $pb.GeneratedMessage {
   factory JettonTransfer({
     $fixnum.Int64? queryId,
-    $fixnum.Int64? jettonAmount,
+    $core.List<$core.int>? jettonAmount,
     $core.String? toOwner,
     $core.String? responseAddress,
-    $fixnum.Int64? forwardAmount,
+    $core.List<$core.int>? forwardAmount,
     $core.String? customPayload,
   }) {
     final $result = create();
@@ -269,14 +270,12 @@ class JettonTransfer extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..a<$fixnum.Int64>(1, _omitFieldNames ? '' : 'queryId', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$fixnum.Int64>(
-        2, _omitFieldNames ? '' : 'jettonAmount', $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(
+        2, _omitFieldNames ? '' : 'jettonAmount', $pb.PbFieldType.OY)
     ..aOS(3, _omitFieldNames ? '' : 'toOwner')
     ..aOS(4, _omitFieldNames ? '' : 'responseAddress')
-    ..a<$fixnum.Int64>(
-        5, _omitFieldNames ? '' : 'forwardAmount', $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.List<$core.int>>(
+        5, _omitFieldNames ? '' : 'forwardAmount', $pb.PbFieldType.OY)
     ..aOS(6, _omitFieldNames ? '' : 'customPayload')
     ..hasRequiredFields = false;
 
@@ -317,11 +316,12 @@ class JettonTransfer extends $pb.GeneratedMessage {
   void clearQueryId() => clearField(1);
 
   /// Amount of transferred jettons in elementary integer units. The real value transferred is jetton_amount multiplied by ten to the power of token decimal precision
+  /// uint128 / big endian byte order
   @$pb.TagNumber(2)
-  $fixnum.Int64 get jettonAmount => $_getI64(1);
+  $core.List<$core.int> get jettonAmount => $_getN(1);
   @$pb.TagNumber(2)
-  set jettonAmount($fixnum.Int64 v) {
-    $_setInt64(1, v);
+  set jettonAmount($core.List<$core.int> v) {
+    $_setBytes(1, v);
   }
 
   @$pb.TagNumber(2)
@@ -356,11 +356,12 @@ class JettonTransfer extends $pb.GeneratedMessage {
   void clearResponseAddress() => clearField(4);
 
   /// Amount in nanotons to forward to recipient. Basically minimum amount - 1 nanoton should be used
+  /// uint128 / big endian byte order
   @$pb.TagNumber(5)
-  $fixnum.Int64 get forwardAmount => $_getI64(4);
+  $core.List<$core.int> get forwardAmount => $_getN(4);
   @$pb.TagNumber(5)
-  set forwardAmount($fixnum.Int64 v) {
-    $_setInt64(4, v);
+  set forwardAmount($core.List<$core.int> v) {
+    $_setBytes(4, v);
   }
 
   @$pb.TagNumber(5)

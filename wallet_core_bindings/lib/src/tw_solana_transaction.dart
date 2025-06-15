@@ -77,13 +77,20 @@ class TWSolanaTransaction {
               TWString(encodedTx).pointer, TWString(feePayer).pointer))
           .value;
 
-  /// Adds an instruction to the given transaction, and returns the updated transaction.
+  /// Inserts an instruction to the given transaction at the specified position, returning the updated transaction.
   ///
   /// \param [encoded_tx] base64 encoded Solana transaction.
+  /// \param [insert_at] index where the instruction should be inserted. If you don't care about the position, use -1.
   /// \param [instruction] json encoded instruction. Here is an example: {"programId":"11111111111111111111111111111111","accounts":[{"pubkey":"YUz1AupPEy1vttBeDS7sXYZFhQJppcXMzjDiDx18Srf","isSigner":true,"isWritable":true},{"pubkey":"d8DiHEeHKdXkM2ZupT86mrvavhmJwUZjHPCzMiB5Lqb","isSigner":false,"isWritable":true}],"data":"3Bxs4Z6oyhaczjLK"}
   /// \return base64 encoded Solana transaction. Null if an error occurred.
-  static String? addInstruction(String encodedTx, String instruction) =>
-      TWString.fromPointer(_solanaTransactionImpl.addInstruction(
-              TWString(encodedTx).pointer, TWString(instruction).pointer))
+  static String? insertInstruction({
+    required String encodedTx,
+    required int insertAt,
+    required String instruction,
+  }) =>
+      TWString.fromPointer(_solanaTransactionImpl.insertInstruction(
+              TWString(encodedTx).pointer,
+              insertAt,
+              TWString(instruction).pointer))
           .value;
 }

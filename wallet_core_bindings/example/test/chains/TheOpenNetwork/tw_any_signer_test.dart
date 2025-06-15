@@ -16,7 +16,7 @@ void main() {
         messages: [
           TheOpenNetwork.Transfer(
             dest: 'EQDYW_1eScJVxtitoBRksvoV9cCYo4uKGWLVNIHB1JqRR3n0',
-            amount: $fixnum.Int64(10),
+            amount: intToBytes(10),
             mode: TheOpenNetwork.SendMode.PAY_FEES_SEPARATELY.value |
                 TheOpenNetwork.SendMode.IGNORE_ACTION_PHASE_ERRORS.value,
             bounceable: true,
@@ -43,7 +43,7 @@ void main() {
         messages: [
           TheOpenNetwork.Transfer(
             dest: 'EQBe6DtCpJZe8M4t-crMXe93JlEYgSl30S5OUuMSLOfeQfBu',
-            amount: $fixnum.Int64(10),
+            amount: intToBytes(10),
             mode: TheOpenNetwork.SendMode.PAY_FEES_SEPARATELY.value |
                 TheOpenNetwork.SendMode.IGNORE_ACTION_PHASE_ERRORS.value,
             bounceable: true,
