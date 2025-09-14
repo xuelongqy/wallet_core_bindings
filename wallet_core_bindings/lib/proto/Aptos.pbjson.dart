@@ -105,27 +105,6 @@ final $typed_data.Uint8List fungibleAssetTransferMessageDescriptor =
         'lSD21ldGFkYXRhQWRkcmVzcxIOCgJ0bxgCIAEoCVICdG8SFgoGYW1vdW50GAMgASgEUgZhbW91'
         'bnQ=');
 
-@$core.Deprecated('Use managedTokensRegisterMessageDescriptor instead')
-const ManagedTokensRegisterMessage$json = {
-  '1': 'ManagedTokensRegisterMessage',
-  '2': [
-    {
-      '1': 'function',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.TW.Aptos.Proto.StructTag',
-      '10': 'function'
-    },
-  ],
-};
-
-/// Descriptor for `ManagedTokensRegisterMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List managedTokensRegisterMessageDescriptor =
-    $convert.base64Decode(
-        'ChxNYW5hZ2VkVG9rZW5zUmVnaXN0ZXJNZXNzYWdlEjUKCGZ1bmN0aW9uGAEgASgLMhkuVFcuQX'
-        'B0b3MuUHJvdG8uU3RydWN0VGFnUghmdW5jdGlvbg==');
-
 @$core.Deprecated('Use createAccountMessageDescriptor instead')
 const CreateAccountMessage$json = {
   '1': 'CreateAccountMessage',
@@ -385,15 +364,6 @@ const SigningInput$json = {
       '10': 'nftMessage'
     },
     {
-      '1': 'register_token',
-      '3': 13,
-      '4': 1,
-      '5': 11,
-      '6': '.TW.Aptos.Proto.ManagedTokensRegisterMessage',
-      '9': 0,
-      '10': 'registerToken'
-    },
-    {
       '1': 'liquid_staking_message',
       '3': 14,
       '4': 1,
@@ -439,15 +409,13 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'IYCiABKAsyJC5UVy5BcHRvcy5Qcm90by5Ub2tlblRyYW5zZmVyTWVzc2FnZUgAUg10b2tlblRy'
     'YW5zZmVyEk0KDmNyZWF0ZV9hY2NvdW50GAsgASgLMiQuVFcuQXB0b3MuUHJvdG8uQ3JlYXRlQW'
     'Njb3VudE1lc3NhZ2VIAFINY3JlYXRlQWNjb3VudBI9CgtuZnRfbWVzc2FnZRgMIAEoCzIaLlRX'
-    'LkFwdG9zLlByb3RvLk5mdE1lc3NhZ2VIAFIKbmZ0TWVzc2FnZRJVCg5yZWdpc3Rlcl90b2tlbh'
-    'gNIAEoCzIsLlRXLkFwdG9zLlByb3RvLk1hbmFnZWRUb2tlbnNSZWdpc3Rlck1lc3NhZ2VIAFIN'
-    'cmVnaXN0ZXJUb2tlbhJVChZsaXF1aWRfc3Rha2luZ19tZXNzYWdlGA4gASgLMh0uVFcuQXB0b3'
-    'MuUHJvdG8uTGlxdWlkU3Rha2luZ0gAUhRsaXF1aWRTdGFraW5nTWVzc2FnZRJdChR0b2tlbl90'
-    'cmFuc2Zlcl9jb2lucxgPIAEoCzIpLlRXLkFwdG9zLlByb3RvLlRva2VuVHJhbnNmZXJDb2luc0'
-    '1lc3NhZ2VIAFISdG9rZW5UcmFuc2ZlckNvaW5zEmYKF2Z1bmdpYmxlX2Fzc2V0X3RyYW5zZmVy'
-    'GBAgASgLMiwuVFcuQXB0b3MuUHJvdG8uRnVuZ2libGVBc3NldFRyYW5zZmVyTWVzc2FnZUgAUh'
-    'VmdW5naWJsZUFzc2V0VHJhbnNmZXISEAoDYWJpGBUgASgJUgNhYmlCFQoTdHJhbnNhY3Rpb25f'
-    'cGF5bG9hZA==');
+    'LkFwdG9zLlByb3RvLk5mdE1lc3NhZ2VIAFIKbmZ0TWVzc2FnZRJVChZsaXF1aWRfc3Rha2luZ1'
+    '9tZXNzYWdlGA4gASgLMh0uVFcuQXB0b3MuUHJvdG8uTGlxdWlkU3Rha2luZ0gAUhRsaXF1aWRT'
+    'dGFraW5nTWVzc2FnZRJdChR0b2tlbl90cmFuc2Zlcl9jb2lucxgPIAEoCzIpLlRXLkFwdG9zLl'
+    'Byb3RvLlRva2VuVHJhbnNmZXJDb2luc01lc3NhZ2VIAFISdG9rZW5UcmFuc2ZlckNvaW5zEmYK'
+    'F2Z1bmdpYmxlX2Fzc2V0X3RyYW5zZmVyGBAgASgLMiwuVFcuQXB0b3MuUHJvdG8uRnVuZ2libG'
+    'VBc3NldFRyYW5zZmVyTWVzc2FnZUgAUhVmdW5naWJsZUFzc2V0VHJhbnNmZXISEAoDYWJpGBUg'
+    'ASgJUgNhYmlCFQoTdHJhbnNhY3Rpb25fcGF5bG9hZA==');
 
 @$core.Deprecated('Use transactionAuthenticatorDescriptor instead')
 const TransactionAuthenticator$json = {

@@ -11960,14 +11960,32 @@ class TrustWalletCoreBindings {
           int Function(ffi.Pointer<TWEthereumAbiFunction>, int, int,
               ffi.Pointer<TWData1>)>();
 
-  /// Generate a layer 2 eip2645 derivation path from eth address, layer, application and given index.
+  /// Returns the checksummed address.
   ///
-  /// \param wallet non-null TWHDWallet
-  /// \param ethAddress non-null Ethereum address
-  /// \param layer  non-null layer 2 name (E.G starkex)
-  /// \param application non-null layer 2 application (E.G immutablex)
-  /// \param index non-null layer 2 index (E.G 1)
-  /// \return a valid eip2645 layer 2 derivation path as a string
+  /// \param address *non-null* string.
+  /// \return the checksummed address.
+  ffi.Pointer<TWString> TWEthereumAddressChecksummed(
+    ffi.Pointer<TWString> address,
+  ) {
+    return _TWEthereumAddressChecksummed(
+      address,
+    );
+  }
+
+  late final _TWEthereumAddressChecksummedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>)>>('TWEthereumAddressChecksummed');
+  late final _TWEthereumAddressChecksummed = _TWEthereumAddressChecksummedPtr
+      .asFunction<ffi.Pointer<TWString> Function(ffi.Pointer<TWString>)>();
+
+  /// Returns the account path from address.
+  ///
+  /// \param eth_address *non-null* string.
+  /// \param layer *non-null* string.
+  /// \param application *non-null* string.
+  /// \param index *non-null* string.
+  /// \return the account path.
   ffi.Pointer<TWString> TWEthereumEip2645GetPath(
     ffi.Pointer<TWString> ethAddress,
     ffi.Pointer<TWString> layer,
@@ -11996,6 +12014,59 @@ class TrustWalletCoreBindings {
               ffi.Pointer<TWString>,
               ffi.Pointer<TWString>,
               ffi.Pointer<TWString>)>();
+
+  /// Returns EIP-1014 Create2 address
+  ///
+  /// \param from *non-null* string.
+  /// \param salt *non-null* data.
+  /// \param init_code_hash *non-null* data.
+  /// \return the EIP-1014 Create2 address.
+  ffi.Pointer<TWString> TWEthereumEip1014Create2Address(
+    ffi.Pointer<TWString> from,
+    ffi.Pointer<TWData> salt,
+    ffi.Pointer<TWData> initCodeHash,
+  ) {
+    return _TWEthereumEip1014Create2Address(
+      from,
+      salt,
+      initCodeHash,
+    );
+  }
+
+  late final _TWEthereumEip1014Create2AddressPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>,
+              ffi.Pointer<TWData>)>>('TWEthereumEip1014Create2Address');
+  late final _TWEthereumEip1014Create2Address =
+      _TWEthereumEip1014Create2AddressPtr.asFunction<
+          ffi.Pointer<TWString> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>, ffi.Pointer<TWData>)>();
+
+  /// Returns EIP-1967 proxy init code
+  ///
+  /// \param logic_address *non-null* string.
+  /// \param data *non-null* data.
+  /// \return the EIP-1967 proxy init code.
+  ffi.Pointer<TWData> TWEthereumEip1967ProxyInitCode(
+    ffi.Pointer<TWString> logicAddress,
+    ffi.Pointer<TWData> data,
+  ) {
+    return _TWEthereumEip1967ProxyInitCode(
+      logicAddress,
+      data,
+    );
+  }
+
+  late final _TWEthereumEip1967ProxyInitCodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>)>>('TWEthereumEip1967ProxyInitCode');
+  late final _TWEthereumEip1967ProxyInitCode =
+      _TWEthereumEip1967ProxyInitCodePtr.asFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWData>)>();
 
   /// Encrypts a block of Data using AES in Cipher Block Chaining (CBC) mode.
   ///
@@ -12900,12 +12971,49 @@ class TrustWalletCoreBindings {
       _TWBarzGetCounterfactualAddressPtr.asFunction<
           ffi.Pointer<TWString1> Function(ffi.Pointer<TWData1>)>();
 
+  /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
+  ///
+  /// \param signature Original signature
+  /// \param challenge The original challenge that was signed
+  /// \param authenticator_data Returned from Webauthn API
+  /// \param client_data_json Returned from Webauthn API
+  /// \return Bytes of the formatted signature
+  ffi.Pointer<TWData1> TWBarzGetFormattedSignature(
+    ffi.Pointer<TWData1> signature,
+    ffi.Pointer<TWData1> challenge,
+    ffi.Pointer<TWData1> authenticatorData,
+    ffi.Pointer<TWString1> clientDataJson,
+  ) {
+    return _TWBarzGetFormattedSignature(
+      signature,
+      challenge,
+      authenticatorData,
+      clientDataJson,
+    );
+  }
+
+  late final _TWBarzGetFormattedSignaturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>)>>('TWBarzGetFormattedSignature');
+  late final _TWBarzGetFormattedSignature =
+      _TWBarzGetFormattedSignaturePtr.asFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>)>();
+
   /// Returns the init code parameter of ERC-4337 User Operation
   ///
-  /// \param factory Wallet factory address (BarzFactory)
-  /// \param publicKey Public key for the verification facet
-  /// \param verificationFacet Verification facet address
-  /// \return The address.
+  /// \param factory The address of the factory contract.
+  /// \param public_key Public key for the verification facet
+  /// \param verification_facet The address of the verification facet.
+  /// \param salt The salt of the init code.
+  /// \return The init code.
   ffi.Pointer<TWData1> TWBarzGetInitCode(
     ffi.Pointer<TWString1> factory1,
     ffi.Pointer<TWPublicKey> publicKey,
@@ -12931,48 +13039,12 @@ class TrustWalletCoreBindings {
       ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
           ffi.Pointer<TWPublicKey>, ffi.Pointer<TWString1>, int)>();
 
-  /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
-  ///
-  /// \param signature Original signature
-  /// \param challenge The original challenge that was signed
-  /// \param authenticatorData Returned from Webauthn API
-  /// \param clientDataJSON Returned from Webauthn API
-  /// \return Bytes of the formatted signature
-  ffi.Pointer<TWData1> TWBarzGetFormattedSignature(
-    ffi.Pointer<TWData1> signature,
-    ffi.Pointer<TWData1> challenge,
-    ffi.Pointer<TWData1> authenticatorData,
-    ffi.Pointer<TWString1> clientDataJSON,
-  ) {
-    return _TWBarzGetFormattedSignature(
-      signature,
-      challenge,
-      authenticatorData,
-      clientDataJSON,
-    );
-  }
-
-  late final _TWBarzGetFormattedSignaturePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>)>>('TWBarzGetFormattedSignature');
-  late final _TWBarzGetFormattedSignature =
-      _TWBarzGetFormattedSignaturePtr.asFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>)>();
-
   /// Returns the final hash to be signed by Barz for signing messages & typed data
   ///
-  /// \param msgHash Original msgHash
+  /// \param msg_hash Original msgHash
   /// \param barzAddress The address of Barz wallet signing the message
   /// \param chainId The chainId of the network the verification will happen
-  /// \return The final hash to be signed
+  /// \return The final hash to be signed.
   ffi.Pointer<TWData1> TWBarzGetPrefixedMsgHash(
     ffi.Pointer<TWData1> msgHash,
     ffi.Pointer<TWString1> barzAddress,
@@ -12996,8 +13068,8 @@ class TrustWalletCoreBindings {
 
   /// Returns the encoded diamondCut function call for Barz contract upgrades
   ///
-  /// \param input The serialized data of DiamondCutInput
-  /// \return The encoded bytes of diamondCut function call
+  /// \param input The serialized data of DiamondCutInput.
+  /// \return The diamond cut code.
   ffi.Pointer<TWData1> TWBarzGetDiamondCutCode(
     ffi.Pointer<TWData1> input,
   ) {
@@ -13016,10 +13088,10 @@ class TrustWalletCoreBindings {
   /// Computes an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702)
   /// `keccak256('0x05' || rlp([chain_id, address, nonce]))`.
   ///
-  /// \param chainId The chainId of the network
-  /// \param contractAddress The address of the contract to be authorized
-  /// \param nonce The nonce of the transaction
-  /// \return The authorization hash
+  /// \param chain_id The chain ID of the user.
+  /// \param contract_address The address of the smart contract wallet.
+  /// \param nonce The nonce of the user.
+  /// \return The authorization hash.
   ffi.Pointer<TWData1> TWBarzGetAuthorizationHash(
     ffi.Pointer<TWData1> chainId,
     ffi.Pointer<TWString1> contractAddress,
@@ -13043,52 +13115,17 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
               ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>();
 
-  /// Returns the signed authorization hash
-  ///
-  /// \param chainId The chainId of the network
-  /// \param contractAddress The address of the contract to be authorized
-  /// \param nonce The nonce of the transaction
-  /// \param privateKey The private key
-  /// \return A json string of the signed authorization
-  ffi.Pointer<TWString1> TWBarzSignAuthorization(
-    ffi.Pointer<TWData1> chainId,
-    ffi.Pointer<TWString1> contractAddress,
-    ffi.Pointer<TWData1> nonce,
-    ffi.Pointer<TWString1> privateKey,
-  ) {
-    return _TWBarzSignAuthorization(
-      chainId,
-      contractAddress,
-      nonce,
-      privateKey,
-    );
-  }
-
-  late final _TWBarzSignAuthorizationPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWString1> Function(
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>)>>('TWBarzSignAuthorization');
-  late final _TWBarzSignAuthorization = _TWBarzSignAuthorizationPtr.asFunction<
-      ffi.Pointer<TWString1> Function(
-          ffi.Pointer<TWData1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWData1>,
-          ffi.Pointer<TWString1>)>();
-
   /// Returns the encoded hash of the user operation
   ///
-  /// \param chainId The chainId of the network.
-  /// \param codeAddress The address of the Biz Smart Contract.
-  /// \param codeName The name of the Biz Smart Contract.
-  /// \param codeVersion The version of the Biz Smart Contract.
-  /// \param typeHash The type hash of the transaction.
-  /// \param domainSeparatorHash The domain separator hash of the wallet.
-  /// \param sender The address of the UserOperation sender.
-  /// \param userOpHash The hash of the user operation.
-  /// \return The encoded hash of the user operation
+  /// \param chain_id The chain ID of the user.
+  /// \param code_address The address of the smart contract wallet.
+  /// \param code_name The name of the smart contract wallet.
+  /// \param code_version The version of the smart contract wallet.
+  /// \param type_hash The type hash of the smart contract wallet.
+  /// \param domain_separator_hash The domain separator hash of the smart contract wallet.
+  /// \param sender The sender of the smart contract wallet.
+  /// \param user_op_hash The user operation hash of the smart contract wallet.
+  /// \return The encoded hash.
   ffi.Pointer<TWData1> TWBarzGetEncodedHash(
     ffi.Pointer<TWData1> chainId,
     ffi.Pointer<TWString1> codeAddress,
@@ -13135,9 +13172,9 @@ class TrustWalletCoreBindings {
 
   /// Signs a message using the private key
   ///
-  /// \param hash The hash to sign
-  /// \param privateKey The private key
-  /// \return The signature
+  /// \param hash The hash of the user.
+  /// \param private_key The private key of the user.
+  /// \return The signed hash.
   ffi.Pointer<TWData1> TWBarzGetSignedHash(
     ffi.Pointer<TWString1> hash,
     ffi.Pointer<TWString1> privateKey,
@@ -13155,6 +13192,41 @@ class TrustWalletCoreBindings {
   late final _TWBarzGetSignedHash = _TWBarzGetSignedHashPtr.asFunction<
       ffi.Pointer<TWData1> Function(
           ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
+
+  /// Returns the signed authorization hash
+  ///
+  /// \param chain_id The chain ID of the user.
+  /// \param contract_address The address of the smart contract wallet.
+  /// \param nonce The nonce of the user.
+  /// \param private_key The private key of the user.
+  /// \return The signed authorization.
+  ffi.Pointer<TWString1> TWBarzSignAuthorization(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> contractAddress,
+    ffi.Pointer<TWData1> nonce,
+    ffi.Pointer<TWString1> privateKey,
+  ) {
+    return _TWBarzSignAuthorization(
+      chainId,
+      contractAddress,
+      nonce,
+      privateKey,
+    );
+  }
+
+  late final _TWBarzSignAuthorizationPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>)>>('TWBarzSignAuthorization');
+  late final _TWBarzSignAuthorization = _TWBarzSignAuthorizationPtr.asFunction<
+      ffi.Pointer<TWString1> Function(
+          ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>)>();
 }
 
 final class __mbstate_t extends ffi.Union {
@@ -15034,7 +15106,6 @@ final class TWSolanaAddress extends ffi.Opaque {}
 /// Bech32 encode / decode functions
 final class TWBech32 extends ffi.Opaque {}
 
-/// Barz functions
 final class TWBarz extends ffi.Opaque {}
 
 const int __bool_true_false_are_defined = 1;

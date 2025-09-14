@@ -21,6 +21,40 @@ void main() {
       expect(res, "m/2645'/579218131'/211006541'/1534045311'/1431804530'/1");
     });
 
+    test('ExtraGrinding', () {
+      const signature =
+          "0x6d1550458c7a9a1257d73adbcf0fabc12f4497e970d9fa62dd88bf7d9e12719148c96225c1402d8707fd061b1aae2222bdf13571dfc82b3aa9974039f247f2b81b";
+      const address = "0xa4864d977b944315389d1765ffa7e66F74ee8cd7";
+      final res = TWEthereum.eip2645GetPath(
+        ethAddress: address,
+        layer: gLayer,
+        application: gApplication,
+        index: gIndex,
+      );
+      final path = TWDerivationPath.createWithString(res);
+      final privKey = TWStarkWare.getStarkKeyFromSignature(path, signature);
+      final pubKey = privKey.getPublicKeyByType(TWPublicKeyType.Starkex);
+      expect(hex(pubKey.data),
+          '035919acd61e97b3ecdc75ff8beed8d1803f7ea3cad2937926ae59cc3f8070d4');
+    });
+
+    test('GetPrivateKeyFromSignature', () {
+      const address = '0xa76e3eeb2f7143165618ab8feaabcd395b6fac7f';
+      const signature =
+          '0x5a263fad6f17f23e7c7ea833d058f3656d3fe464baf13f6f5ccba9a2466ba2ce4c4a250231bcac7beb165aec4c9b049b4ba40ad8dd287dc79b92b1ffcf20cdcf1b';
+      final res = TWEthereum.eip2645GetPath(
+        ethAddress: address,
+        layer: gLayer,
+        application: gApplication,
+        index: gIndex,
+      );
+      final path = TWDerivationPath.createWithString(res);
+      final privKey = TWStarkWare.getStarkKeyFromSignature(path, signature);
+      expect(hex(privKey.data),
+          '058ab7989d625b1a690400dcbe6e070627adedceff7bd196e58d4791026a8afe');
+      expect(TWPrivateKey.isValid(privKey.data, TWCurve.Starkex), true);
+    });
+
     test('GetPublicKeyFromPrivateKey', () {
       final privKeyData = parse_hex(
           '058ab7989d625b1a690400dcbe6e070627adedceff7bd196e58d4791026a8afe');

@@ -7,6 +7,7 @@ import 'package:wallet_core_bindings/proto/Tron.pb.dart' as Tron;
 import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:wallet_core_bindings/proto/TransactionCompiler.pb.dart'
     as TransactionCompiler;
+import 'package:wallet_core_bindings_wasm/wallet_core_bindings_wasm.dart';
 
 import '../../utils.dart';
 
@@ -115,6 +116,103 @@ void main() {
         final output = Tron.SigningOutput.fromBuffer(outputData);
         expect(output.json.isEmpty, true);
         expect(output.error, Common.SigningError.Error_no_support_n2n);
+      }
+    });
+
+    test('CompileWithSignaturesRawJson', () {
+      final privateKey = TWPrivateKey.createWithHexString(
+          "2d8f68944bdbfbc0769542fba8fc2d2a3de67393334471624364c7006da2aa54");
+      final publicKey =
+          privateKey.getPublicKeyByType(TWPublicKeyType.SECP256k1Extended);
+
+      /// Step 1: Prepare transaction input (protobuf)
+      final input = Tron.SigningInput(
+        rawJson: '''
+{
+	"raw_data": {
+		"contract": [{
+			"parameter": {
+				"type_url": "type.googleapis.com/protocol.TransferAssetContract",
+				"value": {
+					"amount": 4,
+					"asset_name": "31303030393539",
+					"owner_address": "415cd0fb0ab3ce40f3051414c604b27756e69e43db",
+					"to_address": "41521ea197907927725ef36d70f25f850d1659c7c7"
+				}
+			},
+			"type": "TransferAssetContract"
+		}],
+		"expiration": 1541926116000,
+		"ref_block_bytes": "b801",
+		"ref_block_hash": "0e2bc08d550f5f58",
+		"timestamp": 1539295479000
+	},
+	"visible":false,
+	"txID": "546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb"
+}''',
+      );
+
+      final txInputData = input.writeToBuffer();
+
+      /// Step 2: Obtain preimage hash
+      final preImageHashesData =
+          TWTransactionCompiler.preImageHashes(coin, txInputData);
+      final preSigningOutput =
+          TransactionCompiler.PreSigningOutput.fromBuffer(preImageHashesData);
+      expect(preSigningOutput.error, Common.SigningError.OK);
+      final preImageHash = preSigningOutput.dataHash;
+      expect(hex(preImageHash),
+          "546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb");
+      final signature = parse_hex(
+          "77f5eabde31e739d34a66914540f1756981dc7d782c9656f5e14e53b59a15371603"
+          "a183aa12124adeee7991bf55acc8e488a6ca04fb393b1a8ac16610eeafdfc00");
+
+      // Verify signature (pubkey & hash & signature)
+      expect(
+        publicKey.verify(
+            signature, Uint8List.fromList(preSigningOutput.dataHash)),
+        true,
+      );
+
+      /// Step 3: Compile transaction info
+      const expectedTx =
+          '{"raw_data":{"contract":[{"parameter":{"type_url":"type.googleapis.com/protocol.TransferAssetContract","value":{"amount":4,"asset_name":"31303030393539","owner_address":"415cd0fb0ab3ce40f3051414c604b27756e69e43db","to_address":"41521ea197907927725ef36d70f25f850d1659c7c7"}},"type":"TransferAssetContract"}],"expiration":1541926116000,"ref_block_bytes":"b801","ref_block_hash":"0e2bc08d550f5f58","timestamp":1539295479000},"signature":["77f5eabde31e739d34a66914540f1756981dc7d782c9656f5e14e53b59a15371603a183aa12124adeee7991bf55acc8e488a6ca04fb393b1a8ac16610eeafdfc00"],"txID":"546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb","visible":false}';
+      var outputData = TWTransactionCompiler.compileWithSignatures(
+        coin: coin,
+        txInputData: txInputData,
+        signatures: [signature],
+        publicKeys: [publicKey.data],
+      );
+
+      {
+        final output = Tron.SigningOutput.fromBuffer(outputData);
+        expect(output.json, expectedTx);
+      }
+
+      {
+        // Negative: invalid raw json
+        final invalidInput = Tron.SigningInput(
+          rawJson: "not valid json",
+        );
+        final invalidInputData = invalidInput.writeToBuffer();
+
+        try {
+          outputData = TWTransactionCompiler.compileWithSignatures(
+            coin: coin,
+            txInputData: invalidInputData,
+            signatures: [signature],
+            publicKeys: [publicKey.data],
+          );
+          final output = Tron.SigningOutput.fromBuffer(outputData);
+          expect(output.json.isEmpty, true);
+          expect(output.error, Common.SigningError.Error_invalid_params);
+        } catch (_) {
+          // In wasm mode, an exception is thrown for invalid input.
+          expect(
+            WalletCoreBindingsInterface.instance is WalletCoreBindingsWasmImpl,
+            true,
+          );
+        }
       }
     });
   });

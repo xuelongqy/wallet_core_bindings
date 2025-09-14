@@ -2329,6 +2329,7 @@ class SigningInput extends $pb.GeneratedMessage {
     Transaction? transaction,
     $core.List<$core.int>? privateKey,
     $core.String? txId,
+    $core.String? rawJson,
   }) {
     final $result = create();
     if (transaction != null) {
@@ -2339,6 +2340,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (txId != null) {
       $result.txId = txId;
+    }
+    if (rawJson != null) {
+      $result.rawJson = rawJson;
     }
     return $result;
   }
@@ -2359,6 +2363,7 @@ class SigningInput extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(
         2, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
     ..aOS(3, _omitFieldNames ? '' : 'txId', protoName: 'txId')
+    ..aOS(4, _omitFieldNames ? '' : 'rawJson')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2413,6 +2418,7 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearPrivateKey() => clearField(2);
 
   /// For direct sign in Tron, we just have to sign the txId returned by the DApp json payload.
+  /// TODO: This field can be removed in the future, as we can use raw_json.txID instead.
   @$pb.TagNumber(3)
   $core.String get txId => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -2424,6 +2430,19 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.bool hasTxId() => $_has(2);
   @$pb.TagNumber(3)
   void clearTxId() => clearField(3);
+
+  /// Raw JSON data from the DApp, which contains fields 'txID', 'raw_data' and 'raw_data_hex' normally.
+  @$pb.TagNumber(4)
+  $core.String get rawJson => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set rawJson($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasRawJson() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRawJson() => clearField(4);
 }
 
 /// Result containing the signed and encoded transaction.

@@ -508,76 +508,6 @@ class FungibleAssetTransferMessage extends $pb.GeneratedMessage {
   void clearAmount() => clearField(3);
 }
 
-/// Necessary fields to process a ManagedTokensRegisterMessage
-class ManagedTokensRegisterMessage extends $pb.GeneratedMessage {
-  factory ManagedTokensRegisterMessage({
-    StructTag? function,
-  }) {
-    final $result = create();
-    if (function != null) {
-      $result.function = function;
-    }
-    return $result;
-  }
-  ManagedTokensRegisterMessage._() : super();
-  factory ManagedTokensRegisterMessage.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(i, r);
-  factory ManagedTokensRegisterMessage.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'ManagedTokensRegisterMessage',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Aptos.Proto'),
-      createEmptyInstance: create)
-    ..aOM<StructTag>(1, _omitFieldNames ? '' : 'function',
-        subBuilder: StructTag.create)
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-      'Will be removed in next major version')
-  ManagedTokensRegisterMessage clone() =>
-      ManagedTokensRegisterMessage()..mergeFromMessage(this);
-  @$core.Deprecated('Using this can add significant overhead to your binary. '
-      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-      'Will be removed in next major version')
-  ManagedTokensRegisterMessage copyWith(
-          void Function(ManagedTokensRegisterMessage) updates) =>
-      super.copyWith(
-              (message) => updates(message as ManagedTokensRegisterMessage))
-          as ManagedTokensRegisterMessage;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static ManagedTokensRegisterMessage create() =>
-      ManagedTokensRegisterMessage._();
-  ManagedTokensRegisterMessage createEmptyInstance() => create();
-  static $pb.PbList<ManagedTokensRegisterMessage> createRepeated() =>
-      $pb.PbList<ManagedTokensRegisterMessage>();
-  @$core.pragma('dart2js:noInline')
-  static ManagedTokensRegisterMessage getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ManagedTokensRegisterMessage>(create);
-  static ManagedTokensRegisterMessage? _defaultInstance;
-
-  /// token function to register, e.g BTC: 0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::coins::BTC
-  @$pb.TagNumber(1)
-  StructTag get function => $_getN(0);
-  @$pb.TagNumber(1)
-  set function(StructTag v) {
-    setField(1, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasFunction() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFunction() => clearField(1);
-  @$pb.TagNumber(1)
-  StructTag ensureFunction() => $_ensure(0);
-}
-
 /// Necessary fields to process a CreateAccountMessage
 class CreateAccountMessage extends $pb.GeneratedMessage {
   factory CreateAccountMessage({
@@ -1534,7 +1464,6 @@ enum SigningInput_TransactionPayload {
   tokenTransfer,
   createAccount,
   nftMessage,
-  registerToken,
   liquidStakingMessage,
   tokenTransferCoins,
   fungibleAssetTransfer,
@@ -1556,7 +1485,6 @@ class SigningInput extends $pb.GeneratedMessage {
     TokenTransferMessage? tokenTransfer,
     CreateAccountMessage? createAccount,
     NftMessage? nftMessage,
-    ManagedTokensRegisterMessage? registerToken,
     LiquidStaking? liquidStakingMessage,
     TokenTransferCoinsMessage? tokenTransferCoins,
     FungibleAssetTransferMessage? fungibleAssetTransfer,
@@ -1599,9 +1527,6 @@ class SigningInput extends $pb.GeneratedMessage {
     if (nftMessage != null) {
       $result.nftMessage = nftMessage;
     }
-    if (registerToken != null) {
-      $result.registerToken = registerToken;
-    }
     if (liquidStakingMessage != null) {
       $result.liquidStakingMessage = liquidStakingMessage;
     }
@@ -1630,7 +1555,6 @@ class SigningInput extends $pb.GeneratedMessage {
     10: SigningInput_TransactionPayload.tokenTransfer,
     11: SigningInput_TransactionPayload.createAccount,
     12: SigningInput_TransactionPayload.nftMessage,
-    13: SigningInput_TransactionPayload.registerToken,
     14: SigningInput_TransactionPayload.liquidStakingMessage,
     15: SigningInput_TransactionPayload.tokenTransferCoins,
     16: SigningInput_TransactionPayload.fungibleAssetTransfer,
@@ -1640,7 +1564,7 @@ class SigningInput extends $pb.GeneratedMessage {
       _omitMessageNames ? '' : 'SigningInput',
       package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Aptos.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [9, 10, 11, 12, 13, 14, 15, 16])
+    ..oo(0, [9, 10, 11, 12, 14, 15, 16])
     ..aOS(1, _omitFieldNames ? '' : 'sender')
     ..aInt64(2, _omitFieldNames ? '' : 'sequenceNumber')
     ..a<$fixnum.Int64>(
@@ -1664,9 +1588,6 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: CreateAccountMessage.create)
     ..aOM<NftMessage>(12, _omitFieldNames ? '' : 'nftMessage',
         subBuilder: NftMessage.create)
-    ..aOM<ManagedTokensRegisterMessage>(
-        13, _omitFieldNames ? '' : 'registerToken',
-        subBuilder: ManagedTokensRegisterMessage.create)
     ..aOM<LiquidStaking>(14, _omitFieldNames ? '' : 'liquidStakingMessage',
         subBuilder: LiquidStaking.create)
     ..aOM<TokenTransferCoinsMessage>(
@@ -1865,71 +1786,57 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   NftMessage ensureNftMessage() => $_ensure(11);
 
-  @$pb.TagNumber(13)
-  ManagedTokensRegisterMessage get registerToken => $_getN(12);
-  @$pb.TagNumber(13)
-  set registerToken(ManagedTokensRegisterMessage v) {
-    setField(13, v);
-  }
-
-  @$pb.TagNumber(13)
-  $core.bool hasRegisterToken() => $_has(12);
-  @$pb.TagNumber(13)
-  void clearRegisterToken() => clearField(13);
-  @$pb.TagNumber(13)
-  ManagedTokensRegisterMessage ensureRegisterToken() => $_ensure(12);
-
   @$pb.TagNumber(14)
-  LiquidStaking get liquidStakingMessage => $_getN(13);
+  LiquidStaking get liquidStakingMessage => $_getN(12);
   @$pb.TagNumber(14)
   set liquidStakingMessage(LiquidStaking v) {
     setField(14, v);
   }
 
   @$pb.TagNumber(14)
-  $core.bool hasLiquidStakingMessage() => $_has(13);
+  $core.bool hasLiquidStakingMessage() => $_has(12);
   @$pb.TagNumber(14)
   void clearLiquidStakingMessage() => clearField(14);
   @$pb.TagNumber(14)
-  LiquidStaking ensureLiquidStakingMessage() => $_ensure(13);
+  LiquidStaking ensureLiquidStakingMessage() => $_ensure(12);
 
   @$pb.TagNumber(15)
-  TokenTransferCoinsMessage get tokenTransferCoins => $_getN(14);
+  TokenTransferCoinsMessage get tokenTransferCoins => $_getN(13);
   @$pb.TagNumber(15)
   set tokenTransferCoins(TokenTransferCoinsMessage v) {
     setField(15, v);
   }
 
   @$pb.TagNumber(15)
-  $core.bool hasTokenTransferCoins() => $_has(14);
+  $core.bool hasTokenTransferCoins() => $_has(13);
   @$pb.TagNumber(15)
   void clearTokenTransferCoins() => clearField(15);
   @$pb.TagNumber(15)
-  TokenTransferCoinsMessage ensureTokenTransferCoins() => $_ensure(14);
+  TokenTransferCoinsMessage ensureTokenTransferCoins() => $_ensure(13);
 
   @$pb.TagNumber(16)
-  FungibleAssetTransferMessage get fungibleAssetTransfer => $_getN(15);
+  FungibleAssetTransferMessage get fungibleAssetTransfer => $_getN(14);
   @$pb.TagNumber(16)
   set fungibleAssetTransfer(FungibleAssetTransferMessage v) {
     setField(16, v);
   }
 
   @$pb.TagNumber(16)
-  $core.bool hasFungibleAssetTransfer() => $_has(15);
+  $core.bool hasFungibleAssetTransfer() => $_has(14);
   @$pb.TagNumber(16)
   void clearFungibleAssetTransfer() => clearField(16);
   @$pb.TagNumber(16)
-  FungibleAssetTransferMessage ensureFungibleAssetTransfer() => $_ensure(15);
+  FungibleAssetTransferMessage ensureFungibleAssetTransfer() => $_ensure(14);
 
   @$pb.TagNumber(21)
-  $core.String get abi => $_getSZ(16);
+  $core.String get abi => $_getSZ(15);
   @$pb.TagNumber(21)
   set abi($core.String v) {
-    $_setString(16, v);
+    $_setString(15, v);
   }
 
   @$pb.TagNumber(21)
-  $core.bool hasAbi() => $_has(16);
+  $core.bool hasAbi() => $_has(15);
   @$pb.TagNumber(21)
   void clearAbi() => clearField(21);
 }

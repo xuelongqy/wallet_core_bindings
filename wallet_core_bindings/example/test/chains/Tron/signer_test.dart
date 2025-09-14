@@ -28,6 +28,43 @@ void main() {
           '77f5eabde31e739d34a66914540f1756981dc7d782c9656f5e14e53b59a15371603a183aa12124adeee7991bf55acc8e488a6ca04fb393b1a8ac16610eeafdfc00');
     });
 
+    test('SignDirectRawJsonTransferAsset', () {
+      final input = Tron.SigningInput(
+        privateKey: parse_hex(
+            "2d8f68944bdbfbc0769542fba8fc2d2a3de67393334471624364c7006da2aa54"),
+        rawJson: '''
+{
+	"raw_data": {
+		"contract": [{
+			"parameter": {
+				"type_url": "type.googleapis.com/protocol.TransferAssetContract",
+				"value": {
+					"amount": 4,
+					"asset_name": "31303030393539",
+					"owner_address": "415cd0fb0ab3ce40f3051414c604b27756e69e43db",
+					"to_address": "41521ea197907927725ef36d70f25f850d1659c7c7"
+				}
+			},
+			"type": "TransferAssetContract"
+		}],
+		"expiration": 1541926116000,
+		"ref_block_bytes": "b801",
+		"ref_block_hash": "0e2bc08d550f5f58",
+		"timestamp": 1539295479000
+	},
+	"visible":false,
+	"txID": "546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb"
+}''',
+      );
+
+      final output = input.sign();
+
+      expect(hex(output.id),
+          '546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb');
+      expect(hex(output.signature),
+          '77f5eabde31e739d34a66914540f1756981dc7d782c9656f5e14e53b59a15371603a183aa12124adeee7991bf55acc8e488a6ca04fb393b1a8ac16610eeafdfc00');
+    });
+
     test('SignTransferAsset', () {
       final input = Tron.SigningInput(
         transaction: Tron.Transaction(

@@ -1,6 +1,6 @@
 name: wallet_core_bindings_libs
 description: "wallet core dynamic library for wallet_core_bindings_native."
-version: 4.3.6
+version: 4.3.9
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:

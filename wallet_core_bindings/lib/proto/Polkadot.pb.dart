@@ -1154,6 +1154,147 @@ class Staking_BondAndNominate extends $pb.GeneratedMessage {
   CallIndices ensureNominateCallIndices() => $_ensure(6);
 }
 
+/// Bond extra, with nominators
+class Staking_BondExtraAndNominate extends $pb.GeneratedMessage {
+  factory Staking_BondExtraAndNominate({
+    $core.List<$core.int>? value,
+    $core.Iterable<$core.String>? nominators,
+    CallIndices? callIndices,
+    CallIndices? bondExtraCallIndices,
+    CallIndices? nominateCallIndices,
+  }) {
+    final $result = create();
+    if (value != null) {
+      $result.value = value;
+    }
+    if (nominators != null) {
+      $result.nominators.addAll(nominators);
+    }
+    if (callIndices != null) {
+      $result.callIndices = callIndices;
+    }
+    if (bondExtraCallIndices != null) {
+      $result.bondExtraCallIndices = bondExtraCallIndices;
+    }
+    if (nominateCallIndices != null) {
+      $result.nominateCallIndices = nominateCallIndices;
+    }
+    return $result;
+  }
+  Staking_BondExtraAndNominate._() : super();
+  factory Staking_BondExtraAndNominate.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Staking_BondExtraAndNominate.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Staking.BondExtraAndNominate',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OY)
+    ..pPS(2, _omitFieldNames ? '' : 'nominators')
+    ..aOM<CallIndices>(3, _omitFieldNames ? '' : 'callIndices',
+        subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(4, _omitFieldNames ? '' : 'bondExtraCallIndices',
+        subBuilder: CallIndices.create)
+    ..aOM<CallIndices>(5, _omitFieldNames ? '' : 'nominateCallIndices',
+        subBuilder: CallIndices.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Staking_BondExtraAndNominate clone() =>
+      Staking_BondExtraAndNominate()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Staking_BondExtraAndNominate copyWith(
+          void Function(Staking_BondExtraAndNominate) updates) =>
+      super.copyWith(
+              (message) => updates(message as Staking_BondExtraAndNominate))
+          as Staking_BondExtraAndNominate;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Staking_BondExtraAndNominate create() =>
+      Staking_BondExtraAndNominate._();
+  Staking_BondExtraAndNominate createEmptyInstance() => create();
+  static $pb.PbList<Staking_BondExtraAndNominate> createRepeated() =>
+      $pb.PbList<Staking_BondExtraAndNominate>();
+  @$core.pragma('dart2js:noInline')
+  static Staking_BondExtraAndNominate getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<Staking_BondExtraAndNominate>(create);
+  static Staking_BondExtraAndNominate? _defaultInstance;
+
+  /// amount (uint256, serialized big endian)
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get value => $_getN(0);
+  @$pb.TagNumber(1)
+  set value($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasValue() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearValue() => clearField(1);
+
+  /// list of nominators
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get nominators => $_getList(1);
+
+  /// Batch call indices
+  @$pb.TagNumber(3)
+  CallIndices get callIndices => $_getN(2);
+  @$pb.TagNumber(3)
+  set callIndices(CallIndices v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasCallIndices() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCallIndices() => clearField(3);
+  @$pb.TagNumber(3)
+  CallIndices ensureCallIndices() => $_ensure(2);
+
+  /// Staking.BondExtra call indices
+  @$pb.TagNumber(4)
+  CallIndices get bondExtraCallIndices => $_getN(3);
+  @$pb.TagNumber(4)
+  set bondExtraCallIndices(CallIndices v) {
+    setField(4, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasBondExtraCallIndices() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearBondExtraCallIndices() => clearField(4);
+  @$pb.TagNumber(4)
+  CallIndices ensureBondExtraCallIndices() => $_ensure(3);
+
+  /// Staking.Nominate call indices
+  @$pb.TagNumber(5)
+  CallIndices get nominateCallIndices => $_getN(4);
+  @$pb.TagNumber(5)
+  set nominateCallIndices(CallIndices v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasNominateCallIndices() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearNominateCallIndices() => clearField(5);
+  @$pb.TagNumber(5)
+  CallIndices ensureNominateCallIndices() => $_ensure(4);
+}
+
 /// Bond extra amount
 class Staking_BondExtra extends $pb.GeneratedMessage {
   factory Staking_BondExtra({
@@ -1782,6 +1923,7 @@ enum Staking_MessageOneof {
   chill,
   chillAndUnbond,
   rebond,
+  bondExtraAndNominate,
   notSet
 }
 
@@ -1797,6 +1939,7 @@ class Staking extends $pb.GeneratedMessage {
     Staking_Chill? chill,
     Staking_ChillAndUnbond? chillAndUnbond,
     Staking_Rebond? rebond,
+    Staking_BondExtraAndNominate? bondExtraAndNominate,
   }) {
     final $result = create();
     if (bond != null) {
@@ -1826,6 +1969,9 @@ class Staking extends $pb.GeneratedMessage {
     if (rebond != null) {
       $result.rebond = rebond;
     }
+    if (bondExtraAndNominate != null) {
+      $result.bondExtraAndNominate = bondExtraAndNominate;
+    }
     return $result;
   }
   Staking._() : super();
@@ -1847,6 +1993,7 @@ class Staking extends $pb.GeneratedMessage {
     7: Staking_MessageOneof.chill,
     8: Staking_MessageOneof.chillAndUnbond,
     9: Staking_MessageOneof.rebond,
+    10: Staking_MessageOneof.bondExtraAndNominate,
     0: Staking_MessageOneof.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -1854,7 +2001,7 @@ class Staking extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Polkadot.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     ..aOM<Staking_Bond>(1, _omitFieldNames ? '' : 'bond',
         subBuilder: Staking_Bond.create)
     ..aOM<Staking_BondAndNominate>(2, _omitFieldNames ? '' : 'bondAndNominate',
@@ -1874,6 +2021,9 @@ class Staking extends $pb.GeneratedMessage {
         subBuilder: Staking_ChillAndUnbond.create)
     ..aOM<Staking_Rebond>(9, _omitFieldNames ? '' : 'rebond',
         subBuilder: Staking_Rebond.create)
+    ..aOM<Staking_BondExtraAndNominate>(
+        10, _omitFieldNames ? '' : 'bondExtraAndNominate',
+        subBuilder: Staking_BondExtraAndNominate.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2026,6 +2176,20 @@ class Staking extends $pb.GeneratedMessage {
   void clearRebond() => clearField(9);
   @$pb.TagNumber(9)
   Staking_Rebond ensureRebond() => $_ensure(8);
+
+  @$pb.TagNumber(10)
+  Staking_BondExtraAndNominate get bondExtraAndNominate => $_getN(9);
+  @$pb.TagNumber(10)
+  set bondExtraAndNominate(Staking_BondExtraAndNominate v) {
+    setField(10, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasBondExtraAndNominate() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearBondExtraAndNominate() => clearField(10);
+  @$pb.TagNumber(10)
+  Staking_BondExtraAndNominate ensureBondExtraAndNominate() => $_ensure(9);
 }
 
 enum SigningInput_MessageOneof { balanceCall, stakingCall, notSet }
