@@ -62,4 +62,16 @@ class TWSolanaTransactionImpl extends TWSolanaTransactionInterface {
       Pointer.fromAddress(instruction),
     ).address;
   }
+
+  @override
+  int insertTransferInstruction(
+      int encodedTx, int insertAt, int from, int to, int lamports) {
+    return bindings.TWSolanaTransactionInsertTransferInstruction(
+      Pointer.fromAddress(encodedTx),
+      insertAt,
+      Pointer.fromAddress(from),
+      Pointer.fromAddress(to),
+      Pointer.fromAddress(lamports),
+    ).address;
+  }
 }

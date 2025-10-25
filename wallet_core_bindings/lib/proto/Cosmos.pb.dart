@@ -263,6 +263,8 @@ class THORChainAsset extends $pb.GeneratedMessage {
     $core.String? symbol,
     $core.String? ticker,
     $core.bool? synth,
+    $core.bool? trade,
+    $core.bool? secured,
   }) {
     final $result = create();
     if (chain != null) {
@@ -276,6 +278,12 @@ class THORChainAsset extends $pb.GeneratedMessage {
     }
     if (synth != null) {
       $result.synth = synth;
+    }
+    if (trade != null) {
+      $result.trade = trade;
+    }
+    if (secured != null) {
+      $result.secured = secured;
     }
     return $result;
   }
@@ -296,6 +304,8 @@ class THORChainAsset extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'symbol')
     ..aOS(3, _omitFieldNames ? '' : 'ticker')
     ..aOB(4, _omitFieldNames ? '' : 'synth')
+    ..aOB(5, _omitFieldNames ? '' : 'trade')
+    ..aOB(6, _omitFieldNames ? '' : 'secured')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -368,6 +378,30 @@ class THORChainAsset extends $pb.GeneratedMessage {
   $core.bool hasSynth() => $_has(3);
   @$pb.TagNumber(4)
   void clearSynth() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get trade => $_getBF(4);
+  @$pb.TagNumber(5)
+  set trade($core.bool v) {
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasTrade() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearTrade() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.bool get secured => $_getBF(5);
+  @$pb.TagNumber(6)
+  set secured($core.bool v) {
+    $_setBool(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasSecured() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSecured() => clearField(6);
 }
 
 class THORChainCoin extends $pb.GeneratedMessage {

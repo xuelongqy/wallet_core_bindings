@@ -212,6 +212,59 @@ void main() {
       );
     });
 
+    test('SendToTexAddress', () {
+      // tx on mainnet
+      // https://blockchair.com/zcash/transaction/e5f4d0c28f96c80caace4052aed4645a78badedc00cd3b071322d63c264b2885
+
+      const myAddress = "t1a6Do9CH4umduHKtoufDDMQMypd7VYLqhH";
+      final myPrivateKey = parse_hex(
+          "cfa0c168cce0d041119b216f60aed343b93fde0a8736ea0bcd6254cfef0a3c79");
+
+      final input = Bitcoin.SigningInput(
+        coinType: coin.value,
+        hashType: TWBitcoinSigHashType.All.value,
+        zip0317: true,
+        toAddress: "tex1auz6gx89x2wcku6gswdvaz2nf9x3seex6px6v0",
+        changeAddress: myAddress,
+        amount: $fixnum.Int64(200000),
+        privateKey: [myPrivateKey],
+      );
+
+      final txHash = parse_hex(
+              "d0da6ed2f89de9936ca3429110bc60a02f6e797665b8714d646fc25b45210ef2")
+          .reversed
+          .toList();
+      final redeemScript =
+          TWBitcoinScript.lockScriptForAddress(myAddress, coin).data;
+
+      input.utxo.add(Bitcoin.UnspentTransaction(
+        outPoint: Bitcoin.OutPoint(
+          hash: txHash,
+          index: 0,
+          sequence: UINT32_MAX,
+        ),
+        script: redeemScript,
+        amount: $fixnum.Int64(2000000),
+      ));
+
+      final plan = Bitcoin.TransactionPlan.fromBuffer(
+          TWAnySigner.plan(input.writeToBuffer(), coin));
+      // Nu6BranchID
+      plan.branchId = [0x55, 0x10, 0xe7, 0xc8];
+
+      input.plan = plan;
+
+      // Sign
+      final output = Bitcoin.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input.writeToBuffer(), coin));
+      expect(output.error, Common.SigningError.OK);
+
+      expect(
+        hex(output.encoded),
+        "0400008085202f8901f20e21455bc26f644d71b86576796e2fa060bc109142a36c93e99df8d26edad0000000006b483045022100850a98be0d1a432f900bb3c34347d16ea839d4a59de288c17838f1d2ee6ec390022007e5fd53c8c31d75ca6d79b3d2874e6dd8e685e60758874e4884ace9d26eea4501210340643a2a4ea0777ce0b2529be566a3caea5598fef56c44579dadf96b586bed50ffffffff02400d0300000000001976a914ef05a418e5329d8b7348839ace8953494d18672688ac30501b00000000001976a914b1e4e13f836a6e7a33cbb20817a62da829d543e988ac00000000000000000000000000000000000000",
+      );
+    });
+
     test('SigningWithError', () {
       const amount = 17615;
       const toAddress = "t1biXYN8wJahR76SqZTe1LBzTLf3JAsmT93";

@@ -90,6 +90,7 @@ void main() {
       expect(TWHRP.ECash, TWCoinType.ECash.hrp);
       expect(TWHRP.Secret, TWCoinType.Secret.hrp);
       expect(TWHRP.Pactus, TWCoinType.Pactus.hrp);
+      expect(TWHRP.Zcash, TWCoinType.Zcash.hrp);
 
       expect(TWHRP.Unknown, TWCoinType.Aion.hrp);
       expect(TWHRP.Unknown, TWCoinType.Callisto.hrp);
@@ -116,7 +117,6 @@ void main() {
       expect(TWHRP.Unknown, TWCoinType.Tron.hrp);
       expect(TWHRP.Unknown, TWCoinType.VeChain.hrp);
       expect(TWHRP.Unknown, TWCoinType.Wanchain.hrp);
-      expect(TWHRP.Unknown, TWCoinType.Zcash.hrp);
       expect(TWHRP.Unknown, TWCoinType.Firo.hrp);
       expect(TWHRP.Unknown, TWCoinType.Zelcash.hrp);
       expect(TWHRP.Unknown, TWCoinType.Ravencoin.hrp);

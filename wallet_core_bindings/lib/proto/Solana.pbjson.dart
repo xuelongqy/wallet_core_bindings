@@ -285,6 +285,54 @@ final $typed_data.Uint8List createAndTransferTokenDescriptor = $convert.base64De
     'cxJJChB0b2tlbl9wcm9ncmFtX2lkGAkgASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3'
     'JhbUlkUg50b2tlblByb2dyYW1JZA==');
 
+@$core.Deprecated('Use tokenTransferToFeePayerDescriptor instead')
+const TokenTransferToFeePayer$json = {
+  '1': 'TokenTransferToFeePayer',
+  '2': [
+    {
+      '1': 'fee_token_mint_address',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '10': 'feeTokenMintAddress'
+    },
+    {
+      '1': 'fee_recipient_token_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'feeRecipientTokenAddress'
+    },
+    {'1': 'fee_amount', '3': 3, '4': 1, '5': 4, '10': 'feeAmount'},
+    {
+      '1': 'fee_sender_token_address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'feeSenderTokenAddress'
+    },
+    {'1': 'fee_decimals', '3': 5, '4': 1, '5': 13, '10': 'feeDecimals'},
+    {
+      '1': 'fee_token_program_id',
+      '3': 6,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.TokenProgramId',
+      '10': 'feeTokenProgramId'
+    },
+  ],
+};
+
+/// Descriptor for `TokenTransferToFeePayer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List tokenTransferToFeePayerDescriptor = $convert.base64Decode(
+    'ChdUb2tlblRyYW5zZmVyVG9GZWVQYXllchIzChZmZWVfdG9rZW5fbWludF9hZGRyZXNzGAEgAS'
+    'gJUhNmZWVUb2tlbk1pbnRBZGRyZXNzEj0KG2ZlZV9yZWNpcGllbnRfdG9rZW5fYWRkcmVzcxgC'
+    'IAEoCVIYZmVlUmVjaXBpZW50VG9rZW5BZGRyZXNzEh0KCmZlZV9hbW91bnQYAyABKARSCWZlZU'
+    'Ftb3VudBI3ChhmZWVfc2VuZGVyX3Rva2VuX2FkZHJlc3MYBCABKAlSFWZlZVNlbmRlclRva2Vu'
+    'QWRkcmVzcxIhCgxmZWVfZGVjaW1hbHMYBSABKA1SC2ZlZURlY2ltYWxzElAKFGZlZV90b2tlbl'
+    '9wcm9ncmFtX2lkGAYgASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3JhbUlkUhFmZWVU'
+    'b2tlblByb2dyYW1JZA==');
+
 @$core.Deprecated('Use createNonceAccountDescriptor instead')
 const CreateNonceAccount$json = {
   '1': 'CreateNonceAccount',
@@ -758,6 +806,22 @@ const SigningInput$json = {
       '6': '.TW.Solana.Proto.PriorityFeeLimit',
       '10': 'priorityFeeLimit'
     },
+    {
+      '1': 'token_transfer_to_fee_payer',
+      '3': 24,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.TokenTransferToFeePayer',
+      '10': 'tokenTransferToFeePayer'
+    },
+    {
+      '1': 'transfer_to_fee_payer',
+      '3': 25,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.Transfer',
+      '10': 'transferToFeePayer'
+    },
   ],
   '8': [
     {'1': 'transaction_type'},
@@ -796,8 +860,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     't0eF9lbmNvZGluZxgVIAEoDjIZLlRXLlNvbGFuYS5Qcm90by5FbmNvZGluZ1IKdHhFbmNvZGlu'
     'ZxJPChJwcmlvcml0eV9mZWVfcHJpY2UYFiABKAsyIS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdH'
     'lGZWVQcmljZVIQcHJpb3JpdHlGZWVQcmljZRJPChJwcmlvcml0eV9mZWVfbGltaXQYFyABKAsy'
-    'IS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdHlGZWVMaW1pdFIQcHJpb3JpdHlGZWVMaW1pdEISCh'
-    'B0cmFuc2FjdGlvbl90eXBl');
+    'IS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdHlGZWVMaW1pdFIQcHJpb3JpdHlGZWVMaW1pdBJmCh'
+    't0b2tlbl90cmFuc2Zlcl90b19mZWVfcGF5ZXIYGCABKAsyKC5UVy5Tb2xhbmEuUHJvdG8uVG9r'
+    'ZW5UcmFuc2ZlclRvRmVlUGF5ZXJSF3Rva2VuVHJhbnNmZXJUb0ZlZVBheWVyEkwKFXRyYW5zZm'
+    'VyX3RvX2ZlZV9wYXllchgZIAEoCzIZLlRXLlNvbGFuYS5Qcm90by5UcmFuc2ZlclISdHJhbnNm'
+    'ZXJUb0ZlZVBheWVyQhIKEHRyYW5zYWN0aW9uX3R5cGU=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

@@ -41,6 +41,16 @@ void main() {
         TWAnyAddress.isValid('t3RD6RFKhWSotNbPEY4Vw7Ku9QCfKkzrbBL', coin),
         true,
       );
+      expect(
+        TWAnyAddress.isValid(
+            'tex1auz6gx89x2wcku6gswdvaz2nf9x3seex6px6v0', coin),
+        true,
+      );
+      expect(
+        TWAnyAddress.isValid(
+            'tex1s2rt77ggv6q989lr49rkgzmh5slsksa9khdgte', coin),
+        true,
+      );
     });
 
     test('Invalid', () {
@@ -77,6 +87,11 @@ void main() {
         TWAnyAddress.isValid('2NRbuP5YfzRNEa1RibT5kXay1VgvQHnydZY1', coin),
         false,
       ); // invalid prefix
+      expect(
+        TWAnyAddress.isValid(
+            'textest1auz6gx89x2wcku6gswdvaz2nf9x3seex6px6v0', coin),
+        false,
+      ); // invalid checksum
     });
 
     test('InitWithString', () {
@@ -90,6 +105,12 @@ void main() {
         final address =
             TWAnyAddress('t3RD6RFKhWSotNbPEY4Vw7Ku9QCfKkzrbBL', coin);
         expect(address.description, 't3RD6RFKhWSotNbPEY4Vw7Ku9QCfKkzrbBL');
+      }
+
+      {
+        final address =
+            TWAnyAddress('tex1auz6gx89x2wcku6gswdvaz2nf9x3seex6px6v0', coin);
+        expectHex(address.data, 'ef05a418e5329d8b7348839ace8953494d186726');
       }
     });
   });

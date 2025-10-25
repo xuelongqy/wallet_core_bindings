@@ -457,21 +457,21 @@ packages:
       path: "../../wallet_core_bindings_native"
       relative: true
     source: path
-    version: "4.3.6"
+    version: "4.3.9"
   wallet_core_bindings_wasm:
     dependency: "direct dev"
     description:
       path: "../../wallet_core_bindings_wasm"
       relative: true
     source: path
-    version: "4.3.6"
+    version: "4.3.9"
   wallet_core_bindings_wasm_assets:
     dependency: "direct dev"
     description:
       path: "../../wallet_core_bindings_wasm_assets"
       relative: true
     source: path
-    version: "4.3.6"
+    version: "4.3.9"
   wasm_interop:
     dependency: transitive
     description:

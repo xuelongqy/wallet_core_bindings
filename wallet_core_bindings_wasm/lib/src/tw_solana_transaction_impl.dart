@@ -48,4 +48,12 @@ class TWSolanaTransactionImpl extends TWSolanaTransactionInterface {
     final func = wasm.getFunction('TWSolanaTransactionInsertInstruction')!;
     return func([encodedTx, insertAt, instruction]).first as int;
   }
+
+  @override
+  int insertTransferInstruction(
+      int encodedTx, int insertAt, int from, int to, int lamports) {
+    final func =
+        wasm.getFunction('TWSolanaTransactionInsertTransferInstruction')!;
+    return func([encodedTx, insertAt, from, to, lamports]).first as int;
+  }
 }

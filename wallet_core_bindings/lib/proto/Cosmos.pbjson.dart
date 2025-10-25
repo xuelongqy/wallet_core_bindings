@@ -124,13 +124,16 @@ const THORChainAsset$json = {
     {'1': 'symbol', '3': 2, '4': 1, '5': 9, '10': 'symbol'},
     {'1': 'ticker', '3': 3, '4': 1, '5': 9, '10': 'ticker'},
     {'1': 'synth', '3': 4, '4': 1, '5': 8, '10': 'synth'},
+    {'1': 'trade', '3': 5, '4': 1, '5': 8, '10': 'trade'},
+    {'1': 'secured', '3': 6, '4': 1, '5': 8, '10': 'secured'},
   ],
 };
 
 /// Descriptor for `THORChainAsset`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List tHORChainAssetDescriptor = $convert.base64Decode(
     'Cg5USE9SQ2hhaW5Bc3NldBIUCgVjaGFpbhgBIAEoCVIFY2hhaW4SFgoGc3ltYm9sGAIgASgJUg'
-    'ZzeW1ib2wSFgoGdGlja2VyGAMgASgJUgZ0aWNrZXISFAoFc3ludGgYBCABKAhSBXN5bnRo');
+    'ZzeW1ib2wSFgoGdGlja2VyGAMgASgJUgZ0aWNrZXISFAoFc3ludGgYBCABKAhSBXN5bnRoEhQK'
+    'BXRyYWRlGAUgASgIUgV0cmFkZRIYCgdzZWN1cmVkGAYgASgIUgdzZWN1cmVk');
 
 @$core.Deprecated('Use tHORChainCoinDescriptor instead')
 const THORChainCoin$json = {

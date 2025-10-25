@@ -14,6 +14,7 @@ enum TWHRP {
   Syscoin,
   Verge,
   Cosmos,
+  Zcash,
   BitcoinCash,
   BitcoinGold,
   IoTeX,

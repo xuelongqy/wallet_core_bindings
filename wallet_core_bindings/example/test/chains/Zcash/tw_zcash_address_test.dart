@@ -8,6 +8,22 @@ void main() {
   group('TWZcash', () {
     const coin = TWCoinType.Zcash;
 
+    test('IsValidTexAddress', () {
+      expect(
+          true,
+          TWAnyAddress.isValid(
+              'tex1auz6gx89x2wcku6gswdvaz2nf9x3seex6px6v0', coin));
+    });
+
+    test('TexAddressData', () {
+      final address =
+          TWAnyAddress('tex1auz6gx89x2wcku6gswdvaz2nf9x3seex6px6v0', coin);
+      expectHex(
+        address.data,
+        'ef05a418e5329d8b7348839ace8953494d186726',
+      );
+    });
+
     test('TransparentAddress', () {
       final privateKey = TWPrivateKey.createWithHexString(
           '987919d988ef94e678bce254c932e7a7a76744b2c008467448406d4246513132');

@@ -1,7 +1,7 @@
 part of '../wallet_core_bindings_native.dart';
 
 /// Native interface for [TWBarz].
-class TWBarzImpl extends TWBarzInterface {
+class TWBarzImpl implements TWBarzInterface {
   final native_bindings.TrustWalletCoreBindings bindings;
 
   TWBarzImpl(this.bindings);
@@ -14,9 +14,21 @@ class TWBarzImpl extends TWBarzInterface {
   }
 
   @override
-  int getDiamondCutCode(int input) {
-    return bindings.TWBarzGetDiamondCutCode(
-      Pointer.fromAddress(input),
+  int getPrefixedMsgHash(int msgHash, int barzAddress, int chainId) {
+    return bindings.TWBarzGetPrefixedMsgHash(
+      Pointer.fromAddress(msgHash),
+      Pointer.fromAddress(barzAddress),
+      chainId,
+    ).address;
+  }
+
+  @override
+  int getInitCode(int factory, int publicKey, int verificationFacet, int salt) {
+    return bindings.TWBarzGetInitCode(
+      Pointer.fromAddress(factory),
+      Pointer.fromAddress(publicKey),
+      Pointer.fromAddress(verificationFacet),
+      salt,
     ).address;
   }
 
@@ -32,71 +44,9 @@ class TWBarzImpl extends TWBarzInterface {
   }
 
   @override
-  int getInitCode(int factory, int publicKey, int verificationFacet, int salt) {
-    return bindings.TWBarzGetInitCode(
-      Pointer.fromAddress(factory),
-      Pointer.fromAddress(publicKey),
-      Pointer.fromAddress(verificationFacet),
-      salt,
-    ).address;
-  }
-
-  @override
-  int getPrefixedMsgHash(int msgHash, int barzAddress, int chainId) {
-    return bindings.TWBarzGetPrefixedMsgHash(
-      Pointer.fromAddress(msgHash),
-      Pointer.fromAddress(barzAddress),
-      chainId,
-    ).address;
-  }
-
-  @override
-  int getAuthorizationHash(int chainId, int contractAddress, int nonce) {
-    return bindings.TWBarzGetAuthorizationHash(
-      Pointer.fromAddress(chainId),
-      Pointer.fromAddress(contractAddress),
-      Pointer.fromAddress(nonce),
-    ).address;
-  }
-
-  @override
-  int getSignedHash(int hash, int privateKey) {
-    return bindings.TWBarzGetSignedHash(
-      Pointer.fromAddress(hash),
-      Pointer.fromAddress(privateKey),
-    ).address;
-  }
-
-  @override
-  int signAuthorization(
-      int chainId, int contractAddress, int nonce, int privateKey) {
-    return bindings.TWBarzSignAuthorization(
-      Pointer.fromAddress(chainId),
-      Pointer.fromAddress(contractAddress),
-      Pointer.fromAddress(nonce),
-      Pointer.fromAddress(privateKey),
-    ).address;
-  }
-
-  @override
-  int getEncodedHash(
-      int chainId,
-      int codeAddress,
-      int codeName,
-      int codeVersion,
-      int typeHash,
-      int domainSeparatorHash,
-      int sender,
-      int userOpHash) {
-    return bindings.TWBarzGetEncodedHash(
-      Pointer.fromAddress(chainId),
-      Pointer.fromAddress(codeAddress),
-      Pointer.fromAddress(codeName),
-      Pointer.fromAddress(codeVersion),
-      Pointer.fromAddress(typeHash),
-      Pointer.fromAddress(domainSeparatorHash),
-      Pointer.fromAddress(sender),
-      Pointer.fromAddress(userOpHash),
+  int getDiamondCutCode(int input) {
+    return bindings.TWBarzGetDiamondCutCode(
+      Pointer.fromAddress(input),
     ).address;
   }
 }

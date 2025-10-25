@@ -20,6 +20,9 @@ abstract class WalletCoreBindingsInterface {
   /// [TWBarz] interface.
   late TWBarzInterface barz;
 
+  /// [TWBiz] interface.
+  late TWBizInterface biz;
+
   /// [TWBase32] interface.
   late TWBase32Interface base32;
 
@@ -76,6 +79,9 @@ abstract class WalletCoreBindingsInterface {
 
   /// [TWEthereum] interface.
   late TWEthereumInterface ethereum;
+
+  /// [TWEip7702] interface.
+  late TWEip7702Interface eip7702;
 
   /// [TWEthereumAbi] interface.
   late TWEthereumAbiInterface ethereumAbi;
@@ -191,6 +197,9 @@ abstract class WalletCoreBindingsInterface {
   /// [TWWebAuthn] interface.
   late TWWebAuthnInterface webAuthn;
 
+  /// [TWWebAuthnSolidity] interface.
+  late TWWebAuthnSolidityInterface webAuthnSolidity;
+
   /// WalletCore bindings instance.
   static WalletCoreBindingsInterface? _instance;
 
@@ -240,6 +249,9 @@ TWAsnParserInterface get _asnParserImpl =>
 
 /// [TWBarz] implement.
 TWBarzInterface get _barzImpl => WalletCoreBindingsInterface.instance.barz;
+
+/// [TWBiz] implement.
+TWBizInterface get _bizImpl => WalletCoreBindingsInterface.instance.biz;
 
 /// [TWBase32] implement.
 TWBase32Interface get _base32Impl =>
@@ -315,6 +327,10 @@ TWDerivationPathIndexInterface get _derivationPathIndexImpl =>
 /// [TWEthereum] implement.
 TWEthereumInterface get _ethereumImpl =>
     WalletCoreBindingsInterface.instance.ethereum;
+
+/// [TWEip7702] implement.
+TWEip7702Interface get _eip7702Impl =>
+    WalletCoreBindingsInterface.instance.eip7702;
 
 /// [TWEthereumAbi] implement.
 TWEthereumAbiInterface get _ethereumAbiImpl =>
@@ -465,3 +481,7 @@ TWWalletConnectRequestInterface get _walletConnectRequestImpl =>
 /// [TWWebAuthn] implement.
 TWWebAuthnInterface get _webAuthnImpl =>
     WalletCoreBindingsInterface.instance.webAuthn;
+
+/// [TWWebAuthnSolidity] implement.
+TWWebAuthnSolidityInterface get _webAuthnSolidityImpl =>
+    WalletCoreBindingsInterface.instance.webAuthnSolidity;

@@ -16,4 +16,7 @@ abstract class TWSolanaTransactionInterface {
   int setFeePayer(int encodedTx, int feePayer);
 
   int insertInstruction(int encodedTx, int insertAt, int instruction);
+
+  int insertTransferInstruction(
+      int encodedTx, int insertAt, int from, int to, int lamports);
 }

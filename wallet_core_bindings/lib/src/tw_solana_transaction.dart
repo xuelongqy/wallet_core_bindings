@@ -93,4 +93,28 @@ class TWSolanaTransaction {
               insertAt,
               TWString(instruction).pointer))
           .value;
+
+  /// Inserts a SOL transfer instruction to the given transaction at the specified position, returning the updated transaction.
+  /// Please note that compute price and limit instructions should always be the first instructions if they are present in the transaction.
+  ///
+  /// \param [encoded_tx] base64 encoded Solana transaction.
+  /// \param [insert_at] index where the instruction should be inserted. If you don't care about the position, use -1.
+  /// \param [from] sender account from which the lamports will be debited.
+  /// \param [to] receiver account to which the lamports will be transferred.
+  /// \param [lamports] amount of lamports to transfer, as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  static String? insertTransferInstruction({
+    required String encodedTx,
+    required int insertAt,
+    required String from,
+    required String to,
+    required String lamports,
+  }) =>
+      TWString.fromPointer(_solanaTransactionImpl.insertTransferInstruction(
+              TWString(encodedTx).pointer,
+              insertAt,
+              TWString(from).pointer,
+              TWString(to).pointer,
+              TWString(lamports).pointer))
+          .value;
 }

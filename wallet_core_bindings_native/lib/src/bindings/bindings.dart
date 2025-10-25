@@ -2450,6 +2450,13 @@ class TrustWalletCoreBindings {
 
   set HRP_COSMOS(ffi.Pointer<ffi.Char> value) => _HRP_COSMOS.value = value;
 
+  late final ffi.Pointer<ffi.Pointer<ffi.Char>> _HRP_ZCASH =
+      _lookup<ffi.Pointer<ffi.Char>>('HRP_ZCASH');
+
+  ffi.Pointer<ffi.Char> get HRP_ZCASH => _HRP_ZCASH.value;
+
+  set HRP_ZCASH(ffi.Pointer<ffi.Char> value) => _HRP_ZCASH.value = value;
+
   late final ffi.Pointer<ffi.Pointer<ffi.Char>> _HRP_BITCOINCASH =
       _lookup<ffi.Pointer<ffi.Char>>('HRP_BITCOINCASH');
 
@@ -5600,6 +5607,167 @@ class TrustWalletCoreBindings {
           ffi.Pointer<TWData> Function(int, ffi.Pointer<TWData>,
               ffi.Pointer<TWDataVector>, ffi.Pointer<TWDataVector>, int)>();
 
+  /// Returns the encoded hash of the user operation
+  ///
+  /// \param chain_id The chain ID of the user.
+  /// \param code_address The address of the smart contract wallet.
+  /// \param code_name The name of the smart contract wallet.
+  /// \param code_version The version of the smart contract wallet.
+  /// \param type_hash The type hash of the smart contract wallet.
+  /// \param domain_separator_hash The domain separator hash of the smart contract wallet.
+  /// \param sender The sender of the smart contract wallet.
+  /// \param user_op_hash The user operation hash of the smart contract wallet.
+  /// \return The encoded hash.
+  ffi.Pointer<TWData1> TWBizGetEncodedHash(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> codeAddress,
+    ffi.Pointer<TWString1> codeName,
+    ffi.Pointer<TWString1> codeVersion,
+    ffi.Pointer<TWString1> typeHash,
+    ffi.Pointer<TWString1> domainSeparatorHash,
+    ffi.Pointer<TWString1> sender,
+    ffi.Pointer<TWString1> userOpHash,
+  ) {
+    return _TWBizGetEncodedHash(
+      chainId,
+      codeAddress,
+      codeName,
+      codeVersion,
+      typeHash,
+      domainSeparatorHash,
+      sender,
+      userOpHash,
+    );
+  }
+
+  late final _TWBizGetEncodedHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>)>>('TWBizGetEncodedHash');
+  late final _TWBizGetEncodedHash = _TWBizGetEncodedHashPtr.asFunction<
+      ffi.Pointer<TWData1> Function(
+          ffi.Pointer<TWData1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>,
+          ffi.Pointer<TWString1>)>();
+
+  /// Signs a message using the private key
+  ///
+  /// \param hash The hash of the user.
+  /// \param private_key The private key of the user.
+  /// \return The signed hash.
+  ffi.Pointer<TWData1> TWBizGetSignedHash(
+    ffi.Pointer<TWString1> hash,
+    ffi.Pointer<TWString1> privateKey,
+  ) {
+    return _TWBizGetSignedHash(
+      hash,
+      privateKey,
+    );
+  }
+
+  late final _TWBizGetSignedHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
+              ffi.Pointer<TWString1>)>>('TWBizGetSignedHash');
+  late final _TWBizGetSignedHash = _TWBizGetSignedHashPtr.asFunction<
+      ffi.Pointer<TWData1> Function(
+          ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
+
+  /// Encodes `Biz.registerSession` function call to register a session passkey public key.
+  ///
+  /// \param session_passkey_public_key The nist256p1 (aka secp256p1) public key of the session passkey.
+  /// \param valid_until_timestamp The timestamp until which the session is valid. Big endian uint64.
+  /// \return ABI-encoded function call.
+  ffi.Pointer<TWData1> TWBizEncodeRegisterSessionCall(
+    ffi.Pointer<TWPublicKey> sessionPasskeyPublicKey,
+    ffi.Pointer<TWData1> validUntilTimestamp,
+  ) {
+    return _TWBizEncodeRegisterSessionCall(
+      sessionPasskeyPublicKey,
+      validUntilTimestamp,
+    );
+  }
+
+  late final _TWBizEncodeRegisterSessionCallPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWPublicKey>,
+              ffi.Pointer<TWData1>)>>('TWBizEncodeRegisterSessionCall');
+  late final _TWBizEncodeRegisterSessionCall =
+      _TWBizEncodeRegisterSessionCallPtr.asFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWPublicKey>, ffi.Pointer<TWData1>)>();
+
+  /// Encodes `Biz.removeSession` function call to deregister a session passkey public key.
+  ///
+  /// \param session_passkey_public_key The nist256p1 (aka secp256p1) public key of the session passkey.
+  /// \return ABI-encoded function call.
+  ffi.Pointer<TWData1> TWBizEncodeRemoveSessionCall(
+    ffi.Pointer<TWPublicKey> sessionPasskeyPublicKey,
+  ) {
+    return _TWBizEncodeRemoveSessionCall(
+      sessionPasskeyPublicKey,
+    );
+  }
+
+  late final _TWBizEncodeRemoveSessionCallPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWPublicKey>)>>('TWBizEncodeRemoveSessionCall');
+  late final _TWBizEncodeRemoveSessionCall = _TWBizEncodeRemoveSessionCallPtr
+      .asFunction<ffi.Pointer<TWData1> Function(ffi.Pointer<TWPublicKey>)>();
+
+  /// Encodes Biz Passkey Session nonce.
+  ///
+  /// \param nonce The nonce of the Biz Passkey Session account.
+  /// \return uint256 represented as [passkey_nonce_key_192, nonce_64].
+  ffi.Pointer<TWData1> TWBizEncodePasskeySessionNonce(
+    ffi.Pointer<TWData1> nonce,
+  ) {
+    return _TWBizEncodePasskeySessionNonce(
+      nonce,
+    );
+  }
+
+  late final _TWBizEncodePasskeySessionNoncePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>>(
+      'TWBizEncodePasskeySessionNonce');
+  late final _TWBizEncodePasskeySessionNonce =
+      _TWBizEncodePasskeySessionNoncePtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>();
+
+  /// Encodes `Biz.executeWithPasskeySession` function call to execute a batch of transactions.
+  ///
+  /// \param input The serialized data of `Biz.ExecuteWithPasskeySessionInput` protobuf message.
+  /// \return ABI-encoded function call.
+  ffi.Pointer<TWData1> TWBizEncodeExecuteWithPasskeySessionCall(
+    ffi.Pointer<TWData1> input,
+  ) {
+    return _TWBizEncodeExecuteWithPasskeySessionCall(
+      input,
+    );
+  }
+
+  late final _TWBizEncodeExecuteWithPasskeySessionCallPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>>(
+      'TWBizEncodeExecuteWithPasskeySessionCall');
+  late final _TWBizEncodeExecuteWithPasskeySessionCall =
+      _TWBizEncodeExecuteWithPasskeySessionCallPtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>();
+
   /// Generates the private stark key at the given derivation path from a valid eth signature
   ///
   /// \param derivationPath non-null StarkEx Derivation path
@@ -7545,6 +7713,59 @@ class TrustWalletCoreBindings {
   late final _TWDerivationPathIndexDescription =
       _TWDerivationPathIndexDescriptionPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWDerivationPathIndex>)>();
+
+  /// Computes WebAuthn message hash to be signed with secp256p1 private key.
+  ///
+  /// \param authenticator_data The authenticator data in hex format.
+  /// \param client_data_json The client data JSON string with a challenge.
+  /// \return WebAuthn message hash.
+  ffi.Pointer<TWData> TWWebAuthnSolidityGetMessageHash(
+    ffi.Pointer<TWString> authenticatorData,
+    ffi.Pointer<TWString> clientDataJson,
+  ) {
+    return _TWWebAuthnSolidityGetMessageHash(
+      authenticatorData,
+      clientDataJson,
+    );
+  }
+
+  late final _TWWebAuthnSolidityGetMessageHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>)>>('TWWebAuthnSolidityGetMessageHash');
+  late final _TWWebAuthnSolidityGetMessageHash =
+      _TWWebAuthnSolidityGetMessageHashPtr.asFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWString>)>();
+
+  /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
+  ///
+  /// \param authenticator_data The authenticator data in hex format.
+  /// \param client_data_json The client data JSON string with a challenge.
+  /// \param der_signature original ASN-encoded signature from webauthn.
+  /// \return WebAuthn ABI-encoded data.
+  ffi.Pointer<TWData> TWWebAuthnSolidityGetFormattedSignature(
+    ffi.Pointer<TWString> authenticatorData,
+    ffi.Pointer<TWString> clientDataJson,
+    ffi.Pointer<TWData> derSignature,
+  ) {
+    return _TWWebAuthnSolidityGetFormattedSignature(
+      authenticatorData,
+      clientDataJson,
+      derSignature,
+    );
+  }
+
+  late final _TWWebAuthnSolidityGetFormattedSignaturePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>)>>('TWWebAuthnSolidityGetFormattedSignature');
+  late final _TWWebAuthnSolidityGetFormattedSignature =
+      _TWWebAuthnSolidityGetFormattedSignaturePtr.asFunction<
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>, ffi.Pointer<TWData>)>();
 
   /// Builds a LiquidStaking transaction input.
   ///
@@ -12184,6 +12405,72 @@ class TrustWalletCoreBindings {
       ffi.Pointer<TWData1> Function(
           ffi.Pointer<TWData1>, ffi.Pointer<TWData1>, ffi.Pointer<TWData1>)>();
 
+  /// Signs an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702)
+  ///
+  /// \param chain_id The chain ID of the user.
+  /// \param contract_address The address of the smart contract wallet.
+  /// \param nonce The nonce of the user.
+  /// \param private_key The private key of the user.
+  /// \return The signed authorization.
+  ffi.Pointer<TWString1> TWEip7702SignAuthorization(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> contractAddress,
+    ffi.Pointer<TWData1> nonce,
+    ffi.Pointer<TWString1> privateKey,
+  ) {
+    return _TWEip7702SignAuthorization(
+      chainId,
+      contractAddress,
+      nonce,
+      privateKey,
+    );
+  }
+
+  late final _TWEip7702SignAuthorizationPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>)>>('TWEip7702SignAuthorization');
+  late final _TWEip7702SignAuthorization =
+      _TWEip7702SignAuthorizationPtr.asFunction<
+          ffi.Pointer<TWString1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>)>();
+
+  /// Computes an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702)
+  /// `keccak256('0x05' || rlp([chain_id, address, nonce]))`.
+  ///
+  /// \param chain_id The chain ID of the user.
+  /// \param contract_address The address of the smart contract wallet.
+  /// \param nonce The nonce of the user.
+  /// \return The authorization hash.
+  ffi.Pointer<TWData1> TWEip7702GetAuthorizationHash(
+    ffi.Pointer<TWData1> chainId,
+    ffi.Pointer<TWString1> contractAddress,
+    ffi.Pointer<TWData1> nonce,
+  ) {
+    return _TWEip7702GetAuthorizationHash(
+      chainId,
+      contractAddress,
+      nonce,
+    );
+  }
+
+  late final _TWEip7702GetAuthorizationHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWData1>)>>('TWEip7702GetAuthorizationHash');
+  late final _TWEip7702GetAuthorizationHash =
+      _TWEip7702GetAuthorizationHashPtr.asFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>();
+
   /// Decode Solana transaction, update the recent blockhash and re-sign the transaction.
   ///
   /// # Warning
@@ -12361,6 +12648,49 @@ class TrustWalletCoreBindings {
       _TWSolanaTransactionInsertInstructionPtr.asFunction<
           ffi.Pointer<TWString> Function(
               ffi.Pointer<TWString>, int, ffi.Pointer<TWString>)>();
+
+  /// Inserts a SOL transfer instruction to the given transaction at the specified position, returning the updated transaction.
+  /// Please note that compute price and limit instructions should always be the first instructions if they are present in the transaction.
+  ///
+  /// \param encoded_tx base64 encoded Solana transaction.
+  /// \param insert_at index where the instruction should be inserted. If you don't care about the position, use -1.
+  /// \param from sender account from which the lamports will be debited.
+  /// \param to receiver account to which the lamports will be transferred.
+  /// \param lamports amount of lamports to transfer, as a decimal string.
+  /// \return base64 encoded Solana transaction. Null if an error occurred.
+  ffi.Pointer<TWString> TWSolanaTransactionInsertTransferInstruction(
+    ffi.Pointer<TWString> encodedTx,
+    int insertAt,
+    ffi.Pointer<TWString> from,
+    ffi.Pointer<TWString> to,
+    ffi.Pointer<TWString> lamports,
+  ) {
+    return _TWSolanaTransactionInsertTransferInstruction(
+      encodedTx,
+      insertAt,
+      from,
+      to,
+      lamports,
+    );
+  }
+
+  late final _TWSolanaTransactionInsertTransferInstructionPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWString> Function(
+                  ffi.Pointer<TWString>,
+                  ffi.Int32,
+                  ffi.Pointer<TWString>,
+                  ffi.Pointer<TWString>,
+                  ffi.Pointer<TWString>)>>(
+      'TWSolanaTransactionInsertTransferInstruction');
+  late final _TWSolanaTransactionInsertTransferInstruction =
+      _TWSolanaTransactionInsertTransferInstructionPtr.asFunction<
+          ffi.Pointer<TWString> Function(
+              ffi.Pointer<TWString>,
+              int,
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>,
+              ffi.Pointer<TWString>)>();
 
   /// Create a NEAR Account
   ///
@@ -12971,6 +13301,65 @@ class TrustWalletCoreBindings {
       _TWBarzGetCounterfactualAddressPtr.asFunction<
           ffi.Pointer<TWString1> Function(ffi.Pointer<TWData1>)>();
 
+  /// Returns the final hash to be signed by Barz for signing messages & typed data
+  ///
+  /// \param msg_hash Original msgHash
+  /// \param barzAddress The address of Barz wallet signing the message
+  /// \param chainId The chainId of the network the verification will happen; Must be non-negative
+  /// \return The final hash to be signed.
+  ffi.Pointer<TWData1> TWBarzGetPrefixedMsgHash(
+    ffi.Pointer<TWData1> msgHash,
+    ffi.Pointer<TWString1> barzAddress,
+    int chainId,
+  ) {
+    return _TWBarzGetPrefixedMsgHash(
+      msgHash,
+      barzAddress,
+      chainId,
+    );
+  }
+
+  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>, ffi.Int32)>>('TWBarzGetPrefixedMsgHash');
+  late final _TWBarzGetPrefixedMsgHash =
+      _TWBarzGetPrefixedMsgHashPtr.asFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>, ffi.Pointer<TWString1>, int)>();
+
+  /// Returns the init code parameter of ERC-4337 User Operation
+  ///
+  /// \param factory The address of the factory contract
+  /// \param public_key Public key for the verification facet
+  /// \param verification_facet The address of the verification facet
+  /// \param salt The salt of the init code; Must be non-negative
+  /// \return The init code.
+  ffi.Pointer<TWData1> TWBarzGetInitCode(
+    ffi.Pointer<TWString1> factory1,
+    ffi.Pointer<TWPublicKey> publicKey,
+    ffi.Pointer<TWString1> verificationFacet,
+    int salt,
+  ) {
+    return _TWBarzGetInitCode(
+      factory1,
+      publicKey,
+      verificationFacet,
+      salt,
+    );
+  }
+
+  late final _TWBarzGetInitCodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWString1>,
+              ffi.Pointer<TWPublicKey>,
+              ffi.Pointer<TWString1>,
+              ffi.Int32)>>('TWBarzGetInitCode');
+  late final _TWBarzGetInitCode = _TWBarzGetInitCodePtr.asFunction<
+      ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
+          ffi.Pointer<TWPublicKey>, ffi.Pointer<TWString1>, int)>();
+
   /// Converts the original ASN-encoded signature from webauthn to the format accepted by Barz
   ///
   /// \param signature Original signature
@@ -13007,65 +13396,6 @@ class TrustWalletCoreBindings {
               ffi.Pointer<TWData1>,
               ffi.Pointer<TWString1>)>();
 
-  /// Returns the init code parameter of ERC-4337 User Operation
-  ///
-  /// \param factory The address of the factory contract.
-  /// \param public_key Public key for the verification facet
-  /// \param verification_facet The address of the verification facet.
-  /// \param salt The salt of the init code.
-  /// \return The init code.
-  ffi.Pointer<TWData1> TWBarzGetInitCode(
-    ffi.Pointer<TWString1> factory1,
-    ffi.Pointer<TWPublicKey> publicKey,
-    ffi.Pointer<TWString1> verificationFacet,
-    int salt,
-  ) {
-    return _TWBarzGetInitCode(
-      factory1,
-      publicKey,
-      verificationFacet,
-      salt,
-    );
-  }
-
-  late final _TWBarzGetInitCodePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWPublicKey>,
-              ffi.Pointer<TWString1>,
-              ffi.Uint32)>>('TWBarzGetInitCode');
-  late final _TWBarzGetInitCode = _TWBarzGetInitCodePtr.asFunction<
-      ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
-          ffi.Pointer<TWPublicKey>, ffi.Pointer<TWString1>, int)>();
-
-  /// Returns the final hash to be signed by Barz for signing messages & typed data
-  ///
-  /// \param msg_hash Original msgHash
-  /// \param barzAddress The address of Barz wallet signing the message
-  /// \param chainId The chainId of the network the verification will happen
-  /// \return The final hash to be signed.
-  ffi.Pointer<TWData1> TWBarzGetPrefixedMsgHash(
-    ffi.Pointer<TWData1> msgHash,
-    ffi.Pointer<TWString1> barzAddress,
-    int chainId,
-  ) {
-    return _TWBarzGetPrefixedMsgHash(
-      msgHash,
-      barzAddress,
-      chainId,
-    );
-  }
-
-  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>, ffi.Uint32)>>('TWBarzGetPrefixedMsgHash');
-  late final _TWBarzGetPrefixedMsgHash =
-      _TWBarzGetPrefixedMsgHashPtr.asFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWData1>, ffi.Pointer<TWString1>, int)>();
-
   /// Returns the encoded diamondCut function call for Barz contract upgrades
   ///
   /// \param input The serialized data of DiamondCutInput.
@@ -13084,149 +13414,6 @@ class TrustWalletCoreBindings {
       'TWBarzGetDiamondCutCode');
   late final _TWBarzGetDiamondCutCode = _TWBarzGetDiamondCutCodePtr.asFunction<
       ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>)>();
-
-  /// Computes an Authorization hash in [EIP-7702 format](https://eips.ethereum.org/EIPS/eip-7702)
-  /// `keccak256('0x05' || rlp([chain_id, address, nonce]))`.
-  ///
-  /// \param chain_id The chain ID of the user.
-  /// \param contract_address The address of the smart contract wallet.
-  /// \param nonce The nonce of the user.
-  /// \return The authorization hash.
-  ffi.Pointer<TWData1> TWBarzGetAuthorizationHash(
-    ffi.Pointer<TWData1> chainId,
-    ffi.Pointer<TWString1> contractAddress,
-    ffi.Pointer<TWData1> nonce,
-  ) {
-    return _TWBarzGetAuthorizationHash(
-      chainId,
-      contractAddress,
-      nonce,
-    );
-  }
-
-  late final _TWBarzGetAuthorizationHashPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWData1>)>>('TWBarzGetAuthorizationHash');
-  late final _TWBarzGetAuthorizationHash =
-      _TWBarzGetAuthorizationHashPtr.asFunction<
-          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>, ffi.Pointer<TWData1>)>();
-
-  /// Returns the encoded hash of the user operation
-  ///
-  /// \param chain_id The chain ID of the user.
-  /// \param code_address The address of the smart contract wallet.
-  /// \param code_name The name of the smart contract wallet.
-  /// \param code_version The version of the smart contract wallet.
-  /// \param type_hash The type hash of the smart contract wallet.
-  /// \param domain_separator_hash The domain separator hash of the smart contract wallet.
-  /// \param sender The sender of the smart contract wallet.
-  /// \param user_op_hash The user operation hash of the smart contract wallet.
-  /// \return The encoded hash.
-  ffi.Pointer<TWData1> TWBarzGetEncodedHash(
-    ffi.Pointer<TWData1> chainId,
-    ffi.Pointer<TWString1> codeAddress,
-    ffi.Pointer<TWString1> codeName,
-    ffi.Pointer<TWString1> codeVersion,
-    ffi.Pointer<TWString1> typeHash,
-    ffi.Pointer<TWString1> domainSeparatorHash,
-    ffi.Pointer<TWString1> sender,
-    ffi.Pointer<TWString1> userOpHash,
-  ) {
-    return _TWBarzGetEncodedHash(
-      chainId,
-      codeAddress,
-      codeName,
-      codeVersion,
-      typeHash,
-      domainSeparatorHash,
-      sender,
-      userOpHash,
-    );
-  }
-
-  late final _TWBarzGetEncodedHashPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>)>>('TWBarzGetEncodedHash');
-  late final _TWBarzGetEncodedHash = _TWBarzGetEncodedHashPtr.asFunction<
-      ffi.Pointer<TWData1> Function(
-          ffi.Pointer<TWData1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWString1>)>();
-
-  /// Signs a message using the private key
-  ///
-  /// \param hash The hash of the user.
-  /// \param private_key The private key of the user.
-  /// \return The signed hash.
-  ffi.Pointer<TWData1> TWBarzGetSignedHash(
-    ffi.Pointer<TWString1> hash,
-    ffi.Pointer<TWString1> privateKey,
-  ) {
-    return _TWBarzGetSignedHash(
-      hash,
-      privateKey,
-    );
-  }
-
-  late final _TWBarzGetSignedHashPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(ffi.Pointer<TWString1>,
-              ffi.Pointer<TWString1>)>>('TWBarzGetSignedHash');
-  late final _TWBarzGetSignedHash = _TWBarzGetSignedHashPtr.asFunction<
-      ffi.Pointer<TWData1> Function(
-          ffi.Pointer<TWString1>, ffi.Pointer<TWString1>)>();
-
-  /// Returns the signed authorization hash
-  ///
-  /// \param chain_id The chain ID of the user.
-  /// \param contract_address The address of the smart contract wallet.
-  /// \param nonce The nonce of the user.
-  /// \param private_key The private key of the user.
-  /// \return The signed authorization.
-  ffi.Pointer<TWString1> TWBarzSignAuthorization(
-    ffi.Pointer<TWData1> chainId,
-    ffi.Pointer<TWString1> contractAddress,
-    ffi.Pointer<TWData1> nonce,
-    ffi.Pointer<TWString1> privateKey,
-  ) {
-    return _TWBarzSignAuthorization(
-      chainId,
-      contractAddress,
-      nonce,
-      privateKey,
-    );
-  }
-
-  late final _TWBarzSignAuthorizationPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWString1> Function(
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>,
-              ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>)>>('TWBarzSignAuthorization');
-  late final _TWBarzSignAuthorization = _TWBarzSignAuthorizationPtr.asFunction<
-      ffi.Pointer<TWString1> Function(
-          ffi.Pointer<TWData1>,
-          ffi.Pointer<TWString1>,
-          ffi.Pointer<TWData1>,
-          ffi.Pointer<TWString1>)>();
 }
 
 final class __mbstate_t extends ffi.Union {
@@ -14542,56 +14729,57 @@ abstract class TWHRP {
   static const int TWHRPSyscoin = 7;
   static const int TWHRPVerge = 8;
   static const int TWHRPCosmos = 9;
-  static const int TWHRPBitcoinCash = 10;
-  static const int TWHRPBitcoinGold = 11;
-  static const int TWHRPIoTeX = 12;
-  static const int TWHRPNervos = 13;
-  static const int TWHRPZilliqa = 14;
-  static const int TWHRPTerra = 15;
-  static const int TWHRPCryptoOrg = 16;
-  static const int TWHRPKava = 17;
-  static const int TWHRPOasis = 18;
-  static const int TWHRPBluzelle = 19;
-  static const int TWHRPBandChain = 20;
-  static const int TWHRPMultiversX = 21;
-  static const int TWHRPSecret = 22;
-  static const int TWHRPAgoric = 23;
-  static const int TWHRPBinance = 24;
-  static const int TWHRPECash = 25;
-  static const int TWHRPTHORChain = 26;
-  static const int TWHRPBitcoinDiamond = 27;
-  static const int TWHRPHarmony = 28;
-  static const int TWHRPCardano = 29;
-  static const int TWHRPQtum = 30;
-  static const int TWHRPPactus = 31;
-  static const int TWHRPStratis = 32;
-  static const int TWHRPNativeInjective = 33;
-  static const int TWHRPOsmosis = 34;
-  static const int TWHRPTerraV2 = 35;
-  static const int TWHRPCoreum = 36;
-  static const int TWHRPNativeZetaChain = 37;
-  static const int TWHRPNativeCanto = 38;
-  static const int TWHRPSommelier = 39;
-  static const int TWHRPFetchAI = 40;
-  static const int TWHRPMars = 41;
-  static const int TWHRPUmee = 42;
-  static const int TWHRPQuasar = 43;
-  static const int TWHRPPersistence = 44;
-  static const int TWHRPAkash = 45;
-  static const int TWHRPNoble = 46;
-  static const int TWHRPSei = 47;
-  static const int TWHRPStargaze = 48;
-  static const int TWHRPNativeEvmos = 49;
-  static const int TWHRPTia = 50;
-  static const int TWHRPDydx = 51;
-  static const int TWHRPJuno = 52;
-  static const int TWHRPTBinance = 53;
-  static const int TWHRPStride = 54;
-  static const int TWHRPAxelar = 55;
-  static const int TWHRPCrescent = 56;
-  static const int TWHRPKujira = 57;
-  static const int TWHRPComdex = 58;
-  static const int TWHRPNeutron = 59;
+  static const int TWHRPZcash = 10;
+  static const int TWHRPBitcoinCash = 11;
+  static const int TWHRPBitcoinGold = 12;
+  static const int TWHRPIoTeX = 13;
+  static const int TWHRPNervos = 14;
+  static const int TWHRPZilliqa = 15;
+  static const int TWHRPTerra = 16;
+  static const int TWHRPCryptoOrg = 17;
+  static const int TWHRPKava = 18;
+  static const int TWHRPOasis = 19;
+  static const int TWHRPBluzelle = 20;
+  static const int TWHRPBandChain = 21;
+  static const int TWHRPMultiversX = 22;
+  static const int TWHRPSecret = 23;
+  static const int TWHRPAgoric = 24;
+  static const int TWHRPBinance = 25;
+  static const int TWHRPECash = 26;
+  static const int TWHRPTHORChain = 27;
+  static const int TWHRPBitcoinDiamond = 28;
+  static const int TWHRPHarmony = 29;
+  static const int TWHRPCardano = 30;
+  static const int TWHRPQtum = 31;
+  static const int TWHRPPactus = 32;
+  static const int TWHRPStratis = 33;
+  static const int TWHRPNativeInjective = 34;
+  static const int TWHRPOsmosis = 35;
+  static const int TWHRPTerraV2 = 36;
+  static const int TWHRPCoreum = 37;
+  static const int TWHRPNativeZetaChain = 38;
+  static const int TWHRPNativeCanto = 39;
+  static const int TWHRPSommelier = 40;
+  static const int TWHRPFetchAI = 41;
+  static const int TWHRPMars = 42;
+  static const int TWHRPUmee = 43;
+  static const int TWHRPQuasar = 44;
+  static const int TWHRPPersistence = 45;
+  static const int TWHRPAkash = 46;
+  static const int TWHRPNoble = 47;
+  static const int TWHRPSei = 48;
+  static const int TWHRPStargaze = 49;
+  static const int TWHRPNativeEvmos = 50;
+  static const int TWHRPTia = 51;
+  static const int TWHRPDydx = 52;
+  static const int TWHRPJuno = 53;
+  static const int TWHRPTBinance = 54;
+  static const int TWHRPStride = 55;
+  static const int TWHRPAxelar = 56;
+  static const int TWHRPCrescent = 57;
+  static const int TWHRPKujira = 58;
+  static const int TWHRPComdex = 59;
+  static const int TWHRPNeutron = 60;
 }
 
 /// Defines a resizable string.
@@ -14788,6 +14976,7 @@ abstract class TWCoinType {
   static const int TWCoinTypePactus = 21888;
   static const int TWCoinTypeSonic = 10000146;
   static const int TWCoinTypePolymesh = 595;
+  static const int TWCoinTypePlasma = 9745;
 }
 
 /// CoinTypeConfiguration functions
@@ -14814,7 +15003,14 @@ final class TWDataVector extends ffi.Opaque {}
 /// Non-core transaction utility methods, like building a transaction using an external signature.
 final class TWTransactionCompiler extends ffi.Opaque {}
 
-final class TWStarkWare extends ffi.Opaque {}
+final class TWBiz extends ffi.Opaque {}
+
+/// Defines a resizable block of data.
+///
+/// The implementantion of these methods should be language-specific to minimize translation overhead. For instance it
+/// should be a `jbyteArray` for Java and an `NSData` for Swift.
+typedef TWData1 = ffi.Void;
+typedef DartTWData1 = void;
 
 /// Defines a resizable string.
 ///
@@ -14823,6 +15019,8 @@ final class TWStarkWare extends ffi.Opaque {}
 /// allocates memory, the delete call should be called at the end to release memory.
 typedef TWString1 = ffi.Void;
 typedef DartTWString1 = void;
+
+final class TWStarkWare extends ffi.Opaque {}
 
 /// Bitcoin SIGHASH type.
 abstract class TWBitcoinSigHashType {
@@ -14842,13 +15040,6 @@ final class TWAnySigner extends ffi.Opaque {}
 
 /// Represents a Nervos address.
 final class TWNervosAddress extends ffi.Opaque {}
-
-/// Defines a resizable block of data.
-///
-/// The implementantion of these methods should be language-specific to minimize translation overhead. For instance it
-/// should be a `jbyteArray` for Java and an `NSData` for Swift.
-typedef TWData1 = ffi.Void;
-typedef DartTWData1 = void;
 
 /// Preset encryption kind
 abstract class TWStoredKeyEncryption {
@@ -14908,6 +15099,8 @@ final class TWTONMessageSigner extends ffi.Opaque {}
 
 /// Cardano helper functions
 final class TWCardano extends ffi.Opaque {}
+
+final class TWWebAuthnSolidity extends ffi.Opaque {}
 
 /// THORChain swap functions
 final class TWLiquidStaking extends ffi.Opaque {}
@@ -15020,6 +15213,8 @@ final class TWAES extends ffi.Struct {
   external int unused;
 }
 
+final class TWEip7702 extends ffi.Opaque {}
+
 final class TWSolanaTransaction extends ffi.Opaque {}
 
 /// Represents a NEAR Account name
@@ -15064,6 +15259,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDGochain = 60;
   static const int TWEthereumChainIDZeneon = 7332;
   static const int TWEthereumChainIDBase = 8453;
+  static const int TWEthereumChainIDPlasma = 9745;
   static const int TWEthereumChainIDMeter = 82;
   static const int TWEthereumChainIDCelo = 42220;
   static const int TWEthereumChainIDLinea = 59144;
@@ -15464,6 +15660,12 @@ const int __MAC_15_4 = 150400;
 
 const int __MAC_15_5 = 150500;
 
+const int __MAC_15_6 = 150600;
+
+const int __MAC_16_0 = 160000;
+
+const int __MAC_26_0 = 260000;
+
 const int __IPHONE_2_0 = 20000;
 
 const int __IPHONE_2_1 = 20100;
@@ -15568,8 +15770,6 @@ const int __IPHONE_14_3 = 140300;
 
 const int __IPHONE_14_5 = 140500;
 
-const int __IPHONE_14_4 = 140400;
-
 const int __IPHONE_14_6 = 140600;
 
 const int __IPHONE_14_7 = 140700;
@@ -15637,6 +15837,12 @@ const int __IPHONE_18_3 = 180300;
 const int __IPHONE_18_4 = 180400;
 
 const int __IPHONE_18_5 = 180500;
+
+const int __IPHONE_18_6 = 180600;
+
+const int __IPHONE_19_0 = 190000;
+
+const int __IPHONE_26_0 = 260000;
 
 const int __WATCHOS_1_0 = 10000;
 
@@ -15748,6 +15954,12 @@ const int __WATCHOS_11_4 = 110400;
 
 const int __WATCHOS_11_5 = 110500;
 
+const int __WATCHOS_11_6 = 110600;
+
+const int __WATCHOS_12_0 = 120000;
+
+const int __WATCHOS_26_0 = 260000;
+
 const int __TVOS_9_0 = 90000;
 
 const int __TVOS_9_1 = 90100;
@@ -15858,6 +16070,12 @@ const int __TVOS_18_4 = 180400;
 
 const int __TVOS_18_5 = 180500;
 
+const int __TVOS_18_6 = 180600;
+
+const int __TVOS_19_0 = 190000;
+
+const int __TVOS_26_0 = 260000;
+
 const int __BRIDGEOS_2_0 = 20000;
 
 const int __BRIDGEOS_3_0 = 30000;
@@ -15924,6 +16142,10 @@ const int __BRIDGEOS_9_4 = 90400;
 
 const int __BRIDGEOS_9_5 = 90500;
 
+const int __BRIDGEOS_9_6 = 90600;
+
+const int __BRIDGEOS_10_0 = 100000;
+
 const int __DRIVERKIT_19_0 = 190000;
 
 const int __DRIVERKIT_20_0 = 200000;
@@ -15964,6 +16186,10 @@ const int __DRIVERKIT_24_4 = 240400;
 
 const int __DRIVERKIT_24_5 = 240500;
 
+const int __DRIVERKIT_24_6 = 240600;
+
+const int __DRIVERKIT_25_0 = 250000;
+
 const int __VISIONOS_1_0 = 10000;
 
 const int __VISIONOS_1_1 = 10100;
@@ -15983,6 +16209,12 @@ const int __VISIONOS_2_3 = 20300;
 const int __VISIONOS_2_4 = 20400;
 
 const int __VISIONOS_2_5 = 20500;
+
+const int __VISIONOS_2_6 = 20600;
+
+const int __VISIONOS_3_0 = 30000;
+
+const int __VISIONOS_26_0 = 260000;
 
 const int MAC_OS_X_VERSION_10_0 = 1000;
 
@@ -16124,15 +16356,21 @@ const int MAC_OS_VERSION_15_4 = 150400;
 
 const int MAC_OS_VERSION_15_5 = 150500;
 
+const int MAC_OS_VERSION_15_6 = 150600;
+
+const int MAC_OS_VERSION_16_0 = 160000;
+
+const int MAC_OS_VERSION_26_0 = 260000;
+
 const int __AVAILABILITY_VERSIONS_VERSION_HASH = 93585900;
 
 const String __AVAILABILITY_VERSIONS_VERSION_STRING = 'Local';
 
 const String __AVAILABILITY_FILE = 'AvailabilityVersions.h';
 
-const int __MAC_OS_X_VERSION_MIN_REQUIRED = 150000;
+const int __MAC_OS_X_VERSION_MIN_REQUIRED = 260000;
 
-const int __MAC_OS_X_VERSION_MAX_ALLOWED = 150500;
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 260000;
 
 const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
 
@@ -16213,6 +16451,8 @@ const int SIGEV_NONE = 0;
 const int SIGEV_SIGNAL = 1;
 
 const int SIGEV_THREAD = 3;
+
+const int SIGEV_KEVENT = 4;
 
 const int ILL_NOOP = 0;
 
@@ -16462,6 +16702,8 @@ const int IOPOL_TYPE_VFS_ALLOW_LOW_SPACE_WRITES = 9;
 
 const int IOPOL_TYPE_VFS_DISALLOW_RW_FOR_O_EVTONLY = 10;
 
+const int IOPOL_TYPE_VFS_ENTITLED_RESERVE_ACCESS = 14;
+
 const int IOPOL_SCOPE_PROCESS = 0;
 
 const int IOPOL_SCOPE_THREAD = 1;
@@ -16528,6 +16770,10 @@ const int IOPOL_VFS_NOCACHE_WRITE_FS_BLKSIZE_DEFAULT = 0;
 
 const int IOPOL_VFS_NOCACHE_WRITE_FS_BLKSIZE_ON = 1;
 
+const int IOPOL_VFS_ENTITLED_RESERVE_ACCESS_OFF = 0;
+
+const int IOPOL_VFS_ENTITLED_RESERVE_ACCESS_ON = 1;
+
 const int WNOHANG = 1;
 
 const int WUNTRACED = 2;
@@ -16573,3 +16819,5 @@ const int EXIT_FAILURE = 1;
 const int EXIT_SUCCESS = 0;
 
 const int RAND_MAX = 2147483647;
+
+const int _MALLOC_TYPE_MALLOC_BACKDEPLOY_PUBLIC = 1;

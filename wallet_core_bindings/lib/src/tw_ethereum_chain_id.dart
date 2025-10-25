@@ -24,6 +24,7 @@ enum TWEthereumChainID {
   Gochain(60),
   Zeneon(7332),
   Base(8453),
+  Plasma(8453),
   Meter(82),
   Celo(42220),
   Linea(59144),

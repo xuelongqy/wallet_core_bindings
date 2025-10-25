@@ -68,6 +68,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     anySigner = TWAnySignerImpl(_wasm);
     asnParser = TWASNParserImpl(_wasm);
     barz = TWBarzImpl(_wasm);
+    biz = TWBizImpl(_wasm);
     base32 = TWBase32Impl(_wasm);
     base58 = TWBase58Impl(_wasm);
     this.base64 = TWBase64Impl(_wasm);
@@ -86,6 +87,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     dataVector = TWDataVectorImpl(_wasm);
     derivationPath = TWDerivationPathImpl(_wasm);
     derivationPathIndex = TWDerivationPathIndexImpl(_wasm);
+    eip7702 = TWEip7702Impl(_wasm);
     ethereumAbiFunction = TWEthereumAbiFunctionImpl(_wasm);
     ethereumAbi = TWEthereumAbiImpl(_wasm);
     ethereumAbiValue = TWEthereumAbiValueImpl(_wasm);
@@ -125,6 +127,7 @@ class WalletCoreBindingsWasmImpl extends WalletCoreBindingsInterface {
     tronMessageSigner = TWTronMessageSignerImpl(_wasm);
     walletConnectRequest = TWWalletConnectRequestImpl(_wasm);
     webAuthn = TWWebAuthnImpl(_wasm);
+    webAuthnSolidity = TWWebAuthnSolidityImpl(_wasm);
     WalletCoreBindingsInterface.instance = this;
   }
 }
