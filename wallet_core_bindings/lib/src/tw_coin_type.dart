@@ -171,6 +171,7 @@ class TWCoinType {
   static const TWCoinType Sonic = TWCoinType(10000146);
   static const TWCoinType Polymesh = TWCoinType(595);
   static const TWCoinType Plasma = TWCoinType(9745);
+  static const TWCoinType Monad = TWCoinType(10143);
 
   @override
   int get hashCode => value.hashCode;

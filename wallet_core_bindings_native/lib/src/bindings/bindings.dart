@@ -13301,33 +13301,6 @@ class TrustWalletCoreBindings {
       _TWBarzGetCounterfactualAddressPtr.asFunction<
           ffi.Pointer<TWString1> Function(ffi.Pointer<TWData1>)>();
 
-  /// Returns the final hash to be signed by Barz for signing messages & typed data
-  ///
-  /// \param msg_hash Original msgHash
-  /// \param barzAddress The address of Barz wallet signing the message
-  /// \param chainId The chainId of the network the verification will happen; Must be non-negative
-  /// \return The final hash to be signed.
-  ffi.Pointer<TWData1> TWBarzGetPrefixedMsgHash(
-    ffi.Pointer<TWData1> msgHash,
-    ffi.Pointer<TWString1> barzAddress,
-    int chainId,
-  ) {
-    return _TWBarzGetPrefixedMsgHash(
-      msgHash,
-      barzAddress,
-      chainId,
-    );
-  }
-
-  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
-              ffi.Pointer<TWString1>, ffi.Int32)>>('TWBarzGetPrefixedMsgHash');
-  late final _TWBarzGetPrefixedMsgHash =
-      _TWBarzGetPrefixedMsgHashPtr.asFunction<
-          ffi.Pointer<TWData1> Function(
-              ffi.Pointer<TWData1>, ffi.Pointer<TWString1>, int)>();
-
   /// Returns the init code parameter of ERC-4337 User Operation
   ///
   /// \param factory The address of the factory contract
@@ -13395,6 +13368,33 @@ class TrustWalletCoreBindings {
               ffi.Pointer<TWData1>,
               ffi.Pointer<TWData1>,
               ffi.Pointer<TWString1>)>();
+
+  /// Returns the final hash to be signed by Barz for signing messages & typed data
+  ///
+  /// \param msg_hash Original msgHash
+  /// \param barzAddress The address of Barz wallet signing the message
+  /// \param chainId The chainId of the network the verification will happen; Must be non-negative
+  /// \return The final hash to be signed.
+  ffi.Pointer<TWData1> TWBarzGetPrefixedMsgHash(
+    ffi.Pointer<TWData1> msgHash,
+    ffi.Pointer<TWString1> barzAddress,
+    int chainId,
+  ) {
+    return _TWBarzGetPrefixedMsgHash(
+      msgHash,
+      barzAddress,
+      chainId,
+    );
+  }
+
+  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData1> Function(ffi.Pointer<TWData1>,
+              ffi.Pointer<TWString1>, ffi.Int32)>>('TWBarzGetPrefixedMsgHash');
+  late final _TWBarzGetPrefixedMsgHash =
+      _TWBarzGetPrefixedMsgHashPtr.asFunction<
+          ffi.Pointer<TWData1> Function(
+              ffi.Pointer<TWData1>, ffi.Pointer<TWString1>, int)>();
 
   /// Returns the encoded diamondCut function call for Barz contract upgrades
   ///
@@ -14977,6 +14977,7 @@ abstract class TWCoinType {
   static const int TWCoinTypeSonic = 10000146;
   static const int TWCoinTypePolymesh = 595;
   static const int TWCoinTypePlasma = 9745;
+  static const int TWCoinTypeMonad = 10143;
 }
 
 /// CoinTypeConfiguration functions
@@ -15260,6 +15261,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDZeneon = 7332;
   static const int TWEthereumChainIDBase = 8453;
   static const int TWEthereumChainIDPlasma = 9745;
+  static const int TWEthereumChainIDMonad = 10143;
   static const int TWEthereumChainIDMeter = 82;
   static const int TWEthereumChainIDCelo = 42220;
   static const int TWEthereumChainIDLinea = 59144;

@@ -656,6 +656,13 @@ const SigningInput$json = {
     {'1': 'network', '3': 9, '4': 1, '5': 13, '10': 'network'},
     {'1': 'multi_address', '3': 10, '4': 1, '5': 8, '10': 'multiAddress'},
     {
+      '1': 'charge_native_as_asset_tx_payment',
+      '3': 13,
+      '4': 1,
+      '5': 8,
+      '10': 'chargeNativeAsAssetTxPayment'
+    },
+    {
       '1': 'balance_call',
       '3': 11,
       '4': 1,
@@ -687,9 +694,11 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'ISdHJhbnNhY3Rpb25WZXJzaW9uEhAKA3RpcBgGIAEoDFIDdGlwEigKA2VyYRgHIAEoCzIWLlRX'
     'LlBvbGthZG90LlByb3RvLkVyYVIDZXJhEh8KC3ByaXZhdGVfa2V5GAggASgMUgpwcml2YXRlS2'
     'V5EhgKB25ldHdvcmsYCSABKA1SB25ldHdvcmsSIwoNbXVsdGlfYWRkcmVzcxgKIAEoCFIMbXVs'
-    'dGlBZGRyZXNzEj8KDGJhbGFuY2VfY2FsbBgLIAEoCzIaLlRXLlBvbGthZG90LlByb3RvLkJhbG'
-    'FuY2VIAFILYmFsYW5jZUNhbGwSPwoMc3Rha2luZ19jYWxsGAwgASgLMhouVFcuUG9sa2Fkb3Qu'
-    'UHJvdG8uU3Rha2luZ0gAUgtzdGFraW5nQ2FsbEIPCg1tZXNzYWdlX29uZW9m');
+    'dGlBZGRyZXNzEkcKIWNoYXJnZV9uYXRpdmVfYXNfYXNzZXRfdHhfcGF5bWVudBgNIAEoCFIcY2'
+    'hhcmdlTmF0aXZlQXNBc3NldFR4UGF5bWVudBI/CgxiYWxhbmNlX2NhbGwYCyABKAsyGi5UVy5Q'
+    'b2xrYWRvdC5Qcm90by5CYWxhbmNlSABSC2JhbGFuY2VDYWxsEj8KDHN0YWtpbmdfY2FsbBgMIA'
+    'EoCzIaLlRXLlBvbGthZG90LlByb3RvLlN0YWtpbmdIAFILc3Rha2luZ0NhbGxCDwoNbWVzc2Fn'
+    'ZV9vbmVvZg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

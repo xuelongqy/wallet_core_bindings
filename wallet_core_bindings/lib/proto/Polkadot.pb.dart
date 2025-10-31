@@ -2209,6 +2209,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.bool? multiAddress,
     Balance? balanceCall,
     Staking? stakingCall,
+    $core.bool? chargeNativeAsAssetTxPayment,
   }) {
     final $result = create();
     if (blockHash != null) {
@@ -2246,6 +2247,9 @@ class SigningInput extends $pb.GeneratedMessage {
     }
     if (stakingCall != null) {
       $result.stakingCall = stakingCall;
+    }
+    if (chargeNativeAsAssetTxPayment != null) {
+      $result.chargeNativeAsAssetTxPayment = chargeNativeAsAssetTxPayment;
     }
     return $result;
   }
@@ -2289,6 +2293,7 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: Balance.create)
     ..aOM<Staking>(12, _omitFieldNames ? '' : 'stakingCall',
         subBuilder: Staking.create)
+    ..aOB(13, _omitFieldNames ? '' : 'chargeNativeAsAssetTxPayment')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2477,6 +2482,20 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearStakingCall() => clearField(12);
   @$pb.TagNumber(12)
   Staking ensureStakingCall() => $_ensure(11);
+
+  /// Whether to use `ChargeAssetTxPayment` extrinsic extension instead of `ChargeTransactionPayment`
+  /// when paying transaction tip in native chain token.
+  @$pb.TagNumber(13)
+  $core.bool get chargeNativeAsAssetTxPayment => $_getBF(12);
+  @$pb.TagNumber(13)
+  set chargeNativeAsAssetTxPayment($core.bool v) {
+    $_setBool(12, v);
+  }
+
+  @$pb.TagNumber(13)
+  $core.bool hasChargeNativeAsAssetTxPayment() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearChargeNativeAsAssetTxPayment() => clearField(13);
 }
 
 /// Result containing the signed and encoded transaction.

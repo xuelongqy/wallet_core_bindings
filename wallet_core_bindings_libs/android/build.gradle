@@ -3,7 +3,7 @@ import java.nio.file.Files
 import java.security.MessageDigest
 
 group = "com.xuelongqy.wallet_core_bindings_libs"
-version = "4.3.19"
+version = "4.3.21"
 
 buildscript {
     ext.kotlin_version = "1.8.22"
@@ -94,7 +94,7 @@ task downloadDependencies(type: Exec) {
 
     // Download all *.jar dependencies & verify their MD5 checksums.
     def filesToDownload = [
-            ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "356fc6159b6926f4bc61c54728f33ccc", "destination": file("$buildDir/wallet-core.aar")]
+            ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "d0c63211b1e1577fc4d49cb3f992d5df", "destination": file("$buildDir/wallet-core.aar")]
     ]
 
     filesToDownload.each { fileInfo ->
