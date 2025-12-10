@@ -12,7 +12,9 @@ enum TWDerivation {
   StratisSegwit(7),
   BitcoinTaproot(8),
   PactusMainnet(9),
-  PactusTestnet(10);
+  PactusTestnet(10),
+  SmartChainStableAccount(11),
+  ;
 
   final int value;
 

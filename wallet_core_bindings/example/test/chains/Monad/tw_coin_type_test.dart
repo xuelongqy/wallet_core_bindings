@@ -12,13 +12,13 @@ void main() {
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
       const txId =
-          '0xfffe6b1c1238be8d5f4779f97af8fffc89530e2634c61be7a5241dc08f41f07f';
+          '0x8394f9f01bc2ae2cc93e19170bf80c303210f6f4198e5ec3cc99b0cba04962b6';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
-      const accId = '0xa161C1d86b26ac692604E0cDbc5EcB2D1d85759c';
+      const accId = '0x6ab69B482987b0BA1f1c96BDbDC192a80CB09132';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
 
       expect(id, 'monad');
-      expect(name, 'Monad Testnet');
+      expect(name, 'Monad');
       expect(symbol, 'MON');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);
@@ -26,9 +26,9 @@ void main() {
       expect(coin.staticPrefix, 0x0);
       expect(coin.p2pkhPrefix, 0x0);
       expect(txUrl,
-          'https://testnet.monadexplorer.com/tx/0xfffe6b1c1238be8d5f4779f97af8fffc89530e2634c61be7a5241dc08f41f07f');
+          'https://monvision.io/tx/0x8394f9f01bc2ae2cc93e19170bf80c303210f6f4198e5ec3cc99b0cba04962b6');
       expect(accUrl,
-          'https://testnet.monadexplorer.com/address/0xa161C1d86b26ac692604E0cDbc5EcB2D1d85759c');
+          'https://monvision.io/address/0x6ab69B482987b0BA1f1c96BDbDC192a80CB09132');
     });
   });
 }

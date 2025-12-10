@@ -18,11 +18,11 @@ class TWWebAuthn {
   ///
   /// \param [signature] ASN encoded webauthn signature: https://www.w3.org/TR/webauthn-2/#sctn-signature-attestation-types
   /// \return Concatenated r and s values.
-  static Uint8List getRSValues(Uint8List signature) => TWData.fromPointer(
+  static Uint8List? getRSValues(Uint8List signature) => TWData.fromPointer(
         _webAuthnImpl.getRSValues(
           TWData(signature).pointer,
         ),
-      ).bytes()!;
+      ).bytes();
 
   /// Reconstructs the original message that was signed via P256 curve. Can be used for signature validation.
   ///

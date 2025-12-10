@@ -12181,6 +12181,30 @@ class TrustWalletCoreBindings {
           int Function(ffi.Pointer<TWEthereumAbiFunction>, int, int,
               ffi.Pointer<TWData1>)>();
 
+  /// Returns EIP-1967 proxy init code
+  ///
+  /// \param logic_address *non-null* string.
+  /// \param data *non-null* data.
+  /// \return the EIP-1967 proxy init code.
+  ffi.Pointer<TWData> TWEthereumEip1967ProxyInitCode(
+    ffi.Pointer<TWString> logicAddress,
+    ffi.Pointer<TWData> data,
+  ) {
+    return _TWEthereumEip1967ProxyInitCode(
+      logicAddress,
+      data,
+    );
+  }
+
+  late final _TWEthereumEip1967ProxyInitCodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
+              ffi.Pointer<TWData>)>>('TWEthereumEip1967ProxyInitCode');
+  late final _TWEthereumEip1967ProxyInitCode =
+      _TWEthereumEip1967ProxyInitCodePtr.asFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Pointer<TWString>, ffi.Pointer<TWData>)>();
+
   /// Returns the checksummed address.
   ///
   /// \param address *non-null* string.
@@ -12264,30 +12288,6 @@ class TrustWalletCoreBindings {
       _TWEthereumEip1014Create2AddressPtr.asFunction<
           ffi.Pointer<TWString> Function(ffi.Pointer<TWString>,
               ffi.Pointer<TWData>, ffi.Pointer<TWData>)>();
-
-  /// Returns EIP-1967 proxy init code
-  ///
-  /// \param logic_address *non-null* string.
-  /// \param data *non-null* data.
-  /// \return the EIP-1967 proxy init code.
-  ffi.Pointer<TWData> TWEthereumEip1967ProxyInitCode(
-    ffi.Pointer<TWString> logicAddress,
-    ffi.Pointer<TWData> data,
-  ) {
-    return _TWEthereumEip1967ProxyInitCode(
-      logicAddress,
-      data,
-    );
-  }
-
-  late final _TWEthereumEip1967ProxyInitCodePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData> Function(ffi.Pointer<TWString>,
-              ffi.Pointer<TWData>)>>('TWEthereumEip1967ProxyInitCode');
-  late final _TWEthereumEip1967ProxyInitCode =
-      _TWEthereumEip1967ProxyInitCodePtr.asFunction<
-          ffi.Pointer<TWData> Function(
-              ffi.Pointer<TWString>, ffi.Pointer<TWData>)>();
 
   /// Encrypts a block of Data using AES in Cipher Block Chaining (CBC) mode.
   ///
@@ -14686,6 +14686,7 @@ abstract class TWDerivation {
   static const int TWDerivationBitcoinTaproot = 8;
   static const int TWDerivationPactusMainnet = 9;
   static const int TWDerivationPactusTestnet = 10;
+  static const int TWDerivationSmartChainStableAccount = 11;
 }
 
 /// Registered HD version bytes
@@ -15261,7 +15262,7 @@ abstract class TWEthereumChainID {
   static const int TWEthereumChainIDZeneon = 7332;
   static const int TWEthereumChainIDBase = 8453;
   static const int TWEthereumChainIDPlasma = 9745;
-  static const int TWEthereumChainIDMonad = 10143;
+  static const int TWEthereumChainIDMonad = 143;
   static const int TWEthereumChainIDMeter = 82;
   static const int TWEthereumChainIDCelo = 42220;
   static const int TWEthereumChainIDLinea = 59144;
@@ -15668,6 +15669,8 @@ const int __MAC_16_0 = 160000;
 
 const int __MAC_26_0 = 260000;
 
+const int __MAC_26_1 = 260100;
+
 const int __IPHONE_2_0 = 20000;
 
 const int __IPHONE_2_1 = 20100;
@@ -15846,6 +15849,8 @@ const int __IPHONE_19_0 = 190000;
 
 const int __IPHONE_26_0 = 260000;
 
+const int __IPHONE_26_1 = 260100;
+
 const int __WATCHOS_1_0 = 10000;
 
 const int __WATCHOS_2_0 = 20000;
@@ -15961,6 +15966,8 @@ const int __WATCHOS_11_6 = 110600;
 const int __WATCHOS_12_0 = 120000;
 
 const int __WATCHOS_26_0 = 260000;
+
+const int __WATCHOS_26_1 = 260100;
 
 const int __TVOS_9_0 = 90000;
 
@@ -16078,6 +16085,8 @@ const int __TVOS_19_0 = 190000;
 
 const int __TVOS_26_0 = 260000;
 
+const int __TVOS_26_1 = 260100;
+
 const int __BRIDGEOS_2_0 = 20000;
 
 const int __BRIDGEOS_3_0 = 30000;
@@ -16148,6 +16157,8 @@ const int __BRIDGEOS_9_6 = 90600;
 
 const int __BRIDGEOS_10_0 = 100000;
 
+const int __BRIDGEOS_10_1 = 100100;
+
 const int __DRIVERKIT_19_0 = 190000;
 
 const int __DRIVERKIT_20_0 = 200000;
@@ -16192,6 +16203,8 @@ const int __DRIVERKIT_24_6 = 240600;
 
 const int __DRIVERKIT_25_0 = 250000;
 
+const int __DRIVERKIT_25_1 = 250100;
+
 const int __VISIONOS_1_0 = 10000;
 
 const int __VISIONOS_1_1 = 10100;
@@ -16217,6 +16230,8 @@ const int __VISIONOS_2_6 = 20600;
 const int __VISIONOS_3_0 = 30000;
 
 const int __VISIONOS_26_0 = 260000;
+
+const int __VISIONOS_26_1 = 260100;
 
 const int MAC_OS_X_VERSION_10_0 = 1000;
 
@@ -16364,6 +16379,8 @@ const int MAC_OS_VERSION_16_0 = 160000;
 
 const int MAC_OS_VERSION_26_0 = 260000;
 
+const int MAC_OS_VERSION_26_1 = 260100;
+
 const int __AVAILABILITY_VERSIONS_VERSION_HASH = 93585900;
 
 const String __AVAILABILITY_VERSIONS_VERSION_STRING = 'Local';
@@ -16372,7 +16389,7 @@ const String __AVAILABILITY_FILE = 'AvailabilityVersions.h';
 
 const int __MAC_OS_X_VERSION_MIN_REQUIRED = 260000;
 
-const int __MAC_OS_X_VERSION_MAX_ALLOWED = 260000;
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 260100;
 
 const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
 
@@ -16737,6 +16754,10 @@ const int IOPOL_MATERIALIZE_DATALESS_FILES_DEFAULT = 0;
 const int IOPOL_MATERIALIZE_DATALESS_FILES_OFF = 1;
 
 const int IOPOL_MATERIALIZE_DATALESS_FILES_ON = 2;
+
+const int IOPOL_MATERIALIZE_DATALESS_FILES_ORIG = 4;
+
+const int IOPOL_MATERIALIZE_DATALESS_FILES_BASIC_MASK = 3;
 
 const int IOPOL_VFS_STATFS_NO_DATA_VOLUME_DEFAULT = 0;
 

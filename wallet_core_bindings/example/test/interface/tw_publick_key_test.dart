@@ -75,8 +75,38 @@ void main() {
       final messageData = TWData(TWString(message).bytes()).bytes()!;
       final digest = TWHash.keccak256(messageData);
 
-      final signature = privateKey.signAsDER(digest);
+      final signature = privateKey.sign(digest, TWCurve.SECP256k1);
 
+      final publicKey = privateKey.getPublicKeySecp256k1(false);
+
+      expect(publicKey.verify(signature, digest), true);
+    });
+
+    test('VerifyInvalidLength', () {
+      final key = TWData.createWithHexString(
+          'afeefca74d9a325cf1d6b6911d61a65c32afa8e02bd5e78e2e4ac2910bab45f5');
+      final privateKey = TWPrivateKey.createWithData(key.bytes()!);
+
+      final message = TWData.createWithHexString(
+          'de4e9524586d6fce45667f9ff12f661e79870c4105fa0fb58af976619bb11432');
+      // 63 bytes instead of 64 or 65.
+      final signature = TWData.createWithHexString(
+          '0000000000000000000000000000000000000000000000000000000000020123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef80');
+
+      final publicKey = privateKey.getPublicKeySecp256k1(false);
+      expect(publicKey.verify(signature.bytes()!, message.bytes()!), false);
+    });
+
+    test('VerifyAsDER', () {
+      final key = TWData.createWithHexString(
+          'afeefca74d9a325cf1d6b6911d61a65c32afa8e02bd5e78e2e4ac2910bab45f5');
+      final privateKey = TWPrivateKey.createWithData(key.bytes()!);
+
+      const message = 'Hello';
+      final messageData = TWData(TWString(message).bytes()).bytes()!;
+      final digest = TWHash.keccak256(messageData);
+
+      final signature = privateKey.signAsDER(digest);
       final publicKey = privateKey.getPublicKeySecp256k1(false);
 
       expect(publicKey.verifyAsDER(signature, digest), true);

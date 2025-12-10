@@ -25,7 +25,7 @@ enum TWEthereumChainID {
   Zeneon(7332),
   Base(8453),
   Plasma(9745),
-  Monad(10143),
+  Monad(143),
   Meter(82),
   Celo(42220),
   Linea(59144),
