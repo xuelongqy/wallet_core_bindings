@@ -4,3 +4,4 @@
 .DS_Store
 .dart_tool/
 **/.dart_tool/
+*.iml
