@@ -1,7 +1,7 @@
 name: wallet_core_bindings
 description: "Dart bindings for trust wallet core, used in Flutter and Dart."
 resolution: workspace
-version: 4.4.4
+version: 4.5.0
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:

@@ -1,7 +1,7 @@
 name: wallet_core_bindings_native
 description: "Dart native bindings for trust wallet core, used in Flutter and Dart."
 resolution: workspace
-version: 4.4.4
+version: 4.5.0
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   ffi: ^2.1.0
-  wallet_core_bindings: ^4.4.4
+  wallet_core_bindings: ^4.5.0
 
 dev_dependencies:
   mocktail: ^1.0.4
