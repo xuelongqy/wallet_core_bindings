@@ -1,0 +1,46 @@
+part of '../wallet_core_bindings_native.dart';
+
+/// Native interface for [TWBiz].
+class TWBizImpl implements TWBizInterface {
+  final native_bindings.TrustWalletCoreBindings bindings;
+
+  TWBizImpl(this.bindings);
+
+  @override
+  int getEncodedHash(
+    int chainId,
+    int codeAddress,
+    int codeName,
+    int codeVersion,
+    int typeHash,
+    int domainSeparatorHash,
+    int sender,
+    int userOpHash,
+  ) {
+    return bindings.TWBizGetEncodedHash(
+      Pointer.fromAddress(chainId),
+      Pointer.fromAddress(codeAddress),
+      Pointer.fromAddress(codeName),
+      Pointer.fromAddress(codeVersion),
+      Pointer.fromAddress(typeHash),
+      Pointer.fromAddress(domainSeparatorHash),
+      Pointer.fromAddress(sender),
+      Pointer.fromAddress(userOpHash),
+    ).address;
+  }
+
+  @override
+  int getSignedHash(int hash, int privateKey) {
+    return bindings.TWBizGetSignedHash(
+      Pointer.fromAddress(hash),
+      Pointer.fromAddress(privateKey),
+    ).address;
+  }
+
+  @override
+  int signExecuteWithSignatureCall(int input) {
+    return bindings.TWBizSignExecuteWithSignatureCall(
+      Pointer.fromAddress(input),
+    ).address;
+  }
+}

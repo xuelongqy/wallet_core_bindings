@@ -1,0 +1,14 @@
+name: wallet_core
+workspace:
+  - example
+  - packages/wallet_core_bindings
+  - packages/wallet_core_bindings_libs
+  - packages/wallet_core_bindings_native
+  - packages/wallet_core_bindings_wasm
+  - packages/wallet_core_bindings_wasm_assets
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+dev_dependencies:
+  melos: ^7.3.0

@@ -89,7 +89,7 @@ We need to extract the files from [wallet-core](https://github.com/trustwallet/w
 Extract header files in include/TrustWalletCore and generate Dart bindings code.
 
 ```shell
-cd wallet_core_bindings_native
+cd packages/wallet_core_bindings_native
 dart run ffigen
 ```
 
@@ -98,7 +98,7 @@ Refer to the TrustWalletCore build [documentation](https://developer.trustwallet
 
 ```shell
 cd ./proto/TrustWalletCore/
-protoc --dart_out=../../wallet_core_bindings/lib/proto/ ./*
+protoc --dart_out=../../packages/wallet_core_bindings/lib/proto/ ./*
 ```
 
 ## License
