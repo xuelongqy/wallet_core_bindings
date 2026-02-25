@@ -5,29 +5,30 @@ import '../../utils.dart';
 
 void main() {
   initTest();
-  group('TWKuCoinCommunityChainCoinType', () {
+  group('TWMegaETHCoinType', () {
     test('TWCoinType', () {
-      const coin = TWCoinType.KuCoinCommunityChain;
+      const coin = TWCoinType.MegaETH;
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
       const txId =
-          '0x2f0d79cd289a02f3181b68b9583a64c3809fe7387810b274275985c29d02c80d';
+          '0x9021590996bda7682485fff4ab1ed221cea2fa0b352073f69e5a76114c7ed81a';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
-      const accId = '0x4446fc4eb47f2f6586f9faab68b3498f86c07521';
+      const accId = '0x6a4D1b2fC6a894928979F152A8c9245D96860604';
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
 
-      expect(id, 'kcc');
-      expect(name, 'KuCoin Community Chain');
-      expect(symbol, 'KCS');
+      expect(id, 'megaeth');
+      expect(name, 'MegaETH');
+      expect(symbol, 'ETH');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);
       expect(coin.p2shPrefix, 0x0);
       expect(coin.staticPrefix, 0x0);
+      expect(coin.p2pkhPrefix, 0x0);
       expect(txUrl,
-          'https://scan.kcc.io/tx/0x2f0d79cd289a02f3181b68b9583a64c3809fe7387810b274275985c29d02c80d');
+          'https://megaeth.blockscout.com/tx/0x9021590996bda7682485fff4ab1ed221cea2fa0b352073f69e5a76114c7ed81a');
       expect(accUrl,
-          'https://scan.kcc.io/address/0x4446fc4eb47f2f6586f9faab68b3498f86c07521');
+          'https://megaeth.blockscout.com/address/0x6a4D1b2fC6a894928979F152A8c9245D96860604');
     });
   });
 }

@@ -167,7 +167,6 @@ void main() {
       final privateKey = wallet.getKeyForCoin(coin);
       final publicKey = privateKey.getPublicKeyEd25519();
       final address = coin.deriveAddressFromPublicKey(publicKey);
-      print(address);
 
       final input = Tezos.SigningInput(
         privateKey: privateKey.data,

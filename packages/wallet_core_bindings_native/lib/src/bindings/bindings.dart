@@ -5786,30 +5786,25 @@ class TrustWalletCoreBindings {
   late final _TWBitcoinSigHashTypeIsNone =
       _TWBitcoinSigHashTypeIsNonePtr.asFunction<bool Function(int)>();
 
-  /// Encodes `BizPasskeySession.registerSession` function call to register a session passkey public key.
+  /// Signs and encodes `BizPasskeySession.executeWithPasskeySession` function call to execute a batch of transactions.
   ///
-  /// \param session_passkey_public_key The nist256p1 (aka secp256p1) public key of the session passkey.
-  /// \param valid_until_timestamp The timestamp until which the session is valid. Big endian uint64.
+  /// \param input The serialized data of `BizPasskeySession.ExecuteWithSignatureInput` protobuf message.
   /// \return ABI-encoded function call.
-  ffi.Pointer<TWData> TWBizPasskeySessionEncodeRegisterSessionCall(
-    ffi.Pointer<TWPublicKey> sessionPasskeyPublicKey,
-    ffi.Pointer<TWData> validUntilTimestamp,
+  ffi.Pointer<TWData> TWBizPasskeySessionSignExecuteWithSignatureCall(
+    ffi.Pointer<TWData> input,
   ) {
-    return _TWBizPasskeySessionEncodeRegisterSessionCall(
-      sessionPasskeyPublicKey,
-      validUntilTimestamp,
+    return _TWBizPasskeySessionSignExecuteWithSignatureCall(
+      input,
     );
   }
 
-  late final _TWBizPasskeySessionEncodeRegisterSessionCallPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Pointer<TWData> Function(
-                  ffi.Pointer<TWPublicKey>, ffi.Pointer<TWData>)>>(
-      'TWBizPasskeySessionEncodeRegisterSessionCall');
-  late final _TWBizPasskeySessionEncodeRegisterSessionCall =
-      _TWBizPasskeySessionEncodeRegisterSessionCallPtr.asFunction<
-          ffi.Pointer<TWData> Function(
-              ffi.Pointer<TWPublicKey>, ffi.Pointer<TWData>)>();
+  late final _TWBizPasskeySessionSignExecuteWithSignatureCallPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>>(
+      'TWBizPasskeySessionSignExecuteWithSignatureCall');
+  late final _TWBizPasskeySessionSignExecuteWithSignatureCall =
+      _TWBizPasskeySessionSignExecuteWithSignatureCallPtr.asFunction<
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>();
 
   /// Encodes `BizPasskeySession.removeSession` function call to deregister a session passkey public key.
   ///
@@ -5872,25 +5867,30 @@ class TrustWalletCoreBindings {
       _TWBizPasskeySessionEncodeExecuteWithPasskeySessionCallPtr.asFunction<
           ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>();
 
-  /// Signs and encodes `BizPasskeySession.executeWithPasskeySession` function call to execute a batch of transactions.
+  /// Encodes `BizPasskeySession.registerSession` function call to register a session passkey public key.
   ///
-  /// \param input The serialized data of `BizPasskeySession.ExecuteWithSignatureInput` protobuf message.
+  /// \param session_passkey_public_key The nist256p1 (aka secp256p1) public key of the session passkey.
+  /// \param valid_until_timestamp The timestamp until which the session is valid. Big endian uint64.
   /// \return ABI-encoded function call.
-  ffi.Pointer<TWData> TWBizPasskeySessionSignExecuteWithSignatureCall(
-    ffi.Pointer<TWData> input,
+  ffi.Pointer<TWData> TWBizPasskeySessionEncodeRegisterSessionCall(
+    ffi.Pointer<TWPublicKey> sessionPasskeyPublicKey,
+    ffi.Pointer<TWData> validUntilTimestamp,
   ) {
-    return _TWBizPasskeySessionSignExecuteWithSignatureCall(
-      input,
+    return _TWBizPasskeySessionEncodeRegisterSessionCall(
+      sessionPasskeyPublicKey,
+      validUntilTimestamp,
     );
   }
 
-  late final _TWBizPasskeySessionSignExecuteWithSignatureCallPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>>(
-      'TWBizPasskeySessionSignExecuteWithSignatureCall');
-  late final _TWBizPasskeySessionSignExecuteWithSignatureCall =
-      _TWBizPasskeySessionSignExecuteWithSignatureCallPtr.asFunction<
-          ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>();
+  late final _TWBizPasskeySessionEncodeRegisterSessionCallPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Pointer<TWData> Function(
+                  ffi.Pointer<TWPublicKey>, ffi.Pointer<TWData>)>>(
+      'TWBizPasskeySessionEncodeRegisterSessionCall');
+  late final _TWBizPasskeySessionEncodeRegisterSessionCall =
+      _TWBizPasskeySessionEncodeRegisterSessionCallPtr.asFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Pointer<TWPublicKey>, ffi.Pointer<TWData>)>();
 
   /// Encode a bool according to Ethereum ABI, into 32 bytes.  Values are padded by 0 on the left, unless specified otherwise
   ///
@@ -13354,6 +13354,52 @@ class TrustWalletCoreBindings {
   late final _TWBech32DecodeM = _TWBech32DecodeMPtr.asFunction<
       ffi.Pointer<TWData> Function(ffi.Pointer<TWString$1>)>();
 
+  /// Returns the final hash to be signed by Barz for signing messages & typed data
+  ///
+  /// \param msg_hash Original msgHash
+  /// \param barzAddress The address of Barz wallet signing the message
+  /// \param chainId The chainId of the network the verification will happen; Must be non-negative
+  /// \return The final hash to be signed.
+  ffi.Pointer<TWData> TWBarzGetPrefixedMsgHash(
+    ffi.Pointer<TWData> msgHash,
+    ffi.Pointer<TWString$1> barzAddress,
+    int chainId,
+  ) {
+    return _TWBarzGetPrefixedMsgHash(
+      msgHash,
+      barzAddress,
+      chainId,
+    );
+  }
+
+  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TWData> Function(ffi.Pointer<TWData>,
+              ffi.Pointer<TWString$1>, ffi.Int32)>>('TWBarzGetPrefixedMsgHash');
+  late final _TWBarzGetPrefixedMsgHash =
+      _TWBarzGetPrefixedMsgHashPtr.asFunction<
+          ffi.Pointer<TWData> Function(
+              ffi.Pointer<TWData>, ffi.Pointer<TWString$1>, int)>();
+
+  /// Returns the encoded diamondCut function call for Barz contract upgrades
+  ///
+  /// \param input The serialized data of DiamondCutInput.
+  /// \return The diamond cut code.
+  ffi.Pointer<TWData> TWBarzGetDiamondCutCode(
+    ffi.Pointer<TWData> input,
+  ) {
+    return _TWBarzGetDiamondCutCode(
+      input,
+    );
+  }
+
+  late final _TWBarzGetDiamondCutCodePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>>(
+      'TWBarzGetDiamondCutCode');
+  late final _TWBarzGetDiamondCutCode = _TWBarzGetDiamondCutCodePtr.asFunction<
+      ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>();
+
   /// Calculate a counterfactual address for the smart contract wallet
   ///
   /// \param input The serialized data of ContractAddressInput.
@@ -13438,52 +13484,6 @@ class TrustWalletCoreBindings {
       _TWBarzGetFormattedSignaturePtr.asFunction<
           ffi.Pointer<TWData> Function(ffi.Pointer<TWData>, ffi.Pointer<TWData>,
               ffi.Pointer<TWData>, ffi.Pointer<TWString$1>)>();
-
-  /// Returns the final hash to be signed by Barz for signing messages & typed data
-  ///
-  /// \param msg_hash Original msgHash
-  /// \param barzAddress The address of Barz wallet signing the message
-  /// \param chainId The chainId of the network the verification will happen; Must be non-negative
-  /// \return The final hash to be signed.
-  ffi.Pointer<TWData> TWBarzGetPrefixedMsgHash(
-    ffi.Pointer<TWData> msgHash,
-    ffi.Pointer<TWString$1> barzAddress,
-    int chainId,
-  ) {
-    return _TWBarzGetPrefixedMsgHash(
-      msgHash,
-      barzAddress,
-      chainId,
-    );
-  }
-
-  late final _TWBarzGetPrefixedMsgHashPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<TWData> Function(ffi.Pointer<TWData>,
-              ffi.Pointer<TWString$1>, ffi.Int32)>>('TWBarzGetPrefixedMsgHash');
-  late final _TWBarzGetPrefixedMsgHash =
-      _TWBarzGetPrefixedMsgHashPtr.asFunction<
-          ffi.Pointer<TWData> Function(
-              ffi.Pointer<TWData>, ffi.Pointer<TWString$1>, int)>();
-
-  /// Returns the encoded diamondCut function call for Barz contract upgrades
-  ///
-  /// \param input The serialized data of DiamondCutInput.
-  /// \return The diamond cut code.
-  ffi.Pointer<TWData> TWBarzGetDiamondCutCode(
-    ffi.Pointer<TWData> input,
-  ) {
-    return _TWBarzGetDiamondCutCode(
-      input,
-    );
-  }
-
-  late final _TWBarzGetDiamondCutCodePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>>(
-      'TWBarzGetDiamondCutCode');
-  late final _TWBarzGetDiamondCutCode = _TWBarzGetDiamondCutCodePtr.asFunction<
-      ffi.Pointer<TWData> Function(ffi.Pointer<TWData>)>();
 }
 
 typedef __int8_t = ffi.SignedChar;
@@ -15192,6 +15192,7 @@ sealed class TWCoinType {
   static const TWCoinTypePolymesh = 595;
   static const TWCoinTypePlasma = 9745;
   static const TWCoinTypeMonad = 10143;
+  static const TWCoinTypeMegaETH = 4326;
 }
 
 /// CoinTypeConfiguration functions
@@ -15466,6 +15467,7 @@ sealed class TWEthereumChainID {
   static const TWEthereumChainIDCfxevm = 1030;
   static const TWEthereumChainIDLightlink = 1890;
   static const TWEthereumChainIDMerlin = 4200;
+  static const TWEthereumChainIDMegaeth = 4326;
   static const TWEthereumChainIDMantle = 5000;
   static const TWEthereumChainIDBouncebit = 6001;
   static const TWEthereumChainIDGochain = 60;

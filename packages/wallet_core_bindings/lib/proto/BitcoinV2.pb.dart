@@ -1806,8 +1806,8 @@ class TransactionBuilder extends $pb.GeneratedMessage {
   Output ensureChangeOutput() => $_ensure(6);
 
   /// The only output with a max available amount to be send.
-  /// If set, `SigningInput.outputs` and `SigningInput.change` will be ignored.
   /// The `Output.value` will be overwritten, leave default.
+  /// Note: `max_amount_output` is mutually exclusive with `outputs` and `change_output`; do not use them together.
   @$pb.TagNumber(8)
   Output get maxAmountOutput => $_getN(7);
   @$pb.TagNumber(8)

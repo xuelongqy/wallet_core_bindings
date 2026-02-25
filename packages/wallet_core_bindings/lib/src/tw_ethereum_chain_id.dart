@@ -19,6 +19,7 @@ enum TWEthereumChainID {
   Cfxevm(1030),
   Lightlink(1890),
   Merlin(4200),
+  Megaeth(4326),
   Mantle(5000),
   Bouncebit(6001),
   Gochain(60),
