@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-02-25
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`wallet_core_bindings_wasm` - `v4.6.0`](#wallet_core_bindings_wasm---v460)
+ - [`wallet_core_bindings` - `v4.6.0`](#wallet_core_bindings---v460)
+ - [`wallet_core_bindings_libs` - `v4.6.0`](#wallet_core_bindings_libs---v460)
+ - [`wallet_core_bindings_native` - `v4.6.0`](#wallet_core_bindings_native---v460)
+ - [`wallet_core_bindings_wasm_assets` - `v4.6.0`](#wallet_core_bindings_wasm_assets---v460)
+
+---
+
+#### `wallet_core_bindings_wasm` - `v4.6.0`
+
+ - Sync wallet-core 4.6.0
+
+#### `wallet_core_bindings` - `v4.6.0`
+
+ - **FEAT**: Sync wallet-core 4.6.0.
+
+#### `wallet_core_bindings_libs` - `v4.6.0`
+
+ - **FEAT**: Sync wallet-core 4.6.0.
+
+#### `wallet_core_bindings_native` - `v4.6.0`
+
+ - **FEAT**: Sync wallet-core 4.6.0.
+
+#### `wallet_core_bindings_wasm_assets` - `v4.6.0`
+
+ - **FEAT**: Sync wallet-core 4.6.0.
+
+
 ## 2026-01-11
 
 ### Changes

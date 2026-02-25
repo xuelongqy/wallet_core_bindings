@@ -1,3 +1,7 @@
+## 4.6.0
+
+ - **FEAT**: Sync wallet-core 4.6.0.
+
 ## 4.5.0
 
 > Note: This release has breaking changes.
