@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-08-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`wallet_core_bindings_libs` - `v4.6.1`](#wallet_core_bindings_libs---v461)
+
+---
+
+#### `wallet_core_bindings_libs` - `v4.6.1`
+
+ - **FIX**(wallet_core_bindings_libs): support Flutter SwiftPM product naming.
+
+
 ## 2026-02-25
 
 ### Changes
