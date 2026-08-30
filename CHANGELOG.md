@@ -105,7 +105,6 @@ Packages with other changes:
 
 #### `wallet_core_bindings` - `v4.8.0`
 
- - y
 
  - **FEAT**: Sync wallet-core 4.8.0.
 
