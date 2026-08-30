@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '19e043f76f6ffc960f5fe93ecec37bc37a58ae7525d7e9cd6ed40f71f0da60eb';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'syscoin');
       expect(name, 'Syscoin');
+      expect(nativeTokenName, 'Syscoin');
       expect(symbol, 'SYS');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
       expect(coin.blockchain, TWBlockchain.Bitcoin);

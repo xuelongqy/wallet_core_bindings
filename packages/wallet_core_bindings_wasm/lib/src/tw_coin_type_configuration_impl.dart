@@ -31,6 +31,12 @@ class TWCoinTypeConfigurationImpl extends TWCoinTypeConfigurationInterface {
   }
 
   @override
+  int getNativeTokenName(int coin) {
+    final func = wasm.getFunction('TWCoinTypeConfigurationGetNativeTokenName')!;
+    return func([coin]).first as int;
+  }
+
+  @override
   int getSymbol(int coin) {
     final func = wasm.getFunction('TWCoinTypeConfigurationGetSymbol')!;
     return func([coin]).first as int;

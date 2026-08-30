@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '9e32c54975adf84a1d98f19df41bbc34a752a899c32cc9c0000200b2c4308f85';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'internet_computer');
       expect(name, 'Internet Computer');
+      expect(nativeTokenName, 'Internet Computer');
       expect(symbol, 'ICP');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
       expect(coin.blockchain, TWBlockchain.InternetComputer);

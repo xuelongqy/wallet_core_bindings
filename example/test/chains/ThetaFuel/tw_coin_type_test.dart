@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0xdb1c1c4e06289a4fc71b98ced218242d4f4a54a09987791a6a53a5260c053555';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'tfuelevm');
       expect(name, 'Theta Fuel');
+      expect(nativeTokenName, 'Theta Fuel');
       expect(symbol, 'TFUEL');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

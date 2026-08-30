@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0x3700212ec535b4c804363be87ba8a5f5668de6314ed41978f6ad71c5340d4d77';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'plasma');
       expect(name, 'Plasma Mainnet');
+      expect(nativeTokenName, 'Plasma');
       expect(symbol, 'XPL');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

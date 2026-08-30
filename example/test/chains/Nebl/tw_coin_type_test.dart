@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '53713d5208e2a1bc68ef8bd5c851f113cf5e1675d22ecf3406f38819ab9187b3';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'Nebl');
       expect(name, 'Nebl');
+      expect(nativeTokenName, 'Neblio');
       expect(symbol, 'NEBL');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
       expect(coin.blockchain, TWBlockchain.Verge);

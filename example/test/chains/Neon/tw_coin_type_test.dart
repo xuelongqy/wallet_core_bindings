@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0x77d86af2c6f02f14ef13ca52bf54864d92fcc4b32d8e884e225061c006738ed6';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'neon');
       expect(name, 'Neon');
+      expect(nativeTokenName, 'Neon');
       expect(symbol, 'NEON');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

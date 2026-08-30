@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
@@ -11,11 +13,31 @@ void main() {
     const coin = TWCoinType.Tron;
 
     test('SignDirectTransferAsset', () {
+      // Step 1. Construct and sign a transfer asset transaction.
       final input = Tron.SigningInput(
+        transaction: Tron.Transaction(
+          transferAsset: Tron.TransferAssetContract(
+            ownerAddress: 'TJRyWwFs9wTFGZg3JbrVriFbNfCug5tDeC',
+            toAddress: 'THTR75o8xXAgCTQqpiot2AFRAjvW1tSbVV',
+            amount: $fixnum.Int64(4),
+            assetName: '1000959',
+          ),
+          timestamp: $fixnum.Int64(1539295479000),
+          expiration: $fixnum.Int64(1541890116000 + 10 * 60 * 60 * 1000),
+          blockHeader: Tron.BlockHeader(
+            timestamp: $fixnum.Int64(1541890116000),
+            txTrieRoot: parse_hex(
+                "845ab51bf63c2c21ee71a4dc0ac3781619f07a7cd05e1e0bd8ba828979332ffa"),
+            parentHash: parse_hex(
+                "00000000003cb800a7e69e9144e3d16f0cf33f33a95c7ce274097822c67243c1"),
+            number: $fixnum.Int64(3979265),
+            witnessAddress:
+                parse_hex("41b487cdc02de90f15ac89a68c82f44cbfe3d915ea"),
+            version: 3,
+          ),
+        ),
         privateKey: parse_hex(
             "2d8f68944bdbfbc0769542fba8fc2d2a3de67393334471624364c7006da2aa54"),
-        txId:
-            '546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb',
       );
 
       final output = Tron.SigningOutput.fromBuffer(
@@ -23,8 +45,22 @@ void main() {
 
       expect(hex(output.id),
           '546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb');
-
       expect(hex(output.signature),
+          '77f5eabde31e739d34a66914540f1756981dc7d782c9656f5e14e53b59a15371603a183aa12124adeee7991bf55acc8e488a6ca04fb393b1a8ac16610eeafdfc00');
+
+      // Step 2. Verify that the JSON output can be parsed and signed back.
+      final rawJson = jsonDecode(output.json) as Map<String, dynamic>;
+      rawJson.remove('signature');
+      final input2 = Tron.SigningInput(
+        rawJson: jsonEncode(rawJson),
+        privateKey: parse_hex(
+            "2d8f68944bdbfbc0769542fba8fc2d2a3de67393334471624364c7006da2aa54"),
+      );
+      final output2 = Tron.SigningOutput.fromBuffer(
+          TWAnySigner.sign(input2.writeToBuffer(), coin));
+      expect(hex(output2.id),
+          '546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb');
+      expect(hex(output2.signature),
           '77f5eabde31e739d34a66914540f1756981dc7d782c9656f5e14e53b59a15371603a183aa12124adeee7991bf55acc8e488a6ca04fb393b1a8ac16610eeafdfc00');
     });
 
@@ -52,6 +88,7 @@ void main() {
 		"ref_block_hash": "0e2bc08d550f5f58",
 		"timestamp": 1539295479000
 	},
+	"raw_data_hex": "0a02b80122080e2bc08d550f5f5840a0b5d58ff02c5a730802126f0a32747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e736665724173736574436f6e747261637412390a07313030303935391215415cd0fb0ab3ce40f3051414c604b27756e69e43db1a1541521ea197907927725ef36d70f25f850d1659c7c7200470d889a4a9e62c",
 	"visible":false,
 	"txID": "546a3d07164c624809cf4e564a083a7a7974bb3c4eff6bb3e278b0ca21083fcb"
 }''',

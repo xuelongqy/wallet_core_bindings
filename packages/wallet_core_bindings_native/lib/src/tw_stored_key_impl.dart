@@ -274,6 +274,23 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
   }
 
   @override
+  bool storeWithTemporaryFile(int pointer, int path, int temporaryPath) {
+    return bindings.TWStoredKeyStoreWithTemporaryFile(
+      Pointer.fromAddress(pointer),
+      Pointer.fromAddress(path),
+      Pointer.fromAddress(temporaryPath),
+    );
+  }
+
+  @override
+  bool fixEncryption(int pointer, int password) {
+    return bindings.TWStoredKeyFixEncryption(
+      Pointer.fromAddress(pointer),
+      Pointer.fromAddress(password),
+    );
+  }
+
+  @override
   int wallet(int pointer, int password) {
     return bindings.TWStoredKeyWallet(
       Pointer.fromAddress(pointer),

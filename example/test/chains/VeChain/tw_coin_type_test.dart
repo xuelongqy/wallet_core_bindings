@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0xa424053be0063555aee73a595ca69968c2e4d90d36f280753e503b92b11a655d';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'vechain');
       expect(name, 'VeChain');
+      expect(nativeTokenName, 'VeChain');
       expect(symbol, 'VET');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Vechain);

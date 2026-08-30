@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0xa2062a4530b194a438bb9f9e87cdce59f70775a52e8336892364445847c43ca2';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'scroll');
       expect(name, 'Scroll');
+      expect(nativeTokenName, 'Ethereum');
       expect(symbol, 'ETH');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

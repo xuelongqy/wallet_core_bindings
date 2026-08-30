@@ -56,4 +56,12 @@ class TWCoinTypeConfiguration {
   static String getName(TWCoinType type) =>
       TWString.fromPointer(_coinTypeConfigurationImpl.getName(type.value))
           .value!;
+
+  /// Returns native token name of coin
+  ///
+  /// \param [type] A coin type
+  /// \return Returns a non-null TWString, native token name of coin
+  static String getNativeTokenName(TWCoinType type) => TWString.fromPointer(
+          _coinTypeConfigurationImpl.getNativeTokenName(type.value))
+      .value!;
 }

@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           'f2438a93039faf08d39bd3df1f7b5f19a2c29ffe8753127e2956ab4461adab35';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'zcash');
       expect(name, 'Zcash');
+      expect(nativeTokenName, 'Zcash');
       expect(symbol, 'ZEC');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
       expect(coin.blockchain, TWBlockchain.Zcash);

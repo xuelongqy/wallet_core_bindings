@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId = 'FPQAMaVnvFHNwNBJWnTttXfdJhp5FvMGGDJEesB8gvbL';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = 'test-trust.vlad.near';
@@ -18,6 +19,7 @@ void main() {
 
       expect(id, 'near');
       expect(name, 'NEAR');
+      expect(nativeTokenName, 'NEAR');
       expect(symbol, 'NEAR');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 24);
       expect(coin.blockchain, TWBlockchain.NEAR);

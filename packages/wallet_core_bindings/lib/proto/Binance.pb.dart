@@ -709,452 +709,6 @@ class SendOrder extends $pb.GeneratedMessage {
   $pb.PbList<SendOrder_Output> get outputs => $_getList(1);
 }
 
-/// Message for TokenIssue order
-class TokenIssueOrder extends $pb.GeneratedMessage {
-  factory TokenIssueOrder({
-    $core.List<$core.int>? from,
-    $core.String? name,
-    $core.String? symbol,
-    $fixnum.Int64? totalSupply,
-    $core.bool? mintable,
-  }) {
-    final result = create();
-    if (from != null) result.from = from;
-    if (name != null) result.name = name;
-    if (symbol != null) result.symbol = symbol;
-    if (totalSupply != null) result.totalSupply = totalSupply;
-    if (mintable != null) result.mintable = mintable;
-    return result;
-  }
-
-  TokenIssueOrder._();
-
-  factory TokenIssueOrder.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory TokenIssueOrder.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TokenIssueOrder',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'from', $pb.PbFieldType.OY)
-    ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..aOS(3, _omitFieldNames ? '' : 'symbol')
-    ..aInt64(4, _omitFieldNames ? '' : 'totalSupply')
-    ..aOB(5, _omitFieldNames ? '' : 'mintable')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenIssueOrder clone() => deepCopy();
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenIssueOrder copyWith(void Function(TokenIssueOrder) updates) =>
-      super.copyWith((message) => updates(message as TokenIssueOrder))
-          as TokenIssueOrder;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static TokenIssueOrder create() => TokenIssueOrder._();
-  @$core.override
-  TokenIssueOrder createEmptyInstance() => create();
-  @$core.pragma('dart2js:noInline')
-  static TokenIssueOrder getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TokenIssueOrder>(create);
-  static TokenIssueOrder? _defaultInstance;
-
-  /// owner address
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get from => $_getN(0);
-  @$pb.TagNumber(1)
-  set from($core.List<$core.int> value) => $_setBytes(0, value);
-  @$pb.TagNumber(1)
-  $core.bool hasFrom() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFrom() => $_clearField(1);
-
-  /// token name
-  @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set name($core.String value) => $_setString(1, value);
-  @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearName() => $_clearField(2);
-
-  /// token symbol, in full name with "-" suffix
-  @$pb.TagNumber(3)
-  $core.String get symbol => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set symbol($core.String value) => $_setString(2, value);
-  @$pb.TagNumber(3)
-  $core.bool hasSymbol() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearSymbol() => $_clearField(3);
-
-  /// total supply
-  @$pb.TagNumber(4)
-  $fixnum.Int64 get totalSupply => $_getI64(3);
-  @$pb.TagNumber(4)
-  set totalSupply($fixnum.Int64 value) => $_setInt64(3, value);
-  @$pb.TagNumber(4)
-  $core.bool hasTotalSupply() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearTotalSupply() => $_clearField(4);
-
-  /// mintable
-  @$pb.TagNumber(5)
-  $core.bool get mintable => $_getBF(4);
-  @$pb.TagNumber(5)
-  set mintable($core.bool value) => $_setBool(4, value);
-  @$pb.TagNumber(5)
-  $core.bool hasMintable() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearMintable() => $_clearField(5);
-}
-
-/// Message for TokenMint order
-class TokenMintOrder extends $pb.GeneratedMessage {
-  factory TokenMintOrder({
-    $core.List<$core.int>? from,
-    $core.String? symbol,
-    $fixnum.Int64? amount,
-  }) {
-    final result = create();
-    if (from != null) result.from = from;
-    if (symbol != null) result.symbol = symbol;
-    if (amount != null) result.amount = amount;
-    return result;
-  }
-
-  TokenMintOrder._();
-
-  factory TokenMintOrder.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory TokenMintOrder.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TokenMintOrder',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'from', $pb.PbFieldType.OY)
-    ..aOS(2, _omitFieldNames ? '' : 'symbol')
-    ..aInt64(3, _omitFieldNames ? '' : 'amount')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenMintOrder clone() => deepCopy();
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenMintOrder copyWith(void Function(TokenMintOrder) updates) =>
-      super.copyWith((message) => updates(message as TokenMintOrder))
-          as TokenMintOrder;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static TokenMintOrder create() => TokenMintOrder._();
-  @$core.override
-  TokenMintOrder createEmptyInstance() => create();
-  @$core.pragma('dart2js:noInline')
-  static TokenMintOrder getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TokenMintOrder>(create);
-  static TokenMintOrder? _defaultInstance;
-
-  /// owner address
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get from => $_getN(0);
-  @$pb.TagNumber(1)
-  set from($core.List<$core.int> value) => $_setBytes(0, value);
-  @$pb.TagNumber(1)
-  $core.bool hasFrom() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFrom() => $_clearField(1);
-
-  /// token symbol, in full name with "-" suffix
-  @$pb.TagNumber(2)
-  $core.String get symbol => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set symbol($core.String value) => $_setString(1, value);
-  @$pb.TagNumber(2)
-  $core.bool hasSymbol() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSymbol() => $_clearField(2);
-
-  /// amount to mint
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get amount => $_getI64(2);
-  @$pb.TagNumber(3)
-  set amount($fixnum.Int64 value) => $_setInt64(2, value);
-  @$pb.TagNumber(3)
-  $core.bool hasAmount() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearAmount() => $_clearField(3);
-}
-
-/// Message for TokenBurn order
-class TokenBurnOrder extends $pb.GeneratedMessage {
-  factory TokenBurnOrder({
-    $core.List<$core.int>? from,
-    $core.String? symbol,
-    $fixnum.Int64? amount,
-  }) {
-    final result = create();
-    if (from != null) result.from = from;
-    if (symbol != null) result.symbol = symbol;
-    if (amount != null) result.amount = amount;
-    return result;
-  }
-
-  TokenBurnOrder._();
-
-  factory TokenBurnOrder.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory TokenBurnOrder.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TokenBurnOrder',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'from', $pb.PbFieldType.OY)
-    ..aOS(2, _omitFieldNames ? '' : 'symbol')
-    ..aInt64(3, _omitFieldNames ? '' : 'amount')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenBurnOrder clone() => deepCopy();
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenBurnOrder copyWith(void Function(TokenBurnOrder) updates) =>
-      super.copyWith((message) => updates(message as TokenBurnOrder))
-          as TokenBurnOrder;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static TokenBurnOrder create() => TokenBurnOrder._();
-  @$core.override
-  TokenBurnOrder createEmptyInstance() => create();
-  @$core.pragma('dart2js:noInline')
-  static TokenBurnOrder getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TokenBurnOrder>(create);
-  static TokenBurnOrder? _defaultInstance;
-
-  /// owner address
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get from => $_getN(0);
-  @$pb.TagNumber(1)
-  set from($core.List<$core.int> value) => $_setBytes(0, value);
-  @$pb.TagNumber(1)
-  $core.bool hasFrom() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFrom() => $_clearField(1);
-
-  /// token symbol, in full name with "-" suffix
-  @$pb.TagNumber(2)
-  $core.String get symbol => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set symbol($core.String value) => $_setString(1, value);
-  @$pb.TagNumber(2)
-  $core.bool hasSymbol() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSymbol() => $_clearField(2);
-
-  /// amount to burn
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get amount => $_getI64(2);
-  @$pb.TagNumber(3)
-  set amount($fixnum.Int64 value) => $_setInt64(2, value);
-  @$pb.TagNumber(3)
-  $core.bool hasAmount() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearAmount() => $_clearField(3);
-}
-
-/// Message for TokenFreeze order
-class TokenFreezeOrder extends $pb.GeneratedMessage {
-  factory TokenFreezeOrder({
-    $core.List<$core.int>? from,
-    $core.String? symbol,
-    $fixnum.Int64? amount,
-  }) {
-    final result = create();
-    if (from != null) result.from = from;
-    if (symbol != null) result.symbol = symbol;
-    if (amount != null) result.amount = amount;
-    return result;
-  }
-
-  TokenFreezeOrder._();
-
-  factory TokenFreezeOrder.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory TokenFreezeOrder.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TokenFreezeOrder',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'from', $pb.PbFieldType.OY)
-    ..aOS(2, _omitFieldNames ? '' : 'symbol')
-    ..aInt64(3, _omitFieldNames ? '' : 'amount')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenFreezeOrder clone() => deepCopy();
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenFreezeOrder copyWith(void Function(TokenFreezeOrder) updates) =>
-      super.copyWith((message) => updates(message as TokenFreezeOrder))
-          as TokenFreezeOrder;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static TokenFreezeOrder create() => TokenFreezeOrder._();
-  @$core.override
-  TokenFreezeOrder createEmptyInstance() => create();
-  @$core.pragma('dart2js:noInline')
-  static TokenFreezeOrder getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TokenFreezeOrder>(create);
-  static TokenFreezeOrder? _defaultInstance;
-
-  /// owner address
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get from => $_getN(0);
-  @$pb.TagNumber(1)
-  set from($core.List<$core.int> value) => $_setBytes(0, value);
-  @$pb.TagNumber(1)
-  $core.bool hasFrom() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFrom() => $_clearField(1);
-
-  /// token symbol, in full name with "-" suffix
-  @$pb.TagNumber(2)
-  $core.String get symbol => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set symbol($core.String value) => $_setString(1, value);
-  @$pb.TagNumber(2)
-  $core.bool hasSymbol() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSymbol() => $_clearField(2);
-
-  /// amount of token to freeze
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get amount => $_getI64(2);
-  @$pb.TagNumber(3)
-  set amount($fixnum.Int64 value) => $_setInt64(2, value);
-  @$pb.TagNumber(3)
-  $core.bool hasAmount() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearAmount() => $_clearField(3);
-}
-
-/// Message for TokenUnfreeze order
-class TokenUnfreezeOrder extends $pb.GeneratedMessage {
-  factory TokenUnfreezeOrder({
-    $core.List<$core.int>? from,
-    $core.String? symbol,
-    $fixnum.Int64? amount,
-  }) {
-    final result = create();
-    if (from != null) result.from = from;
-    if (symbol != null) result.symbol = symbol;
-    if (amount != null) result.amount = amount;
-    return result;
-  }
-
-  TokenUnfreezeOrder._();
-
-  factory TokenUnfreezeOrder.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromBuffer(data, registry);
-  factory TokenUnfreezeOrder.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TokenUnfreezeOrder',
-      package:
-          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
-      createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(
-        1, _omitFieldNames ? '' : 'from', $pb.PbFieldType.OY)
-    ..aOS(2, _omitFieldNames ? '' : 'symbol')
-    ..aInt64(3, _omitFieldNames ? '' : 'amount')
-    ..hasRequiredFields = false;
-
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenUnfreezeOrder clone() => deepCopy();
-  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TokenUnfreezeOrder copyWith(void Function(TokenUnfreezeOrder) updates) =>
-      super.copyWith((message) => updates(message as TokenUnfreezeOrder))
-          as TokenUnfreezeOrder;
-
-  @$core.override
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static TokenUnfreezeOrder create() => TokenUnfreezeOrder._();
-  @$core.override
-  TokenUnfreezeOrder createEmptyInstance() => create();
-  @$core.pragma('dart2js:noInline')
-  static TokenUnfreezeOrder getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TokenUnfreezeOrder>(create);
-  static TokenUnfreezeOrder? _defaultInstance;
-
-  /// owner address
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get from => $_getN(0);
-  @$pb.TagNumber(1)
-  set from($core.List<$core.int> value) => $_setBytes(0, value);
-  @$pb.TagNumber(1)
-  $core.bool hasFrom() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearFrom() => $_clearField(1);
-
-  /// token symbol, in full name with "-" suffix
-  @$pb.TagNumber(2)
-  $core.String get symbol => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set symbol($core.String value) => $_setString(1, value);
-  @$pb.TagNumber(2)
-  $core.bool hasSymbol() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSymbol() => $_clearField(2);
-
-  /// amount of token to unfreeze
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get amount => $_getI64(2);
-  @$pb.TagNumber(3)
-  set amount($fixnum.Int64 value) => $_setInt64(2, value);
-  @$pb.TagNumber(3)
-  $core.bool hasAmount() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearAmount() => $_clearField(3);
-}
-
 /// Message for HashTimeLock order
 class HTLTOrder extends $pb.GeneratedMessage {
   factory HTLTOrder({
@@ -2352,15 +1906,10 @@ enum SigningInput_OrderOneof {
   tradeOrder,
   cancelTradeOrder,
   sendOrder,
-  freezeOrder,
-  unfreezeOrder,
   htltOrder,
   depositHTLTOrder,
   claimHTLTOrder,
   refundHTLTOrder,
-  issueOrder,
-  mintOrder,
-  burnOrder,
   transferOutOrder,
   sideDelegateOrder,
   sideRedelegateOrder,
@@ -2384,15 +1933,10 @@ class SigningInput extends $pb.GeneratedMessage {
     TradeOrder? tradeOrder,
     CancelTradeOrder? cancelTradeOrder,
     SendOrder? sendOrder,
-    TokenFreezeOrder? freezeOrder,
-    TokenUnfreezeOrder? unfreezeOrder,
     HTLTOrder? htltOrder,
     DepositHTLTOrder? depositHTLTOrder,
     ClaimHTLOrder? claimHTLTOrder,
     RefundHTLTOrder? refundHTLTOrder,
-    TokenIssueOrder? issueOrder,
-    TokenMintOrder? mintOrder,
-    TokenBurnOrder? burnOrder,
     TransferOut? transferOutOrder,
     SideChainDelegate? sideDelegateOrder,
     SideChainRedelegate? sideRedelegateOrder,
@@ -2412,15 +1956,10 @@ class SigningInput extends $pb.GeneratedMessage {
     if (tradeOrder != null) result.tradeOrder = tradeOrder;
     if (cancelTradeOrder != null) result.cancelTradeOrder = cancelTradeOrder;
     if (sendOrder != null) result.sendOrder = sendOrder;
-    if (freezeOrder != null) result.freezeOrder = freezeOrder;
-    if (unfreezeOrder != null) result.unfreezeOrder = unfreezeOrder;
     if (htltOrder != null) result.htltOrder = htltOrder;
     if (depositHTLTOrder != null) result.depositHTLTOrder = depositHTLTOrder;
     if (claimHTLTOrder != null) result.claimHTLTOrder = claimHTLTOrder;
     if (refundHTLTOrder != null) result.refundHTLTOrder = refundHTLTOrder;
-    if (issueOrder != null) result.issueOrder = issueOrder;
-    if (mintOrder != null) result.mintOrder = mintOrder;
-    if (burnOrder != null) result.burnOrder = burnOrder;
     if (transferOutOrder != null) result.transferOutOrder = transferOutOrder;
     if (sideDelegateOrder != null) result.sideDelegateOrder = sideDelegateOrder;
     if (sideRedelegateOrder != null)
@@ -2449,15 +1988,10 @@ class SigningInput extends $pb.GeneratedMessage {
     8: SigningInput_OrderOneof.tradeOrder,
     9: SigningInput_OrderOneof.cancelTradeOrder,
     10: SigningInput_OrderOneof.sendOrder,
-    11: SigningInput_OrderOneof.freezeOrder,
-    12: SigningInput_OrderOneof.unfreezeOrder,
     13: SigningInput_OrderOneof.htltOrder,
     14: SigningInput_OrderOneof.depositHTLTOrder,
     15: SigningInput_OrderOneof.claimHTLTOrder,
     16: SigningInput_OrderOneof.refundHTLTOrder,
-    17: SigningInput_OrderOneof.issueOrder,
-    18: SigningInput_OrderOneof.mintOrder,
-    19: SigningInput_OrderOneof.burnOrder,
     20: SigningInput_OrderOneof.transferOutOrder,
     21: SigningInput_OrderOneof.sideDelegateOrder,
     22: SigningInput_OrderOneof.sideRedelegateOrder,
@@ -2473,28 +2007,7 @@ class SigningInput extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Binance.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27
-    ])
+    ..oo(0, [8, 9, 10, 13, 14, 15, 16, 20, 21, 22, 23, 24, 25, 26, 27])
     ..aOS(1, _omitFieldNames ? '' : 'chainId')
     ..aInt64(2, _omitFieldNames ? '' : 'accountNumber')
     ..aInt64(3, _omitFieldNames ? '' : 'sequence')
@@ -2508,10 +2021,6 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: CancelTradeOrder.create)
     ..aOM<SendOrder>(10, _omitFieldNames ? '' : 'sendOrder',
         subBuilder: SendOrder.create)
-    ..aOM<TokenFreezeOrder>(11, _omitFieldNames ? '' : 'freezeOrder',
-        subBuilder: TokenFreezeOrder.create)
-    ..aOM<TokenUnfreezeOrder>(12, _omitFieldNames ? '' : 'unfreezeOrder',
-        subBuilder: TokenUnfreezeOrder.create)
     ..aOM<HTLTOrder>(13, _omitFieldNames ? '' : 'htltOrder',
         subBuilder: HTLTOrder.create)
     ..aOM<DepositHTLTOrder>(14, _omitFieldNames ? '' : 'depositHTLTOrder',
@@ -2520,12 +2029,6 @@ class SigningInput extends $pb.GeneratedMessage {
         protoName: 'claimHTLT_order', subBuilder: ClaimHTLOrder.create)
     ..aOM<RefundHTLTOrder>(16, _omitFieldNames ? '' : 'refundHTLTOrder',
         protoName: 'refundHTLT_order', subBuilder: RefundHTLTOrder.create)
-    ..aOM<TokenIssueOrder>(17, _omitFieldNames ? '' : 'issueOrder',
-        subBuilder: TokenIssueOrder.create)
-    ..aOM<TokenMintOrder>(18, _omitFieldNames ? '' : 'mintOrder',
-        subBuilder: TokenMintOrder.create)
-    ..aOM<TokenBurnOrder>(19, _omitFieldNames ? '' : 'burnOrder',
-        subBuilder: TokenBurnOrder.create)
     ..aOM<TransferOut>(20, _omitFieldNames ? '' : 'transferOutOrder',
         subBuilder: TransferOut.create)
     ..aOM<SideChainDelegate>(21, _omitFieldNames ? '' : 'sideDelegateOrder',
@@ -2567,15 +2070,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   @$pb.TagNumber(9)
   @$pb.TagNumber(10)
-  @$pb.TagNumber(11)
-  @$pb.TagNumber(12)
   @$pb.TagNumber(13)
   @$pb.TagNumber(14)
   @$pb.TagNumber(15)
   @$pb.TagNumber(16)
-  @$pb.TagNumber(17)
-  @$pb.TagNumber(18)
-  @$pb.TagNumber(19)
   @$pb.TagNumber(20)
   @$pb.TagNumber(21)
   @$pb.TagNumber(22)
@@ -2589,15 +2087,10 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   @$pb.TagNumber(9)
   @$pb.TagNumber(10)
-  @$pb.TagNumber(11)
-  @$pb.TagNumber(12)
   @$pb.TagNumber(13)
   @$pb.TagNumber(14)
   @$pb.TagNumber(15)
   @$pb.TagNumber(16)
-  @$pb.TagNumber(17)
-  @$pb.TagNumber(18)
-  @$pb.TagNumber(19)
   @$pb.TagNumber(20)
   @$pb.TagNumber(21)
   @$pb.TagNumber(22)
@@ -2705,193 +2198,138 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   SendOrder ensureSendOrder() => $_ensure(8);
 
-  @$pb.TagNumber(11)
-  TokenFreezeOrder get freezeOrder => $_getN(9);
-  @$pb.TagNumber(11)
-  set freezeOrder(TokenFreezeOrder value) => $_setField(11, value);
-  @$pb.TagNumber(11)
-  $core.bool hasFreezeOrder() => $_has(9);
-  @$pb.TagNumber(11)
-  void clearFreezeOrder() => $_clearField(11);
-  @$pb.TagNumber(11)
-  TokenFreezeOrder ensureFreezeOrder() => $_ensure(9);
-
-  @$pb.TagNumber(12)
-  TokenUnfreezeOrder get unfreezeOrder => $_getN(10);
-  @$pb.TagNumber(12)
-  set unfreezeOrder(TokenUnfreezeOrder value) => $_setField(12, value);
-  @$pb.TagNumber(12)
-  $core.bool hasUnfreezeOrder() => $_has(10);
-  @$pb.TagNumber(12)
-  void clearUnfreezeOrder() => $_clearField(12);
-  @$pb.TagNumber(12)
-  TokenUnfreezeOrder ensureUnfreezeOrder() => $_ensure(10);
-
   @$pb.TagNumber(13)
-  HTLTOrder get htltOrder => $_getN(11);
+  HTLTOrder get htltOrder => $_getN(9);
   @$pb.TagNumber(13)
   set htltOrder(HTLTOrder value) => $_setField(13, value);
   @$pb.TagNumber(13)
-  $core.bool hasHtltOrder() => $_has(11);
+  $core.bool hasHtltOrder() => $_has(9);
   @$pb.TagNumber(13)
   void clearHtltOrder() => $_clearField(13);
   @$pb.TagNumber(13)
-  HTLTOrder ensureHtltOrder() => $_ensure(11);
+  HTLTOrder ensureHtltOrder() => $_ensure(9);
 
   @$pb.TagNumber(14)
-  DepositHTLTOrder get depositHTLTOrder => $_getN(12);
+  DepositHTLTOrder get depositHTLTOrder => $_getN(10);
   @$pb.TagNumber(14)
   set depositHTLTOrder(DepositHTLTOrder value) => $_setField(14, value);
   @$pb.TagNumber(14)
-  $core.bool hasDepositHTLTOrder() => $_has(12);
+  $core.bool hasDepositHTLTOrder() => $_has(10);
   @$pb.TagNumber(14)
   void clearDepositHTLTOrder() => $_clearField(14);
   @$pb.TagNumber(14)
-  DepositHTLTOrder ensureDepositHTLTOrder() => $_ensure(12);
+  DepositHTLTOrder ensureDepositHTLTOrder() => $_ensure(10);
 
   @$pb.TagNumber(15)
-  ClaimHTLOrder get claimHTLTOrder => $_getN(13);
+  ClaimHTLOrder get claimHTLTOrder => $_getN(11);
   @$pb.TagNumber(15)
   set claimHTLTOrder(ClaimHTLOrder value) => $_setField(15, value);
   @$pb.TagNumber(15)
-  $core.bool hasClaimHTLTOrder() => $_has(13);
+  $core.bool hasClaimHTLTOrder() => $_has(11);
   @$pb.TagNumber(15)
   void clearClaimHTLTOrder() => $_clearField(15);
   @$pb.TagNumber(15)
-  ClaimHTLOrder ensureClaimHTLTOrder() => $_ensure(13);
+  ClaimHTLOrder ensureClaimHTLTOrder() => $_ensure(11);
 
   @$pb.TagNumber(16)
-  RefundHTLTOrder get refundHTLTOrder => $_getN(14);
+  RefundHTLTOrder get refundHTLTOrder => $_getN(12);
   @$pb.TagNumber(16)
   set refundHTLTOrder(RefundHTLTOrder value) => $_setField(16, value);
   @$pb.TagNumber(16)
-  $core.bool hasRefundHTLTOrder() => $_has(14);
+  $core.bool hasRefundHTLTOrder() => $_has(12);
   @$pb.TagNumber(16)
   void clearRefundHTLTOrder() => $_clearField(16);
   @$pb.TagNumber(16)
-  RefundHTLTOrder ensureRefundHTLTOrder() => $_ensure(14);
-
-  @$pb.TagNumber(17)
-  TokenIssueOrder get issueOrder => $_getN(15);
-  @$pb.TagNumber(17)
-  set issueOrder(TokenIssueOrder value) => $_setField(17, value);
-  @$pb.TagNumber(17)
-  $core.bool hasIssueOrder() => $_has(15);
-  @$pb.TagNumber(17)
-  void clearIssueOrder() => $_clearField(17);
-  @$pb.TagNumber(17)
-  TokenIssueOrder ensureIssueOrder() => $_ensure(15);
-
-  @$pb.TagNumber(18)
-  TokenMintOrder get mintOrder => $_getN(16);
-  @$pb.TagNumber(18)
-  set mintOrder(TokenMintOrder value) => $_setField(18, value);
-  @$pb.TagNumber(18)
-  $core.bool hasMintOrder() => $_has(16);
-  @$pb.TagNumber(18)
-  void clearMintOrder() => $_clearField(18);
-  @$pb.TagNumber(18)
-  TokenMintOrder ensureMintOrder() => $_ensure(16);
-
-  @$pb.TagNumber(19)
-  TokenBurnOrder get burnOrder => $_getN(17);
-  @$pb.TagNumber(19)
-  set burnOrder(TokenBurnOrder value) => $_setField(19, value);
-  @$pb.TagNumber(19)
-  $core.bool hasBurnOrder() => $_has(17);
-  @$pb.TagNumber(19)
-  void clearBurnOrder() => $_clearField(19);
-  @$pb.TagNumber(19)
-  TokenBurnOrder ensureBurnOrder() => $_ensure(17);
+  RefundHTLTOrder ensureRefundHTLTOrder() => $_ensure(12);
 
   @$pb.TagNumber(20)
-  TransferOut get transferOutOrder => $_getN(18);
+  TransferOut get transferOutOrder => $_getN(13);
   @$pb.TagNumber(20)
   set transferOutOrder(TransferOut value) => $_setField(20, value);
   @$pb.TagNumber(20)
-  $core.bool hasTransferOutOrder() => $_has(18);
+  $core.bool hasTransferOutOrder() => $_has(13);
   @$pb.TagNumber(20)
   void clearTransferOutOrder() => $_clearField(20);
   @$pb.TagNumber(20)
-  TransferOut ensureTransferOutOrder() => $_ensure(18);
+  TransferOut ensureTransferOutOrder() => $_ensure(13);
 
   @$pb.TagNumber(21)
-  SideChainDelegate get sideDelegateOrder => $_getN(19);
+  SideChainDelegate get sideDelegateOrder => $_getN(14);
   @$pb.TagNumber(21)
   set sideDelegateOrder(SideChainDelegate value) => $_setField(21, value);
   @$pb.TagNumber(21)
-  $core.bool hasSideDelegateOrder() => $_has(19);
+  $core.bool hasSideDelegateOrder() => $_has(14);
   @$pb.TagNumber(21)
   void clearSideDelegateOrder() => $_clearField(21);
   @$pb.TagNumber(21)
-  SideChainDelegate ensureSideDelegateOrder() => $_ensure(19);
+  SideChainDelegate ensureSideDelegateOrder() => $_ensure(14);
 
   @$pb.TagNumber(22)
-  SideChainRedelegate get sideRedelegateOrder => $_getN(20);
+  SideChainRedelegate get sideRedelegateOrder => $_getN(15);
   @$pb.TagNumber(22)
   set sideRedelegateOrder(SideChainRedelegate value) => $_setField(22, value);
   @$pb.TagNumber(22)
-  $core.bool hasSideRedelegateOrder() => $_has(20);
+  $core.bool hasSideRedelegateOrder() => $_has(15);
   @$pb.TagNumber(22)
   void clearSideRedelegateOrder() => $_clearField(22);
   @$pb.TagNumber(22)
-  SideChainRedelegate ensureSideRedelegateOrder() => $_ensure(20);
+  SideChainRedelegate ensureSideRedelegateOrder() => $_ensure(15);
 
   @$pb.TagNumber(23)
-  SideChainUndelegate get sideUndelegateOrder => $_getN(21);
+  SideChainUndelegate get sideUndelegateOrder => $_getN(16);
   @$pb.TagNumber(23)
   set sideUndelegateOrder(SideChainUndelegate value) => $_setField(23, value);
   @$pb.TagNumber(23)
-  $core.bool hasSideUndelegateOrder() => $_has(21);
+  $core.bool hasSideUndelegateOrder() => $_has(16);
   @$pb.TagNumber(23)
   void clearSideUndelegateOrder() => $_clearField(23);
   @$pb.TagNumber(23)
-  SideChainUndelegate ensureSideUndelegateOrder() => $_ensure(21);
+  SideChainUndelegate ensureSideUndelegateOrder() => $_ensure(16);
 
   @$pb.TagNumber(24)
-  TimeLockOrder get timeLockOrder => $_getN(22);
+  TimeLockOrder get timeLockOrder => $_getN(17);
   @$pb.TagNumber(24)
   set timeLockOrder(TimeLockOrder value) => $_setField(24, value);
   @$pb.TagNumber(24)
-  $core.bool hasTimeLockOrder() => $_has(22);
+  $core.bool hasTimeLockOrder() => $_has(17);
   @$pb.TagNumber(24)
   void clearTimeLockOrder() => $_clearField(24);
   @$pb.TagNumber(24)
-  TimeLockOrder ensureTimeLockOrder() => $_ensure(22);
+  TimeLockOrder ensureTimeLockOrder() => $_ensure(17);
 
   @$pb.TagNumber(25)
-  TimeRelockOrder get timeRelockOrder => $_getN(23);
+  TimeRelockOrder get timeRelockOrder => $_getN(18);
   @$pb.TagNumber(25)
   set timeRelockOrder(TimeRelockOrder value) => $_setField(25, value);
   @$pb.TagNumber(25)
-  $core.bool hasTimeRelockOrder() => $_has(23);
+  $core.bool hasTimeRelockOrder() => $_has(18);
   @$pb.TagNumber(25)
   void clearTimeRelockOrder() => $_clearField(25);
   @$pb.TagNumber(25)
-  TimeRelockOrder ensureTimeRelockOrder() => $_ensure(23);
+  TimeRelockOrder ensureTimeRelockOrder() => $_ensure(18);
 
   @$pb.TagNumber(26)
-  TimeUnlockOrder get timeUnlockOrder => $_getN(24);
+  TimeUnlockOrder get timeUnlockOrder => $_getN(19);
   @$pb.TagNumber(26)
   set timeUnlockOrder(TimeUnlockOrder value) => $_setField(26, value);
   @$pb.TagNumber(26)
-  $core.bool hasTimeUnlockOrder() => $_has(24);
+  $core.bool hasTimeUnlockOrder() => $_has(19);
   @$pb.TagNumber(26)
   void clearTimeUnlockOrder() => $_clearField(26);
   @$pb.TagNumber(26)
-  TimeUnlockOrder ensureTimeUnlockOrder() => $_ensure(24);
+  TimeUnlockOrder ensureTimeUnlockOrder() => $_ensure(19);
 
   @$pb.TagNumber(27)
-  SideChainStakeMigration get sideStakeMigrationOrder => $_getN(25);
+  SideChainStakeMigration get sideStakeMigrationOrder => $_getN(20);
   @$pb.TagNumber(27)
   set sideStakeMigrationOrder(SideChainStakeMigration value) =>
       $_setField(27, value);
   @$pb.TagNumber(27)
-  $core.bool hasSideStakeMigrationOrder() => $_has(25);
+  $core.bool hasSideStakeMigrationOrder() => $_has(20);
   @$pb.TagNumber(27)
   void clearSideStakeMigrationOrder() => $_clearField(27);
   @$pb.TagNumber(27)
-  SideChainStakeMigration ensureSideStakeMigrationOrder() => $_ensure(25);
+  SideChainStakeMigration ensureSideStakeMigrationOrder() => $_ensure(20);
 }
 
 /// Result containing the signed and encoded transaction.

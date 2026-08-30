@@ -107,3 +107,17 @@ const TransactionOutput$json = {
 final $typed_data.Uint8List transactionOutputDescriptor = $convert.base64Decode(
     'ChFUcmFuc2FjdGlvbk91dHB1dBIUCgV2YWx1ZRgBIAEoA1IFdmFsdWUSGAoHdmVyc2lvbhgCIA'
     'EoDVIHdmVyc2lvbhIWCgZzY3JpcHQYAyABKAxSBnNjcmlwdA==');
+
+@$core.Deprecated('Use transactionBuilderExtraDataDescriptor instead')
+const TransactionBuilderExtraData$json = {
+  '1': 'TransactionBuilderExtraData',
+  '2': [
+    {'1': 'expiry_height', '3': 1, '4': 1, '5': 13, '10': 'expiryHeight'},
+  ],
+};
+
+/// Descriptor for `TransactionBuilderExtraData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List transactionBuilderExtraDataDescriptor =
+    $convert.base64Decode(
+        'ChtUcmFuc2FjdGlvbkJ1aWxkZXJFeHRyYURhdGESIwoNZXhwaXJ5X2hlaWdodBgBIAEoDVIMZX'
+        'hwaXJ5SGVpZ2h0');

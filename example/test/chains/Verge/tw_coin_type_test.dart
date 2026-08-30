@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '8c99979a2b25a46659bff35b238aab1c3158f736f215d99526429c7c96203581';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'verge');
       expect(name, 'Verge');
+      expect(nativeTokenName, 'Verge');
       expect(symbol, 'XVG');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 6);
       expect(coin.blockchain, TWBlockchain.Verge);

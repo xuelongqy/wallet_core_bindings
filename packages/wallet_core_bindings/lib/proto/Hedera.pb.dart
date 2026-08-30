@@ -15,6 +15,8 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'Common.pbenum.dart' as $0;
+
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 /// An exact date and time. This is the same data structure as the protobuf Timestamp.proto
@@ -517,9 +519,13 @@ class SigningInput extends $pb.GeneratedMessage {
 class SigningOutput extends $pb.GeneratedMessage {
   factory SigningOutput({
     $core.List<$core.int>? encoded,
+    $0.SigningError? error,
+    $core.String? errorMessage,
   }) {
     final result = create();
     if (encoded != null) result.encoded = encoded;
+    if (error != null) result.error = error;
+    if (errorMessage != null) result.errorMessage = errorMessage;
     return result;
   }
 
@@ -539,6 +545,9 @@ class SigningOutput extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'encoded', $pb.PbFieldType.OY)
+    ..aE<$0.SigningError>(2, _omitFieldNames ? '' : 'error',
+        enumValues: $0.SigningError.values)
+    ..aOS(3, _omitFieldNames ? '' : 'errorMessage')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -569,6 +578,26 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasEncoded() => $_has(0);
   @$pb.TagNumber(1)
   void clearEncoded() => $_clearField(1);
+
+  /// error code, 0 is ok, other codes will be treated as errors
+  @$pb.TagNumber(2)
+  $0.SigningError get error => $_getN(1);
+  @$pb.TagNumber(2)
+  set error($0.SigningError value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasError() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearError() => $_clearField(2);
+
+  /// error description
+  @$pb.TagNumber(3)
+  $core.String get errorMessage => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set errorMessage($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasErrorMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearErrorMessage() => $_clearField(3);
 }
 
 const $core.bool _omitFieldNames =

@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0xeb8fa0488a655f8dc975153bffd066800bcaae5f21cf372356365b2a1d6d2288';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'rootstock');
       expect(name, 'Rootstock');
+      expect(nativeTokenName, 'Rootstock');
       expect(symbol, 'RBTC');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

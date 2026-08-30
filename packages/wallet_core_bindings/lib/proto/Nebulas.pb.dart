@@ -15,6 +15,8 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'Common.pbenum.dart' as $0;
+
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 /// Input data necessary to create a signed transaction.
@@ -204,11 +206,15 @@ class SigningOutput extends $pb.GeneratedMessage {
     $core.int? algorithm,
     $core.List<$core.int>? signature,
     $core.String? raw,
+    $0.SigningError? error,
+    $core.String? errorMessage,
   }) {
     final result = create();
     if (algorithm != null) result.algorithm = algorithm;
     if (signature != null) result.signature = signature;
     if (raw != null) result.raw = raw;
+    if (error != null) result.error = error;
+    if (errorMessage != null) result.errorMessage = errorMessage;
     return result;
   }
 
@@ -230,6 +236,9 @@ class SigningOutput extends $pb.GeneratedMessage {
     ..a<$core.List<$core.int>>(
         2, _omitFieldNames ? '' : 'signature', $pb.PbFieldType.OY)
     ..aOS(3, _omitFieldNames ? '' : 'raw')
+    ..aE<$0.SigningError>(4, _omitFieldNames ? '' : 'error',
+        enumValues: $0.SigningError.values)
+    ..aOS(5, _omitFieldNames ? '' : 'errorMessage')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -280,6 +289,26 @@ class SigningOutput extends $pb.GeneratedMessage {
   $core.bool hasRaw() => $_has(2);
   @$pb.TagNumber(3)
   void clearRaw() => $_clearField(3);
+
+  /// error code, 0 is ok, other codes will be treated as errors
+  @$pb.TagNumber(4)
+  $0.SigningError get error => $_getN(3);
+  @$pb.TagNumber(4)
+  set error($0.SigningError value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasError() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearError() => $_clearField(4);
+
+  /// error description
+  @$pb.TagNumber(5)
+  $core.String get errorMessage => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set errorMessage($core.String value) => $_setString(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasErrorMessage() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearErrorMessage() => $_clearField(5);
 }
 
 /// Generic data

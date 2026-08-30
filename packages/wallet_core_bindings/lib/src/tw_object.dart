@@ -25,7 +25,7 @@ abstract class TWObjectFinalizable extends TWObject implements Finalizable {
     required this.attach,
   })  : _finalizer = finalizer,
         super(pointer) {
-    if (attach) {
+    if (attach && pointer != 0) {
       _finalizer.attach(this, pointer, detach: this);
     }
   }

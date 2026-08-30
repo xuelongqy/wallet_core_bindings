@@ -127,6 +127,11 @@ class SigningError extends $pb.ProtobufEnum {
   static const SigningError Error_dust_amount_requested =
       SigningError._(25, _omitEnumNames ? '' : 'Error_dust_amount_requested');
 
+  /// The transaction hash does not match the hash derived from the raw transaction data.
+  /// This can indicate a tampered or malformed transaction input.
+  static const SigningError Error_tx_hash_mismatch =
+      SigningError._(26, _omitEnumNames ? '' : 'Error_tx_hash_mismatch');
+
   static const $core.List<SigningError> values = <SigningError>[
     OK,
     Error_general,
@@ -154,10 +159,11 @@ class SigningError extends $pb.ProtobufEnum {
     Error_invalid_requested_token_amount,
     Error_not_supported,
     Error_dust_amount_requested,
+    Error_tx_hash_mismatch,
   ];
 
   static final $core.List<SigningError?> _byValue =
-      $pb.ProtobufEnum.$_initByValueList(values, 25);
+      $pb.ProtobufEnum.$_initByValueList(values, 26);
   static SigningError? valueOf($core.int value) =>
       value < 0 || value >= _byValue.length ? null : _byValue[value];
 

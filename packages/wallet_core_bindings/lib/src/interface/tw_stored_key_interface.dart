@@ -66,6 +66,10 @@ abstract class TWStoredKeyInterface {
 
   bool store(int pointer, int path);
 
+  bool storeWithTemporaryFile(int pointer, int path, int temporaryPath);
+
+  bool fixEncryption(int pointer, int password);
+
   int decryptPrivateKey(int pointer, int password);
 
   int decryptPrivateKeyEncoded(int key, int password);

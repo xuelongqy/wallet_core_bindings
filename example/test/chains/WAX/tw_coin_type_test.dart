@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '4548f7b28ee608663caea61234049ac0018415e02dd0abcea1c215c8da00d10a';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'wax');
       expect(name, 'WAX');
+      expect(nativeTokenName, 'WAX');
       expect(symbol, 'WAXP');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 4);
       expect(coin.blockchain, TWBlockchain.EOS);

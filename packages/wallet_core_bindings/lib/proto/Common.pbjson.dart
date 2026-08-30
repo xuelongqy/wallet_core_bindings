@@ -45,6 +45,7 @@ const SigningError$json = {
     {'1': 'Error_invalid_requested_token_amount', '2': 23},
     {'1': 'Error_not_supported', '2': 24},
     {'1': 'Error_dust_amount_requested', '2': 25},
+    {'1': 'Error_tx_hash_mismatch', '2': 26},
   ],
 };
 
@@ -62,4 +63,5 @@ final $typed_data.Uint8List signingErrorDescriptor = $convert.base64Decode(
     '9pbnB1dF9wYXJzZRATEhgKFEVycm9yX25vX3N1cHBvcnRfbjJuEBQSGgoWRXJyb3Jfc2lnbmF0'
     'dXJlc19jb3VudBAVEhgKFEVycm9yX2ludmFsaWRfcGFyYW1zEBYSKAokRXJyb3JfaW52YWxpZF'
     '9yZXF1ZXN0ZWRfdG9rZW5fYW1vdW50EBcSFwoTRXJyb3Jfbm90X3N1cHBvcnRlZBAYEh8KG0Vy'
-    'cm9yX2R1c3RfYW1vdW50X3JlcXVlc3RlZBAZ');
+    'cm9yX2R1c3RfYW1vdW50X3JlcXVlc3RlZBAZEhoKFkVycm9yX3R4X2hhc2hfbWlzbWF0Y2gQGg'
+    '==');

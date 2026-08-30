@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId = 't123';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = 'a12';
@@ -18,6 +19,7 @@ void main() {
 
       expect(id, 'nimiq');
       expect(name, 'Nimiq');
+      expect(nativeTokenName, 'Nimiq');
       expect(symbol, 'NIM');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 5);
       expect(coin.blockchain, TWBlockchain.Nimiq);

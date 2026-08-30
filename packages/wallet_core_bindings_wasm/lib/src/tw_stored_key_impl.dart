@@ -219,6 +219,27 @@ class TWStoredKeyImpl extends TWStoredKeyInterface {
   }
 
   @override
+  bool storeWithTemporaryFile(int pointer, int path, int temporaryPath) {
+    final json = exportJSON(pointer);
+    final filePath = TWString.fromPointer(path).value!;
+    final tempPath = TWString.fromPointer(temporaryPath).value!;
+    try {
+      File(tempPath).writeAsStringSync(TWString.fromPointer(json).value!);
+      File(tempPath).renameSync(filePath);
+      return true;
+    } catch (_, s) {
+      debugPrintStack(stackTrace: s);
+      return false;
+    }
+  }
+
+  @override
+  bool fixEncryption(int pointer, int password) {
+    final func = wasm.getFunction('TWStoredKeyFixEncryption')!;
+    return func([pointer, password]).first as int != 0;
+  }
+
+  @override
   int wallet(int pointer, int password) {
     final func = wasm.getFunction('TWStoredKeyWallet')!;
     return func([pointer, password]).first as int;

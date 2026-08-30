@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId = 'fJXfn0EVhV09HFuEgUHu4Cchb24nUQtIMwSzmzk2tLs=';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = 'EQCD39VS5jcptHL8vMjEXrzGaRcCVYto7HUn4bpAOg8xqB2N';
@@ -18,7 +19,8 @@ void main() {
 
       expect(id, 'ton');
       expect(name, 'TON');
-      expect(symbol, 'TON');
+      expect(nativeTokenName, 'Gram');
+      expect(symbol, 'GRAM');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 9);
       expect(coin.blockchain, TWBlockchain.TheOpenNetwork);
       expect(coin.p2shPrefix, 0x0);

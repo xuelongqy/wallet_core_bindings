@@ -16,6 +16,7 @@ void main() {
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
 
       expect(TWCoinTypeConfiguration.getDecimals(coin), 6);
       expect(coin.blockchain, TWBlockchain.Algorand);
@@ -28,6 +29,7 @@ void main() {
       expect(symbol, 'ALGO');
       expect(id, 'algorand');
       expect(name, 'Algorand');
+      expect(nativeTokenName, 'Algorand');
     });
   });
 }

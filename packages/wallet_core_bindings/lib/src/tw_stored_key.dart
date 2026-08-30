@@ -486,6 +486,41 @@ class TWStoredKey extends TWObjectFinalizable {
   bool store(String path) =>
       _storedKeyImpl.store(_pointer, TWString(path).pointer);
 
+  /// Saves the key to a file atomically using a temporary file and rename.
+  ///
+  /// Writes the key JSON to [temporaryPath] first, then renames it to [path] in a
+  /// single atomic operation. The original file at [path] is never truncated until
+  /// the new content is fully written and flushed, so a crash or I/O error mid-write
+  /// leaves the original file intact. Prefer this over [store] whenever the caller
+  /// can supply a suitable temporary path (typically the same directory as [path]
+  /// with a unique suffix to guarantee the rename stays on the same filesystem
+  /// volume).
+  ///
+  /// \param [path] Non-null string filepath where the key will be saved
+  /// \param [temporaryPath] Non-null string filepath used for the intermediate write;
+  ///        must be on the same filesystem volume as [path]
+  /// \return true if the key was successfully stored in the given filepath file, false otherwise
+  bool storeWithTemporaryFile(String path, String temporaryPath) =>
+      _storedKeyImpl.storeWithTemporaryFile(
+        _pointer,
+        TWString(path).pointer,
+        TWString(temporaryPath).pointer,
+      );
+
+  /// Re-encrypts the key payload only when needed to fix currently supported
+  /// encryption-parameter issues. At present, this is limited to correcting the
+  /// Scrypt salt length when applicable; it does not generally upgrade other KDF
+  /// parameters such as PBKDF2 settings or Scrypt N/r/p values. No-op otherwise.
+  /// This method needs the encryption password to decrypt and, if applicable,
+  /// re-encrypt the payload.
+  ///
+  /// \param [password] Non-null block of data, password of the stored key
+  /// \return `false` if the password is incorrect or re-encryption fails, true otherwise.
+  bool fixEncryption(Uint8List password) => _storedKeyImpl.fixEncryption(
+        _pointer,
+        TWData(password).pointer,
+      );
+
   /// Decrypts the private key.
   ///
   /// \param [password] Non-null block of data, password of the stored key

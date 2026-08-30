@@ -1632,7 +1632,11 @@ class ChainInfo extends $pb.GeneratedMessage {
 
 enum TransactionBuilder_DustPolicy { fixedDustThreshold, notSet }
 
-enum TransactionBuilder_ChainSpecific { zcashExtraData, notSet }
+enum TransactionBuilder_ChainSpecific {
+  zcashExtraData,
+  decredExtraData,
+  notSet
+}
 
 /// Transaction builder used in `SigningInput`.
 class TransactionBuilder extends $pb.GeneratedMessage {
@@ -1647,6 +1651,7 @@ class TransactionBuilder extends $pb.GeneratedMessage {
     Output? maxAmountOutput,
     $fixnum.Int64? fixedDustThreshold,
     $2.TransactionBuilderExtraData? zcashExtraData,
+    $3.TransactionBuilderExtraData? decredExtraData,
   }) {
     final result = create();
     if (version != null) result.version = version;
@@ -1660,6 +1665,7 @@ class TransactionBuilder extends $pb.GeneratedMessage {
     if (fixedDustThreshold != null)
       result.fixedDustThreshold = fixedDustThreshold;
     if (zcashExtraData != null) result.zcashExtraData = zcashExtraData;
+    if (decredExtraData != null) result.decredExtraData = decredExtraData;
     return result;
   }
 
@@ -1680,6 +1686,7 @@ class TransactionBuilder extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, TransactionBuilder_ChainSpecific>
       _TransactionBuilder_ChainSpecificByTag = {
     20: TransactionBuilder_ChainSpecific.zcashExtraData,
+    21: TransactionBuilder_ChainSpecific.decredExtraData,
     0: TransactionBuilder_ChainSpecific.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -1688,7 +1695,7 @@ class TransactionBuilder extends $pb.GeneratedMessage {
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.BitcoinV2.Proto'),
       createEmptyInstance: create)
     ..oo(0, [10])
-    ..oo(1, [20])
+    ..oo(1, [20, 21])
     ..aE<TransactionVersion>(1, _omitFieldNames ? '' : 'version',
         enumValues: TransactionVersion.values)
     ..aI(2, _omitFieldNames ? '' : 'lockTime', fieldType: $pb.PbFieldType.OU3)
@@ -1706,6 +1713,9 @@ class TransactionBuilder extends $pb.GeneratedMessage {
     ..aOM<$2.TransactionBuilderExtraData>(
         20, _omitFieldNames ? '' : 'zcashExtraData',
         subBuilder: $2.TransactionBuilderExtraData.create)
+    ..aOM<$3.TransactionBuilderExtraData>(
+        21, _omitFieldNames ? '' : 'decredExtraData',
+        subBuilder: $3.TransactionBuilderExtraData.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1734,9 +1744,11 @@ class TransactionBuilder extends $pb.GeneratedMessage {
   void clearDustPolicy() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(20)
+  @$pb.TagNumber(21)
   TransactionBuilder_ChainSpecific whichChainSpecific() =>
       _TransactionBuilder_ChainSpecificByTag[$_whichOneof(1)]!;
   @$pb.TagNumber(20)
+  @$pb.TagNumber(21)
   void clearChainSpecific() => $_clearField($_whichOneof(1));
 
   /// Transaction version.
@@ -1781,6 +1793,8 @@ class TransactionBuilder extends $pb.GeneratedMessage {
 
   /// The amount of satoshis per vbyte ("satVb"), used for fee calculation.
   /// Can be satoshis per byte ("satB") **ONLY** when transaction does not contain segwit UTXOs.
+  /// In most cases, the fee rate is a positive integer, but it can be zero when fee validation is not necessary (`InputSelector.UseAll`),
+  /// or the transaction is free or it contains a miner subsidy UTXO (eg. coinbase transaction).
   @$pb.TagNumber(6)
   $fixnum.Int64 get feePerVb => $_getI64(5);
   @$pb.TagNumber(6)
@@ -1841,6 +1855,19 @@ class TransactionBuilder extends $pb.GeneratedMessage {
   void clearZcashExtraData() => $_clearField(20);
   @$pb.TagNumber(20)
   $2.TransactionBuilderExtraData ensureZcashExtraData() => $_ensure(9);
+
+  /// Decred specific transaction data.
+  @$pb.TagNumber(21)
+  $3.TransactionBuilderExtraData get decredExtraData => $_getN(10);
+  @$pb.TagNumber(21)
+  set decredExtraData($3.TransactionBuilderExtraData value) =>
+      $_setField(21, value);
+  @$pb.TagNumber(21)
+  $core.bool hasDecredExtraData() => $_has(10);
+  @$pb.TagNumber(21)
+  void clearDecredExtraData() => $_clearField(21);
+  @$pb.TagNumber(21)
+  $3.TransactionBuilderExtraData ensureDecredExtraData() => $_ensure(10);
 }
 
 /// Partially Signed Bitcoin Transaction.

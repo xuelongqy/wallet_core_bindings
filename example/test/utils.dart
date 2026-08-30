@@ -25,7 +25,7 @@ Future initWalletCoreImpl() async {
   if (_isInitWalletCore) {
     return;
   }
-  await initWalletCoreWasmImpl();
+  await initWalletCoreNativeImpl();
   _isInitWalletCore = true;
 }
 

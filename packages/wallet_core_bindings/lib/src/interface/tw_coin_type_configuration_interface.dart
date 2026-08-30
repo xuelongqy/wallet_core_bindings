@@ -8,4 +8,5 @@ abstract class TWCoinTypeConfigurationInterface {
   int getAccountURL(int coin, int accountID);
   int getID(int coin);
   int getName(int coin);
+  int getNativeTokenName(int coin);
 }

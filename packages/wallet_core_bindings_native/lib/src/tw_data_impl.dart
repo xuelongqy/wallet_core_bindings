@@ -32,9 +32,11 @@ class TWDataImpl extends TWDataInterface {
   @override
   Uint8List copyBytes(int pointer, int start, int size) {
     Pointer<Uint8> outputPointer = malloc.allocate<Uint8>(size);
-    bindings.TWDataCopyBytes(
+    final ret = bindings.TWDataCopyBytes(
         Pointer.fromAddress(pointer), start, size, outputPointer);
-    final res = Uint8List.fromList(outputPointer.asTypedList(size));
+    final res = ret == 0
+        ? Uint8List.fromList(outputPointer.asTypedList(size))
+        : Uint8List(0);
     malloc.free(outputPointer);
     return res;
   }
@@ -74,13 +76,8 @@ class TWDataImpl extends TWDataInterface {
   }
 
   @override
-  int get(int pointer, int index) {
-    return bindings.TWDataGet(Pointer.fromAddress(pointer), index);
-  }
-
-  @override
   void replaceBytes(int pointer, int start, int size, Uint8List bytes) {
-    return bindings.TWDataReplaceBytes(
+    bindings.TWDataReplaceBytes(
         Pointer.fromAddress(pointer), start, size, bytes.toNativeUint8());
   }
 

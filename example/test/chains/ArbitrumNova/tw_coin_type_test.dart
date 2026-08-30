@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       final chainId = coin.chainId;
       const txId =
           '0xfdfee13848c2d21813c82c53afc9925f31770564c3117477960a81055702c1be';
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'arbitrumnova');
       expect(name, 'Arbitrum Nova');
+      expect(nativeTokenName, 'Ethereum');
       expect(symbol, 'ETH');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

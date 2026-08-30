@@ -36,6 +36,13 @@ class TWCoinTypeConfigurationImpl extends TWCoinTypeConfigurationInterface {
   }
 
   @override
+  int getNativeTokenName(int coin) {
+    return bindings.TWCoinTypeConfigurationGetNativeTokenName(
+      coin,
+    ).address;
+  }
+
+  @override
   int getSymbol(int coin) {
     return bindings.TWCoinTypeConfigurationGetSymbol(
       coin,

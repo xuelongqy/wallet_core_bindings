@@ -1,6 +1,7 @@
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
+import 'package:wallet_core_bindings/proto/Common.pb.dart' as Common;
 import 'package:wallet_core_bindings/proto/Stellar.pb.dart' as Stellar;
 
 import '../../utils.dart';
@@ -232,13 +233,13 @@ void main() {
           'AAAAAMpFJQVVMv16RJUPlzQUTlgZOHVurhw3igGacP1305F1AAAnEAH/8MgAAAAhAAAAAAAAAAAAAAABAAAAAAAAAA8AAAAAnHt5S3sVDz5Mbc+iYGcrvgwkizYBKREukn4PfuL5+vgAAAAAAAAAAXfTkXUAAABAWL7dKkR1JuPZGFbDTRDgGBHW/vLPMWNRkAew+wPfGiCnZhpJJDcyX197EDDZMsJ7ungPUyhczRaeQOwZKx4DDQ==');
 
       {
-        // negative test: hash wrong size
+        // negative test: balance_id wrong size — must fail, not sign invalid data
         final invalidBalanceIdHash = parse_hex("010203");
         input.opClaimClaimableBalance.balanceId = invalidBalanceIdHash;
         final output = Stellar.SigningOutput.fromBuffer(
             TWAnySigner.sign(input.writeToBuffer(), coin));
-        expect(output.signature,
-            'AAAAAXfTkXUAAABAFCywEfLs3q5Tv9eZCIcjhkJR0s8J4Us9G5YjVKUSaMoUz/AadC8dM2oQSLhpC5wjrNBi7hevg7jlkPx5/4AJCQ==');
+        expect(output.error, Common.SigningError.Error_invalid_params);
+        expect(output.signature, '');
       }
     });
   });

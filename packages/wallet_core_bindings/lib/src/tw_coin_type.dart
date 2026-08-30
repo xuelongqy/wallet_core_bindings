@@ -173,6 +173,9 @@ class TWCoinType {
   static const TWCoinType Plasma = TWCoinType(9745);
   static const TWCoinType Monad = TWCoinType(10143);
   static const TWCoinType MegaETH = TWCoinType(4326);
+  static const TWCoinType SeiEVM = TWCoinType(1329);
+  static const TWCoinType HyperEVM = TWCoinType(10000999);
+  static const TWCoinType RobinhoodChain = TWCoinType(10004663);
 
   @override
   int get hashCode => value.hashCode;

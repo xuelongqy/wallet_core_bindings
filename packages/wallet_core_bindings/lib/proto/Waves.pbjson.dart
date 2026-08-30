@@ -117,10 +117,20 @@ const SigningOutput$json = {
   '2': [
     {'1': 'signature', '3': 1, '4': 1, '5': 12, '10': 'signature'},
     {'1': 'json', '3': 2, '4': 1, '5': 9, '10': 'json'},
+    {
+      '1': 'error',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
+    {'1': 'error_message', '3': 4, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
 
 /// Descriptor for `SigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhwKCXNpZ25hdHVyZRgBIAEoDFIJc2lnbmF0dXJlEhIKBGpzb24YAi'
-    'ABKAlSBGpzb24=');
+    'ABKAlSBGpzb24SMwoFZXJyb3IYAyABKA4yHS5UVy5Db21tb24uUHJvdG8uU2lnbmluZ0Vycm9y'
+    'UgVlcnJvchIjCg1lcnJvcl9tZXNzYWdlGAQgASgJUgxlcnJvck1lc3NhZ2U=');

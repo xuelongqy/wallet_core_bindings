@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '73dc977fdd8596d4a57e6feb891b21f5da3652d26815dc94f15f7420c298e29e';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'oasis');
       expect(name, 'Oasis');
+      expect(nativeTokenName, 'Oasis');
       expect(symbol, 'ROSE');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 9);
       expect(coin.blockchain, TWBlockchain.OasisNetwork);

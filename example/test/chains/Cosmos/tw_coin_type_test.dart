@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '541FA06FB37AC1BF61922143783DD76FECA361830F9876D0342536EE8A87A790';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'cosmos');
       expect(name, 'Cosmos Hub');
+      expect(nativeTokenName, 'Cosmos');
       expect(symbol, 'ATOM');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 6);
       expect(coin.blockchain, TWBlockchain.Cosmos);

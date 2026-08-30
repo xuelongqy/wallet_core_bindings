@@ -1,4 +1,4 @@
-set(LibraryVersion "4.6.0")
+set(LibraryVersion "4.8.0")
 
 # The Flutter tooling requires that developers have CMake 3.10 or later
 # installed. You should not increase this version, as doing so will cause

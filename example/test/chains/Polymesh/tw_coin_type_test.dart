@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0x98cb5e33d8ff3dd5838c384e2ef9e291314ed8db13f5d4f42cdd70bad54a5e04';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'polymesh');
       expect(name, 'Polymesh');
+      expect(nativeTokenName, 'Polymesh');
       expect(symbol, 'POLYX');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 6);
       expect(coin.blockchain, TWBlockchain.Polymesh);

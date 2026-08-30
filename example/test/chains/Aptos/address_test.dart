@@ -19,25 +19,13 @@ void main() {
       );
       expect(
         TWAnyAddress.isValid(
-            'eeff357ea5c1a4e7bc11b2b17ff2dc2dcca69750bfef1e1ebcaccf8c8018175b',
+            '0x19aadeca9388e009d136245b9a67423f3eee242b03142849eb4f81a4a409e59c',
             coin),
         true,
       );
       expect(
         TWAnyAddress.isValid(
-            '19aadeca9388e009d136245b9a67423f3eee242b03142849eb4f81a4a409e59c',
-            coin),
-        true,
-      );
-      expect(
-        TWAnyAddress.isValid(
-            '0x777821c78442e17d82c3d7a371f42de7189e4248e529fe6eee6bca40ddbb',
-            coin),
-        true,
-      );
-      expect(
-        TWAnyAddress.isValid(
-            '0xeeff357ea5c1a4e7bc11b2b17ff2dc2dcca69750bfef1e1ebcaccf8c8018175',
+            '0x0000777821c78442e17d82c3d7a371f42de7189e4248e529fe6eee6bca40ddbb',
             coin),
         true,
       );
@@ -63,6 +51,25 @@ void main() {
             coin),
         false,
       );
+      expect(
+        TWAnyAddress.isValid(
+            'eeff357ea5c1a4e7bc11b2b17ff2dc2dcca69750bfef1e1ebcaccf8c8018175b',
+            coin),
+        false,
+      );
+      expect(
+        TWAnyAddress.isValid(
+            '0x777821c78442e17d82c3d7a371f42de7189e4248e529fe6eee6bca40ddbb',
+            coin),
+        false,
+      );
+      expect(
+        TWAnyAddress.isValid(
+            '0xeeff357ea5c1a4e7bc11b2b17ff2dc2dcca69750bfef1e1ebcaccf8c8018175',
+            coin),
+        false,
+      );
+      expect(TWAnyAddress.isValid('0x01', coin), false);
     });
 
     test('FromPrivateKey', () {

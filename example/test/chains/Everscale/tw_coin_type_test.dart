@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '781238b2b0d15cd4cd2e2a0a142753750cd5e1b2c8b506fcede75a90e02f1268';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'everscale');
       expect(name, 'Everscale');
+      expect(nativeTokenName, 'Everscale');
       expect(symbol, 'EVER');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 9);
       expect(coin.blockchain, TWBlockchain.Everscale);

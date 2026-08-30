@@ -396,6 +396,7 @@ const SigningInput$json = {
       '6': '.TW.Cardano.Proto.TxOutput',
       '10': 'extraOutputs'
     },
+    {'1': 'auxiliary_data', '3': 12, '4': 1, '5': 12, '10': 'auxiliaryData'},
   ],
 };
 
@@ -413,7 +414,7 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     '5Qcm90by5Wb3RlRGVsZWdhdGlvblIOdm90ZURlbGVnYXRpb24SEAoDdHRsGAQgASgEUgN0dGwS'
     'NQoEcGxhbhgFIAEoCzIhLlRXLkNhcmRhbm8uUHJvdG8uVHJhbnNhY3Rpb25QbGFuUgRwbGFuEj'
     '8KDWV4dHJhX291dHB1dHMYCiADKAsyGi5UVy5DYXJkYW5vLlByb3RvLlR4T3V0cHV0UgxleHRy'
-    'YU91dHB1dHM=');
+    'YU91dHB1dHMSJQoOYXV4aWxpYXJ5X2RhdGEYDCABKAxSDWF1eGlsaWFyeURhdGE=');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

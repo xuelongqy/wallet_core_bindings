@@ -23,7 +23,7 @@ void main() {
       final addressStr = address.description;
 
       expect(addressStr,
-          '0x7968dab936c1bad187c60ce4082f307d030d780e91e694ae03aef16aba73f30');
+          '0x07968dab936c1bad187c60ce4082f307d030d780e91e694ae03aef16aba73f30');
     });
   });
 }

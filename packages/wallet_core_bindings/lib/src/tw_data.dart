@@ -91,7 +91,7 @@ class TWData extends TWObjectFinalizable {
   ///
   /// \param [index] index of the byte that we want to fetch - index need to be < TWDataSize(data)
   /// \return the byte at the provided index
-  int get(int index) => _dataImpl.get(_pointer, index);
+  int get(int index) => bytes()![index];
 
   /// Overloaded operator [], equivalent to [TWData.get].
   int operator [](int index) => get(index);
@@ -108,15 +108,15 @@ class TWData extends TWObjectFinalizable {
   /// Copies a range of bytes into the provided buffer.
   ///
   /// \param [start] starting index of the range - index need to be < TWDataSize(data)
-  /// \param [size] size of the range we want to copy - size need to be < TWDataSize(data) - start
-  /// \return The output buffer where we want to copy the data.
+  /// \param [size] size of the range we want to copy - size need to be <= TWDataSize(data) - start, but at least 1
+  /// \return The output buffer where we want to copy the data, or an empty buffer if the operation fails.
   Uint8List copyBytes(int start, int size) =>
       _dataImpl.copyBytes(_pointer, start, size);
 
   /// Replaces a range of bytes with the contents of the provided buffer.
   ///
   /// \param [start] starting index of the range - index need to be < TWDataSize(data)
-  /// \param [size] size of the range we want to replace - size need to be < TWDataSize(data) - start
+  /// \param [size] size of the range we want to replace - size need to be <= TWDataSize(data) - start, but at least 1
   /// \param [bytes] The buffer that will replace the range of data
   void replaceBytes(int start, int size, Uint8List bytes) =>
       _dataImpl.replaceBytes(_pointer, start, size, bytes);

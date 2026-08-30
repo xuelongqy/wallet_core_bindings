@@ -500,7 +500,6 @@ const SigningInput$json = {
       '10': 'transaction'
     },
     {'1': 'private_key', '3': 2, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'txId', '3': 3, '4': 1, '5': 9, '10': 'txId'},
     {'1': 'raw_json', '3': 4, '4': 1, '5': 9, '10': 'rawJson'},
   ],
 };
@@ -508,8 +507,8 @@ const SigningInput$json = {
 /// Descriptor for `SigningInput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'CgxTaWduaW5nSW5wdXQSPAoLdHJhbnNhY3Rpb24YASABKAsyGi5UVy5Ucm9uLlByb3RvLlRyYW'
-    '5zYWN0aW9uUgt0cmFuc2FjdGlvbhIfCgtwcml2YXRlX2tleRgCIAEoDFIKcHJpdmF0ZUtleRIS'
-    'CgR0eElkGAMgASgJUgR0eElkEhkKCHJhd19qc29uGAQgASgJUgdyYXdKc29u');
+    '5zYWN0aW9uUgt0cmFuc2FjdGlvbhIfCgtwcml2YXRlX2tleRgCIAEoDFIKcHJpdmF0ZUtleRIZ'
+    'CghyYXdfanNvbhgEIAEoCVIHcmF3SnNvbg==');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

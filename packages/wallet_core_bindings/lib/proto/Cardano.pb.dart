@@ -1128,6 +1128,7 @@ class SigningInput extends $pb.GeneratedMessage {
     DeregisterStakingKey? deregisterStakingKey,
     $core.Iterable<TxOutput>? extraOutputs,
     VoteDelegation? voteDelegation,
+    $core.List<$core.int>? auxiliaryData,
   }) {
     final result = create();
     if (utxos != null) result.utxos.addAll(utxos);
@@ -1143,6 +1144,7 @@ class SigningInput extends $pb.GeneratedMessage {
       result.deregisterStakingKey = deregisterStakingKey;
     if (extraOutputs != null) result.extraOutputs.addAll(extraOutputs);
     if (voteDelegation != null) result.voteDelegation = voteDelegation;
+    if (auxiliaryData != null) result.auxiliaryData = auxiliaryData;
     return result;
   }
 
@@ -1183,6 +1185,8 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: TxOutput.create)
     ..aOM<VoteDelegation>(11, _omitFieldNames ? '' : 'voteDelegation',
         subBuilder: VoteDelegation.create)
+    ..a<$core.List<$core.int>>(
+        12, _omitFieldNames ? '' : 'auxiliaryData', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -1310,6 +1314,20 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearVoteDelegation() => $_clearField(11);
   @$pb.TagNumber(11)
   VoteDelegation ensureVoteDelegation() => $_ensure(10);
+
+  /// Optional auxiliary data (e.g. CIP-20 memo metadata), already CBOR-encoded.
+  /// If set, its Blake2b-256 hash is committed in the transaction body
+  /// (key 7, auxiliary_data_hash) and these bytes are embedded as the signed
+  /// transaction's auxiliary_data, so the caller does not append anything.
+  /// The automatic fee planner includes this field in its size/fee estimate.
+  @$pb.TagNumber(12)
+  $core.List<$core.int> get auxiliaryData => $_getN(11);
+  @$pb.TagNumber(12)
+  set auxiliaryData($core.List<$core.int> value) => $_setBytes(11, value);
+  @$pb.TagNumber(12)
+  $core.bool hasAuxiliaryData() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearAuxiliaryData() => $_clearField(12);
 }
 
 /// Result containing the signed and encoded transaction.

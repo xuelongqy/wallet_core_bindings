@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           'C264DB7BF40738F0CEFF19B606746CB925B713E4B8699A055699E0DC8ABBC70F';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'nano');
       expect(name, 'Nano');
+      expect(nativeTokenName, 'Nano');
       expect(symbol, 'XNO');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 30);
       expect(coin.blockchain, TWBlockchain.Nano);

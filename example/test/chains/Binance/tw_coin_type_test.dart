@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       final chainId = coin.chainId;
       const txId =
           'A93625C9F9ABEA1A8E31585B30BBB16C34FAE0D172EB5B6B2F834AF077BF06BB';
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'binance');
       expect(name, 'BNB Beacon Chain');
+      expect(nativeTokenName, 'BNB');
       expect(symbol, 'BNB');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
       expect(coin.blockchain, TWBlockchain.Binance);

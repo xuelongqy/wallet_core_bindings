@@ -11,9 +11,11 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
 
       expect(id, 'pivx');
       expect(name, 'Pivx');
+      expect(nativeTokenName, 'Pivx');
       expect(symbol, 'PIVX');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 8);
       expect(coin.blockchain, TWBlockchain.Bitcoin);

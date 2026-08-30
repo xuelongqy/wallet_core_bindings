@@ -15,6 +15,7 @@ void main() {
       final accUrl = TWCoinTypeConfiguration.getAccountURL(coin, accId);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
 
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Aion);
@@ -25,6 +26,7 @@ void main() {
       expect(symbol, 'AION');
       expect(id, 'aion');
       expect(name, 'Aion');
+      expect(nativeTokenName, 'Aion');
     });
   });
 }

@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       final chainId = coin.chainId;
       const txId =
           '0xa999bd5183568ba178795e6a9d1561566fbf4a9ccc813cc475168832bc4909b3';
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'kavaevm');
       expect(name, 'KavaEvm');
+      expect(nativeTokenName, 'Kava');
       expect(symbol, 'KAVA');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);

@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           'ec564fe8993ba77f3f5c8b7f6ebb4cbc08e564a54612d6f4584cd1017cf723d4';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'bitcoindiamond');
       expect(name, 'Bitcoin Diamond');
+      expect(nativeTokenName, 'Bitcoin Diamond');
       expect(symbol, 'BCD');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 7);
       expect(coin.blockchain, TWBlockchain.BitcoinDiamond);

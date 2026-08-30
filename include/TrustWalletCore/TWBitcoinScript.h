@@ -198,11 +198,11 @@ struct TWBitcoinScript* _Nonnull TWBitcoinScriptBuildPayToWitnessScriptHash(TWDa
 /// \note Must be deleted with \TWBitcoinScriptDelete
 /// \return A pointer to the built script
 TW_EXPORT_STATIC_METHOD
-struct TWBitcoinScript *_Nonnull TWBitcoinScriptLockScriptForAddress(TWString* _Nonnull address, enum TWCoinType coin);
+struct TWBitcoinScript* _Nonnull TWBitcoinScriptLockScriptForAddress(TWString* _Nonnull address, enum TWCoinType coin);
 
 /// Builds a appropriate lock script for the given address with replay.
 TW_EXPORT_STATIC_METHOD
-struct TWBitcoinScript *_Nonnull TWBitcoinScriptLockScriptForAddressReplay(TWString *_Nonnull address, enum TWCoinType coin, TWData *_Nonnull blockHash, int64_t blockHeight);
+struct TWBitcoinScript* _Nonnull TWBitcoinScriptLockScriptForAddressReplay(TWString* _Nonnull address, enum TWCoinType coin, TWData* _Nonnull blockHash, int64_t blockHeight);
 
 /// Return the default HashType for the given coin, such as TWBitcoinSigHashTypeAll.
 ///

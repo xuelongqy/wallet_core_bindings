@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '0x66004165d3901819dc22e568931591d2e4287bda54995f4ce2701a12016f5997';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -20,6 +21,7 @@ void main() {
 
       expect(id, 'classic');
       expect(name, 'Ethereum Classic');
+      expect(nativeTokenName, 'Ethereum Classic');
       expect(symbol, 'ETC');
       expect(chainId, '61');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);

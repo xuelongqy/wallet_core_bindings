@@ -427,6 +427,67 @@ class TransactionOutput extends $pb.GeneratedMessage {
   void clearScript() => $_clearField(3);
 }
 
+/// Extra data for transaction builder, such as expiry height.
+class TransactionBuilderExtraData extends $pb.GeneratedMessage {
+  factory TransactionBuilderExtraData({
+    $core.int? expiryHeight,
+  }) {
+    final result = create();
+    if (expiryHeight != null) result.expiryHeight = expiryHeight;
+    return result;
+  }
+
+  TransactionBuilderExtraData._();
+
+  factory TransactionBuilderExtraData.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory TransactionBuilderExtraData.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TransactionBuilderExtraData',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.DecredV2.Proto'),
+      createEmptyInstance: create)
+    ..aI(1, _omitFieldNames ? '' : 'expiryHeight',
+        fieldType: $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  TransactionBuilderExtraData clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  TransactionBuilderExtraData copyWith(
+          void Function(TransactionBuilderExtraData) updates) =>
+      super.copyWith(
+              (message) => updates(message as TransactionBuilderExtraData))
+          as TransactionBuilderExtraData;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static TransactionBuilderExtraData create() =>
+      TransactionBuilderExtraData._();
+  @$core.override
+  TransactionBuilderExtraData createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static TransactionBuilderExtraData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TransactionBuilderExtraData>(create);
+  static TransactionBuilderExtraData? _defaultInstance;
+
+  /// Zero in most cases.
+  @$pb.TagNumber(1)
+  $core.int get expiryHeight => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set expiryHeight($core.int value) => $_setUnsignedInt32(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasExpiryHeight() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearExpiryHeight() => $_clearField(1);
+}
+
 const $core.bool _omitFieldNames =
     $core.bool.fromEnvironment('protobuf.omit_field_names');
 const $core.bool _omitMessageNames =

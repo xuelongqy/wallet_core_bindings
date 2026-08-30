@@ -576,6 +576,15 @@ const TransactionBuilder$json = {
       '9': 1,
       '10': 'zcashExtraData'
     },
+    {
+      '1': 'decred_extra_data',
+      '3': 21,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.DecredV2.Proto.TransactionBuilderExtraData',
+      '9': 1,
+      '10': 'decredExtraData'
+    },
   ],
   '8': [
     {'1': 'dust_policy'},
@@ -595,8 +604,10 @@ final $typed_data.Uint8List transactionBuilderDescriptor = $convert.base64Decode
     'QSRgoRbWF4X2Ftb3VudF9vdXRwdXQYCCABKAsyGi5UVy5CaXRjb2luVjIuUHJvdG8uT3V0cHV0'
     'Ug9tYXhBbW91bnRPdXRwdXQSMgoUZml4ZWRfZHVzdF90aHJlc2hvbGQYCiABKANIAFISZml4ZW'
     'REdXN0VGhyZXNob2xkElcKEHpjYXNoX2V4dHJhX2RhdGEYFCABKAsyKy5UVy5aY2FzaC5Qcm90'
-    'by5UcmFuc2FjdGlvbkJ1aWxkZXJFeHRyYURhdGFIAVIOemNhc2hFeHRyYURhdGFCDQoLZHVzdF'
-    '9wb2xpY3lCEAoOY2hhaW5fc3BlY2lmaWM=');
+    'by5UcmFuc2FjdGlvbkJ1aWxkZXJFeHRyYURhdGFIAVIOemNhc2hFeHRyYURhdGESXAoRZGVjcm'
+    'VkX2V4dHJhX2RhdGEYFSABKAsyLi5UVy5EZWNyZWRWMi5Qcm90by5UcmFuc2FjdGlvbkJ1aWxk'
+    'ZXJFeHRyYURhdGFIAVIPZGVjcmVkRXh0cmFEYXRhQg0KC2R1c3RfcG9saWN5QhAKDmNoYWluX3'
+    'NwZWNpZmlj');
 
 @$core.Deprecated('Use psbtDescriptor instead')
 const Psbt$json = {

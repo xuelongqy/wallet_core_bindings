@@ -14,8 +14,6 @@ abstract class TWDataInterface {
 
   Uint8List bytes(int pointer);
 
-  int get(int pointer, int index);
-
   void set(int pointer, int index, int byte);
 
   Uint8List copyBytes(int pointer, int start, int size);

@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId = 'onk3Z6V4StyfiXTPSHwZFvTKVAaws37cHmZacmULPr3VbVHpKrg';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = 'tz1SiPXX4MYGNJNDsRc7n8hkvUqFzg8xqF9m';
@@ -18,6 +19,7 @@ void main() {
 
       expect(id, 'tezos');
       expect(name, 'Tezos');
+      expect(nativeTokenName, 'Tezos');
       expect(symbol, 'XTZ');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 6);
       expect(coin.blockchain, TWBlockchain.Tezos);

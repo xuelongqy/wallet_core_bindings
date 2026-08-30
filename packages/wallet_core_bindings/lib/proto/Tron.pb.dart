@@ -1937,13 +1937,11 @@ class SigningInput extends $pb.GeneratedMessage {
   factory SigningInput({
     Transaction? transaction,
     $core.List<$core.int>? privateKey,
-    $core.String? txId,
     $core.String? rawJson,
   }) {
     final result = create();
     if (transaction != null) result.transaction = transaction;
     if (privateKey != null) result.privateKey = privateKey;
-    if (txId != null) result.txId = txId;
     if (rawJson != null) result.rawJson = rawJson;
     return result;
   }
@@ -1965,7 +1963,6 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: Transaction.create)
     ..a<$core.List<$core.int>>(
         2, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
-    ..aOS(3, _omitFieldNames ? '' : 'txId', protoName: 'txId')
     ..aOS(4, _omitFieldNames ? '' : 'rawJson')
     ..hasRequiredFields = false;
 
@@ -2010,24 +2007,26 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearPrivateKey() => $_clearField(2);
 
-  /// For direct sign in Tron, we just have to sign the txId returned by the DApp json payload.
-  /// TODO: This field can be removed in the future, as we can use raw_json.txID instead.
-  @$pb.TagNumber(3)
-  $core.String get txId => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set txId($core.String value) => $_setString(2, value);
-  @$pb.TagNumber(3)
-  $core.bool hasTxId() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearTxId() => $_clearField(3);
-
-  /// Raw JSON data from the DApp, which contains fields 'txID', 'raw_data' and 'raw_data_hex' normally.
+  /// Optional. Raw transaction JSON as returned by a Tron node or DApp, containing at least the fields:
+  /// - 'txID'        – the expected transaction hash (hex-encoded SHA-256 of the raw bytes).
+  /// - 'raw_data'    – structured transaction fields (used to deserialize the transaction).
+  /// - 'raw_data_hex'– hex-encoded serialized transaction bytes (used to compute and verify the hash, if provided).
+  ///
+  /// When this field is set, `transaction` is ignored. The library will:
+  ///   1. Deserialize the transaction from `raw_data` into the internal Tron protobuf representation.
+  ///   2. Re-serialize it to bytes and compute SHA-256, then compare against `txID`.
+  ///   3. On success, sign and encode the transaction as usual.
+  ///
+  /// Possible errors:
+  /// - `Error_invalid_params`    - `rawJson` is not a valid JSON string or missing required fields (`txID`, `raw_data`, `raw_data_hex`).
+  /// - `Error_tx_hash_mismatch`  – `txID` does not match SHA-256(`raw_data_hex`), indicating a tampered or malformed input.
+  /// - `Error_not_supported`     – `rawJson` could not be deserialized as a known TronInternal protobuf message (i.e. not supported).
   @$pb.TagNumber(4)
-  $core.String get rawJson => $_getSZ(3);
+  $core.String get rawJson => $_getSZ(2);
   @$pb.TagNumber(4)
-  set rawJson($core.String value) => $_setString(3, value);
+  set rawJson($core.String value) => $_setString(2, value);
   @$pb.TagNumber(4)
-  $core.bool hasRawJson() => $_has(3);
+  $core.bool hasRawJson() => $_has(2);
   @$pb.TagNumber(4)
   void clearRawJson() => $_clearField(4);
 }

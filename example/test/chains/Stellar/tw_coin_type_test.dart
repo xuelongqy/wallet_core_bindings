@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId =
           '8a7ff7261e8b3f31af7f6ed257c2e9fe7c47afcd9b1ce1be1bfc1bc5f6a3ad9e';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
@@ -19,6 +20,7 @@ void main() {
 
       expect(id, 'stellar');
       expect(name, 'Stellar');
+      expect(nativeTokenName, 'Stellar');
       expect(symbol, 'XLM');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 7);
       expect(coin.blockchain, TWBlockchain.Stellar);

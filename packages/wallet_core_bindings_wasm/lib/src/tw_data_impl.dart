@@ -78,12 +78,6 @@ class TWDataImpl extends TWDataInterface {
   }
 
   @override
-  int get(int pointer, int index) {
-    final func = wasm.getFunction('TWDataGet')!;
-    return func([pointer, index]).first as int;
-  }
-
-  @override
   void replaceBytes(int pointer, int start, int size, Uint8List bytes) {
     for (int i = 0; i < size; i++) {
       set(pointer, start + i, bytes[i]);

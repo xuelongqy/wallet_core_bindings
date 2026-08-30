@@ -11,6 +11,7 @@ void main() {
       final symbol = TWCoinTypeConfiguration.getSymbol(coin);
       final id = TWCoinTypeConfiguration.getID(coin);
       final name = TWCoinTypeConfiguration.getName(coin);
+      final nativeTokenName = TWCoinTypeConfiguration.getNativeTokenName(coin);
       const txId = 't123';
       final txUrl = TWCoinTypeConfiguration.getTransactionURL(coin, txId);
       const accId = 'a12';
@@ -18,6 +19,7 @@ void main() {
 
       expect(id, 'eos');
       expect(name, 'EOS');
+      expect(nativeTokenName, 'EOS');
       expect(symbol, 'EOS');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 4);
       expect(coin.blockchain, TWBlockchain.EOS);

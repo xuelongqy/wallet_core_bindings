@@ -48,13 +48,24 @@ const SigningOutput$json = {
     {'1': 'algorithm', '3': 1, '4': 1, '5': 13, '10': 'algorithm'},
     {'1': 'signature', '3': 2, '4': 1, '5': 12, '10': 'signature'},
     {'1': 'raw', '3': 3, '4': 1, '5': 9, '10': 'raw'},
+    {
+      '1': 'error',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Common.Proto.SigningError',
+      '10': 'error'
+    },
+    {'1': 'error_message', '3': 5, '4': 1, '5': 9, '10': 'errorMessage'},
   ],
 };
 
 /// Descriptor for `SigningOutput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signingOutputDescriptor = $convert.base64Decode(
     'Cg1TaWduaW5nT3V0cHV0EhwKCWFsZ29yaXRobRgBIAEoDVIJYWxnb3JpdGhtEhwKCXNpZ25hdH'
-    'VyZRgCIAEoDFIJc2lnbmF0dXJlEhAKA3JhdxgDIAEoCVIDcmF3');
+    'VyZRgCIAEoDFIJc2lnbmF0dXJlEhAKA3JhdxgDIAEoCVIDcmF3EjMKBWVycm9yGAQgASgOMh0u'
+    'VFcuQ29tbW9uLlByb3RvLlNpZ25pbmdFcnJvclIFZXJyb3ISIwoNZXJyb3JfbWVzc2FnZRgFIA'
+    'EoCVIMZXJyb3JNZXNzYWdl');
 
 @$core.Deprecated('Use dataDescriptor instead')
 const Data$json = {
