@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`wallet_core_bindings_libs` - `v4.8.0`](#wallet_core_bindings_libs---v480)
+
+---
+
+#### `wallet_core_bindings_libs` - `v4.8.0`
+
+ - **FEAT**: Sync wallet-core 4.8.0.
+
+
+## 2026-08-30
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`wallet_core_bindings_wasm_assets` - `v4.8.0`](#wallet_core_bindings_wasm_assets---v480)
 
 ---

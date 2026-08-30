@@ -1,3 +1,7 @@
+## 4.8.0
+
+ - **FEAT**: Sync wallet-core 4.8.0.
+
 ## 4.6.1
 
  - **FIX**(wallet_core_bindings_libs): support Flutter SwiftPM product naming.
