@@ -176,6 +176,7 @@ class TWCoinType {
   static const TWCoinType SeiEVM = TWCoinType(1329);
   static const TWCoinType HyperEVM = TWCoinType(10000999);
   static const TWCoinType RobinhoodChain = TWCoinType(10004663);
+  static const TWCoinType Arc = TWCoinType(10005042);
 
   @override
   int get hashCode => value.hashCode;

@@ -3,7 +3,7 @@ import java.nio.file.Files
 import java.security.MessageDigest
 
 group = "com.xuelongqy.wallet_core_bindings_libs"
-version = "4.8.0"
+version = "4.8.1"
 
 buildscript {
     ext.kotlin_version = "1.8.22"
@@ -60,7 +60,8 @@ android {
     }
 
     defaultConfig {
-        minSdk = 21
+        // Wallet Core 4.8.1 requires Android API 23 or newer.
+        minSdk = 23
     }
 
     dependencies {
@@ -83,50 +84,53 @@ android {
     }
 }
 
-task downloadDependencies(type: Exec) {
-    // Delete previously created /output subdirectory.
+task downloadDependencies {
+    doLast {
+        // Delete previously created /output subdirectory.
 
-    def outputDir = file("$buildDir/output")
-    if (outputDir.exists()) {
-        outputDir.deleteDir()
-    }
-    outputDir.mkdirs()
-
-    // Download all *.jar dependencies & verify their MD5 checksums.
-    def filesToDownload = [
-            ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "23c113a11353ef39474f447bd501e90c", "destination": file("$buildDir/wallet-core.aar")]
-    ]
-
-    filesToDownload.each { fileInfo ->
-        def destFile = fileInfo.destination
-        if (destFile.exists()) {
-            def calculatedMD5 = MessageDigest.getInstance("MD5").digest(Files.readAllBytes(destFile.toPath())).encodeHex().toString()
-
-            if (calculatedMD5 != fileInfo.md5) {
-                destFile.delete()
-                println "MD5 mismatch. File deleted: ${destFile}"
-            }
-
+        def outputDir = file("$buildDir/output")
+        if (outputDir.exists()) {
+            outputDir.deleteDir()
         }
+        outputDir.mkdirs()
 
-        if (!destFile.exists()) {
-            destFile.parentFile.mkdirs()
-            println "Downloading file from: ${fileInfo.url}"
-            destFile.withOutputStream { os ->
-                os << new URL(fileInfo.url).openStream()
+        // Download binary dependencies & verify their MD5 checksums.
+        def filesToDownload = [
+                ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "d131df1fb8636751f09364732dc8e139", "destination": file("$buildDir/wallet-core.aar")]
+        ]
+
+        filesToDownload.each { fileInfo ->
+            def destFile = fileInfo.destination
+            if (destFile.exists()) {
+                def calculatedMD5 = MessageDigest.getInstance("MD5").digest(Files.readAllBytes(destFile.toPath())).encodeHex().toString()
+
+                if (calculatedMD5 != fileInfo.md5) {
+                    destFile.delete()
+                    println "MD5 mismatch. File deleted: ${destFile}"
+                }
             }
 
-            def calculatedMD5 = MessageDigest.getInstance("MD5").digest(Files.readAllBytes(destFile.toPath())).encodeHex().toString()
-            if (calculatedMD5 != fileInfo.md5) {
-                throw new GradleException("MD5 verification failed for ${destFile}")
-            }
-        }
+            if (!destFile.exists()) {
+                destFile.parentFile.mkdirs()
+                println "Downloading file from: ${fileInfo.url}"
+                destFile.withOutputStream { os ->
+                    os << new URL(fileInfo.url).openStream()
+                }
 
-        copy {
-            from destFile
-            into outputDir
+                def calculatedMD5 = MessageDigest.getInstance("MD5").digest(Files.readAllBytes(destFile.toPath())).encodeHex().toString()
+                if (calculatedMD5 != fileInfo.md5) {
+                    throw new GradleException("MD5 verification failed for ${destFile}")
+                }
+            }
+
+            copy {
+                from destFile
+                into outputDir
+            }
         }
     }
 }
 
-assemble.dependsOn(downloadDependencies)
+tasks.named("preBuild").configure {
+    dependsOn(downloadDependencies)
+}

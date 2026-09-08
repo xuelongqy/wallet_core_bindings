@@ -15276,6 +15276,7 @@ sealed class TWCoinType {
   static const TWCoinTypeSeiEVM = 1329;
   static const TWCoinTypeHyperEVM = 10000999;
   static const TWCoinTypeRobinhoodChain = 10004663;
+  static const TWCoinTypeArc = 10005042;
 }
 
 /// CoinTypeConfiguration functions

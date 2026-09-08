@@ -15,6 +15,11 @@ bool _isInitWalletCore = false;
 
 bool isTestWasm = false;
 
+const _walletCoreTestBackend = String.fromEnvironment(
+  'WALLET_CORE_TEST_BACKEND',
+  defaultValue: 'native',
+);
+
 void initTest() {
   setUpAll(() async {
     await initWalletCoreImpl();
@@ -25,7 +30,18 @@ Future initWalletCoreImpl() async {
   if (_isInitWalletCore) {
     return;
   }
-  await initWalletCoreNativeImpl();
+  switch (_walletCoreTestBackend) {
+    case 'native':
+      await initWalletCoreNativeImpl();
+    case 'wasm':
+      await initWalletCoreWasmImpl();
+    default:
+      throw ArgumentError.value(
+        _walletCoreTestBackend,
+        'WALLET_CORE_TEST_BACKEND',
+        'Expected native or wasm',
+      );
+  }
   _isInitWalletCore = true;
 }
 
