@@ -12,7 +12,7 @@ void main() {
     test('TWCoinType', () {
       expect(TWCoinTypeConfiguration.getID(coin), 'arc');
       expect(TWCoinTypeConfiguration.getName(coin), 'Arc');
-      expect(TWCoinTypeConfiguration.getNativeTokenName(coin), 'USD Coin');
+      expect(TWCoinTypeConfiguration.getNativeTokenName(coin), 'USDC');
       expect(TWCoinTypeConfiguration.getSymbol(coin), 'USDC');
       expect(TWCoinTypeConfiguration.getDecimals(coin), 18);
       expect(coin.blockchain, TWBlockchain.Ethereum);
