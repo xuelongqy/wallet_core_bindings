@@ -55,10 +55,10 @@ class TWBitcoinScriptImpl extends TWBitcoinScriptInterface {
 
   @override
   int createWithBytes(Uint8List bytes) {
-    return bindings.TWBitcoinScriptCreateWithBytes(
-      bytes.toNativeUint8(),
-      bytes.length,
-    ).address;
+    return using((arena) => bindings.TWBitcoinScriptCreateWithBytes(
+          bytes.toNativeUint8(allocator: arena, gc: false),
+          bytes.length,
+        ).address);
   }
 
   @override

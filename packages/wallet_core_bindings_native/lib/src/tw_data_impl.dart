@@ -13,8 +13,10 @@ class TWDataImpl extends TWDataInterface {
 
   @override
   void appendBytes(int pointer, Uint8List bytes) {
-    bindings.TWDataAppendBytes(
-        Pointer.fromAddress(pointer), bytes.toNativeUint8(), bytes.length);
+    using((arena) {
+      bindings.TWDataAppendBytes(Pointer.fromAddress(pointer),
+          bytes.toNativeUint8(allocator: arena, gc: false), bytes.length);
+    });
   }
 
   @override
@@ -43,8 +45,9 @@ class TWDataImpl extends TWDataInterface {
 
   @override
   int createWithBytes(Uint8List bytes) {
-    return bindings.TWDataCreateWithBytes(bytes.toNativeUint8(), bytes.length)
-        .address;
+    return using((arena) => bindings.TWDataCreateWithBytes(
+            bytes.toNativeUint8(allocator: arena, gc: false), bytes.length)
+        .address);
   }
 
   @override
@@ -77,8 +80,10 @@ class TWDataImpl extends TWDataInterface {
 
   @override
   void replaceBytes(int pointer, int start, int size, Uint8List bytes) {
-    bindings.TWDataReplaceBytes(
-        Pointer.fromAddress(pointer), start, size, bytes.toNativeUint8());
+    using((arena) {
+      bindings.TWDataReplaceBytes(Pointer.fromAddress(pointer), start, size,
+          bytes.toNativeUint8(allocator: arena, gc: false));
+    });
   }
 
   @override

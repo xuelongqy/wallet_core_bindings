@@ -22,15 +22,16 @@ class TWStringImpl extends TWStringInterface {
 
   @override
   int createWithRawBytes(Uint8List bytes) {
-    return bindings.TWStringCreateWithRawBytes(
-            bytes.toNativeUint8(), bytes.length)
-        .address;
+    return using((arena) => bindings.TWStringCreateWithRawBytes(
+            bytes.toNativeUint8(allocator: arena, gc: false), bytes.length)
+        .address);
   }
 
   @override
   int createWithUTF8Bytes(Uint8List bytes) {
-    return bindings.TWStringCreateWithUTF8Bytes(bytes.toNativeUint8().cast())
-        .address;
+    return using((arena) => bindings.TWStringCreateWithUTF8Bytes(
+            bytes.toNativeUint8(allocator: arena, gc: false).cast())
+        .address);
   }
 
   @override

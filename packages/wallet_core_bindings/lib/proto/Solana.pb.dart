@@ -2737,14 +2737,183 @@ class PreSigningOutput extends $pb.GeneratedMessage {
   void clearErrorMessage() => $_clearField(4);
 }
 
+/// One "<label>: <value>" line of a `StructuredMessage`.
+class StructuredField extends $pb.GeneratedMessage {
+  factory StructuredField({
+    $core.String? label,
+    $core.String? value,
+  }) {
+    final result = create();
+    if (label != null) result.label = label;
+    if (value != null) result.value = value;
+    return result;
+  }
+
+  StructuredField._();
+
+  factory StructuredField.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory StructuredField.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'StructuredField',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'label')
+    ..aOS(2, _omitFieldNames ? '' : 'value')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  StructuredField clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  StructuredField copyWith(void Function(StructuredField) updates) =>
+      super.copyWith((message) => updates(message as StructuredField))
+          as StructuredField;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static StructuredField create() => StructuredField._();
+  @$core.override
+  StructuredField createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static StructuredField getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StructuredField>(create);
+  static StructuredField? _defaultInstance;
+
+  /// Rendered before ": ". Must not be empty, and must carry no control character.
+  @$pb.TagNumber(1)
+  $core.String get label => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set label($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasLabel() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearLabel() => $_clearField(1);
+
+  /// Rendered after ": ". Must not be empty, and must carry no control character: a value
+  /// containing a newline would forge further labeled lines in the message a user is about to
+  /// approve. Pass a placeholder such as "-" for a field that is legitimately absent.
+  @$pb.TagNumber(2)
+  $core.String get value => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set value($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasValue() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearValue() => $_clearField(2);
+}
+
+/// A message laid out as labeled lines, rendered by this library so that every platform
+/// produces the same bytes from the same fields.
+///
+/// This layout is NOT a Solana standard. The off-chain message standard constrains the encoding
+/// and the length and treats the body as opaque application bytes; this is one way to fill it,
+/// written in the SIWE/SIWS idiom but deliberately not a conformant SIWS message.
+class StructuredMessage extends $pb.GeneratedMessage {
+  factory StructuredMessage({
+    $core.String? header,
+    $core.Iterable<StructuredField>? fields,
+    $core.String? statement,
+  }) {
+    final result = create();
+    if (header != null) result.header = header;
+    if (fields != null) result.fields.addAll(fields);
+    if (statement != null) result.statement = statement;
+    return result;
+  }
+
+  StructuredMessage._();
+
+  factory StructuredMessage.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory StructuredMessage.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'StructuredMessage',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'header')
+    ..pPM<StructuredField>(2, _omitFieldNames ? '' : 'fields',
+        subBuilder: StructuredField.create)
+    ..aOS(3, _omitFieldNames ? '' : 'statement')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  StructuredMessage clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  StructuredMessage copyWith(void Function(StructuredMessage) updates) =>
+      super.copyWith((message) => updates(message as StructuredMessage))
+          as StructuredMessage;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static StructuredMessage create() => StructuredMessage._();
+  @$core.override
+  StructuredMessage createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static StructuredMessage getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StructuredMessage>(create);
+  static StructuredMessage? _defaultInstance;
+
+  /// Optional first line, rendered bare with no label — an application name and version, say.
+  @$pb.TagNumber(1)
+  $core.String get header => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set header($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasHeader() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearHeader() => $_clearField(1);
+
+  /// Rendered as "<label>: <value>", one line each, in exactly this order. Order is part of
+  /// the signed bytes, so it is the caller's to fix and this library never sorts it.
+  @$pb.TagNumber(2)
+  $pb.PbList<StructuredField> get fields => $_getList(1);
+
+  /// Optional closing sentence, rendered bare after one blank line. It is the line a person
+  /// actually reads before approving, so it comes last and ends the message.
+  @$pb.TagNumber(3)
+  $core.String get statement => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set statement($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasStatement() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearStatement() => $_clearField(3);
+}
+
+enum MessageSigningInput_MessagePayload { message, structuredMessage, notSet }
+
 class MessageSigningInput extends $pb.GeneratedMessage {
   factory MessageSigningInput({
     $core.List<$core.int>? privateKey,
     $core.String? message,
+    MessageType? messageType,
+    $core.List<$core.int>? applicationDomain,
+    StructuredMessage? structuredMessage,
+    $core.List<$core.int>? publicKey,
+    MessageFormat? messageFormat,
   }) {
     final result = create();
     if (privateKey != null) result.privateKey = privateKey;
     if (message != null) result.message = message;
+    if (messageType != null) result.messageType = messageType;
+    if (applicationDomain != null) result.applicationDomain = applicationDomain;
+    if (structuredMessage != null) result.structuredMessage = structuredMessage;
+    if (publicKey != null) result.publicKey = publicKey;
+    if (messageFormat != null) result.messageFormat = messageFormat;
     return result;
   }
 
@@ -2757,14 +2926,31 @@ class MessageSigningInput extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
+  static const $core.Map<$core.int, MessageSigningInput_MessagePayload>
+      _MessageSigningInput_MessagePayloadByTag = {
+    2: MessageSigningInput_MessagePayload.message,
+    5: MessageSigningInput_MessagePayload.structuredMessage,
+    0: MessageSigningInput_MessagePayload.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'MessageSigningInput',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
       createEmptyInstance: create)
+    ..oo(0, [2, 5])
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
     ..aOS(2, _omitFieldNames ? '' : 'message')
+    ..aE<MessageType>(3, _omitFieldNames ? '' : 'messageType',
+        enumValues: MessageType.values)
+    ..a<$core.List<$core.int>>(
+        4, _omitFieldNames ? '' : 'applicationDomain', $pb.PbFieldType.OY)
+    ..aOM<StructuredMessage>(5, _omitFieldNames ? '' : 'structuredMessage',
+        subBuilder: StructuredMessage.create)
+    ..a<$core.List<$core.int>>(
+        6, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
+    ..aE<MessageFormat>(7, _omitFieldNames ? '' : 'messageFormat',
+        enumValues: MessageFormat.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2786,7 +2972,16 @@ class MessageSigningInput extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<MessageSigningInput>(create);
   static MessageSigningInput? _defaultInstance;
 
-  /// The secret private key used for signing (32 bytes).
+  @$pb.TagNumber(2)
+  @$pb.TagNumber(5)
+  MessageSigningInput_MessagePayload whichMessagePayload() =>
+      _MessageSigningInput_MessagePayloadByTag[$_whichOneof(0)]!;
+  @$pb.TagNumber(2)
+  @$pb.TagNumber(5)
+  void clearMessagePayload() => $_clearField($_whichOneof(0));
+
+  /// The secret private key used for signing (32 bytes). Required to sign; required for a
+  /// pre-image only when `public_key` is not given.
   @$pb.TagNumber(1)
   $core.List<$core.int> get privateKey => $_getN(0);
   @$pb.TagNumber(1)
@@ -2797,6 +2992,10 @@ class MessageSigningInput extends $pb.GeneratedMessage {
   void clearPrivateKey() => $_clearField(1);
 
   /// A UTF-8 regular message to sign.
+  ///
+  /// Keep it a `string`. `MessageType_raw` signs the body as it stands, and its being
+  /// UTF-8 is what keeps those bytes from ever forming a Solana transaction message —
+  /// see the note on the raw arm in `message_signer.rs` before making it `bytes`.
   @$pb.TagNumber(2)
   $core.String get message => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -2805,6 +3004,68 @@ class MessageSigningInput extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(1);
   @$pb.TagNumber(2)
   void clearMessage() => $_clearField(2);
+
+  /// How the signed bytes are produced. Defaults to `MessageType_raw`, which is what this coin
+  /// did before the other types existed.
+  @$pb.TagNumber(3)
+  MessageType get messageType => $_getN(2);
+  @$pb.TagNumber(3)
+  set messageType(MessageType value) => $_setField(3, value);
+  @$pb.TagNumber(3)
+  $core.bool hasMessageType() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMessageType() => $_clearField(3);
+
+  /// The 32-byte application domain of the off-chain message header: the caller's own domain
+  /// separator, which is what stops a signature over its messages from verifying against
+  /// another application's. Required for `MessageType_offchain_v0`, and refused for
+  /// `MessageType_raw`, which signs the body bare and has no header to state one in.
+  @$pb.TagNumber(4)
+  $core.List<$core.int> get applicationDomain => $_getN(3);
+  @$pb.TagNumber(4)
+  set applicationDomain($core.List<$core.int> value) => $_setBytes(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasApplicationDomain() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearApplicationDomain() => $_clearField(4);
+
+  /// Labeled lines that this library renders into the message body.
+  @$pb.TagNumber(5)
+  StructuredMessage get structuredMessage => $_getN(4);
+  @$pb.TagNumber(5)
+  set structuredMessage(StructuredMessage value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasStructuredMessage() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearStructuredMessage() => $_clearField(5);
+  @$pb.TagNumber(5)
+  StructuredMessage ensureStructuredMessage() => $_ensure(4);
+
+  /// The public key of the signer (32 bytes), for asking `TWMessageSignerPreImageHashes` for
+  /// the bytes to sign without holding the secret — the external-signing flow, where the key
+  /// lives in a hardware wallet. `MessageType_offchain_v0` states the signer inside the signed
+  /// bytes, so its pre-image cannot be built without one of the two keys; `MessageType_raw`
+  /// needs neither. Ignored when signing, which takes the signer from `private_key`.
+  @$pb.TagNumber(6)
+  $core.List<$core.int> get publicKey => $_getN(5);
+  @$pb.TagNumber(6)
+  set publicKey($core.List<$core.int> value) => $_setBytes(5, value);
+  @$pb.TagNumber(6)
+  $core.bool hasPublicKey() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearPublicKey() => $_clearField(6);
+
+  /// The format byte the off-chain header states, and what the body is then checked against.
+  /// Defaults to `MessageFormat_utf8`. Refused for `MessageType_raw` for the same reason a
+  /// domain is: there is no header to put it in.
+  @$pb.TagNumber(7)
+  MessageFormat get messageFormat => $_getN(6);
+  @$pb.TagNumber(7)
+  set messageFormat(MessageFormat value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasMessageFormat() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearMessageFormat() => $_clearField(7);
 }
 
 class MessageSigningOutput extends $pb.GeneratedMessage {
@@ -2890,16 +3151,26 @@ class MessageSigningOutput extends $pb.GeneratedMessage {
   void clearErrorMessage() => $_clearField(3);
 }
 
+enum MessageVerifyingInput_MessagePayload { message, structuredMessage, notSet }
+
 class MessageVerifyingInput extends $pb.GeneratedMessage {
   factory MessageVerifyingInput({
     $core.String? message,
     $core.List<$core.int>? publicKey,
     $core.String? signature,
+    MessageType? messageType,
+    $core.List<$core.int>? applicationDomain,
+    StructuredMessage? structuredMessage,
+    MessageFormat? messageFormat,
   }) {
     final result = create();
     if (message != null) result.message = message;
     if (publicKey != null) result.publicKey = publicKey;
     if (signature != null) result.signature = signature;
+    if (messageType != null) result.messageType = messageType;
+    if (applicationDomain != null) result.applicationDomain = applicationDomain;
+    if (structuredMessage != null) result.structuredMessage = structuredMessage;
+    if (messageFormat != null) result.messageFormat = messageFormat;
     return result;
   }
 
@@ -2912,15 +3183,30 @@ class MessageVerifyingInput extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
+  static const $core.Map<$core.int, MessageVerifyingInput_MessagePayload>
+      _MessageVerifyingInput_MessagePayloadByTag = {
+    1: MessageVerifyingInput_MessagePayload.message,
+    7: MessageVerifyingInput_MessagePayload.structuredMessage,
+    0: MessageVerifyingInput_MessagePayload.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'MessageVerifyingInput',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
       createEmptyInstance: create)
+    ..oo(0, [1, 7])
     ..aOS(1, _omitFieldNames ? '' : 'message')
     ..a<$core.List<$core.int>>(
         2, _omitFieldNames ? '' : 'publicKey', $pb.PbFieldType.OY)
     ..aOS(3, _omitFieldNames ? '' : 'signature')
+    ..aE<MessageType>(4, _omitFieldNames ? '' : 'messageType',
+        enumValues: MessageType.values)
+    ..a<$core.List<$core.int>>(
+        5, _omitFieldNames ? '' : 'applicationDomain', $pb.PbFieldType.OY)
+    ..aOM<StructuredMessage>(7, _omitFieldNames ? '' : 'structuredMessage',
+        subBuilder: StructuredMessage.create)
+    ..aE<MessageFormat>(8, _omitFieldNames ? '' : 'messageFormat',
+        enumValues: MessageFormat.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2942,6 +3228,14 @@ class MessageVerifyingInput extends $pb.GeneratedMessage {
   static MessageVerifyingInput getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<MessageVerifyingInput>(create);
   static MessageVerifyingInput? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  @$pb.TagNumber(7)
+  MessageVerifyingInput_MessagePayload whichMessagePayload() =>
+      _MessageVerifyingInput_MessagePayloadByTag[$_whichOneof(0)]!;
+  @$pb.TagNumber(1)
+  @$pb.TagNumber(7)
+  void clearMessagePayload() => $_clearField($_whichOneof(0));
 
   /// The message signed.
   @$pb.TagNumber(1)
@@ -2972,6 +3266,51 @@ class MessageVerifyingInput extends $pb.GeneratedMessage {
   $core.bool hasSignature() => $_has(2);
   @$pb.TagNumber(3)
   void clearSignature() => $_clearField(3);
+
+  /// How the signed bytes were produced. Must match what the signer used, since it decides
+  /// which bytes the signature is checked against.
+  @$pb.TagNumber(4)
+  MessageType get messageType => $_getN(3);
+  @$pb.TagNumber(4)
+  set messageType(MessageType value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasMessageType() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMessageType() => $_clearField(4);
+
+  /// The 32-byte application domain of the off-chain message header. Required for
+  /// `MessageType_offchain_v0`, and refused for `MessageType_raw`.
+  @$pb.TagNumber(5)
+  $core.List<$core.int> get applicationDomain => $_getN(4);
+  @$pb.TagNumber(5)
+  set applicationDomain($core.List<$core.int> value) => $_setBytes(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasApplicationDomain() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearApplicationDomain() => $_clearField(5);
+
+  /// Labeled lines that this library renders into the message body.
+  @$pb.TagNumber(7)
+  StructuredMessage get structuredMessage => $_getN(5);
+  @$pb.TagNumber(7)
+  set structuredMessage(StructuredMessage value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasStructuredMessage() => $_has(5);
+  @$pb.TagNumber(7)
+  void clearStructuredMessage() => $_clearField(7);
+  @$pb.TagNumber(7)
+  StructuredMessage ensureStructuredMessage() => $_ensure(5);
+
+  /// The format byte the signer stated. Like `message_type`, it must match what was signed,
+  /// since the byte is inside the signed bytes.
+  @$pb.TagNumber(8)
+  MessageFormat get messageFormat => $_getN(6);
+  @$pb.TagNumber(8)
+  set messageFormat(MessageFormat value) => $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasMessageFormat() => $_has(6);
+  @$pb.TagNumber(8)
+  void clearMessageFormat() => $_clearField(8);
 }
 
 const $core.bool _omitFieldNames =

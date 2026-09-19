@@ -42,6 +42,34 @@ const Encoding$json = {
 final $typed_data.Uint8List encodingDescriptor =
     $convert.base64Decode('CghFbmNvZGluZxIKCgZCYXNlNTgQABIKCgZCYXNlNjQQAQ==');
 
+@$core.Deprecated('Use messageTypeDescriptor instead')
+const MessageType$json = {
+  '1': 'MessageType',
+  '2': [
+    {'1': 'MessageType_raw', '2': 0},
+    {'1': 'MessageType_offchain_v0', '2': 1},
+  ],
+};
+
+/// Descriptor for `MessageType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List messageTypeDescriptor = $convert.base64Decode(
+    'CgtNZXNzYWdlVHlwZRITCg9NZXNzYWdlVHlwZV9yYXcQABIbChdNZXNzYWdlVHlwZV9vZmZjaG'
+    'Fpbl92MBAB');
+
+@$core.Deprecated('Use messageFormatDescriptor instead')
+const MessageFormat$json = {
+  '1': 'MessageFormat',
+  '2': [
+    {'1': 'MessageFormat_utf8', '2': 0},
+    {'1': 'MessageFormat_restricted_ascii', '2': 1},
+  ],
+};
+
+/// Descriptor for `MessageFormat`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List messageFormatDescriptor = $convert.base64Decode(
+    'Cg1NZXNzYWdlRm9ybWF0EhYKEk1lc3NhZ2VGb3JtYXRfdXRmOBAAEiIKHk1lc3NhZ2VGb3JtYX'
+    'RfcmVzdHJpY3RlZF9hc2NpaRAB');
+
 @$core.Deprecated('Use transferDescriptor instead')
 const Transfer$json = {
   '1': 'Transfer',
@@ -926,19 +954,98 @@ final $typed_data.Uint8List preSigningOutputDescriptor = $convert.base64Decode(
     'EoDFIEZGF0YRIzCgVlcnJvchgDIAEoDjIdLlRXLkNvbW1vbi5Qcm90by5TaWduaW5nRXJyb3JS'
     'BWVycm9yEiMKDWVycm9yX21lc3NhZ2UYBCABKAlSDGVycm9yTWVzc2FnZQ==');
 
+@$core.Deprecated('Use structuredFieldDescriptor instead')
+const StructuredField$json = {
+  '1': 'StructuredField',
+  '2': [
+    {'1': 'label', '3': 1, '4': 1, '5': 9, '10': 'label'},
+    {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+};
+
+/// Descriptor for `StructuredField`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List structuredFieldDescriptor = $convert.base64Decode(
+    'Cg9TdHJ1Y3R1cmVkRmllbGQSFAoFbGFiZWwYASABKAlSBWxhYmVsEhQKBXZhbHVlGAIgASgJUg'
+    'V2YWx1ZQ==');
+
+@$core.Deprecated('Use structuredMessageDescriptor instead')
+const StructuredMessage$json = {
+  '1': 'StructuredMessage',
+  '2': [
+    {'1': 'header', '3': 1, '4': 1, '5': 9, '10': 'header'},
+    {
+      '1': 'fields',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.TW.Solana.Proto.StructuredField',
+      '10': 'fields'
+    },
+    {'1': 'statement', '3': 3, '4': 1, '5': 9, '10': 'statement'},
+  ],
+};
+
+/// Descriptor for `StructuredMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List structuredMessageDescriptor = $convert.base64Decode(
+    'ChFTdHJ1Y3R1cmVkTWVzc2FnZRIWCgZoZWFkZXIYASABKAlSBmhlYWRlchI4CgZmaWVsZHMYAi'
+    'ADKAsyIC5UVy5Tb2xhbmEuUHJvdG8uU3RydWN0dXJlZEZpZWxkUgZmaWVsZHMSHAoJc3RhdGVt'
+    'ZW50GAMgASgJUglzdGF0ZW1lbnQ=');
+
 @$core.Deprecated('Use messageSigningInputDescriptor instead')
 const MessageSigningInput$json = {
   '1': 'MessageSigningInput',
   '2': [
     {'1': 'private_key', '3': 1, '4': 1, '5': 12, '10': 'privateKey'},
-    {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+    {'1': 'public_key', '3': 6, '4': 1, '5': 12, '10': 'publicKey'},
+    {
+      '1': 'message_type',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.MessageType',
+      '10': 'messageType'
+    },
+    {
+      '1': 'application_domain',
+      '3': 4,
+      '4': 1,
+      '5': 12,
+      '10': 'applicationDomain'
+    },
+    {
+      '1': 'message_format',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.MessageFormat',
+      '10': 'messageFormat'
+    },
+    {'1': 'message', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'message'},
+    {
+      '1': 'structured_message',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.StructuredMessage',
+      '9': 0,
+      '10': 'structuredMessage'
+    },
+  ],
+  '8': [
+    {'1': 'message_payload'},
   ],
 };
 
 /// Descriptor for `MessageSigningInput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List messageSigningInputDescriptor = $convert.base64Decode(
     'ChNNZXNzYWdlU2lnbmluZ0lucHV0Eh8KC3ByaXZhdGVfa2V5GAEgASgMUgpwcml2YXRlS2V5Eh'
-    'gKB21lc3NhZ2UYAiABKAlSB21lc3NhZ2U=');
+    '0KCnB1YmxpY19rZXkYBiABKAxSCXB1YmxpY0tleRI/CgxtZXNzYWdlX3R5cGUYAyABKA4yHC5U'
+    'Vy5Tb2xhbmEuUHJvdG8uTWVzc2FnZVR5cGVSC21lc3NhZ2VUeXBlEi0KEmFwcGxpY2F0aW9uX2'
+    'RvbWFpbhgEIAEoDFIRYXBwbGljYXRpb25Eb21haW4SRQoObWVzc2FnZV9mb3JtYXQYByABKA4y'
+    'Hi5UVy5Tb2xhbmEuUHJvdG8uTWVzc2FnZUZvcm1hdFINbWVzc2FnZUZvcm1hdBIaCgdtZXNzYW'
+    'dlGAIgASgJSABSB21lc3NhZ2USUwoSc3RydWN0dXJlZF9tZXNzYWdlGAUgASgLMiIuVFcuU29s'
+    'YW5hLlByb3RvLlN0cnVjdHVyZWRNZXNzYWdlSABSEXN0cnVjdHVyZWRNZXNzYWdlQhEKD21lc3'
+    'NhZ2VfcGF5bG9hZA==');
 
 @$core.Deprecated('Use messageSigningOutputDescriptor instead')
 const MessageSigningOutput$json = {
@@ -967,13 +1074,57 @@ final $typed_data.Uint8List messageSigningOutputDescriptor = $convert.base64Deco
 const MessageVerifyingInput$json = {
   '1': 'MessageVerifyingInput',
   '2': [
-    {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
     {'1': 'public_key', '3': 2, '4': 1, '5': 12, '10': 'publicKey'},
     {'1': 'signature', '3': 3, '4': 1, '5': 9, '10': 'signature'},
+    {
+      '1': 'message_type',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.MessageType',
+      '10': 'messageType'
+    },
+    {
+      '1': 'application_domain',
+      '3': 5,
+      '4': 1,
+      '5': 12,
+      '10': 'applicationDomain'
+    },
+    {
+      '1': 'message_format',
+      '3': 8,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Solana.Proto.MessageFormat',
+      '10': 'messageFormat'
+    },
+    {'1': 'message', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'message'},
+    {
+      '1': 'structured_message',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.StructuredMessage',
+      '9': 0,
+      '10': 'structuredMessage'
+    },
+  ],
+  '8': [
+    {'1': 'message_payload'},
+  ],
+  '9': [
+    {'1': 6, '2': 7},
   ],
 };
 
 /// Descriptor for `MessageVerifyingInput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List messageVerifyingInputDescriptor = $convert.base64Decode(
-    'ChVNZXNzYWdlVmVyaWZ5aW5nSW5wdXQSGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZRIdCgpwdW'
-    'JsaWNfa2V5GAIgASgMUglwdWJsaWNLZXkSHAoJc2lnbmF0dXJlGAMgASgJUglzaWduYXR1cmU=');
+    'ChVNZXNzYWdlVmVyaWZ5aW5nSW5wdXQSHQoKcHVibGljX2tleRgCIAEoDFIJcHVibGljS2V5Eh'
+    'wKCXNpZ25hdHVyZRgDIAEoCVIJc2lnbmF0dXJlEj8KDG1lc3NhZ2VfdHlwZRgEIAEoDjIcLlRX'
+    'LlNvbGFuYS5Qcm90by5NZXNzYWdlVHlwZVILbWVzc2FnZVR5cGUSLQoSYXBwbGljYXRpb25fZG'
+    '9tYWluGAUgASgMUhFhcHBsaWNhdGlvbkRvbWFpbhJFCg5tZXNzYWdlX2Zvcm1hdBgIIAEoDjIe'
+    'LlRXLlNvbGFuYS5Qcm90by5NZXNzYWdlRm9ybWF0Ug1tZXNzYWdlRm9ybWF0EhoKB21lc3NhZ2'
+    'UYASABKAlIAFIHbWVzc2FnZRJTChJzdHJ1Y3R1cmVkX21lc3NhZ2UYByABKAsyIi5UVy5Tb2xh'
+    'bmEuUHJvdG8uU3RydWN0dXJlZE1lc3NhZ2VIAFIRc3RydWN0dXJlZE1lc3NhZ2VCEQoPbWVzc2'
+    'FnZV9wYXlsb2FkSgQIBhAH');

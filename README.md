@@ -80,6 +80,24 @@ void main() async {
 
 wallet_core_bindings provides the complete test cases, you can find usage here. See [tests](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings/example/test).
 
+### Solana messages (Wallet Core 4.8.3)
+
+`TWMessageSigner` accepts the generated `Solana.MessageSigningInput` and
+`Solana.MessageVerifyingInput` messages. Their payload is either `message` or
+`structuredMessage`; setting one clears the other. The default `MessageType_raw`
+signs UTF-8 bytes directly. `MessageType_offchain_v0` requires a 32-byte
+`applicationDomain` and supports `MessageFormat_utf8` or printable
+`MessageFormat_restricted_ascii`. For external signing, pass `publicKey` to
+`TWMessageSigner.preImageHashes`; the returned `TransactionCompiler.PreSigningOutput.data`
+contains the complete bytes to sign, not a hash.
+
+This upstream off-chain format uses an 85-byte preamble with the application
+domain and signer. It is not compatible with the Solana CLI/SDK's 20-byte format
+or Ledger signing through that CLI. The body limit is 1147 bytes; multiline
+structured messages require UTF-8. See the
+[off-chain signing tests](example/test/chains/Solana/solana_offchain_message_signer_test.dart)
+for fixed vectors, verification and invalid-input examples.
+
 ## Generate
 
 We need to extract the files from [wallet-core](https://github.com/trustwallet/wallet-core/tree/master/include/TrustWalletCore) and generate the corresponding Dart code so that Dart can communicate with TrustWalletCore.
