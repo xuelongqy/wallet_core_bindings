@@ -28,9 +28,9 @@ void main() {
       expect(coin.staticPrefix, 0x0);
       expect(coin.p2pkhPrefix, 0x0);
       expect(txUrl,
-          'https://robinhoodchain.blockscout.com/tx/0x60f2d8e8ca8d64da9d3ded83a759a123ea28aca9f51a8f9b62cf34835b770cf9');
+          'https://robin.etherscan.io/tx/0x60f2d8e8ca8d64da9d3ded83a759a123ea28aca9f51a8f9b62cf34835b770cf9');
       expect(accUrl,
-          'https://robinhoodchain.blockscout.com/address/0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73');
+          'https://robin.etherscan.io/address/0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73');
     });
   });
 }

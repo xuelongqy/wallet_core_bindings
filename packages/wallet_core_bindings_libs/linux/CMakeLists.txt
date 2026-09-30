@@ -1,4 +1,4 @@
-set(LibraryVersion "4.8.3")
+set(LibraryVersion "4.8.4")
 
 # The Flutter tooling requires that developers have CMake 3.10 or later
 # installed. You should not increase this version, as doing so will cause
@@ -19,7 +19,7 @@ if(NOT EXISTS "${LibRoot}/${BinaryPath}")
     file(DOWNLOAD
       "https://github.com/xuelongqy/wallet-core/releases/download/${LibraryVersion}/Linux.tar.gz"
       ${ArchivePath}
-      EXPECTED_HASH "SHA256=7efde5ed25f3db64b0961977213ac078ae9e579b0e932c126c40893600727af8"
+      EXPECTED_HASH "SHA256=73e399bc0e1e44288949cf27f313ecea8b257d1a7fcd734c5da9760cde6c006b"
       TLS_VERIFY ON
     )
   endif()
