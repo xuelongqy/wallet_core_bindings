@@ -221,12 +221,17 @@ class Pay extends $pb.GeneratedMessage {
     $core.Iterable<$core.String>? recipients,
     $core.Iterable<$fixnum.Int64>? amounts,
     ObjectRef? gas,
+    $core.String? coinType,
+    $fixnum.Int64? addressBalanceAmount,
   }) {
     final result = create();
     if (inputCoins != null) result.inputCoins.addAll(inputCoins);
     if (recipients != null) result.recipients.addAll(recipients);
     if (amounts != null) result.amounts.addAll(amounts);
     if (gas != null) result.gas = gas;
+    if (coinType != null) result.coinType = coinType;
+    if (addressBalanceAmount != null)
+      result.addressBalanceAmount = addressBalanceAmount;
     return result;
   }
 
@@ -249,6 +254,10 @@ class Pay extends $pb.GeneratedMessage {
     ..p<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amounts', $pb.PbFieldType.KU6)
     ..aOM<ObjectRef>(4, _omitFieldNames ? '' : 'gas',
         subBuilder: ObjectRef.create)
+    ..aOS(5, _omitFieldNames ? '' : 'coinType')
+    ..a<$fixnum.Int64>(
+        6, _omitFieldNames ? '' : 'addressBalanceAmount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -292,6 +301,140 @@ class Pay extends $pb.GeneratedMessage {
   void clearGas() => $_clearField(4);
   @$pb.TagNumber(4)
   ObjectRef ensureGas() => $_ensure(3);
+
+  /// SIP-58: type of the coin that is withdrawn from the sender's address balance, like
+  /// `0x2::sui::SUI` or `0xdba3...::usdc::USDC`. Required when `address_balance_amount` is set and
+  /// rejected otherwise. The `input_coins` must be coins of this type.
+  @$pb.TagNumber(5)
+  $core.String get coinType => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set coinType($core.String value) => $_setString(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasCoinType() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearCoinType() => $_clearField(5);
+
+  /// SIP-58: amount of `coin_type` withdrawn from the sender's address balance, an additional
+  /// source of funds next to `input_coins`. 0 means none.
+  /// - With `input_coins`, it is merged into the first coin and the change stays in that coin.
+  /// - Without `input_coins` it must equal the sum of `amounts` exactly: every recipient is paid
+  ///   with a coin redeemed for exactly its amount.
+  ///   Each such coin is one balance-withdraw reservation, and the network allows at most 10 per
+  ///   transaction (plus one for gas paid from the address balance): more recipients are rejected by
+  ///   the node, not by wallet-core (the limit is the node's to change).
+  /// Gas is separate: a gas coin, or the SUI address balance when `SigningInput.valid_during` is set.
+  @$pb.TagNumber(6)
+  $fixnum.Int64 get addressBalanceAmount => $_getI64(5);
+  @$pb.TagNumber(6)
+  set addressBalanceAmount($fixnum.Int64 value) => $_setInt64(5, value);
+  @$pb.TagNumber(6)
+  $core.bool hasAddressBalanceAmount() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearAddressBalanceAmount() => $_clearField(6);
+}
+
+/// SIP-58 (address balances): the validity window of a transaction that pays gas from the sender's
+/// SUI address balance instead of a gas coin object.
+/// https://github.com/sui-foundation/sips/blob/main/sips/sip-58.md
+///
+/// Without an owned gas coin a transaction has no natural uniqueness or replay protection, so it
+/// declares the epochs it is valid in (at most two: N and N+1), the network it is valid on, and a nonce.
+class ValidDuring extends $pb.GeneratedMessage {
+  factory ValidDuring({
+    $fixnum.Int64? minEpoch,
+    $fixnum.Int64? maxEpoch,
+    $core.String? chain,
+    $core.int? nonce,
+  }) {
+    final result = create();
+    if (minEpoch != null) result.minEpoch = minEpoch;
+    if (maxEpoch != null) result.maxEpoch = maxEpoch;
+    if (chain != null) result.chain = chain;
+    if (nonce != null) result.nonce = nonce;
+    return result;
+  }
+
+  ValidDuring._();
+
+  factory ValidDuring.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ValidDuring.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ValidDuring',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'TW.Sui.Proto'),
+      createEmptyInstance: create)
+    ..a<$fixnum.Int64>(
+        1, _omitFieldNames ? '' : 'minEpoch', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$fixnum.Int64>(
+        2, _omitFieldNames ? '' : 'maxEpoch', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(3, _omitFieldNames ? '' : 'chain')
+    ..aI(4, _omitFieldNames ? '' : 'nonce', fieldType: $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ValidDuring clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ValidDuring copyWith(void Function(ValidDuring) updates) =>
+      super.copyWith((message) => updates(message as ValidDuring))
+          as ValidDuring;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ValidDuring create() => ValidDuring._();
+  @$core.override
+  ValidDuring createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ValidDuring getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ValidDuring>(create);
+  static ValidDuring? _defaultInstance;
+
+  /// First epoch the transaction is valid in: the current epoch (it must not be later).
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get minEpoch => $_getI64(0);
+  @$pb.TagNumber(1)
+  set minEpoch($fixnum.Int64 value) => $_setInt64(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasMinEpoch() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMinEpoch() => $_clearField(1);
+
+  /// Last epoch the transaction is valid in, at most `min_epoch + 1`.
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get maxEpoch => $_getI64(1);
+  @$pb.TagNumber(2)
+  set maxEpoch($fixnum.Int64 value) => $_setInt64(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasMaxEpoch() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMaxEpoch() => $_clearField(2);
+
+  /// Base58 chain identifier of the network (the digest of its genesis checkpoint).
+  @$pb.TagNumber(3)
+  $core.String get chain => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set chain($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasChain() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearChain() => $_clearField(3);
+
+  /// Makes otherwise identical transactions distinct. The protocol ignores it except in the digest.
+  @$pb.TagNumber(4)
+  $core.int get nonce => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set nonce($core.int value) => $_setUnsignedInt32(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasNonce() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearNonce() => $_clearField(4);
 }
 
 /// Send SUI coins to a list of addresses, following a list of amounts.
@@ -302,11 +445,14 @@ class PaySui extends $pb.GeneratedMessage {
     $core.Iterable<ObjectRef>? inputCoins,
     $core.Iterable<$core.String>? recipients,
     $core.Iterable<$fixnum.Int64>? amounts,
+    $fixnum.Int64? addressBalanceAmount,
   }) {
     final result = create();
     if (inputCoins != null) result.inputCoins.addAll(inputCoins);
     if (recipients != null) result.recipients.addAll(recipients);
     if (amounts != null) result.amounts.addAll(amounts);
+    if (addressBalanceAmount != null)
+      result.addressBalanceAmount = addressBalanceAmount;
     return result;
   }
 
@@ -327,6 +473,9 @@ class PaySui extends $pb.GeneratedMessage {
         subBuilder: ObjectRef.create)
     ..pPS(2, _omitFieldNames ? '' : 'recipients')
     ..p<$fixnum.Int64>(3, _omitFieldNames ? '' : 'amounts', $pb.PbFieldType.KU6)
+    ..a<$fixnum.Int64>(
+        4, _omitFieldNames ? '' : 'addressBalanceAmount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -348,6 +497,8 @@ class PaySui extends $pb.GeneratedMessage {
   static PaySui? _defaultInstance;
 
   /// The Sui coins to be used in this transaction, including the coin for gas payment.
+  /// When `SigningInput.valid_during` is set, gas is paid from the address balance, no coin is
+  /// reserved for it, and this list may be empty if `address_balance_amount` covers the amounts.
   @$pb.TagNumber(1)
   $pb.PbList<ObjectRef> get inputCoins => $_getList(0);
 
@@ -358,6 +509,25 @@ class PaySui extends $pb.GeneratedMessage {
   /// The amounts to be transferred to recipients, following the same order.
   @$pb.TagNumber(3)
   $pb.PbList<$fixnum.Int64> get amounts => $_getList(2);
+
+  /// SIP-58: amount (MIST) withdrawn from the sender's SUI address balance, an additional source
+  /// of funds next to `input_coins`. 0 means none.
+  /// - With `input_coins`, it is merged into the first coin and the change stays in that coin.
+  /// - Without `input_coins` it must equal the sum of `amounts` exactly: every recipient is paid
+  ///   with a coin redeemed for exactly its amount.
+  ///   Each such coin is one balance-withdraw reservation, and the network allows at most 10 per
+  ///   transaction (plus one for gas paid from the address balance): more recipients are rejected by
+  ///   the node, not by wallet-core (the limit is the node's to change).
+  /// The caller must make sure the address balance covers this amount plus `gas_budget` (when
+  /// `SigningInput.valid_during` is set) because the node rejects the transaction otherwise.
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get addressBalanceAmount => $_getI64(3);
+  @$pb.TagNumber(4)
+  set addressBalanceAmount($fixnum.Int64 value) => $_setInt64(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasAddressBalanceAmount() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAddressBalanceAmount() => $_clearField(4);
 }
 
 /// Send all SUI coins to one recipient.
@@ -367,10 +537,13 @@ class PayAllSui extends $pb.GeneratedMessage {
   factory PayAllSui({
     $core.Iterable<ObjectRef>? inputCoins,
     $core.String? recipient,
+    $fixnum.Int64? addressBalanceAmount,
   }) {
     final result = create();
     if (inputCoins != null) result.inputCoins.addAll(inputCoins);
     if (recipient != null) result.recipient = recipient;
+    if (addressBalanceAmount != null)
+      result.addressBalanceAmount = addressBalanceAmount;
     return result;
   }
 
@@ -390,6 +563,9 @@ class PayAllSui extends $pb.GeneratedMessage {
     ..pPM<ObjectRef>(1, _omitFieldNames ? '' : 'inputCoins',
         subBuilder: ObjectRef.create)
     ..aOS(2, _omitFieldNames ? '' : 'recipient')
+    ..a<$fixnum.Int64>(
+        3, _omitFieldNames ? '' : 'addressBalanceAmount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -411,6 +587,8 @@ class PayAllSui extends $pb.GeneratedMessage {
   static PayAllSui? _defaultInstance;
 
   /// The Sui coins to be used in this transaction, including the coin for gas payment.
+  /// When `SigningInput.valid_during` is set, gas is paid from the address balance and no coin is
+  /// reserved for it.
   @$pb.TagNumber(1)
   $pb.PbList<ObjectRef> get inputCoins => $_getList(0);
 
@@ -423,6 +601,18 @@ class PayAllSui extends $pb.GeneratedMessage {
   $core.bool hasRecipient() => $_has(1);
   @$pb.TagNumber(2)
   void clearRecipient() => $_clearField(2);
+
+  /// SIP-58: amount (MIST) withdrawn from the sender's SUI address balance and sent as well.
+  /// 0 means none. It cannot mean "everything": a withdrawal reserves an explicit amount, so the
+  /// caller passes the address balance minus `gas_budget` (when `SigningInput.valid_during` is set).
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get addressBalanceAmount => $_getI64(2);
+  @$pb.TagNumber(3)
+  set addressBalanceAmount($fixnum.Int64 value) => $_setInt64(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasAddressBalanceAmount() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAddressBalanceAmount() => $_clearField(3);
 }
 
 /// Add stake to a validator's staking pool using multiple coins and amount.
@@ -433,12 +623,15 @@ class RequestAddStake extends $pb.GeneratedMessage {
     Amount? amount,
     $core.String? validator,
     ObjectRef? gas,
+    $fixnum.Int64? addressBalanceAmount,
   }) {
     final result = create();
     if (coins != null) result.coins.addAll(coins);
     if (amount != null) result.amount = amount;
     if (validator != null) result.validator = validator;
     if (gas != null) result.gas = gas;
+    if (addressBalanceAmount != null)
+      result.addressBalanceAmount = addressBalanceAmount;
     return result;
   }
 
@@ -461,6 +654,9 @@ class RequestAddStake extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'validator')
     ..aOM<ObjectRef>(4, _omitFieldNames ? '' : 'gas',
         subBuilder: ObjectRef.create)
+    ..a<$fixnum.Int64>(
+        5, _omitFieldNames ? '' : 'addressBalanceAmount', $pb.PbFieldType.OU6,
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -509,6 +705,7 @@ class RequestAddStake extends $pb.GeneratedMessage {
   void clearValidator() => $_clearField(3);
 
   /// Gas object to be used in this transaction.
+  /// Must be unset when `SigningInput.valid_during` is set (gas is paid from the address balance).
   @$pb.TagNumber(4)
   ObjectRef get gas => $_getN(3);
   @$pb.TagNumber(4)
@@ -519,6 +716,17 @@ class RequestAddStake extends $pb.GeneratedMessage {
   void clearGas() => $_clearField(4);
   @$pb.TagNumber(4)
   ObjectRef ensureGas() => $_ensure(3);
+
+  /// SIP-58: amount (MIST) withdrawn from the sender's SUI address balance and staked together
+  /// with `coins`. 0 means none.
+  @$pb.TagNumber(5)
+  $fixnum.Int64 get addressBalanceAmount => $_getI64(4);
+  @$pb.TagNumber(5)
+  set addressBalanceAmount($fixnum.Int64 value) => $_setInt64(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasAddressBalanceAmount() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearAddressBalanceAmount() => $_clearField(5);
 }
 
 /// Withdraw stake from a validator's staking pool.
@@ -713,6 +921,7 @@ class SigningInput extends $pb.GeneratedMessage {
     $core.String? rawJson,
     $fixnum.Int64? gasBudget,
     $fixnum.Int64? referenceGasPrice,
+    ValidDuring? validDuring,
   }) {
     final result = create();
     if (privateKey != null) result.privateKey = privateKey;
@@ -728,6 +937,7 @@ class SigningInput extends $pb.GeneratedMessage {
     if (rawJson != null) result.rawJson = rawJson;
     if (gasBudget != null) result.gasBudget = gasBudget;
     if (referenceGasPrice != null) result.referenceGasPrice = referenceGasPrice;
+    if (validDuring != null) result.validDuring = validDuring;
     return result;
   }
 
@@ -780,6 +990,8 @@ class SigningInput extends $pb.GeneratedMessage {
     ..a<$fixnum.Int64>(
         13, _omitFieldNames ? '' : 'referenceGasPrice', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<ValidDuring>(14, _omitFieldNames ? '' : 'validDuring',
+        subBuilder: ValidDuring.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -947,6 +1159,23 @@ class SigningInput extends $pb.GeneratedMessage {
   $core.bool hasReferenceGasPrice() => $_has(11);
   @$pb.TagNumber(13)
   void clearReferenceGasPrice() => $_clearField(13);
+
+  /// SIP-58: when set, gas is paid from the sender's SUI address balance instead of a gas coin.
+  /// Supported by `PaySui`, `PayAllSui`, `Pay`, `RequestAddStake`, `RequestWithdrawStake` and
+  /// `TransferObject`; the `gas` object of the latter four must then be unset. It is an error with
+  /// `SignDirect` and `RawJson` (their transaction is prebuilt) and when `gas_budget` is 0.
+  /// `gas_budget` is reserved from the address balance and the unused part is refunded to it.
+  /// The window must be the current epoch or the current and the next one.
+  @$pb.TagNumber(14)
+  ValidDuring get validDuring => $_getN(12);
+  @$pb.TagNumber(14)
+  set validDuring(ValidDuring value) => $_setField(14, value);
+  @$pb.TagNumber(14)
+  $core.bool hasValidDuring() => $_has(12);
+  @$pb.TagNumber(14)
+  void clearValidDuring() => $_clearField(14);
+  @$pb.TagNumber(14)
+  ValidDuring ensureValidDuring() => $_ensure(12);
 }
 
 /// Transaction signing output.

@@ -76,6 +76,14 @@ const Pay$json = {
       '6': '.TW.Sui.Proto.ObjectRef',
       '10': 'gas'
     },
+    {'1': 'coin_type', '3': 5, '4': 1, '5': 9, '10': 'coinType'},
+    {
+      '1': 'address_balance_amount',
+      '3': 6,
+      '4': 1,
+      '5': 4,
+      '10': 'addressBalanceAmount'
+    },
   ],
 };
 
@@ -83,7 +91,26 @@ const Pay$json = {
 final $typed_data.Uint8List payDescriptor = $convert.base64Decode(
     'CgNQYXkSOAoLaW5wdXRfY29pbnMYASADKAsyFy5UVy5TdWkuUHJvdG8uT2JqZWN0UmVmUgppbn'
     'B1dENvaW5zEh4KCnJlY2lwaWVudHMYAiADKAlSCnJlY2lwaWVudHMSGAoHYW1vdW50cxgDIAMo'
-    'BFIHYW1vdW50cxIpCgNnYXMYBCABKAsyFy5UVy5TdWkuUHJvdG8uT2JqZWN0UmVmUgNnYXM=');
+    'BFIHYW1vdW50cxIpCgNnYXMYBCABKAsyFy5UVy5TdWkuUHJvdG8uT2JqZWN0UmVmUgNnYXMSGw'
+    'oJY29pbl90eXBlGAUgASgJUghjb2luVHlwZRI0ChZhZGRyZXNzX2JhbGFuY2VfYW1vdW50GAYg'
+    'ASgEUhRhZGRyZXNzQmFsYW5jZUFtb3VudA==');
+
+@$core.Deprecated('Use validDuringDescriptor instead')
+const ValidDuring$json = {
+  '1': 'ValidDuring',
+  '2': [
+    {'1': 'min_epoch', '3': 1, '4': 1, '5': 4, '10': 'minEpoch'},
+    {'1': 'max_epoch', '3': 2, '4': 1, '5': 4, '10': 'maxEpoch'},
+    {'1': 'chain', '3': 3, '4': 1, '5': 9, '10': 'chain'},
+    {'1': 'nonce', '3': 4, '4': 1, '5': 13, '10': 'nonce'},
+  ],
+};
+
+/// Descriptor for `ValidDuring`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List validDuringDescriptor = $convert.base64Decode(
+    'CgtWYWxpZER1cmluZxIbCgltaW5fZXBvY2gYASABKARSCG1pbkVwb2NoEhsKCW1heF9lcG9jaB'
+    'gCIAEoBFIIbWF4RXBvY2gSFAoFY2hhaW4YAyABKAlSBWNoYWluEhQKBW5vbmNlGAQgASgNUgVu'
+    'b25jZQ==');
 
 @$core.Deprecated('Use paySuiDescriptor instead')
 const PaySui$json = {
@@ -99,6 +126,13 @@ const PaySui$json = {
     },
     {'1': 'recipients', '3': 2, '4': 3, '5': 9, '10': 'recipients'},
     {'1': 'amounts', '3': 3, '4': 3, '5': 4, '10': 'amounts'},
+    {
+      '1': 'address_balance_amount',
+      '3': 4,
+      '4': 1,
+      '5': 4,
+      '10': 'addressBalanceAmount'
+    },
   ],
 };
 
@@ -106,7 +140,8 @@ const PaySui$json = {
 final $typed_data.Uint8List paySuiDescriptor = $convert.base64Decode(
     'CgZQYXlTdWkSOAoLaW5wdXRfY29pbnMYASADKAsyFy5UVy5TdWkuUHJvdG8uT2JqZWN0UmVmUg'
     'ppbnB1dENvaW5zEh4KCnJlY2lwaWVudHMYAiADKAlSCnJlY2lwaWVudHMSGAoHYW1vdW50cxgD'
-    'IAMoBFIHYW1vdW50cw==');
+    'IAMoBFIHYW1vdW50cxI0ChZhZGRyZXNzX2JhbGFuY2VfYW1vdW50GAQgASgEUhRhZGRyZXNzQm'
+    'FsYW5jZUFtb3VudA==');
 
 @$core.Deprecated('Use payAllSuiDescriptor instead')
 const PayAllSui$json = {
@@ -121,13 +156,21 @@ const PayAllSui$json = {
       '10': 'inputCoins'
     },
     {'1': 'recipient', '3': 2, '4': 1, '5': 9, '10': 'recipient'},
+    {
+      '1': 'address_balance_amount',
+      '3': 3,
+      '4': 1,
+      '5': 4,
+      '10': 'addressBalanceAmount'
+    },
   ],
 };
 
 /// Descriptor for `PayAllSui`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List payAllSuiDescriptor = $convert.base64Decode(
     'CglQYXlBbGxTdWkSOAoLaW5wdXRfY29pbnMYASADKAsyFy5UVy5TdWkuUHJvdG8uT2JqZWN0Um'
-    'VmUgppbnB1dENvaW5zEhwKCXJlY2lwaWVudBgCIAEoCVIJcmVjaXBpZW50');
+    'VmUgppbnB1dENvaW5zEhwKCXJlY2lwaWVudBgCIAEoCVIJcmVjaXBpZW50EjQKFmFkZHJlc3Nf'
+    'YmFsYW5jZV9hbW91bnQYAyABKARSFGFkZHJlc3NCYWxhbmNlQW1vdW50');
 
 @$core.Deprecated('Use requestAddStakeDescriptor instead')
 const RequestAddStake$json = {
@@ -158,6 +201,13 @@ const RequestAddStake$json = {
       '6': '.TW.Sui.Proto.ObjectRef',
       '10': 'gas'
     },
+    {
+      '1': 'address_balance_amount',
+      '3': 5,
+      '4': 1,
+      '5': 4,
+      '10': 'addressBalanceAmount'
+    },
   ],
 };
 
@@ -166,7 +216,8 @@ final $typed_data.Uint8List requestAddStakeDescriptor = $convert.base64Decode(
     'Cg9SZXF1ZXN0QWRkU3Rha2USLQoFY29pbnMYASADKAsyFy5UVy5TdWkuUHJvdG8uT2JqZWN0Um'
     'VmUgVjb2lucxIsCgZhbW91bnQYAiABKAsyFC5UVy5TdWkuUHJvdG8uQW1vdW50UgZhbW91bnQS'
     'HAoJdmFsaWRhdG9yGAMgASgJUgl2YWxpZGF0b3ISKQoDZ2FzGAQgASgLMhcuVFcuU3VpLlByb3'
-    'RvLk9iamVjdFJlZlIDZ2Fz');
+    'RvLk9iamVjdFJlZlIDZ2FzEjQKFmFkZHJlc3NfYmFsYW5jZV9hbW91bnQYBSABKARSFGFkZHJl'
+    'c3NCYWxhbmNlQW1vdW50');
 
 @$core.Deprecated('Use requestWithdrawStakeDescriptor instead')
 const RequestWithdrawStake$json = {
@@ -305,6 +356,14 @@ const SigningInput$json = {
       '5': 4,
       '10': 'referenceGasPrice'
     },
+    {
+      '1': 'valid_during',
+      '3': 14,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Sui.Proto.ValidDuring',
+      '10': 'validDuring'
+    },
   ],
   '8': [
     {'1': 'transaction_payload'},
@@ -324,8 +383,9 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'ZXF1ZXN0V2l0aGRyYXdTdGFrZRJHCg90cmFuc2Zlcl9vYmplY3QYCSABKAsyHC5UVy5TdWkuUH'
     'JvdG8uVHJhbnNmZXJPYmplY3RIAFIOdHJhbnNmZXJPYmplY3QSGwoIcmF3X2pzb24YCiABKAlI'
     'AFIHcmF3SnNvbhIdCgpnYXNfYnVkZ2V0GAwgASgEUglnYXNCdWRnZXQSLgoTcmVmZXJlbmNlX2'
-    'dhc19wcmljZRgNIAEoBFIRcmVmZXJlbmNlR2FzUHJpY2VCFQoTdHJhbnNhY3Rpb25fcGF5bG9h'
-    'ZA==');
+    'dhc19wcmljZRgNIAEoBFIRcmVmZXJlbmNlR2FzUHJpY2USPAoMdmFsaWRfZHVyaW5nGA4gASgL'
+    'MhkuVFcuU3VpLlByb3RvLlZhbGlkRHVyaW5nUgt2YWxpZER1cmluZ0IVChN0cmFuc2FjdGlvbl'
+    '9wYXlsb2Fk');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

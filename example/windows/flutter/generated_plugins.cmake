@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  wallet_core_bindings_libs
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

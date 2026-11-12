@@ -15,6 +15,20 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use transactionVersionDescriptor instead')
+const TransactionVersion$json = {
+  '1': 'TransactionVersion',
+  '2': [
+    {'1': 'UseDefault', '2': 0},
+    {'1': 'V4', '2': 4},
+    {'1': 'V5', '2': 5},
+  ],
+};
+
+/// Descriptor for `TransactionVersion`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List transactionVersionDescriptor = $convert.base64Decode(
+    'ChJUcmFuc2FjdGlvblZlcnNpb24SDgoKVXNlRGVmYXVsdBAAEgYKAlY0EAQSBgoCVjUQBQ==');
+
 @$core.Deprecated('Use transactionBuilderExtraDataDescriptor instead')
 const TransactionBuilderExtraData$json = {
   '1': 'TransactionBuilderExtraData',
@@ -22,15 +36,23 @@ const TransactionBuilderExtraData$json = {
     {'1': 'branch_id', '3': 1, '4': 1, '5': 12, '10': 'branchId'},
     {'1': 'expiry_height', '3': 2, '4': 1, '5': 13, '10': 'expiryHeight'},
     {'1': 'zip_0317', '3': 3, '4': 1, '5': 8, '10': 'zip0317'},
+    {
+      '1': 'tx_version',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.TW.Zcash.Proto.TransactionVersion',
+      '10': 'txVersion'
+    },
   ],
 };
 
 /// Descriptor for `TransactionBuilderExtraData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transactionBuilderExtraDataDescriptor =
-    $convert.base64Decode(
-        'ChtUcmFuc2FjdGlvbkJ1aWxkZXJFeHRyYURhdGESGwoJYnJhbmNoX2lkGAEgASgMUghicmFuY2'
-        'hJZBIjCg1leHBpcnlfaGVpZ2h0GAIgASgNUgxleHBpcnlIZWlnaHQSGQoIemlwXzAzMTcYAyAB'
-        'KAhSB3ppcDAzMTc=');
+final $typed_data.Uint8List transactionBuilderExtraDataDescriptor = $convert.base64Decode(
+    'ChtUcmFuc2FjdGlvbkJ1aWxkZXJFeHRyYURhdGESGwoJYnJhbmNoX2lkGAEgASgMUghicmFuY2'
+    'hJZBIjCg1leHBpcnlfaGVpZ2h0GAIgASgNUgxleHBpcnlIZWlnaHQSGQoIemlwXzAzMTcYAyAB'
+    'KAhSB3ppcDAzMTcSQQoKdHhfdmVyc2lvbhgEIAEoDjIiLlRXLlpjYXNoLlByb3RvLlRyYW5zYW'
+    'N0aW9uVmVyc2lvblIJdHhWZXJzaW9u');
 
 @$core.Deprecated('Use transactionDescriptor instead')
 const Transaction$json = {

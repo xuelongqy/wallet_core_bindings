@@ -29,12 +29,16 @@ There are two ways to use wallet_core_bindings, Native and Web Assembly. Please 
 |   iOS    |   ✔️   |      ✔️      |            ✔️             |
 |  macOS   |   ✔️   |      ✔️      |            ✔️             |
 |  Linux   |   ✔️   |      ✔️      |            ✔️             |
-| Windows  |   ❌️   |      ✔️      |            ❌️             |
+| Windows x64 |   ✔️   |      ✔️      |            ✔️             |
 |   Web    |   ❌️   |      ✔️      |            ❌️             |
 
 ### Native
+Wallet Core 4.9.3 requires iOS 15 or macOS 12 for native Apple builds.
+The Apple plugin uses Swift Package Manager only; enable Flutter's Swift Package
+Manager integration before building. See the [Apple setup](packages/wallet_core_bindings_libs/README.md#ios-and-macos).
+
 The native features of the platform rely on the dynamic library compiled by [Wallet Core](https://github.com/trustwallet/wallet-core), Binding with [dart:ffi](https://dart.dev/interop/c-interop).
-* wallet_core_bindings_libs contains native dynamic libraries. Windows is not supported at present.
+* wallet_core_bindings_libs contains native dynamic libraries, including Windows x64. See [Windows requirements](packages/wallet_core_bindings_libs/README.md#windows).
 * For more information, see [wallet_core_bindings_libs](https://github.com/xuelongqy/wallet_core_bindings/tree/main/wallet_core_bindings_libs).
 ```yaml
 dependencies:
@@ -54,7 +58,7 @@ void main() async {
 ```
 ### Web Assembly
 Build WalletCore for WASM，Binding with [WASI](https://github.com/WebAssembly/WASI) [wasi_snapshot_preview1](https://github.com/WebAssembly/WASI/blob/main/legacy/preview1/docs.md) and [wasm_run](https://github.com/juancastillo0/wasm_run).
-* It is suitable for use on platforms that do not support native, such as Web and Windows. However, wasm itself has strong cross-platform features and is not limited to these two platforms.
+* The WebAssembly backend supports Web and the native host platforms listed above.
 ```yaml
 dependencies:
   wasm_run_flutter: version

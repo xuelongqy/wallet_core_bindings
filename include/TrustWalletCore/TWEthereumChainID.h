@@ -67,6 +67,7 @@ enum TWEthereumChainID {
     TWEthereumChainIDKavaevm = 2222,
     TWEthereumChainIDRobinhoodchain = 4663,
     TWEthereumChainIDIotexevm = 4689,
+    TWEthereumChainIDArc = 5042,
     TWEthereumChainIDKaia = 8217,
     TWEthereumChainIDAvalanchec = 43114,
     TWEthereumChainIDEvmos = 9001,

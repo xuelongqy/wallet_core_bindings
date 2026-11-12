@@ -1,37 +1,21 @@
 PODS:
   - FlutterMacOS (1.0.0)
-  - TrustWalletCore (4.3.2):
-    - TrustWalletCore/Core (= 4.3.2)
-  - TrustWalletCore/Core (4.3.2):
-    - TrustWalletCore/Types
-  - TrustWalletCore/Types (4.3.2):
-    - WalletCoreSwiftProtobuf
-  - wallet_core_bindings_libs (4.3.2):
-    - FlutterMacOS
-    - TrustWalletCore (= 4.3.2)
-  - WalletCoreSwiftProtobuf (1.29.0)
+  - wasm_run_flutter (0.0.1)
 
 DEPENDENCIES:
   - FlutterMacOS (from `Flutter/ephemeral`)
-  - wallet_core_bindings_libs (from `Flutter/ephemeral/.symlinks/plugins/wallet_core_bindings_libs/macos`)
-
-SPEC REPOS:
-  trunk:
-    - TrustWalletCore
-    - WalletCoreSwiftProtobuf
+  - wasm_run_flutter (from `Flutter/ephemeral/.symlinks/plugins/wasm_run_flutter/macos`)
 
 EXTERNAL SOURCES:
   FlutterMacOS:
     :path: Flutter/ephemeral
-  wallet_core_bindings_libs:
-    :path: Flutter/ephemeral/.symlinks/plugins/wallet_core_bindings_libs/macos
+  wasm_run_flutter:
+    :path: Flutter/ephemeral/.symlinks/plugins/wasm_run_flutter/macos
 
 SPEC CHECKSUMS:
-  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
-  TrustWalletCore: 2a85f4994766fb00e6ffd399f4ead586838c07c3
-  wallet_core_bindings_libs: 907307c846cbdcd423904da06404c5e14060a660
-  WalletCoreSwiftProtobuf: a4798576a2d309511fc45f81843d348732ec571d
+  FlutterMacOS: c232990155153907050900a2e175c7773903ba4e
+  wasm_run_flutter: 2f91e8869ddce786e92e3ec99175647fea2284a4
 
-PODFILE CHECKSUM: 236401fc2c932af29a9fcf0e97baeeb2d750d367
+PODFILE CHECKSUM: f0c21717cb7ee9112f915044c74bfceb5b12e02a
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0

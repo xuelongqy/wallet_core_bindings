@@ -315,6 +315,37 @@ final $typed_data.Uint8List createAndTransferTokenDescriptor = $convert.base64De
     'cxJJChB0b2tlbl9wcm9ncmFtX2lkGAkgASgOMh8uVFcuU29sYW5hLlByb3RvLlRva2VuUHJvZ3'
     'JhbUlkUg50b2tlblByb2dyYW1JZA==');
 
+@$core.Deprecated('Use transferCoreAssetDescriptor instead')
+const TransferCoreAsset$json = {
+  '1': 'TransferCoreAsset',
+  '2': [
+    {'1': 'asset_address', '3': 1, '4': 1, '5': 9, '10': 'assetAddress'},
+    {
+      '1': 'recipient_address',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'recipientAddress'
+    },
+    {
+      '1': 'collection_address',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '10': 'collectionAddress'
+    },
+    {'1': 'memo', '3': 4, '4': 1, '5': 9, '10': 'memo'},
+    {'1': 'references', '3': 5, '4': 3, '5': 9, '10': 'references'},
+  ],
+};
+
+/// Descriptor for `TransferCoreAsset`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List transferCoreAssetDescriptor = $convert.base64Decode(
+    'ChFUcmFuc2ZlckNvcmVBc3NldBIjCg1hc3NldF9hZGRyZXNzGAEgASgJUgxhc3NldEFkZHJlc3'
+    'MSKwoRcmVjaXBpZW50X2FkZHJlc3MYAiABKAlSEHJlY2lwaWVudEFkZHJlc3MSLQoSY29sbGVj'
+    'dGlvbl9hZGRyZXNzGAMgASgJUhFjb2xsZWN0aW9uQWRkcmVzcxISCgRtZW1vGAQgASgJUgRtZW'
+    '1vEh4KCnJlZmVyZW5jZXMYBSADKAlSCnJlZmVyZW5jZXM=');
+
 @$core.Deprecated('Use tokenTransferToFeePayerDescriptor instead')
 const TokenTransferToFeePayer$json = {
   '1': 'TokenTransferToFeePayer',
@@ -794,6 +825,15 @@ const SigningInput$json = {
       '9': 0,
       '10': 'advanceNonceAccount'
     },
+    {
+      '1': 'transfer_core_asset_transaction',
+      '3': 26,
+      '4': 1,
+      '5': 11,
+      '6': '.TW.Solana.Proto.TransferCoreAsset',
+      '9': 0,
+      '10': 'transferCoreAssetTransaction'
+    },
     {'1': 'sender', '3': 14, '4': 1, '5': 9, '10': 'sender'},
     {'1': 'nonce_account', '3': 15, '4': 1, '5': 9, '10': 'nonceAccount'},
     {
@@ -883,18 +923,20 @@ final $typed_data.Uint8List signingInputDescriptor = $convert.base64Decode(
     'aXRoZHJhd19ub25jZV9hY2NvdW50GBAgASgLMiUuVFcuU29sYW5hLlByb3RvLldpdGhkcmF3Tm'
     '9uY2VBY2NvdW50SABSFHdpdGhkcmF3Tm9uY2VBY2NvdW50EloKFWFkdmFuY2Vfbm9uY2VfYWNj'
     'b3VudBgTIAEoCzIkLlRXLlNvbGFuYS5Qcm90by5BZHZhbmNlTm9uY2VBY2NvdW50SABSE2Fkdm'
-    'FuY2VOb25jZUFjY291bnQSFgoGc2VuZGVyGA4gASgJUgZzZW5kZXISIwoNbm9uY2VfYWNjb3Vu'
-    'dBgPIAEoCVIMbm9uY2VBY2NvdW50EjEKFWZlZV9wYXllcl9wcml2YXRlX2tleRgRIAEoDFISZm'
-    'VlUGF5ZXJQcml2YXRlS2V5EhsKCWZlZV9wYXllchgSIAEoCVIIZmVlUGF5ZXISPAoLcmF3X21l'
-    'c3NhZ2UYFCABKAsyGy5UVy5Tb2xhbmEuUHJvdG8uUmF3TWVzc2FnZVIKcmF3TWVzc2FnZRI6Cg'
-    't0eF9lbmNvZGluZxgVIAEoDjIZLlRXLlNvbGFuYS5Qcm90by5FbmNvZGluZ1IKdHhFbmNvZGlu'
-    'ZxJPChJwcmlvcml0eV9mZWVfcHJpY2UYFiABKAsyIS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdH'
-    'lGZWVQcmljZVIQcHJpb3JpdHlGZWVQcmljZRJPChJwcmlvcml0eV9mZWVfbGltaXQYFyABKAsy'
-    'IS5UVy5Tb2xhbmEuUHJvdG8uUHJpb3JpdHlGZWVMaW1pdFIQcHJpb3JpdHlGZWVMaW1pdBJmCh'
-    't0b2tlbl90cmFuc2Zlcl90b19mZWVfcGF5ZXIYGCABKAsyKC5UVy5Tb2xhbmEuUHJvdG8uVG9r'
-    'ZW5UcmFuc2ZlclRvRmVlUGF5ZXJSF3Rva2VuVHJhbnNmZXJUb0ZlZVBheWVyEkwKFXRyYW5zZm'
-    'VyX3RvX2ZlZV9wYXllchgZIAEoCzIZLlRXLlNvbGFuYS5Qcm90by5UcmFuc2ZlclISdHJhbnNm'
-    'ZXJUb0ZlZVBheWVyQhIKEHRyYW5zYWN0aW9uX3R5cGU=');
+    'FuY2VOb25jZUFjY291bnQSawofdHJhbnNmZXJfY29yZV9hc3NldF90cmFuc2FjdGlvbhgaIAEo'
+    'CzIiLlRXLlNvbGFuYS5Qcm90by5UcmFuc2ZlckNvcmVBc3NldEgAUhx0cmFuc2ZlckNvcmVBc3'
+    'NldFRyYW5zYWN0aW9uEhYKBnNlbmRlchgOIAEoCVIGc2VuZGVyEiMKDW5vbmNlX2FjY291bnQY'
+    'DyABKAlSDG5vbmNlQWNjb3VudBIxChVmZWVfcGF5ZXJfcHJpdmF0ZV9rZXkYESABKAxSEmZlZV'
+    'BheWVyUHJpdmF0ZUtleRIbCglmZWVfcGF5ZXIYEiABKAlSCGZlZVBheWVyEjwKC3Jhd19tZXNz'
+    'YWdlGBQgASgLMhsuVFcuU29sYW5hLlByb3RvLlJhd01lc3NhZ2VSCnJhd01lc3NhZ2USOgoLdH'
+    'hfZW5jb2RpbmcYFSABKA4yGS5UVy5Tb2xhbmEuUHJvdG8uRW5jb2RpbmdSCnR4RW5jb2RpbmcS'
+    'TwoScHJpb3JpdHlfZmVlX3ByaWNlGBYgASgLMiEuVFcuU29sYW5hLlByb3RvLlByaW9yaXR5Rm'
+    'VlUHJpY2VSEHByaW9yaXR5RmVlUHJpY2USTwoScHJpb3JpdHlfZmVlX2xpbWl0GBcgASgLMiEu'
+    'VFcuU29sYW5hLlByb3RvLlByaW9yaXR5RmVlTGltaXRSEHByaW9yaXR5RmVlTGltaXQSZgobdG'
+    '9rZW5fdHJhbnNmZXJfdG9fZmVlX3BheWVyGBggASgLMiguVFcuU29sYW5hLlByb3RvLlRva2Vu'
+    'VHJhbnNmZXJUb0ZlZVBheWVyUhd0b2tlblRyYW5zZmVyVG9GZWVQYXllchJMChV0cmFuc2Zlcl'
+    '90b19mZWVfcGF5ZXIYGSABKAsyGS5UVy5Tb2xhbmEuUHJvdG8uVHJhbnNmZXJSEnRyYW5zZmVy'
+    'VG9GZWVQYXllckISChB0cmFuc2FjdGlvbl90eXBl');
 
 @$core.Deprecated('Use signingOutputDescriptor instead')
 const SigningOutput$json = {

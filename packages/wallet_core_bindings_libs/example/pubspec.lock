@@ -269,7 +269,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.8.4"
+    version: "4.9.3"
   webdriver:
     dependency: transitive
     description:
@@ -280,4 +280,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=3.11.0-0 <4.0.0"
-  flutter: ">=3.18.0-18.0.pre.54"
+  flutter: ">=3.24.0"

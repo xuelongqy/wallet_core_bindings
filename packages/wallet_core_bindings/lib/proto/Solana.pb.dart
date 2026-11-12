@@ -903,6 +903,115 @@ class CreateAndTransferToken extends $pb.GeneratedMessage {
   void clearTokenProgramId() => $_clearField(9);
 }
 
+/// Transfer a Metaplex Core asset (mpl-core `TransferV1`).
+/// Core assets have no mint or token account, so the transfer only changes the asset owner.
+/// The signer must be the current owner of the asset.
+/// Not supported: assets or collections with external plugin adapters (e.g. Oracle, LifecycleHook),
+/// which need extra accounts. Such a transaction is signed but fails on chain.
+class TransferCoreAsset extends $pb.GeneratedMessage {
+  factory TransferCoreAsset({
+    $core.String? assetAddress,
+    $core.String? recipientAddress,
+    $core.String? collectionAddress,
+    $core.String? memo,
+    $core.Iterable<$core.String>? references,
+  }) {
+    final result = create();
+    if (assetAddress != null) result.assetAddress = assetAddress;
+    if (recipientAddress != null) result.recipientAddress = recipientAddress;
+    if (collectionAddress != null) result.collectionAddress = collectionAddress;
+    if (memo != null) result.memo = memo;
+    if (references != null) result.references.addAll(references);
+    return result;
+  }
+
+  TransferCoreAsset._();
+
+  factory TransferCoreAsset.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory TransferCoreAsset.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'TransferCoreAsset',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'assetAddress')
+    ..aOS(2, _omitFieldNames ? '' : 'recipientAddress')
+    ..aOS(3, _omitFieldNames ? '' : 'collectionAddress')
+    ..aOS(4, _omitFieldNames ? '' : 'memo')
+    ..pPS(5, _omitFieldNames ? '' : 'references')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  TransferCoreAsset clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  TransferCoreAsset copyWith(void Function(TransferCoreAsset) updates) =>
+      super.copyWith((message) => updates(message as TransferCoreAsset))
+          as TransferCoreAsset;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static TransferCoreAsset create() => TransferCoreAsset._();
+  @$core.override
+  TransferCoreAsset createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static TransferCoreAsset getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<TransferCoreAsset>(create);
+  static TransferCoreAsset? _defaultInstance;
+
+  /// Address of the Core asset.
+  @$pb.TagNumber(1)
+  $core.String get assetAddress => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set assetAddress($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasAssetAddress() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAssetAddress() => $_clearField(1);
+
+  /// Address of the new owner (a wallet address).
+  @$pb.TagNumber(2)
+  $core.String get recipientAddress => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set recipientAddress($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasRecipientAddress() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRecipientAddress() => $_clearField(2);
+
+  /// Address of the collection the asset belongs to.
+  /// Required if the asset belongs to a collection, otherwise leave empty.
+  /// A missing or wrong collection makes the transaction fail on chain.
+  @$pb.TagNumber(3)
+  $core.String get collectionAddress => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set collectionAddress($core.String value) => $_setString(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasCollectionAddress() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCollectionAddress() => $_clearField(3);
+
+  /// optional memo
+  @$pb.TagNumber(4)
+  $core.String get memo => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set memo($core.String value) => $_setString(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasMemo() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMemo() => $_clearField(4);
+
+  /// optional referenced public keys
+  @$pb.TagNumber(5)
+  $pb.PbList<$core.String> get references => $_getList(4);
+}
+
 /// Transfer tokens to the feepayer
 class TokenTransferToFeePayer extends $pb.GeneratedMessage {
   factory TokenTransferToFeePayer({
@@ -2050,6 +2159,7 @@ enum SigningInput_TransactionType {
   createNonceAccount,
   withdrawNonceAccount,
   advanceNonceAccount,
+  transferCoreAssetTransaction,
   notSet
 }
 
@@ -2081,6 +2191,7 @@ class SigningInput extends $pb.GeneratedMessage {
     PriorityFeeLimit? priorityFeeLimit,
     TokenTransferToFeePayer? tokenTransferToFeePayer,
     Transfer? transferToFeePayer,
+    TransferCoreAsset? transferCoreAssetTransaction,
   }) {
     final result = create();
     if (privateKey != null) result.privateKey = privateKey;
@@ -2124,6 +2235,8 @@ class SigningInput extends $pb.GeneratedMessage {
       result.tokenTransferToFeePayer = tokenTransferToFeePayer;
     if (transferToFeePayer != null)
       result.transferToFeePayer = transferToFeePayer;
+    if (transferCoreAssetTransaction != null)
+      result.transferCoreAssetTransaction = transferCoreAssetTransaction;
     return result;
   }
 
@@ -2150,6 +2263,7 @@ class SigningInput extends $pb.GeneratedMessage {
     13: SigningInput_TransactionType.createNonceAccount,
     16: SigningInput_TransactionType.withdrawNonceAccount,
     19: SigningInput_TransactionType.advanceNonceAccount,
+    26: SigningInput_TransactionType.transferCoreAssetTransaction,
     0: SigningInput_TransactionType.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -2157,7 +2271,7 @@ class SigningInput extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'TW.Solana.Proto'),
       createEmptyInstance: create)
-    ..oo(0, [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 19])
+    ..oo(0, [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 19, 26])
     ..a<$core.List<$core.int>>(
         1, _omitFieldNames ? '' : 'privateKey', $pb.PbFieldType.OY)
     ..aOS(2, _omitFieldNames ? '' : 'recentBlockhash')
@@ -2209,6 +2323,9 @@ class SigningInput extends $pb.GeneratedMessage {
         subBuilder: TokenTransferToFeePayer.create)
     ..aOM<Transfer>(25, _omitFieldNames ? '' : 'transferToFeePayer',
         subBuilder: Transfer.create)
+    ..aOM<TransferCoreAsset>(
+        26, _omitFieldNames ? '' : 'transferCoreAssetTransaction',
+        subBuilder: TransferCoreAsset.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2242,6 +2359,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   @$pb.TagNumber(16)
   @$pb.TagNumber(19)
+  @$pb.TagNumber(26)
   SigningInput_TransactionType whichTransactionType() =>
       _SigningInput_TransactionTypeByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(4)
@@ -2256,6 +2374,7 @@ class SigningInput extends $pb.GeneratedMessage {
   @$pb.TagNumber(13)
   @$pb.TagNumber(16)
   @$pb.TagNumber(19)
+  @$pb.TagNumber(26)
   void clearTransactionType() => $_clearField($_whichOneof(0));
 
   /// The secret private key used for signing (32 bytes).
@@ -2537,6 +2656,18 @@ class SigningInput extends $pb.GeneratedMessage {
   void clearTransferToFeePayer() => $_clearField(25);
   @$pb.TagNumber(25)
   Transfer ensureTransferToFeePayer() => $_ensure(24);
+
+  @$pb.TagNumber(26)
+  TransferCoreAsset get transferCoreAssetTransaction => $_getN(25);
+  @$pb.TagNumber(26)
+  set transferCoreAssetTransaction(TransferCoreAsset value) =>
+      $_setField(26, value);
+  @$pb.TagNumber(26)
+  $core.bool hasTransferCoreAssetTransaction() => $_has(25);
+  @$pb.TagNumber(26)
+  void clearTransferCoreAssetTransaction() => $_clearField(26);
+  @$pb.TagNumber(26)
+  TransferCoreAsset ensureTransferCoreAssetTransaction() => $_ensure(25);
 }
 
 /// Result containing the signed and encoded transaction.

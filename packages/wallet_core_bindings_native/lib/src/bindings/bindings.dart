@@ -15586,6 +15586,7 @@ sealed class TWEthereumChainID {
   static const TWEthereumChainIDKavaevm = 2222;
   static const TWEthereumChainIDRobinhoodchain = 4663;
   static const TWEthereumChainIDIotexevm = 4689;
+  static const TWEthereumChainIDArc = 5042;
   static const TWEthereumChainIDKaia = 8217;
   static const TWEthereumChainIDAvalanchec = 43114;
   static const TWEthereumChainIDEvmos = 9001;

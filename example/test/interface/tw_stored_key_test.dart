@@ -568,6 +568,52 @@ void main() {
           () => TWStoredKey.importJSON(jsonInvalidStr).pointer, 0);
     });
 
+    for (final invalid in <(String, String, Object?)>[
+      ('short key length', 'dklen', 31),
+      ('floating key length', 'dklen', 32.0),
+      ('negative cost', 'n', -1),
+      ('cost outside uint32', 'n', 4294967296),
+      ('zero block size', 'r', 0),
+      ('zero parallelization', 'p', 0),
+      ('non-hex salt', 'salt', 'zz'),
+      ('missing cost', 'n', null),
+    ]) {
+      test('importJSON rejects scrypt ${invalid.$1}', () {
+        final keyJson = json.decode(
+          File('$projectRoot/test/common/Keystore/Data/key.json')
+              .readAsStringSync(),
+        ) as Map<String, dynamic>;
+        final params = keyJson['crypto']['kdfparams'] as Map<String, dynamic>;
+        if (invalid.$3 == null) {
+          params.remove(invalid.$2);
+        } else {
+          params[invalid.$2] = invalid.$3;
+        }
+        expectWasmWithException(
+          () => TWStoredKey.importJSON(json.encode(keyJson)).pointer,
+          0,
+        );
+      });
+    }
+
+    test('importJSON preserves legacy empty and missing scrypt salt', () {
+      final keyJson = json.decode(
+        File('$projectRoot/test/common/Keystore/Data/key.json')
+            .readAsStringSync(),
+      ) as Map<String, dynamic>;
+      final params = keyJson['crypto']['kdfparams'] as Map<String, dynamic>;
+      for (final salt in [params['salt'], '', null]) {
+        if (salt == null) {
+          params.remove('salt');
+        } else {
+          params['salt'] = salt;
+        }
+        final key = TWStoredKey.importJSON(json.encode(keyJson));
+        expect(key.pointer, isNot(0));
+        key.delete();
+      }
+    });
+
     test('fixAddresses', () {
       const passwordString = 'password';
       final password = TWData.createWithString(passwordString).bytes()!;

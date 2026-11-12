@@ -1,11 +1,11 @@
 name: wallet_core_bindings_wasm
 description: "Dart wasm bindings for trust wallet core, used in Flutter and Dart."
 resolution: workspace
-version: 4.8.4
+version: 4.9.3
 homepage: https://github.com/xuelongqy/wallet_core_bindings
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  sdk: ">=3.7.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -13,7 +13,7 @@ dependencies:
 
   wasm_run_flutter: ^0.1.0
   wasm_run: ^0.1.0+2
-  wallet_core_bindings: ^4.8.4
+  wallet_core_bindings: ^4.9.3
 
 dev_dependencies:
   flutter_test:

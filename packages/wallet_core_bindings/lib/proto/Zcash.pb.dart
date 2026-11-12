@@ -16,19 +16,24 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'Utxo.pb.dart' as $0;
+import 'Zcash.pbenum.dart';
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
+
+export 'Zcash.pbenum.dart';
 
 class TransactionBuilderExtraData extends $pb.GeneratedMessage {
   factory TransactionBuilderExtraData({
     $core.List<$core.int>? branchId,
     $core.int? expiryHeight,
     $core.bool? zip0317,
+    TransactionVersion? txVersion,
   }) {
     final result = create();
     if (branchId != null) result.branchId = branchId;
     if (expiryHeight != null) result.expiryHeight = expiryHeight;
     if (zip0317 != null) result.zip0317 = zip0317;
+    if (txVersion != null) result.txVersion = txVersion;
     return result;
   }
 
@@ -50,6 +55,8 @@ class TransactionBuilderExtraData extends $pb.GeneratedMessage {
     ..aI(2, _omitFieldNames ? '' : 'expiryHeight',
         fieldType: $pb.PbFieldType.OU3)
     ..aOB(3, _omitFieldNames ? '' : 'zip0317', protoName: 'zip_0317')
+    ..aE<TransactionVersion>(4, _omitFieldNames ? '' : 'txVersion',
+        enumValues: TransactionVersion.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -74,8 +81,7 @@ class TransactionBuilderExtraData extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<TransactionBuilderExtraData>(create);
   static TransactionBuilderExtraData? _defaultInstance;
 
-  /// Currently, `branch_id` is the only configurable Zcash specific parameter.
-  /// There can also be `version_group_id` configured in the future.
+  /// Consensus branch ID for the epoch of the block containing the transaction.
   @$pb.TagNumber(1)
   $core.List<$core.int> get branchId => $_getN(0);
   @$pb.TagNumber(1)
@@ -105,6 +111,17 @@ class TransactionBuilderExtraData extends $pb.GeneratedMessage {
   $core.bool hasZip0317() => $_has(2);
   @$pb.TagNumber(3)
   void clearZip0317() => $_clearField(3);
+
+  /// Transaction version. The version group ID is derived from it.
+  /// Version 5 is used by default (version 4 for Komodo).
+  @$pb.TagNumber(4)
+  TransactionVersion get txVersion => $_getN(3);
+  @$pb.TagNumber(4)
+  set txVersion(TransactionVersion value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasTxVersion() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTxVersion() => $_clearField(4);
 }
 
 class Transaction extends $pb.GeneratedMessage {
@@ -179,7 +196,7 @@ class Transaction extends $pb.GeneratedMessage {
   static Transaction? _defaultInstance;
 
   /// / Transaction version.
-  /// / Currently, version 4 (0x80000004) is supported only.
+  /// / Version 4 (0x80000004) and version 5 (0x80000005) are supported.
   @$pb.TagNumber(1)
   $core.int get version => $_getIZ(0);
   @$pb.TagNumber(1)
@@ -189,7 +206,7 @@ class Transaction extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearVersion() => $_clearField(1);
 
-  /// If transaction version is 4 (0x80000004), version group ID is 0x892F2085.
+  /// Version 4 group ID is 0x892F2085, version 5 group ID is 0x26A7270A.
   @$pb.TagNumber(2)
   $core.int get versionGroupId => $_getIZ(1);
   @$pb.TagNumber(2)

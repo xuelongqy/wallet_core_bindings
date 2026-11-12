@@ -3,7 +3,7 @@ import java.nio.file.Files
 import java.security.MessageDigest
 
 group = "com.xuelongqy.wallet_core_bindings_libs"
-version = "4.8.4"
+version = "4.9.3"
 
 buildscript {
     ext.kotlin_version = "1.8.22"
@@ -60,7 +60,7 @@ android {
     }
 
     defaultConfig {
-        // Wallet Core 4.8.4 requires Android API 23 or newer.
+        // Wallet Core 4.9.3 requires Android API 23 or newer.
         minSdk = 23
     }
 
@@ -96,7 +96,7 @@ task downloadDependencies {
 
         // Download binary dependencies & verify their MD5 checksums.
         def filesToDownload = [
-                ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "b49acee078bfa1f2c8c640639a423370", "destination": file("$buildDir/wallet-core.aar")]
+                ["url": "https://github.com/xuelongqy/wallet-core/releases/download/${version}/wallet-core.aar", "md5": "01ddfbf0dc0511f4e48e00745b0f2122", "destination": file("$buildDir/wallet-core.aar")]
         ]
 
         filesToDownload.each { fileInfo ->

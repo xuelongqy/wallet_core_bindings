@@ -17,6 +17,7 @@ Currently supported platforms, other platforms will be added if suitable methods
 - iOS
 - macOS
 - Linux
+- Windows x64
 
 ## Building
 By default, wallet core does not expose interface methods. You need to make a small change and compile it before using it.
@@ -30,8 +31,55 @@ Required modifications
 set(CMAKE_CXX_VISIBILITY_PRESET hidden) -> set(CMAKE_CXX_VISIBILITY_PRESET default)
 ```
 
+### iOS and macOS
+
+Wallet Core 4.9.3 requires iOS 15 or macOS 12. This plugin supports Apple
+builds through Flutter's Swift Package Manager integration only (introduced in
+Flutter 3.24). Recent Flutter SDKs support the per-project configuration used
+by this repository's examples:
+
+```yaml
+flutter:
+  config:
+    enable-swift-package-manager: true
+```
+
+Earlier Flutter SDKs with Swift Package Manager support use
+`flutter config --enable-swift-package-manager` instead of this pubspec field.
+The current examples are validated with Flutter 3.47.2.
+
+Swift Package Manager downloads and verifies checksum-pinned XCFramework
+archives. iOS uses the official `WalletCore` and `WalletCoreSwiftProtobuf`
+frameworks; macOS uses the fork's universal `TrustWalletCore` C framework.
+The pub package contains no downloaded frameworks or CocoaPods podspecs.
+
+The library example uses Swift Package Manager without CocoaPods. The root
+example also enables Swift Package Manager for this plugin; it retains a
+CocoaPods fallback only for its separate `wasm_run_flutter` test dependency,
+which currently has no Swift package.
+
+The plugin registers a direct Core call so the framework is linked and loaded
+before `WalletCoreBindingsNativeImpl().initialize()` uses
+`DynamicLibrary.process()`. No custom library path is needed in an Apple app.
+
+The repository's Apple host test checks all 466 public C functions, SHA-256,
+Ethereum and Solana addresses, and random private-key generation through the
+default native backend:
+
+```sh
+cd example
+flutter test integration_test/apple_native_test.dart -d macos
+# Or use the ID of an iOS simulator with -d.
+```
+
 ### Windows
-Windows is not supported at present.
+Requires Windows 10 / Windows Server 2016 or later on x64, with the Microsoft
+Visual C++ Redistributable (x64) installed. The DLL uses the MSVC ABI and dynamic
+CRT (`/MD`). Windows ARM64 is not supported.
+
+The Flutter plugin automatically bundles `libTrustWalletCore.dll` from its
+version-pinned Windows archive, together with its licenses and runtime notes.
+No DLL loader configuration is needed for the packaged Flutter app.
 
 ## Getting Started
 ```yaml

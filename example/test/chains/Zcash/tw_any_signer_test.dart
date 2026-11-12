@@ -42,6 +42,7 @@ void main() {
           fixedDustThreshold: $fixnum.Int64(546),
           zcashExtraData: Zcash.TransactionBuilderExtraData(
             branchId: SaplingBranchID,
+            txVersion: Zcash.TransactionVersion.V4,
           ),
           inputs: [
             BitcoinV2.Input(

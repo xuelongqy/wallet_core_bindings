@@ -52,6 +52,7 @@ enum TWEthereumChainID {
   Ronin(2020),
   Kavaevm(2222),
   Iotexevm(4689),
+  Arc(5042),
   Kaia(8217),
   Avalanchec(43114),
   Evmos(9001),

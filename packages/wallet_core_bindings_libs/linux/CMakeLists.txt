@@ -1,4 +1,9 @@
-set(LibraryVersion "4.8.4")
+set(LibraryVersion "4.9.3")
+set(ArchiveSha256 "5910a0e411feef496bc2ea14d1bb78b5a5a73918194c31421b9baec0800ec9de")
+string(LENGTH "${ArchiveSha256}" ArchiveHashLength)
+if(NOT ArchiveHashLength EQUAL 64 OR NOT ArchiveSha256 MATCHES "^[0-9a-f]+$")
+  message(FATAL_ERROR "Wallet Core ${LibraryVersion} Linux archive SHA256 has not been pinned")
+endif()
 
 # The Flutter tooling requires that developers have CMake 3.10 or later
 # installed. You should not increase this version, as doing so will cause
@@ -19,7 +24,7 @@ if(NOT EXISTS "${LibRoot}/${BinaryPath}")
     file(DOWNLOAD
       "https://github.com/xuelongqy/wallet-core/releases/download/${LibraryVersion}/Linux.tar.gz"
       ${ArchivePath}
-      EXPECTED_HASH "SHA256=73e399bc0e1e44288949cf27f313ecea8b257d1a7fcd734c5da9760cde6c006b"
+      EXPECTED_HASH "SHA256=${ArchiveSha256}"
       TLS_VERIFY ON
     )
   endif()
