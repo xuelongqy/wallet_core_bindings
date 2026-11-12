@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`wallet_core_bindings_native` - `v4.9.3`](#wallet_core_bindings_native---v493)
+
+---
+
+#### `wallet_core_bindings_native` - `v4.9.3`
+
+ - **FEAT**: Sync wallet-core 4.9.3.
+
+
+## 2026-11-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`wallet_core_bindings` - `v4.9.3`](#wallet_core_bindings---v493)
 
 ---
