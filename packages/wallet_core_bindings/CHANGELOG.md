@@ -1,3 +1,7 @@
+## 4.9.3
+
+ - **FEAT**: Sync wallet-core 4.9.3.
+
 ## 4.8.4
 
  - **FEAT**: Sync wallet-core 4.8.4.

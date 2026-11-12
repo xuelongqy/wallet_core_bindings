@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-11-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`wallet_core_bindings` - `v4.9.3`](#wallet_core_bindings---v493)
+
+---
+
+#### `wallet_core_bindings` - `v4.9.3`
+
+ - **FEAT**: Sync wallet-core 4.9.3.
+
+
 ## 2026-09-30
 
 ### Changes
