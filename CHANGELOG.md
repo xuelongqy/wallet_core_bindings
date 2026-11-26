@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-11-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`wallet_core_bindings` - `v4.10.0`](#wallet_core_bindings---v4100)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `wallet_core_bindings` - `v4.10.0`
+
+ - **FEAT**: Sync wallet-core 4.10.0.
+ - **BREAKING** **FEAT**(wallet_core_bindings): Return null for invalid Tezos signing payloads.
+
+
 ## 2026-11-12
 
 ### Changes

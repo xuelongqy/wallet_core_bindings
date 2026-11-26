@@ -1,3 +1,10 @@
+## 4.10.0
+
+> Note: This release has breaking changes.
+
+ - **FEAT**: Sync wallet-core 4.10.0.
+ - **BREAKING** **FEAT**(wallet_core_bindings): Return null for invalid Tezos signing payloads.
+
 ## 4.9.3
 
  - **FEAT**: Sync wallet-core 4.9.3.
