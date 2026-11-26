@@ -8726,8 +8726,8 @@ class TrustWalletCoreBindings {
   /// Sign a message as described in https://tezostaquito.io/docs/signing/
   ///
   /// \param privateKey: the private key used for signing
-  /// \param message: A custom message payload (hex) which is input to the signing.
-  /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
+  /// \param message: A custom message payload (hex) which is input to the signing. Must start with the 0x05 (off-chain message) watermark.
+  /// \returns the signature, Hex-encoded. On invalid input (invalid hex or missing 0x05 watermark) null is returned. Returned object needs to be deleted after use.
   ffi.Pointer<TWString$1> TWTezosMessageSignerSignMessage(
     ffi.Pointer<TWPrivateKey> privateKey,
     ffi.Pointer<TWString$1> message,

@@ -36,7 +36,7 @@ void main() {
         TWTezosMessageSigner.verifyMessage(
           pubKey: privKey.getPublicKeyEd25519(),
           message: payload,
-          signature: result,
+          signature: result!,
         ),
         true,
       );
@@ -66,18 +66,56 @@ void main() {
       final privateKey = TWPrivateKey.createWithHexString(privKeyData);
       const message =
           '05010000004254657a6f73205369676e6564204d6573736167653a207465737455726c20323032332d30322d30385431303a33363a31382e3435345a2048656c6c6f20576f726c64';
+      const expectedSignature =
+          'edsigu3se2fcEJUCm1aqxjzbHdf7Wsugr4mLaA9YM2UVZ9Yy5meGv87VqHN3mmDeRwApTj1JKDaYjqmLZifSFdWCqBoghqaowwJ';
 
       final pubKey = privateKey.getPublicKey(coin);
-      final signature = TWTezosMessageSigner.signMessage(privateKey, message);
-      expect(signature,
-          'edsigu3se2fcEJUCm1aqxjzbHdf7Wsugr4mLaA9YM2UVZ9Yy5meGv87VqHN3mmDeRwApTj1JKDaYjqmLZifSFdWCqBoghqaowwJ');
+      for (final payload in [message, '0x$message']) {
+        final signature = TWTezosMessageSigner.signMessage(privateKey, payload);
+        expect(signature, expectedSignature);
+        expect(
+          TWTezosMessageSigner.verifyMessage(
+            pubKey: pubKey,
+            message: payload,
+            signature: signature!,
+          ),
+          isTrue,
+        );
+      }
       expect(
         TWTezosMessageSigner.verifyMessage(
           pubKey: pubKey,
-          message: message,
-          signature: signature,
+          message: '0x0x$message',
+          signature: expectedSignature,
         ),
-        true,
+        isFalse,
+      );
+    });
+
+    test('signMessage returns null for invalid payloads', () {
+      final privateKey = TWPrivateKey.createWithHexString(
+          '91b4fb8d7348db2e7de2693f58ce1cceb966fa960739adac1d9dba2cbaa0940a');
+
+      for (final payload in ['03deadbeef', '0x0x05deadbeef', '05zz', '0x']) {
+        expect(TWTezosMessageSigner.signMessage(privateKey, payload), isNull,
+            reason: 'Payload: $payload');
+      }
+    });
+
+    test('verifyMessage rejects a legacy signature for an operation payload',
+        () {
+      final privateKey = TWPrivateKey.createWithHexString(
+          '91b4fb8d7348db2e7de2693f58ce1cceb966fa960739adac1d9dba2cbaa0940a');
+
+      expect(
+        TWTezosMessageSigner.verifyMessage(
+          pubKey: privateKey.getPublicKey(coin),
+          message: '03deadbeef',
+          // Wallet Core 4.9.3 signed and verified this operation payload.
+          signature:
+              'edsigte3MPQozCnDdWTNdWmhny41PG3JgjQ1fVnP2bpcDghSiypw995xJgKGa4zM1za7Y8qd8NazQaoKDguifcdNadSiHS74y5z',
+        ),
+        isFalse,
       );
     });
   });

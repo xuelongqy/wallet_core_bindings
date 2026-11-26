@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:wallet_core_bindings/proto/Common.pbenum.dart';
 import 'package:wallet_core_bindings/wallet_core_bindings.dart';
 import 'package:wallet_core_bindings/proto/Tron.pb.dart' as Tron;
 
@@ -424,6 +425,12 @@ void main() {
           'd314967bc1d153d649d9f54a1cc78033f0d696a58ff6922f490ddaec82558c83');
       expect(hex(output.signature),
           'aa7cf79fb1692ff432a1a3e520be3355c3e8168c5fa22f6e3b96c2a9f2e2827b49d67d5e6eea5c7e7cf872047d422ce5d4d149c4df752b176d13f8f48920271201');
+
+      input.transaction.freezeBalance.clearReceiverAddress();
+      final selfStake = input.sign();
+      expect(selfStake.error, SigningError.OK);
+      expect(selfStake.signature, hasLength(65));
+      expect(selfStake.id, hasLength(32));
     });
 
     test('SignUnFreezeBalance', () {
@@ -459,6 +466,12 @@ void main() {
           'c5bd624bb53fed8ce4a7361475263b3a91ae71ef389630e0b3b8693c8c56d7a1');
       expect(hex(output.signature),
           '4b4b12b5fd091d5343335f14ac90bf23ea9a8167d648dd9d10d00c9c9b24731c484937bf133e5010f0338fb70a679a9a2eca8b945574005bc4015b419a68897300');
+
+      input.transaction.unfreezeBalance.clearReceiverAddress();
+      final selfStake = input.sign();
+      expect(selfStake.error, SigningError.OK);
+      expect(selfStake.signature, hasLength(65));
+      expect(selfStake.id, hasLength(32));
     });
 
     test('SignUnFreezeAsset', () {

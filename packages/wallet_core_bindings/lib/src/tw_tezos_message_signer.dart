@@ -30,20 +30,20 @@ class TWTezosMessageSigner {
   /// Sign a message as described in https://tezostaquito.io/docs/signing/
   ///
   /// \param [privateKey] the private key used for signing
-  /// \param [message] A custom message payload (hex) which is input to the signing.
-  /// \returns the signature, Hex-encoded. On invalid input empty string is returned. Returned object needs to be deleted after use.
-  static String signMessage(TWPrivateKey privateKey, String message) =>
+  /// \param [message] The hex payload, starting with the `0x05` off-chain message watermark.
+  /// \returns the Base58-encoded signature, or `null` for invalid hex or a missing watermark.
+  static String? signMessage(TWPrivateKey privateKey, String message) =>
       TWString.fromPointer(
         _tezosMessageSignerImpl.signMessage(
           privateKey.pointer,
           TWString(message).pointer,
         ),
-      ).value!;
+      ).value;
 
   /// Verify signature for a message as described in https://tezostaquito.io/docs/signing/
   ///
   /// \param [pubKey] pubKey that will verify the message from the signature
-  /// \param [message] the message signed as a payload (hex)
+  /// \param [message] The signed hex payload, starting with the `0x05` off-chain message watermark.
   /// \param [signature] in Base58-encoded form.
   /// \returns false on any invalid input (does not throw), true if the message can be verified from the signature
   static bool verifyMessage({

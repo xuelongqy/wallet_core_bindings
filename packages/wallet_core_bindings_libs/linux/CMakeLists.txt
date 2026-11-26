@@ -1,5 +1,5 @@
-set(LibraryVersion "4.9.3")
-set(ArchiveSha256 "5910a0e411feef496bc2ea14d1bb78b5a5a73918194c31421b9baec0800ec9de")
+set(LibraryVersion "4.10.0")
+set(ArchiveSha256 "788b129df5e200891c87f9bc1657650ca8019440b4432b3f8c8c18fc0710bc7e")
 string(LENGTH "${ArchiveSha256}" ArchiveHashLength)
 if(NOT ArchiveHashLength EQUAL 64 OR NOT ArchiveSha256 MATCHES "^[0-9a-f]+$")
   message(FATAL_ERROR "Wallet Core ${LibraryVersion} Linux archive SHA256 has not been pinned")

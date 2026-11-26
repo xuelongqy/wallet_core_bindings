@@ -18,6 +18,11 @@ void main() {
         TWAnyAddress.isValid('fB6916095ca1df60bB79Ce92cE3Ea74c37c5d359', coin),
         false,
       );
+      expect(
+        TWAnyAddress.isValid(
+            '0x0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359', coin),
+        isFalse,
+      );
     });
 
     test('String', () {

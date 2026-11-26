@@ -6,6 +6,7 @@ abstract class TWTezosMessageSignerInterface {
 
   int inputToPayload(int message);
 
+  /// Returns the signature string's address, or `0` for invalid input.
   int signMessage(int privateKey, int message);
 
   bool verifyMessage(int pubKey, int message, int signature);

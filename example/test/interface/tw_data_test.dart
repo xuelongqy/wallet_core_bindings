@@ -41,6 +41,8 @@ void main() {
         expect(string.value!, 'deadbeef');
       }
 
+      expect(TWData.createWithHexString('0x0xdeadbeef').size, 0);
+
       {
         // uppercase
         TWData data = TWData.createWithHexString('DEADBEEF');
