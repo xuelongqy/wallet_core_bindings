@@ -20,6 +20,10 @@ Dart bindings for [Trust Wallet Core](https://github.com/trustwallet/wallet-core
 - Combined with Dart GC, there is no need to control memory.
 - Update the TrustWalletCore version synchronously and keep the APIs consistent.
 
+## Upgrading to 4.10.0
+
+`TWTezosMessageSigner.signMessage` now returns `String?`. Handle `null` for invalid hex or a missing `0x05` watermark. Build an off-chain payload with `formatMessage` followed by `inputToPayload`.
+
 ## Getting Started
 There are two ways to use wallet_core_bindings, Native and Web Assembly. Please follow the instructions below to make your choice.
 
